@@ -4,7 +4,6 @@
 #include "StdAfxBase.h"
 #include "N3SndMgr.h"
 #include "N3SndObj.h"
-#include "N3SndObjStream.h"
 #include "N3Base.h"
 
 #include <mpg123.h>
@@ -110,7 +109,7 @@ CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
 	return pObjNew;
 }
 
-CN3SndObjStream* CN3SndMgr::CreateStreamObj(std::string szFN)
+CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
 {
 	if (!CN3Base::s_Options.bSndBgmEnable)
 		return nullptr;
@@ -118,8 +117,8 @@ CN3SndObjStream* CN3SndMgr::CreateStreamObj(std::string szFN)
 	if (!PreprocessFilename(szFN))
 		return nullptr;
 
-	CN3SndObjStream* pSndObj = new CN3SndObjStream();
-	if (!pSndObj->Create(szFN))
+	CN3SndObj* pSndObj = new CN3SndObj();
+	if (!pSndObj->Create(szFN, SNDTYPE_STREAM))
 	{
 		delete pSndObj;
 		return nullptr;
@@ -129,7 +128,7 @@ CN3SndObjStream* CN3SndMgr::CreateStreamObj(std::string szFN)
 	return pSndObj;
 }
 
-CN3SndObjStream* CN3SndMgr::CreateStreamObj(int iID)
+CN3SndObj* CN3SndMgr::CreateStreamObj(int iID)
 {
 	__TABLE_SOUND* pTbl = m_Tbl_Source.Find(iID);
 	if (pTbl == nullptr)
@@ -138,7 +137,7 @@ CN3SndObjStream* CN3SndMgr::CreateStreamObj(int iID)
 	return CreateStreamObj(pTbl->szFN);
 }
 
-void CN3SndMgr::ReleaseStreamObj(CN3SndObjStream** ppObj)
+void CN3SndMgr::ReleaseStreamObj(CN3SndObj** ppObj)
 {
 	if (ppObj == nullptr || *ppObj == nullptr)
 		return;
@@ -193,11 +192,8 @@ void CN3SndMgr::Tick()
 		}
 	}
 
-	for (CN3SndObjStream* pSndObj : m_SndObjStreams)
-	{
-		if (pSndObj != nullptr)
-			pSndObj->Tick();
-	}
+	for (CN3SndObj* pSndObj : m_SndObjStreams)
+		pSndObj->Tick();
 
 	CN3SndObj::StaticTick(); // CommitDeferredSetting...
 }
@@ -261,7 +257,7 @@ void CN3SndMgr::Release()
 		delete pSndObj;
 	m_SndObjs_PlayOnceAndRelease.clear();
 
-	for (CN3SndObjStream* pSndObj : m_SndObjStreams)
+	for (CN3SndObj* pSndObj : m_SndObjStreams)
 		delete pSndObj;
 	m_SndObjStreams.clear();
 

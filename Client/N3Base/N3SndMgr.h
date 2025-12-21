@@ -17,7 +17,6 @@
 #include <unordered_map>
 
 class CN3SndObj;
-class CN3SndObjStream;
 class CN3SndMgr
 {
 protected:
@@ -26,29 +25,38 @@ protected:
 	bool								m_bSndEnable;
 	bool								m_bSndDuplicated;
 	std::map<std::string, CN3SndObj*>	m_SndObjSrcs;
-	std::list<CN3SndObjStream*>			m_SndObjStreams;	// 스트리밍 사운드..
+	std::list<CN3SndObj*>				m_SndObjStreams;	// 스트리밍 사운드..
 	std::list<CN3SndObj*>				m_SndObjs_Duplicated;
 	std::list<CN3SndObj*>				m_SndObjs_PlayOnceAndRelease;	// 한번만 플레이 하고 릴리즈 해야 하는 사운드들
 	std::unordered_map<std::string, std::string> m_mp3ToWavFileMap;
 	
 public:
+	void SetDuplicated(bool bDuplicate)
+	{
+		m_bSndDuplicated = bDuplicate;
+	}
+
+	bool GetDuplicated() const
+	{
+		return m_bSndDuplicated;
+	}
+
+	void SetEnable(bool bEnable)
+	{
+		m_bSndEnable = bEnable;
+	}
+
 	void		ReleaseObj(CN3SndObj** ppObj);
-	void		ReleaseStreamObj(CN3SndObjStream** ppObj);
-//	void		DeleteObjWithSource(CN3SndObj* pObj);
-//	CN3SndObj*	GetObj(int iID);
+	void		ReleaseStreamObj(CN3SndObj** ppObj);
 	bool		PlayOnceAndRelease(int iSndID, const __Vector3* pPos = nullptr);
-		
-	void		SetDuplicated(bool bDuplicate) { m_bSndDuplicated = bDuplicate; }
-	bool		GetDuplicated() { return m_bSndDuplicated; }
-	void		SetEnable(bool bEnable) { m_bSndEnable = bEnable; }
 	void		Init(HWND hWnd);
 	void		Release();
 	void		Tick();	
 
 	CN3SndObj*			CreateObj(std::string szFN, e_SndType eType = SNDTYPE_3D);
 	CN3SndObj*			CreateObj(int iID, e_SndType eType = SNDTYPE_3D);
-	CN3SndObjStream*	CreateStreamObj(std::string szFN);
-	CN3SndObjStream*	CreateStreamObj(int iID);
+	CN3SndObj*			CreateStreamObj(std::string szFN);
+	CN3SndObj*			CreateStreamObj(int iID);
 
 	CN3SndMgr();
 	virtual ~CN3SndMgr();

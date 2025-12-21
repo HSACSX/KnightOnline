@@ -195,9 +195,6 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 	if (s_lpDS == nullptr)
 		return false;
 
-	if (eType != SNDTYPE_2D && eType != SNDTYPE_3D)
-		return false;
-
 	if (m_lpDSBuff != nullptr)
 		Init();
 
@@ -217,11 +214,13 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 	dsbd.dwBufferBytes = WaveFile.GetSize();
 	dsbd.lpwfxFormat = WaveFile.m_pwfx;
 
-	if (SNDTYPE_2D == eType) // 2D 음원
+	// 2D 음원
+	if (eType == SNDTYPE_2D || eType == SNDTYPE_STREAM)
 	{
 		dsbd.dwFlags = DSBCAPS_CTRLVOLUME; // | DSBCAPS_STATIC;
 	}
-	else if (SNDTYPE_3D == eType)	//3D 음원..
+	// 3D 음원..
+	else if (eType == SNDTYPE_3D)
 	{
 		dsbd.dwFlags = DSBCAPS_CTRL3D | DSBCAPS_MUTE3DATMAXDISTANCE; // | DSBCAPS_STATIC;
 		dsbd.guid3DAlgorithm = DS3DALG_HRTF_LIGHT;
@@ -394,9 +393,6 @@ void CN3SndObj::SetVolume(int Vol)
 	m_lpDSBuff->SetVolume(dwVol);
 }
 
-//
-//
-//
 bool CN3SndObj::IsPlaying()
 {
 	if (m_lpDSBuff == nullptr)
@@ -410,9 +406,6 @@ bool CN3SndObj::IsPlaying()
 	return (m_ePlayState != SNDSTATE_STOP);
 }
 
-//
-//
-//
 void CN3SndObj::Tick()
 {
 	if (m_lpDSBuff == nullptr || m_ePlayState == SNDSTATE_STOP)
@@ -450,7 +443,7 @@ void CN3SndObj::Tick()
 		if (!m_bIsLoop)
 			m_ePlayState = SNDSTATE_STOP;
 	}
-	if (m_ePlayState == SNDSTATE_FADEOUT)
+	else if (m_ePlayState == SNDSTATE_FADEOUT)
 	{
 		if (m_fTmpSecPerFrm >= m_fFadeOutTime)
 		{
@@ -470,9 +463,6 @@ void CN3SndObj::Tick()
 	}
 }
 
-//
-//
-//
 void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, bool bImmediately)
 {
 	if (pvPos != nullptr)
@@ -502,9 +492,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	}
 }
 
-//
-//
-//
 void CN3SndObj::RealPlay()
 {
 	if (m_lpDSBuff == nullptr)
@@ -523,10 +510,6 @@ void CN3SndObj::RealPlay()
 		m_lpDSBuff->Play(0, 0, 0);
 }
 
-
-//
-//
-//
 void CN3SndObj::Stop(float fFadeOutTime)
 {
 	if (m_lpDSBuff == nullptr)
@@ -549,35 +532,24 @@ void CN3SndObj::Stop(float fFadeOutTime)
 	}
 }
 
-
 void CN3SndObj::SetPos(const __Vector3& vPos)
 {
 	if (m_lpDS3DBuff != nullptr)
 		m_lpDS3DBuff->SetPosition(vPos.x, vPos.y, vPos.z, DS3D_IMMEDIATE);
 }
 
-//
-//
-//
 void CN3SndObj::SetMaxDistance(float max)
 {
 	if (m_lpDS3DBuff != nullptr)
 		m_lpDS3DBuff->SetMaxDistance(max, DS3D_IMMEDIATE);
 }
 
-
-//
-//
-//
 void CN3SndObj::SetMinDistance(float min)
 {
 	if (m_lpDS3DBuff != nullptr)
 		m_lpDS3DBuff->SetMinDistance(min, DS3D_IMMEDIATE);
 }
 
-//
-//
-//
 void CN3SndObj::SetConeOrientation(const __Vector3& vDir)
 {
 	if (m_lpDS3DBuff != nullptr)
@@ -607,9 +579,6 @@ void CN3SndObj::SetListenerPos(const __Vector3& vPos, bool IsDeferred)
 	s_bNeedDeferredTick = true;	// 3D Listener CommitDeferredSetting
 }
 
-//
-//
-//
 void CN3SndObj::SetListenerOrientation(const __Vector3& vAt, const __Vector3& vUp, bool IsDeferred)
 {
 	if (s_lpDSListener == nullptr)

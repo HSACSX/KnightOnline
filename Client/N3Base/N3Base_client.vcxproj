@@ -71,7 +71,6 @@
     <ClInclude Include="N3SndEng.h" />
     <ClInclude Include="N3SndMgr.h" />
     <ClInclude Include="N3SndObj.h" />
-    <ClInclude Include="N3SndObjStream.h" />
     <ClInclude Include="N3Star.h" />
     <ClInclude Include="N3Sun.h" />
     <ClInclude Include="N3TableBase.h" />
@@ -146,7 +145,6 @@
     <ClCompile Include="N3SkyMng.cpp" />
     <ClCompile Include="N3SndMgr.cpp" />
     <ClCompile Include="N3SndObj.cpp" />
-    <ClCompile Include="N3SndObjStream.cpp" />
     <ClCompile Include="N3Star.cpp" />
     <ClCompile Include="N3Sun.cpp" />
     <ClCompile Include="N3TableBaseImpl.cpp" />

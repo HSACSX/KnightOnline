@@ -177,9 +177,6 @@
     <ClInclude Include="N3SndObj.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="N3SndObjStream.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="N3Star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -390,9 +387,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="N3SndObj.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="N3SndObjStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="N3Star.cpp">

@@ -35,7 +35,7 @@
 #include "text_resources.h"
 
 #include <N3Base/N3UIEdit.h>
-#include <N3Base/N3SndObjStream.h>
+#include <N3Base/N3SndObj.h>
 #include <N3Base/N3FXBundle.h>
 
 #include <N3Base/BitmapFile.h>
@@ -49,10 +49,7 @@
 static char THIS_FILE[]=__FILE__;
 #endif
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-CN3SndObjStream*	CGameProcedure::s_pSnd_BGM = nullptr;			// 메인 배경음악 포인터..
+CN3SndObj*			CGameProcedure::s_pSnd_BGM = nullptr;			// 메인 배경음악 포인터..
 CLocalInput*		CGameProcedure::s_pLocalInput = nullptr;		// 마우스와 키보드 입력 객체 .. Direct Input 을 썼다.
 CAPISocket*			CGameProcedure::s_pSocket = nullptr;			// 메인 소켓 객체
 CAPISocket*			CGameProcedure::s_pSocketSub = nullptr;		// 서브 소켓 객체
