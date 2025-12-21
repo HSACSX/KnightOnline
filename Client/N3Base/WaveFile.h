@@ -73,42 +73,39 @@ struct WavFileHeader
 };
 #pragma pack(pop)
 
-#define WAVEFILE_READ	1
-#define WAVEFILE_WRITE	0
-
 class CWaveFile
 {
 public:
-    WAVEFORMATEX* m_pwfx;        // Pointer to WAVEFORMATEX structure
-    HMMIO         m_hmmio;       // MM I/O handle for the WAVE
-    MMCKINFO      m_ck;          // Multimedia RIFF chunk
-    MMCKINFO      m_ckRiff;      // Use in opening a WAVE file
-    uint32_t      m_dwSize;      // The size of the wave file
-    MMIOINFO      m_mmioinfoOut;
-    uint32_t      m_dwFlags;
-    BOOL          m_bIsReadingFromMemory;
-    uint8_t*      m_pbData;
-    uint8_t*      m_pbDataCur;
-    ULONG         m_ulDataSize;
+	WAVEFORMATEX*	m_pwfx;		// Pointer to WAVEFORMATEX structure
+	HMMIO			m_hmmio;	// MM I/O handle for the WAVE
+	MMCKINFO		m_ck;		// Multimedia RIFF chunk
+	MMCKINFO		m_ckRiff;	// Use in opening a WAVE file
+	uint32_t		m_dwSize;	// The size of the wave file
+	bool			m_bIsReadingFromMemory;
+	uint8_t*		m_pbData;
+	uint8_t*		m_pbDataCur;
+	uint32_t		m_ulDataSize;
 
 protected:
     HRESULT ReadMMIO();
-    HRESULT WriteMMIO( WAVEFORMATEX *pwfxDest );
 
 public:
-    CWaveFile();
-    ~CWaveFile();
+	CWaveFile();
+	~CWaveFile();
 
-    HRESULT Open( LPCSTR strFileName, WAVEFORMATEX* pwfx, uint32_t dwFlags );
-    HRESULT OpenFromMemory( uint8_t* pbData, ULONG ulDataSize, WAVEFORMATEX* pwfx, uint32_t dwFlags );
-    HRESULT Close();
+	HRESULT Open(const char* strFileName);
+	HRESULT OpenFromMemory(uint8_t* pbData, uint32_t ulDataSize);
+	void Close();
 
-    HRESULT Read( uint8_t* pBuffer, DWORD dwSizeToRead, DWORD* pdwSizeRead );
-    HRESULT Write( UINT nSizeToWrite, uint8_t* pbData, UINT* pnSizeWrote );
+	HRESULT Read(uint8_t* pBuffer, uint32_t dwSizeToRead, uint32_t* pdwSizeRead);
 
-    uint32_t   GetSize();
-    HRESULT ResetFile();
-    WAVEFORMATEX* GetFormat() { return m_pwfx; };
+	uint32_t GetSize();
+	HRESULT ResetFile();
+
+	WAVEFORMATEX* GetFormat()
+	{
+		return m_pwfx;
+	}
 };
 
 #endif // #ifndef __WAVE_H_

@@ -39,7 +39,7 @@ public:
 
 protected:
 	virtual void RealPlay();
-	bool	FillBufferWithSound(class CWaveFile* pWaveFile);
+	bool	FillBufferWithSound(class CWaveFile& waveFile);
 	bool	RestoreBuffer();
 
 		

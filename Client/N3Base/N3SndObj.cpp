@@ -199,7 +199,7 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 		Init();
 
 	CWaveFile WaveFile;
-	HRESULT hr = WaveFile.Open(szFN.c_str(), nullptr, 1);	//#define WAVEFILE_READ   1
+	HRESULT hr = WaveFile.Open(szFN.c_str());
 	if (FAILED(hr))
 	{
 #ifdef _N3GAME
@@ -235,7 +235,7 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 		return false;
 	}
 
-	if (!FillBufferWithSound(&WaveFile))
+	if (!FillBufferWithSound(WaveFile))
 	{
 #ifdef _N3GAME
 		CLogWriter::Write("CN3SndObj::Create - FillBufferWithSound Failed.. ({})", szFN);
@@ -244,7 +244,9 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 	}
 
 	m_lpDSBuff->SetCurrentPosition(0);
-	if (SNDTYPE_3D == eType)	//3D 음원..
+
+	// 3D 음원..
+	if (eType == SNDTYPE_3D)
 	{
 		if (S_OK != m_lpDSBuff->QueryInterface(IID_IDirectSound3DBuffer, (VOID**) (&m_lpDS3DBuff)))
 			return false;
@@ -290,19 +292,20 @@ bool CN3SndObj::Duplicate(CN3SndObj* pSrc, e_SndType eType, __Vector3* pPos)
 	return true;
 }
 
-bool CN3SndObj::FillBufferWithSound(CWaveFile* pWaveFile)
+bool CN3SndObj::FillBufferWithSound(CWaveFile& waveFile)
 {
-	if (m_lpDSBuff == nullptr || pWaveFile == nullptr)
+	if (m_lpDSBuff == nullptr)
 		return false; // 포인터들 점검..
 
 	HRESULT hr;
 	void* pDSLockedBuffer = nullptr; // Pointer to locked buffer memory
-	DWORD   dwDSLockedBufferSize = 0;    // Size of the locked DirectSound buffer
-	DWORD   dwWavDataRead = 0;    // Amount of data read from the wav file 
+	DWORD dwDSLockedBufferSize = 0;    // Size of the locked DirectSound buffer
+	uint32_t dwWavDataRead = 0;    // Amount of data read from the wav file 
 
-	DSBCAPS dsbc; dsbc.dwSize = sizeof(dsbc);
+	DSBCAPS dsbc;
+	dsbc.dwSize = sizeof(dsbc);
 	m_lpDSBuff->GetCaps(&dsbc);
-	if (dsbc.dwBufferBytes != pWaveFile->GetSize())
+	if (dsbc.dwBufferBytes != waveFile.GetSize())
 		return false; // 사이즈 점검..
 
 	if (!RestoreBuffer())
@@ -313,22 +316,22 @@ bool CN3SndObj::FillBufferWithSound(CWaveFile* pWaveFile)
 	if (FAILED(hr))
 		return false;
 
-	pWaveFile->ResetFile();
+	waveFile.ResetFile();
 
-	hr = pWaveFile->Read((uint8_t*) pDSLockedBuffer, dwDSLockedBufferSize, &dwWavDataRead);
+	hr = waveFile.Read((uint8_t*) pDSLockedBuffer, dwDSLockedBufferSize, &dwWavDataRead);
 	if (FAILED(hr))
 		return false;
 
 	if (dwWavDataRead == 0)
 	{
 		// Wav is blank, so just fill with silence
-		memset(pDSLockedBuffer, (uint8_t) (pWaveFile->m_pwfx->wBitsPerSample == 8 ? 128 : 0), dwDSLockedBufferSize);
+		memset(pDSLockedBuffer, (uint8_t) (waveFile.m_pwfx->wBitsPerSample == 8 ? 128 : 0), dwDSLockedBufferSize);
 	}
 	else if (dwWavDataRead < dwDSLockedBufferSize)
 	{
 		// just fill in silence 
 		memset((uint8_t*) pDSLockedBuffer + dwWavDataRead,
-			(uint8_t) (pWaveFile->m_pwfx->wBitsPerSample == 8 ? 128 : 0),
+			(uint8_t) (waveFile.m_pwfx->wBitsPerSample == 8 ? 128 : 0),
 			dwDSLockedBufferSize - dwWavDataRead);
 	}
 
