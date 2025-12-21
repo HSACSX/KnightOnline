@@ -230,11 +230,14 @@ void CGameProcCharacterSelect::Tick()
 {
 	CGameProcedure::Tick();	// 키, 마우스 입력 등등..
 
-	__Vector3 vDir = CN3Base::s_CameraData.vAt - CN3Base::s_CameraData.vEye; vDir.Normalize();
-	__Vector3 vEye = CN3Base::s_CameraData.vEye; 
-	__Vector3 vUp(0,1,0);
-	CN3SndObj::SetListenerPos(&vEye);
-	CN3SndObj::SetListenerOrientation(&vDir, &vUp);
+	__Vector3 vDir = CN3Base::s_CameraData.vAt - CN3Base::s_CameraData.vEye;
+	vDir.Normalize();
+
+	const __Vector3 vEye = CN3Base::s_CameraData.vEye;
+	const __Vector3 vUp(0, 1, 0);
+
+	CN3SndObj::SetListenerPos(vEye);
+	CN3SndObj::SetListenerOrientation(vDir, vUp);
 
 // 배경..
 	m_pActiveBg->Tick();

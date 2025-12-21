@@ -517,13 +517,13 @@ void CGameProcMain::Tick()
 	s_pOPMgr->Tick(s_pPlayer->Position());				// 다른 유저 관리자 틱(갱신)
 //	s_pFX->Tick(); //내부에서 카메라 값을 쓸 경우 위치가 오차가 생겨 Render()함수 안으로 옮김...
 
-	__Vector3 ListenerPos = s_pPlayer->Position();
-	__Vector3 ListenerDir = s_pPlayer->Direction();
-	__Vector3 ListenerUp(0,1,0);
+	const __Vector3& ListenerPos = s_pPlayer->Position();
+	const __Vector3 ListenerDir = s_pPlayer->Direction();
+	const __Vector3 ListenerUp(0, 1, 0);
 
 	// Sound Tick...
-	CN3SndObj::SetListenerPos(&ListenerPos);
-	CN3SndObj::SetListenerOrientation(&ListenerDir, &ListenerUp);
+	CN3SndObj::SetListenerPos(ListenerPos);
+	CN3SndObj::SetListenerOrientation(ListenerDir, ListenerUp);
 
 	this->UpdateUI_MiniMap(); // 미니맵 업데이트..
 	this->UpdateUI_TargetBar(); // 타겟바 처리..

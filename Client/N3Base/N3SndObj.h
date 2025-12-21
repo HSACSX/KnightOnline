@@ -47,9 +47,9 @@ public:
 	static bool StaticInit( HWND hWnd, DWORD dwCoopLevel = DSSCL_PRIORITY, DWORD dwPrimaryChannels = 2, DWORD dwPrimaryFreq = 22050, DWORD dwPrimaryBitRate = 16 );
 	static void StaticRelease();
 	static void StaticTick();
-	static void SetDopplerFactor(D3DVALUE factor);
-	static void SetListenerPos(const __Vector3* pVPos, bool IsDeferred = true);
-	static void SetListenerOrientation(const __Vector3* pVAt, const __Vector3* pVUp, bool IsDeferred = true);
+	static void SetDopplerFactor(float factor);
+	static void SetListenerPos(const __Vector3& vPos, bool IsDeferred = true);
+	static void SetListenerOrientation(const __Vector3& vAt, const __Vector3& vUp, bool IsDeferred = true);
 
 	LPDIRECTSOUNDBUFFER		GetDSBuffer() { return m_lpDSBuff; }
 	LPDIRECTSOUND3DBUFFER	GetDS3DBuffer() { return m_lpDS3DBuff; }
@@ -74,11 +74,10 @@ public:
 	void	Stop(float fFadeOutTime = 0.0f);
 	void	Tick();
 
-	void	SetConeOrientation(__Vector3* pDir);
-	void	SetConeOutSizeVolume(int32_t vol);
-	void	SetMaxDistance(D3DVALUE max);
-	void	SetMinDistance(D3DVALUE min);	
-	void	SetPos(const __Vector3* pvPos);
+	void	SetConeOrientation(const __Vector3& vDir);
+	void	SetMaxDistance(float max);
+	void	SetMinDistance(float min);
+	void	SetPos(const __Vector3& vPos);
 
 	CN3SndObj();
 	virtual ~CN3SndObj();

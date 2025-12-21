@@ -13,13 +13,13 @@
 
 #ifdef _DEBUG
 #undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
+static char THIS_FILE[] = __FILE__;
 #endif
 
 CN3SndObjStream::CN3SndObjStream()
 {
 	m_WaveSize = 0;
-	
+
 	m_CurrState = 0;
 	m_CurrPos = 0;
 	m_PrevState = 0;
@@ -38,32 +38,39 @@ bool CN3SndObjStream::Create(const std::string& szFN, e_SndType eType)
 {
 	Release();
 
-	if(nullptr == s_lpDS) return false;
-	if(SNDTYPE_STREAM != eType) return false;
-	if(!LoadWave(szFN.c_str())) return false;
+	if (s_lpDS == nullptr)
+		return false;
+
+	if (SNDTYPE_STREAM != eType)
+		return false;
+
+	if (!LoadWave(szFN.c_str()))
+		return false;
 
 	m_szFileName = szFN;
 
 	uint32_t nBlockAlign = m_WaveFormat.nBlockAlign;
-	uint32_t BlockPerSec = m_WaveFormat.nSamplesPerSec * nBlockAlign; 
+	uint32_t BlockPerSec = m_WaveFormat.nSamplesPerSec * nBlockAlign;
 
-	m_PlayTime = m_PastTime = m_WaveSize/BlockPerSec;
-	m_FinalByte = m_WaveSize%BlockPerSec;
+	m_PlayTime = m_PastTime = m_WaveSize / BlockPerSec;
+	m_FinalByte = m_WaveSize % BlockPerSec;
 
 	m_BlockSize = BlockPerSec;
-	m_BufferSize = m_BlockSize*2;
+	m_BufferSize = m_BlockSize * 2;
 
-	ZeroMemory(&m_dsbd, sizeof(m_dsbd));
+	memset(&m_dsbd, 0, sizeof(m_dsbd));
 	m_dsbd.dwSize = sizeof(DSBUFFERDESC);
-    m_dsbd.dwFlags = DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_CTRLPOSITIONNOTIFY | DSBCAPS_CTRLVOLUME;
+	m_dsbd.dwFlags = DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_CTRLPOSITIONNOTIFY | DSBCAPS_CTRLVOLUME;
 	m_dsbd.dwBufferBytes = m_BufferSize;
 	m_dsbd.lpwfxFormat = &m_WaveFormat;
 
-	if(m_lpDSBuff) m_lpDSBuff->Release();
+	if (m_lpDSBuff != nullptr)
+		m_lpDSBuff->Release();
 
 	HRESULT	hResult;
 	hResult = s_lpDS->CreateSoundBuffer(&m_dsbd, &m_lpDSBuff, nullptr);
-	if(FAILED(hResult)) return false;
+	if (FAILED(hResult))
+		return false;
 
 	m_hWaveMem = ::GlobalAlloc(GHND, m_BlockSize);
 
@@ -74,137 +81,136 @@ bool CN3SndObjStream::Create(const std::string& szFN, e_SndType eType)
 	return true;
 }
 
-
 BOOL CN3SndObjStream::LoadWave(LPCSTR pFileName)
 {
-	hMMIO = mmioOpen((LPSTR)pFileName,nullptr,MMIO_READ|MMIO_ALLOCBUF);
-	if(hMMIO==nullptr) return FALSE;
+	hMMIO = mmioOpen((LPSTR) pFileName, nullptr, MMIO_READ | MMIO_ALLOCBUF);
+	if (hMMIO == nullptr)
+		return FALSE;
 
-	mmCkInfoRIFF.fccType = mmioFOURCC('W','A','V','E');
+	mmCkInfoRIFF.fccType = mmioFOURCC('W', 'A', 'V', 'E');
 
 	MMRESULT mmResult;
 	mmResult = mmioDescend(hMMIO, &mmCkInfoRIFF, nullptr, MMIO_FINDRIFF);
-	if(mmResult != MMSYSERR_NOERROR) return FALSE;
-
-	mmCkInfoChunk.ckid = mmioFOURCC('f','m','t',' ');
-
-	mmResult = mmioDescend(hMMIO, &mmCkInfoChunk, &mmCkInfoRIFF, MMIO_FINDCHUNK);
-	if(mmResult != MMSYSERR_NOERROR) return FALSE;
-
-	if(mmioRead(hMMIO, (LPSTR)&m_WaveFormat,sizeof(WAVEFORMATEX))==-1) 
+	if (mmResult != MMSYSERR_NOERROR)
 		return FALSE;
 
-	mmResult = mmioAscend(hMMIO, &mmCkInfoChunk,0);
-	if(mmResult != MMSYSERR_NOERROR) return FALSE;
+	mmCkInfoChunk.ckid = mmioFOURCC('f', 'm', 't', ' ');
 
-	mmCkInfoChunk.ckid = mmioFOURCC('d','a','t','a');
 	mmResult = mmioDescend(hMMIO, &mmCkInfoChunk, &mmCkInfoRIFF, MMIO_FINDCHUNK);
-	if(mmResult != MMSYSERR_NOERROR) return FALSE;
+	if (mmResult != MMSYSERR_NOERROR)
+		return FALSE;
+
+	if (mmioRead(hMMIO, (LPSTR) &m_WaveFormat, sizeof(WAVEFORMATEX)) == -1)
+		return FALSE;
+
+	mmResult = mmioAscend(hMMIO, &mmCkInfoChunk, 0);
+	if (mmResult != MMSYSERR_NOERROR)
+		return FALSE;
+
+	mmCkInfoChunk.ckid = mmioFOURCC('d', 'a', 't', 'a');
+	mmResult = mmioDescend(hMMIO, &mmCkInfoChunk, &mmCkInfoRIFF, MMIO_FINDCHUNK);
+	if (mmResult != MMSYSERR_NOERROR)
+		return FALSE;
 
 	m_WaveSize = mmCkInfoChunk.cksize;
 	return TRUE;
 }
 
 BOOL CN3SndObjStream::InitWriteBuffer()
-{	
+{
 	LPVOID	pSoundBlock1 = nullptr;
 	LPVOID	pSoundBlock2 = nullptr;
 	DWORD	byteSoundBlock1 = 0;
 	DWORD	byteSoundBlock2 = 0;
 	DWORD	Offset = 0;
-	
+
 	HRESULT hResult;
-	//ReadStream();
-	
-	hResult = m_lpDSBuff->Lock(Offset,m_BlockSize*2,&pSoundBlock1,&byteSoundBlock1,
-							&pSoundBlock2,&byteSoundBlock2,0);
-	if(FAILED(hResult)) return FALSE;
 
-	if(mmioRead(hMMIO, (LPSTR)pSoundBlock1, m_BlockSize*2)==-1) return FALSE;
+	hResult = m_lpDSBuff->Lock(Offset, m_BlockSize * 2, &pSoundBlock1, &byteSoundBlock1, &pSoundBlock2, &byteSoundBlock2, 0);
+	if (FAILED(hResult))
+		return FALSE;
 
-	m_lpDSBuff->Unlock(pSoundBlock1,byteSoundBlock1,pSoundBlock2,byteSoundBlock2);
+	if (mmioRead(hMMIO, (LPSTR) pSoundBlock1, m_BlockSize * 2) == -1)
+		return FALSE;
 
+	m_lpDSBuff->Unlock(pSoundBlock1, byteSoundBlock1, pSoundBlock2, byteSoundBlock2);
 	return TRUE;
 }
 
 BOOL CN3SndObjStream::WriteBuffer()
-{	
+{
 	LPVOID	pSoundBlock1 = nullptr;
 	LPVOID	pSoundBlock2 = nullptr;
 	DWORD	byteSoundBlock1 = 0;
 	DWORD	byteSoundBlock2 = 0;
 	DWORD	Offset;
-	
-	HRESULT hResult;
-	//ReadStream();
-	//if(m_CurrState==0) Offset = 2*m_BlockSize; 
-	//else Offset = (m_CurrState-1)*m_BlockSize;
-	if(m_CurrState==0) Offset = m_BlockSize; 
-	else Offset = (m_CurrState-1)*m_BlockSize;
-	
-	hResult = m_lpDSBuff->Lock(Offset,m_BlockSize,&pSoundBlock1,&byteSoundBlock1,
-							&pSoundBlock2,&byteSoundBlock2,0);
-	if(FAILED(hResult)) return FALSE;
 
-	if(m_PastTime>=2)
+	HRESULT hResult;
+	if (m_CurrState == 0)
+		Offset = m_BlockSize;
+	else
+		Offset = (m_CurrState - 1) * m_BlockSize;
+
+	hResult = m_lpDSBuff->Lock(Offset, m_BlockSize, &pSoundBlock1, &byteSoundBlock1, &pSoundBlock2, &byteSoundBlock2, 0);
+	if (FAILED(hResult))
+		return FALSE;
+
+	if (m_PastTime >= 2)
 	{
-		if(mmioRead(hMMIO, (LPSTR)pSoundBlock1, m_BlockSize)==-1) return FALSE;
+		if (mmioRead(hMMIO, (LPSTR) pSoundBlock1, m_BlockSize) == -1)
+			return FALSE;
 	}
-	else 
+	else
 	{
-		FillMemory((LPSTR)pSoundBlock1, m_BlockSize, (uint8_t)(m_WaveFormat.wBitsPerSample == 8 ? 128:0));
-		if(m_PastTime==1)
+		memset((LPSTR) pSoundBlock1, (uint8_t) (m_WaveFormat.wBitsPerSample == 8 ? 128 : 0), m_BlockSize);
+
+		if (m_PastTime == 1)
 		{
 			//mmioSeek(hMMIO, m_FinalByte, SEEK_END);
-			mmioRead(hMMIO, (LPSTR)pSoundBlock1, m_FinalByte);
+			mmioRead(hMMIO, (LPSTR) pSoundBlock1, m_FinalByte);
 		}
 	}
 
-	m_lpDSBuff->Unlock(pSoundBlock1,byteSoundBlock1,pSoundBlock2,byteSoundBlock2);
+	m_lpDSBuff->Unlock(pSoundBlock1, byteSoundBlock1, pSoundBlock2, byteSoundBlock2);
 
 	return TRUE;
 }
 
 void CN3SndObjStream::RealPlay()
 {
-//^^	if(m_PlayState==0) Reset();
+	if (m_lpDSBuff == nullptr)
+		return;
 
-//^^	m_ePlayState = SNDSTATE_PLAY;
-	
-	if(m_lpDSBuff)
+	if (m_ePlayState == SNDSTATE_DELAY)
 	{
-		if(m_ePlayState==SNDSTATE_DELAY)
+		m_lpDSBuff->SetCurrentPosition(0);
+		m_lpDSBuff->Play(0, 0, DSBPLAY_LOOPING);
+	}
+
+	m_lpDSBuff->GetCurrentPosition(&m_CurrPos, nullptr);
+	m_PrevState = m_CurrState;
+	m_CurrState = m_CurrPos / m_BlockSize;
+
+	if (m_CurrState != m_PrevState)
+	{
+		m_PastTime--;
+		if (m_PastTime < 0)
 		{
-			m_lpDSBuff->SetCurrentPosition(0);
-			m_lpDSBuff->Play(0,0,DSBPLAY_LOOPING);			
+			if (m_bIsLoop)
+			{
+				Play();
+			}
+			else // if (!m_bIsLoop)
+			{
+				//tick에 어케 적용할 것인가..
+				m_PastTime = m_PlayTime;
+				Stop();
+			}
+
+			return;
 		}
 
-		m_lpDSBuff->GetCurrentPosition(&m_CurrPos,nullptr);
-		m_PrevState = m_CurrState;
-		m_CurrState = m_CurrPos/m_BlockSize;
-		if(m_CurrState != m_PrevState)
-		{
-			m_PastTime--;
-			if(m_PastTime<0)
-			{
-				if(m_bIsLoop==false)
-				{
-					//tick에 어케 적용할 것인가..
-					m_PastTime = m_PlayTime;
-					Stop();
-					return;
-				}
-				else if(m_bIsLoop==true)
-				{
-					//tick에 어케 적용할 것인가..
-					//Stop();
-					//m_lpDSBuff->Stop();
-					Play();
-					return;
-				}				
-			}
-			WriteBuffer();
-		}
+		WriteBuffer();
 	}
 }
 
@@ -221,45 +227,49 @@ void CN3SndObjStream::Reset()
 void CN3SndObjStream::Release()
 {
 	m_fTmpSecPerFrm = 0;
-	if(m_lpDSBuff) HRESULT hr = m_lpDSBuff->Stop();
+
+	if (m_lpDSBuff != nullptr)
+		m_lpDSBuff->Stop();
+
 	m_fFadeOutTime = 0;
 	m_ePlayState = SNDSTATE_STOP;
 
 	CN3SndObj::Release();
 
-	if(hMMIO) 
+	if (hMMIO != nullptr)
 	{
-		mmioClose(hMMIO,0);
+		mmioClose(hMMIO, 0);
 		hMMIO = nullptr;
 	}
-	if(m_hWaveMem)
+
+	if (m_hWaveMem != nullptr)
 	{
 		::GlobalFree(m_hWaveMem);
 		m_hWaveMem = nullptr;
 	}
 }
 
-
 //
 //	음악이 플레이되고 있을때 streamming시키기..
 //
 void CN3SndObjStream::Tick()
 {
-	if(m_ePlayState == SNDSTATE_STOP) return;
+	if (m_ePlayState == SNDSTATE_STOP)
+		return;
 
 	m_fTmpSecPerFrm += CN3Base::s_fSecPerFrm;
-	
-	if(m_ePlayState==SNDSTATE_DELAY && m_fTmpSecPerFrm >= m_fStartDelayTime)
+
+	if (m_ePlayState == SNDSTATE_DELAY && m_fTmpSecPerFrm >= m_fStartDelayTime)
 	{
 		m_fTmpSecPerFrm = 0;
 		Reset();
 		RealPlay();
-		m_ePlayState = SNDSTATE_FADEIN;		
+		m_ePlayState = SNDSTATE_FADEIN;
 	}
 
-	if(m_ePlayState==SNDSTATE_FADEIN) 
+	if (m_ePlayState == SNDSTATE_FADEIN)
 	{
-		if(m_fTmpSecPerFrm >= m_fFadeInTime)
+		if (m_fTmpSecPerFrm >= m_fFadeInTime)
 		{
 			m_fTmpSecPerFrm = 0;
 			m_ePlayState = SNDSTATE_PLAY;
@@ -267,20 +277,22 @@ void CN3SndObjStream::Tick()
 		}
 		else
 		{
-			int vol = 0;			
-			if(m_fFadeInTime>0.0f) vol = (int)((m_fTmpSecPerFrm/m_fFadeInTime)*(float)m_iMaxVolume);
+			int vol = 0;
+			if (m_fFadeInTime > 0.0f)
+				vol = (int) ((m_fTmpSecPerFrm / m_fFadeInTime) * (float) m_iMaxVolume);
 			SetVolume(vol);
 		}
+
 		RealPlay();
 	}
 
-	if(m_ePlayState==SNDSTATE_PLAY)
+	if (m_ePlayState == SNDSTATE_PLAY)
 	{
 		RealPlay();
 	}
-	if(m_ePlayState==SNDSTATE_FADEOUT)
+	if (m_ePlayState == SNDSTATE_FADEOUT)
 	{
-		if(m_fTmpSecPerFrm >= m_fFadeOutTime || m_PastTime<0)
+		if (m_fTmpSecPerFrm >= m_fFadeOutTime || m_PastTime < 0)
 		{
 			m_fTmpSecPerFrm = 0;
 			SetVolume(0);
@@ -292,38 +304,10 @@ void CN3SndObjStream::Tick()
 		{
 			//볼륨 점점 작게....
 			int vol = 0;
-			if(m_fFadeOutTime>0.0f)  vol = (int)(((m_fFadeOutTime - m_fTmpSecPerFrm)/m_fFadeOutTime)*(float)m_iMaxVolume);
+			if (m_fFadeOutTime > 0.0f)
+				vol = (int) (((m_fFadeOutTime - m_fTmpSecPerFrm) / m_fFadeOutTime) * (float) m_iMaxVolume);
 			SetVolume(vol);
 			RealPlay();
 		}
 	}
 }
-
-/*
-//
-// 똑같다.
-//
-void CN3SndObjStream::Play(float delay, float fFadeInTime)
-{
-	m_fFadeInTime = fFadeInTime;
-	m_fFadeOutTime = 0.0f;
-	m_fStartDelayTime = delay;
-	m_fTmpSecPerFrm = 0.0f;
-	m_ePlayState = SNDSTATE_DELAY;
-}
-
-
-//
-// 똑같다.
-//
-void CN3SndObjStream::Stop(float fFadeOutTime)
-{
-	if( m_lpDSBuff == nullptr ) return;
-
-	m_fTmpSecPerFrm = 0;
-	m_fFadeOutTime = fFadeOutTime;
-	m_ePlayState = SNDSTATE_FADEOUT;
-	return;
-}
-*/
-// end of N3SndObjStream.cpp
