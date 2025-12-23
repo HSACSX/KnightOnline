@@ -6047,37 +6047,30 @@ void CGameProcMain::UpdateUI_TargetBar()
 
 void CGameProcMain::UpdateBGM()
 {
-	if(	nullptr == m_pSnd_Battle || !m_pSnd_Battle->IsPlaying() ) return;
+	if (m_pSnd_Battle == nullptr || !m_pSnd_Battle->IsStarted())
+		return;
 
-//	if(s_pPlayer->pTarget && s_pPlayer->pTarget->IsAlive()) 
-	__Vector3 vPosPlayer = s_pPlayer->Position();
-
-	bool bStopBattleBgm = true;
-	CPlayerBase* pBPC;
-	it_NPC it = s_pOPMgr->m_NPCs.begin(), itEnd = s_pOPMgr->m_NPCs.end();
-	for(; it != itEnd && bStopBattleBgm; it++)
+	const __Vector3& vPosPlayer = s_pPlayer->Position();
+	for (const auto& [_, pBPC] : s_pOPMgr->m_NPCs)
 	{
-		pBPC = it->second;
 		if (!s_pPlayer->IsHostileTarget(pBPC))
 			continue;
 
-		if((vPosPlayer - pBPC->Position()).Magnitude() < 12.0f)
-			bStopBattleBgm = false;
+		if ((vPosPlayer - pBPC->Position()).Magnitude() < 12.0f)
+			return;
 	}
 
-	CPlayerOther* pUPC;
-	it_UPC it2 = s_pOPMgr->m_UPCs.begin(), itEnd2 = s_pOPMgr->m_UPCs.end();
-	for(; it2 != itEnd2 && bStopBattleBgm; it2++)
+	for (const auto& [_, pUPC] : s_pOPMgr->m_UPCs)
 	{
-		pUPC = it2->second;
 		if (!s_pPlayer->IsHostileTarget(pUPC))
 			continue;
 
-		if((vPosPlayer - pUPC->Position()).Magnitude() < 12.0f)
-			bStopBattleBgm = false;
+		if ((vPosPlayer - pUPC->Position()).Magnitude() < 12.0f)
+			return;
 	}
 
-	if(bStopBattleBgm) this->PlayBGM_Town();
+	// No enemies nearby, we can play the regular town music instead.
+	PlayBGM_Town();
 }
 
 void CGameProcMain::UpdateCameraAndLight()
@@ -6397,17 +6390,25 @@ void CGameProcMain::MsgRecv_WareHouseOpen(Packet& pkt)		// 보관함 오픈..
 
 void CGameProcMain::PlayBGM_Town()
 {
-	if(m_pSnd_Battle) m_pSnd_Battle->Stop(3.0f);
-	if(nullptr == m_pSnd_Town || m_pSnd_Town->IsPlaying()) return;
-	m_pSnd_Town->SetMaxVolume(60);
+	if (m_pSnd_Battle != nullptr)
+		m_pSnd_Battle->Stop(3.0f);
+
+	if (m_pSnd_Town == nullptr || m_pSnd_Town->IsStarted())
+		return;
+
+	m_pSnd_Town->SetMaxVolume(0.6f);
 	m_pSnd_Town->Play(nullptr, 3.0f); // 전투 음악 설정.. 해제는 주위에 몬스터가 없을때 한다..
 }
 
 void CGameProcMain::PlayBGM_Battle()
 {
-	if(m_pSnd_Town) m_pSnd_Town->Stop(3.0f);
-	if(nullptr == m_pSnd_Battle || m_pSnd_Battle->IsPlaying()) return;
-	m_pSnd_Battle->SetMaxVolume(80);
+	if (m_pSnd_Town != nullptr)
+		m_pSnd_Town->Stop(3.0f);
+
+	if (m_pSnd_Battle == nullptr || m_pSnd_Battle->IsStarted())
+		return;
+
+	m_pSnd_Battle->SetMaxVolume(0.8f);
 	m_pSnd_Battle->Play(nullptr, 3.0f); // 전투 음악 설정.. 해제는 주위에 몬스터가 없을때 한다..
 }
 

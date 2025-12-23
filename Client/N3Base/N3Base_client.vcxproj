@@ -22,6 +22,7 @@
     <ClInclude Include="BitMapFile.h" />
     <ClInclude Include="DebugUtils.h" />
     <ClInclude Include="DFont.h" />
+    <ClInclude Include="LoadedSoundBuffer.h" />
     <ClInclude Include="LogWriter.h" />
     <ClInclude Include="My_3DStruct.h" />
     <ClInclude Include="N3AlphaPrimitiveManager.h" />
@@ -68,7 +69,6 @@
     <ClInclude Include="N3Sky.h" />
     <ClInclude Include="N3SkyMng.h" />
     <ClInclude Include="N3SndDef.h" />
-    <ClInclude Include="N3SndEng.h" />
     <ClInclude Include="N3SndMgr.h" />
     <ClInclude Include="N3SndObj.h" />
     <ClInclude Include="N3Star.h" />
@@ -93,9 +93,10 @@
     <ClInclude Include="N3UITooltip.h" />
     <ClInclude Include="N3UITrackBar.h" />
     <ClInclude Include="N3VMesh.h" />
+    <ClInclude Include="SoundBuffer.h" />
     <ClInclude Include="StdAfxBase.h" />
-    <ClInclude Include="StreamSoundObj.h" />
-    <ClInclude Include="WaveFile.h" />
+    <ClInclude Include="StreamedSoundBuffer.h" />
+    <ClInclude Include="WaveFormat.h" />
     <ClInclude Include="WinCrypt.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,10 +165,10 @@
     <ClCompile Include="N3UITooltip.cpp" />
     <ClCompile Include="N3UITrackBar.cpp" />
     <ClCompile Include="N3VMesh.cpp" />
+    <ClCompile Include="SoundBuffer.cpp" />
     <ClCompile Include="StdAfxBase.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="WaveFile.cpp" />
     <ClCompile Include="WinCrypt.cpp" />
   </ItemGroup>
   <ItemGroup>

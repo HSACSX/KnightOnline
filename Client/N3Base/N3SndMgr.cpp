@@ -5,10 +5,18 @@
 #include "N3SndMgr.h"
 #include "N3SndObj.h"
 #include "N3Base.h"
+#include "WaveFormat.h"
+#include "LoadedSoundBuffer.h"
+#include "StreamedSoundBuffer.h"
+#include "al_wrapper.h"
 
+#include <shared/StringUtils.h>
+
+#include <AL/alc.h>
 #include <mpg123.h>
-#include <filesystem>
 
+#include <cassert>
+#include <filesystem>
 #include <shlobj.h>
 
 #ifdef _DEBUG
@@ -19,7 +27,9 @@ static char THIS_FILE[]=__FILE__;
 CN3SndMgr::CN3SndMgr()
 {
 	m_bSndEnable = false;
-	m_bSndDuplicated = false;
+
+	_alcDevice = nullptr;
+	_alcContext = nullptr;
 }
 
 CN3SndMgr::~CN3SndMgr()
@@ -27,19 +37,97 @@ CN3SndMgr::~CN3SndMgr()
 	Release();
 }
 
-//
-//	엔진 초기화..
-//
-void CN3SndMgr::Init(HWND hWnd)
+// Initialize the suond engine.
+void CN3SndMgr::Init()
 {
 	Release();
-	m_bSndEnable = CN3SndObj::StaticInit(hWnd);
+
+	m_bSndEnable = InitOpenAL();
 	m_Tbl_Source.LoadFromFile("Data\\sound.tbl");
+}
+
+bool CN3SndMgr::InitOpenAL()
+{
+	if (_alcDevice != nullptr)
+		return false;
+
+	const char* deviceName = nullptr;
+	if (alcIsExtensionPresent(nullptr, "ALC_ENUMERATION_EXT"))
+	{
+		if (alcIsExtensionPresent(0, "ALC_ENUMERATE_ALL_EXT"))
+			deviceName = alcGetString(0, ALC_DEFAULT_ALL_DEVICES_SPECIFIER);
+		else
+			deviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
+	}
+
+	_alcDevice = alcOpenDevice(deviceName);
+	if (_alcDevice == nullptr)
+	{
+		MessageBoxW(nullptr, L"Failed to open sound device for playback", L"Error", MB_OK);
+		return false;
+	}
+
+	_alcContext = alcCreateContext(_alcDevice, nullptr);
+	alcMakeContextCurrent(_alcContext);
+
+	ALuint generatedSourceIds[MAX_SOURCE_IDS];
+	int generatedSourceIdCount = 0;
+	while (generatedSourceIdCount < MAX_SOURCE_IDS)
+	{
+		alGenSources(1, &generatedSourceIds[generatedSourceIdCount]);
+		if (alGetError() != AL_NO_ERROR)
+			break;
+
+		++generatedSourceIdCount;
+	}
+
+	if (generatedSourceIdCount == 0)
+	{
+		alcMakeContextCurrent(nullptr);
+		alcDestroyContext(_alcContext);
+		alcCloseDevice(_alcDevice);
+
+		_alcContext = nullptr;
+		_alcDevice = nullptr;
+
+		MessageBoxW(nullptr, L"Unable to generate sound sources.", L"Error", MB_OK);
+		return false;
+	}
+
+	int maxRegularSourceCount = generatedSourceIdCount;
+	int maxStreamCount = MAX_STREAM_SOURCES;
+
+	// Not enough sources to allow for MAX_STREAM_SOURCES.
+	if (generatedSourceIdCount < maxStreamCount)
+	{
+		// If we have at least 2 source IDs available, reserve just 1 for stream sources.
+		if (generatedSourceIdCount >= 2)
+			maxStreamCount = 1;
+		// Otherwise, we'll only have 1 source ID available. It should go towards the regular sound,
+		// rather than the streamed source (i.e. BGM).
+		else
+			maxStreamCount = 0;
+	}
+
+	maxRegularSourceCount -= maxStreamCount;
+
+	{
+		std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+		int i = 0;
+		while (i < maxRegularSourceCount)
+			_unassignedSourceIds.push_back(generatedSourceIds[i++]);
+
+		while (i < generatedSourceIdCount)
+			_unassignedStreamSourceIds.push_back(generatedSourceIds[i++]);
+	}
+
+	return true;
 }
 
 CN3SndObj* CN3SndMgr::CreateObj(int iID, e_SndType eType)
 {
-	TABLE_SOUND* pTbl = m_Tbl_Source.Find(iID);
+	__TABLE_SOUND* pTbl = m_Tbl_Source.Find(iID);
 	if (pTbl == nullptr)
 		return nullptr;
 
@@ -65,48 +153,15 @@ CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
 	if (!PreprocessFilename(szFN))
 		return nullptr;
 
-	CN3SndObj* pObjSrc = nullptr;
-
-	auto it = m_SndObjSrcs.find(szFN);
-
-	// 못 찾았다... 새로 만들자..
-	if (it == m_SndObjSrcs.end())
+	CN3SndObj* pSndObj = new CN3SndObj();
+	if (!pSndObj->Create(szFN, eType))
 	{
-		pObjSrc = new CN3SndObj();
-
-		// 새로 로딩..
-		if (!pObjSrc->Create(szFN, eType))
-		{
-			delete pObjSrc;
-			return nullptr;
-		}
-
-		m_SndObjSrcs.insert(std::make_pair(szFN, pObjSrc)); // 맵에 추가한다..
-	}
-	else
-	{
-		pObjSrc = it->second;
-	}
-
-	if (!m_bSndDuplicated)
-		return pObjSrc;
-
-	if (pObjSrc == nullptr)
-		return nullptr;
-
-	CN3SndObj* pObjNew = new CN3SndObj();
-
-	// Duplicate 처리..
-	if (!pObjNew->Duplicate(pObjSrc, eType))
-	{
-		delete pObjNew;
+		delete pSndObj;
 		return nullptr;
 	}
 
-	if (pObjNew != nullptr)
-		m_SndObjs_Duplicated.push_back(pObjNew); // 리스트에 넣는다...
-
-	return pObjNew;
+	m_SndObjs.push_back(pSndObj);
+	return pSndObj;
 }
 
 CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
@@ -124,7 +179,7 @@ CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
 		return nullptr;
 	}
 
-	m_SndObjStreams.push_back(pSndObj); // 리스트에 넣기..
+	m_SndObjStreams.push_back(pSndObj);
 	return pSndObj;
 }
 
@@ -155,25 +210,14 @@ void CN3SndMgr::ReleaseStreamObj(CN3SndObj** ppObj)
 	}
 }
 
-
-//
-//	TickTick...^^
-//
+// Tick sound logic by 1 frame.
 void CN3SndMgr::Tick()
 {
 	if (!m_bSndEnable)
 		return;
 
-	if (m_bSndDuplicated)
-	{
-		for (CN3SndObj* pSndObj : m_SndObjs_Duplicated)
-			pSndObj->Tick();
-	}
-	else
-	{
-		for (auto& [_, pSndObj] : m_SndObjSrcs)
-			pSndObj->Tick();
-	}
+	for (CN3SndObj* pSndObj : m_SndObjs)
+		pSndObj->Tick();
 
 	auto it = m_SndObjs_PlayOnceAndRelease.begin(), itEnd = m_SndObjs_PlayOnceAndRelease.end();
 	while (it != itEnd)
@@ -194,26 +238,22 @@ void CN3SndMgr::Tick()
 
 	for (CN3SndObj* pSndObj : m_SndObjStreams)
 		pSndObj->Tick();
-
-	CN3SndObj::StaticTick(); // CommitDeferredSetting...
 }
 
-//
-//	Obj하나 무효화..
+// Release an individual sound object.
 void CN3SndMgr::ReleaseObj(CN3SndObj** ppObj)
 {
 	if (ppObj == nullptr || *ppObj == nullptr)
 		return;
 
-	auto it = m_SndObjs_Duplicated.begin(), itEnd = m_SndObjs_Duplicated.end();
+	auto it = m_SndObjs.begin(), itEnd = m_SndObjs.end();
 	for (; it != itEnd; ++it)
 	{
 		if (*ppObj == *it)
 		{
-			m_SndObjs_Duplicated.erase(it);
+			m_SndObjs.erase(it);
 
-			// 객체 지우기..
-			delete* ppObj;
+			delete *ppObj;
 			*ppObj = nullptr;
 			return;
 		}
@@ -227,31 +267,25 @@ void CN3SndMgr::ReleaseObj(CN3SndObj** ppObj)
 		{
 			m_SndObjs_PlayOnceAndRelease.erase(it);
 
-			// 객체 지우기..
-			delete* ppObj;
+			delete *ppObj;
 			*ppObj = nullptr;
 			return;
 		}
 	}
 
-	*ppObj = nullptr; // 포인터만 널로 만들어 준다..
+	assert(!"Failed to find sound to free.");
+
+	// Reset the pointer still as the caller will expect it to be nullptr.
+	// Don't free it because it's not managed by us (as far as we can tell).
+	*ppObj = nullptr;
 }
 
-//
-//	Release Whole Objects & Sound Sources & Sound Engine..
-//
+// Release the entirety of the sound engine.
 void CN3SndMgr::Release()
 {
-	if (!m_bSndEnable)
-		return;
-
-	for (auto& [_, pSndObj] : m_SndObjSrcs)
+	for (CN3SndObj* pSndObj : m_SndObjs)
 		delete pSndObj;
-	m_SndObjSrcs.clear();
-
-	for (CN3SndObj* pSndObj : m_SndObjs_Duplicated)
-		delete pSndObj;
-	m_SndObjs_Duplicated.clear();
+	m_SndObjs.clear();
 
 	for (CN3SndObj* pSndObj : m_SndObjs_PlayOnceAndRelease)
 		delete pSndObj;
@@ -261,11 +295,44 @@ void CN3SndMgr::Release()
 		delete pSndObj;
 	m_SndObjStreams.clear();
 
-	CN3SndObj::StaticRelease();
+	ReleaseOpenAL();
 }
 
-// 이 함수는 한번 플레이 하고 그 포인터를 다시 쓸수있게 ReleaseObj를 호출한다.
-// 대신 위치는 처음 한번밖에 지정할 수 없다.
+void CN3SndMgr::ReleaseOpenAL()
+{
+	if (_alcDevice == nullptr)
+		return;
+
+	{
+		std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+		for (uint32_t sourceId : _unassignedSourceIds)
+			alDeleteSources(1, &sourceId);
+
+		for (uint32_t sourceId : _unassignedStreamSourceIds)
+			alDeleteSources(1, &sourceId);
+
+		assert(_assignedSourceIds.empty());
+		assert(_assignedStreamSourceIds.empty());
+
+		_unassignedSourceIds.clear();
+		_unassignedStreamSourceIds.clear();
+		_assignedSourceIds.clear();
+		_assignedStreamSourceIds.clear();
+	}
+
+	alcMakeContextCurrent(nullptr);
+
+	alcDestroyContext(_alcContext);
+	_alcContext = nullptr;
+
+	alcCloseDevice(_alcDevice);
+	_alcDevice = nullptr;
+}
+
+// Sounds are played once and then automatically freed via ReleaseObj.
+// The position can only be specified now, as the pointer to this temporary
+// sound object cannot otherwise be exposed.
 bool CN3SndMgr::PlayOnceAndRelease(int iSndID, const __Vector3* pPos)
 {
 	if (!m_bSndEnable)
@@ -274,57 +341,20 @@ bool CN3SndMgr::PlayOnceAndRelease(int iSndID, const __Vector3* pPos)
 	if (!CN3Base::s_Options.bSndEffectEnable)
 		return false;
 
-	TABLE_SOUND* pTbl = m_Tbl_Source.Find(iSndID);
+	__TABLE_SOUND* pTbl = m_Tbl_Source.Find(iSndID);
 	if (pTbl == nullptr || pTbl->szFN.empty())
 		return false;
 
-	CN3SndObj* pObjSrc = nullptr;
-
-	auto it = m_SndObjSrcs.find(pTbl->szFN);
-
-	// 못 찾았다... 새로 만들자..
-	if (it == m_SndObjSrcs.end())
+	CN3SndObj* pSndObj = new CN3SndObj();
+	if (!pSndObj->Create(pTbl->szFN, static_cast<e_SndType>(pTbl->iType)))
 	{
-		pObjSrc = new CN3SndObj();
-
-		// 새로 로딩..
-		if (!pObjSrc->Create(pTbl->szFN, static_cast<e_SndType>(pTbl->iType)))
-		{
-			delete pObjSrc;
-			return false;
-		}
-
-		m_SndObjSrcs.insert(std::make_pair(pTbl->szFN, pObjSrc)); // 맵에 추가한다..
-		if (!m_bSndDuplicated)
-			pObjSrc->Play(pPos);
-	}
-	else
-	{
-		pObjSrc = it->second;
-	}
-
-	if (pObjSrc == nullptr)
-		return false;
-
-	if (!m_bSndDuplicated)
-	{
-		pObjSrc->Play(pPos);
-		return true;
-	}
-
-	CN3SndObj* pObj = new CN3SndObj();
-	if (!pObj->Duplicate(pObjSrc, (e_SndType) pTbl->iType)) // Duplicate 처리..
-	{
-		delete pObj;
+		delete pSndObj;
 		return false;
 	}
 
-	// 리스트에 넣는다...noah
-	if (pObj == nullptr)
-		return false;
+	m_SndObjs_PlayOnceAndRelease.push_back(pSndObj);
 
-	m_SndObjs_PlayOnceAndRelease.push_back(pObj);
-	pObj->Play(pPos);
+	pSndObj->Play(pPos);
 	return true;
 }
 
@@ -341,7 +371,7 @@ bool CN3SndMgr::PreprocessFilename(std::string& szFN)
 	// This approach is fairly unintrusive and only incurs the performance hit once.
 	// There's also very few mp3 files to actually convert, so space should not be an issue.
 	// Finally, the game requires admin access, so it should have write access.
-	if (_stricmp(&szFN[szFN.length() - 4], ".mp3") == 0)
+	if (strnicmp(szFN.data() + szFN.length() - 4, ".mp3", 4) == 0)
 	{
 		if (!DecodeMp3ToWav(szFN))
 			return false;
@@ -462,22 +492,22 @@ bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
 	const int sampleSizeBytes = mpg123_encsize(encoding);
 
 	// Initialise header to defaults
-	WavFileHeader wavFileHeader = {};
+	RIFF_Header_Out wavFileHeader = {};
 
 	// Setup the file header.
-	wavFileHeader.Format.AudioFormat = 1; // PCM
-	wavFileHeader.Format.NumChannels = static_cast<uint16_t>(channels);
-	wavFileHeader.Format.SampleRate = static_cast<uint16_t>(rate);
-	wavFileHeader.Format.BitsPerSample = static_cast<uint16_t>(sampleSizeBytes * 8);
-	wavFileHeader.Format.BytesPerBlock = wavFileHeader.Format.NumChannels * wavFileHeader.Format.BitsPerSample / 8;
-	wavFileHeader.Format.BytesPerSec = wavFileHeader.Format.SampleRate * wavFileHeader.Format.BytesPerBlock;
+	wavFileHeader.Format.AudioFormat	= 1; // PCM
+	wavFileHeader.Format.NumChannels	= static_cast<uint16_t>(channels);
+	wavFileHeader.Format.SampleRate		= static_cast<uint16_t>(rate);
+	wavFileHeader.Format.BitsPerSample	= static_cast<uint16_t>(sampleSizeBytes * 8);
+	wavFileHeader.Format.BytesPerBlock	= wavFileHeader.Format.NumChannels * wavFileHeader.Format.BitsPerSample / 8;
+	wavFileHeader.Format.BytesPerSec	= wavFileHeader.Format.SampleRate * wavFileHeader.Format.BytesPerBlock;
 
 	size_t done = 0, decodedBytes = 0;
 	const size_t frameSize = mpg123_outblock(mpgHandle);
 	std::vector<uint8_t> frameBlock(frameSize);
 
 	// Skip the header - we'll write that at the end.
-	fseek(fp, sizeof(WavFileHeader), SEEK_SET);
+	fseek(fp, sizeof(RIFF_Header), SEEK_SET);
 
 	error = mpg123_read(mpgHandle, &frameBlock[0], frameSize, &done);
 	while (error == MPG123_OK)
@@ -493,7 +523,9 @@ bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
 	if (error != MPG123_DONE)
 	{
 		fclose(fp);
-		std::remove(newFilename.c_str());
+
+		std::error_code ec;
+		std::filesystem::remove(newPath, ec);
 
 #ifdef _N3GAME
 		CLogWriter::Write("Failed to decode MP3: {} ({} - decoded {} bytes)",
@@ -508,7 +540,7 @@ bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
 	// Write out the header.
 	long endOfFileOffset = ftell(fp);
 	fseek(fp, 0, SEEK_SET);
-	fwrite(&wavFileHeader, sizeof(WavFileHeader), 1, fp);
+	fwrite(&wavFileHeader, sizeof(RIFF_Header), 1, fp);
 
 	// Seek back to the known end, before the file is closed and flushed.
 	fseek(fp, endOfFileOffset, SEEK_SET);
@@ -518,4 +550,79 @@ bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
 	filename = std::move(newFilename);
 
 	return true;
+}
+
+bool CN3SndMgr::PullSourceFromPool(uint32_t* sourceId)
+{
+	if (sourceId == nullptr)
+		return false;
+
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+	// Too many already active.
+	if (_unassignedSourceIds.empty())
+		return INVALID_SOURCE_ID;
+
+	*sourceId = _unassignedSourceIds.front();
+	_unassignedSourceIds.pop_front();
+	_assignedSourceIds.insert(*sourceId);
+	return true;
+}
+
+void CN3SndMgr::RestoreSourceToPool(uint32_t* sourceId)
+{
+	if (sourceId == nullptr
+		|| *sourceId == INVALID_SOURCE_ID)
+		return;
+
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+	auto itr = _assignedSourceIds.find(*sourceId);
+	if (itr == _assignedSourceIds.end())
+		return;
+
+	_assignedSourceIds.erase(itr);
+	_unassignedSourceIds.push_back(*sourceId);
+
+	*sourceId = INVALID_SOURCE_ID;
+}
+
+std::shared_ptr<LoadedSoundBuffer> CN3SndMgr::GetLoadedSoundBuffer(const std::string& filename)
+{
+	std::shared_ptr<LoadedSoundBuffer> loadedSoundBuffer;
+	std::lock_guard<std::mutex> lock(_loadedSoundBufferByFilenameMutex);
+
+	auto itr = _loadedSoundBufferByFilenameMap.find(filename);
+	if (itr == _loadedSoundBufferByFilenameMap.end())
+	{
+		loadedSoundBuffer = std::make_shared<LoadedSoundBuffer>();
+		if (loadedSoundBuffer == nullptr)
+			return nullptr;
+
+		if (!loadedSoundBuffer->LoadFromFile(filename))
+			return nullptr;
+
+		_loadedSoundBufferByFilenameMap.insert(std::make_pair(filename, loadedSoundBuffer));
+	}
+	else
+	{
+		loadedSoundBuffer = itr->second;
+	}
+
+	++loadedSoundBuffer->RefCount;
+	return loadedSoundBuffer;
+}
+
+void CN3SndMgr::RemoveLoadedSoundBuffer(LoadedSoundBuffer* loadedSoundBuffer)
+{
+	std::lock_guard lock(_loadedSoundBufferByFilenameMutex);
+	if (--loadedSoundBuffer->RefCount == 0)
+		_loadedSoundBufferByFilenameMap.erase(loadedSoundBuffer->Filename);
+}
+
+void CN3SndMgr::RemoveStreamedSoundBuffer(StreamedSoundBuffer* streamedSoundBuffer)
+{
+	std::lock_guard lock(_streamedSoundBufferByFilenameMutex);
+	if (--streamedSoundBuffer->RefCount == 0)
+		_streamedSoundBufferByFilenameMap.erase(streamedSoundBuffer->Filename);
 }

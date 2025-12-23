@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{77bf4e45-1624-4210-97fb-4054d424d020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio\Sound buffers">
+      <UniqueIdentifier>{c7581e9e-88c4-4fe5-aceb-d4512d992cff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N3Eng.h">
@@ -165,18 +171,6 @@
     <ClInclude Include="N3SkyMng.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="N3SndDef.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="N3SndEng.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="N3SndMgr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="N3SndObj.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="N3Star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -228,12 +222,6 @@
     <ClInclude Include="N3VMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StreamSoundObj.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WaveFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="N3Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -248,6 +236,27 @@
     </ClInclude>
     <ClInclude Include="N3TableBaseImpl.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveFormat.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="N3SndMgr.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="N3SndObj.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="N3SndDef.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadedSoundBuffer.h">
+      <Filter>Audio\Sound buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamedSoundBuffer.h">
+      <Filter>Audio\Sound buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBuffer.h">
+      <Filter>Audio\Sound buffers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -383,12 +392,6 @@
     <ClCompile Include="N3SkyMng.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="N3SndMgr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="N3SndObj.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="N3Star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -437,9 +440,6 @@
     <ClCompile Include="N3VMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaveFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StdAfxBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -454,6 +454,15 @@
     </ClCompile>
     <ClCompile Include="N3TableBaseImpl.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="N3SndObj.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="N3SndMgr.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBuffer.cpp">
+      <Filter>Audio\Sound buffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
