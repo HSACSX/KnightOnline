@@ -106,11 +106,6 @@ public:
 	void	Stop(float fFadeOutTime = 0.0f);
 	void	Tick();
 
-	void	SetConeOrientation(const __Vector3& vDir);
-	void	SetRollOffFactor(float factor);
-	void	SetDopplerFactor(float factor);
-	void	SetMaxDistance(float max);
-	void	SetMinDistance(float min);
 	void	SetPos(const __Vector3& vPos);
 
 	CN3SndObj();

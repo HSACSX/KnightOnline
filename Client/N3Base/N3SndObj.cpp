@@ -226,9 +226,6 @@ void CN3SndObj::Tick()
 
 void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, bool bImmediately)
 {
-	if (pvPos != nullptr)
-		SetPos(*pvPos);
-
 	if (bImmediately)
 		Stop();
 
@@ -258,13 +255,18 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 				|| GetType() == SNDTYPE_STREAM)
 			{
 				alSourcei(_sourceId, AL_SOURCE_RELATIVE, AL_TRUE);
+				AL_CHECK_ERROR();
+
 				alSource3f(_sourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
+				AL_CHECK_ERROR();
+
 				alSourcef(_sourceId, AL_ROLLOFF_FACTOR, 0.0f);
+				AL_CHECK_ERROR();
 			}
 			else
 			{
-				SetRollOffFactor(0.5f);
-				SetDopplerFactor(0.0f);
+				alSourcef(_sourceId, AL_ROLLOFF_FACTOR, 0.5f);
+				AL_CHECK_ERROR();
 			}
 		}
 
@@ -275,6 +277,9 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	{
 		return;
 	}
+
+	if (pvPos != nullptr)
+		SetPos(*pvPos);
 
 	_isStarted = true;
 	_fadeInTime = fFadeInTime;
@@ -373,56 +378,6 @@ void CN3SndObj::SetPos(const __Vector3& vPos)
 		return;
 
 	alSource3f(_sourceId, AL_POSITION, vPos.x, vPos.y, vPos.z);
-	AL_CHECK_ERROR();
-}
-
-void CN3SndObj::SetMaxDistance(float max)
-{
-	if (_sourceId == INVALID_SOURCE_ID
-		|| GetType() != SNDTYPE_3D)
-		return;
-
-	alSourcef(_sourceId, AL_MAX_DISTANCE, max);
-	AL_CHECK_ERROR();
-}
-
-void CN3SndObj::SetMinDistance(float min)
-{
-	if (_sourceId == INVALID_SOURCE_ID
-		|| GetType() != SNDTYPE_3D)
-		return;
-
-	alSourcef(_sourceId, AL_REFERENCE_DISTANCE, min);
-	AL_CHECK_ERROR();
-}
-
-void CN3SndObj::SetConeOrientation(const __Vector3& vDir)
-{
-	if (_sourceId == INVALID_SOURCE_ID
-		|| GetType() != SNDTYPE_3D)
-		return;
-		
-	alSource3f(_sourceId, AL_DIRECTION, vDir.x, vDir.y, vDir.z);
-	AL_CHECK_ERROR();
-}
-
-void CN3SndObj::SetRollOffFactor(float factor)
-{
-	if (_sourceId == INVALID_SOURCE_ID
-		|| GetType() != SNDTYPE_3D)
-		return;
-
-	alSourcef(_sourceId, AL_ROLLOFF_FACTOR, factor);
-	AL_CHECK_ERROR();
-}
-
-void CN3SndObj::SetDopplerFactor(float factor)
-{
-	if (_sourceId == INVALID_SOURCE_ID
-		|| GetType() != SNDTYPE_3D)
-		return;
-
-	alSourcef(_sourceId, AL_DOPPLER_FACTOR, factor);
 	AL_CHECK_ERROR();
 }
 
