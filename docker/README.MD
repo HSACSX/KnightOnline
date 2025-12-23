@@ -1,10 +1,10 @@
 # OpenKO Docker Scripts
-### ⚠️⚠️⚠️ **DO NOT use this to run a database for a public server - do a manual installation instead.** ⚠️⚠️⚠️
+### ⚠️⚠️ **DO NOT use this to run a database for a public server - do a manual installation instead.** ⚠️⚠️
 
 ## Docker Requirements
 You must install Docker yourself and ensure it is available on the command line (try `docker version` in a terminal.)
 
-Docker isn't for everyone.  It takes time to learn and troubleshoot issues.  If you're uncomfortable with the potential learning curve, you can check [Project Setup - OpenKO Wiki](https://github.com/Open-KO/KnightOnline/wiki/Project-Setup) for manual database install instructions.
+Docker isn't for everyone.  It takes time to learn and troubleshoot issues.  If you're uncomfortable with the potential learning curve, you can check [SQL Server Manual Setup](https://github.com/Open-KO/KnightOnline/wiki/SQL-Server-2022-Manual-Setup) for manual database install instructions.
 
 ## Purpose: Local Development Database
 These Docker services are only meant to be used for local development enviroments.
@@ -22,18 +22,6 @@ commiting your personal configuration.
 
 Absent a local port conflict there should be no need to change default config. It is recommended
 to just use the defaults.
-
-## ODBC Tweaks
-Standard ODBC configuration is the same, with the exception that you may have to
-uncheck "Dynamically assign port" in the pop-up opened from the "Client Configuration..."
-button.  You also need to use username/password authentication, as Windows authentication
-will not work.
-
-![Odbc Client Configuration button](img/odbc1.png)
-
-![Odbc Dynamically assign port](img/odbc2.png)
-
-Place your configured port value (default: 1433) here.
 
 ## Scripts in this folder
 This folder contains several helper scripts to help you create and manage a copy of the OpenKO database using Docker. Depending on your platform, you would want to use the script that ends in `.sh` for linux-based systems, and `.cmd` for Windows.
