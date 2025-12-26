@@ -134,7 +134,7 @@ CN3SndObj* CN3SndMgr::CreateObj(int iID, e_SndType eType)
 	return CreateObj(pTbl->szFN, eType);
 }
 
-CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
+CN3SndObj* CN3SndMgr::CreateObj(const std::string& szFN, e_SndType eType)
 {
 	if (!m_bSndEnable)
 		return nullptr;
@@ -161,7 +161,7 @@ CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
 	return pSndObj;
 }
 
-CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
+CN3SndObj* CN3SndMgr::CreateStreamObj(const std::string& szFN)
 {
 	if (!CN3Base::s_Options.bSndBgmEnable)
 		return nullptr;

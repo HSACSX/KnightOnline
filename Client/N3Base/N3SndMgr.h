@@ -73,9 +73,9 @@ public:
 	void		ReleaseOpenAL();
 	void		Tick();	
 
-	CN3SndObj*	CreateObj(std::string szFN, e_SndType eType = SNDTYPE_3D);
+	CN3SndObj*	CreateObj(const std::string& szFN, e_SndType eType = SNDTYPE_3D);
 	CN3SndObj*	CreateObj(int iID, e_SndType eType = SNDTYPE_3D);
-	CN3SndObj*	CreateStreamObj(std::string szFN);
+	CN3SndObj*	CreateStreamObj(const std::string& szFN);
 	CN3SndObj*	CreateStreamObj(int iID);
 
 	CN3SndMgr();
