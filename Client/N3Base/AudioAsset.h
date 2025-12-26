@@ -13,6 +13,13 @@ enum e_AudioAssetType : uint8_t
 	AUDIO_ASSET_UNKNOWN
 };
 
+enum e_AudioDecoderType : uint8_t
+{
+	AUDIO_DECODER_MP3 = 0,
+	AUDIO_DECODER_PCM,
+	AUDIO_DECODER_UNKNOWN
+};
+
 class AudioAsset
 {
 protected:
@@ -20,6 +27,7 @@ protected:
 
 public:
 	e_AudioAssetType	Type		= AUDIO_ASSET_UNKNOWN;
+	e_AudioDecoderType	DecoderType	= AUDIO_DECODER_UNKNOWN;
 	std::string			Filename;
 	uint32_t			RefCount	= 0;
 	int32_t				PcmFormat	= -1;
@@ -46,6 +54,9 @@ class StreamedAudioAsset : public AudioAsset
 {
 public:
 	std::unique_ptr<FileReader>	File;
+	size_t						PcmDataSize		= 0;
+	size_t						PcmChunkSize	= 0;
+	const uint8_t*				PcmDataBuffer	= nullptr;
 
 public:
 	StreamedAudioAsset();

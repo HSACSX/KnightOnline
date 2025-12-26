@@ -58,6 +58,8 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 	if (asset->Type != AUDIO_ASSET_STREAMED)
 		return nullptr;
 
+	StreamedAudioAsset* streamedAudioAsset = static_cast<StreamedAudioAsset*>(asset.get());
+
 	uint32_t sourceId;
 	if (!CN3Base::s_SndMgr.PullStreamedSourceIdFromPool(&sourceId))
 		return nullptr;
@@ -75,34 +77,55 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 		handle->Mp3Handle = nullptr;
 	}
 
-	handle->Mp3Handle = mpg123_new(nullptr, nullptr);
-	if (handle->Mp3Handle == nullptr)
+	if (asset->DecoderType == AUDIO_DECODER_MP3)
+	{
+		handle->Mp3Handle = mpg123_new(nullptr, nullptr);
+		if (handle->Mp3Handle == nullptr)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
+
+		int err = mpg123_format_none(handle->Mp3Handle);
+		assert(err == MPG123_OK);
+
+		err = mpg123_format(handle->Mp3Handle, asset->SampleRate, MPG123_STEREO, MPG123_ENC_SIGNED_16);
+		assert(err == MPG123_OK);
+
+		err = mpg123_replace_reader_handle(handle->Mp3Handle, mpg123_filereader_read, mpg123_filereader_seek, mpg123_filereader_cleanup);
+		assert(err == MPG123_OK);
+
+		// Position the reader handle at the start of the file.
+		handle->FileReaderHandle.File	= streamedAudioAsset->File.get();
+		handle->FileReaderHandle.Offset	= 0;
+	
+		err = mpg123_open_handle(handle->Mp3Handle, &handle->FileReaderHandle);
+		assert(err == MPG123_OK);
+
+		if (streamedAudioAsset->PcmChunkSize == 0)
+			streamedAudioAsset->PcmChunkSize = mpg123_outblock(handle->Mp3Handle);
+	}
+	else if (asset->DecoderType == AUDIO_DECODER_PCM)
+	{
+		if (streamedAudioAsset->PcmDataBuffer == nullptr)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
+
+		// Position the reader handle at the beginning of the data buffer.
+		handle->FileReaderHandle.File	= streamedAudioAsset->File.get();
+		handle->FileReaderHandle.Offset	= streamedAudioAsset->PcmDataBuffer
+			- static_cast<const uint8_t*>(streamedAudioAsset->File->Memory());
+	}
+	else
 	{
 		CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
 		return nullptr;
 	}
 
-	int err = mpg123_format_none(handle->Mp3Handle);
-	assert(err == MPG123_OK);
-
-	int sampleRate = 44100;
-	int pcmFormat = AL_FORMAT_STEREO16;
-
-	err = mpg123_format(handle->Mp3Handle, sampleRate, MPG123_STEREO, MPG123_ENC_SIGNED_16);
-	assert(err == MPG123_OK);
-
-	err = mpg123_replace_reader_handle(handle->Mp3Handle, mpg123_filereader_read, mpg123_filereader_seek, mpg123_filereader_cleanup);
-	assert(err == MPG123_OK);
-
-	handle->FileReaderHandle.File	= static_cast<StreamedAudioAsset*>(asset.get())->File.get();
-	handle->FileReaderHandle.Offset	= 0;
-	
-	err = mpg123_open_handle(handle->Mp3Handle, &handle->FileReaderHandle);
-	assert(err == MPG123_OK);
-
 	handle->SourceId		= sourceId;
 	handle->Asset			= std::move(asset);
-	handle->PcmFrameSize	= mpg123_outblock(handle->Mp3Handle);
 
 	return handle;
 }
@@ -133,7 +156,6 @@ StreamedAudioHandle::StreamedAudioHandle()
 {
 	HandleType			= AUDIO_HANDLE_STREAMED;
 	Mp3Handle			= nullptr;
-	PcmFrameSize		= 0;
 	FinishedDecoding	= false;
 }
 

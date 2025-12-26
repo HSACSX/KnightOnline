@@ -62,7 +62,6 @@ public:
 
 	FileReaderHandle			FileReaderHandle;
 	mpg123_handle_struct*		Mp3Handle;
-	size_t						PcmFrameSize;
 	std::queue<uint32_t>		BufferIds;
 	std::queue<DecodedChunk>	DecodedChunks;
 	bool						FinishedDecoding;

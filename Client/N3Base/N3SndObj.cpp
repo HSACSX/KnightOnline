@@ -99,9 +99,13 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 			_audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
 	}
 	else if (eType == SNDTYPE_STREAM)
+	{
 		_audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
+	}
 	else
+	{
 		return false;
+	}
 
 	if (_audioAsset == nullptr)
 		return false;

@@ -52,7 +52,8 @@ static const uint8_t* find_chunk(const uint8_t* start, const uint8_t* end, const
 	return nullptr;
 }
 
-static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, const uint8_t** pcmDataBuffer, ALsizei* pcmDataSize)
+static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, size_t* pcmChunkSize,
+	const uint8_t** pcmDataBuffer, ALsizei* pcmDataSize)
 {
 	const size_t fileSize = file.Size();
 	if (fileSize < sizeof(RIFF_Header))
@@ -126,6 +127,12 @@ static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, cons
 		return false;
 	}
 
+	constexpr double DurationSec = 0.418; // roughly the same duration as the MP3 chunks
+
+	ALsizei bytesPerFrame = static_cast<ALint>(waveFormat->NumChannels * (waveFormat->BitsPerSample / 8));
+	ALsizei chunkFrames = static_cast<ALint>(waveFormat->SampleRate * DurationSec);
+	ALsizei pcmChunkSize_ = chunkFrames * bytesPerFrame;
+
 	if (format != nullptr)
 		*format = format_;
 
@@ -137,6 +144,9 @@ static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, cons
 
 	if (pcmDataSize != nullptr)
 		*pcmDataSize = pcmDataSize_;
+
+	if (pcmChunkSize != nullptr)
+		*pcmChunkSize = pcmChunkSize_;
 
 	return true;
 }
@@ -154,8 +164,9 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 
 	ALenum pcmFormat;
 	ALsizei sampleRate, pcmDataSize;
+	size_t pcmChunkSize;
 	const uint8_t* pcmDataBuffer = nullptr;
-	if (!ParseWAV(file, &pcmFormat, &sampleRate, &pcmDataBuffer, &pcmDataSize))
+	if (!ParseWAV(file, &pcmFormat, &sampleRate, &pcmChunkSize, &pcmDataBuffer, &pcmDataSize))
 		return false;
 
 	alGenBuffers(1, &BufferId);
@@ -206,17 +217,22 @@ bool StreamedAudioAsset::LoadFromFile(const std::string& filename)
 
 	if (isWav)
 	{
-		// TODO: handle decoding WAV chunks
-		// ALsizei pcmDataSize;
-		// const uint8_t* pcmDataBuffer = nullptr;
-		// if (!ParseWAV(*file, &format, &sampleRate, &pcmDataBuffer, &pcmDataSize))
-		// return false;
-		return false;
+		size_t pcmChunkSize;
+		ALsizei pcmDataSize;
+		const uint8_t* pcmDataBuffer = nullptr;
+		if (!ParseWAV(*file, &pcmFormat, &sampleRate, &pcmChunkSize, &pcmDataBuffer, &pcmDataSize))
+			return false;
+
+		DecoderType		= AUDIO_DECODER_PCM;
+		PcmChunkSize	= pcmChunkSize;
+		PcmDataSize		= static_cast<size_t>(pcmDataSize);
+		PcmDataBuffer	= pcmDataBuffer;
 	}
 	else if (isMp3)
 	{
-		sampleRate = 44100;
-		pcmFormat = AL_FORMAT_STEREO16;
+		DecoderType		= AUDIO_DECODER_MP3;
+		sampleRate		= 44100;
+		pcmFormat		= AL_FORMAT_STEREO16;
 	}
 	else
 	{

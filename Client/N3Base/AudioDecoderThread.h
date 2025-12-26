@@ -32,6 +32,8 @@ public:
 
 protected:
 	void decode_impl(StreamedAudioHandle* handle);
+	void decode_impl_mp3(StreamedAudioHandle* handle);
+	void decode_impl_pcm(StreamedAudioHandle* handle);
 
 	std::mutex _decoderMutex;
 	std::vector<QueueType> _pendingQueue;
