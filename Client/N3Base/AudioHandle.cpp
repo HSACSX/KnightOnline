@@ -93,9 +93,6 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 	err = mpg123_open_handle(handle->Mp3Handle, &handle->FileReaderHandle);
 	assert(err == MPG123_OK);
 
-	err = mpg123_seek_frame(handle->Mp3Handle, 0, SEEK_SET);
-	assert(err == MPG123_OK);
-
 	handle->SourceId		= sourceId;
 	handle->Asset			= std::move(asset);
 	handle->PcmFrameSize	= mpg123_outblock(handle->Mp3Handle);

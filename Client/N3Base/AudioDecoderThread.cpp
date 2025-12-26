@@ -101,46 +101,46 @@ void AudioDecoderThread::decode_impl(StreamedAudioHandle* handle)
 			StreamedAudioHandle::DecodedChunk decodedChunk = {};
 			decodedChunk.Data.resize(handle->PcmFrameSize);
 
-			do
-			{
+			error = mpg123_read(handle->Mp3Handle, &decodedChunk.Data[0], handle->PcmFrameSize, &done);
+
+			// The first read will invoke MPG123_NEW_FORMAT.
+			// This is where we'd fetch the format data, but we don't really care about it.
+			// Retry the read so we can decode the chunk.
+			while (error == MPG123_NEW_FORMAT)
 				error = mpg123_read(handle->Mp3Handle, &decodedChunk.Data[0], handle->PcmFrameSize, &done);
 
-				// The first read will invoke MPG123_NEW_FORMAT.
-				// This is where we'd fetch the format data, but we don't really care about it.
-				// Retry the read so we can decode the chunk.
-				if (error == MPG123_NEW_FORMAT)
-					continue;
+			// Decoded a chunk
+			if (error == MPG123_OK)
+			{
+				decodedChunk.BytesDecoded = static_cast<int32_t>(done);
+				decodedChunk.Data.resize(done);
 
-				// Decoded a chunk
-				if (error == MPG123_OK)
-				{
-					decodedChunk.BytesDecoded = static_cast<int32_t>(done);
-					decodedChunk.Data.resize(done);
-
-					handle->DecodedChunks.push(std::move(decodedChunk));
-					handle->FinishedDecoding = false;
-				}
-				// Finished decoding chunks. This contains no data.
-				else if (error == MPG123_DONE)
-				{
-					if (handle->FinishedDecoding)
-						break;
-
-					decodedChunk.BytesDecoded = 0;
-					decodedChunk.Data.clear();
-
-					handle->DecodedChunks.push(std::move(decodedChunk));
-
-					// If we're looping, we should reset back to the first frame
-					// and start decoding from there.
-					if (handle->IsLooping)
-						mpg123_seek_frame(handle->Mp3Handle, 0, SEEK_SET);
-					// Otherwise, we've finished decoding so we should stop here.
-					else
-						handle->FinishedDecoding = true;
-				}
+				handle->DecodedChunks.push(std::move(decodedChunk));
+				handle->FinishedDecoding = false;
 			}
-			while (false);
+			// Finished decoding chunks. This contains no data.
+			else if (error == MPG123_DONE)
+			{
+				if (handle->FinishedDecoding)
+					break;
+
+				decodedChunk.BytesDecoded = 0;
+				decodedChunk.Data.clear();
+
+				handle->DecodedChunks.push(std::move(decodedChunk));
+
+				// If we're looping, we should reset back to the first frame
+				// and start decoding from there.
+				if (handle->IsLooping)
+					mpg123_seek_frame(handle->Mp3Handle, 0, SEEK_SET);
+				// Otherwise, we've finished decoding so we should stop here.
+				else
+					handle->FinishedDecoding = true;
+			}
+			else
+			{
+				assert(error);
+			}
 		}
 	}
 	else

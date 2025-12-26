@@ -116,9 +116,6 @@ void AudioThread::Remove(std::shared_ptr<AudioHandle> handle)
 
 void AudioThread::reset(std::shared_ptr<AudioHandle>& handle)
 {
-	alSourceStop(handle->SourceId);
-	AL_CLEAR_ERROR_STATE();
-
 	alSourceRewind(handle->SourceId);
 	AL_CLEAR_ERROR_STATE();
 
@@ -149,6 +146,10 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle)
 
 			// Add to decoder for future decodes.
 			_decoderThread->Add(std::move(streamedAudioHandle));
+
+			// Force an initial tick to push our decoded data before play is triggered.
+			StreamedAudioHandle::DecodedChunk tmpDecodedChunk = {};
+			tick(handle, tmpDecodedChunk);
 		}
 	}
 }
@@ -168,7 +169,6 @@ void AudioThread::tick(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle
 		if (!AL_CHECK_ERROR()
 			&& buffersProcessed > 0)
 		{
-			TRACE("buffersProcessed=%d", buffersProcessed);
 			// Unqueue the processed buffers so we can reuse their IDs for our new chunks
 			for (int i = 0; i < buffersProcessed; i++)
 			{
@@ -182,15 +182,12 @@ void AudioThread::tick(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle
 			}
 		}
 
-		TRACE("Available buffer IDs: %u", (uint32_t) streamedAudioHandle->BufferIds.size());
 		while (!streamedAudioHandle->BufferIds.empty())
 		{
 			// Make sure we have a chunk to replace with first, before unqueueing.
 			// This way we don't need additional tracking.
 			{
 				std::scoped_lock lock(_decoderThread->DecoderMutex());
-				TRACE("Available decoded chunks: %u", (uint32_t) streamedAudioHandle->DecodedChunks.size());
-
 				if (streamedAudioHandle->DecodedChunks.empty())
 					break;
 
