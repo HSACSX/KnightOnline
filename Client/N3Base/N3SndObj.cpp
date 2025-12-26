@@ -239,7 +239,14 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 	_handle->IsLooping = _isLooping;
 
-	ALint isLooping = static_cast<ALint>(_isLooping);
+	// OpenAL-side looping needs to be disabled on streamed handles.
+	// They implement their own looping.
+	ALint isLooping;
+	if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
+		isLooping = 0;
+	else
+		isLooping = static_cast<ALint>(_isLooping);
+
 	bool playImmediately = false;
 	float gain = 0.0f;
 
@@ -357,7 +364,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 			alSourcef(handle->SourceId, AL_ROLLOFF_FACTOR, 0.0f);
 			AL_CHECK_ERROR();
 
-			alSourcei(handle->SourceId, AL_LOOPING, 0); // streams manually handle their looping
+			alSourcei(handle->SourceId, AL_LOOPING, isLooping);
 			AL_CHECK_ERROR();
 
 			if (playImmediately)
