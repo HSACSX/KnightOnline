@@ -150,9 +150,6 @@ CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
 			return nullptr;
 	}
 
-	//if (!PreprocessFilename(szFN))
-	//	return nullptr;
-
 	CN3SndObj* pSndObj = new CN3SndObj();
 	if (!pSndObj->Create(szFN, eType))
 	{
@@ -168,9 +165,6 @@ CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
 {
 	if (!CN3Base::s_Options.bSndBgmEnable)
 		return nullptr;
-
-	//if (!PreprocessFilename(szFN))
-	//	return nullptr;
 
 	CN3SndObj* pSndObj = new CN3SndObj();
 	if (!pSndObj->Create(szFN, SNDTYPE_STREAM))
