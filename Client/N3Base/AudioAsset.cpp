@@ -13,6 +13,7 @@
 
 BufferedAudioAsset::BufferedAudioAsset()
 {
+	Type = AUDIO_ASSET_BUFFERED;
 }
 
 BufferedAudioAsset::~BufferedAudioAsset()
@@ -174,6 +175,7 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 
 StreamedAudioAsset::StreamedAudioAsset()
 {
+	Type = AUDIO_ASSET_STREAMED;
 }
 
 bool StreamedAudioAsset::LoadFromFile(const std::string& filename)

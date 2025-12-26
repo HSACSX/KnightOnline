@@ -14,8 +14,7 @@
 #include <memory>
 #include <string>
 
-class BufferedAudioAsset;
-class StreamedAudioAsset;
+class AudioAsset;
 class AudioHandle;
 class CN3SndObj
 {
@@ -33,9 +32,8 @@ protected:
 	float					_startDelayTime;
 	float					_tmpSecPerFrm;
 
+	std::shared_ptr<AudioAsset> _audioAsset;
 	std::shared_ptr<AudioHandle> _handle;
-	std::shared_ptr<BufferedAudioAsset> _bufferedAudioAsset;
-	std::shared_ptr<StreamedAudioAsset> _streamedAudioAsset;
 
 public:
 	e_SndType GetType() const

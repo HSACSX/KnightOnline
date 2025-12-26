@@ -76,16 +76,10 @@ void CN3SndObj::Release()
 {
 	ReleaseHandle();
 
-	if (_bufferedAudioAsset != nullptr)
+	if (_audioAsset != nullptr)
 	{
-		CN3Base::s_SndMgr.RemoveBufferedAudioAsset(_bufferedAudioAsset.get());
-		_bufferedAudioAsset.reset();
-	}
-
-	if (_streamedAudioAsset != nullptr)
-	{
-		CN3Base::s_SndMgr.RemoveStreamedAudioAsset(_streamedAudioAsset.get());
-		_streamedAudioAsset.reset();
+		CN3Base::s_SndMgr.RemoveAudioAsset(_audioAsset.get());
+		_audioAsset.reset();
 	}
 }
 
@@ -95,25 +89,14 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 
 	if (eType == SNDTYPE_2D
 		|| eType == SNDTYPE_3D)
-	{
-		auto audioAsset = CN3Base::s_SndMgr.LoadBufferedAudioAsset(szFN);
-		if (audioAsset == nullptr)
-			return false;
-
-		_bufferedAudioAsset = std::move(audioAsset);
-	}
+		_audioAsset = CN3Base::s_SndMgr.LoadBufferedAudioAsset(szFN);
 	else if (eType == SNDTYPE_STREAM)
-	{
-		auto audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
-		if (audioAsset == nullptr)
-			return false;
-
-		_streamedAudioAsset = std::move(audioAsset);
-	}
+		_audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
 	else
-	{
 		return false;
-	}
+
+	if (_audioAsset == nullptr)
+		return false;
 
 	_type = eType;
 	return true;
@@ -138,11 +121,8 @@ void CN3SndObj::SetVolume(float currentVolume)
 
 const std::string& CN3SndObj::FileName() const
 {
-	if (_bufferedAudioAsset != nullptr)
-		return _bufferedAudioAsset->Filename;
-
-	if (_streamedAudioAsset != nullptr)
-		return _streamedAudioAsset->Filename;
+	if (_audioAsset != nullptr)
+		return _audioAsset->Filename;
 
 	static std::string empty;
 	return empty;
@@ -226,29 +206,23 @@ void CN3SndObj::Tick()
 
 void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, bool bImmediately)
 {
+	if (_audioAsset == nullptr)
+		return;
+
 	if (bImmediately)
 		Stop();
 
 	if (_handle == nullptr)
 	{
-		if (GetType() == SNDTYPE_2D
-			|| GetType() == SNDTYPE_3D)
-			_handle = BufferedAudioHandle::Create(_bufferedAudioAsset);
-		else if (GetType() == SNDTYPE_STREAM)
-			_handle = StreamedAudioHandle::Create(_streamedAudioAsset);
+		if (_audioAsset->Type == AUDIO_ASSET_BUFFERED)
+			_handle = BufferedAudioHandle::Create(_audioAsset);
+		else if (_audioAsset->Type == AUDIO_ASSET_STREAMED)
+			_handle = StreamedAudioHandle::Create(_audioAsset);
 
 		if (_handle == nullptr)
 			return;
 
 		CN3Base::s_SndMgr.Add(_handle);
-	}
-	else
-	{
-		if (GetType() == SNDTYPE_2D
-			|| GetType() == SNDTYPE_3D)
-			_handle->Asset = _bufferedAudioAsset;
-		else if (GetType() == SNDTYPE_STREAM)
-			_handle->Asset = _streamedAudioAsset;
 	}
 
 	_handle->IsLooping = _isLooping;
@@ -270,7 +244,14 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	// and otherwise setup, ready to play.
 	if (GetType() == SNDTYPE_2D)
 	{
-		auto audioAsset = _bufferedAudioAsset;
+		assert(_audioAsset->Type == AUDIO_ASSET_BUFFERED);
+
+		if (_audioAsset->Type != AUDIO_ASSET_BUFFERED)
+			return;
+
+		auto audioAsset = static_pointer_cast<BufferedAudioAsset>(_audioAsset);
+		if (audioAsset == nullptr)
+			return;
 
 		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 		{
@@ -302,7 +283,15 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	}
 	else if (GetType() == SNDTYPE_3D)
 	{
-		auto audioAsset = _bufferedAudioAsset;
+		assert(_audioAsset->Type == AUDIO_ASSET_BUFFERED);
+
+		if (_audioAsset->Type != AUDIO_ASSET_BUFFERED)
+			return;
+
+		auto audioAsset = static_pointer_cast<BufferedAudioAsset>(_audioAsset);
+		if (audioAsset == nullptr)
+			return;
+
 		bool hasPosition = false;
 
 		__Vector3 position;

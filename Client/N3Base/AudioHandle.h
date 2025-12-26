@@ -31,11 +31,10 @@ public:
 	virtual ~AudioHandle();
 };
 
-class BufferedAudioAsset;
 class BufferedAudioHandle : public AudioHandle
 {
 public:
-	static std::shared_ptr<BufferedAudioHandle> Create(std::shared_ptr<BufferedAudioAsset> asset);
+	static std::shared_ptr<BufferedAudioHandle> Create(std::shared_ptr<AudioAsset> asset);
 
 	BufferedAudioHandle();
 	~BufferedAudioHandle() override;
@@ -49,7 +48,6 @@ struct FileReaderHandle
 };
 
 struct mpg123_handle_struct;
-class StreamedAudioAsset;
 class StreamedAudioHandle : public AudioHandle
 {
 public:
@@ -69,7 +67,7 @@ public:
 	std::queue<DecodedChunk>	DecodedChunks;
 	bool						FinishedDecoding;
 
-	static std::shared_ptr<StreamedAudioHandle> Create(std::shared_ptr<StreamedAudioAsset> asset);
+	static std::shared_ptr<StreamedAudioHandle> Create(std::shared_ptr<AudioAsset> asset);
 
 	StreamedAudioHandle();
 	~StreamedAudioHandle() override;

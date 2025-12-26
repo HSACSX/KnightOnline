@@ -25,7 +25,7 @@ AudioHandle::~AudioHandle()
 {
 }
 
-std::shared_ptr<BufferedAudioHandle> BufferedAudioHandle::Create(std::shared_ptr<BufferedAudioAsset> asset)
+std::shared_ptr<BufferedAudioHandle> BufferedAudioHandle::Create(std::shared_ptr<AudioAsset> asset)
 {
 	if (asset == nullptr)
 		return nullptr;
@@ -46,9 +46,16 @@ std::shared_ptr<BufferedAudioHandle> BufferedAudioHandle::Create(std::shared_ptr
 	return handle;
 }
 
-std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr<StreamedAudioAsset> asset)
+std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr<AudioAsset> asset)
 {
+	assert(asset != nullptr);
+
 	if (asset == nullptr)
+		return nullptr;
+
+	assert(asset->Type == AUDIO_ASSET_STREAMED);
+
+	if (asset->Type != AUDIO_ASSET_STREAMED)
 		return nullptr;
 
 	uint32_t sourceId;
@@ -87,7 +94,7 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 	err = mpg123_replace_reader_handle(handle->Mp3Handle, mpg123_filereader_read, mpg123_filereader_seek, mpg123_filereader_cleanup);
 	assert(err == MPG123_OK);
 
-	handle->FileReaderHandle.File	= asset->File.get();
+	handle->FileReaderHandle.File	= static_cast<StreamedAudioAsset*>(asset.get())->File.get();
 	handle->FileReaderHandle.Offset	= 0;
 	
 	err = mpg123_open_handle(handle->Mp3Handle, &handle->FileReaderHandle);

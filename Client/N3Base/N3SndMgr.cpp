@@ -454,13 +454,6 @@ std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std:
 	return audioAsset;
 }
 
-void CN3SndMgr::RemoveBufferedAudioAsset(BufferedAudioAsset* audioAsset)
-{
-	std::scoped_lock lock(_bufferedAudioAssetByFilenameMutex);
-	if (--audioAsset->RefCount == 0)
-		_bufferedAudioAssetByFilenameMap.erase(audioAsset->Filename);
-}
-
 std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std::string& filename)
 {
 	std::shared_ptr<StreamedAudioAsset> audioAsset;
@@ -487,13 +480,26 @@ std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std:
 	return audioAsset;
 }
 
-void CN3SndMgr::RemoveStreamedAudioAsset(StreamedAudioAsset* audioAsset)
+void CN3SndMgr::RemoveAudioAsset(AudioAsset* audioAsset)
 {
-	std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
-	if (--audioAsset->RefCount == 0)
-		_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
-}
+	assert(audioAsset != nullptr);
 
+	if (audioAsset == nullptr)
+		return;
+
+	if (audioAsset->Type == AUDIO_ASSET_BUFFERED)
+	{
+		std::scoped_lock lock(_bufferedAudioAssetByFilenameMutex);
+		if (--audioAsset->RefCount == 0)
+			_bufferedAudioAssetByFilenameMap.erase(audioAsset->Filename);
+	}
+	else if (audioAsset->Type == AUDIO_ASSET_STREAMED)
+	{
+		std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
+		if (--audioAsset->RefCount == 0)
+			_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
+	}
+}
 void CN3SndMgr::Add(std::shared_ptr<AudioHandle> handle)
 {
 	if (_thread != nullptr)
