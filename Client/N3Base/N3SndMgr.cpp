@@ -6,7 +6,6 @@
 #include "N3SndObj.h"
 #include "N3Base.h"
 #include "AudioThread.h"
-#include "AudioDecoderThread.h"
 #include "WaveFormat.h"
 #include "AudioAsset.h"
 #include "al_wrapper.h"
@@ -14,11 +13,9 @@
 #include <shared/StringUtils.h>
 
 #include <AL/alc.h>
-#include <mpg123.h>
 
 #include <cassert>
 #include <filesystem>
-#include <shlobj.h>
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -113,7 +110,7 @@ bool CN3SndMgr::InitOpenAL()
 	maxRegularSourceCount -= maxStreamCount;
 
 	{
-		std::lock_guard<std::mutex> lock(_sourceIdMutex);
+		std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 		int i = 0;
 		while (i < maxRegularSourceCount)
@@ -125,10 +122,6 @@ bool CN3SndMgr::InitOpenAL()
 
 	_thread = std::make_unique<AudioThread>();
 	_thread->start();
-
-	_decoderThread = std::make_unique<AudioDecoderThread>();
-	_decoderThread->start();
-
 	return true;
 }
 
@@ -157,8 +150,8 @@ CN3SndObj* CN3SndMgr::CreateObj(std::string szFN, e_SndType eType)
 			return nullptr;
 	}
 
-	if (!PreprocessFilename(szFN))
-		return nullptr;
+	//if (!PreprocessFilename(szFN))
+	//	return nullptr;
 
 	CN3SndObj* pSndObj = new CN3SndObj();
 	if (!pSndObj->Create(szFN, eType))
@@ -176,8 +169,8 @@ CN3SndObj* CN3SndMgr::CreateStreamObj(std::string szFN)
 	if (!CN3Base::s_Options.bSndBgmEnable)
 		return nullptr;
 
-	if (!PreprocessFilename(szFN))
-		return nullptr;
+	//if (!PreprocessFilename(szFN))
+	//	return nullptr;
 
 	CN3SndObj* pSndObj = new CN3SndObj();
 	if (!pSndObj->Create(szFN, SNDTYPE_STREAM))
@@ -302,12 +295,6 @@ void CN3SndMgr::Release()
 		delete pSndObj;
 	m_SndObjStreams.clear();
 
-	if (_decoderThread != nullptr)
-	{
-		_decoderThread->shutdown();
-		_decoderThread.reset();
-	}
-
 	if (_thread != nullptr)
 	{
 		_thread->shutdown();
@@ -323,7 +310,7 @@ void CN3SndMgr::ReleaseOpenAL()
 		return;
 
 	{
-		std::lock_guard<std::mutex> lock(_sourceIdMutex);
+		std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 		for (uint32_t sourceId : _unassignedSourceIds)
 			alDeleteSources(1, &sourceId);
@@ -377,206 +364,12 @@ bool CN3SndMgr::PlayOnceAndRelease(int iSndID, const __Vector3* pPos)
 	return true;
 }
 
-bool CN3SndMgr::PreprocessFilename(std::string& szFN)
-{
-	// Expect an extension (.mp3, .wav)
-	if (szFN.length() < 4)
-		return false;
-
-	// Officially it has native support for MP3 decoding.
-	// We decode back to WAV (one-time) and use the new filename instead.
-	// Ideally this would just load it into memory directly, but that would require restructuring
-	// a little.
-	// This approach is fairly unintrusive and only incurs the performance hit once.
-	// There's also very few mp3 files to actually convert, so space should not be an issue.
-	// Finally, the game requires admin access, so it should have write access.
-	if (strnicmp(szFN.data() + szFN.length() - 4, ".mp3", 4) == 0)
-	{
-		if (!DecodeMp3ToWav(szFN))
-			return false;
-	}
-
-	return true;
-}
-
-bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
-{
-	// We've seen this MP3 before. Replace its filename.
-	auto itr = m_mp3ToWavFileMap.find(filename);
-	if (itr != m_mp3ToWavFileMap.end())
-	{
-		filename = itr->second;
-		return true;
-	}
-
-	PWSTR path = {};
-	HRESULT hr = SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &path);
-	if (FAILED(hr))
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to fetch LocalAppData directory: {:X}", hr);
-#endif
-		return false;
-	}
-
-	std::error_code fsErrorCode = {};
-
-	std::wstring audioDir = path;
-	CoTaskMemFree(path);
-	audioDir += L"\\OpenKO\\Snd";
-
-	std::filesystem::path newPath(audioDir);
-	std::filesystem::create_directories(newPath, fsErrorCode);
-
-	std::filesystem::path oldPath(filename);
-	newPath /= oldPath.filename();
-	newPath.replace_extension(".wav");
-
-	// If we've already converted this file, we can just use it immediately.
-	if (std::filesystem::exists(newPath, fsErrorCode))
-	{
-		std::string newFilename = newPath.string();
-		m_mp3ToWavFileMap.insert(std::make_pair(filename, newFilename));
-		filename = std::move(newFilename);
-		return true;
-	}
-
-	// We have yet to convert it, so we need to load it up and decode it.
-	int error = MPG123_ERR;
-
-	mpg123_handle* mpgHandle = mpg123_new(nullptr, &error);
-	if (mpgHandle == nullptr)
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to allocate MP3 handle: {} ({})",
-			filename, error);
-#endif
-		return false;
-	}
-
-	// Force output as 16-bit PCM - preserve sample rate and channel count.
-	mpg123_format(mpgHandle, 0, 0, MPG123_ENC_SIGNED_16);
-
-	error = mpg123_open(mpgHandle, filename.c_str());
-	if (error != MPG123_OK)
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to open MP3: {} ({})",
-			filename, error);
-#endif
-		mpg123_delete(mpgHandle);
-		return false;
-	}
-
-	long rate = 0;
-	int channels = 0, encoding = 0;
-
-	error = mpg123_getformat(mpgHandle, &rate, &channels, &encoding);
-	if (error != MPG123_OK)
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to get MP3 format: {} ({}: {})",
-			filename, error, mpg123_strerror(mpgHandle));
-#endif
-
-		mpg123_delete(mpgHandle);
-		return false;
-	}
-
-	off_t sampleCount = mpg123_length(mpgHandle);
-	if (sampleCount < 0)
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to get total MP3 samples per channel: {}",
-			filename);
-#endif
-
-		mpg123_delete(mpgHandle);
-		return false;
-	}
-
-	std::string newFilename = newPath.string();
-
-	// Open the new WAV file for writing.
-	FILE* fp = fopen(newFilename.c_str(), "wb");
-	if (fp == nullptr)
-	{
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to open file for writing decoded MP3 to: {}",
-			newFilename);
-#endif
-		return false;
-	}
-
-	const int sampleSizeBytes = mpg123_encsize(encoding);
-
-	// Initialise header to defaults
-	RIFF_Header_Out wavFileHeader = {};
-
-	// Setup the file header.
-	wavFileHeader.Format.AudioFormat	= 1; // PCM
-	wavFileHeader.Format.NumChannels	= static_cast<uint16_t>(channels);
-	wavFileHeader.Format.SampleRate		= static_cast<uint16_t>(rate);
-	wavFileHeader.Format.BitsPerSample	= static_cast<uint16_t>(sampleSizeBytes * 8);
-	wavFileHeader.Format.BytesPerBlock	= wavFileHeader.Format.NumChannels * wavFileHeader.Format.BitsPerSample / 8;
-	wavFileHeader.Format.BytesPerSec	= wavFileHeader.Format.SampleRate * wavFileHeader.Format.BytesPerBlock;
-
-	size_t done = 0, decodedBytes = 0;
-	const size_t frameSize = mpg123_outblock(mpgHandle);
-	std::vector<uint8_t> frameBlock(frameSize);
-
-	// Skip the header - we'll write that at the end.
-	fseek(fp, sizeof(RIFF_Header), SEEK_SET);
-
-	error = mpg123_read(mpgHandle, &frameBlock[0], frameSize, &done);
-	while (error == MPG123_OK)
-	{
-		decodedBytes += done;
-
-		fwrite(&frameBlock[0], done, 1, fp);
-		error = mpg123_read(mpgHandle, &frameBlock[0], frameSize, &done);
-	}
-
-	mpg123_delete(mpgHandle);
-
-	if (error != MPG123_DONE)
-	{
-		fclose(fp);
-
-		std::error_code ec;
-		std::filesystem::remove(newPath, ec);
-
-#ifdef _N3GAME
-		CLogWriter::Write("Failed to decode MP3: {} ({} - decoded {} bytes)",
-			filename, error, decodedBytes);
-#endif
-		return false;
-	}
-
-	wavFileHeader.FileSize += static_cast<uint32_t>(decodedBytes);
-	wavFileHeader.Data.Size = static_cast<uint32_t>(decodedBytes);
-
-	// Write out the header.
-	long endOfFileOffset = ftell(fp);
-	fseek(fp, 0, SEEK_SET);
-	fwrite(&wavFileHeader, sizeof(RIFF_Header), 1, fp);
-
-	// Seek back to the known end, before the file is closed and flushed.
-	fseek(fp, endOfFileOffset, SEEK_SET);
-	fclose(fp);
-
-	m_mp3ToWavFileMap.insert(std::make_pair(filename, newFilename));
-	filename = std::move(newFilename);
-
-	return true;
-}
-
 bool CN3SndMgr::PullBufferedSourceIdFromPool(uint32_t* sourceId)
 {
 	if (sourceId == nullptr)
 		return false;
 
-	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 	// Too many already active.
 	if (_unassignedSourceIds.empty())
@@ -594,7 +387,7 @@ void CN3SndMgr::RestoreBufferedSourceIdToPool(uint32_t* sourceId)
 		|| *sourceId == INVALID_SOURCE_ID)
 		return;
 
-	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 	auto itr = _assignedSourceIds.find(*sourceId);
 	if (itr == _assignedSourceIds.end())
@@ -611,7 +404,7 @@ bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 	if (sourceId == nullptr)
 		return false;
 
-	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 	// Too many already active.
 	if (_unassignedStreamSourceIds.empty())
@@ -629,7 +422,7 @@ void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 		|| *sourceId == INVALID_SOURCE_ID)
 		return;
 
-	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
 
 	auto itr = _assignedStreamSourceIds.find(*sourceId);
 	if (itr == _assignedStreamSourceIds.end())
@@ -644,7 +437,7 @@ void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std::string& filename)
 {
 	std::shared_ptr<BufferedAudioAsset> audioAsset;
-	std::lock_guard<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
+	std::scoped_lock<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
 
 	auto itr = _bufferedAudioAssetByFilenameMap.find(filename);
 	if (itr == _bufferedAudioAssetByFilenameMap.end())
@@ -669,7 +462,7 @@ std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std:
 
 void CN3SndMgr::RemoveBufferedAudioAsset(BufferedAudioAsset* audioAsset)
 {
-	std::lock_guard lock(_bufferedAudioAssetByFilenameMutex);
+	std::scoped_lock lock(_bufferedAudioAssetByFilenameMutex);
 	if (--audioAsset->RefCount == 0)
 		_bufferedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 }
@@ -677,7 +470,7 @@ void CN3SndMgr::RemoveBufferedAudioAsset(BufferedAudioAsset* audioAsset)
 std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std::string& filename)
 {
 	std::shared_ptr<StreamedAudioAsset> audioAsset;
-	std::lock_guard<std::mutex> lock(_streamedAudioAssetByFilenameMutex);
+	std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
 
 	auto itr = _streamedAudioAssetByFilenameMap.find(filename);
 	if (itr == _streamedAudioAssetByFilenameMap.end())
@@ -702,7 +495,7 @@ std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std:
 
 void CN3SndMgr::RemoveStreamedAudioAsset(StreamedAudioAsset* audioAsset)
 {
-	std::lock_guard lock(_streamedAudioAssetByFilenameMutex);
+	std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
 	if (--audioAsset->RefCount == 0)
 		_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 }

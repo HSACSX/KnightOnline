@@ -55,11 +55,6 @@ public:
 		return _isStarted;
 	}
 
-	void Looping(bool loop)
-	{
-		_isLooping = loop;
-	}
-
 	bool IsLooping() const
 	{
 		return _isLooping;
@@ -104,6 +99,7 @@ public:
 	void	Tick();
 
 	void	SetPos(const __Vector3 vPos);
+	void	Looping(bool loop);
 
 	CN3SndObj();
 	virtual ~CN3SndObj();

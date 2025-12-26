@@ -24,7 +24,6 @@
 
 struct ALCdevice;
 struct ALCcontext;
-class AudioDecoderThread;
 class BufferedAudioAsset;
 class CN3SndObj;
 class StreamedAudioAsset;
@@ -41,7 +40,6 @@ protected:
 	std::list<CN3SndObj*>				m_SndObjStreams;	// 스트리밍 사운드..
 	std::list<CN3SndObj*>				m_SndObjs;
 	std::list<CN3SndObj*>				m_SndObjs_PlayOnceAndRelease;	// 한번만 플레이 하고 릴리즈 해야 하는 사운드들
-	std::unordered_map<std::string, std::string> m_mp3ToWavFileMap;
 
 	ALCdevice*	_alcDevice;
 	ALCcontext*	_alcContext;
@@ -59,7 +57,6 @@ protected:
 	std::mutex _streamedAudioAssetByFilenameMutex;
 
 	std::unique_ptr<AudioThread> _thread;
-	std::unique_ptr<AudioDecoderThread> _decoderThread;
 
 public:
 	void SetEnable(bool bEnable)
@@ -83,10 +80,6 @@ public:
 
 	CN3SndMgr();
 	virtual ~CN3SndMgr();
-
-private:
-	bool PreprocessFilename(std::string& filename);
-	bool DecodeMp3ToWav(std::string& filename);
 
 protected:
 	bool PullBufferedSourceIdFromPool(uint32_t* sourceId);

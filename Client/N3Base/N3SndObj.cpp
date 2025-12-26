@@ -93,10 +93,6 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 {
 	Init();
 
-	// TODO: Remove with decoding
-	if (eType == SNDTYPE_STREAM)
-		eType = SNDTYPE_2D;
-
 	if (eType == SNDTYPE_2D
 		|| eType == SNDTYPE_3D)
 	{
@@ -133,7 +129,7 @@ void CN3SndObj::SetVolume(float currentVolume)
 	_currentVolume = std::clamp(currentVolume, 0.0f, 1.0f);
 
 	float gain = _currentVolume;
-	CN3Base::s_SndMgr.QueueCallback(_handle, [=](AudioHandle* handle)
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 	{
 		alSourcef(handle->SourceId, AL_GAIN, _currentVolume);
 		AL_CHECK_ERROR();
@@ -255,6 +251,8 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 			_handle->Asset = _streamedAudioAsset;
 	}
 
+	_handle->IsLooping = _isLooping;
+
 	ALint isLooping = static_cast<ALint>(_isLooping);
 	bool playImmediately = false;
 	float gain = 0.0f;
@@ -358,7 +356,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 			alSourcef(handle->SourceId, AL_ROLLOFF_FACTOR, 0.0f);
 			AL_CHECK_ERROR();
 
-			alSourcei(handle->SourceId, AL_LOOPING, isLooping);
+			alSourcei(handle->SourceId, AL_LOOPING, 0); // streams manually handle their looping
 			AL_CHECK_ERROR();
 
 			if (playImmediately)
@@ -392,7 +390,7 @@ void CN3SndObj::PlayImpl()
 	_isStarted = true;
 	_state = SNDSTATE_PLAY;
 
-	CN3Base::s_SndMgr.QueueCallback(_handle, [](AudioHandle* handle)
+	CN3Base::s_SndMgr.QueueCallback(_handle, [] (AudioHandle* handle)
 	{
 		handle->StartedPlaying = true;
 		handle->FinishedPlaying = false;
@@ -452,9 +450,30 @@ void CN3SndObj::SetPos(const __Vector3 vPos)
 		|| GetType() != SNDTYPE_3D)
 		return;
 
-	CN3Base::s_SndMgr.QueueCallback(_handle, [=](AudioHandle* handle)
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 	{
 		alSource3f(handle->SourceId, AL_POSITION, vPos.x, vPos.y, vPos.z);
+		AL_CLEAR_ERROR_STATE();
+	});
+}
+
+void CN3SndObj::Looping(bool loop)
+{
+	_isLooping = loop;
+
+	if (_handle == nullptr)
+		return;
+
+	_handle->IsLooping = true;
+
+	// Streams need to manually handle their looping.
+	if (GetType() == SNDTYPE_STREAM)
+		return;
+
+	ALint isLooping = static_cast<ALint>(_isLooping);
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+	{
+		alSourcei(handle->SourceId, AL_LOOPING, isLooping);
 		AL_CLEAR_ERROR_STATE();
 	});
 }

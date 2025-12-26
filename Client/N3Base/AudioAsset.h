@@ -14,6 +14,8 @@ protected:
 public:
 	std::string			Filename;
 	uint32_t			RefCount = 0;
+	int32_t				PcmFormat = -1;
+	int32_t				SampleRate = 0;
 
 public:
 	virtual bool LoadFromFile(const std::string& filename) = 0;

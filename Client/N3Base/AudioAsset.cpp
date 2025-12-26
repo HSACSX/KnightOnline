@@ -51,17 +51,8 @@ static const uint8_t* find_chunk(const uint8_t* start, const uint8_t* end, const
 	return nullptr;
 }
 
-bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
+static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, const uint8_t** pcmDataBuffer, ALsizei* pcmDataSize)
 {
-	// Expect ".wav"
-	if (filename.length() < 4
-		|| strnicmp(filename.data() + filename.length() - 4, ".wav", 4) != 0)
-		return false;
-
-	FileReader file;
-	if (!file.OpenExisting(filename))
-		return false;
-
 	const size_t fileSize = file.Size();
 	if (fileSize < sizeof(RIFF_Header))
 		return false;
@@ -103,32 +94,29 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 
 	ptr += sizeof(RIFF_SubChunk);
 
-	const uint8_t* pcmDataBuffer = ptr;
-	const uint32_t pcmDataSize = waveData->Size;
-	if (pcmDataSize > (end - pcmDataBuffer))
+	const uint8_t* pcmDataBuffer_ = ptr;
+	const uint32_t pcmDataSize_ = waveData->Size;
+
+	if (pcmDataSize_ > (end - pcmDataBuffer_))
 		return false;
 
-	alGenBuffers(1, &BufferId);
-	if (AL_CHECK_ERROR())
-		return false;
+	ALenum format_;
 
-	ALenum format;
-	
 	if (waveFormat->NumChannels == 2)
 	{
 		if (waveFormat->BitsPerSample == 8)
-			format = AL_FORMAT_STEREO8;
+			format_ = AL_FORMAT_STEREO8;
 		else if (waveFormat->BitsPerSample == 16)
-			format = AL_FORMAT_STEREO16;
+			format_ = AL_FORMAT_STEREO16;
 		else
 			return false;
 	}
 	else if (waveFormat->NumChannels == 1)
 	{
 		if (waveFormat->BitsPerSample == 8)
-			format = AL_FORMAT_MONO8;
+			format_ = AL_FORMAT_MONO8;
 		else if (waveFormat->BitsPerSample == 16)
-			format = AL_FORMAT_MONO16;
+			format_ = AL_FORMAT_MONO16;
 		else
 			return false;
 	}
@@ -137,15 +125,50 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 		return false;
 	}
 
-	alBufferData(
-		BufferId, format, pcmDataBuffer,
-		static_cast<ALsizei>(pcmDataSize),
-		static_cast<ALsizei>(waveFormat->SampleRate));
+	if (format != nullptr)
+		*format = format_;
 
+	if (sampleRate != nullptr)
+		*sampleRate = static_cast<ALsizei>(waveFormat->SampleRate);
+
+	if (pcmDataBuffer != nullptr)
+		*pcmDataBuffer = pcmDataBuffer_;
+
+	if (pcmDataSize != nullptr)
+		*pcmDataSize = pcmDataSize_;
+
+	return true;
+}
+
+bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
+{
+	// Expect ".wav"
+	if (filename.length() < 4
+		|| strnicmp(filename.data() + filename.length() - 4, ".wav", 4) != 0)
+		return false;
+
+	FileReader file;
+	if (!file.OpenExisting(filename))
+		return false;
+
+	ALenum pcmFormat;
+	ALsizei sampleRate, pcmDataSize;
+	const uint8_t* pcmDataBuffer = nullptr;
+	if (!ParseWAV(file, &pcmFormat, &sampleRate, &pcmDataBuffer, &pcmDataSize))
+		return false;
+
+	alGenBuffers(1, &BufferId);
 	if (AL_CHECK_ERROR())
 		return false;
 
-	Filename = filename;
+	alBufferData(BufferId, pcmFormat, pcmDataBuffer, pcmDataSize, sampleRate);
+	if (AL_CHECK_ERROR())
+		return false;
+
+	Filename	= filename;
+	PcmFormat	= pcmFormat;
+	SampleRate	= static_cast<int32_t>(sampleRate);
+
 	return true;
 }
 
@@ -159,7 +182,14 @@ bool StreamedAudioAsset::LoadFromFile(const std::string& filename)
 	if (filename.length() < 4)
 		return false;
 
-	if (strnicmp(filename.data() + filename.length() - 4, ".mp3", 4) != 0)
+	const char* extension = filename.data() + filename.length() - 4;
+
+	bool isMp3 = false, isWav = false;
+	if (strnicmp(extension, ".mp3", 4) == 0)
+		isMp3 = true;
+	else if (strnicmp(extension, ".wav", 4) == 0)
+		isWav = true;
+	else
 		return false;
 
 	auto file = std::make_unique<FileReader>();
@@ -169,11 +199,37 @@ bool StreamedAudioAsset::LoadFromFile(const std::string& filename)
 	if (!file->OpenExisting(filename))
 		return false;
 
-	File = std::move(file);
-	Filename = filename;
+	ALenum pcmFormat;
+	ALsizei sampleRate;
+
+	if (isWav)
+	{
+		// TODO: handle decoding WAV chunks
+		// ALsizei pcmDataSize;
+		// const uint8_t* pcmDataBuffer = nullptr;
+		// if (!ParseWAV(*file, &format, &sampleRate, &pcmDataBuffer, &pcmDataSize))
+		// return false;
+		return false;
+	}
+	else if (isMp3)
+	{
+		sampleRate = 44100;
+		pcmFormat = AL_FORMAT_STEREO16;
+	}
+	else
+	{
+		return false;
+	}
+
+	File		= std::move(file);
+	Filename	= filename;
+	PcmFormat	= pcmFormat;
+	SampleRate	= static_cast<int32_t>(sampleRate);
+
 	return true;
 }
 
 StreamedAudioAsset::~StreamedAudioAsset()
 {
 }
+
