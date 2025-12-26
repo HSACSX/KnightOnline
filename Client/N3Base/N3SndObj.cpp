@@ -5,12 +5,13 @@
 #include "StdAfxBase.h"
 #include "N3SndObj.h"
 #include "N3Base.h"
-#include "LoadedSoundBuffer.h"
-#include "StreamedSoundBuffer.h"
+#include "AudioAsset.h"
+#include "AudioHandle.h"
 #include "WaveFormat.h"
 #include "al_wrapper.h"
 
 #include <AL/alc.h>
+#include <cassert>
 
 #ifdef _N3GAME
 #include "LogWriter.h"
@@ -26,7 +27,7 @@ bool AL_CHECK_ERROR_IMPL(const char* file, int line)
 	ALenum error = alGetError();
 	if (error == AL_NO_ERROR)
 		return false;
-
+	
 #ifdef _N3GAME
 	CLogWriter::Write("{}({}) - OpenAL error occurred: {:X}", file, line, error);
 #endif
@@ -35,7 +36,6 @@ bool AL_CHECK_ERROR_IMPL(const char* file, int line)
 
 CN3SndObj::CN3SndObj()
 {
-	_sourceId = INVALID_SOURCE_ID;
 	_type = SNDTYPE_UNKNOWN;
 	_state = SNDSTATE_STOP;
 
@@ -74,44 +74,45 @@ void CN3SndObj::Init()
 
 void CN3SndObj::Release()
 {
-	if (GetType() == SNDTYPE_2D
-		|| GetType() == SNDTYPE_3D
-		|| GetType() == SNDTYPE_STREAM) // TODO: Replace
-	{
-		RemoveSource();
-	}
-//	else if (GetSndType() == SNDTYPE_STREAM)
-//	{
-//		QueueStreamUpdate(SND_STREAM_UPDATE_RELEASE);
-//	}
+	ReleaseHandle();
 
-	if (_loadedSoundBuffer != nullptr)
+	if (_bufferedAudioAsset != nullptr)
 	{
-		CN3Base::s_SndMgr.RemoveLoadedSoundBuffer(_loadedSoundBuffer.get());
-		_loadedSoundBuffer.reset();
+		CN3Base::s_SndMgr.RemoveBufferedAudioAsset(_bufferedAudioAsset.get());
+		_bufferedAudioAsset.reset();
 	}
 
-	if (_streamedSoundBuffer != nullptr)
+	if (_streamedAudioAsset != nullptr)
 	{
-		CN3Base::s_SndMgr.RemoveStreamedSoundBuffer(_streamedSoundBuffer.get());
-		_streamedSoundBuffer.reset();
+		CN3Base::s_SndMgr.RemoveStreamedAudioAsset(_streamedAudioAsset.get());
+		_streamedAudioAsset.reset();
 	}
 }
 
 bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 {
-	if (_sourceId != INVALID_SOURCE_ID)
-		Init();
+	Init();
+
+	// TODO: Remove with decoding
+	if (eType == SNDTYPE_STREAM)
+		eType = SNDTYPE_2D;
 
 	if (eType == SNDTYPE_2D
-		|| eType == SNDTYPE_3D
-		|| eType == SNDTYPE_STREAM) // TODO: handle this separately
+		|| eType == SNDTYPE_3D)
 	{
-		auto loadedSoundBuffer = CN3Base::s_SndMgr.GetLoadedSoundBuffer(szFN);
-		if (loadedSoundBuffer == nullptr)
+		auto audioAsset = CN3Base::s_SndMgr.LoadBufferedAudioAsset(szFN);
+		if (audioAsset == nullptr)
 			return false;
 
-		_loadedSoundBuffer = std::move(loadedSoundBuffer);
+		_bufferedAudioAsset = std::move(audioAsset);
+	}
+	else if (eType == SNDTYPE_STREAM)
+	{
+		auto audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
+		if (audioAsset == nullptr)
+			return false;
+
+		_streamedAudioAsset = std::move(audioAsset);
 	}
 	else
 	{
@@ -126,21 +127,26 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 //	range : [0.0f, 1.0f]
 void CN3SndObj::SetVolume(float currentVolume)
 {
-	if (_sourceId == INVALID_SOURCE_ID)
+	if (_handle == nullptr)
 		return;
 
 	_currentVolume = std::clamp(currentVolume, 0.0f, 1.0f);
-	alSourcef(_sourceId, AL_GAIN, _currentVolume);
-	AL_CHECK_ERROR();
+
+	float gain = _currentVolume;
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=](AudioHandle* handle)
+	{
+		alSourcef(handle->SourceId, AL_GAIN, _currentVolume);
+		AL_CHECK_ERROR();
+	});
 }
 
 const std::string& CN3SndObj::FileName() const
 {
-	if (_loadedSoundBuffer != nullptr)
-		return _loadedSoundBuffer->Filename;
+	if (_bufferedAudioAsset != nullptr)
+		return _bufferedAudioAsset->Filename;
 
-	if (_streamedSoundBuffer != nullptr)
-		return _streamedSoundBuffer->Filename;
+	if (_streamedAudioAsset != nullptr)
+		return _streamedAudioAsset->Filename;
 
 	static std::string empty;
 	return empty;
@@ -148,19 +154,15 @@ const std::string& CN3SndObj::FileName() const
 
 bool CN3SndObj::IsPlaying() const
 {
-	if (_sourceId == INVALID_SOURCE_ID)
+	if (_handle == nullptr)
 		return false;
 
-	ALint state = 0;
-	alGetSourcei(_sourceId, AL_SOURCE_STATE, &state);
-	alGetError(); /* eat any errors, this is OK */
-
-	return state == AL_PLAYING;
+	return _handle->IsPlaying;
 }
 
 void CN3SndObj::Tick()
 {
-	if (_sourceId == INVALID_SOURCE_ID)
+	if (_handle == nullptr)
 	{
 		if (IsStarted())
 			Stop();
@@ -229,57 +231,148 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	if (bImmediately)
 		Stop();
 
-	if (GetType() == SNDTYPE_3D
-		|| GetType() == SNDTYPE_2D
-		|| GetType() == SNDTYPE_STREAM) // TODO: replace this with streaming functionality
+	if (_handle == nullptr)
 	{
-		// This should've been setup by Create().
-		if (_loadedSoundBuffer == nullptr)
+		if (GetType() == SNDTYPE_2D
+			|| GetType() == SNDTYPE_3D)
+			_handle = BufferedAudioHandle::Create(_bufferedAudioAsset);
+		else if (GetType() == SNDTYPE_STREAM)
+			_handle = StreamedAudioHandle::Create(_streamedAudioAsset);
+
+		if (_handle == nullptr)
 			return;
 
-		// Not yet loaded, we should assign a source now.
-		if (_sourceId == INVALID_SOURCE_ID)
+		CN3Base::s_SndMgr.Add(_handle);
+	}
+	else
+	{
+		if (GetType() == SNDTYPE_2D
+			|| GetType() == SNDTYPE_3D)
+			_handle->Asset = _bufferedAudioAsset;
+		else if (GetType() == SNDTYPE_STREAM)
+			_handle->Asset = _streamedAudioAsset;
+	}
+
+	ALint isLooping = static_cast<ALint>(_isLooping);
+	bool playImmediately = false;
+	float gain = 0.0f;
+
+	if (delay == 0.0f
+		&& fFadeInTime == 0.0f)
+	{
+		_currentVolume = std::clamp(_maxVolume, 0.0f, 1.0f);
+
+		gain = _currentVolume;
+		playImmediately = true;
+	}
+
+	// Perform setup -- this is triggered after insertion, so the handle is added to the thread at this point
+	// and otherwise setup, ready to play.
+	if (GetType() == SNDTYPE_2D)
+	{
+		auto audioAsset = _bufferedAudioAsset;
+
+		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 		{
-			if (!CN3Base::s_SndMgr.PullSourceFromPool(&_sourceId))
-				return;
-
-			alSourcei(_sourceId, AL_BUFFER, _loadedSoundBuffer->BufferId);
-
+			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
 			if (AL_CHECK_ERROR())
-			{
-				CN3Base::s_SndMgr.RestoreSourceToPool(&_sourceId);
 				return;
-			}
 
-			if (GetType() == SNDTYPE_2D
-				|| GetType() == SNDTYPE_STREAM)
+			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_TRUE);
+			AL_CHECK_ERROR();
+
+			alSource3f(handle->SourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
+			AL_CHECK_ERROR();
+
+			alSourcef(handle->SourceId, AL_ROLLOFF_FACTOR, 0.0f);
+			AL_CHECK_ERROR();
+
+			alSourcei(handle->SourceId, AL_LOOPING, isLooping);
+			AL_CHECK_ERROR();
+
+			if (playImmediately)
 			{
-				alSourcei(_sourceId, AL_SOURCE_RELATIVE, AL_TRUE);
+				alSourcef(handle->SourceId, AL_GAIN, gain);
 				AL_CHECK_ERROR();
 
-				alSource3f(_sourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
+				alSourcePlay(handle->SourceId);
 				AL_CHECK_ERROR();
+			}
+		});
+	}
+	else if (GetType() == SNDTYPE_3D)
+	{
+		auto audioAsset = _bufferedAudioAsset;
+		bool hasPosition = false;
 
-				alSourcef(_sourceId, AL_ROLLOFF_FACTOR, 0.0f);
-				AL_CHECK_ERROR();
-			}
-			else
-			{
-				alSourcef(_sourceId, AL_ROLLOFF_FACTOR, 0.5f);
-				AL_CHECK_ERROR();
-			}
+		__Vector3 position;
+		if (pvPos != nullptr)
+		{
+			position = *pvPos;
+			hasPosition = true;
 		}
 
-		alSourcei(_sourceId, AL_LOOPING, static_cast<ALint>(_isLooping));
-		AL_CHECK_ERROR();
+		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+		{
+			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
+			if (AL_CHECK_ERROR())
+				return;
+
+			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_FALSE);
+			AL_CHECK_ERROR();
+
+			if (hasPosition)
+				alSource3f(handle->SourceId, AL_POSITION, position.x, position.y, position.z);
+			else
+				alSource3f(handle->SourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
+			AL_CHECK_ERROR();
+
+			alSourcef(handle->SourceId, AL_ROLLOFF_FACTOR, 0.5f);
+			AL_CHECK_ERROR();
+
+			alSourcei(handle->SourceId, AL_LOOPING, isLooping);
+			AL_CHECK_ERROR();
+
+			if (playImmediately)
+			{
+				alSourcef(handle->SourceId, AL_GAIN, gain);
+				AL_CHECK_ERROR();
+
+				alSourcePlay(handle->SourceId);
+				AL_CHECK_ERROR();
+			}
+		});
+	}
+	else if (GetType() == SNDTYPE_STREAM)
+	{
+		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+		{
+			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_TRUE);
+			AL_CHECK_ERROR();
+
+			alSource3f(handle->SourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
+			AL_CHECK_ERROR();
+
+			alSourcef(handle->SourceId, AL_ROLLOFF_FACTOR, 0.0f);
+			AL_CHECK_ERROR();
+
+			alSourcei(handle->SourceId, AL_LOOPING, isLooping);
+			AL_CHECK_ERROR();
+
+			if (playImmediately)
+			{
+				alSourcef(handle->SourceId, AL_GAIN, gain);
+				AL_CHECK_ERROR();
+
+				alSourcePlay(handle->SourceId);
+				AL_CHECK_ERROR();
+			}
+		});
 	}
 	else
 	{
 		return;
 	}
-
-	if (pvPos != nullptr)
-		SetPos(*pvPos);
 
 	_isStarted = true;
 	_fadeInTime = fFadeInTime;
@@ -287,38 +380,41 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	_startDelayTime = delay;
 	_tmpSecPerFrm = 0;
 	_state = SNDSTATE_DELAY;
-
-	if (delay == 0.0f
-		&& fFadeInTime == 0.0f)
-	{
-		SetVolume(_maxVolume);
-		PlayImpl();
-	}
 }
 
 void CN3SndObj::PlayImpl()
 {
-	if (_sourceId == INVALID_SOURCE_ID)
+	if (_handle == nullptr)
 		return;
 
 	_isStarted = true;
 
-	if (!IsPlaying())
-	{
-//		if (GetSndType() == SNDTYPE_STREAM)
-//			QueueStreamUpdate(SND_STREAM_UPDATE_INIT);
-//		else
-			alSourcePlay(_sourceId);
+	// Just sync this up for now, so there's no awkward window where
+	// we expect it to be playing but it's not yet so we perhaps stop it early.
+	// TODO: Fix this.
+	_handle->IsPlaying = true;
 
-		AL_CHECK_ERROR();
-	}
+	CN3Base::s_SndMgr.QueueCallback(_handle, [](AudioHandle* handle)
+	{
+		ALint state = 0;
+		alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
+		AL_CLEAR_ERROR_STATE();
+
+		// Check directly; we could use the handle's state but that won't check until the end of the tick
+		// It's a very cheap operation so it's fine to be more precise here.
+		if (state != AL_PLAYING)
+		{
+			alSourcePlay(handle->SourceId);
+			AL_CHECK_ERROR();
+		}
+	});
 }
 
 void CN3SndObj::Stop(float fFadeOutTime)
 {
 	_isStarted = false;
 
-	if (_sourceId == INVALID_SOURCE_ID)
+	if (_handle == nullptr)
 		return;
 
 	if (GetState() == SNDSTATE_FADEOUT
@@ -342,43 +438,29 @@ void CN3SndObj::Stop(float fFadeOutTime)
 void CN3SndObj::StopImpl()
 {
 	_isStarted = false;
+	ReleaseHandle();
+}
 
-	if (_sourceId == INVALID_SOURCE_ID)
+void CN3SndObj::ReleaseHandle()
+{
+	if (_handle == nullptr)
 		return;
 
-	RemoveSource();
+	CN3Base::s_SndMgr.Remove(_handle);
+	_handle.reset();
 }
 
-void CN3SndObj::RemoveSource()
+void CN3SndObj::SetPos(const __Vector3 vPos)
 {
-	//	if (GetType() == SNDTYPE_STREAM)
-//		QueueStreamUpdate(SND_STREAM_UPDATE_ONLY_REMOVE);
-//	else
-	{
-		if (_sourceId != INVALID_SOURCE_ID)
-		{
-			alSourceStop(_sourceId);
-			alGetError(); /* ignore errors */
-
-			alSourceRewind(_sourceId);
-			alGetError(); /* ignore errors */
-
-			alSourcei(_sourceId, AL_BUFFER, 0);
-			alGetError(); /* ignore errors */
-
-			CN3Base::s_SndMgr.RestoreSourceToPool(&_sourceId);
-		}
-	}
-}
-
-void CN3SndObj::SetPos(const __Vector3& vPos)
-{
-	if (_sourceId == INVALID_SOURCE_ID
+	if (_handle == nullptr
 		|| GetType() != SNDTYPE_3D)
 		return;
 
-	alSource3f(_sourceId, AL_POSITION, vPos.x, vPos.y, vPos.z);
-	AL_CHECK_ERROR();
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=](AudioHandle* handle)
+	{
+		alSource3f(handle->SourceId, AL_POSITION, vPos.x, vPos.y, vPos.z);
+		AL_CLEAR_ERROR_STATE();
+	});
 }
 
 void CN3SndObj::SetListenerPos(const __Vector3& vPos)

@@ -14,12 +14,12 @@
 #include <memory>
 #include <string>
 
-struct LoadedSoundBuffer;
-struct StreamedSoundBuffer;
+class BufferedAudioAsset;
+class StreamedAudioAsset;
+class AudioHandle;
 class CN3SndObj
 {
 protected:
-	uint32_t				_sourceId;
 	e_SndType				_type;
 	e_SndState				_state;
 
@@ -33,8 +33,9 @@ protected:
 	float					_startDelayTime;
 	float					_tmpSecPerFrm;
 
-	std::shared_ptr<LoadedSoundBuffer>		_loadedSoundBuffer;
-	std::shared_ptr<StreamedSoundBuffer>	_streamedSoundBuffer;
+	std::shared_ptr<AudioHandle> _handle;
+	std::shared_ptr<BufferedAudioAsset> _bufferedAudioAsset;
+	std::shared_ptr<StreamedAudioAsset> _streamedAudioAsset;
 
 public:
 	e_SndType GetType() const
@@ -86,15 +87,11 @@ public:
 protected:
 	void PlayImpl();
 	void StopImpl();
-	void RemoveSource();
+	void ReleaseHandle();
 
 public:
 	const std::string& FileName() const;
 
-	// Determines if the sound is effectively playing.
-	// This fetches the live status.
-	// If it can be avoided, use IsStarted() instead, as this
-	// tells us whether we started playing it or not.
 	bool	IsPlaying() const;
 	void	SetVolume(float volume);	// range : [0.0f, 1.0f]
 
@@ -106,7 +103,7 @@ public:
 	void	Stop(float fFadeOutTime = 0.0f);
 	void	Tick();
 
-	void	SetPos(const __Vector3& vPos);
+	void	SetPos(const __Vector3 vPos);
 
 	CN3SndObj();
 	virtual ~CN3SndObj();

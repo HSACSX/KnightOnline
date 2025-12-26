@@ -5,9 +5,10 @@
 #include "N3SndMgr.h"
 #include "N3SndObj.h"
 #include "N3Base.h"
+#include "AudioThread.h"
+#include "AudioDecoderThread.h"
 #include "WaveFormat.h"
-#include "LoadedSoundBuffer.h"
-#include "StreamedSoundBuffer.h"
+#include "AudioAsset.h"
 #include "al_wrapper.h"
 
 #include <shared/StringUtils.h>
@@ -37,7 +38,7 @@ CN3SndMgr::~CN3SndMgr()
 	Release();
 }
 
-// Initialize the suond engine.
+// Initialize the sound engine.
 void CN3SndMgr::Init()
 {
 	Release();
@@ -121,6 +122,12 @@ bool CN3SndMgr::InitOpenAL()
 		while (i < generatedSourceIdCount)
 			_unassignedStreamSourceIds.push_back(generatedSourceIds[i++]);
 	}
+
+	_thread = std::make_unique<AudioThread>();
+	_thread->start();
+
+	_decoderThread = std::make_unique<AudioDecoderThread>();
+	_decoderThread->start();
 
 	return true;
 }
@@ -294,6 +301,18 @@ void CN3SndMgr::Release()
 	for (CN3SndObj* pSndObj : m_SndObjStreams)
 		delete pSndObj;
 	m_SndObjStreams.clear();
+
+	if (_decoderThread != nullptr)
+	{
+		_decoderThread->shutdown();
+		_decoderThread.reset();
+	}
+
+	if (_thread != nullptr)
+	{
+		_thread->shutdown();
+		_thread.reset();
+	}
 
 	ReleaseOpenAL();
 }
@@ -552,7 +571,7 @@ bool CN3SndMgr::DecodeMp3ToWav(std::string& filename)
 	return true;
 }
 
-bool CN3SndMgr::PullSourceFromPool(uint32_t* sourceId)
+bool CN3SndMgr::PullBufferedSourceIdFromPool(uint32_t* sourceId)
 {
 	if (sourceId == nullptr)
 		return false;
@@ -569,7 +588,7 @@ bool CN3SndMgr::PullSourceFromPool(uint32_t* sourceId)
 	return true;
 }
 
-void CN3SndMgr::RestoreSourceToPool(uint32_t* sourceId)
+void CN3SndMgr::RestoreBufferedSourceIdToPool(uint32_t* sourceId)
 {
 	if (sourceId == nullptr
 		|| *sourceId == INVALID_SOURCE_ID)
@@ -587,42 +606,121 @@ void CN3SndMgr::RestoreSourceToPool(uint32_t* sourceId)
 	*sourceId = INVALID_SOURCE_ID;
 }
 
-std::shared_ptr<LoadedSoundBuffer> CN3SndMgr::GetLoadedSoundBuffer(const std::string& filename)
+bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 {
-	std::shared_ptr<LoadedSoundBuffer> loadedSoundBuffer;
-	std::lock_guard<std::mutex> lock(_loadedSoundBufferByFilenameMutex);
+	if (sourceId == nullptr)
+		return false;
 
-	auto itr = _loadedSoundBufferByFilenameMap.find(filename);
-	if (itr == _loadedSoundBufferByFilenameMap.end())
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+	// Too many already active.
+	if (_unassignedStreamSourceIds.empty())
+		return INVALID_SOURCE_ID;
+
+	*sourceId = _unassignedStreamSourceIds.front();
+	_unassignedStreamSourceIds.pop_front();
+	_assignedStreamSourceIds.insert(*sourceId);
+	return true;
+}
+
+void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
+{
+	if (sourceId == nullptr
+		|| *sourceId == INVALID_SOURCE_ID)
+		return;
+
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
+
+	auto itr = _assignedStreamSourceIds.find(*sourceId);
+	if (itr == _assignedStreamSourceIds.end())
+		return;
+
+	_assignedStreamSourceIds.erase(itr);
+	_unassignedStreamSourceIds.push_back(*sourceId);
+
+	*sourceId = INVALID_SOURCE_ID;
+}
+
+std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std::string& filename)
+{
+	std::shared_ptr<BufferedAudioAsset> audioAsset;
+	std::lock_guard<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
+
+	auto itr = _bufferedAudioAssetByFilenameMap.find(filename);
+	if (itr == _bufferedAudioAssetByFilenameMap.end())
 	{
-		loadedSoundBuffer = std::make_shared<LoadedSoundBuffer>();
-		if (loadedSoundBuffer == nullptr)
+		audioAsset = std::make_shared<BufferedAudioAsset>();
+		if (audioAsset == nullptr)
 			return nullptr;
 
-		if (!loadedSoundBuffer->LoadFromFile(filename))
+		if (!audioAsset->LoadFromFile(filename))
 			return nullptr;
 
-		_loadedSoundBufferByFilenameMap.insert(std::make_pair(filename, loadedSoundBuffer));
+		_bufferedAudioAssetByFilenameMap.insert(std::make_pair(filename, audioAsset));
 	}
 	else
 	{
-		loadedSoundBuffer = itr->second;
+		audioAsset = itr->second;
 	}
 
-	++loadedSoundBuffer->RefCount;
-	return loadedSoundBuffer;
+	++audioAsset->RefCount;
+	return audioAsset;
 }
 
-void CN3SndMgr::RemoveLoadedSoundBuffer(LoadedSoundBuffer* loadedSoundBuffer)
+void CN3SndMgr::RemoveBufferedAudioAsset(BufferedAudioAsset* audioAsset)
 {
-	std::lock_guard lock(_loadedSoundBufferByFilenameMutex);
-	if (--loadedSoundBuffer->RefCount == 0)
-		_loadedSoundBufferByFilenameMap.erase(loadedSoundBuffer->Filename);
+	std::lock_guard lock(_bufferedAudioAssetByFilenameMutex);
+	if (--audioAsset->RefCount == 0)
+		_bufferedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 }
 
-void CN3SndMgr::RemoveStreamedSoundBuffer(StreamedSoundBuffer* streamedSoundBuffer)
+std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std::string& filename)
 {
-	std::lock_guard lock(_streamedSoundBufferByFilenameMutex);
-	if (--streamedSoundBuffer->RefCount == 0)
-		_streamedSoundBufferByFilenameMap.erase(streamedSoundBuffer->Filename);
+	std::shared_ptr<StreamedAudioAsset> audioAsset;
+	std::lock_guard<std::mutex> lock(_streamedAudioAssetByFilenameMutex);
+
+	auto itr = _streamedAudioAssetByFilenameMap.find(filename);
+	if (itr == _streamedAudioAssetByFilenameMap.end())
+	{
+		audioAsset = std::make_shared<StreamedAudioAsset>();
+		if (audioAsset == nullptr)
+			return nullptr;
+
+		if (!audioAsset->LoadFromFile(filename))
+			return nullptr;
+
+		_streamedAudioAssetByFilenameMap.insert(std::make_pair(filename, audioAsset));
+	}
+	else
+	{
+		audioAsset = itr->second;
+	}
+
+	++audioAsset->RefCount;
+	return audioAsset;
+}
+
+void CN3SndMgr::RemoveStreamedAudioAsset(StreamedAudioAsset* audioAsset)
+{
+	std::lock_guard lock(_streamedAudioAssetByFilenameMutex);
+	if (--audioAsset->RefCount == 0)
+		_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
+}
+
+void CN3SndMgr::Add(std::shared_ptr<AudioHandle> handle)
+{
+	if (_thread != nullptr)
+		_thread->Add(std::move(handle));
+}
+
+void CN3SndMgr::QueueCallback(std::shared_ptr<AudioHandle> handle, AudioThread::AudioCallback callback)
+{
+	if (_thread != nullptr)
+		_thread->QueueCallback(std::move(handle), std::move(callback));
+}
+
+void CN3SndMgr::Remove(std::shared_ptr<AudioHandle> handle)
+{
+	if (_thread != nullptr)
+		_thread->Remove(std::move(handle));
 }

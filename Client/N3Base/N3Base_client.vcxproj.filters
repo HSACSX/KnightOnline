@@ -16,9 +16,6 @@
     <Filter Include="Audio">
       <UniqueIdentifier>{77bf4e45-1624-4210-97fb-4054d424d020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Audio\Sound buffers">
-      <UniqueIdentifier>{c7581e9e-88c4-4fe5-aceb-d4512d992cff}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N3Eng.h">
@@ -249,14 +246,20 @@
     <ClInclude Include="N3SndDef.h">
       <Filter>Audio</Filter>
     </ClInclude>
-    <ClInclude Include="LoadedSoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
+    <ClInclude Include="al_wrapper.h">
+      <Filter>Audio</Filter>
     </ClInclude>
-    <ClInclude Include="StreamedSoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
+    <ClInclude Include="AudioAsset.h">
+      <Filter>Audio</Filter>
     </ClInclude>
-    <ClInclude Include="SoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
+    <ClInclude Include="AudioDecoderThread.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHandle.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioThread.h">
+      <Filter>Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -461,8 +464,17 @@
     <ClCompile Include="N3SndMgr.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
-    <ClCompile Include="SoundBuffer.cpp">
-      <Filter>Audio\Sound buffers</Filter>
+    <ClCompile Include="AudioAsset.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioDecoderThread.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioHandle.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioThread.cpp">
+      <Filter>Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

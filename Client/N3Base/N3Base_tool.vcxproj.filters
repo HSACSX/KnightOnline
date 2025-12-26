@@ -16,9 +16,6 @@
     <Filter Include="Audio">
       <UniqueIdentifier>{8b400076-1600-4d39-bedb-d2d8893e5b17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Audio\Sound buffers">
-      <UniqueIdentifier>{fdf625e8-207e-4988-a5fd-d990943e5eae}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N3Eng.h">
@@ -255,6 +252,18 @@
     <ClInclude Include="N3TableBaseImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="al_wrapper.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioAsset.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioDecoderThread.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioThread.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
     <ClInclude Include="N3SndDef.h">
       <Filter>Audio</Filter>
     </ClInclude>
@@ -267,16 +276,7 @@
     <ClInclude Include="WaveFormat.h">
       <Filter>Audio</Filter>
     </ClInclude>
-    <ClInclude Include="LoadedSoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="StreamedSoundBuffer.h">
-      <Filter>Audio\Sound buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="al_wrapper.h">
+    <ClInclude Include="AudioHandle.h">
       <Filter>Audio</Filter>
     </ClInclude>
   </ItemGroup>
@@ -491,14 +491,23 @@
     <ClCompile Include="N3TableBaseImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="N3SndObj.cpp">
+    <ClCompile Include="AudioAsset.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioDecoderThread.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioThread.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
     <ClCompile Include="N3SndMgr.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
-    <ClCompile Include="SoundBuffer.cpp">
-      <Filter>Audio\Sound buffers</Filter>
+    <ClCompile Include="N3SndObj.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioHandle.cpp">
+      <Filter>Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

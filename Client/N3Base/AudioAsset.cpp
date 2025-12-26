@@ -1,6 +1,5 @@
 ﻿#include "StdAfxBase.h"
-#include "LoadedSoundBuffer.h"
-#include "StreamedSoundBuffer.h"
+#include "AudioAsset.h"
 #include "WaveFormat.h"
 #include "al_wrapper.h"
 
@@ -12,11 +11,11 @@
 // We follow Frictional Games' implementation for scanning through RIFF chunks
 // https://github.com/FrictionalGames/OALWrapper/blob/973659d5700720a87063789a591b811ce5af7dbe/sources/OAL_WAVSample.cpp
 
-SoundBuffer::SoundBuffer()
+BufferedAudioAsset::BufferedAudioAsset()
 {
 }
 
-SoundBuffer::~SoundBuffer()
+BufferedAudioAsset::~BufferedAudioAsset()
 {
 	if (BufferId != INVALID_BUFFER_ID)
 	{
@@ -52,7 +51,7 @@ static const uint8_t* find_chunk(const uint8_t* start, const uint8_t* end, const
 	return nullptr;
 }
 
-bool LoadedSoundBuffer::LoadFromFile(const std::string& filename)
+bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 {
 	// Expect ".wav"
 	if (filename.length() < 4
@@ -150,9 +149,13 @@ bool LoadedSoundBuffer::LoadFromFile(const std::string& filename)
 	return true;
 }
 
-bool StreamedSoundBuffer::LoadFromFile(const std::string& filename)
+StreamedAudioAsset::StreamedAudioAsset()
 {
-	// Expect ".mp3" (TODO: or .wav)...
+}
+
+bool StreamedAudioAsset::LoadFromFile(const std::string& filename)
+{
+	// Expect ".mp3"
 	if (filename.length() < 4)
 		return false;
 
@@ -169,4 +172,8 @@ bool StreamedSoundBuffer::LoadFromFile(const std::string& filename)
 	File = std::move(file);
 	Filename = filename;
 	return true;
+}
+
+StreamedAudioAsset::~StreamedAudioAsset()
+{
 }

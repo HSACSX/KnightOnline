@@ -6,6 +6,7 @@
 #include <AL/al.h>
 
 #define AL_CHECK_ERROR() AL_CHECK_ERROR_IMPL(__FILE__, __LINE__)
+#define AL_CLEAR_ERROR_STATE() alGetError()
 
 bool AL_CHECK_ERROR_IMPL(const char* file, int line);
 

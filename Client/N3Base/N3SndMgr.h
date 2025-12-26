@@ -20,13 +20,18 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "AudioThread.h"
+
 struct ALCdevice;
 struct ALCcontext;
-struct LoadedSoundBuffer;
-struct StreamedSoundBuffer;
+class AudioDecoderThread;
+class BufferedAudioAsset;
 class CN3SndObj;
+class StreamedAudioAsset;
 class CN3SndMgr
 {
+	friend class BufferedAudioHandle;
+	friend class StreamedAudioHandle;
 	friend class CN3SndObj;
 
 protected:
@@ -47,11 +52,14 @@ protected:
 	std::unordered_set<uint32_t>	_assignedStreamSourceIds;
 	std::mutex						_sourceIdMutex;
 
-	std::unordered_map<std::string, std::shared_ptr<LoadedSoundBuffer>> _loadedSoundBufferByFilenameMap;
-	std::mutex _loadedSoundBufferByFilenameMutex;
+	std::unordered_map<std::string, std::shared_ptr<BufferedAudioAsset>> _bufferedAudioAssetByFilenameMap;
+	std::mutex _bufferedAudioAssetByFilenameMutex;
 
-	std::unordered_map<std::string, std::shared_ptr<StreamedSoundBuffer>> _streamedSoundBufferByFilenameMap;
-	std::mutex _streamedSoundBufferByFilenameMutex;
+	std::unordered_map<std::string, std::shared_ptr<StreamedAudioAsset>> _streamedAudioAssetByFilenameMap;
+	std::mutex _streamedAudioAssetByFilenameMutex;
+
+	std::unique_ptr<AudioThread> _thread;
+	std::unique_ptr<AudioDecoderThread> _decoderThread;
 
 public:
 	void SetEnable(bool bEnable)
@@ -81,13 +89,21 @@ private:
 	bool DecodeMp3ToWav(std::string& filename);
 
 protected:
-	bool PullSourceFromPool(uint32_t* sourceId);
-	void RestoreSourceToPool(uint32_t* sourceId);
+	bool PullBufferedSourceIdFromPool(uint32_t* sourceId);
+	void RestoreBufferedSourceIdToPool(uint32_t* sourceId);
 
-	std::shared_ptr<LoadedSoundBuffer> GetLoadedSoundBuffer(const std::string& filename);
-	void RemoveLoadedSoundBuffer(LoadedSoundBuffer* loadedSoundBuffer);
+	bool PullStreamedSourceIdFromPool(uint32_t* sourceId);
+	void RestoreStreamedSourceIdToPool(uint32_t* sourceId);
 
-	void RemoveStreamedSoundBuffer(StreamedSoundBuffer* streamedSoundBuffer);
+	std::shared_ptr<BufferedAudioAsset> LoadBufferedAudioAsset(const std::string& filename);
+	void RemoveBufferedAudioAsset(BufferedAudioAsset* audioAsset);
+
+	std::shared_ptr<StreamedAudioAsset> LoadStreamedAudioAsset(const std::string& filename);
+	void RemoveStreamedAudioAsset(StreamedAudioAsset* audioAsset);
+
+	void Add(std::shared_ptr<AudioHandle> handle);
+	void QueueCallback(std::shared_ptr<AudioHandle> handle, AudioThread::AudioCallback callback);
+	void Remove(std::shared_ptr<AudioHandle> handle);
 };
 
 #endif // !defined(AFX_N3SNDMGR_H__9CB531B0_4FEB_4360_8141_D0BF61347BD7__INCLUDED_)
