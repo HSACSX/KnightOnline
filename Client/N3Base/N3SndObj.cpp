@@ -203,15 +203,17 @@ void CN3SndObj::Tick()
 
 	if (GetState() == SNDSTATE_PLAY)
 	{
-		if (!_isLooping)
-			_state = SNDSTATE_STOP;
+		if (!_isLooping
+			&& _handle->FinishedPlaying)
+			_state = SNDSTATE_FADEOUT;
 	}
-	else if (GetState() == SNDSTATE_FADEOUT)
+	
+	if (GetState() == SNDSTATE_FADEOUT)
 	{
 		if (_tmpSecPerFrm >= _fadeOutTime)
 		{
 			_tmpSecPerFrm = 0;
-			_state = SNDSTATE_STOP;
+
 			SetVolume(0.0f);
 			StopImpl();
 		}
@@ -388,6 +390,7 @@ void CN3SndObj::PlayImpl()
 		return;
 
 	_isStarted = true;
+	_state = SNDSTATE_PLAY;
 
 	CN3Base::s_SndMgr.QueueCallback(_handle, [](AudioHandle* handle)
 	{
@@ -421,19 +424,16 @@ void CN3SndObj::Stop(float fFadeOutTime)
 	_fadeOutTime = fFadeOutTime;
 
 	if (fFadeOutTime == 0.0f)
-	{
-		_state = SNDSTATE_STOP;
 		StopImpl();
-	}
 	else
-	{
 		_state = SNDSTATE_FADEOUT;
-	}
 }
 
 void CN3SndObj::StopImpl()
 {
 	_isStarted = false;
+	_state = SNDSTATE_STOP;
+
 	ReleaseHandle();
 }
 
