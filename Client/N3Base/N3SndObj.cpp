@@ -152,12 +152,12 @@ const std::string& CN3SndObj::FileName() const
 	return empty;
 }
 
-bool CN3SndObj::IsPlaying() const
+bool CN3SndObj::IsFinished() const
 {
 	if (_handle == nullptr)
 		return false;
 
-	return _handle->IsPlaying;
+	return _handle->FinishedPlaying;
 }
 
 void CN3SndObj::Tick()
@@ -389,19 +389,15 @@ void CN3SndObj::PlayImpl()
 
 	_isStarted = true;
 
-	// Just sync this up for now, so there's no awkward window where
-	// we expect it to be playing but it's not yet so we perhaps stop it early.
-	// TODO: Fix this.
-	_handle->IsPlaying = true;
-
 	CN3Base::s_SndMgr.QueueCallback(_handle, [](AudioHandle* handle)
 	{
-		ALint state = 0;
+		handle->StartedPlaying = true;
+		handle->FinishedPlaying = false;
+
+		ALint state = AL_INITIAL;
 		alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
 		AL_CLEAR_ERROR_STATE();
 
-		// Check directly; we could use the handle's state but that won't check until the end of the tick
-		// It's a very cheap operation so it's fine to be more precise here.
 		if (state != AL_PLAYING)
 		{
 			alSourcePlay(handle->SourceId);

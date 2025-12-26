@@ -6,6 +6,17 @@
 
 #include "al_wrapper.h"
 
+AudioHandle::AudioHandle()
+{
+	SourceId		= INVALID_SOURCE_ID;
+	StartedPlaying	= false;
+	FinishedPlaying	= false;
+}
+
+AudioHandle::~AudioHandle()
+{
+}
+
 std::shared_ptr<BufferedAudioHandle> BufferedAudioHandle::Create(std::shared_ptr<BufferedAudioAsset> asset)
 {
 	if (asset == nullptr)

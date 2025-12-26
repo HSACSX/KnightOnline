@@ -18,11 +18,13 @@ public:
 	static constexpr uint32_t INVALID_SOURCE_ID = ~0U;
 
 	e_AudioHandleType			HandleType;
-	bool						IsPlaying	= false;
-	uint32_t					SourceId	= INVALID_SOURCE_ID;
+	bool						StartedPlaying;
+	bool						FinishedPlaying;
+	uint32_t					SourceId;
 	std::shared_ptr<AudioAsset>	Asset;
 
-	virtual ~AudioHandle() {}
+	AudioHandle();
+	virtual ~AudioHandle();
 };
 
 class BufferedAudioAsset;

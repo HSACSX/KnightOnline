@@ -29,7 +29,7 @@ public:
 	void Remove(std::shared_ptr<AudioHandle> handle);
 
 private:
-	void init_and_play(AudioHandle* handle);
+	void reset(AudioHandle* handle);
 	void tick(AudioHandle* handle);
 
 protected:

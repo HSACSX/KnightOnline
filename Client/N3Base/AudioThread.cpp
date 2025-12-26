@@ -37,7 +37,7 @@ void AudioThread::thread_loop()
 				switch (type)
 				{
 					case AUDIO_QUEUE_ADD:
-						init_and_play(handle.get());
+						reset(handle.get());
 						handles[handle->SourceId] = std::move(handle);
 						break;
 
@@ -90,16 +90,26 @@ void AudioThread::Remove(std::shared_ptr<AudioHandle> handle)
 	_pendingQueue.push_back(std::make_tuple(AUDIO_QUEUE_REMOVE, std::move(handle), nullptr));
 }
 
-void AudioThread::init_and_play(AudioHandle* handle)
+void AudioThread::reset(AudioHandle* handle)
 {
+	// TODO
+	alSourceRewind(handle->SourceId);
+
+	handle->StartedPlaying = false;
+	handle->FinishedPlaying = false;
+
 	// ResetStream(&stream, true);
-	alSourcePlay(handle->SourceId);
 }
 
 void AudioThread::tick(AudioHandle* handle)
 {
-	ALint state = 0;
-	alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
-	handle->IsPlaying = (state == AL_PLAYING);
-	AL_CLEAR_ERROR_STATE();
+	if (handle->StartedPlaying
+		&& !handle->FinishedPlaying)
+	{
+		ALint state = AL_INITIAL;
+		alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
+		if (!AL_CHECK_ERROR()
+			&& state != AL_PLAYING)
+			handle->FinishedPlaying = true;
+	}
 }

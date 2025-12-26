@@ -232,14 +232,14 @@ void CN3SndMgr::Tick()
 		CN3SndObj* pSndObj = *it;
 		pSndObj->Tick();
 
-		if (pSndObj->IsPlaying())
-		{
-			++it;
-		}
-		else
+		if (pSndObj->IsFinished())
 		{
 			delete pSndObj;
 			it = m_SndObjs_PlayOnceAndRelease.erase(it);
+		}
+		else
+		{
+			++it;
 		}
 	}
 

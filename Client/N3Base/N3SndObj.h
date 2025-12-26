@@ -92,7 +92,7 @@ protected:
 public:
 	const std::string& FileName() const;
 
-	bool	IsPlaying() const;
+	bool	IsFinished() const;
 	void	SetVolume(float volume);	// range : [0.0f, 1.0f]
 
 	void	Init();
