@@ -52,21 +52,6 @@ struct RIFF_Header
 	char			FileFormatID[4]; // 'W', 'A', 'V', 'E'
 };
 
-struct RIFF_Header_Out
-{
-	// RIFF file identifier
-	char			FileTypeID[4]	= { 'R', 'I', 'F', 'F' };
-
-	// Overall file size minus 8 bytes (append the data size)
-	uint32_t		FileSize		= sizeof(RIFF_Header_Out) - 8;
-
-	// WAV file format identifier
-	char			FileFormatID[4]	= { 'W', 'A', 'V', 'E' };
-
-	WAVE_Format		Format			= {};
-	WAVE_Data		Data			= {};
-};
-
 struct RIFF_SubChunk
 {
 	char			SubChunkID[4];

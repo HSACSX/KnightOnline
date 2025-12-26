@@ -89,7 +89,6 @@ protected:
 	void RestoreStreamedSourceIdToPool(uint32_t* sourceId);
 
 	std::shared_ptr<BufferedAudioAsset> LoadBufferedAudioAsset(const std::string& filename);
-
 	std::shared_ptr<StreamedAudioAsset> LoadStreamedAudioAsset(const std::string& filename);
 	void RemoveAudioAsset(AudioAsset* audioAsset);
 

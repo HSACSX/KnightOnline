@@ -89,7 +89,15 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 
 	if (eType == SNDTYPE_2D
 		|| eType == SNDTYPE_3D)
+	{
 		_audioAsset = CN3Base::s_SndMgr.LoadBufferedAudioAsset(szFN);
+
+		// Fallback to streaming if unsupported
+		// Buffering is only supported for small WAV (PCM) files.
+		// Streaming supports MP3.
+		if (_audioAsset == nullptr)
+			_audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
+	}
 	else if (eType == SNDTYPE_STREAM)
 		_audioAsset = CN3Base::s_SndMgr.LoadStreamedAudioAsset(szFN);
 	else
@@ -456,7 +464,7 @@ void CN3SndObj::Looping(bool loop)
 	_handle->IsLooping = true;
 
 	// Streams need to manually handle their looping.
-	if (GetType() == SNDTYPE_STREAM)
+	if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
 		return;
 
 	ALint isLooping = static_cast<ALint>(_isLooping);
