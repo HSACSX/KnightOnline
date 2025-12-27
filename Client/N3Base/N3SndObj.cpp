@@ -234,9 +234,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			if (playImmediately)
 				_soundSettings->CurrentGain = _soundSettings->MaxGain;
 
-			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
-			if (AL_CHECK_ERROR())
-				return;
+			if (handle->Asset->Type == AUDIO_ASSET_BUFFERED)
+			{
+				alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
+				if (AL_CHECK_ERROR())
+					return;
+			}
 
 			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_TRUE);
 			AL_CHECK_ERROR();
@@ -293,9 +296,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			if (playImmediately)
 				_soundSettings->CurrentGain = _soundSettings->MaxGain;
 
-			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
-			if (AL_CHECK_ERROR())
-				return;
+			if (handle->Asset->Type == AUDIO_ASSET_BUFFERED)
+			{
+				alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
+				if (AL_CHECK_ERROR())
+					return;
+			}
 
 			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_FALSE);
 			AL_CHECK_ERROR();
