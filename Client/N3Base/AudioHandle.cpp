@@ -97,11 +97,29 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 		int err = mpg123_format_none(handle->Mp3Handle);
 		assert(err == MPG123_OK);
 
+		if (err != MPG123_OK)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
+
 		err = mpg123_format(handle->Mp3Handle, asset->SampleRate, MPG123_STEREO, MPG123_ENC_SIGNED_16);
 		assert(err == MPG123_OK);
 
+		if (err != MPG123_OK)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
+
 		err = mpg123_replace_reader_handle(handle->Mp3Handle, mpg123_filereader_read, mpg123_filereader_seek, mpg123_filereader_cleanup);
 		assert(err == MPG123_OK);
+
+		if (err != MPG123_OK)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
 
 		// Position the reader handle at the start of the file.
 		handle->FileReaderHandle.File	= streamedAudioAsset->File.get();
@@ -109,6 +127,12 @@ std::shared_ptr<StreamedAudioHandle> StreamedAudioHandle::Create(std::shared_ptr
 	
 		err = mpg123_open_handle(handle->Mp3Handle, &handle->FileReaderHandle);
 		assert(err == MPG123_OK);
+
+		if (err != MPG123_OK)
+		{
+			CN3Base::s_SndMgr.RestoreStreamedSourceIdToPool(&sourceId);
+			return nullptr;
+		}
 
 		if (streamedAudioAsset->PcmChunkSize == 0)
 			streamedAudioAsset->PcmChunkSize = mpg123_outblock(handle->Mp3Handle);
