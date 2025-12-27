@@ -178,7 +178,7 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 		return false;
 
 	Filename	= filename;
-	PcmFormat	= pcmFormat;
+	AlFormat	= alFormat;
 	SampleRate	= static_cast<int32_t>(sampleRate);
 
 	return true;
