@@ -22,8 +22,8 @@
 
 #include "AudioThread.h"
 
-struct ALCdevice;
 struct ALCcontext;
+struct ALCdevice;
 class BufferedAudioAsset;
 class CN3SndObj;
 class StreamedAudioAsset;

@@ -15,10 +15,18 @@ void mpg123_filereader_cleanup(void* userData);
 AudioHandle::AudioHandle()
 {
 	HandleType		= AUDIO_HANDLE_UNKNOWN;
+	IsManaged		= false;
 	StartedPlaying	= false;
 	FinishedPlaying	= false;
 	IsLooping		= false;
 	SourceId		= INVALID_SOURCE_ID;
+
+	State			= SNDSTATE_INITIAL;
+
+	FadeInTime		= 0.0f;
+	FadeOutTime		= 0.0f;
+	StartDelayTime	= 0.0f;
+	Timer			= 0.0f;
 }
 
 AudioHandle::~AudioHandle()

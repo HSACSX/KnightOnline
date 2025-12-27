@@ -500,6 +500,7 @@ void CN3SndMgr::RemoveAudioAsset(AudioAsset* audioAsset)
 			_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 	}
 }
+
 void CN3SndMgr::Add(std::shared_ptr<AudioHandle> handle)
 {
 	if (_thread != nullptr)

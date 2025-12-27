@@ -6390,26 +6390,39 @@ void CGameProcMain::MsgRecv_WareHouseOpen(Packet& pkt)		// 보관함 오픈..
 
 void CGameProcMain::PlayBGM_Town()
 {
+	TRACE("PlayBGM_Town");
+
 	if (m_pSnd_Battle != nullptr)
 		m_pSnd_Battle->Stop(3.0f);
 
 	if (m_pSnd_Town == nullptr || m_pSnd_Town->IsStarted())
+	{
+		TRACE("PlayBGM_Town - already started");
 		return;
+	}
 
 	m_pSnd_Town->SetMaxVolume(0.6f);
 	m_pSnd_Town->Play(nullptr, 3.0f); // 전투 음악 설정.. 해제는 주위에 몬스터가 없을때 한다..
+	TRACE("PlayBGM_Town - play");
 }
 
 void CGameProcMain::PlayBGM_Battle()
 {
+	TRACE("PlayBGM_Battle");
+
 	if (m_pSnd_Town != nullptr)
 		m_pSnd_Town->Stop(3.0f);
 
 	if (m_pSnd_Battle == nullptr || m_pSnd_Battle->IsStarted())
+	{
+		TRACE("PlayBGM_Battle - already started");
 		return;
+	}
 
 	m_pSnd_Battle->SetMaxVolume(0.8f);
 	m_pSnd_Battle->Play(nullptr, 3.0f); // 전투 음악 설정.. 해제는 주위에 몬스터가 없을때 한다..
+
+	TRACE("PlayBGM_Battle - play");
 }
 
 void CGameProcMain::ReleaseSound()

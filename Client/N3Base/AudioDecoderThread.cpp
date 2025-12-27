@@ -70,7 +70,6 @@ void AudioDecoderThread::Add(std::shared_ptr<StreamedAudioHandle> handle)
 void AudioDecoderThread::InitialDecode(StreamedAudioHandle* handle)
 {
 	// Force an initial decode *now* from the main audio thread
-	std::scoped_lock lock(_decoderMutex);
 	decode_impl(handle);
 }
 

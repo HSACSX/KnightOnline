@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "N3SndDef.h"
+
 #include <memory>
 #include <vector>
 #include <queue>
@@ -20,12 +22,22 @@ class AudioHandle
 public:
 	static constexpr uint32_t INVALID_SOURCE_ID = ~0U;
 
-	e_AudioHandleType			HandleType;
-	bool						StartedPlaying;
-	bool						FinishedPlaying;
-	bool						IsLooping;
-	uint32_t					SourceId;
-	std::shared_ptr<AudioAsset>	Asset;
+	e_AudioHandleType				HandleType;
+	std::atomic<bool>				IsManaged;
+	bool							StartedPlaying;
+	bool							FinishedPlaying;
+	bool							IsLooping;
+	uint32_t						SourceId;
+	std::shared_ptr<AudioAsset>		Asset;
+
+	e_SndState						State;
+
+	std::shared_ptr<SoundSettings>	Settings;
+
+	float							FadeInTime;
+	float							FadeOutTime;
+	float							StartDelayTime;
+	float							Timer;
 
 	AudioHandle();
 	virtual ~AudioHandle();

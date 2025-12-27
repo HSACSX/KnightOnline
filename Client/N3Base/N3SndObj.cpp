@@ -22,7 +22,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-bool AL_CHECK_ERROR_IMPL(const char* file, int line)
+bool al_check_error_impl(const char* file, int line)
 {
 	ALenum error = alGetError();
 	if (error == AL_NO_ERROR)
@@ -37,18 +37,11 @@ bool AL_CHECK_ERROR_IMPL(const char* file, int line)
 CN3SndObj::CN3SndObj()
 {
 	_type = SNDTYPE_UNKNOWN;
-	_state = SNDSTATE_STOP;
 
 	_isStarted = false;
 	_isLooping = false;
 
-	_currentVolume = 0.0f;
-	_maxVolume = 1.0f;
-
-	_fadeInTime = 0;
-	_fadeOutTime = 0;
-	_startDelayTime = 0;
-	_tmpSecPerFrm = 0;
+	_soundSettings = std::make_shared<SoundSettings>();
 }
 
 CN3SndObj::~CN3SndObj()
@@ -60,16 +53,8 @@ void CN3SndObj::Init()
 {
 	Release();
 
-	_state = SNDSTATE_STOP;
 	_isStarted = false;
 	_isLooping = false;
-	_currentVolume = 0.0f;
-	_maxVolume = 1.0f;
-
-	_startDelayTime = 0;
-	_tmpSecPerFrm = 0;
-	_fadeInTime = 0;
-	_fadeOutTime = 0;
 }
 
 void CN3SndObj::Release()
@@ -118,17 +103,23 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 //	range : [0.0f, 1.0f]
 void CN3SndObj::SetVolume(float currentVolume)
 {
+	currentVolume = std::clamp(currentVolume, 0.0f, 1.0f);
+	_soundSettings->CurrentGain = currentVolume;
+
 	if (_handle == nullptr)
 		return;
 
-	_currentVolume = std::clamp(currentVolume, 0.0f, 1.0f);
-
-	float gain = _currentVolume;
 	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 	{
-		alSourcef(handle->SourceId, AL_GAIN, _currentVolume);
+		alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
 		AL_CHECK_ERROR();
 	});
+}
+
+void CN3SndObj::SetMaxVolume(float maxVolume)
+{
+	maxVolume = std::clamp(maxVolume, 0.0f, 1.0f);
+	_soundSettings->MaxGain = maxVolume;
 }
 
 const std::string& CN3SndObj::FileName() const
@@ -152,77 +143,20 @@ void CN3SndObj::Tick()
 {
 	if (_handle == nullptr)
 	{
-		if (IsStarted())
-			Stop();
-
+		_isStarted = false;
 		return;
 	}
 
-	if (GetState() == SNDSTATE_STOP)
-		return;
-
-	_tmpSecPerFrm += CN3Base::s_fSecPerFrm;
-
-	if (GetState() == SNDSTATE_DELAY && _tmpSecPerFrm >= _startDelayTime)
-	{
-		_tmpSecPerFrm = 0;
-		_state = SNDSTATE_FADEIN;
-		PlayImpl();
-	}
-
-	if (GetState() == SNDSTATE_FADEIN)
-	{
-		if (_tmpSecPerFrm >= _fadeInTime)
-		{
-			_tmpSecPerFrm = 0;
-			_state = SNDSTATE_PLAY;
-
-			SetVolume(_maxVolume);
-		}
-		else
-		{
-			float vol = 0;
-			if (_fadeInTime > 0.0f)
-				vol = ((_tmpSecPerFrm / _fadeInTime) * _maxVolume);
-
-			SetVolume(vol);
-		}
-	}
-
-	if (GetState() == SNDSTATE_PLAY)
-	{
-		if (!_isLooping
-			&& _handle->FinishedPlaying)
-			_state = SNDSTATE_FADEOUT;
-	}
-	
-	if (GetState() == SNDSTATE_FADEOUT)
-	{
-		if (_tmpSecPerFrm >= _fadeOutTime)
-		{
-			_tmpSecPerFrm = 0;
-
-			SetVolume(0.0f);
-			StopImpl();
-		}
-		else
-		{
-			// 볼륨 점점 작게....
-			float vol = 0;
-			if (_fadeOutTime > 0.0f)
-				vol = (((_fadeOutTime - _tmpSecPerFrm) / _fadeOutTime) * _maxVolume);
-			SetVolume(vol);
-		}
-	}
+	// Handle is no longer managed by the audio thread.
+	// We should consider it stopped and release our handle for future requests.
+	if (!_handle->IsManaged.load())
+		ReleaseHandle();
 }
 
-void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, bool bImmediately)
+void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 {
 	if (_audioAsset == nullptr)
 		return;
-
-	if (bImmediately)
-		Stop();
 
 	if (_handle == nullptr)
 	{
@@ -231,13 +165,17 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 		else if (_audioAsset->Type == AUDIO_ASSET_STREAMED)
 			_handle = StreamedAudioHandle::Create(_audioAsset);
 
-		if (_handle == nullptr)
-			return;
-
-		CN3Base::s_SndMgr.Add(_handle);
+		if (_handle != nullptr && _handle->HandleType == AUDIO_HANDLE_STREAMED)
+			TRACE("%u[%s]: Play - new handle", _handle->SourceId, _handle->Asset->Filename.c_str());
 	}
 
-	_handle->IsLooping = _isLooping;
+	if (_handle == nullptr)
+		return;
+
+	CN3Base::s_SndMgr.Add(_handle);
+
+	_handle->IsLooping		= _isLooping;
+	_handle->Settings		= _soundSettings;
 
 	// OpenAL-side looping needs to be disabled on streamed handles.
 	// They implement their own looping.
@@ -253,9 +191,9 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	if (delay == 0.0f
 		&& fFadeInTime == 0.0f)
 	{
-		_currentVolume = std::clamp(_maxVolume, 0.0f, 1.0f);
+		gain = _soundSettings->MaxGain;
+		_soundSettings->CurrentGain = gain;
 
-		gain = _currentVolume;
 		playImmediately = true;
 	}
 
@@ -274,6 +212,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 		{
+			handle->FadeInTime		= fFadeInTime;
+			handle->FadeOutTime		= 0.0f;
+			handle->StartDelayTime	= delay;
+			handle->Timer			= 0.0f;
+			handle->State			= SNDSTATE_DELAY;
+
 			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
 			if (AL_CHECK_ERROR())
 				return;
@@ -292,6 +236,8 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 			if (playImmediately)
 			{
+				handle->State = SNDSTATE_PLAY;
+
 				alSourcef(handle->SourceId, AL_GAIN, gain);
 				AL_CHECK_ERROR();
 
@@ -322,6 +268,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 		{
+			handle->FadeInTime		= fFadeInTime;
+			handle->FadeOutTime		= 0.0f;
+			handle->StartDelayTime	= delay;
+			handle->Timer			= 0.0f;
+			handle->State			= SNDSTATE_DELAY;
+
 			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
 			if (AL_CHECK_ERROR())
 				return;
@@ -343,6 +295,8 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 			if (playImmediately)
 			{
+				handle->State = SNDSTATE_PLAY;
+
 				alSourcef(handle->SourceId, AL_GAIN, gain);
 				AL_CHECK_ERROR();
 
@@ -355,6 +309,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	{
 		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 		{
+			handle->FadeInTime		= fFadeInTime;
+			handle->FadeOutTime		= 0.0f;
+			handle->StartDelayTime	= delay;
+			handle->Timer			= 0.0f;
+			handle->State			= SNDSTATE_DELAY;
+
 			alSourcei(handle->SourceId, AL_SOURCE_RELATIVE, AL_TRUE);
 			AL_CHECK_ERROR();
 
@@ -369,6 +329,8 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 
 			if (playImmediately)
 			{
+				handle->State = SNDSTATE_PLAY;
+
 				alSourcef(handle->SourceId, AL_GAIN, gain);
 				AL_CHECK_ERROR();
 
@@ -383,68 +345,44 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime, boo
 	}
 
 	_isStarted = true;
-	_fadeInTime = fFadeInTime;
-	_fadeOutTime = 0;
-	_startDelayTime = delay;
-	_tmpSecPerFrm = 0;
-	_state = SNDSTATE_DELAY;
-}
 
-void CN3SndObj::PlayImpl()
-{
-	if (_handle == nullptr)
-		return;
-
-	_isStarted = true;
-	_state = SNDSTATE_PLAY;
-
-	CN3Base::s_SndMgr.QueueCallback(_handle, [] (AudioHandle* handle)
-	{
-		handle->StartedPlaying = true;
-		handle->FinishedPlaying = false;
-
-		ALint state = AL_INITIAL;
-		alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
-		AL_CLEAR_ERROR_STATE();
-
-		if (state != AL_PLAYING)
-		{
-			alSourcePlay(handle->SourceId);
-			AL_CHECK_ERROR();
-		}
-	});
+	if (_handle->Asset->DecoderType == AUDIO_DECODER_MP3)
+		TRACE("%u[%s]: Play: SNDSTATE_DELAY", _handle->SourceId, _handle->Asset->Filename.c_str());
 }
 
 void CN3SndObj::Stop(float fFadeOutTime)
 {
-	_isStarted = false;
-
 	if (_handle == nullptr)
 		return;
 
-	if (GetState() == SNDSTATE_FADEOUT
-		|| GetState()  == SNDSTATE_STOP)
-		return;
-
-	_tmpSecPerFrm = 0;
-	_fadeOutTime = fFadeOutTime;
-
+	// If we intend on stopping it immediately, we can just remove the handle directly,
+	// removing it from the audio thread.
 	if (fFadeOutTime == 0.0f)
-		StopImpl();
-	else
-		_state = SNDSTATE_FADEOUT;
-}
+	{
+		ReleaseHandle();
+		return;
+	}
 
-void CN3SndObj::StopImpl()
-{
-	_isStarted = false;
-	_state = SNDSTATE_STOP;
+	// It won't be stopped immediately, so queue the stop request so it can process with the delay.
+	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+	{
+		if (handle->State == SNDSTATE_FADEOUT
+			|| handle->State == SNDSTATE_STOP)
+			return;
 
-	ReleaseHandle();
+		handle->Timer		= 0.0f;
+		handle->FadeOutTime	= fFadeOutTime;
+		handle->State		= SNDSTATE_FADEOUT;
+
+		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
+			TRACE("%u[%s]: Stop: SNDSTATE_FADEOUT", handle->SourceId, handle->Asset->Filename.c_str());
+	});
 }
 
 void CN3SndObj::ReleaseHandle()
 {
+	_isStarted = false;
+
 	if (_handle == nullptr)
 		return;
 

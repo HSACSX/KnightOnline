@@ -22,6 +22,12 @@ struct __TABLE_SOUND // Sound 리소스 레코드...
 	int			iNumInst;	// 최대 사용할 수 있는 인스턴스의 갯수..
 };
 
+struct SoundSettings
+{
+	float CurrentGain	= 0.0f;
+	float MaxGain		= 1.0f;
+};
+
 // 사운드 오브젝트 타입 정의..
 enum e_SndType
 {
@@ -33,7 +39,8 @@ enum e_SndType
 
 enum e_SndState
 {
-	SNDSTATE_STOP = 0,
+	SNDSTATE_INITIAL = 0,
+	SNDSTATE_STOP,
 	SNDSTATE_DELAY,
 	SNDSTATE_FADEIN,
 	SNDSTATE_PLAY,

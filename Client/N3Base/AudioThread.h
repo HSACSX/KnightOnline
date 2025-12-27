@@ -35,8 +35,12 @@ public:
 	void Remove(std::shared_ptr<AudioHandle> handle);
 
 private:
-	void reset(std::shared_ptr<AudioHandle>& handle);
-	void tick(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle::DecodedChunk& tmpDecodedChunk);
+	void reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManaged);
+	void tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle::DecodedChunk& tmpDecodedChunk);
+	void tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsedTime);
+	void set_gain(std::shared_ptr<AudioHandle>& handle, float gain);
+	void play_impl(std::shared_ptr<AudioHandle>& handle);
+	void remove_impl(std::shared_ptr<AudioHandle>& handle);
 
 protected:
 	std::vector<QueueType> _pendingQueue;

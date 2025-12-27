@@ -5,10 +5,10 @@
 
 #include <AL/al.h>
 
-#define AL_CHECK_ERROR() AL_CHECK_ERROR_IMPL(__FILE__, __LINE__)
+#define AL_CHECK_ERROR() al_check_error_impl(__FILE__, __LINE__)
 #define AL_CLEAR_ERROR_STATE() alGetError()
 
-bool AL_CHECK_ERROR_IMPL(const char* file, int line);
+bool al_check_error_impl(const char* file, int line);
 
 static constexpr int MAX_SOURCE_IDS			= 128;
 static constexpr int MAX_STREAM_SOURCES		= 6;
