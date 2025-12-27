@@ -164,7 +164,27 @@ StreamedAudioHandle::StreamedAudioHandle()
 {
 	HandleType			= AUDIO_HANDLE_STREAMED;
 	Mp3Handle			= nullptr;
+	BuffersAllocated	= false;
 	FinishedDecoding	= false;
+
+	BufferIds.reserve(BUFFER_COUNT);
+}
+
+void StreamedAudioHandle::RewindFrame()
+{
+	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(Asset.get());
+
+	if (asset->DecoderType == AUDIO_DECODER_MP3)
+	{
+		FileReaderHandle.Offset = 0;
+
+		if (Mp3Handle != nullptr)
+			mpg123_seek_frame(Mp3Handle, 0, SEEK_SET);
+	}
+	else
+	{
+		FileReaderHandle.Offset = asset->PcmDataBuffer - static_cast<const uint8_t*>(asset->File->Memory());
+	}
 }
 
 StreamedAudioHandle::~StreamedAudioHandle()
@@ -180,10 +200,8 @@ StreamedAudioHandle::~StreamedAudioHandle()
 		alSourcei(SourceId, AL_BUFFER, 0);
 		AL_CHECK_ERROR();
 
-		while (!BufferIds.empty())
+		for (uint32_t bufferId : BufferIds)
 		{
-			uint32_t bufferId = BufferIds.front();
-			BufferIds.pop();
 			alDeleteBuffers(1, &bufferId);
 			AL_CHECK_ERROR();
 		}

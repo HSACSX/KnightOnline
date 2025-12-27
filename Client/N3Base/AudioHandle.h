@@ -74,13 +74,16 @@ public:
 
 	FileReaderHandle			FileReaderHandle;
 	mpg123_handle_struct*		Mp3Handle;
-	std::queue<uint32_t>		BufferIds;
+	std::queue<uint32_t>		AvailableBufferIds;
+	std::vector<uint32_t>		BufferIds;
 	std::queue<DecodedChunk>	DecodedChunks;
+	bool						BuffersAllocated;
 	bool						FinishedDecoding;
 
 	static std::shared_ptr<StreamedAudioHandle> Create(std::shared_ptr<AudioAsset> asset);
 
 	StreamedAudioHandle();
+	void RewindFrame();
 	~StreamedAudioHandle() override;
 };
 

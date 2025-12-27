@@ -154,20 +154,28 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 		if (streamedAudioHandle != nullptr)
 		{
 			// Initialize the buffers
-			for (size_t i = 0; i < BUFFER_COUNT; i++)
+			if (!streamedAudioHandle->BuffersAllocated)
 			{
-				ALuint bufferId = INVALID_BUFFER_ID;
+				for (size_t i = 0; i < BUFFER_COUNT; i++)
+				{
+					ALuint bufferId = INVALID_BUFFER_ID;
 
-				alGenBuffers(1, &bufferId);
-				if (!AL_CHECK_ERROR()
-					&& bufferId != INVALID_BUFFER_ID)
-					streamedAudioHandle->BufferIds.push(bufferId);
+					alGenBuffers(1, &bufferId);
+					if (!AL_CHECK_ERROR()
+						&& bufferId != INVALID_BUFFER_ID)
+					{
+						streamedAudioHandle->BufferIds.push_back(bufferId);
+						streamedAudioHandle->AvailableBufferIds.push(bufferId);
+					}
+				}
+
+				streamedAudioHandle->BuffersAllocated = true;
 			}
 
 			TRACE("%u[%s]: AudioThread::reset() - %zu available",
 				streamedAudioHandle->SourceId,
 				streamedAudioHandle->Asset->Filename.c_str(),
-				streamedAudioHandle->BufferIds.size());
+				streamedAudioHandle->AvailableBufferIds.size());
 
 			// Force initial decode now, so we can safely start playing.
 			// If we're already managed by this thread, we're also in the decoder thread already.
@@ -224,15 +232,15 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				if (AL_CHECK_ERROR())
 					continue;
 
-				streamedAudioHandle->BufferIds.push(bufferId);
+				streamedAudioHandle->AvailableBufferIds.push(bufferId);
 			}
 		}
 
 		//TRACE("%u: AudioThread::tick() - %zu buffers available now",
 		//	streamedAudioHandle->SourceId,
-		//	streamedAudioHandle->BufferIds.size());
+		//	streamedAudioHandle->AvailableBufferIds.size());
 
-		while (!streamedAudioHandle->BufferIds.empty())
+		while (!streamedAudioHandle->AvailableBufferIds.empty())
 		{
 			// Make sure we have a chunk to replace with first, before unqueueing.
 			// This way we don't need additional tracking.
@@ -256,7 +264,7 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 			}
 
 			// Buffer the new decoded data.
-			ALuint bufferId = streamedAudioHandle->BufferIds.front();
+			ALuint bufferId = streamedAudioHandle->AvailableBufferIds.front();
 			alBufferData(
 				bufferId, streamedAudioHandle->Asset->PcmFormat,
 				&tmpDecodedChunk.Data[0], tmpDecodedChunk.BytesDecoded,
@@ -276,7 +284,7 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				continue;
 			}
 
-			streamedAudioHandle->BufferIds.pop();
+			streamedAudioHandle->AvailableBufferIds.pop();
 		}
 	}
 

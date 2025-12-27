@@ -67,9 +67,17 @@ void AudioDecoderThread::Add(std::shared_ptr<StreamedAudioHandle> handle)
 	_pendingQueue.push_back(std::make_tuple(AUDIO_DECODER_QUEUE_ADD, std::move(handle)));
 }
 
+// Force an initial decode *now* from the main audio thread
 void AudioDecoderThread::InitialDecode(StreamedAudioHandle* handle)
 {
-	// Force an initial decode *now* from the main audio thread
+	// Rewind back to the start.
+	handle->RewindFrame();
+
+	// Reset any existing decoded chunks.
+	while (!handle->DecodedChunks.empty())
+		handle->DecodedChunks.pop();
+
+	// Perform a fresh decode.
 	decode_impl(handle);
 }
 
@@ -144,7 +152,7 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 			// If we're looping, we should reset back to the first frame
 			// and start decoding from there.
 			if (handle->IsLooping)
-				mpg123_seek_frame(handle->Mp3Handle, 0, SEEK_SET);
+				handle->RewindFrame();
 			// Otherwise, we've finished decoding so we should stop here.
 			else
 				handle->FinishedDecoding = true;
@@ -196,7 +204,7 @@ void AudioDecoderThread::decode_impl_pcm(StreamedAudioHandle* handle)
 			// If we're looping, we should reset back to the first frame
 			// and start decoding from there.
 			if (handle->IsLooping)
-				handle->FileReaderHandle.Offset = asset->PcmDataBuffer - static_cast<const uint8_t*>(asset->File->Memory());
+				handle->RewindFrame();
 			// Otherwise, we've finished decoding so we should stop here.
 			else
 				handle->FinishedDecoding = true;

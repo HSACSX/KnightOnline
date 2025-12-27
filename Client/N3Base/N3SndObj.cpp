@@ -150,13 +150,23 @@ void CN3SndObj::Tick()
 	// Handle is no longer managed by the audio thread.
 	// We should consider it stopped and release our handle for future requests.
 	if (!_handle->IsManaged.load())
-		ReleaseHandle();
+	{
+		_isStarted = false;
+		_handle.reset();
+	}
 }
 
 void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 {
 	if (_audioAsset == nullptr)
 		return;
+
+	if (_handle != nullptr
+		&& !_handle->IsManaged.load())
+	{
+		_handle.reset();
+		_isStarted = false;
+	}
 
 	if (_handle == nullptr)
 	{
@@ -165,12 +175,12 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 		else if (_audioAsset->Type == AUDIO_ASSET_STREAMED)
 			_handle = StreamedAudioHandle::Create(_audioAsset);
 
-		if (_handle != nullptr && _handle->HandleType == AUDIO_HANDLE_STREAMED)
+		if (_handle == nullptr)
+			return;
+
+		if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
 			TRACE("%u[%s]: Play - new handle", _handle->SourceId, _handle->Asset->Filename.c_str());
 	}
-
-	if (_handle == nullptr)
-		return;
 
 	CN3Base::s_SndMgr.Add(_handle);
 
