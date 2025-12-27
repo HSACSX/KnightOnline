@@ -518,16 +518,16 @@ void CGameProcMain::Tick()
 
 	const __Vector3& ListenerPos = s_pPlayer->Position();
 	const __Vector3 ListenerDir = s_pPlayer->Direction();
-	const __Vector3 ListenerUp(0, 1, 0);
+	const __Vector3 ListenerUp = { 0, 1, 0 };
 
 	// Sound Tick...
 	CN3SndObj::SetListenerPos(ListenerPos);
 	CN3SndObj::SetListenerOrientation(ListenerDir, ListenerUp);
 
-	this->UpdateUI_MiniMap(); // 미니맵 업데이트..
-	this->UpdateUI_TargetBar(); // 타겟바 처리..
-	this->UpdateBGM(); // 배경음악을 상황에 따라 처리..
-	this->UpdateCameraAndLight(); // 카메라와 라이트 처리..
+	UpdateUI_MiniMap(); // 미니맵 업데이트..
+	UpdateUI_TargetBar(); // 타겟바 처리..
+	UpdateBGM(); // 배경음악을 상황에 따라 처리..
+	UpdateCameraAndLight(); // 카메라와 라이트 처리..
 	
 //	ProcessPlayerInclination();							// 경사 처리..(가만히 있어도 경사가 급하면 미끄러짐..).
 #ifdef _N3_64GRID_

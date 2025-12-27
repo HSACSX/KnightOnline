@@ -234,7 +234,7 @@ void CGameProcCharacterSelect::Tick()
 	vDir.Normalize();
 
 	const __Vector3 vEye = CN3Base::s_CameraData.vEye;
-	const __Vector3 vUp(0, 1, 0);
+	const __Vector3 vUp = { 0, 1, 0 };
 
 	CN3SndObj::SetListenerPos(vEye);
 	CN3SndObj::SetListenerOrientation(vDir, vUp);

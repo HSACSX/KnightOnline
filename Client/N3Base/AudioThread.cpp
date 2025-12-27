@@ -360,10 +360,10 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
 			TRACE("%u[%s]: SNDSTATE_DELAY -> SNDSTATE_FADEIN", handle->SourceId, handle->Asset->Filename.c_str());
 
+		play_impl(handle);
+
 		handle->Timer = 0.0f;
 		handle->State = SNDSTATE_FADEIN;
-
-		play_impl(handle);
 	}
 
 	if (handle->State == SNDSTATE_FADEIN)
@@ -408,11 +408,11 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 			if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
 				TRACE("%u[%s]: SNDSTATE_FADEOUT -> stopping", handle->SourceId, handle->Asset->Filename.c_str());
 
-			handle->Timer = 0.0f;
-			set_gain(handle, 0.0f);
-
 			// Invoke a stop.
+			handle->Timer = 0.0f;
 			handle->State = SNDSTATE_STOP;
+
+			set_gain(handle, 0.0f);
 		}
 		else
 		{
