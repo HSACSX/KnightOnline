@@ -8,7 +8,7 @@
   <PropertyGroup Label="UserMacros">
     <DependencyName>openal-soft</DependencyName>
     <LocalDependencyDir>deps\openal-soft</LocalDependencyDir>
-    <RealProjectPath>$(RootDir)deps\openal-soft-msvc\OpenAL.sln</RealProjectPath>
+    <RealProjectPath>$(RootDir)deps\openal-soft-msvc\OpenAL.slnx</RealProjectPath>
   </PropertyGroup>
   <Import Project="$(PropsDir)fetch_wrapper.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
