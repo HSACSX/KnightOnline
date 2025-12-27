@@ -200,11 +200,6 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 					streamedAudioHandle->AvailableBufferIds.push(bufferId);
 			}
 
-			TRACE("%u[%s]: AudioThread::reset() - %zu available",
-				streamedAudioHandle->SourceId,
-				streamedAudioHandle->Asset->Filename.c_str(),
-				streamedAudioHandle->AvailableBufferIds.size());
-
 			// Force initial decode now, so we can safely start playing.
 			// If we're already managed by this thread, we're also in the decoder thread already.
 			// As such, we should be safe and guard access.
@@ -217,11 +212,6 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 			{
 				_decoderThread->InitialDecode(streamedAudioHandle.get());
 			}
-
-			TRACE("%u[%s]: AudioThread::reset() - %zu initially decoded chunks available",
-				streamedAudioHandle->SourceId,
-				streamedAudioHandle->Asset->Filename.c_str(),
-				streamedAudioHandle->DecodedChunks.size());
 
 			// Add to decoder for future decodes.
 			_decoderThread->Add(std::move(streamedAudioHandle));
@@ -245,10 +235,6 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 		ALint buffersProcessed = 0;
 		alGetSourcei(handle->SourceId, AL_BUFFERS_PROCESSED, &buffersProcessed);
 
-		TRACE("%u[%s]: AudioThread::tick() - %d buffers processed",
-			streamedAudioHandle->SourceId,
-			streamedAudioHandle->Asset->Filename.c_str(),
-			buffersProcessed);
 		if (!AL_CHECK_ERROR()
 			&& buffersProcessed > 0)
 		{
@@ -259,26 +245,11 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				alSourceUnqueueBuffers(handle->SourceId, 1, &bufferId);
 
 				if (AL_CHECK_ERROR())
-				{
-					TRACE("%u[%s]: AudioThread::tick() - alSourceUnqueueBuffers errored",
-						streamedAudioHandle->SourceId,
-						streamedAudioHandle->Asset->Filename.c_str());
 					continue;
-				}
 
 				streamedAudioHandle->AvailableBufferIds.push(bufferId);
-
-				TRACE("%u[%s]: AudioThread::tick() - processed/unqueued buffer %u",
-					streamedAudioHandle->SourceId,
-					streamedAudioHandle->Asset->Filename.c_str(),
-					bufferId);
 			}
 		}
-
-		TRACE("%u[%s]: AudioThread::tick() - %zu buffers available now",
-			streamedAudioHandle->SourceId,
-			streamedAudioHandle->Asset->Filename.c_str(),
-			streamedAudioHandle->AvailableBufferIds.size());
 
 		while (!streamedAudioHandle->AvailableBufferIds.empty())
 		{
@@ -296,12 +267,7 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 			// < 0 indicates error
 			// 0 indicates EOF
 			if (tmpDecodedChunk.BytesDecoded <= 0)
-			{
-				//TRACE("%u: AudioThread::tick() - %d bytes decoded",
-				//	streamedAudioHandle->SourceId,
-				//	tmpDecodedChunk.BytesDecoded);
 				continue;
-			}
 
 			// Buffer the new decoded data.
 			ALuint bufferId = streamedAudioHandle->AvailableBufferIds.front();
@@ -310,34 +276,17 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				&tmpDecodedChunk.Data[0], tmpDecodedChunk.BytesDecoded,
 				streamedAudioHandle->Asset->SampleRate);
 			if (AL_CHECK_ERROR())
-			{
-				//TRACE("%u: AudioThread::tick() - alBufferData errored",
-				//	streamedAudioHandle->SourceId);
 				continue;
-			}
 
 			alSourceQueueBuffers(handle->SourceId, 1, &bufferId);
 			if (AL_CHECK_ERROR())
-			{
-				//TRACE("%u: AudioThread::tick() - alSourceQueueBuffer errored",
-				//	streamedAudioHandle->SourceId);
 				continue;
-			}
 
 			streamedAudioHandle->AvailableBufferIds.pop();
-			TRACE("%u[%s]: AudioThread::tick() - queued buffer %u",
-				streamedAudioHandle->SourceId,
-				streamedAudioHandle->Asset->Filename.c_str(),
-				bufferId);
 		}
 
 		ALint buffersQueued = 0;
 		alGetSourcei(handle->SourceId, AL_BUFFERS_QUEUED, &buffersQueued);
-
-		TRACE("%u[%s]: AudioThread::tick() - %d buffers queued",
-			streamedAudioHandle->SourceId,
-			streamedAudioHandle->Asset->Filename.c_str(),
-			buffersQueued);
 	}
 
 	if (handle->StartedPlaying
@@ -357,9 +306,6 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 
 	if (handle->State == SNDSTATE_DELAY && handle->Timer >= handle->StartDelayTime)
 	{
-		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-			TRACE("%u[%s]: SNDSTATE_DELAY -> SNDSTATE_FADEIN", handle->SourceId, handle->Asset->Filename.c_str());
-
 		play_impl(handle);
 
 		handle->Timer = 0.0f;
@@ -370,9 +316,6 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 	{
 		if (handle->Timer >= handle->FadeInTime)
 		{
-			if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-				TRACE("%u[%s]: SNDSTATE_FADEIN -> SNDSTATE_PLAY", handle->SourceId, handle->Asset->Filename.c_str());
-
 			handle->Timer = 0.0f;
 			handle->State = SNDSTATE_PLAY;
 
@@ -393,9 +336,6 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 		if (!handle->IsLooping
 			&& handle->FinishedPlaying)
 		{
-			if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-				TRACE("%u[%s]: SNDSTATE_PLAY -> SNDSTATE_FADEOUT", handle->SourceId, handle->Asset->Filename.c_str());
-
 			handle->Timer = 0.0f;
 			handle->State = SNDSTATE_FADEOUT;
 		}
@@ -405,9 +345,6 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 	{
 		if (handle->Timer >= handle->FadeOutTime)
 		{
-			if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-				TRACE("%u[%s]: SNDSTATE_FADEOUT -> stopping", handle->SourceId, handle->Asset->Filename.c_str());
-
 			// Invoke a stop.
 			handle->Timer = 0.0f;
 			handle->State = SNDSTATE_STOP;
@@ -430,12 +367,6 @@ void AudioThread::set_gain(std::shared_ptr<AudioHandle>& handle, float gain)
 	gain = std::clamp(gain, 0.0f, 1.0f);
 	handle->Settings->CurrentGain = gain;
 
-	if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-		TRACE("%u[%s]: AudioThread::tick() - set_gain(%f)",
-			handle->SourceId,
-			handle->Asset->Filename.c_str(),
-			gain);
-
 	alSourcef(handle->SourceId, AL_GAIN, gain);
 	AL_CHECK_ERROR();
 }
@@ -452,15 +383,8 @@ void AudioThread::play_impl(std::shared_ptr<AudioHandle>& handle)
 
 	if (state != AL_PLAYING)
 	{
-		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-			TRACE("%u[%s]: play_impl: alSourcePlay", handle->SourceId, handle->Asset->Filename.c_str());
 		alSourcePlay(handle->SourceId);
 		AL_CHECK_ERROR();
-	}
-	else
-	{
-		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-			TRACE("%u[%s]: play_impl: already playing", handle->SourceId, handle->Asset->Filename.c_str());
 	}
 }
 
@@ -485,7 +409,5 @@ void AudioThread::remove_impl(std::shared_ptr<AudioHandle>& handle)
 			while (!streamedAudioHandle->AvailableBufferIds.empty())
 				streamedAudioHandle->AvailableBufferIds.pop();
 		}
-
-		TRACE("%u[%s]: remove_impl - alSourceStop", handle->SourceId, handle->Asset->Filename.c_str());
 	}
 }

@@ -190,9 +190,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 
 		if (_handle == nullptr)
 			return;
-
-		if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
-			TRACE("%u[%s]: Play - new handle", _handle->SourceId, _handle->Asset->Filename.c_str());
 	}
 
 	CN3Base::s_SndMgr.Add(_handle);
@@ -355,11 +352,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 
 				_soundSettings->CurrentGain = _soundSettings->MaxGain;
 
-				TRACE("%u[%s]: CN3SndObj::Play() - play [volume=%f]",
-					handle->SourceId,
-					handle->Asset->Filename.c_str(),
-					handle->Settings->CurrentGain);
-
 				alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
 				AL_CHECK_ERROR();
 
@@ -374,9 +366,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 	}
 
 	_isStarted = true;
-
-	if (_handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-		TRACE("%u[%s]: Play: SNDSTATE_DELAY", _handle->SourceId, _handle->Asset->Filename.c_str());
 }
 
 void CN3SndObj::Stop(float fFadeOutTime)
@@ -404,9 +393,6 @@ void CN3SndObj::Stop(float fFadeOutTime)
 		handle->Timer		= 0.0f;
 		handle->FadeOutTime	= fFadeOutTime;
 		handle->State		= SNDSTATE_FADEOUT;
-
-		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
-			TRACE("%u[%s]: Stop: SNDSTATE_FADEOUT", handle->SourceId, handle->Asset->Filename.c_str());
 	});
 }
 
