@@ -6390,8 +6390,6 @@ void CGameProcMain::MsgRecv_WareHouseOpen(Packet& pkt)		// 보관함 오픈..
 
 void CGameProcMain::PlayBGM_Town()
 {
-	TRACE("PlayBGM_Town");
-
 	if (m_pSnd_Battle != nullptr)
 		m_pSnd_Battle->Stop(3.0f);
 
