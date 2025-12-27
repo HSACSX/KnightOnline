@@ -181,13 +181,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 	if (_audioAsset == nullptr)
 		return;
 
-	if (_handle != nullptr
-		&& !_handle->IsManaged.load())
-	{
-		_handle.reset();
-		_isStarted = false;
-	}
-
 	if (_handle == nullptr)
 	{
 		if (_audioAsset->Type == AUDIO_ASSET_BUFFERED)
@@ -216,7 +209,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 		isLooping = static_cast<ALint>(_isLooping);
 
 	bool playImmediately = false;
-
 	if (delay == 0.0f
 		&& fFadeInTime == 0.0f)
 		playImmediately = true;
@@ -389,6 +381,8 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 
 void CN3SndObj::Stop(float fFadeOutTime)
 {
+	_isStarted = false;
+
 	if (_handle == nullptr)
 		return;
 
