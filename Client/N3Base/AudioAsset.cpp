@@ -55,7 +55,7 @@ static const uint8_t* find_chunk(const uint8_t* start, const uint8_t* end, const
 static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, size_t* pcmChunkSize,
 	const uint8_t** pcmDataBuffer, ALsizei* pcmDataSize)
 {
-	const size_t fileSize = file.Size();
+	const size_t fileSize = static_cast<size_t>(file.Size());
 	if (fileSize < sizeof(RIFF_Header))
 		return false;
 
@@ -99,7 +99,7 @@ static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, size
 	const uint8_t* pcmDataBuffer_ = ptr;
 	const uint32_t pcmDataSize_ = waveData->Size;
 
-	if (pcmDataSize_ > (end - pcmDataBuffer_))
+	if (pcmDataSize_ > static_cast<uintptr_t>(end - pcmDataBuffer_))
 		return false;
 
 	ALenum format_;
