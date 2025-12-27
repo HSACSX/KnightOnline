@@ -250,4 +250,3 @@ bool StreamedAudioAsset::LoadFromFile(const std::string& filename)
 StreamedAudioAsset::~StreamedAudioAsset()
 {
 }
-

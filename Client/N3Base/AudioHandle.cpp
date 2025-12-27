@@ -176,12 +176,10 @@ void StreamedAudioHandle::RewindFrame()
 
 	if (asset->DecoderType == AUDIO_DECODER_MP3)
 	{
-		FileReaderHandle.Offset = 0;
-
 		if (Mp3Handle != nullptr)
 			mpg123_seek_frame(Mp3Handle, 0, SEEK_SET);
 	}
-	else
+	else if (asset->DecoderType == AUDIO_DECODER_PCM)
 	{
 		FileReaderHandle.Offset = asset->PcmDataBuffer - static_cast<const uint8_t*>(asset->File->Memory());
 	}
@@ -218,12 +216,15 @@ StreamedAudioHandle::~StreamedAudioHandle()
 
 mpg123_ssize_t mpg123_filereader_read(void* userData, void* dst, size_t bytes)
 {
+	if (bytes == 0)
+		return 0;
+
 	FileReaderHandle* handle = static_cast<FileReaderHandle*>(userData);
 	const FileReader* file = handle->File;
 	const size_t size = static_cast<size_t>(file->Size());
 
 	if (handle->Offset >= size)
-		return MPG123_DONE; // EOF
+		return 0;
 
 	const size_t remainingBytes = size - handle->Offset;
 	size_t bytesToRead = std::min(bytes, remainingBytes);
@@ -260,11 +261,9 @@ off_t mpg123_filereader_seek(void* userData, off_t offset, int whence)
 			break;
 
 		default:
+			errno = EINVAL;
 			return -1; // unhandled type
 	}
-
-	if (newPos > size)
-		return -1; // cannot seek past the end of the file
 
 	handle->Offset = newPos;
 	return static_cast<off_t>(handle->Offset);
