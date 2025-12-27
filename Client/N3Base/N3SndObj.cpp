@@ -104,22 +104,42 @@ bool CN3SndObj::Create(const std::string& szFN, e_SndType eType)
 void CN3SndObj::SetVolume(float currentVolume)
 {
 	currentVolume = std::clamp(currentVolume, 0.0f, 1.0f);
-	_soundSettings->CurrentGain = currentVolume;
 
-	if (_handle == nullptr)
-		return;
-
-	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+	if (_handle != nullptr)
 	{
-		alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
-		AL_CHECK_ERROR();
-	});
+		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+		{
+			handle->Settings->CurrentGain = currentVolume;
+
+			alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
+			AL_CHECK_ERROR();
+		});
+	}
+	else
+	{
+		_soundSettings->CurrentGain = currentVolume;
+	}
 }
 
 void CN3SndObj::SetMaxVolume(float maxVolume)
 {
 	maxVolume = std::clamp(maxVolume, 0.0f, 1.0f);
+
 	_soundSettings->MaxGain = maxVolume;
+
+	if (_handle != nullptr)
+	{
+		CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
+		{
+			if (handle->Settings->CurrentGain <= maxVolume)
+				return;
+
+			handle->Settings->CurrentGain = maxVolume;
+
+			alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
+			AL_CHECK_ERROR();
+		});
+	}
 }
 
 const std::string& CN3SndObj::FileName() const
@@ -196,16 +216,10 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 		isLooping = static_cast<ALint>(_isLooping);
 
 	bool playImmediately = false;
-	float gain = 0.0f;
 
 	if (delay == 0.0f
 		&& fFadeInTime == 0.0f)
-	{
-		gain = _soundSettings->MaxGain;
-		_soundSettings->CurrentGain = gain;
-
 		playImmediately = true;
-	}
 
 	// Perform setup -- this is triggered after insertion, so the handle is added to the thread at this point
 	// and otherwise setup, ready to play.
@@ -228,6 +242,9 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			handle->Timer			= 0.0f;
 			handle->State			= SNDSTATE_DELAY;
 
+			if (playImmediately)
+				_soundSettings->CurrentGain = _soundSettings->MaxGain;
+
 			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
 			if (AL_CHECK_ERROR())
 				return;
@@ -248,7 +265,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			{
 				handle->State = SNDSTATE_PLAY;
 
-				alSourcef(handle->SourceId, AL_GAIN, gain);
+				alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
 				AL_CHECK_ERROR();
 
 				alSourcePlay(handle->SourceId);
@@ -284,6 +301,9 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			handle->Timer			= 0.0f;
 			handle->State			= SNDSTATE_DELAY;
 
+			if (playImmediately)
+				_soundSettings->CurrentGain = _soundSettings->MaxGain;
+
 			alSourcei(handle->SourceId, AL_BUFFER, audioAsset->BufferId);
 			if (AL_CHECK_ERROR())
 				return;
@@ -307,7 +327,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			{
 				handle->State = SNDSTATE_PLAY;
 
-				alSourcef(handle->SourceId, AL_GAIN, gain);
+				alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
 				AL_CHECK_ERROR();
 
 				alSourcePlay(handle->SourceId);
@@ -341,7 +361,14 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			{
 				handle->State = SNDSTATE_PLAY;
 
-				alSourcef(handle->SourceId, AL_GAIN, gain);
+				_soundSettings->CurrentGain = _soundSettings->MaxGain;
+
+				TRACE("%u[%s]: CN3SndObj::Play() - play [volume=%f]",
+					handle->SourceId,
+					handle->Asset->Filename.c_str(),
+					handle->Settings->CurrentGain);
+
+				alSourcef(handle->SourceId, AL_GAIN, handle->Settings->CurrentGain);
 				AL_CHECK_ERROR();
 
 				alSourcePlay(handle->SourceId);

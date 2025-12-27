@@ -15,8 +15,8 @@ enum e_AudioAssetType : uint8_t
 
 enum e_AudioDecoderType : uint8_t
 {
-	AUDIO_DECODER_MP3 = 0,
-	AUDIO_DECODER_PCM,
+	AUDIO_DECODER_MP3 = 0,	// .MP3
+	AUDIO_DECODER_PCM,		// .WAV (raw PCM streams only)
 	AUDIO_DECODER_UNKNOWN
 };
 
@@ -30,7 +30,7 @@ public:
 	e_AudioDecoderType	DecoderType	= AUDIO_DECODER_UNKNOWN;
 	std::string			Filename;
 	uint32_t			RefCount	= 0;
-	int32_t				PcmFormat	= -1;
+	int32_t				AlFormat	= -1;
 	int32_t				SampleRate	= 0;
 
 public:

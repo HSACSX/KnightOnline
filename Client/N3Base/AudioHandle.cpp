@@ -190,10 +190,10 @@ StreamedAudioHandle::~StreamedAudioHandle()
 	if (SourceId != INVALID_SOURCE_ID)
 	{
 		alSourceStop(SourceId);
-		AL_CLEAR_ERROR_STATE();
+		AL_CHECK_ERROR();
 
 		alSourceRewind(SourceId);
-		AL_CLEAR_ERROR_STATE();
+		AL_CHECK_ERROR();
 
 		alSourcei(SourceId, AL_BUFFER, 0);
 		AL_CHECK_ERROR();

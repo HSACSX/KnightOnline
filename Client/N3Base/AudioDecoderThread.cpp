@@ -44,6 +44,8 @@ void AudioDecoderThread::thread_loop()
 						break;
 
 					case AUDIO_DECODER_QUEUE_REMOVE:
+						while (!handle->DecodedChunks.empty())
+							handle->DecodedChunks.pop();
 						handleMap.erase(handle->SourceId);
 						break;
 				}

@@ -153,8 +153,14 @@ void AudioThread::Remove(std::shared_ptr<AudioHandle> handle)
 
 void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManaged)
 {
+	alSourceStop(handle->SourceId);
+	AL_CHECK_ERROR();
+
 	alSourceRewind(handle->SourceId);
-	AL_CLEAR_ERROR_STATE();
+	AL_CHECK_ERROR();
+
+	alSourcei(handle->SourceId, AL_BUFFER, 0);
+	AL_CHECK_ERROR();
 
 	handle->StartedPlaying = false;
 	handle->FinishedPlaying = false;
@@ -184,6 +190,14 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 				}
 
 				streamedAudioHandle->BuffersAllocated = true;
+			}
+			else
+			{
+				while (!streamedAudioHandle->AvailableBufferIds.empty())
+					streamedAudioHandle->AvailableBufferIds.pop();
+
+				for (uint32_t bufferId : streamedAudioHandle->BufferIds)
+					streamedAudioHandle->AvailableBufferIds.push(bufferId);
 			}
 
 			TRACE("%u[%s]: AudioThread::reset() - %zu available",
@@ -253,6 +267,11 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				}
 
 				streamedAudioHandle->AvailableBufferIds.push(bufferId);
+
+				TRACE("%u[%s]: AudioThread::tick() - processed/unqueued buffer %u",
+					streamedAudioHandle->SourceId,
+					streamedAudioHandle->Asset->Filename.c_str(),
+					bufferId);
 			}
 		}
 
@@ -287,7 +306,7 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 			// Buffer the new decoded data.
 			ALuint bufferId = streamedAudioHandle->AvailableBufferIds.front();
 			alBufferData(
-				bufferId, streamedAudioHandle->Asset->PcmFormat,
+				bufferId, streamedAudioHandle->Asset->AlFormat,
 				&tmpDecodedChunk.Data[0], tmpDecodedChunk.BytesDecoded,
 				streamedAudioHandle->Asset->SampleRate);
 			if (AL_CHECK_ERROR())
@@ -306,7 +325,19 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 			}
 
 			streamedAudioHandle->AvailableBufferIds.pop();
+			TRACE("%u[%s]: AudioThread::tick() - queued buffer %u",
+				streamedAudioHandle->SourceId,
+				streamedAudioHandle->Asset->Filename.c_str(),
+				bufferId);
 		}
+
+		ALint buffersQueued = 0;
+		alGetSourcei(handle->SourceId, AL_BUFFERS_QUEUED, &buffersQueued);
+
+		TRACE("%u[%s]: AudioThread::tick() - %d buffers queued",
+			streamedAudioHandle->SourceId,
+			streamedAudioHandle->Asset->Filename.c_str(),
+			buffersQueued);
 	}
 
 	if (handle->StartedPlaying
@@ -315,7 +346,7 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 		ALint state = AL_INITIAL;
 		alGetSourcei(handle->SourceId, AL_SOURCE_STATE, &state);
 		if (!AL_CHECK_ERROR()
-			&& state != AL_PLAYING)
+			&& state == AL_STOPPED)
 			handle->FinishedPlaying = true;
 	}
 }
@@ -344,6 +375,7 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 
 			handle->Timer = 0.0f;
 			handle->State = SNDSTATE_PLAY;
+
 			set_gain(handle, handle->Settings->MaxGain);
 		}
 		else
@@ -351,6 +383,7 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 			float gain = 0;
 			if (handle->FadeInTime > 0.0f)
 				gain = ((handle->Timer / handle->FadeInTime) * handle->Settings->MaxGain);
+
 			set_gain(handle, gain);
 		}
 	}
@@ -386,6 +419,7 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 			float gain = 0.0f;
 			if (handle->FadeOutTime > 0.0f)
 				gain = (((handle->FadeOutTime - handle->Timer) / handle->FadeOutTime) * handle->Settings->MaxGain);
+
 			set_gain(handle, gain);
 		}
 	}
@@ -395,6 +429,12 @@ void AudioThread::set_gain(std::shared_ptr<AudioHandle>& handle, float gain)
 {
 	gain = std::clamp(gain, 0.0f, 1.0f);
 	handle->Settings->CurrentGain = gain;
+
+	if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
+		TRACE("%u[%s]: AudioThread::tick() - set_gain(%f)",
+			handle->SourceId,
+			handle->Asset->Filename.c_str(),
+			gain);
 
 	alSourcef(handle->SourceId, AL_GAIN, gain);
 	AL_CHECK_ERROR();
@@ -412,20 +452,40 @@ void AudioThread::play_impl(std::shared_ptr<AudioHandle>& handle)
 
 	if (state != AL_PLAYING)
 	{
+		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
+			TRACE("%u[%s]: play_impl: alSourcePlay", handle->SourceId, handle->Asset->Filename.c_str());
 		alSourcePlay(handle->SourceId);
 		AL_CHECK_ERROR();
+	}
+	else
+	{
+		if (handle->Asset->DecoderType == AUDIO_DECODER_MP3)
+			TRACE("%u[%s]: play_impl: already playing", handle->SourceId, handle->Asset->Filename.c_str());
 	}
 }
 
 void AudioThread::remove_impl(std::shared_ptr<AudioHandle>& handle)
 {
+	alSourceStop(handle->SourceId);
+	AL_CHECK_ERROR();
+
+	alSourceRewind(handle->SourceId);
+	AL_CHECK_ERROR();
+
+	alSourcei(handle->SourceId, AL_BUFFER, 0);
+	AL_CHECK_ERROR();
+
 	if (handle->HandleType == AUDIO_HANDLE_STREAMED)
 	{
 		auto streamedAudioHandle = std::static_pointer_cast<StreamedAudioHandle>(handle);
 		if (streamedAudioHandle != nullptr)
+		{
 			_decoderThread->Remove(streamedAudioHandle);
-	}
 
-	alSourceStop(handle->SourceId);
-	AL_CLEAR_ERROR_STATE();
+			while (!streamedAudioHandle->AvailableBufferIds.empty())
+				streamedAudioHandle->AvailableBufferIds.pop();
+		}
+
+		TRACE("%u[%s]: remove_impl - alSourceStop", handle->SourceId, handle->Asset->Filename.c_str());
+	}
 }
