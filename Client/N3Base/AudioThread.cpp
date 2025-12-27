@@ -115,25 +115,39 @@ void AudioThread::Add(std::shared_ptr<AudioHandle> handle)
 	// This avoids the gap between processing where it might not quite be in the map yet.
 	handle->IsManaged.store(true);
 
-	std::scoped_lock<std::mutex> lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	_pendingQueue.push_back(std::make_tuple(AUDIO_QUEUE_ADD, std::move(handle), nullptr));
 }
 
 void AudioThread::QueueCallback(std::shared_ptr<AudioHandle> handle, AudioCallback callback)
 {
 	assert(handle != nullptr);
+
+	if (handle == nullptr)
+		return;
+
 	assert(handle->SourceId != INVALID_SOURCE_ID);
 
-	std::scoped_lock<std::mutex> lock(_mutex);
+	if (handle->SourceId == INVALID_SOURCE_ID)
+		return;
+
+	std::lock_guard<std::mutex> lock(_mutex);
 	_pendingQueue.push_back(std::make_tuple(AUDIO_QUEUE_CALLBACK, std::move(handle), std::move(callback)));
 }
 
 void AudioThread::Remove(std::shared_ptr<AudioHandle> handle)
 {
 	assert(handle != nullptr);
+
+	if (handle == nullptr)
+		return;
+
 	assert(handle->SourceId != INVALID_SOURCE_ID);
 
-	std::scoped_lock<std::mutex> lock(_mutex);
+	if (handle->SourceId == INVALID_SOURCE_ID)
+		return;
+
+	std::lock_guard<std::mutex> lock(_mutex);
 	_pendingQueue.push_back(std::make_tuple(AUDIO_QUEUE_REMOVE, std::move(handle), nullptr));
 }
 
@@ -182,7 +196,7 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 			// As such, we should be safe and guard access.
 			if (alreadyManaged)
 			{
-				std::scoped_lock lock(_decoderThread->DecoderMutex());
+				std::lock_guard<std::mutex> lock(_decoderThread->DecoderMutex());
 				_decoderThread->InitialDecode(streamedAudioHandle.get());
 			}
 			else
@@ -217,9 +231,10 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 		ALint buffersProcessed = 0;
 		alGetSourcei(handle->SourceId, AL_BUFFERS_PROCESSED, &buffersProcessed);
 
-		//TRACE("%u: AudioThread::tick() - %d buffers processed",
-		//	streamedAudioHandle->SourceId,
-		//	buffersProcessed);
+		TRACE("%u[%s]: AudioThread::tick() - %d buffers processed",
+			streamedAudioHandle->SourceId,
+			streamedAudioHandle->Asset->Filename.c_str(),
+			buffersProcessed);
 		if (!AL_CHECK_ERROR()
 			&& buffersProcessed > 0)
 		{
@@ -230,22 +245,28 @@ void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAud
 				alSourceUnqueueBuffers(handle->SourceId, 1, &bufferId);
 
 				if (AL_CHECK_ERROR())
+				{
+					TRACE("%u[%s]: AudioThread::tick() - alSourceUnqueueBuffers errored",
+						streamedAudioHandle->SourceId,
+						streamedAudioHandle->Asset->Filename.c_str());
 					continue;
+				}
 
 				streamedAudioHandle->AvailableBufferIds.push(bufferId);
 			}
 		}
 
-		//TRACE("%u: AudioThread::tick() - %zu buffers available now",
-		//	streamedAudioHandle->SourceId,
-		//	streamedAudioHandle->AvailableBufferIds.size());
+		TRACE("%u[%s]: AudioThread::tick() - %zu buffers available now",
+			streamedAudioHandle->SourceId,
+			streamedAudioHandle->Asset->Filename.c_str(),
+			streamedAudioHandle->AvailableBufferIds.size());
 
 		while (!streamedAudioHandle->AvailableBufferIds.empty())
 		{
 			// Make sure we have a chunk to replace with first, before unqueueing.
 			// This way we don't need additional tracking.
 			{
-				std::scoped_lock lock(_decoderThread->DecoderMutex());
+				std::lock_guard<std::mutex> lock(_decoderThread->DecoderMutex());
 				if (streamedAudioHandle->DecodedChunks.empty())
 					break;
 

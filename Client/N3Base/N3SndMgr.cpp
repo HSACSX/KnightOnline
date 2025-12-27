@@ -110,7 +110,7 @@ bool CN3SndMgr::InitOpenAL()
 	maxRegularSourceCount -= maxStreamCount;
 
 	{
-		std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+		std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 		int i = 0;
 		while (i < maxRegularSourceCount)
@@ -304,7 +304,7 @@ void CN3SndMgr::ReleaseOpenAL()
 		return;
 
 	{
-		std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+		std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 		for (uint32_t sourceId : _unassignedSourceIds)
 			alDeleteSources(1, &sourceId);
@@ -363,7 +363,7 @@ bool CN3SndMgr::PullBufferedSourceIdFromPool(uint32_t* sourceId)
 	if (sourceId == nullptr)
 		return false;
 
-	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 	// Too many already active.
 	if (_unassignedSourceIds.empty())
@@ -381,7 +381,7 @@ void CN3SndMgr::RestoreBufferedSourceIdToPool(uint32_t* sourceId)
 		|| *sourceId == INVALID_SOURCE_ID)
 		return;
 
-	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 	auto itr = _assignedSourceIds.find(*sourceId);
 	if (itr == _assignedSourceIds.end())
@@ -398,7 +398,7 @@ bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 	if (sourceId == nullptr)
 		return false;
 
-	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 	// Too many already active.
 	if (_unassignedStreamSourceIds.empty())
@@ -416,7 +416,7 @@ void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 		|| *sourceId == INVALID_SOURCE_ID)
 		return;
 
-	std::scoped_lock<std::mutex> lock(_sourceIdMutex);
+	std::lock_guard<std::mutex> lock(_sourceIdMutex);
 
 	auto itr = _assignedStreamSourceIds.find(*sourceId);
 	if (itr == _assignedStreamSourceIds.end())
@@ -431,7 +431,7 @@ void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std::string& filename)
 {
 	std::shared_ptr<BufferedAudioAsset> audioAsset;
-	std::scoped_lock<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
+	std::lock_guard<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
 
 	auto itr = _bufferedAudioAssetByFilenameMap.find(filename);
 	if (itr == _bufferedAudioAssetByFilenameMap.end())
@@ -457,7 +457,7 @@ std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std:
 std::shared_ptr<StreamedAudioAsset> CN3SndMgr::LoadStreamedAudioAsset(const std::string& filename)
 {
 	std::shared_ptr<StreamedAudioAsset> audioAsset;
-	std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
+	std::lock_guard<std::mutex> lock(_streamedAudioAssetByFilenameMutex);
 
 	auto itr = _streamedAudioAssetByFilenameMap.find(filename);
 	if (itr == _streamedAudioAssetByFilenameMap.end())
@@ -489,13 +489,13 @@ void CN3SndMgr::RemoveAudioAsset(AudioAsset* audioAsset)
 
 	if (audioAsset->Type == AUDIO_ASSET_BUFFERED)
 	{
-		std::scoped_lock lock(_bufferedAudioAssetByFilenameMutex);
+		std::lock_guard<std::mutex> lock(_bufferedAudioAssetByFilenameMutex);
 		if (--audioAsset->RefCount == 0)
 			_bufferedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 	}
 	else if (audioAsset->Type == AUDIO_ASSET_STREAMED)
 	{
-		std::scoped_lock lock(_streamedAudioAssetByFilenameMutex);
+		std::lock_guard<std::mutex> lock(_streamedAudioAssetByFilenameMutex);
 		if (--audioAsset->RefCount == 0)
 			_streamedAudioAssetByFilenameMap.erase(audioAsset->Filename);
 	}

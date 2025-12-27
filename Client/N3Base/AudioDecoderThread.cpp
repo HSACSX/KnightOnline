@@ -54,7 +54,7 @@ void AudioDecoderThread::thread_loop()
 
 		// Run decode for this tick
 		{
-			std::scoped_lock lock(_decoderMutex);
+			std::lock_guard<std::mutex> lock(_decoderMutex);
 			for (auto& [_, handle] : handleMap)
 				decode_impl(handle.get());
 		}
@@ -63,7 +63,7 @@ void AudioDecoderThread::thread_loop()
 
 void AudioDecoderThread::Add(std::shared_ptr<StreamedAudioHandle> handle)
 {
-	std::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	_pendingQueue.push_back(std::make_tuple(AUDIO_DECODER_QUEUE_ADD, std::move(handle)));
 }
 
@@ -83,7 +83,7 @@ void AudioDecoderThread::InitialDecode(StreamedAudioHandle* handle)
 
 void AudioDecoderThread::Remove(std::shared_ptr<StreamedAudioHandle> handle)
 {
-	std::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	_pendingQueue.push_back(std::make_tuple(AUDIO_DECODER_QUEUE_REMOVE, std::move(handle)));
 }
 
