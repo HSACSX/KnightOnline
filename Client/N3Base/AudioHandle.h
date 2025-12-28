@@ -60,6 +60,9 @@ struct FileReaderHandle
 struct mpg123_handle_struct;
 class StreamedAudioHandle : public AudioHandle
 {
+	friend class AudioThread;
+	friend class AudioDecoderThread;
+
 public:
 	struct DecodedChunk
 	{
@@ -67,6 +70,7 @@ public:
 		int32_t					BytesDecoded = -1;
 	};
 
+protected:
 	FileReaderHandle			FileReaderHandle;
 	mpg123_handle_struct*		Mp3Handle;
 	std::queue<uint32_t>		AvailableBufferIds;
@@ -75,11 +79,14 @@ public:
 	bool						BuffersAllocated;
 	bool						FinishedDecoding;
 
+public:
 	static std::shared_ptr<StreamedAudioHandle> Create(std::shared_ptr<AudioAsset> asset);
 
 	StreamedAudioHandle();
-	void RewindFrame();
 	~StreamedAudioHandle() override;
+
+protected:
+	void RewindFrame();
 };
 
 #endif // CLIENT_N3BASE_AUDIOHANDLE_H
