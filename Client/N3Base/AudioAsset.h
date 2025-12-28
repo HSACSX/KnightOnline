@@ -59,6 +59,10 @@ public:
 	StreamedAudioAsset();
 	bool LoadFromFile(const std::string& filename) override;
 	~StreamedAudioAsset() override;
+
+protected:
+	bool load_from_file_mp3(const std::string& filename);
+	bool load_from_file_wav(const std::string& filename);
 };
 
 #endif // CLIENT_N3BASE_AUDIOASSET_H
