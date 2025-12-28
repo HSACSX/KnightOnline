@@ -25,11 +25,14 @@ struct __TABLE_SOUND // Sound 리소스 레코드...
 /// \struct SoundSettings
 /// \brief Represents per-sound playback settings, such as volume.
 ///
-/// This structure stores gain values for an audio handle. It is shared
-/// between the sound instance and the audio handle, allowing persistent
-/// volume settings across multiple plays of the same sound.
+/// It is shared between the sound instance and the audio handle, allowing,
+/// for example, persistent volume settings across subsequent plays from the
+/// same sound instance across different handles.
 struct SoundSettings
 {
+	/// Indicates whether playback should loop.
+	bool IsLooping		= false;
+
 	/// Current gain applied to the sound, in the range [0.0, 1.0].
 	float CurrentGain	= 0.0f;
 

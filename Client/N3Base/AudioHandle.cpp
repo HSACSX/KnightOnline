@@ -14,7 +14,6 @@ AudioHandle::AudioHandle()
 	IsManaged		= false;
 	StartedPlaying	= false;
 	FinishedPlaying	= false;
-	IsLooping		= false;
 	SourceId		= INVALID_AUDIO_SOURCE_ID;
 
 	State			= SNDSTATE_INITIAL;

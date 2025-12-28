@@ -37,9 +37,7 @@ bool al_check_error_impl(const char* file, int line)
 CN3SndObj::CN3SndObj()
 {
 	_type = SNDTYPE_UNKNOWN;
-
 	_isStarted = false;
-	_isLooping = false;
 
 	_soundSettings = std::make_shared<SoundSettings>();
 }
@@ -54,7 +52,7 @@ void CN3SndObj::Init()
 	Release();
 
 	_isStarted = false;
-	_isLooping = false;
+	_soundSettings->IsLooping = false;
 }
 
 void CN3SndObj::Release()
@@ -194,7 +192,6 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 
 	CN3Base::s_SndMgr.Add(_handle);
 
-	_handle->IsLooping		= _isLooping;
 	_handle->Settings		= _soundSettings;
 
 	// OpenAL-side looping needs to be disabled on streamed handles.
@@ -203,7 +200,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 	if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
 		isLooping = 0;
 	else
-		isLooping = static_cast<ALint>(_isLooping);
+		isLooping = static_cast<ALint>(_soundSettings->IsLooping);
 
 	bool playImmediately = false;
 	if (delay == 0.0f
@@ -428,21 +425,18 @@ void CN3SndObj::SetPos(const __Vector3 vPos)
 
 void CN3SndObj::Looping(bool loop)
 {
-	_isLooping = loop;
+	_soundSettings->IsLooping = loop;
 
 	if (_handle == nullptr)
 		return;
-
-	_handle->IsLooping = true;
 
 	// Streams need to manually handle their looping.
 	if (_handle->HandleType == AUDIO_HANDLE_STREAMED)
 		return;
 
-	ALint isLooping = static_cast<ALint>(_isLooping);
 	CN3Base::s_SndMgr.QueueCallback(_handle, [=] (AudioHandle* handle)
 	{
-		alSourcei(handle->SourceId, AL_LOOPING, isLooping);
+		alSourcei(handle->SourceId, AL_LOOPING, static_cast<ALint>(handle->Settings->IsLooping));
 		AL_CLEAR_ERROR_STATE();
 	});
 }

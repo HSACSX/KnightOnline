@@ -153,7 +153,7 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 
 			// If we're looping, we should reset back to the first frame
 			// and start decoding from there.
-			if (handle->IsLooping)
+			if (handle->Settings->IsLooping)
 				handle->RewindFrame();
 			// Otherwise, we've finished decoding so we should stop here.
 			else
@@ -207,7 +207,7 @@ void AudioDecoderThread::decode_impl_pcm(StreamedAudioHandle* handle)
 
 			// If we're looping, we should reset back to the first frame
 			// and start decoding from there.
-			if (handle->IsLooping)
+			if (handle->Settings->IsLooping)
 				handle->RewindFrame();
 			// Otherwise, we've finished decoding so we should stop here.
 			else

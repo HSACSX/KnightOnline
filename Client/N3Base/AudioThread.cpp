@@ -330,7 +330,7 @@ void AudioThread::tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsed
 
 	if (handle->State == SNDSTATE_PLAY)
 	{
-		if (!handle->IsLooping
+		if (!handle->Settings->IsLooping
 			&& handle->FinishedPlaying)
 		{
 			handle->Timer = 0.0f;

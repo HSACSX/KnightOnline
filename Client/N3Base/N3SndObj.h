@@ -25,9 +25,6 @@ protected:
 	/// Indicates whether the sound has been started
 	bool							_isStarted;
 
-	/// Indicates whether the sound should loop
-	bool							_isLooping;
-
 	/// Settings associated with this sound object, including current and maximum volume.
 	/// These settings persist with the CN3SndObj instance and are shared with any AudioHandle created for playback.
 	std::shared_ptr<SoundSettings>	_soundSettings;
@@ -55,7 +52,7 @@ public:
 	/// \brief Returns true if the sound is set to loop.
 	bool IsLooping() const
 	{
-		return _isLooping;
+		return _soundSettings->IsLooping;
 	}
 
 	/// \brief Returns the current volume of the sound in range [0.0f, 1.0f].

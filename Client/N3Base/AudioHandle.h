@@ -62,9 +62,6 @@ public:
 	/// sound/stream.
 	bool							FinishedPlaying;
 
-	/// Indicates whether playback should loop.
-	bool							IsLooping;
-
 	/// OpenAL source identifier associated with this handle.
 	uint32_t						SourceId;
 
