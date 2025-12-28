@@ -136,10 +136,10 @@ class FileReader;
 /// \struct FileReaderHandle
 /// \brief Tracks file reader state for streamed audio decoding.
 ///
-/// Stores the current read position within a file or memory-mapped region.
+/// Stores the current read position for the associated memory-mapped file.
 struct FileReaderHandle
 {
-	/// File reader instance used for streaming.
+	/// Memory-mapped file reader instance used for streaming.
 	FileReader* File	= nullptr;
 
 	/// Current read offset, in bytes.
