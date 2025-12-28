@@ -279,6 +279,9 @@
     <ClInclude Include="AudioHandle.h">
       <Filter>Audio</Filter>
     </ClInclude>
+    <ClInclude Include="mpg123_reader_io.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="N3Eng.cpp">
@@ -507,6 +510,9 @@
       <Filter>Audio</Filter>
     </ClCompile>
     <ClCompile Include="AudioHandle.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="mpg123_reader_io.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
   </ItemGroup>

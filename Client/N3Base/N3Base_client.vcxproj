@@ -28,6 +28,7 @@
     <ClInclude Include="DebugUtils.h" />
     <ClInclude Include="DFont.h" />
     <ClInclude Include="LogWriter.h" />
+    <ClInclude Include="mpg123_reader_io.h" />
     <ClInclude Include="My_3DStruct.h" />
     <ClInclude Include="N3AlphaPrimitiveManager.h" />
     <ClInclude Include="N3AnimControl.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="DebugUtils.cpp" />
     <ClCompile Include="DFont.cpp" />
     <ClCompile Include="LogWriter.cpp" />
+    <ClCompile Include="mpg123_reader_io.cpp" />
     <ClCompile Include="My_3DStruct.cpp" />
     <ClCompile Include="N3AlphaPrimitiveManager.cpp" />
     <ClCompile Include="N3AnimControl.cpp" />
