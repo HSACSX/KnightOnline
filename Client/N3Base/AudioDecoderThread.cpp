@@ -103,6 +103,8 @@ void AudioDecoderThread::decode_impl(StreamedAudioHandle* handle)
 		decode_impl_mp3(handle);
 	else if (asset->DecoderType == AUDIO_DECODER_PCM)
 		decode_impl_pcm(handle);
+	else
+		assert(!"AudioDecoderThread:decode_impl: Unsupported asset decoder type");
 }
 
 void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
@@ -113,15 +115,13 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(handle->Asset.get());
 	const size_t ChunksToDecode = MAX_AUDIO_STREAM_BUFFER_COUNT - handle->DecodedChunks.size();
 
-	size_t done = 0;
-	int error;
-
 	for (size_t i = 0; i < ChunksToDecode; i++)
 	{
 		StreamedAudioHandle::DecodedChunk decodedChunk = {};
 		decodedChunk.Data.resize(asset->PcmChunkSize);
 
-		error = mpg123_read(handle->Mp3Handle, &decodedChunk.Data[0], asset->PcmChunkSize, &done);
+		size_t done = 0;
+		int error = mpg123_read(handle->Mp3Handle, &decodedChunk.Data[0], asset->PcmChunkSize, &done);
 
 		// The first read will invoke MPG123_NEW_FORMAT.
 		// This is where we'd fetch the format data, but we don't really care about it.
@@ -167,6 +167,10 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 void AudioDecoderThread::decode_impl_pcm(StreamedAudioHandle* handle)
 {
 	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(handle->Asset.get());
+
+	assert(asset->PcmDataBuffer != nullptr);
+	assert(asset->PcmDataSize != 0);
+
 	if (asset->PcmDataBuffer == nullptr
 		|| asset->PcmDataSize == 0)
 		return;

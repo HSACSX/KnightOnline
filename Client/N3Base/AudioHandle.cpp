@@ -202,10 +202,16 @@ void StreamedAudioHandle::RewindFrame()
 	{
 		if (Mp3Handle != nullptr)
 			mpg123_seek_frame(Mp3Handle, 0, SEEK_SET);
+		else
+			FileReaderHandle.Offset = 0;
 	}
 	else if (asset->DecoderType == AUDIO_DECODER_PCM)
 	{
 		FileReaderHandle.Offset = asset->PcmDataBuffer - static_cast<const uint8_t*>(asset->File->Memory());
+	}
+	else
+	{
+		assert(!"StreamedAudioHandle::RewindFrame: Unsupported asset decoder type");
 	}
 }
 
