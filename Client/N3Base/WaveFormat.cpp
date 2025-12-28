@@ -4,6 +4,8 @@
 
 #include <FileIO/FileReader.h>
 
+#include <cstring> // std::memcpy()
+
 // We follow Frictional Games' implementation for scanning through RIFF chunks
 // https://github.com/FrictionalGames/OALWrapper/blob/973659d5700720a87063789a591b811ce5af7dbe/sources/OAL_WAVSample.cpp
 

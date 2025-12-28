@@ -5,8 +5,6 @@
 #include <FileIO/FileReader.h>
 #include <shared/StringUtils.h>
 
-#include <cstring> // std::memcpy()
-
 bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, size_t* pcmChunkSize,
 	const uint8_t** pcmDataBuffer, ALsizei* pcmDataSize);
 
