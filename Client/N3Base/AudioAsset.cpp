@@ -130,9 +130,9 @@ static bool ParseWAV(FileReader& file, ALenum* format, ALsizei* sampleRate, size
 
 	constexpr double DurationSec = 0.418; // roughly the same duration as the MP3 chunks
 
-	ALsizei bytesPerFrame = static_cast<ALint>(waveFormat->NumChannels * (waveFormat->BitsPerSample / 8));
-	ALsizei chunkFrames = static_cast<ALint>(waveFormat->SampleRate * DurationSec);
-	ALsizei pcmChunkSize_ = chunkFrames * bytesPerFrame;
+	ALsizei bytesPerFrame	= static_cast<ALsizei>(waveFormat->NumChannels * (waveFormat->BitsPerSample / 8));
+	ALsizei chunkFrames		= static_cast<ALsizei>(waveFormat->SampleRate * DurationSec);
+	ALsizei pcmChunkSize_	= chunkFrames * bytesPerFrame;
 
 	if (format != nullptr)
 		*format = format_;
