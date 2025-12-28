@@ -19,7 +19,7 @@ AudioHandle::AudioHandle()
 	StartedPlaying	= false;
 	FinishedPlaying	= false;
 	IsLooping		= false;
-	SourceId		= INVALID_SOURCE_ID;
+	SourceId		= INVALID_AUDIO_SOURCE_ID;
 
 	State			= SNDSTATE_INITIAL;
 
@@ -169,7 +169,7 @@ BufferedAudioHandle::BufferedAudioHandle()
 
 BufferedAudioHandle::~BufferedAudioHandle()
 {
-	if (SourceId != INVALID_SOURCE_ID)
+	if (SourceId != INVALID_AUDIO_SOURCE_ID)
 	{
 		alSourceStop(SourceId);
 		AL_CLEAR_ERROR_STATE();
@@ -191,7 +191,7 @@ StreamedAudioHandle::StreamedAudioHandle()
 	BuffersAllocated	= false;
 	FinishedDecoding	= false;
 
-	BufferIds.reserve(BUFFER_COUNT);
+	BufferIds.reserve(MAX_AUDIO_STREAM_BUFFER_COUNT);
 }
 
 void StreamedAudioHandle::RewindFrame()
@@ -211,7 +211,7 @@ void StreamedAudioHandle::RewindFrame()
 
 StreamedAudioHandle::~StreamedAudioHandle()
 {
-	if (SourceId != INVALID_SOURCE_ID)
+	if (SourceId != INVALID_AUDIO_SOURCE_ID)
 	{
 		alSourceStop(SourceId);
 		AL_CHECK_ERROR();

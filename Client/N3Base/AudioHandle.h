@@ -20,8 +20,6 @@ class AudioAsset;
 class AudioHandle
 {
 public:
-	static constexpr uint32_t INVALID_SOURCE_ID = ~0U;
-
 	e_AudioHandleType				HandleType;
 	std::atomic<bool>				IsManaged;
 	bool							StartedPlaying;
@@ -63,9 +61,6 @@ struct mpg123_handle_struct;
 class StreamedAudioHandle : public AudioHandle
 {
 public:
-	static constexpr size_t		BUFFER_COUNT		= 4;
-	static constexpr uint32_t	INVALID_BUFFER_ID	= ~0U;
-
 	struct DecodedChunk
 	{
 		std::vector<uint8_t>	Data;

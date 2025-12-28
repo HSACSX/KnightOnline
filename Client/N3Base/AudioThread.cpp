@@ -106,9 +106,9 @@ void AudioThread::Add(std::shared_ptr<AudioHandle> handle)
 	if (handle == nullptr)
 		return;
 
-	assert(handle->SourceId != INVALID_SOURCE_ID);
+	assert(handle->SourceId != INVALID_AUDIO_SOURCE_ID);
 
-	if (handle->SourceId == INVALID_SOURCE_ID)
+	if (handle->SourceId == INVALID_AUDIO_SOURCE_ID)
 		return;
 
 	// Consider the handle managed from the moment we try to add it to the thread.
@@ -126,9 +126,9 @@ void AudioThread::QueueCallback(std::shared_ptr<AudioHandle> handle, AudioCallba
 	if (handle == nullptr)
 		return;
 
-	assert(handle->SourceId != INVALID_SOURCE_ID);
+	assert(handle->SourceId != INVALID_AUDIO_SOURCE_ID);
 
-	if (handle->SourceId == INVALID_SOURCE_ID)
+	if (handle->SourceId == INVALID_AUDIO_SOURCE_ID)
 		return;
 
 	std::lock_guard<std::mutex> lock(_mutex);
@@ -142,9 +142,9 @@ void AudioThread::Remove(std::shared_ptr<AudioHandle> handle)
 	if (handle == nullptr)
 		return;
 
-	assert(handle->SourceId != INVALID_SOURCE_ID);
+	assert(handle->SourceId != INVALID_AUDIO_SOURCE_ID);
 
-	if (handle->SourceId == INVALID_SOURCE_ID)
+	if (handle->SourceId == INVALID_AUDIO_SOURCE_ID)
 		return;
 
 	std::lock_guard<std::mutex> lock(_mutex);
@@ -167,22 +167,19 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 
 	if (handle->HandleType == AUDIO_HANDLE_STREAMED)
 	{
-		constexpr auto BUFFER_COUNT			= StreamedAudioHandle::BUFFER_COUNT;
-		constexpr auto INVALID_BUFFER_ID	= StreamedAudioHandle::INVALID_BUFFER_ID;
-
 		auto streamedAudioHandle = std::static_pointer_cast<StreamedAudioHandle>(handle);
 		if (streamedAudioHandle != nullptr)
 		{
 			// Initialize the buffers
 			if (!streamedAudioHandle->BuffersAllocated)
 			{
-				for (size_t i = 0; i < BUFFER_COUNT; i++)
+				for (size_t i = 0; i < MAX_AUDIO_STREAM_BUFFER_COUNT; i++)
 				{
-					ALuint bufferId = INVALID_BUFFER_ID;
+					ALuint bufferId = INVALID_AUDIO_BUFFER_ID;
 
 					alGenBuffers(1, &bufferId);
 					if (!AL_CHECK_ERROR()
-						&& bufferId != INVALID_BUFFER_ID)
+						&& bufferId != INVALID_AUDIO_BUFFER_ID)
 					{
 						streamedAudioHandle->BufferIds.push_back(bufferId);
 						streamedAudioHandle->AvailableBufferIds.push(bufferId);

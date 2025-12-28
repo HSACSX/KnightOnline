@@ -68,9 +68,9 @@ bool CN3SndMgr::InitOpenAL()
 	_alcContext = alcCreateContext(_alcDevice, nullptr);
 	alcMakeContextCurrent(_alcContext);
 
-	ALuint generatedSourceIds[MAX_SOURCE_IDS];
+	ALuint generatedSourceIds[MAX_AUDIO_SOURCE_IDS];
 	int generatedSourceIdCount = 0;
-	while (generatedSourceIdCount < MAX_SOURCE_IDS)
+	while (generatedSourceIdCount < MAX_AUDIO_SOURCE_IDS)
 	{
 		alGenSources(1, &generatedSourceIds[generatedSourceIdCount]);
 		if (alGetError() != AL_NO_ERROR)
@@ -93,7 +93,7 @@ bool CN3SndMgr::InitOpenAL()
 	}
 
 	int maxRegularSourceCount = generatedSourceIdCount;
-	int maxStreamCount = MAX_STREAM_SOURCES;
+	int maxStreamCount = MAX_AUDIO_STREAM_SOURCES;
 
 	// Not enough sources to allow for MAX_STREAM_SOURCES.
 	if (generatedSourceIdCount < maxStreamCount)
@@ -367,7 +367,10 @@ bool CN3SndMgr::PullBufferedSourceIdFromPool(uint32_t* sourceId)
 
 	// Too many already active.
 	if (_unassignedSourceIds.empty())
-		return INVALID_SOURCE_ID;
+	{
+		*sourceId = INVALID_AUDIO_SOURCE_ID;
+		return false;
+	}
 
 	*sourceId = _unassignedSourceIds.front();
 	_unassignedSourceIds.pop_front();
@@ -377,8 +380,14 @@ bool CN3SndMgr::PullBufferedSourceIdFromPool(uint32_t* sourceId)
 
 void CN3SndMgr::RestoreBufferedSourceIdToPool(uint32_t* sourceId)
 {
-	if (sourceId == nullptr
-		|| *sourceId == INVALID_SOURCE_ID)
+	assert(sourceId != nullptr);
+
+	if (sourceId == nullptr)
+		return;
+
+	assert(*sourceId != INVALID_AUDIO_SOURCE_ID);
+
+	if (*sourceId == INVALID_AUDIO_SOURCE_ID)
 		return;
 
 	std::lock_guard<std::mutex> lock(_sourceIdMutex);
@@ -390,11 +399,13 @@ void CN3SndMgr::RestoreBufferedSourceIdToPool(uint32_t* sourceId)
 	_assignedSourceIds.erase(itr);
 	_unassignedSourceIds.push_back(*sourceId);
 
-	*sourceId = INVALID_SOURCE_ID;
+	*sourceId = INVALID_AUDIO_SOURCE_ID;
 }
 
 bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 {
+	assert(sourceId != nullptr);
+
 	if (sourceId == nullptr)
 		return false;
 
@@ -402,7 +413,10 @@ bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 
 	// Too many already active.
 	if (_unassignedStreamSourceIds.empty())
-		return INVALID_SOURCE_ID;
+	{
+		*sourceId = INVALID_AUDIO_SOURCE_ID;
+		return false;
+	}
 
 	*sourceId = _unassignedStreamSourceIds.front();
 	_unassignedStreamSourceIds.pop_front();
@@ -412,8 +426,14 @@ bool CN3SndMgr::PullStreamedSourceIdFromPool(uint32_t* sourceId)
 
 void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 {
-	if (sourceId == nullptr
-		|| *sourceId == INVALID_SOURCE_ID)
+	assert(sourceId != nullptr);
+
+	if (sourceId == nullptr)
+		return;
+
+	assert(*sourceId != INVALID_AUDIO_SOURCE_ID);
+
+	if (*sourceId == INVALID_AUDIO_SOURCE_ID)
 		return;
 
 	std::lock_guard<std::mutex> lock(_sourceIdMutex);
@@ -425,7 +445,7 @@ void CN3SndMgr::RestoreStreamedSourceIdToPool(uint32_t* sourceId)
 	_assignedStreamSourceIds.erase(itr);
 	_unassignedStreamSourceIds.push_back(*sourceId);
 
-	*sourceId = INVALID_SOURCE_ID;
+	*sourceId = INVALID_AUDIO_SOURCE_ID;
 }
 
 std::shared_ptr<BufferedAudioAsset> CN3SndMgr::LoadBufferedAudioAsset(const std::string& filename)

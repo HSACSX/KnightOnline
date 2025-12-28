@@ -13,18 +13,19 @@
 
 BufferedAudioAsset::BufferedAudioAsset()
 {
-	Type = AUDIO_ASSET_BUFFERED;
+	Type		= AUDIO_ASSET_BUFFERED;
+	BufferId	= INVALID_AUDIO_BUFFER_ID;
 }
 
 BufferedAudioAsset::~BufferedAudioAsset()
 {
-	if (BufferId != INVALID_BUFFER_ID)
+	if (BufferId != INVALID_AUDIO_BUFFER_ID)
 	{
 		alDeleteBuffers(1, &BufferId);
 		AL_CHECK_ERROR();
 	}
 
-	BufferId = INVALID_BUFFER_ID;
+	BufferId = INVALID_AUDIO_BUFFER_ID;
 }
 
 template <typename T>
@@ -186,7 +187,10 @@ bool BufferedAudioAsset::LoadFromFile(const std::string& filename)
 
 StreamedAudioAsset::StreamedAudioAsset()
 {
-	Type = AUDIO_ASSET_STREAMED;
+	Type			= AUDIO_ASSET_STREAMED;
+	PcmDataSize		= 0;
+	PcmChunkSize	= 0;
+	PcmDataBuffer	= nullptr;
 }
 
 bool StreamedAudioAsset::LoadFromFile(const std::string& filename)

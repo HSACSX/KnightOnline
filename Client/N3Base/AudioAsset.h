@@ -22,9 +22,6 @@ enum e_AudioDecoderType : uint8_t
 
 class AudioAsset
 {
-protected:
-	static constexpr uint32_t INVALID_BUFFER_ID = ~0U;
-
 public:
 	e_AudioAssetType	Type		= AUDIO_ASSET_UNKNOWN;
 	e_AudioDecoderType	DecoderType	= AUDIO_DECODER_UNKNOWN;
@@ -46,7 +43,7 @@ public:
 	~BufferedAudioAsset() override;
 
 public:
-	uint32_t		BufferId = INVALID_BUFFER_ID;
+	uint32_t BufferId;
 };
 
 class FileReader;
@@ -54,9 +51,9 @@ class StreamedAudioAsset : public AudioAsset
 {
 public:
 	std::unique_ptr<FileReader>	File;
-	size_t						PcmDataSize		= 0;
-	size_t						PcmChunkSize	= 0;
-	const uint8_t*				PcmDataBuffer	= nullptr;
+	size_t						PcmDataSize;
+	size_t						PcmChunkSize;
+	const uint8_t*				PcmDataBuffer;
 
 public:
 	StreamedAudioAsset();

@@ -2,6 +2,7 @@
 #include "AudioDecoderThread.h"
 #include "AudioHandle.h"
 #include "AudioAsset.h"
+#include "al_wrapper.h"
 
 #include <cassert>
 #include <unordered_map>
@@ -91,8 +92,7 @@ void AudioDecoderThread::Remove(std::shared_ptr<StreamedAudioHandle> handle)
 
 void AudioDecoderThread::decode_impl(StreamedAudioHandle* handle)
 {
-	constexpr auto BUFFER_COUNT = StreamedAudioHandle::BUFFER_COUNT;
-	if (handle->DecodedChunks.size() >= BUFFER_COUNT)
+	if (handle->DecodedChunks.size() >= MAX_AUDIO_STREAM_BUFFER_COUNT)
 		return;
 
 	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(handle->Asset.get());
@@ -110,10 +110,8 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 	if (handle->Mp3Handle == nullptr)
 		return;
 
-	constexpr auto BUFFER_COUNT = StreamedAudioHandle::BUFFER_COUNT;
-
 	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(handle->Asset.get());
-	const size_t ChunksToDecode = BUFFER_COUNT - handle->DecodedChunks.size();
+	const size_t ChunksToDecode = MAX_AUDIO_STREAM_BUFFER_COUNT - handle->DecodedChunks.size();
 
 	size_t done = 0;
 	int error;
@@ -168,14 +166,12 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 
 void AudioDecoderThread::decode_impl_pcm(StreamedAudioHandle* handle)
 {
-	constexpr auto BUFFER_COUNT = StreamedAudioHandle::BUFFER_COUNT;
-
 	StreamedAudioAsset* asset = static_cast<StreamedAudioAsset*>(handle->Asset.get());
 	if (asset->PcmDataBuffer == nullptr
 		|| asset->PcmDataSize == 0)
 		return;
 
-	const size_t ChunksToDecode = BUFFER_COUNT - handle->DecodedChunks.size();
+	const size_t ChunksToDecode = MAX_AUDIO_STREAM_BUFFER_COUNT - handle->DecodedChunks.size();
 	FileReaderHandle& fileReaderHandle = handle->FileReaderHandle;
 	FileReader* file = asset->File.get();
 	const size_t fileSize = static_cast<size_t>(file->Size());
