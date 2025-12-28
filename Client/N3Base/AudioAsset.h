@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <memory>
-#include <string>
+#include <memory> // std::unique_ptr<>
+#include <string> // std::string
 
 enum e_AudioAssetType : uint8_t
 {

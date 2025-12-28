@@ -14,8 +14,7 @@
 
 #include <AL/alc.h>
 
-#include <cassert>
-#include <filesystem>
+#include <cassert>			// assert()
 
 #ifdef _DEBUG
 #undef THIS_FILE

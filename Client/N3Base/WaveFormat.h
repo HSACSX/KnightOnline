@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <inttypes.h>
+#include <inttypes.h> // uint32_t, uint16_t
 
 #pragma pack(push, 1)
 struct WAVE_Data

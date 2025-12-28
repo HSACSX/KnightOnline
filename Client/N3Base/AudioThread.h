@@ -5,11 +5,9 @@
 
 #include <shared/Thread.h>
 
-#include <functional>
-#include <memory>
-#include <vector>
-
-#include "AudioHandle.h"
+#include <functional>	// std::function<>
+#include <memory>		// std::shared_ptr<>, std::unique_Ptr<>
+#include <vector>		// std::vector<>
 
 enum e_AudioQueueType
 {
@@ -18,6 +16,7 @@ enum e_AudioQueueType
 	AUDIO_QUEUE_CALLBACK
 };
 
+struct AudioDecodedChunk;
 class AudioDecoderThread;
 class AudioHandle;
 class AudioThread : public Thread
@@ -36,7 +35,7 @@ public:
 
 private:
 	void reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManaged);
-	void tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle::DecodedChunk& tmpDecodedChunk);
+	void tick_decoder(std::shared_ptr<AudioHandle>& handle, AudioDecodedChunk& tmpDecodedChunk);
 	void tick_sound(std::shared_ptr<AudioHandle>& handle, float elapsedTime);
 	void set_gain(std::shared_ptr<AudioHandle>& handle, float gain);
 	void play_impl(std::shared_ptr<AudioHandle>& handle);

@@ -5,8 +5,8 @@
 #include "AudioHandle.h"
 #include "al_wrapper.h"
 
-#include <cassert>
-#include <unordered_map>
+#include <cassert>			// assert()
+#include <unordered_map>	// std::unordered_map<>
 
 #include "N3Base.h"
 
@@ -24,7 +24,7 @@ void AudioThread::thread_loop()
 {
 	std::vector<QueueType> pendingQueue;
 	std::unordered_map<uint32_t, std::shared_ptr<AudioHandle>> handleMap;
-	StreamedAudioHandle::DecodedChunk tmpDecodedChunk; // keep a copy here so we aren't constantly reallocating
+	AudioDecodedChunk tmpDecodedChunk; // keep a copy here so we aren't constantly reallocating
 	float previousTime = CN3Base::TimeGet();
 
 	_decoderThread = std::make_unique<AudioDecoderThread>();
@@ -214,13 +214,13 @@ void AudioThread::reset(std::shared_ptr<AudioHandle>& handle, bool alreadyManage
 			_decoderThread->Add(std::move(streamedAudioHandle));
 
 			// Force an initial tick to push our decoded data before play is triggered.
-			StreamedAudioHandle::DecodedChunk tmpDecodedChunk = {};
+			AudioDecodedChunk tmpDecodedChunk = {};
 			tick_decoder(handle, tmpDecodedChunk);
 		}
 	}
 }
 
-void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, StreamedAudioHandle::DecodedChunk& tmpDecodedChunk)
+void AudioThread::tick_decoder(std::shared_ptr<AudioHandle>& handle, AudioDecodedChunk& tmpDecodedChunk)
 {
 	// Process streamed audio
 	if (handle->HandleType == AUDIO_HANDLE_STREAMED)

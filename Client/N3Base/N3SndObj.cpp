@@ -11,7 +11,7 @@
 #include "al_wrapper.h"
 
 #include <AL/alc.h>
-#include <cassert>
+#include <cassert>		// assert()
 
 #ifdef _N3GAME
 #include "LogWriter.h"

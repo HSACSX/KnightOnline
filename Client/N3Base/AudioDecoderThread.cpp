@@ -4,8 +4,8 @@
 #include "AudioAsset.h"
 #include "al_wrapper.h"
 
-#include <cassert>
-#include <unordered_map>
+#include <cassert>			// assert()
+#include <unordered_map>	// std::unordered_map<>
 
 #include <FileIO/FileReader.h>
 #include <mpg123.h>
@@ -117,7 +117,7 @@ void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 
 	for (size_t i = 0; i < ChunksToDecode; i++)
 	{
-		StreamedAudioHandle::DecodedChunk decodedChunk = {};
+		AudioDecodedChunk decodedChunk = {};
 		decodedChunk.Data.resize(asset->PcmChunkSize);
 
 		size_t done = 0;
@@ -182,7 +182,7 @@ void AudioDecoderThread::decode_impl_pcm(StreamedAudioHandle* handle)
 
 	for (size_t i = 0; i < ChunksToDecode; i++)
 	{
-		StreamedAudioHandle::DecodedChunk decodedChunk = {};
+		AudioDecodedChunk decodedChunk = {};
 
 		const size_t bytesRemaining = fileSize > fileReaderHandle.Offset
 			? fileSize - fileReaderHandle.Offset

@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <string>
+#include <string> // std::string
 
 struct __TABLE_SOUND // Sound 리소스 레코드...
 {

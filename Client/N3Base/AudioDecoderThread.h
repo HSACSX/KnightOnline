@@ -5,8 +5,9 @@
 
 #include <shared/Thread.h>
 
-#include <memory>
-#include <mutex>
+#include <memory>	// std::shared_ptr<>
+#include <mutex>	// std::mutex
+#include <vector>	// std::vector<>
 
 enum e_AudioDecoderQueueType
 {

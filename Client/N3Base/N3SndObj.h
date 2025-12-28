@@ -11,8 +11,8 @@
 
 #include "N3SndDef.h"
 
-#include <memory>
-#include <string>
+#include <memory> // std::shared_ptr<>
+#include <string> // std::string
 
 class AudioAsset;
 class AudioHandle;

@@ -12,18 +12,18 @@
 #include "N3SndDef.h"
 #include "N3TableBase.h"
 
-#include <list>
-#include <map>
-#include <memory>
-#include <mutex>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
+#include <list>				// std::list<>
+#include <memory>			// std::unique_ptr<>
+#include <mutex>			// std::mutex
+#include <string>			// std::string
+#include <unordered_map>	// std::unordered_map<>
+#include <unordered_set>	// std::unordered_set<>
 
 #include "AudioThread.h"
 
 struct ALCcontext;
 struct ALCdevice;
+class AudioAsset;
 class BufferedAudioAsset;
 class CN3SndObj;
 class StreamedAudioAsset;
