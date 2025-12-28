@@ -94,7 +94,7 @@ bool CN3SndMgr::InitOpenAL()
 	int maxRegularSourceCount = generatedSourceIdCount;
 	int maxStreamCount = MAX_AUDIO_STREAM_SOURCES;
 
-	// Not enough sources to allow for MAX_STREAM_SOURCES.
+	// Not enough sources to allow for MAX_AUDIO_STREAM_SOURCES.
 	if (generatedSourceIdCount < maxStreamCount)
 	{
 		// If we have at least 2 source IDs available, reserve just 1 for stream sources.

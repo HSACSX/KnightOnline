@@ -8,7 +8,7 @@
 #include <cassert>			// assert()
 #include <unordered_map>	// std::unordered_map<>
 
-#include "N3Base.h"
+#include "N3Base.h"			// CN3Base::TimeGet()
 
 using namespace std::chrono_literals;
 

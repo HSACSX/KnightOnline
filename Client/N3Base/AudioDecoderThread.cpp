@@ -109,6 +109,8 @@ void AudioDecoderThread::decode_impl(StreamedAudioHandle* handle)
 
 void AudioDecoderThread::decode_impl_mp3(StreamedAudioHandle* handle)
 {
+	assert(handle->Mp3Handle != nullptr);
+
 	if (handle->Mp3Handle == nullptr)
 		return;
 
