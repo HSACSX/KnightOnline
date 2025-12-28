@@ -203,7 +203,6 @@ void CN3SndMgr::ReleaseStreamObj(CN3SndObj** ppObj)
 	}
 }
 
-// Tick sound logic by 1 frame.
 void CN3SndMgr::Tick()
 {
 	if (!m_bSndEnable)
