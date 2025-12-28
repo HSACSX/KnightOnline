@@ -187,6 +187,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="AudioAsset.cpp" />
+    <ClCompile Include="WaveFormat.cpp" />
     <ClCompile Include="WinCrypt.cpp" />
   </ItemGroup>
   <ItemGroup>

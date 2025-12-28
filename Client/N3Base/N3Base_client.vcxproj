@@ -176,6 +176,7 @@
     <ClCompile Include="StdAfxBase.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WaveFormat.cpp" />
     <ClCompile Include="WinCrypt.cpp" />
   </ItemGroup>
   <ItemGroup>
