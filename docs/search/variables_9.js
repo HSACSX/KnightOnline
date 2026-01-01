@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['m_5fbconvertafteropen_0',['m_bConvertAfterOpen',['../classCZipCentralDir.html#a63b7dff88db3db6c487ce301ba5c5727',1,'CZipCentralDir']]],
+  ['m_5fbsndenable_1',['m_bSndEnable',['../classCN3SndMgr.html#aa1bf18f8ebdbdeefcc7f446859a32a1e',1,'CN3SndMgr']]],
+  ['m_5fbychangetype_2',['m_byChangeType',['../classCNpc.html#a4617a03738f1611bf6b11f33586118c1',1,'CNpc']]],
+  ['m_5fbyregentype_3',['m_byRegenType',['../classCNpc.html#af91dce017ab0257cf6807968d4d23cd6',1,'CNpc']]],
+  ['m_5fdamageduserlist_4',['m_DamagedUserList',['../classCNpc.html#a8cd5f333ee730ce464418792d1cae1ea',1,'CNpc']]],
+  ['m_5ffattacktimerecent_5',['m_fAttackTimeRecent',['../classCPlayerMySelf.html#ac92cc5e9ebe6670190bf97a124f5f8dc',1,'CPlayerMySelf']]],
+  ['m_5ffsecformetor_6',['m_fSecForMetor',['../classCNpc.html#a47564a63a563e3f5d8914b7c3db1f663',1,'CNpc']]],
+  ['m_5ffsecforrealmovemetor_7',['m_fSecForRealMoveMetor',['../classCNpc.html#acf62bf575236226c29b64ada97c42b82',1,'CNpc']]],
+  ['m_5fpheader_8',['m_pHeader',['../structCZipFindFast.html#a89f7e5f7f740e0eeb4107dce418ef2fa',1,'CZipFindFast']]],
+  ['m_5fsndobjs_9',['m_SndObjs',['../classCN3SndMgr.html#a4dcda85cae277ef55ab1fe5f5b94b789',1,'CN3SndMgr']]],
+  ['m_5fsndobjs_5fplayonceandrelease_10',['m_SndObjs_PlayOnceAndRelease',['../classCN3SndMgr.html#aa1e7c4aecce8bb93bf1c779e1a7d459a',1,'CN3SndMgr']]],
+  ['m_5fsndobjstreams_11',['m_SndObjStreams',['../classCN3SndMgr.html#a57e770a44b330f78e7450ec6fa5a2325',1,'CN3SndMgr']]],
+  ['m_5fsnid_12',['m_sNid',['../classCNpc.html#a0e41a4f192fec49727cfa42f1192a93a',1,'CNpc']]],
+  ['m_5fssid_13',['m_sSid',['../classCNpc.html#abf65a565a2ab7ae7ef54d7059e8e440a',1,'CNpc']]],
+  ['m_5ftbl_5fsource_14',['m_Tbl_Source',['../classCN3SndMgr.html#a52ef032a7c1725841edfd4a892bee648',1,'CN3SndMgr']]],
+  ['m_5fuindex_15',['m_uIndex',['../structCZipFindFast.html#a159668d24fdf40f0dc71c83376672956',1,'CZipFindFast']]],
+  ['maxgain_16',['MaxGain',['../structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94',1,'SoundSettings']]],
+  ['mp3handle_17',['Mp3Handle',['../classStreamedAudioHandle.html#a88e2ac6d21c1e088f0a6805af627d88a',1,'StreamedAudioHandle']]]
+];
