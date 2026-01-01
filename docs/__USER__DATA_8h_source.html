@@ -110,12 +110,12 @@ $(function(){initNavTree('__USER__DATA_8h_source.html',''); initResizable(true);
 <div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct__ITEM__DATA.html">    8</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct__ITEM__DATA.html">_ITEM_DATA</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    int32_t     nNum;       <span class="comment">// item 번호</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    int16_t     sDuration;  <span class="comment">// item 내구력</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    int16_t     sCount;     <span class="comment">// item 갯수 or item 축복 속성에 해당 값</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    uint8_t     byFlag;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    uint16_t    sTimeRemaining;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    int64_t     nSerialNum; <span class="comment">// item serial code</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    int32_t nNum;       <span class="comment">// item 번호</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    int16_t sDuration;  <span class="comment">// item 내구력</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    int16_t sCount;     <span class="comment">// item 갯수 or item 축복 속성에 해당 값</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    uint8_t byFlag;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    uint16_t sTimeRemaining;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    int64_t nSerialNum; <span class="comment">// item serial code</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
@@ -140,56 +140,56 @@ $(function(){initNavTree('__USER__DATA_8h_source.html',''); initResizable(true);
 <div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="struct__USER__DATA.html">   32</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct__USER__DATA.html">_USER_DATA</a></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">char</span>        m_id[MAX_ID_SIZE + 1];          <span class="comment">// 유저 ID</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">char</span>        m_Accountid[MAX_ID_SIZE + 1];   <span class="comment">// 계정 ID</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">char</span> m_id[MAX_ID_SIZE + 1];                            <span class="comment">// 유저 ID</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">char</span> m_Accountid[MAX_ID_SIZE + 1];                     <span class="comment">// 계정 ID</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    uint8_t     m_bZone;                        <span class="comment">// 현재 Zone</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span>       m_curx;                         <span class="comment">// 현재 X 좌표</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">float</span>       m_curz;                         <span class="comment">// 현재 Z 좌표</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">float</span>       m_cury;                         <span class="comment">// 현재 Y 좌표</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    uint8_t m_bZone;                                       <span class="comment">// 현재 Zone</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span> m_curx;                                          <span class="comment">// 현재 X 좌표</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">float</span> m_curz;                                          <span class="comment">// 현재 Z 좌표</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">float</span> m_cury;                                          <span class="comment">// 현재 Y 좌표</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint8_t     m_bNation;                      <span class="comment">// 소속국가</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint8_t     m_bRace;                        <span class="comment">// 종족</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int16_t     m_sClass;                       <span class="comment">// 직업</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint8_t     m_bHairColor;                   <span class="comment">// 머리색깔</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t     m_bRank;                        <span class="comment">// 작위</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t     m_bTitle;                       <span class="comment">// 지위</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t     m_bLevel;                       <span class="comment">// 레벨</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    int32_t     m_iExp;                         <span class="comment">// 경험치</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int32_t     m_iLoyalty;                     <span class="comment">// 로열티</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    int32_t     m_iLoyaltyMonthly;              <span class="comment">// 로열티</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    uint8_t     m_bFace;                        <span class="comment">// 얼굴모양</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    uint8_t     m_bCity;                        <span class="comment">// 소속도시</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    int16_t     m_bKnights;                     <span class="comment">// 소속 기사단</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    uint8_t     m_bFame;                        <span class="comment">// 명성</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    int16_t     m_sHp;                          <span class="comment">// HP</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    int16_t     m_sMp;                          <span class="comment">// MP</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    int16_t     m_sSp;                          <span class="comment">// SP</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    uint8_t     m_bStr;                         <span class="comment">// 힘</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    uint8_t     m_bSta;                         <span class="comment">// 생명력</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    uint8_t     m_bDex;                         <span class="comment">// 공격, 회피율</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    uint8_t     m_bIntel;                       <span class="comment">// 지혜(?), 캐릭터 마법력 결정</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    uint8_t     m_bCha;                         <span class="comment">// 마법 성공률, 물건 가격 결정(?)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    uint8_t     m_bAuthority;                   <span class="comment">// 유저 권한</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    uint8_t     m_bPoints;                      <span class="comment">// 보너스 포인트</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    int32_t     m_iGold;                        <span class="comment">// 캐릭이 지닌 돈(21억)</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    int16_t     m_sBind;                        <span class="comment">// Saved Bind Point</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    int32_t     m_iBank;                        <span class="comment">// 창고의 돈(21억)</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint8_t m_bNation;                                     <span class="comment">// 소속국가</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint8_t m_bRace;                                       <span class="comment">// 종족</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int16_t m_sClass;                                      <span class="comment">// 직업</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint8_t m_bHairColor;                                  <span class="comment">// 머리색깔</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t m_bRank;                                       <span class="comment">// 작위</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t m_bTitle;                                      <span class="comment">// 지위</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t m_bLevel;                                      <span class="comment">// 레벨</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    int32_t m_iExp;                                        <span class="comment">// 경험치</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int32_t m_iLoyalty;                                    <span class="comment">// 로열티</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    int32_t m_iLoyaltyMonthly;                             <span class="comment">// 로열티</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    uint8_t m_bFace;                                       <span class="comment">// 얼굴모양</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    uint8_t m_bCity;                                       <span class="comment">// 소속도시</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    int16_t m_bKnights;                                    <span class="comment">// 소속 기사단</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    uint8_t m_bFame;                                       <span class="comment">// 명성</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    int16_t m_sHp;                                         <span class="comment">// HP</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    int16_t m_sMp;                                         <span class="comment">// MP</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    int16_t m_sSp;                                         <span class="comment">// SP</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    uint8_t m_bStr;                                        <span class="comment">// 힘</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    uint8_t m_bSta;                                        <span class="comment">// 생명력</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    uint8_t m_bDex;                                        <span class="comment">// 공격, 회피율</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    uint8_t m_bIntel;                                      <span class="comment">// 지혜(?), 캐릭터 마법력 결정</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    uint8_t m_bCha;                                        <span class="comment">// 마법 성공률, 물건 가격 결정(?)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    uint8_t m_bAuthority;                                  <span class="comment">// 유저 권한</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    uint8_t m_bPoints;                                     <span class="comment">// 보너스 포인트</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    int32_t m_iGold;                                       <span class="comment">// 캐릭이 지닌 돈(21억)</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    int16_t m_sBind;                                       <span class="comment">// Saved Bind Point</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    int32_t m_iBank;                                       <span class="comment">// 창고의 돈(21억)</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    uint8_t     m_bstrSkill[9];                 <span class="comment">// 직업별 스킬</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_struct" href="struct__ITEM__DATA.html">_ITEM_DATA</a>    m_sItemArray[HAVE_MAX + SLOT_MAX];  <span class="comment">// 42*8 bytes</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_struct" href="struct__WAREHOUSE__ITEM__DATA.html">_WAREHOUSE_ITEM_DATA</a> m_sWarehouseArray[WAREHOUSE_MAX];  <span class="comment">// 창고 아이템   192*8 bytes</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    uint8_t m_bstrSkill[9];                                <span class="comment">// 직업별 스킬</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_struct" href="struct__ITEM__DATA.html">_ITEM_DATA</a> m_sItemArray[HAVE_MAX + SLOT_MAX];          <span class="comment">// 42*8 bytes</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_struct" href="struct__WAREHOUSE__ITEM__DATA.html">_WAREHOUSE_ITEM_DATA</a> m_sWarehouseArray[WAREHOUSE_MAX]; <span class="comment">// 창고 아이템    192*8 bytes</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    uint8_t     m_bLogout;                      <span class="comment">// 로그아웃 플래그</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint8_t     m_bWarehouse;                   <span class="comment">// 창고 거래 했었나?</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint32_t    m_dwTime;                       <span class="comment">// 플레이 타임...</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    uint8_t m_bLogout;                                     <span class="comment">// 로그아웃 플래그</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint8_t m_bWarehouse;                                  <span class="comment">// 창고 거래 했었나?</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint32_t m_dwTime;                                     <span class="comment">// 플레이 타임...</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    uint8_t     m_byPremiumType;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int16_t     m_sPremiumTime;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32_t     m_iMannerPoint;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    uint8_t m_byPremiumType;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int16_t m_sPremiumTime;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32_t m_iMannerPoint;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    int16_t     m_sQuestCount;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_struct" href="struct__USER__QUEST.html">_USER_QUEST</a>  m_quests[MAX_QUEST];</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    int16_t m_sQuestCount;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_struct" href="struct__USER__QUEST.html">_USER_QUEST</a> m_quests[MAX_QUEST];</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
 </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>

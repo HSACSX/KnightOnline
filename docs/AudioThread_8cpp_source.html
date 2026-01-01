@@ -107,10 +107,10 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;AudioHandle.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;al_wrapper.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cassert&gt;</span>          <span class="comment">// assert()</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unordered_map&gt;</span>    <span class="comment">// std::unordered_map&lt;&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cassert&gt;</span>       <span class="comment">// assert()</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unordered_map&gt;</span> <span class="comment">// std::unordered_map&lt;&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span>         <span class="comment">// CN3Base::TimeGet()</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span>      <span class="comment">// CN3Base::TimeGet()</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">using namespace </span>std::chrono_literals;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
@@ -134,7 +134,7 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_struct" href="structAudioDecodedChunk.html">AudioDecodedChunk</a> tmpDecodedChunk; <span class="comment">// keep a copy here so we aren&#39;t constantly reallocating</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">float</span> previousTime = CN3Base::TimeGet();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a> = std::make_unique&lt;AudioDecoderThread&gt;();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a>     = std::make_unique&lt;AudioDecoderThread&gt;();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a>-&gt;start();</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">while</span> (_canTick)</div>
@@ -181,7 +181,7 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            pendingQueue.clear();</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">float</span> currentTime = CN3Base::TimeGet();</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">float</span> elapsedTime = currentTime - previousTime;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
@@ -243,57 +243,57 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_variable" href="classAudioThread.html#af015561c02b5830be43f11bd03341950">_pendingQueue</a>.push_back(std::make_tuple(AUDIO_QUEUE_CALLBACK, std::move(handle), std::move(callback)));</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_variable" href="classAudioThread.html#af015561c02b5830be43f11bd03341950">_pendingQueue</a>.push_back(</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        std::make_tuple(AUDIO_QUEUE_CALLBACK, std::move(handle), std::move(callback)));</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>}</div>
 </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">AudioThread::Remove</a>(std::shared_ptr&lt;AudioHandle&gt; handle)</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>{</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    assert(handle != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">if</span> (handle == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    assert(handle-&gt;SourceId != INVALID_AUDIO_SOURCE_ID);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">if</span> (handle-&gt;SourceId == INVALID_AUDIO_SOURCE_ID)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <a class="code hl_variable" href="classAudioThread.html#af015561c02b5830be43f11bd03341950">_pendingQueue</a>.push_back(std::make_tuple(AUDIO_QUEUE_REMOVE, std::move(handle), <span class="keyword">nullptr</span>));</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="foldopen" id="foldopen00139" data-start="{" data-end="}">
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">  139</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">AudioThread::Remove</a>(std::shared_ptr&lt;AudioHandle&gt; handle)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>{</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    assert(handle != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">if</span> (handle == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    assert(handle-&gt;SourceId != INVALID_AUDIO_SOURCE_ID);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">if</span> (handle-&gt;SourceId == INVALID_AUDIO_SOURCE_ID)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <a class="code hl_variable" href="classAudioThread.html#af015561c02b5830be43f11bd03341950">_pendingQueue</a>.push_back(std::make_tuple(AUDIO_QUEUE_REMOVE, std::move(handle), <span class="keyword">nullptr</span>));</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>}</div>
 </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="keywordtype">void</span> AudioThread::reset(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">bool</span> alreadyManaged)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>{</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    alSourceStop(handle-&gt;SourceId);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    alSourceRewind(handle-&gt;SourceId);</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    alSourcei(handle-&gt;SourceId, AL_BUFFER, 0);</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    handle-&gt;StartedPlaying = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    handle-&gt;FinishedPlaying = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keyword">auto</span> streamedAudioHandle = std::static_pointer_cast&lt;StreamedAudioHandle&gt;(handle);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">if</span> (streamedAudioHandle != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="comment">// Initialize the buffers</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keywordflow">if</span> (!streamedAudioHandle-&gt;BuffersAllocated)</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; MAX_AUDIO_STREAM_BUFFER_COUNT; i++)</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                    ALuint bufferId = INVALID_AUDIO_BUFFER_ID;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                    alGenBuffers(1, &amp;bufferId);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                    <span class="keywordflow">if</span> (!AL_CHECK_ERROR()</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                        &amp;&amp; bufferId != INVALID_AUDIO_BUFFER_ID)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="keywordtype">void</span> AudioThread::reset(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">bool</span> alreadyManaged)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>{</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    alSourceStop(handle-&gt;SourceId);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    alSourceRewind(handle-&gt;SourceId);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    alSourcei(handle-&gt;SourceId, AL_BUFFER, 0);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    handle-&gt;StartedPlaying  = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    handle-&gt;FinishedPlaying = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keyword">auto</span> streamedAudioHandle = std::static_pointer_cast&lt;StreamedAudioHandle&gt;(handle);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">if</span> (streamedAudioHandle != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        {</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="comment">// Initialize the buffers</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordflow">if</span> (!streamedAudioHandle-&gt;BuffersAllocated)</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; MAX_AUDIO_STREAM_BUFFER_COUNT; i++)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                    ALuint bufferId = INVALID_AUDIO_BUFFER_ID;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                    alGenBuffers(1, &amp;bufferId);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                    <span class="keywordflow">if</span> (!AL_CHECK_ERROR() &amp;&amp; bufferId != INVALID_AUDIO_BUFFER_ID)</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                    {</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                        streamedAudioHandle-&gt;BufferIds.push_back(bufferId);</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                        streamedAudioHandle-&gt;AvailableBufferIds.push(bufferId);</div>
@@ -334,20 +334,20 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    }</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>}</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keywordtype">void</span> AudioThread::tick_decoder(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <a class="code hl_struct" href="structAudioDecodedChunk.html">AudioDecodedChunk</a>&amp; tmpDecodedChunk)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>{</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="comment">// Process streamed audio</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        StreamedAudioHandle* streamedAudioHandle = <span class="keyword">static_cast&lt;</span>StreamedAudioHandle*<span class="keyword">&gt;</span>(handle.get());</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="comment">// If any buffers have been processed, we should remove them and attempt to replace them</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="comment">// with any existing decoded chunks.</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        ALint buffersProcessed = 0;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        alGetSourcei(handle-&gt;SourceId, AL_BUFFERS_PROCESSED, &amp;buffersProcessed);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keywordflow">if</span> (!AL_CHECK_ERROR()</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            &amp;&amp; buffersProcessed &gt; 0)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keywordtype">void</span> AudioThread::tick_decoder(</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <a class="code hl_struct" href="structAudioDecodedChunk.html">AudioDecodedChunk</a>&amp; tmpDecodedChunk)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>{</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// Process streamed audio</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        StreamedAudioHandle* streamedAudioHandle = <span class="keyword">static_cast&lt;</span>StreamedAudioHandle*<span class="keyword">&gt;</span>(handle.get());</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="comment">// If any buffers have been processed, we should remove them and attempt to replace them</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="comment">// with any existing decoded chunks.</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        ALint buffersProcessed                   = 0;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        alGetSourcei(handle-&gt;SourceId, AL_BUFFERS_PROCESSED, &amp;buffersProcessed);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">if</span> (!AL_CHECK_ERROR() &amp;&amp; buffersProcessed &gt; 0)</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        {</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="comment">// Unqueue the processed buffers so we can reuse their IDs for our new chunks</span></div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; buffersProcessed; i++)</div>
@@ -382,155 +382,151 @@ $(function(){initNavTree('AudioThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="comment">// Buffer the new decoded data.</span></div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            ALuint bufferId = streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.front();</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            alBufferData(</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                bufferId, streamedAudioHandle-&gt;<a class="code hl_variable" href="classAudioHandle.html#aac7bd148b1a6c6e04c1189c6df3fad77">Asset</a>-&gt;AlFormat,</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                &amp;tmpDecodedChunk.<a class="code hl_variable" href="structAudioDecodedChunk.html#a659ca1643b0b8158aebb9728822f66e0">Data</a>[0], tmpDecodedChunk.<a class="code hl_variable" href="structAudioDecodedChunk.html#af331e0ac895e7653faf5d281ab1ed5aa">BytesDecoded</a>,</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                streamedAudioHandle-&gt;<a class="code hl_variable" href="classAudioHandle.html#aac7bd148b1a6c6e04c1189c6df3fad77">Asset</a>-&gt;SampleRate);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordflow">if</span> (AL_CHECK_ERROR())</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            alSourceQueueBuffers(handle-&gt;SourceId, 1, &amp;bufferId);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            <span class="keywordflow">if</span> (AL_CHECK_ERROR())</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.pop();</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        }</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        ALint buffersQueued = 0;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        alGetSourcei(handle-&gt;SourceId, AL_BUFFERS_QUEUED, &amp;buffersQueued);</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    }</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">if</span> (handle-&gt;StartedPlaying</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        &amp;&amp; !handle-&gt;FinishedPlaying)</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    {</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        ALint state = AL_INITIAL;</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        alGetSourcei(handle-&gt;SourceId, AL_SOURCE_STATE, &amp;state);</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">if</span> (!AL_CHECK_ERROR()</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            &amp;&amp; state == AL_STOPPED)</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            handle-&gt;FinishedPlaying = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    }</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>}</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            alBufferData(bufferId, streamedAudioHandle-&gt;<a class="code hl_variable" href="classAudioHandle.html#aac7bd148b1a6c6e04c1189c6df3fad77">Asset</a>-&gt;AlFormat, &amp;tmpDecodedChunk.<a class="code hl_variable" href="structAudioDecodedChunk.html#a659ca1643b0b8158aebb9728822f66e0">Data</a>[0],</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                tmpDecodedChunk.<a class="code hl_variable" href="structAudioDecodedChunk.html#af331e0ac895e7653faf5d281ab1ed5aa">BytesDecoded</a>, streamedAudioHandle-&gt;<a class="code hl_variable" href="classAudioHandle.html#aac7bd148b1a6c6e04c1189c6df3fad77">Asset</a>-&gt;SampleRate);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keywordflow">if</span> (AL_CHECK_ERROR())</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            alSourceQueueBuffers(handle-&gt;SourceId, 1, &amp;bufferId);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            <span class="keywordflow">if</span> (AL_CHECK_ERROR())</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.pop();</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        }</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        ALint buffersQueued = 0;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        alGetSourcei(handle-&gt;SourceId, AL_BUFFERS_QUEUED, &amp;buffersQueued);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    }</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">if</span> (handle-&gt;StartedPlaying &amp;&amp; !handle-&gt;FinishedPlaying)</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    {</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        ALint state = AL_INITIAL;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        alGetSourcei(handle-&gt;SourceId, AL_SOURCE_STATE, &amp;state);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">if</span> (!AL_CHECK_ERROR() &amp;&amp; state == AL_STOPPED)</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            handle-&gt;FinishedPlaying = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    }</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>}</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keywordtype">void</span> AudioThread::tick_sound(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">float</span> elapsedTime)</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>{</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    handle-&gt;Timer += elapsedTime;</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="keywordtype">void</span> AudioThread::tick_sound(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">float</span> elapsedTime)</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>{</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    handle-&gt;Timer += elapsedTime;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_DELAY &amp;&amp; handle-&gt;Timer &gt;= handle-&gt;StartDelayTime)</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    {</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        play_impl(handle);</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_DELAY &amp;&amp; handle-&gt;Timer &gt;= handle-&gt;StartDelayTime)</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    {</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        play_impl(handle);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        handle-&gt;Timer = 0.0f;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        handle-&gt;State = SNDSTATE_FADEIN;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    }</div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        handle-&gt;Timer = 0.0f;</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        handle-&gt;State = SNDSTATE_FADEIN;</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    }</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_FADEIN)</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    {</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="keywordflow">if</span> (handle-&gt;Timer &gt;= handle-&gt;FadeInTime)</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        {</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            handle-&gt;Timer = 0.0f;</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            handle-&gt;State = SNDSTATE_PLAY;</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            set_gain(handle, handle-&gt;Settings-&gt;MaxGain);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        }</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        {</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>            <span class="keywordtype">float</span> gain = 0;</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            <span class="keywordflow">if</span> (handle-&gt;FadeInTime &gt; 0.0f)</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                gain = ((handle-&gt;Timer / handle-&gt;FadeInTime) * handle-&gt;Settings-&gt;MaxGain);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_FADEIN)</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    {</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="keywordflow">if</span> (handle-&gt;Timer &gt;= handle-&gt;FadeInTime)</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        {</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            handle-&gt;Timer = 0.0f;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            handle-&gt;State = SNDSTATE_PLAY;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            set_gain(handle, handle-&gt;Settings-&gt;MaxGain);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            <span class="keywordtype">float</span> gain = 0;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>            <span class="keywordflow">if</span> (handle-&gt;FadeInTime &gt; 0.0f)</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                gain = ((handle-&gt;Timer / handle-&gt;FadeInTime) * handle-&gt;Settings-&gt;MaxGain);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>            set_gain(handle, gain);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    }</div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>            set_gain(handle, gain);</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        }</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    }</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_PLAY)</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    {</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="keywordflow">if</span> (!handle-&gt;Settings-&gt;IsLooping</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>            &amp;&amp; handle-&gt;FinishedPlaying)</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        {</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            handle-&gt;Timer = 0.0f;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>            handle-&gt;State = SNDSTATE_FADEOUT;</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        }</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    }</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_FADEOUT)</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    {</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="keywordflow">if</span> (handle-&gt;Timer &gt;= handle-&gt;FadeOutTime)</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        {</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>            <span class="comment">// Invoke a stop.</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>            handle-&gt;Timer = 0.0f;</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>            handle-&gt;State = SNDSTATE_STOP;</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>            set_gain(handle, 0.0f);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        }</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        {</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            <span class="keywordtype">float</span> gain = 0.0f;</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>            <span class="keywordflow">if</span> (handle-&gt;FadeOutTime &gt; 0.0f)</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>                gain = (((handle-&gt;FadeOutTime - handle-&gt;Timer) / handle-&gt;FadeOutTime) * handle-&gt;Settings-&gt;MaxGain);</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>            set_gain(handle, gain);</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        }</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    }</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>}</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keywordtype">void</span> AudioThread::set_gain(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">float</span> gain)</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>{</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    gain = std::clamp(gain, 0.0f, 1.0f);</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    handle-&gt;Settings-&gt;CurrentGain = gain;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_PLAY)</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keywordflow">if</span> (!handle-&gt;Settings-&gt;IsLooping &amp;&amp; handle-&gt;FinishedPlaying)</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>            handle-&gt;Timer = 0.0f;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            handle-&gt;State = SNDSTATE_FADEOUT;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        }</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keywordflow">if</span> (handle-&gt;State == SNDSTATE_FADEOUT)</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    {</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="keywordflow">if</span> (handle-&gt;Timer &gt;= handle-&gt;FadeOutTime)</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        {</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>            <span class="comment">// Invoke a stop.</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>            handle-&gt;Timer = 0.0f;</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>            handle-&gt;State = SNDSTATE_STOP;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            set_gain(handle, 0.0f);</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        }</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        {</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>            <span class="keywordtype">float</span> gain = 0.0f;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>            <span class="keywordflow">if</span> (handle-&gt;FadeOutTime &gt; 0.0f)</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>                gain = (((handle-&gt;FadeOutTime - handle-&gt;Timer) / handle-&gt;FadeOutTime)</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                        * handle-&gt;Settings-&gt;MaxGain);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            set_gain(handle, gain);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        }</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    }</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>}</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="keywordtype">void</span> AudioThread::set_gain(std::shared_ptr&lt;AudioHandle&gt;&amp; handle, <span class="keywordtype">float</span> gain)</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>{</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    gain                          = std::clamp(gain, 0.0f, 1.0f);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    handle-&gt;Settings-&gt;CurrentGain = gain;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    alSourcef(handle-&gt;SourceId, AL_GAIN, gain);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>}</div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    alSourcef(handle-&gt;SourceId, AL_GAIN, gain);</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>}</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span> </div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="keywordtype">void</span> AudioThread::play_impl(std::shared_ptr&lt;AudioHandle&gt;&amp; handle)</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>{</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    handle-&gt;State           = SNDSTATE_PLAY;</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    handle-&gt;StartedPlaying  = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    handle-&gt;FinishedPlaying = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="keywordtype">void</span> AudioThread::play_impl(std::shared_ptr&lt;AudioHandle&gt;&amp; handle)</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>{</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    handle-&gt;State           = SNDSTATE_PLAY;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    handle-&gt;StartedPlaying  = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    handle-&gt;FinishedPlaying = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    ALint state             = AL_INITIAL;</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    alGetSourcei(handle-&gt;SourceId, AL_SOURCE_STATE, &amp;state);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    AL_CLEAR_ERROR_STATE();</div>
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    ALint state = AL_INITIAL;</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    alGetSourcei(handle-&gt;SourceId, AL_SOURCE_STATE, &amp;state);</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    AL_CLEAR_ERROR_STATE();</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">if</span> (state != AL_PLAYING)</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    {</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        alSourcePlay(handle-&gt;SourceId);</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    }</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>}</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span><span class="keywordtype">void</span> AudioThread::remove_impl(std::shared_ptr&lt;AudioHandle&gt;&amp; handle)</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>{</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    alSourceStop(handle-&gt;SourceId);</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    alSourceRewind(handle-&gt;SourceId);</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    alSourcei(handle-&gt;SourceId, AL_BUFFER, 0);</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    AL_CHECK_ERROR();</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    {</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>        <span class="keyword">auto</span> streamedAudioHandle = std::static_pointer_cast&lt;StreamedAudioHandle&gt;(handle);</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        <span class="keywordflow">if</span> (streamedAudioHandle != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        {</div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>            <a class="code hl_variable" href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a>-&gt;Remove(streamedAudioHandle);</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>            <span class="keywordflow">while</span> (!streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.empty())</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>                streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.pop();</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>        }</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    }</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>}</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keywordflow">if</span> (state != AL_PLAYING)</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    {</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        alSourcePlay(handle-&gt;SourceId);</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    }</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>}</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span><span class="keywordtype">void</span> AudioThread::remove_impl(std::shared_ptr&lt;AudioHandle&gt;&amp; handle)</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>{</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    alSourceStop(handle-&gt;SourceId);</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    alSourceRewind(handle-&gt;SourceId);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    alSourcei(handle-&gt;SourceId, AL_BUFFER, 0);</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    AL_CHECK_ERROR();</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>    <span class="keywordflow">if</span> (handle-&gt;HandleType == AUDIO_HANDLE_STREAMED)</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    {</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        <span class="keyword">auto</span> streamedAudioHandle = std::static_pointer_cast&lt;StreamedAudioHandle&gt;(handle);</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="keywordflow">if</span> (streamedAudioHandle != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>        {</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>            <a class="code hl_variable" href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a>-&gt;Remove(streamedAudioHandle);</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span> </div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>            <span class="keywordflow">while</span> (!streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.empty())</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>                streamedAudioHandle-&gt;<a class="code hl_variable" href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">AvailableBufferIds</a>.pop();</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        }</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    }</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>}</div>
 <div class="ttc" id="aclassAudioHandle_html_aac7bd148b1a6c6e04c1189c6df3fad77"><div class="ttname"><a href="classAudioHandle.html#aac7bd148b1a6c6e04c1189c6df3fad77">AudioHandle::Asset</a></div><div class="ttdeci">std::shared_ptr&lt; AudioAsset &gt; Asset</div><div class="ttdoc">Audio asset supplying data for playback.</div><div class="ttdef"><b>Definition</b> <a href="AudioHandle_8h_source.html#l00069">AudioHandle.h:69</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_a00f4017141af67fff0e85f4d7c1595e3"><div class="ttname"><a href="classAudioThread.html#a00f4017141af67fff0e85f4d7c1595e3">AudioThread::AudioThread</a></div><div class="ttdeci">AudioThread()</div><div class="ttdoc">Constructs the audio thread object.</div><div class="ttdef"><b>Definition</b> <a href="#l00015">AudioThread.cpp:15</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_a0f49312b58a64816161e6bdb8f5adba0"><div class="ttname"><a href="classAudioThread.html#a0f49312b58a64816161e6bdb8f5adba0">AudioThread::AudioCallback</a></div><div class="ttdeci">std::function&lt; void(AudioHandle *)&gt; AudioCallback</div><div class="ttdoc">Callback type executed on the audio thread with an AudioHandle.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00044">AudioThread.h:44</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_a3de6366d74ab9267cb0e58082ee18640"><div class="ttname"><a href="classAudioThread.html#a3de6366d74ab9267cb0e58082ee18640">AudioThread::~AudioThread</a></div><div class="ttdeci">~AudioThread() override</div><div class="ttdoc">Stops the thread and cleans up resources.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">AudioThread.cpp:19</a></div></div>
-<div class="ttc" id="aclassAudioThread_html_a3fd7b0c61d8ef78a5c8f5852402632a9"><div class="ttname"><a href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">AudioThread::Remove</a></div><div class="ttdeci">void Remove(std::shared_ptr&lt; AudioHandle &gt; handle)</div><div class="ttdef"><b>Definition</b> <a href="#l00138">AudioThread.cpp:138</a></div></div>
-<div class="ttc" id="aclassAudioThread_html_a606dcb84b325d5ba67cbdae12db385b3"><div class="ttname"><a href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">AudioThread::_decoderThread</a></div><div class="ttdeci">std::unique_ptr&lt; AudioDecoderThread &gt; _decoderThread</div><div class="ttdoc">Background decoder thread for streamed audio assets.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00150">AudioThread.h:150</a></div></div>
+<div class="ttc" id="aclassAudioThread_html_a3fd7b0c61d8ef78a5c8f5852402632a9"><div class="ttname"><a href="classAudioThread.html#a3fd7b0c61d8ef78a5c8f5852402632a9">AudioThread::Remove</a></div><div class="ttdeci">void Remove(std::shared_ptr&lt; AudioHandle &gt; handle)</div><div class="ttdef"><b>Definition</b> <a href="#l00139">AudioThread.cpp:139</a></div></div>
+<div class="ttc" id="aclassAudioThread_html_a606dcb84b325d5ba67cbdae12db385b3"><div class="ttname"><a href="classAudioThread.html#a606dcb84b325d5ba67cbdae12db385b3">AudioThread::_decoderThread</a></div><div class="ttdeci">std::unique_ptr&lt; AudioDecoderThread &gt; _decoderThread</div><div class="ttdoc">Background decoder thread for streamed audio assets.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00147">AudioThread.h:147</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_a621c7ca135f01366f4031e593848392e"><div class="ttname"><a href="classAudioThread.html#a621c7ca135f01366f4031e593848392e">AudioThread::QueueCallback</a></div><div class="ttdeci">void QueueCallback(std::shared_ptr&lt; AudioHandle &gt; handle, AudioCallback callback)</div><div class="ttdef"><b>Definition</b> <a href="#l00122">AudioThread.cpp:122</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_aada9eac60e9c182983d1ca0b0d4126d5"><div class="ttname"><a href="classAudioThread.html#aada9eac60e9c182983d1ca0b0d4126d5">AudioThread::thread_loop</a></div><div class="ttdeci">void thread_loop() override</div><div class="ttdef"><b>Definition</b> <a href="#l00023">AudioThread.cpp:23</a></div></div>
-<div class="ttc" id="aclassAudioThread_html_af015561c02b5830be43f11bd03341950"><div class="ttname"><a href="classAudioThread.html#af015561c02b5830be43f11bd03341950">AudioThread::_pendingQueue</a></div><div class="ttdeci">std::vector&lt; QueueType &gt; _pendingQueue</div><div class="ttdoc">Queue of pending operations for the audio thread.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00147">AudioThread.h:147</a></div></div>
+<div class="ttc" id="aclassAudioThread_html_af015561c02b5830be43f11bd03341950"><div class="ttname"><a href="classAudioThread.html#af015561c02b5830be43f11bd03341950">AudioThread::_pendingQueue</a></div><div class="ttdeci">std::vector&lt; QueueType &gt; _pendingQueue</div><div class="ttdoc">Queue of pending operations for the audio thread.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00144">AudioThread.h:144</a></div></div>
 <div class="ttc" id="aclassAudioThread_html_af4e40cf319d292951e36688bb3fb03ba"><div class="ttname"><a href="classAudioThread.html#af4e40cf319d292951e36688bb3fb03ba">AudioThread::Add</a></div><div class="ttdeci">void Add(std::shared_ptr&lt; AudioHandle &gt; handle)</div><div class="ttdef"><b>Definition</b> <a href="#l00102">AudioThread.cpp:102</a></div></div>
 <div class="ttc" id="aclassStreamedAudioHandle_html_a961872785a46006848255e0b051612ea"><div class="ttname"><a href="classStreamedAudioHandle.html#a961872785a46006848255e0b051612ea">StreamedAudioHandle::DecodedChunks</a></div><div class="ttdeci">std::queue&lt; AudioDecodedChunk &gt; DecodedChunks</div><div class="ttdoc">Queue of decoded PCM audio chunks awaiting playback.</div><div class="ttdef"><b>Definition</b> <a href="AudioHandle_8h_source.html#l00192">AudioHandle.h:192</a></div></div>
 <div class="ttc" id="aclassStreamedAudioHandle_html_a9ac6c8adb83ebbccc8bfbc9f9b1fa393"><div class="ttname"><a href="classStreamedAudioHandle.html#a9ac6c8adb83ebbccc8bfbc9f9b1fa393">StreamedAudioHandle::AvailableBufferIds</a></div><div class="ttdeci">std::queue&lt; uint32_t &gt; AvailableBufferIds</div><div class="ttdoc">Queue of available OpenAL buffer IDs.</div><div class="ttdef"><b>Definition</b> <a href="AudioHandle_8h_source.html#l00186">AudioHandle.h:186</a></div></div>

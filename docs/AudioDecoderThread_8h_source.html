@@ -107,9 +107,9 @@ $(function(){initNavTree('AudioDecoderThread_8h_source.html',''); initResizable(
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;shared/Thread.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;memory&gt;</span>   <span class="comment">// std::shared_ptr&lt;&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;mutex&gt;</span>    <span class="comment">// std::mutex</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span>   <span class="comment">// std::vector&lt;&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;memory&gt;</span> <span class="comment">// std::shared_ptr&lt;&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;mutex&gt;</span>  <span class="comment">// std::mutex</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span> <span class="comment">// std::vector&lt;&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"></span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">/// \enum e_AudioDecoderQueueType</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/// \brief Describes operations queued for the audio decoder thread.</span></div>
@@ -140,99 +140,97 @@ $(function(){initNavTree('AudioDecoderThread_8h_source.html',''); initResizable(
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    /// The tuple consists of a queue operation type and the associated</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    /// streamed audio handle.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#a50ec77e45cd875a0bd73cd61541e929d">   40</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classAudioDecoderThread.html#a50ec77e45cd875a0bd73cd61541e929d">QueueType</a> = std::tuple&lt;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        e_AudioDecoderQueueType,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::shared_ptr&lt;StreamedAudioHandle&gt;&gt;;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    /// Returns a mutex protecting decoder execution.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    /// This mutex must be held when accessing decoded chunk queues or</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /// performing decode operations outside the decoder thread.</span></div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">   48</a></span>    std::mutex&amp; <a class="code hl_function" href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">DecoderMutex</a>()</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">_decoderMutex</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#af1444d06fc40c589773adfd05268084d">   40</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classAudioDecoderThread.html#af1444d06fc40c589773adfd05268084d">QueueType</a> = std::tuple&lt;e_AudioDecoderQueueType, std::shared_ptr&lt;StreamedAudioHandle&gt;&gt;;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"></span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// Returns a mutex protecting decoder execution.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    /// This mutex must be held when accessing decoded chunk queues or</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    /// performing decode operations outside the decoder thread.</span></div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">   46</a></span>    std::mutex&amp; <a class="code hl_function" href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">DecoderMutex</a>()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">_decoderMutex</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// Main thread loop executed by the decoder thread.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">    /// Processes queued add/remove requests and performs incremental</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">    /// decoding for all active streamed audio handles.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a50c8e4470310d1d5ba9ff8d75ce1488f">thread_loop</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"></span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    /// Queues a streamed audio handle for decoding.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// The handle will begin receiving decoded audio chunks on subsequent</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /// decoder thread ticks.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// \param handle Streamed audio handle to add.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#aa5177a3bd4194b1c882ab8a5f75d6b17">Add</a>(std::shared_ptr&lt;StreamedAudioHandle&gt; handle);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// Performs an immediate initial decode on the calling thread.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// This function rewinds the stream, clears any existing decoded data,</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /// and decodes an initial chunk synchronously. Intended to be called</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /// from the main audio thread before playback begins.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a4c19f256d13dab95774dd46e68c8efc2">InitialDecode</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// Queues a streamed audio handle for removal.</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    /// Any decoded chunks are discarded and the handle is removed from</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /// active decoding.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    /// \param handle Streamed audio handle to remove.</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a6e58ac96acd287c3c7eb379847938f46">Remove</a>(std::shared_ptr&lt;StreamedAudioHandle&gt; handle);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">protected</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">    /// Dispatches decoding based on the asset&#39;s decoder type.</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    /// Decoding is skipped if the handle already has the maximum number of</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">    /// decoded chunks buffered, as defined by \ref MAX_AUDIO_STREAM_BUFFER_COUNT.</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#aaa7ded70043ac47f1e28689078d40a39">decode_impl</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /// Decodes MP3 audio data into PCM chunks.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">    /// Uses mpg123 to incrementally decode frames and enqueue decoded</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">    /// audio data. Handles looping and end-of-stream signaling.</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a4ae87b6dfb9c6b142a18e55a3ac59d3c">decode_impl_mp3</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"></span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">    /// &quot;Decodes&quot; raw PCM audio data into chunks.</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">    /// PCM data is copied directly from a memory-mapped file into decoded</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">    /// chunk buffers. Handles looping and end-of-stream signaling.</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a2692378eb4cf997bdb21c929dc175703">decode_impl_pcm</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">protected</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">    /// Mutex protecting decode execution and decoded chunk access.</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">  111</a></span>    std::mutex <a class="code hl_variable" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">_decoderMutex</a>;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment"></span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">    /// Pending queue of add/remove operations for streamed audio handles.</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">  114</a></span>    std::vector&lt;QueueType&gt; <a class="code hl_variable" href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">_pendingQueue</a>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"></span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// Main thread loop executed by the decoder thread.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// Processes queued add/remove requests and performs incremental</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">    /// decoding for all active streamed audio handles.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a50c8e4470310d1d5ba9ff8d75ce1488f">thread_loop</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    /// Queues a streamed audio handle for decoding.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    /// The handle will begin receiving decoded audio chunks on subsequent</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// decoder thread ticks.</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /// \param handle Streamed audio handle to add.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#aa5177a3bd4194b1c882ab8a5f75d6b17">Add</a>(std::shared_ptr&lt;StreamedAudioHandle&gt; handle);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"></span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /// Performs an immediate initial decode on the calling thread.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// This function rewinds the stream, clears any existing decoded data,</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// and decodes an initial chunk synchronously. Intended to be called</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// from the main audio thread before playback begins.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a4c19f256d13dab95774dd46e68c8efc2">InitialDecode</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"></span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /// Queues a streamed audio handle for removal.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// Any decoded chunks are discarded and the handle is removed from</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// active decoding.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /// \param handle Streamed audio handle to remove.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a6e58ac96acd287c3c7eb379847938f46">Remove</a>(std::shared_ptr&lt;StreamedAudioHandle&gt; handle);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">protected</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">    /// Dispatches decoding based on the asset&#39;s decoder type.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">    /// Decoding is skipped if the handle already has the maximum number of</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /// decoded chunks buffered, as defined by \ref MAX_AUDIO_STREAM_BUFFER_COUNT.</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#aaa7ded70043ac47f1e28689078d40a39">decode_impl</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"></span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">    /// Decodes MP3 audio data into PCM chunks.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /// Uses mpg123 to incrementally decode frames and enqueue decoded</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">    /// audio data. Handles looping and end-of-stream signaling.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a4ae87b6dfb9c6b142a18e55a3ac59d3c">decode_impl_mp3</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"></span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">    /// &quot;Decodes&quot; raw PCM audio data into chunks.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">    /// PCM data is copied directly from a memory-mapped file into decoded</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">    /// chunk buffers. Handles looping and end-of-stream signaling.</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">    /// \param handle Streamed audio handle to decode.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioDecoderThread.html#a2692378eb4cf997bdb21c929dc175703">decode_impl_pcm</a>(<a class="code hl_class" href="classStreamedAudioHandle.html">StreamedAudioHandle</a>* handle);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">protected</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">    /// Mutex protecting decode execution and decoded chunk access.</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">  109</a></span>    std::mutex <a class="code hl_variable" href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">_decoderMutex</a>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"></span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">    /// Pending queue of add/remove operations for streamed audio handles.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">  112</a></span>    std::vector&lt;QueueType&gt; <a class="code hl_variable" href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">_pendingQueue</a>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>};</div>
 </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif </span><span class="comment">// CLIENT_N3BASE_AUDIODECODERTHREAD_H</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif </span><span class="comment">// CLIENT_N3BASE_AUDIODECODERTHREAD_H</span></div>
 <div class="ttc" id="aclassAudioDecoderThread_html"><div class="ttname"><a href="classAudioDecoderThread.html">AudioDecoderThread</a></div><div class="ttdoc">Background thread responsible for decoding streamed audio data.</div><div class="ttdef"><b>Definition</b> <a href="#l00033">AudioDecoderThread.h:34</a></div></div>
-<div class="ttc" id="aclassAudioDecoderThread_html_a2692378eb4cf997bdb21c929dc175703"><div class="ttname"><a href="classAudioDecoderThread.html#a2692378eb4cf997bdb21c929dc175703">AudioDecoderThread::decode_impl_pcm</a></div><div class="ttdeci">void decode_impl_pcm(StreamedAudioHandle *handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00169">AudioDecoderThread.cpp:169</a></div></div>
+<div class="ttc" id="aclassAudioDecoderThread_html_a2692378eb4cf997bdb21c929dc175703"><div class="ttname"><a href="classAudioDecoderThread.html#a2692378eb4cf997bdb21c929dc175703">AudioDecoderThread::decode_impl_pcm</a></div><div class="ttdeci">void decode_impl_pcm(StreamedAudioHandle *handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00175">AudioDecoderThread.cpp:175</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_a4ae87b6dfb9c6b142a18e55a3ac59d3c"><div class="ttname"><a href="classAudioDecoderThread.html#a4ae87b6dfb9c6b142a18e55a3ac59d3c">AudioDecoderThread::decode_impl_mp3</a></div><div class="ttdeci">void decode_impl_mp3(StreamedAudioHandle *handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00110">AudioDecoderThread.cpp:110</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_a4c19f256d13dab95774dd46e68c8efc2"><div class="ttname"><a href="classAudioDecoderThread.html#a4c19f256d13dab95774dd46e68c8efc2">AudioDecoderThread::InitialDecode</a></div><div class="ttdeci">void InitialDecode(StreamedAudioHandle *handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00074">AudioDecoderThread.cpp:74</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_a50c8e4470310d1d5ba9ff8d75ce1488f"><div class="ttname"><a href="classAudioDecoderThread.html#a50c8e4470310d1d5ba9ff8d75ce1488f">AudioDecoderThread::thread_loop</a></div><div class="ttdeci">void thread_loop() override</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00015">AudioDecoderThread.cpp:15</a></div></div>
-<div class="ttc" id="aclassAudioDecoderThread_html_a50ec77e45cd875a0bd73cd61541e929d"><div class="ttname"><a href="classAudioDecoderThread.html#a50ec77e45cd875a0bd73cd61541e929d">AudioDecoderThread::QueueType</a></div><div class="ttdeci">std::tuple&lt; e_AudioDecoderQueueType, std::shared_ptr&lt; StreamedAudioHandle &gt; &gt; QueueType</div><div class="ttdef"><b>Definition</b> <a href="#l00040">AudioDecoderThread.h:40</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_a6e58ac96acd287c3c7eb379847938f46"><div class="ttname"><a href="classAudioDecoderThread.html#a6e58ac96acd287c3c7eb379847938f46">AudioDecoderThread::Remove</a></div><div class="ttdeci">void Remove(std::shared_ptr&lt; StreamedAudioHandle &gt; handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00087">AudioDecoderThread.cpp:87</a></div></div>
-<div class="ttc" id="aclassAudioDecoderThread_html_a8c11c186b3dadc07d6542c760a22c9d4"><div class="ttname"><a href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">AudioDecoderThread::DecoderMutex</a></div><div class="ttdeci">std::mutex &amp; DecoderMutex()</div><div class="ttdef"><b>Definition</b> <a href="#l00048">AudioDecoderThread.h:48</a></div></div>
-<div class="ttc" id="aclassAudioDecoderThread_html_a9221fde305355abda910dbdc7bf3f54f"><div class="ttname"><a href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">AudioDecoderThread::_pendingQueue</a></div><div class="ttdeci">std::vector&lt; QueueType &gt; _pendingQueue</div><div class="ttdoc">Pending queue of add/remove operations for streamed audio handles.</div><div class="ttdef"><b>Definition</b> <a href="#l00114">AudioDecoderThread.h:114</a></div></div>
+<div class="ttc" id="aclassAudioDecoderThread_html_a8c11c186b3dadc07d6542c760a22c9d4"><div class="ttname"><a href="classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4">AudioDecoderThread::DecoderMutex</a></div><div class="ttdeci">std::mutex &amp; DecoderMutex()</div><div class="ttdef"><b>Definition</b> <a href="#l00046">AudioDecoderThread.h:46</a></div></div>
+<div class="ttc" id="aclassAudioDecoderThread_html_a9221fde305355abda910dbdc7bf3f54f"><div class="ttname"><a href="classAudioDecoderThread.html#a9221fde305355abda910dbdc7bf3f54f">AudioDecoderThread::_pendingQueue</a></div><div class="ttdeci">std::vector&lt; QueueType &gt; _pendingQueue</div><div class="ttdoc">Pending queue of add/remove operations for streamed audio handles.</div><div class="ttdef"><b>Definition</b> <a href="#l00112">AudioDecoderThread.h:112</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_aa5177a3bd4194b1c882ab8a5f75d6b17"><div class="ttname"><a href="classAudioDecoderThread.html#aa5177a3bd4194b1c882ab8a5f75d6b17">AudioDecoderThread::Add</a></div><div class="ttdeci">void Add(std::shared_ptr&lt; StreamedAudioHandle &gt; handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00067">AudioDecoderThread.cpp:67</a></div></div>
 <div class="ttc" id="aclassAudioDecoderThread_html_aaa7ded70043ac47f1e28689078d40a39"><div class="ttname"><a href="classAudioDecoderThread.html#aaa7ded70043ac47f1e28689078d40a39">AudioDecoderThread::decode_impl</a></div><div class="ttdeci">void decode_impl(StreamedAudioHandle *handle)</div><div class="ttdef"><b>Definition</b> <a href="AudioDecoderThread_8cpp_source.html#l00093">AudioDecoderThread.cpp:93</a></div></div>
-<div class="ttc" id="aclassAudioDecoderThread_html_ad7f60b0ede03a9ddbc79ab3ef4b1f059"><div class="ttname"><a href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">AudioDecoderThread::_decoderMutex</a></div><div class="ttdeci">std::mutex _decoderMutex</div><div class="ttdoc">Mutex protecting decode execution and decoded chunk access.</div><div class="ttdef"><b>Definition</b> <a href="#l00111">AudioDecoderThread.h:111</a></div></div>
+<div class="ttc" id="aclassAudioDecoderThread_html_ad7f60b0ede03a9ddbc79ab3ef4b1f059"><div class="ttname"><a href="classAudioDecoderThread.html#ad7f60b0ede03a9ddbc79ab3ef4b1f059">AudioDecoderThread::_decoderMutex</a></div><div class="ttdeci">std::mutex _decoderMutex</div><div class="ttdoc">Mutex protecting decode execution and decoded chunk access.</div><div class="ttdef"><b>Definition</b> <a href="#l00109">AudioDecoderThread.h:109</a></div></div>
+<div class="ttc" id="aclassAudioDecoderThread_html_af1444d06fc40c589773adfd05268084d"><div class="ttname"><a href="classAudioDecoderThread.html#af1444d06fc40c589773adfd05268084d">AudioDecoderThread::QueueType</a></div><div class="ttdeci">std::tuple&lt; e_AudioDecoderQueueType, std::shared_ptr&lt; StreamedAudioHandle &gt; &gt; QueueType</div><div class="ttdef"><b>Definition</b> <a href="#l00040">AudioDecoderThread.h:40</a></div></div>
 <div class="ttc" id="aclassStreamedAudioHandle_html"><div class="ttname"><a href="classStreamedAudioHandle.html">StreamedAudioHandle</a></div><div class="ttdoc">Audio handle for streamed audio playback.</div><div class="ttdef"><b>Definition</b> <a href="AudioHandle_8h_source.html#l00173">AudioHandle.h:174</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

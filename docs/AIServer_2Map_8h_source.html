@@ -119,14 +119,14 @@ $(function(){initNavTree('AIServer_2Map_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">class </span><a class="code hl_class" href="classCRoomEvent.html">CRoomEvent</a>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span><a class="code hl_class" href="classFile.html">File</a>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">typedef</span> CSTLMap &lt;_OBJECT_EVENT&gt;     ObjectEventArray;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">typedef</span> CSTLMap &lt;CRoomEvent&gt;        RoomEventArray;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">typedef</span> <a class="code hl_class" href="classCSTLMap.html">CSTLMap&lt;_OBJECT_EVENT&gt;</a> ObjectEventArray;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">typedef</span> <a class="code hl_class" href="classCSTLMap.html">CSTLMap&lt;CRoomEvent&gt;</a> RoomEventArray;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classCMapInfo.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classCMapInfo.html">CMapInfo</a>                  <span class="comment">// 각 좌표의 정보</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classCMapInfo.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classCMapInfo.html">CMapInfo</a>            <span class="comment">// 각 좌표의 정보</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    int16_t m_sEvent = 0;       <span class="comment">// 현좌표의 이벤트 번호</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    int16_t m_sEvent = 0; <span class="comment">// 현좌표의 이벤트 번호</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -134,81 +134,86 @@ $(function(){initNavTree('AIServer_2Map_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classMAP.html">   29</a></span><span class="keyword">class </span>MAP</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="classAIServerApp.html">AIServerApp</a>*     m_pMain;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>          m_N3ShapeMgr;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classCMapInfo.html">CMapInfo</a>**          m_pMap;             <span class="comment">// 타일의 정보(1셀 : 4미터)</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="classCRegion.html">CRegion</a>**            m_ppRegion;         <span class="comment">// 64미터의 타일정보..</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_struct" href="struct__SIZE.html">_SIZE</a>              m_sizeMap;          <span class="comment">// 맵의 크기</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_struct" href="struct__SIZE.html">_SIZE</a>              m_sizeRegion;       <span class="comment">// 맵의 resion size</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span>                 m_nZoneNumber;      <span class="comment">// zone number</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">int</span>                 m_nServerNo;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span>                 m_nMapSize;         <span class="comment">// Grid Unit ex) 4m</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">float</span>               m_fUnitDist;        <span class="comment">// i Grid Distance</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">float</span>**             m_fHeight;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">//  int16_t             m_arDungeonBossMonster[MAX_DUNGEON_BOSS_MONSTER];</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint8_t             m_byRoomType;       <span class="comment">// 방의 초기화관련( 0:자동으로 초기화, 1:전쟁이벤트 관련(특정조건이 완료시 초기화)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint8_t             m_byRoomEvent;      <span class="comment">// event room(0:empty, 1:use)</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t             m_byRoomStatus;     <span class="comment">// room status(1:진행중, 2:방을 초기화중, 3:방초기화 완료)</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t             m_byInitRoomCount;  <span class="comment">// room 초기화 시간을 제어(몬스터와 동기화를 맞추기 위해)</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    ObjectEventArray    m_ObjectEventArray;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    RoomEventArray      m_arRoomEventArray;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int16_t             m_sKarusRoom;       <span class="comment">// karus의 성갯수</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    int16_t             m_sElmoradRoom;     <span class="comment">// elmorad의 성갯수</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    MAP();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">virtual</span> ~MAP();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">bool</span> LoadMap(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> LoadTerrain(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> LoadMapTile(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> LoadObjectEvent(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">bool</span> LoadRoomEvent(<span class="keywordtype">int</span> zone_number, <span class="keyword">const</span> std::filesystem::path&amp; eventDir);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">bool</span> ObjectIntersect(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> z1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> z2, <span class="keywordtype">float</span> y2);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> GetHeight(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> RegionNpcRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> nid);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> RegionNpcAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> nid);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> RegionUserRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> uid);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> RegionUserAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> uid);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">bool</span> RegionItemRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> itemid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> index);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> RegionItemAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> itemid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> index);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">int</span>  GetRegionUserSize(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span>  GetRegionNpcSize(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">int</span> GetXRegionMax()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">return</span> m_sizeRegion.cx - 1;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">int</span> GetZRegionMax()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> m_sizeRegion.cy - 1;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> IsRoomCheck(<span class="keywordtype">float</span> fx, <span class="keywordtype">float</span> fz);    <span class="comment">// 던젼에서 사용, 유저의 현재위치가 던젼의 어느 위치에 있는지를 판단</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">bool</span> IsRoomStatusCheck();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="classAIServerApp.html">AIServerApp</a>* m_pMain;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a> m_N3ShapeMgr;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classCMapInfo.html">CMapInfo</a>** m_pMap;    <span class="comment">// 타일의 정보(1셀 : 4미터)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="classCRegion.html">CRegion</a>** m_ppRegion; <span class="comment">// 64미터의 타일정보..</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_struct" href="struct__SIZE.html">_SIZE</a> m_sizeMap;      <span class="comment">// 맵의 크기</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_struct" href="struct__SIZE.html">_SIZE</a> m_sizeRegion;   <span class="comment">// 맵의 resion size</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span> m_nZoneNumber;    <span class="comment">// zone number</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">int</span> m_nServerNo;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> m_nMapSize;       <span class="comment">// Grid Unit ex) 4m</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">float</span> m_fUnitDist;    <span class="comment">// i Grid Distance</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">float</span>** m_fHeight;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">//  int16_t             m_arDungeonBossMonster[MAX_DUNGEON_BOSS_MONSTER];</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint8_t</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        m_byRoomType; <span class="comment">// 방의 초기화관련( 0:자동으로 초기화, 1:전쟁이벤트 관련(특정조건이 완료시 초기화)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t m_byRoomEvent;     <span class="comment">// event room(0:empty, 1:use)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t m_byRoomStatus;    <span class="comment">// room status(1:진행중, 2:방을 초기화중, 3:방초기화 완료)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t m_byInitRoomCount; <span class="comment">// room 초기화 시간을 제어(몬스터와 동기화를 맞추기 위해)</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    ObjectEventArray m_ObjectEventArray;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    RoomEventArray m_arRoomEventArray;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    int16_t m_sKarusRoom;      <span class="comment">// karus의 성갯수</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    int16_t m_sElmoradRoom;    <span class="comment">// elmorad의 성갯수</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    MAP();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">virtual</span> ~MAP();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">bool</span> LoadMap(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> LoadTerrain(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> LoadMapTile(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> LoadObjectEvent(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">bool</span> LoadRoomEvent(<span class="keywordtype">int</span> zone_number, <span class="keyword">const</span> std::filesystem::path&amp; eventDir);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">bool</span> ObjectIntersect(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> z1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> z2, <span class="keywordtype">float</span> y2);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> GetHeight(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> RegionNpcRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> nid);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> RegionNpcAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> nid);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> RegionUserRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> uid);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> RegionUserAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> uid);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">bool</span> RegionItemRemove(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> itemid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> RegionItemAdd(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz, <span class="keywordtype">int</span> itemid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span> GetRegionUserSize(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">int</span> GetRegionNpcSize(<span class="keywordtype">int</span> rx, <span class="keywordtype">int</span> rz);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">int</span> GetXRegionMax()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> m_sizeRegion.cx - 1;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> GetZRegionMax()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> m_sizeRegion.cy - 1;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">bool</span> IsMovable(<span class="keywordtype">int</span> dest_x, <span class="keywordtype">int</span> dest_y) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> InitializeRoom();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_class" href="classCRoomEvent.html">CRoomEvent</a>* SetRoomEvent(<span class="keywordtype">int</span> number);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"></span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">    /// \brief Checks if a position is valid for the map</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">IsValidPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> RemoveMapData();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
-</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">int</span> IsRoomCheck(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">float</span> fx, <span class="keywordtype">float</span> fz); <span class="comment">// 던젼에서 사용, 유저의 현재위치가 던젼의 어느 위치에 있는지를 판단</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">bool</span> IsRoomStatusCheck();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">bool</span> IsMovable(<span class="keywordtype">int</span> dest_x, <span class="keywordtype">int</span> dest_y) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> InitializeRoom();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_class" href="classCRoomEvent.html">CRoomEvent</a>* SetRoomEvent(<span class="keywordtype">int</span> number);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /// \brief Checks if a position is valid for the map</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">IsValidPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_MAP_H</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> RemoveMapData();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>};</div>
+</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_MAP_H</span></div>
 <div class="ttc" id="aclassAIServerApp_html"><div class="ttname"><a href="classAIServerApp.html">AIServerApp</a></div><div class="ttdef"><b>Definition</b> <a href="AIServerApp_8h_source.html#l00043">AIServerApp.h:44</a></div></div>
 <div class="ttc" id="aclassCMapInfo_html"><div class="ttname"><a href="classCMapInfo.html">CMapInfo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00023">Map.h:24</a></div></div>
-<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00021">N3ShapeMgr.h:23</a></div></div>
+<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00024">N3ShapeMgr.h:26</a></div></div>
 <div class="ttc" id="aclassCNpc_html"><div class="ttname"><a href="classCNpc.html">CNpc</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00114">Npc.h:115</a></div></div>
 <div class="ttc" id="aclassCRegion_html"><div class="ttname"><a href="classCRegion.html">CRegion</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Region_8h_source.html#l00014">Region.h:15</a></div></div>
 <div class="ttc" id="aclassCRoomEvent_html"><div class="ttname"><a href="classCRoomEvent.html">CRoomEvent</a></div><div class="ttdef"><b>Definition</b> <a href="RoomEvent_8h_source.html#l00022">RoomEvent.h:23</a></div></div>
+<div class="ttc" id="aclassCSTLMap_html"><div class="ttname"><a href="classCSTLMap.html">CSTLMap</a></div><div class="ttdef"><b>Definition</b> <a href="STLMap_8h_source.html#l00009">STLMap.h:10</a></div></div>
 <div class="ttc" id="aclassCUser_html"><div class="ttname"><a href="classCUser.html">CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00012">User.h:13</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
-<div class="ttc" id="aclassMAP_html_a283a1694eccccc729cc86f930265bd1c"><div class="ttname"><a href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a></div><div class="ttdeci">bool IsValidPosition(float x, float z) const</div><div class="ttdoc">Checks if a position is valid for the map.</div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Map_8cpp_source.html#l00895">Map.cpp:895</a></div></div>
+<div class="ttc" id="aclassMAP_html_a283a1694eccccc729cc86f930265bd1c"><div class="ttname"><a href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a></div><div class="ttdeci">bool IsValidPosition(float x, float z) const</div><div class="ttdoc">Checks if a position is valid for the map.</div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Map_8cpp_source.html#l00869">Map.cpp:869</a></div></div>
 <div class="ttc" id="astruct__SIZE_html"><div class="ttname"><a href="struct__SIZE.html">_SIZE</a></div><div class="ttdef"><b>Definition</b> <a href="GeometricStructs_8h_source.html#l00007">GeometricStructs.h:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

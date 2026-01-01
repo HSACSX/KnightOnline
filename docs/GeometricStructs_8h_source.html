@@ -136,11 +136,10 @@ $(function(){initNavTree('GeometricStructs_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">inline</span> <span class="keywordtype">bool</span> IsPointInRect(<span class="keyword">const</span> <a class="code hl_struct" href="struct__POINT.html">_POINT</a> p, <span class="keyword">const</span> <a class="code hl_struct" href="struct__RECT.html">_RECT</a> r)</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> p.x &gt;= r.left &amp;&amp; p.x &lt;= r.right</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        &amp;&amp; p.y &gt;= r.top &amp;&amp; p.y &lt;= r.bottom;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// MATHUTILS_GEOMETRICSTRUCTS_H</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> p.x &gt;= r.left &amp;&amp; p.x &lt;= r.right &amp;&amp; p.y &gt;= r.top &amp;&amp; p.y &lt;= r.bottom;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif </span><span class="comment">// MATHUTILS_GEOMETRICSTRUCTS_H</span></div>
 <div class="ttc" id="astruct__POINT_html"><div class="ttname"><a href="struct__POINT.html">_POINT</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">GeometricStructs.h:15</a></div></div>
 <div class="ttc" id="astruct__RECT_html"><div class="ttname"><a href="struct__RECT.html">_RECT</a></div><div class="ttdef"><b>Definition</b> <a href="#l00021">GeometricStructs.h:22</a></div></div>
 <div class="ttc" id="astruct__SIZE_html"><div class="ttname"><a href="struct__SIZE.html">_SIZE</a></div><div class="ttdef"><b>Definition</b> <a href="#l00007">GeometricStructs.h:8</a></div></div>

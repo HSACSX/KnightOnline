@@ -1,7 +1,7 @@
 var classAudioThread =
 [
     [ "AudioCallback", "classAudioThread.html#a0f49312b58a64816161e6bdb8f5adba0", null ],
-    [ "QueueType", "classAudioThread.html#ad2b5a3e92f8441df59aec5bf47d6a8da", null ],
+    [ "QueueType", "classAudioThread.html#abdab3c3a69196206212cef3a01260247", null ],
     [ "AudioThread", "classAudioThread.html#a00f4017141af67fff0e85f4d7c1595e3", null ],
     [ "~AudioThread", "classAudioThread.html#a3de6366d74ab9267cb0e58082ee18640", null ],
     [ "Add", "classAudioThread.html#af4e40cf319d292951e36688bb3fb03ba", null ],

@@ -123,27 +123,27 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifdef _DEBUG</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#undef THIS_FILE</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[]=__FILE__;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[] = __FILE__;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define CHILD_UI_REVIVE_MSG             1</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define CHILD_UI_LACK_LIVE_STONE_MSG    2</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#define CHILD_UI_LOW_LEVEL              3</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define CHILD_UI_REVIVE_MSG          1</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define CHILD_UI_LACK_LIVE_STONE_MSG 2</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#define CHILD_UI_LOW_LEVEL           3</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define TIMES_LIFE_STONE                3</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#define LIFE_STONE_INDEX                379006000</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define TIMES_LIFE_STONE             3</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#define LIFE_STONE_INDEX             379006000</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define REVIVAL_TYPE_RETURN_TOWN        1</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define REVIVAL_TYPE_LIFE_STONE         2</span><span class="comment"></span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define REVIVAL_TYPE_RETURN_TOWN     1</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define REVIVAL_TYPE_LIFE_STONE      2</span><span class="comment"></span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// Construction/Destruction</span><span class="comment"></span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>CUIDead::CUIDead()</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    m_pTextAlive    = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    m_pTextTown     = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    m_bProcessing   = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    m_pTextAlive  = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    m_pTextTown   = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    m_bProcessing = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>CUIDead::~CUIDead()</div>
@@ -155,8 +155,8 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (!CN3UIBase::Load(file))</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    N3_VERIFY_UI_COMPONENT(m_pTextAlive,    GetChildByID&lt;CN3UIString&gt;(<span class="stringliteral">&quot;Text_Alive&quot;</span>));</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    N3_VERIFY_UI_COMPONENT(m_pTextTown,     GetChildByID&lt;CN3UIString&gt;(<span class="stringliteral">&quot;Text_Town&quot;</span>));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    N3_VERIFY_UI_COMPONENT(m_pTextAlive, GetChildByID&lt;CN3UIString&gt;(<span class="stringliteral">&quot;Text_Alive&quot;</span>));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    N3_VERIFY_UI_COMPONENT(m_pTextTown, GetChildByID&lt;CN3UIString&gt;(<span class="stringliteral">&quot;Text_Town&quot;</span>));</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    std::string szMsg = fmt::format_text_resource(IDS_DEAD_REVIVAL);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (m_pTextAlive != <span class="keyword">nullptr</span>)</div>
@@ -188,7 +188,7 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUIInventory != <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                iItemCnt = CGameProcedure::s_pProcMain-&gt;m_pUIInventory-&gt;GetIndexItemCount(LIFE_STONE_INDEX);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            iLevel = CGameBase::s_pPlayer-&gt;m_InfoBase.iLevel;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            iLevel       = CGameBase::s_pPlayer-&gt;m_InfoBase.iLevel;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            iNeedItemCnt = iLevel * TIMES_LIFE_STONE;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            std::string szMsg;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
@@ -253,7 +253,7 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">// 영역 밖이면</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">if</span> (!IsIn(ptCur.x, ptCur.y))</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="comment">// 이전 좌표도 영역 밖이면 </span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="comment">// 이전 좌표도 영역 밖이면</span></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (!IsIn(ptOld.x, ptOld.y))</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordflow">return</span> dwRet;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
@@ -274,10 +274,10 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="comment">// child에게 메세지 전달</span></div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">for</span> (UIListItor itor = m_Children.begin(); m_Children.end() != itor; ++itor)</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    {</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        CN3UIBase* pChild = (*itor);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        CN3UIBase* pChild   = (*itor);</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        uint32_t dwChildRet = 0;</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        dwChildRet = pChild-&gt;MouseProc(dwFlags, ptCur, ptOld);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        dwChildRet          = pChild-&gt;MouseProc(dwFlags, ptCur, ptOld);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">if</span> (pChild-&gt;IsVisible() &amp;&amp; UI_TYPE_STRING == pChild-&gt;UIType())</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        {</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keywordflow">if</span> (pChild-&gt;IsIn(ptCur.x, ptCur.y) &amp;&amp; (dwFlags &amp; UI_MOUSE_LBCLICKED))</div>
@@ -291,8 +291,8 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (UI_MOUSEPROC_DONESOMETHING &amp; dwChildRet)</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="comment">// (아래 코드는 dialog를 관리하는 곳에서 해야 한다. 따라서 막아놓음)</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">//          m_Children.erase(itor);         // 우선 리스트에서 지우고</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">//          m_Children.push_front(pChild);  // 맨앞에 넣는다. 그리는 순서를 맨 나중에 그리도록 하려고</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="comment">//          m_Children.erase(itor);         // 우선 리스트에서 지우고</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="comment">//          m_Children.push_front(pChild);  // 맨앞에 넣는다. 그리는 순서를 맨 나중에 그리도록 하려고</span></div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            dwRet |= (UI_MOUSEPROC_CHILDDONESOMETHING | UI_MOUSEPROC_DONESOMETHING);</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keywordflow">return</span> dwRet;</div>
@@ -300,118 +300,116 @@ $(function(){initNavTree('UIDead_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="comment">// UI 움직이는 코드</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">if</span> (UI_STATE_COMMON_MOVE != m_eState</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        &amp;&amp; PtInRect(&amp;m_rcMovable, ptCur)</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        &amp;&amp; (dwFlags &amp; UI_MOUSE_LBCLICK))</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        SetState(UI_STATE_COMMON_MOVE);</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        dwRet |= UI_MOUSEPROC_DONESOMETHING;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">return</span> dwRet;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">return</span> dwRet;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keywordtype">void</span> CUIDead::CallBackProc(<span class="keywordtype">int</span> iID, uint32_t dwFlag)</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>{</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="comment">//TRACE(&quot;OnButton ID:%d Btn %d\n&quot;,iID, dwFlag);</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span> (iID == CHILD_UI_REVIVE_MSG)</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="comment">// OK</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordflow">if</span> (dwFlag == 1)</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            MsgSend_Revival(REVIVAL_TYPE_LIFE_STONE);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (iID == CHILD_UI_LACK_LIVE_STONE_MSG)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    }</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (iID == CHILD_UI_LOW_LEVEL)</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    }</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>}</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordtype">void</span> CUIDead::MsgSend_Revival(uint8_t byType)</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>{</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordflow">if</span> (m_bProcessing)</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;m_iSendRegeneration &gt;= 2)</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    uint8_t byBuff[4];</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordtype">int</span> iOffset = 0;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    CAPISocket::MP_AddByte(byBuff, iOffset, WIZ_REGENE);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    CAPISocket::MP_AddByte(byBuff, iOffset, byType);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    CGameProcedure::s_pSocket-&gt;Send(byBuff, iOffset); <span class="comment">// 보낸다..</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    CLogWriter::Write(<span class="stringliteral">&quot;Send Regeneration&quot;</span>);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    CGameBase::s_pPlayer-&gt;m_iSendRegeneration = 2; <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="comment">//TRACE(&quot;보냄 - 다시 살아나기\n&quot;);</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    m_bProcessing = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>}</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keywordtype">void</span> CUIDead::MsgRecv_Revival(<a class="code hl_class" href="classPacket.html">Packet</a>&amp; pkt)</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>{</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    m_bProcessing = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    __Vector3 vPosPlayer;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    vPosPlayer.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;uint16_t&gt;()) / 10.0f;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    vPosPlayer.z = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;uint16_t&gt;()) / 10.0f;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    vPosPlayer.y = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;int16_t&gt;()) / 10.0f;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="comment">// 플레이어 위치 초기화.. 일으켜 세우고, 기본동작을 취하게 한다.</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    CGameProcedure::s_pProcMain-&gt;InitPlayerPosition(vPosPlayer);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="comment">// 충돌 메시를 다시 만든다..</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    CGameBase::s_pPlayer-&gt;RegenerateCollisionMesh();</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    CGameBase::s_pPlayer-&gt;m_iSendRegeneration = 0;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    CGameBase::s_pPlayer-&gt;m_fTimeAfterDeath = 0;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">if</span> (UI_STATE_COMMON_MOVE != m_eState &amp;&amp; PtInRect(&amp;m_rcMovable, ptCur) &amp;&amp; (dwFlags &amp; UI_MOUSE_LBCLICK))</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        SetState(UI_STATE_COMMON_MOVE);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        dwRet |= UI_MOUSEPROC_DONESOMETHING;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">return</span> dwRet;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> dwRet;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keywordtype">void</span> CUIDead::CallBackProc(<span class="keywordtype">int</span> iID, uint32_t dwFlag)</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>{</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="comment">//TRACE(&quot;OnButton ID:%d Btn %d\n&quot;,iID, dwFlag);</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">if</span> (iID == CHILD_UI_REVIVE_MSG)</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="comment">// OK</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">if</span> (dwFlag == 1)</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            MsgSend_Revival(REVIVAL_TYPE_LIFE_STONE);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    }</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (iID == CHILD_UI_LACK_LIVE_STONE_MSG)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    }</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (iID == CHILD_UI_LOW_LEVEL)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>}</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keywordtype">void</span> CUIDead::MsgSend_Revival(uint8_t byType)</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>{</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">if</span> (m_bProcessing)</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;m_iSendRegeneration &gt;= 2)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    uint8_t byBuff[4];</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordtype">int</span> iOffset = 0;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    CAPISocket::MP_AddByte(byBuff, iOffset, WIZ_REGENE);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    CAPISocket::MP_AddByte(byBuff, iOffset, byType);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    CGameProcedure::s_pSocket-&gt;Send(byBuff, iOffset); <span class="comment">// 보낸다..</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    CLogWriter::Write(<span class="stringliteral">&quot;Send Regeneration&quot;</span>);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    CGameBase::s_pPlayer-&gt;m_iSendRegeneration = 2;    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="comment">//TRACE(&quot;보냄 - 다시 살아나기\n&quot;);</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    m_bProcessing                             = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="keywordtype">void</span> CUIDead::MsgRecv_Revival(<a class="code hl_class" href="classPacket.html">Packet</a>&amp; pkt)</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>{</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    m_bProcessing = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    __Vector3 vPosPlayer;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    vPosPlayer.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;uint16_t&gt;()) / 10.0f;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    vPosPlayer.z = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;uint16_t&gt;()) / 10.0f;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    vPosPlayer.y = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pkt.read&lt;int16_t&gt;()) / 10.0f;</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="comment">// 플레이어 위치 초기화.. 일으켜 세우고, 기본동작을 취하게 한다.</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    CGameProcedure::s_pProcMain-&gt;InitPlayerPosition(vPosPlayer);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="comment">// 충돌 메시를 다시 만든다..</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    CGameBase::s_pPlayer-&gt;RegenerateCollisionMesh();</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    CGameBase::s_pPlayer-&gt;m_iSendRegeneration = 0;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="comment">// 한번 보내면 다시 죽을때까지 안보내는 플래그</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    CGameBase::s_pPlayer-&gt;m_fTimeAfterDeath   = 0;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="comment">// TRACE(&quot;받음 - 다시 살아나기(%.1f, %.1f)\n&quot;, vPosPlayer.x, vPosPlayer.z);</span></div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="comment">// TRACE(&quot;받음 - 다시 살아나기(%.1f, %.1f)\n&quot;, vPosPlayer.x, vPosPlayer.z);</span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="comment">// 마법 &amp; 효과 초기화..</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUIStateBarAndMiniMap != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        CGameProcedure::s_pProcMain-&gt;m_pUIStateBarAndMiniMap-&gt;ClearMagic();</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pMagicSkillMng != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        CGameProcedure::s_pProcMain-&gt;m_pMagicSkillMng-&gt;ClearDurationalMagic();</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pFX != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        CGameProcedure::s_pFX-&gt;StopMine();</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="comment">// 마법 &amp; 효과 초기화..</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUIStateBarAndMiniMap != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        CGameProcedure::s_pProcMain-&gt;m_pUIStateBarAndMiniMap-&gt;ClearMagic();</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pMagicSkillMng != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        CGameProcedure::s_pProcMain-&gt;m_pMagicSkillMng-&gt;ClearDurationalMagic();</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pFX != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        CGameProcedure::s_pFX-&gt;StopMine();</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    CLogWriter::Write(<span class="stringliteral">&quot;Receive Regeneration&quot;</span>);</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    CLogWriter::Write(<span class="stringliteral">&quot;Receive Regeneration&quot;</span>);</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordtype">int</span> iID = CGameBase::s_pPlayer-&gt;IDNumber();</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;Nation() == NATION_KARUS)</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        CGameProcedure::s_pFX-&gt;TriggerBundle(iID, -1, FXID_REGEN_KARUS, iID, -1);</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;Nation() == NATION_ELMORAD)</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        CGameProcedure::s_pFX-&gt;TriggerBundle(iID, -1, FXID_REGEN_ELMORAD, iID, -1);</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    SetVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keywordtype">void</span> CUIDead::SetVisible(<span class="keywordtype">bool</span> bVisible)</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>{</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    CN3UIBase::SetVisible(bVisible);</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordflow">if</span> (bVisible)</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        CGameProcedure::s_pUIMgr-&gt;SetVisibleFocusedUI(<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        CGameProcedure::s_pUIMgr-&gt;ReFocusUI();<span class="comment">//this_ui</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>}</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="keywordtype">void</span> CUIDead::SetVisibleWithNoSound(<span class="keywordtype">bool</span> bVisible, <span class="keywordtype">bool</span> bWork, <span class="keywordtype">bool</span> bReFocus)</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>{</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keywordflow">if</span> (!bWork)</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        CN3UIBase::SetVisibleWithNoSound(bVisible, bWork, bReFocus);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>}</div>
-<div class="ttc" id="aclassCN3UIBase_html"><div class="ttname"><a href="classCN3UIBase.html">CN3UIBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIBase_8h_source.html#l00043">N3UIBase.h:44</a></div></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordtype">int</span> iID = CGameBase::s_pPlayer-&gt;IDNumber();</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;Nation() == NATION_KARUS)</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        CGameProcedure::s_pFX-&gt;TriggerBundle(iID, -1, FXID_REGEN_KARUS, iID, -1);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (CGameBase::s_pPlayer-&gt;Nation() == NATION_ELMORAD)</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        CGameProcedure::s_pFX-&gt;TriggerBundle(iID, -1, FXID_REGEN_ELMORAD, iID, -1);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    SetVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>}</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keywordtype">void</span> CUIDead::SetVisible(<span class="keywordtype">bool</span> bVisible)</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>{</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    CN3UIBase::SetVisible(bVisible);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keywordflow">if</span> (bVisible)</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        CGameProcedure::s_pUIMgr-&gt;SetVisibleFocusedUI(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        CGameProcedure::s_pUIMgr-&gt;ReFocusUI(); <span class="comment">//this_ui</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keywordtype">void</span> CUIDead::SetVisibleWithNoSound(<span class="keywordtype">bool</span> bVisible, <span class="keywordtype">bool</span> bWork, <span class="keywordtype">bool</span> bReFocus)</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>{</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">if</span> (!bWork)</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        CN3UIBase::SetVisibleWithNoSound(bVisible, bWork, bReFocus);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>}</div>
+<div class="ttc" id="aclassCN3UIBase_html"><div class="ttname"><a href="classCN3UIBase.html">CN3UIBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIBase_8h_source.html#l00044">N3UIBase.h:45</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassPacket_html"><div class="ttname"><a href="classPacket.html">Packet</a></div><div class="ttdef"><b>Definition</b> <a href="shared_2Packet_8h_source.html#l00008">Packet.h:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

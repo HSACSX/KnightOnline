@@ -120,20 +120,20 @@ $(function(){initNavTree('WallMgr_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgMakeWall.html">CDlgMakeWall</a>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classCWallMgr.html">   20</a></span><span class="keyword">class </span>CWallMgr : <span class="keyword">public</span> CN3BaseFileAccess  </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classCWallMgr.html">   20</a></span><span class="keyword">class </span>CWallMgr : <span class="keyword">public</span> CN3BaseFileAccess</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>          m_BaseCube[8];</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a>    m_CubeVB[36];</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a>    m_LineVB[2];</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a>    m_BoardVB[4];</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> m_BaseCube[8];</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a> m_CubeVB[36];</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a> m_LineVB[2];</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_struct" href="struct____VertexXyzColor.html">__VertexXyzColor</a> m_BoardVB[4];</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="classCMapMng.html">CMapMng</a>*             m_pRefMapMng;               <span class="comment">// 지형 참조 포인터..</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::list&lt;CWall*&gt;       m_pWalls;                   <span class="comment">// 벽들...</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="classCDlgMakeWall.html">CDlgMakeWall</a>*           m_pDlg;                     <span class="comment">// path make dialog..</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span>                    m_bActive;                  <span class="comment">// 이기능이 활성화 되어 있는지...1:활성화, 0:비활성화..</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classCWall.html">CWall</a>*                 m_pCurrWall;                <span class="comment">// 현재 만들고 있는 벽..or 만들려고 준비한 버퍼..</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="classCMapMng.html">CMapMng</a>* m_pRefMapMng;      <span class="comment">// 지형 참조 포인터..</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::list&lt;CWall*&gt; m_pWalls; <span class="comment">// 벽들...</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="classCDlgMakeWall.html">CDlgMakeWall</a>* m_pDlg;       <span class="comment">// path make dialog..</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span> m_bActive;             <span class="comment">// 이기능이 활성화 되어 있는지...1:활성화, 0:비활성화..</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classCWall.html">CWall</a>* m_pCurrWall;         <span class="comment">// 현재 만들고 있는 벽..or 만들려고 준비한 버퍼..</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> MakeLine(<a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> sv, <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> ev, D3DCOLOR color);</div>
@@ -151,7 +151,7 @@ $(function(){initNavTree('WallMgr_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> SetCurrWall(<a class="code hl_class" href="classCWall.html">CWall</a>* pWall);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> DelWall(<a class="code hl_class" href="classCWall.html">CWall</a>* pWall);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classCWall.html">CWall</a>* GetpWall(<span class="keywordtype">int</span> idx);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> Render();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> UpdateWall();</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> SetActive(<span class="keywordtype">bool</span> active);</div>
@@ -167,12 +167,12 @@ $(function(){initNavTree('WallMgr_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_WALLMGR_H__5633920C_20A6_4FD3_9D71_B522269163F8__INCLUDED_)</span></div>
 <div class="ttc" id="aclassCDlgMakeWall_html"><div class="ttname"><a href="classCDlgMakeWall.html">CDlgMakeWall</a></div><div class="ttdef"><b>Definition</b> <a href="DlgMakeWall_8h_source.html#l00016">DlgMakeWall.h:17</a></div></div>
-<div class="ttc" id="aclassCMapMng_html"><div class="ttname"><a href="classCMapMng.html">CMapMng</a></div><div class="ttdef"><b>Definition</b> <a href="MapMng_8h_source.html#l00052">MapMng.h:53</a></div></div>
-<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00021">N3ShapeMgr.h:23</a></div></div>
+<div class="ttc" id="aclassCMapMng_html"><div class="ttname"><a href="classCMapMng.html">CMapMng</a></div><div class="ttdef"><b>Definition</b> <a href="MapMng_8h_source.html#l00069">MapMng.h:70</a></div></div>
+<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00024">N3ShapeMgr.h:26</a></div></div>
 <div class="ttc" id="aclassCWall_html"><div class="ttname"><a href="classCWall.html">CWall</a></div><div class="ttdef"><b>Definition</b> <a href="Wall_8h_source.html#l00015">Wall.h:16</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
-<div class="ttc" id="astruct____VertexXyzColor_html"><div class="ttname"><a href="struct____VertexXyzColor.html">__VertexXyzColor</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00660">My_3DStruct.h:661</a></div></div>
+<div class="ttc" id="astruct____VertexXyzColor_html"><div class="ttname"><a href="struct____VertexXyzColor.html">__VertexXyzColor</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00672">My_3DStruct.h:673</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

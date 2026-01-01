@@ -109,7 +109,7 @@ $(function(){initNavTree('N3CEDoc_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifdef _DEBUG</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#undef THIS_FILE</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[]=__FILE__;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[] = __FILE__;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define new DEBUG_NEW</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
@@ -119,10 +119,10 @@ $(function(){initNavTree('N3CEDoc_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>IMPLEMENT_DYNCREATE(<a class="code hl_class" href="classCN3CEDoc.html">CN3CEDoc</a>, CDocument)</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>BEGIN_MESSAGE_MAP(<a class="code hl_class" href="classCN3CEDoc.html">CN3CEDoc</a>, CDocument)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">//{{AFX_MSG_MAP(CN3CEDoc)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    ON_COMMAND(ID_FILE_SAVE_AS_ONE_FOLDER, OnFileSaveAsOneFolder)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ON_COMMAND(ID_TOOL_OPTIMIZE_ANIMATION_DATA, OnToolOptimizeAnimationData)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">//}}AFX_MSG_MAP</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//{{AFX_MSG_MAP(CN3CEDoc)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>ON_COMMAND(ID_FILE_SAVE_AS_ONE_FOLDER, OnFileSaveAsOneFolder)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>ON_COMMAND(ID_TOOL_OPTIMIZE_ANIMATION_DATA, OnToolOptimizeAnimationData)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//}}AFX_MSG_MAP</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>END_MESSAGE_MAP()</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
@@ -130,36 +130,36 @@ $(function(){initNavTree('N3CEDoc_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><a class="code hl_class" href="classCN3CEDoc.html">CN3CEDoc</a>::<a class="code hl_class" href="classCN3CEDoc.html">CN3CEDoc</a>()</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span>(m_Scene.CameraCount() &lt;= 0) m_Scene.DefaultCameraAdd();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">if</span>(m_Scene.LightCount() &lt;= 0) m_Scene.DefaultLightAdd();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_bLoadingNow = FALSE;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (m_Scene.CameraCount() &lt;= 0)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        m_Scene.DefaultCameraAdd();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    if (m_Scene.LightCount() &lt;= 0)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        m_Scene.DefaultLightAdd();</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Character 초기화..</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_class" href="classCN3Chr.html">CN3Chr</a>* pChr = <span class="keyword">new</span> <a class="code hl_class" href="classCN3Chr.html">CN3Chr</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    m_Scene.ChrAdd(pChr);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>CN3CEDoc::~CN3CEDoc()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>BOOL CN3CEDoc::OnNewDocument()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (!CDocument::OnNewDocument())</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span>(m_Scene.ChrGet(0))</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        m_Scene.ChrGet(0)-&gt;Release();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        m_Scene.ChrGet(0)-&gt;AniDefaultSet(); <span class="comment">// 기본 에니메이션 세팅..</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_bLoadingNow = FALSE;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Character 초기화..</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_class" href="classCN3Chr.html">CN3Chr</a>* pChr  = <span class="keyword">new</span> <a class="code hl_class" href="classCN3Chr.html">CN3Chr</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    m_Scene.ChrAdd(pChr);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>CN3CEDoc::~CN3CEDoc()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>BOOL CN3CEDoc::OnNewDocument()</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (!CDocument::OnNewDocument())</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span> (m_Scene.ChrGet(0))</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        m_Scene.ChrGet(0)-&gt;Release();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        m_Scene.ChrGet(0)-&gt;AniDefaultSet(); <span class="comment">// 기본 에니메이션 세팅..</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"></span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// CN3CEDoc serialization</span></div>
@@ -194,294 +194,316 @@ $(function(){initNavTree('N3CEDoc_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">// CN3CEDoc commands</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>BOOL CN3CEDoc::OnOpenDocument(LPCTSTR lpszPathName) </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>BOOL CN3CEDoc::OnOpenDocument(LPCTSTR lpszPathName)</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>{</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!CDocument::OnOpenDocument(lpszPathName))</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// TODO: Add your specialized creation code here</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">char</span> szPath[512]; <span class="comment">// 경로를 잘 가려야 한다..</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    lstrcpy(szPath, lpszPathName);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">int</span> nFind = 0;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">if</span>(<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i]) nFind++;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span>(nFind &gt;= 2)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    m_bLoadingNow = TRUE;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    m_Scene.PathSet(szPath); <span class="comment">// 경로를 정해주고..</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    m_Scene.ChrGet(0)-&gt;Release();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    m_Scene.ChrGet(0)-&gt;LoadFromFile(lpszPathName);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    CN3Joint* pJoint = m_Scene.ChrGet(0)-&gt;Joint();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span>(pJoint)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        m_Scene.m_fFrmEnd = pJoint-&gt;m_KeyPos.Count() * 30.0f / pJoint-&gt;m_KeyRot.SamplingRate();</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">if</span>(m_Scene.m_fFrmEnd &lt;= 0 &amp;&amp; pJoint-&gt;Child(0))</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            m_Scene.m_fFrmEnd = pJoint-&gt;Child(0)-&gt;m_KeyRot.Count() * 30.0f / pJoint-&gt;Child(0)-&gt;m_KeyRot.SamplingRate();</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">if</span>(m_Scene.ChrGet(0)-&gt;AniCtrl() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        m_Scene.ChrGet(0)-&gt;AniDefaultSet(); <span class="comment">// 기본 에니메이션 세팅..</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    m_bLoadingNow = FALSE;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">if</span> (<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i])</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            nFind++;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">if</span> (nFind &gt;= 2)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    m_bLoadingNow = TRUE;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    m_Scene.PathSet(szPath); <span class="comment">// 경로를 정해주고..</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    m_Scene.ChrGet(0)-&gt;Release();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    m_Scene.ChrGet(0)-&gt;LoadFromFile(lpszPathName);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    CN3Joint* pJoint = m_Scene.ChrGet(0)-&gt;Joint();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (pJoint)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        m_Scene.m_fFrmEnd = pJoint-&gt;m_KeyPos.Count() * 30.0f / pJoint-&gt;m_KeyRot.SamplingRate();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> (m_Scene.m_fFrmEnd &lt;= 0 &amp;&amp; pJoint-&gt;Child(0))</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            m_Scene.m_fFrmEnd = pJoint-&gt;Child(0)-&gt;m_KeyRot.Count() * 30.0f</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                / pJoint-&gt;Child(0)-&gt;m_KeyRot.SamplingRate();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">if</span> (m_Scene.ChrGet(0)-&gt;AniCtrl() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        m_Scene.ChrGet(0)-&gt;AniDefaultSet(); <span class="comment">// 기본 에니메이션 세팅..</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    m_bLoadingNow = FALSE;</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>BOOL CN3CEDoc::OnSaveDocument(LPCTSTR lpszPathName) </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>{</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    CDocument::OnSaveDocument(lpszPathName);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="comment">// TODO: Add your specialized creation code here</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">char</span> szPath[512]; <span class="comment">// 경로를 잘 가려야 한다..</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    lstrcpy(szPath, lpszPathName);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">int</span> nFind = 0;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    {</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">if</span>(<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i]) nFind++;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">if</span>(nFind &gt;= 2)</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        }</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordtype">char</span> szDrive[_MAX_DRIVE], szDir[_MAX_DIR], szFName[_MAX_FNAME];</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    _splitpath(lpszPathName, szDrive, szDir, szFName, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>}</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>BOOL CN3CEDoc::OnSaveDocument(LPCTSTR lpszPathName)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>{</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    CDocument::OnSaveDocument(lpszPathName);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="comment">// TODO: Add your specialized creation code here</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">char</span> szPath[512]; <span class="comment">// 경로를 잘 가려야 한다..</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    lstrcpy(szPath, lpszPathName);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">int</span> nFind = 0;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i])</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            nFind++;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (nFind &gt;= 2)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    m_Scene.PathSet(szPath); <span class="comment">// 경로를 정해주고..</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    CN3Chr* pChr = m_Scene.ChrGet(0);</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    pChr-&gt;m_szName = szFName; <span class="comment">// 이름을 정하고..</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">//  CN3Joint* pJoint = pChr-&gt;Joint();</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">//  if(pJoint)</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">//  {</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">//      pJoint-&gt;SaveToFile(); // 관절도 저장해준다..</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">//  }</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    CN3CPlugBase* pPlug = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">int</span> nCPC = pChr-&gt;PlugCount();</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        pPlug = pChr-&gt;Plug(i);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        pPlug-&gt;SaveToFile();</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    }</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    CN3AnimControl* pAni = pChr-&gt;AniCtrl();</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">if</span>(pAni) pAni-&gt;SaveToFile();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordtype">char</span> szDrive[_MAX_DRIVE], szDir[_MAX_DIR], szFName[_MAX_FNAME];</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    _splitpath(lpszPathName, szDrive, szDir, szFName, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    m_Scene.PathSet(szPath);       <span class="comment">// 경로를 정해주고..</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    CN3Chr* pChr        = m_Scene.ChrGet(0);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    pChr-&gt;m_szName      = szFName; <span class="comment">// 이름을 정하고..</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                                   <span class="comment">//   CN3Joint* pJoint = pChr-&gt;Joint();</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">//  if(pJoint)</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="comment">//  {</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="comment">//      pJoint-&gt;SaveToFile(); // 관절도 저장해준다..</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="comment">//  }</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    CN3CPlugBase* pPlug = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">int</span> nCPC            = pChr-&gt;PlugCount();</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        pPlug = pChr-&gt;Plug(i);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        pPlug-&gt;SaveToFile();</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    m_Scene.ChrGet(0)-&gt;SaveToFile(lpszPathName);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    m_Scene.SaveResrc();</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">return</span> TRUE; <span class="comment">// 그냥 저장하면 안된다.. 0 Byte 가 된다.</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keywordtype">void</span> CN3CEDoc::OnFileSaveAsOneFolder() </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>{</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="comment">// TODO: Add your specialized creation code here</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    CFileDialog dlg(FALSE, <span class="stringliteral">&quot;N3Chr&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Character Data File(*.N3Chr)|*.N3Chr||&quot;</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">if</span>(dlg.DoModal() == IDCANCEL) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    CString szFullFileName = dlg.GetPathName();</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">char</span> szPath[512]; <span class="comment">// 경로를 잘 가려야 한다..</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    lstrcpy(szPath, szFullFileName);</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">int</span> nFind = 0;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">if</span>(<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i]) nFind++;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="keywordflow">if</span>(nFind &gt;= 2)</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        }</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordtype">char</span> szDrive[_MAX_DRIVE], szDir[_MAX_DIR];</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    _splitpath(szFullFileName, szDrive, szDir, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    m_Scene.PathSet(szPath); <span class="comment">// 경로를 정해주고..</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    CN3Chr* pChr = m_Scene.ChrGet(0);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    CN3Joint* pJoint = pChr-&gt;Joint();</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span>(pJoint)</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">char</span> szFN[256];</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        _makepath(szFN, szDrive, szDir, pChr-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3Joint&quot;</span>);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        pJoint-&gt;SaveToFile(szFN); <span class="comment">// 관절도 저장해준다..</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    CN3CPlugBase* pPlug = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordtype">int</span> nCPC = pChr-&gt;PlugCount();</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        pPlug = pChr-&gt;Plug(i);</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">if</span>(<span class="keyword">nullptr</span> == pPlug) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    CN3AnimControl* pAni = pChr-&gt;AniCtrl();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">if</span> (pAni)</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        pAni-&gt;SaveToFile();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    m_Scene.ChrGet(0)-&gt;SaveToFile(lpszPathName);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    m_Scene.SaveResrc();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">return</span> TRUE; <span class="comment">// 그냥 저장하면 안된다.. 0 Byte 가 된다.</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>}</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keywordtype">void</span> CN3CEDoc::OnFileSaveAsOneFolder()</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>{</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="comment">// TODO: Add your specialized creation code here</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    CFileDialog dlg(</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        FALSE, <span class="stringliteral">&quot;N3Chr&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Character Data File(*.N3Chr)|*.N3Chr||&quot;</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">if</span> (dlg.DoModal() == IDCANCEL)</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    CString szFullFileName = dlg.GetPathName();</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">char</span> szPath[512]; <span class="comment">// 경로를 잘 가려야 한다..</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    lstrcpy(szPath, szFullFileName);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">int</span> nFind = 0;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = lstrlen(szPath) - 1; i &gt;= 0; i--)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">if</span> (<span class="charliteral">&#39;\\&#39;</span> == szPath[i] || <span class="charliteral">&#39;/&#39;</span> == szPath[i])</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            nFind++;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">if</span> (nFind &gt;= 2)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            szPath[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordtype">char</span> szDrive[_MAX_DRIVE], szDir[_MAX_DIR];</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    _splitpath(szFullFileName, szDrive, szDir, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    m_Scene.PathSet(szPath); <span class="comment">// 경로를 정해주고..</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    CN3Chr* pChr     = m_Scene.ChrGet(0);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    CN3Joint* pJoint = pChr-&gt;Joint();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">if</span> (pJoint)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordtype">char</span> szFN[256];</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        _makepath(szFN, szDrive, szDir, pChr-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3Joint&quot;</span>);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        pJoint-&gt;SaveToFile(szFN); <span class="comment">// 관절도 저장해준다..</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    }</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordtype">char</span> szFN[256];</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">if</span>(pPlug-&gt;PMesh())</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        {</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            _makepath(szFN, szDrive, szDir, pPlug-&gt;PMesh()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3PMesh&quot;</span>);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            pPlug-&gt;PMesh()-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        }</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keywordflow">if</span>(pPlug-&gt;Tex())</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        {</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            _makepath(szFN, szDrive, szDir, pPlug-&gt;Tex()-&gt;m_szName.c_str(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            pPlug-&gt;Tex()-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        }</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        _makepath(szFN, szDrive, szDir, pPlug-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CPlug&quot;</span>);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        pPlug-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    }</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    CN3CPart* pPart = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    nCPC = pChr-&gt;PartCount();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    {</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        pPart = pChr-&gt;Part(i);</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="keywordflow">if</span>(<span class="keyword">nullptr</span> == pPart) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keywordtype">char</span> szFN[256];</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keywordflow">if</span>(pPart-&gt;Skins())</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        {</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            _makepath(szFN, szDrive, szDir, pPart-&gt;Skins()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CSkins&quot;</span>);</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            pPart-&gt;Skins()-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordflow">if</span>(pPart-&gt;Tex())</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            _makepath(szFN, szDrive, szDir, pPart-&gt;Tex()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.DXT&quot;</span>);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            pPart-&gt;Tex()-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        }</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        </div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        _makepath(szFN, szDrive, szDir, pPart-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CPart&quot;</span>);</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        pPart-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    }</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    CN3AnimControl* pAni = pChr-&gt;AniCtrl();</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordflow">if</span>(pAni &amp;&amp; pAni-&gt;Count() &gt; 0) <span class="comment">// 에니메이션은 같은 이름으로 저장해준다..</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    {</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        pAni-&gt;m_szName = pChr-&gt;m_szName;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    CN3CPlugBase* pPlug = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">int</span> nCPC            = pChr-&gt;PlugCount();</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        pPlug = pChr-&gt;Plug(i);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pPlug)</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordtype">char</span> szFN[256];</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">if</span> (pPlug-&gt;PMesh())</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            _makepath(szFN, szDrive, szDir, pPlug-&gt;PMesh()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3PMesh&quot;</span>);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            pPlug-&gt;PMesh()-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">if</span> (pPlug-&gt;Tex())</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        {</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            _makepath(szFN, szDrive, szDir, pPlug-&gt;Tex()-&gt;m_szName.c_str(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            pPlug-&gt;Tex()-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        _makepath(szFN, szDrive, szDir, pPlug-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CPlug&quot;</span>);</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        pPlug-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    CN3CPart* pPart = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    nCPC            = pChr-&gt;PartCount();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nCPC; i++)</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    {</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        pPart = pChr-&gt;Part(i);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pPart)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="keywordtype">char</span> szFN[256];</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordflow">if</span> (pPart-&gt;Skins())</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        {</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            _makepath(szFN, szDrive, szDir, pPart-&gt;Skins()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CSkins&quot;</span>);</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            pPart-&gt;Skins()-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">if</span> (pPart-&gt;Tex())</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            _makepath(szFN, szDrive, szDir, pPart-&gt;Tex()-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.DXT&quot;</span>);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            pPart-&gt;Tex()-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        }</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordtype">char</span> szFN[256];</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        _makepath(szFN, szDrive, szDir, pChr-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3Anim&quot;</span>);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        CN3Base::s_MngAniCtrl.Add(pAni);</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        pAni-&gt;SaveToFile(szFN);</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    }</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    m_Scene.ChrGet(0)-&gt;SaveToFile(std::string(szFullFileName));</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    this-&gt;SetPathName(szFullFileName);</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>); <span class="comment">// 모두 업데이트..</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>}</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="keywordtype">void</span> CN3CEDoc::OnCloseDocument() </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>{</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordflow">if</span>(m_Scene.ChrGet(0)) m_Scene.ChrGet(0)-&gt;Release(); <span class="comment">// 이렇게 해야.. 엔진이 없어지기 전에 깔끔하게 없어진다..</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        _makepath(szFN, szDrive, szDir, pPart-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3CPart&quot;</span>);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        pPart-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    CN3AnimControl* pAni = pChr-&gt;AniCtrl();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keywordflow">if</span> (pAni &amp;&amp; pAni-&gt;Count() &gt; 0) <span class="comment">// 에니메이션은 같은 이름으로 저장해준다..</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        pAni-&gt;m_szName = pChr-&gt;m_szName;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordtype">char</span> szFN[256];</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        _makepath(szFN, szDrive, szDir, pChr-&gt;m_szName.c_str(), <span class="stringliteral">&quot;.N3Anim&quot;</span>);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        CN3Base::s_MngAniCtrl.Add(pAni);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        pAni-&gt;SaveToFile(szFN);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    }</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    CDocument::OnCloseDocument();</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="keywordtype">void</span> CN3CEDoc::OnToolOptimizeAnimationData() </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>{</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    CN3Chr* pChr = m_Scene.ChrGet(0);</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <span class="keywordflow">if</span>(<span class="keyword">nullptr</span> == pChr) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    CN3AnimControl* pAniCtrl = pChr-&gt;AniCtrl();</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keywordflow">if</span>(<span class="keyword">nullptr</span> == pAniCtrl) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    CN3Joint* pJointSrc = pChr-&gt;Joint();</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span>(<span class="keyword">nullptr</span> == pJointSrc) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordtype">float</span> fSamplingRate = 30.0f / pJointSrc-&gt;m_KeyRot.SamplingRate();</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keywordflow">if</span>( fSamplingRate != 6.0f &amp;&amp;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        fSamplingRate != 3.0f &amp;&amp;</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        fSamplingRate != 2.0f &amp;&amp;</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        fSamplingRate != 1.0f )</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    {</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        MessageBox(AfxGetMainWnd()-&gt;m_hWnd, <span class="stringliteral">&quot;SamplingRate 는 5, 10, 15, 30 만 지원됩니다.&quot;</span>, <span class="stringliteral">&quot;SamplingRate 오류&quot;</span>, MB_OK);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    }</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    MessageBox(AfxGetMainWnd()-&gt;m_hWnd, <span class="stringliteral">&quot;원본 Joint 와 Animation File 을 다른 이름으로 저장해 둡니다. 이 파일은 나중에 다시 편집할때 필요합니다.&quot;</span>, <span class="stringliteral">&quot;Joint 및 Animation 파일 다른이름으로 저장&quot;</span>, MB_OK);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    CString FileName;</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    CFileDialog dlg1(FALSE, <span class="stringliteral">&quot;N3Anim&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Animation Data(*.N3Anim)|*.n3Anim||&quot;</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordflow">if</span>(dlg1.DoModal() == IDCANCEL) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    FileName = dlg1.GetPathName();</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    std::string szFN(FileName);</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    std::string szFNPrev = pAniCtrl-&gt;FileName();</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    pAniCtrl-&gt;SaveToFile(szFN); <span class="comment">// 저장..</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    pAniCtrl-&gt;FileNameSet(szFNPrev);</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    CFileDialog dlg2(FALSE, <span class="stringliteral">&quot;N3Joint&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Joint File(*.N3Joint)|*.N3Joint||&quot;</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">if</span>(dlg2.DoModal() == IDCANCEL) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    FileName = dlg2.GetPathName();</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    m_Scene.ChrGet(0)-&gt;SaveToFile(std::string(szFullFileName));</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    this-&gt;SetPathName(szFullFileName);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    this-&gt;UpdateAllViews(<span class="keyword">nullptr</span>); <span class="comment">// 모두 업데이트..</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>}</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="keywordtype">void</span> CN3CEDoc::OnCloseDocument()</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>{</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keywordflow">if</span> (m_Scene.ChrGet(0))</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        m_Scene.ChrGet(0)-&gt;Release(); <span class="comment">// 이렇게 해야.. 엔진이 없어지기 전에 깔끔하게 없어진다..</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    CDocument::OnCloseDocument();</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keywordtype">void</span> CN3CEDoc::OnToolOptimizeAnimationData()</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>{</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    CN3Chr* pChr = m_Scene.ChrGet(0);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pChr)</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    CN3AnimControl* pAniCtrl = pChr-&gt;AniCtrl();</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pAniCtrl)</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    CN3Joint* pJointSrc = pChr-&gt;Joint();</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pJointSrc)</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordtype">float</span> fSamplingRate = 30.0f / pJointSrc-&gt;m_KeyRot.SamplingRate();</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordflow">if</span> (fSamplingRate != 6.0f &amp;&amp; fSamplingRate != 3.0f &amp;&amp; fSamplingRate != 2.0f</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        &amp;&amp; fSamplingRate != 1.0f)</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        MessageBox(AfxGetMainWnd()-&gt;m_hWnd, <span class="stringliteral">&quot;SamplingRate 는 5, 10, 15, 30 만 지원됩니다.&quot;</span>,</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>            <span class="stringliteral">&quot;SamplingRate 오류&quot;</span>, MB_OK);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    MessageBox(AfxGetMainWnd()-&gt;m_hWnd,</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="stringliteral">&quot;원본 Joint 와 Animation File 을 다른 이름으로 저장해 둡니다. 이 파일은 나중에 다시 &quot;</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="stringliteral">&quot;편집할때 필요합니다.&quot;</span>,</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="stringliteral">&quot;Joint 및 Animation 파일 다른이름으로 저장&quot;</span>, MB_OK);</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    szFNPrev = pJointSrc-&gt;FileName();</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    pChr-&gt;Tick(0.0f); <span class="comment">// 초기위치로 Tick</span></div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    szFN = FileName;</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    pJointSrc-&gt;SaveToFile(szFN); <span class="comment">// 원래걸 다른 이름으로 저장..</span></div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    pJointSrc-&gt;FileNameSet(szFNPrev);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordtype">int</span> nK = pAniCtrl-&gt;Count();</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    CN3Joint JointDest;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    pChr-&gt;Tick(0.0f); <span class="comment">// 초기위치로 Tick</span></div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    JointDest.CopyExceptAnimationKey(pJointSrc); <span class="comment">// 뼈대 구조 및 값들만 복사한다음..</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    JointDest.AddKey(pJointSrc, 0, 0); <span class="comment">// 바인딩 포즈 키를 추가하고 복사한다..</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    </div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordtype">int</span> iAniCount = pAniCtrl-&gt;Count();</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    std::vector&lt;float&gt; fFrmOffsets(iAniCount, 0);</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    std::vector&lt;float&gt; fFrmStarts(iAniCount, 0);</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; iAniCount; i++) <span class="comment">// Animation Key 추가.</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    {</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        __AnimData* pAD = pAniCtrl-&gt;DataGet(i);</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">if</span>(pAD-&gt;fFrmEnd &lt; pAD-&gt;fFrmStart) pAD-&gt;fFrmEnd = pAD-&gt;fFrmStart; <span class="comment">// 같은 프레임으로 만든다..</span></div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        </div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        <span class="keywordtype">int</span> iS = (int)(pAD-&gt;fFrmStart / fSamplingRate);</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="keywordtype">int</span> iE = (int)(pAD-&gt;fFrmEnd / fSamplingRate); <span class="comment">// 반올림하려고 0.5f 넣었다..</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="keywordflow">if</span>(iE &lt; iS) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        JointDest.AddKey(pJointSrc, iS, iE); <span class="comment">// 키를 추가하고 복사한다..</span></div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        fFrmOffsets[i] = (iE - iS + 1) * fSamplingRate; <span class="comment">// 각 데이터의 Offset 계산..</span></div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        fFrmStarts[i] = pAD-&gt;fFrmStart - (iS * fSamplingRate);</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordtype">float</span> fOffsetCur = fSamplingRate;</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; iAniCount; i++) <span class="comment">// Animation Key Frame 다시 계산..</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    {</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        __AnimData* pAD = pAniCtrl-&gt;DataGet(i);</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        pAD-&gt;Offset(fOffsetCur - pAD-&gt;fFrmStart + fFrmStarts[i]); <span class="comment">// 모든 데이터를 Offset만큼 값을 적용..</span></div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span> </div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        fOffsetCur += fFrmOffsets[i];</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    CString FileName;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    CFileDialog dlg1(</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        FALSE, <span class="stringliteral">&quot;N3Anim&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Animation Data(*.N3Anim)|*.n3Anim||&quot;</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordflow">if</span> (dlg1.DoModal() == IDCANCEL)</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    FileName = dlg1.GetPathName();</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    std::string szFN(FileName);</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    std::string szFNPrev = pAniCtrl-&gt;FileName();</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    pAniCtrl-&gt;SaveToFile(szFN); <span class="comment">// 저장..</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    pAniCtrl-&gt;FileNameSet(szFNPrev);</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    CFileDialog dlg2(</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        FALSE, <span class="stringliteral">&quot;N3Joint&quot;</span>, <span class="keyword">nullptr</span>, dwFlags, <span class="stringliteral">&quot;Joint File(*.N3Joint)|*.N3Joint||&quot;</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keywordflow">if</span> (dlg2.DoModal() == IDCANCEL)</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    FileName = dlg2.GetPathName();</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    szFNPrev = pJointSrc-&gt;FileName();</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    pChr-&gt;Tick(0.0f);            <span class="comment">// 초기위치로 Tick</span></div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    szFN = FileName;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    pJointSrc-&gt;SaveToFile(szFN); <span class="comment">// 원래걸 다른 이름으로 저장..</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    pJointSrc-&gt;FileNameSet(szFNPrev);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordtype">int</span> nK = pAniCtrl-&gt;Count();</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    CN3Joint JointDest;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    pChr-&gt;Tick(0.0f);                            <span class="comment">// 초기위치로 Tick</span></div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    JointDest.CopyExceptAnimationKey(pJointSrc); <span class="comment">// 뼈대 구조 및 값들만 복사한다음..</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    JointDest.AddKey(pJointSrc, 0, 0);           <span class="comment">// 바인딩 포즈 키를 추가하고 복사한다..</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keywordtype">int</span> iAniCount = pAniCtrl-&gt;Count();</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    std::vector&lt;float&gt; fFrmOffsets(iAniCount, 0);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    std::vector&lt;float&gt; fFrmStarts(iAniCount, 0);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iAniCount; i++) <span class="comment">// Animation Key 추가.</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    {</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        __AnimData* pAD = pAniCtrl-&gt;DataGet(i);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="keywordflow">if</span> (pAD-&gt;fFrmEnd &lt; pAD-&gt;fFrmStart)</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>            pAD-&gt;fFrmEnd = pAD-&gt;fFrmStart;             <span class="comment">// 같은 프레임으로 만든다..</span></div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    pAniCtrl-&gt;SaveToFile();</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    JointDest.SaveToFile();</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="keywordtype">int</span> iS = (int) (pAD-&gt;fFrmStart / fSamplingRate);</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="keywordtype">int</span> iE = (int) (pAD-&gt;fFrmEnd / fSamplingRate); <span class="comment">// 반올림하려고 0.5f 넣었다..</span></div>
 <div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    pChr-&gt;Tick(0.0f); <span class="comment">// 초기위치로 Tick</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    pChr-&gt;JointSet(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    pChr-&gt;JointSet(JointDest.FileName());</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    UpdateAllViews(<span class="keyword">nullptr</span>); <span class="comment">// 모든 뷰 초기화..</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>}</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        <span class="keywordflow">if</span> (iE &lt; iS)</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        JointDest.AddKey(pJointSrc, iS, iE);            <span class="comment">// 키를 추가하고 복사한다..</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        fFrmOffsets[i] = (iE - iS + 1) * fSamplingRate; <span class="comment">// 각 데이터의 Offset 계산..</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        fFrmStarts[i]  = pAD-&gt;fFrmStart - (iS * fSamplingRate);</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    }</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keywordtype">float</span> fOffsetCur = fSamplingRate;</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iAniCount; i++) <span class="comment">// Animation Key Frame 다시 계산..</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        __AnimData* pAD = pAniCtrl-&gt;DataGet(i);</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        pAD-&gt;Offset(</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>            fOffsetCur - pAD-&gt;fFrmStart + fFrmStarts[i]); <span class="comment">// 모든 데이터를 Offset만큼 값을 적용..</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        fOffsetCur += fFrmOffsets[i];</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    }</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span> </div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    pAniCtrl-&gt;SaveToFile();</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>    JointDest.SaveToFile();</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    pChr-&gt;Tick(0.0f); <span class="comment">// 초기위치로 Tick</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    pChr-&gt;JointSet(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    pChr-&gt;JointSet(JointDest.FileName());</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    UpdateAllViews(<span class="keyword">nullptr</span>); <span class="comment">// 모든 뷰 초기화..</span></div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>}</div>
 <div class="ttc" id="aclassCN3CEDoc_html"><div class="ttname"><a href="classCN3CEDoc.html">CN3CEDoc</a></div><div class="ttdef"><b>Definition</b> <a href="N3CEDoc_8h_source.html#l00014">N3CEDoc.h:15</a></div></div>
-<div class="ttc" id="aclassCN3Chr_html"><div class="ttname"><a href="classCN3Chr.html">CN3Chr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00219">N3Chr.h:220</a></div></div>
+<div class="ttc" id="aclassCN3Chr_html"><div class="ttname"><a href="classCN3Chr.html">CN3Chr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00301">N3Chr.h:302</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

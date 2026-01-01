@@ -103,19 +103,16 @@ $(function(){initNavTree('ItemManagerLogger_8cpp_source.html',''); initResizable
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;pch.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;ItemManagerLogger.h&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>ItemManagerLogger::ItemManagerLogger()</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    : Logger(logger::ItemManager)</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>}</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">void</span> ItemManagerLogger::SetupExtraLoggers(</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_class" href="classCIni.html">CIni</a>&amp; ini,</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; threadPool,</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">const</span> std::filesystem::path&amp; baseDir)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    SetupExtraLogger(ini, threadPool, baseDir, logger::ItemManagerItem, ini::ITEM_LOG_FILE);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    SetupExtraLogger(ini, threadPool, baseDir, logger::ItemManagerExp, ini::EXP_LOG_FILE);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>ItemManagerLogger::ItemManagerLogger() : Logger(logger::ItemManager)</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">void</span> ItemManagerLogger::SetupExtraLoggers(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; ini,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; threadPool, <span class="keyword">const</span> std::filesystem::path&amp; baseDir)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    SetupExtraLogger(ini, threadPool, baseDir, logger::ItemManagerItem, ini::ITEM_LOG_FILE);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    SetupExtraLogger(ini, threadPool, baseDir, logger::ItemManagerExp, ini::EXP_LOG_FILE);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
 <div class="ttc" id="aclassCIni_html"><div class="ttname"><a href="classCIni.html">CIni</a></div><div class="ttdef"><b>Definition</b> <a href="Ini_8h_source.html#l00012">Ini.h:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

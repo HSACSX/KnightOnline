@@ -114,15 +114,15 @@ $(function(){initNavTree('N3SndDef_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span> <span class="comment">// std::string</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span>     <span class="comment">// std::string</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct____TABLE__SOUND.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____TABLE__SOUND.html">__TABLE_SOUND</a> <span class="comment">// Sound 리소스 레코드...</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct____TABLE__SOUND.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____TABLE__SOUND.html">__TABLE_SOUND</a>  <span class="comment">// Sound 리소스 레코드...</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    uint32_t    dwID;       <span class="comment">// 고유 ID</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::string szFN;       <span class="comment">// wave file name</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span>         iType;      <span class="comment">// 사운드 타입...</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span>         iNumInst;   <span class="comment">// 최대 사용할 수 있는 인스턴스의 갯수..</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    uint32_t dwID;    <span class="comment">// 고유 ID</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::string szFN; <span class="comment">// wave file name</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> iType;        <span class="comment">// 사운드 타입...</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span> iNumInst;     <span class="comment">// 최대 사용할 수 있는 인스턴스의 갯수..</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span> </div>
@@ -136,14 +136,14 @@ $(function(){initNavTree('N3SndDef_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structSoundSettings.html">   31</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structSoundSettings.html">SoundSettings</a></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{<span class="comment"></span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">    /// Indicates whether playback should loop.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be">   34</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be">IsLooping</a>     = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be">   34</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be">IsLooping</a>    = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">    /// Current gain applied to the sound, in the range [0.0, 1.0].</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03">   37</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03">CurrentGain</a>    = 0.0f;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03">   37</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03">CurrentGain</a> = 0.0f;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"></span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    /// Maximum gain that can be applied to the sound, in the range [0.0, 1.0].</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    /// Used as the target gain for fades and playback.</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94">   41</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94">MaxGain</a>        = 1.0f;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94">   41</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94">MaxGain</a>     = 1.0f;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
 </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
@@ -192,7 +192,7 @@ $(function(){initNavTree('N3SndDef_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    SNDSTATE_FADEOUT</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif  </span><span class="comment">//end of #ifndef __N3SNDDEF_H__</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span class="comment">//end of #ifndef __N3SNDDEF_H__</span></div>
 <div class="ttc" id="astructSoundSettings_html"><div class="ttname"><a href="structSoundSettings.html">SoundSettings</a></div><div class="ttdoc">Represents per-sound playback settings, such as volume.</div><div class="ttdef"><b>Definition</b> <a href="#l00031">N3SndDef.h:32</a></div></div>
 <div class="ttc" id="astructSoundSettings_html_a59d749709cc6f01325987af43ecf8b03"><div class="ttname"><a href="structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03">SoundSettings::CurrentGain</a></div><div class="ttdeci">float CurrentGain</div><div class="ttdoc">Current gain applied to the sound, in the range [0.0, 1.0].</div><div class="ttdef"><b>Definition</b> <a href="#l00037">N3SndDef.h:37</a></div></div>
 <div class="ttc" id="astructSoundSettings_html_a64187a7870c8bbf30ce6d35fc76b1e94"><div class="ttname"><a href="structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94">SoundSettings::MaxGain</a></div><div class="ttdeci">float MaxGain</div><div class="ttdef"><b>Definition</b> <a href="#l00041">N3SndDef.h:41</a></div></div>

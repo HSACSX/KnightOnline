@@ -124,28 +124,30 @@ $(function(){initNavTree('UIMessageBoxManager_8h_source.html',''); initResizable
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classCUIMessageBoxManager.html">   21</a></span><span class="keyword">class </span>CUIMessageBoxManager : <span class="keyword">public</span> CGameBase</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::map&lt;std::string, CUIMessageBox*&gt;       m_UBMs;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="classCUIMessageBox.html">CUIMessageBox</a>*                             m_pMsgBoxLatestRef;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::map&lt;std::string, CUIMessageBox*&gt; m_UBMs;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="classCUIMessageBox.html">CUIMessageBox</a>* m_pMsgBoxLatestRef;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="classCUIMessageBox.html">CUIMessageBox</a>* ReFocusMsgBox();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="classCUIMessageBox.html">CUIMessageBox</a>* GetFocusMsgBox(){ <span class="keywordflow">return</span> m_pMsgBoxLatestRef; }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span>            Release();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint32_t            MouseProcAndTick(uint32_t&amp; dwFlags, <span class="keyword">const</span> POINT&amp; ptCur, <span class="keyword">const</span> POINT&amp; ptOld );</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span>            MessageBoxCloseAll();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span>            Render();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">int</span>             GetCount() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span>            MessageBoxClose(<span class="keyword">const</span> std::string&amp; szMsg);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string     MessageBoxPost(<span class="keyword">const</span> std::string&amp; szMsg, <span class="keyword">const</span> std::string&amp; szTitle, <span class="keywordtype">int</span> iStyle, e_Behavior eBehavior = BEHAVIOR_NOTHING);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="classCUIMessageBox.html">CUIMessageBox</a>* GetFocusMsgBox()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span> m_pMsgBoxLatestRef;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint32_t MouseProcAndTick(uint32_t&amp; dwFlags, <span class="keyword">const</span> POINT&amp; ptCur, <span class="keyword">const</span> POINT&amp; ptOld);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> MessageBoxCloseAll();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> Render();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> GetCount() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    CUIMessageBoxManager();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">virtual</span> ~CUIMessageBoxManager();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> MessageBoxClose(<span class="keyword">const</span> std::string&amp; szMsg);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::string MessageBoxPost(<span class="keyword">const</span> std::string&amp; szMsg, <span class="keyword">const</span> std::string&amp; szTitle, <span class="keywordtype">int</span> iStyle, e_Behavior eBehavior = BEHAVIOR_NOTHING);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    CUIMessageBoxManager();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">virtual</span> ~CUIMessageBoxManager();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_UIMESSAGEBOXMANAGER_H__34454EC5_5C0E_42EE_8321_6C0ECC0EACD0__INCLUDED_)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_UIMESSAGEBOXMANAGER_H__34454EC5_5C0E_42EE_8321_6C0ECC0EACD0__INCLUDED_)</span></div>
 <div class="ttc" id="aclassCUIMessageBox_html"><div class="ttname"><a href="classCUIMessageBox.html">CUIMessageBox</a></div><div class="ttdef"><b>Definition</b> <a href="UIMessageBox_8h_source.html#l00017">UIMessageBox.h:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

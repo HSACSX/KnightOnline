@@ -117,11 +117,11 @@ $(function(){initNavTree('Launcher_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// CLauncherApp</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>BEGIN_MESSAGE_MAP(<a class="code hl_class" href="classCLauncherApp.html">CLauncherApp</a>, CWinApp)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">//{{AFX_MSG_MAP(CLauncherApp)</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="comment">// NOTE - the ClassWizard will add and remove mapping macros here.</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">//    DO NOT EDIT what you see in these blocks of generated code!</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//}}AFX_MSG</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ON_COMMAND(ID_HELP, CWinApp::OnHelp)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//{{AFX_MSG_MAP(CLauncherApp)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// NOTE - the ClassWizard will add and remove mapping macros here.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//    DO NOT EDIT what you see in these blocks of generated code!</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//}}AFX_MSG</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>ON_COMMAND(ID_HELP, CWinApp::OnHelp)</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>END_MESSAGE_MAP()</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
@@ -150,11 +150,11 @@ $(function(){initNavTree('Launcher_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    AfxEnableControlContainer();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>         </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">//  SetDialogBkColor(RGB(255, 0, 255), RGB(0, 255, 0));</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">//  SetDialogBkColor(RGB(255, 0, 255), RGB(0, 255, 0));</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    CLauncherDlg dlg;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    m_pMainWnd = &amp;dlg;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    m_pMainWnd        = &amp;dlg;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    INT_PTR nResponse = dlg.DoModal();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (nResponse == IDOK)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
@@ -173,17 +173,17 @@ $(function(){initNavTree('Launcher_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>CWnd* CLauncherApp::GetMainWnd() </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>CWnd* CLauncherApp::GetMainWnd()</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// TODO: Add your specialized code here and/or call the base class</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">return</span> CWinApp::GetMainWnd();</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">void</span> CLauncherApp::DoWaitCursor(<span class="keywordtype">int</span> nCode) </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">void</span> CLauncherApp::DoWaitCursor(<span class="keywordtype">int</span> nCode)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// TODO: Add your specialized code here and/or call the base class</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    CWinApp::DoWaitCursor(nCode);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
 <div class="ttc" id="aclassCLauncherApp_html"><div class="ttname"><a href="classCLauncherApp.html">CLauncherApp</a></div><div class="ttdef"><b>Definition</b> <a href="Launcher_8h_source.html#l00022">Launcher.h:23</a></div></div>

@@ -113,9 +113,9 @@ $(function(){initNavTree('BB__CircularBuffer_8cpp_source.html',''); initResizabl
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>BB_CircularBuffer::BB_CircularBuffer(<span class="keywordtype">int</span> size)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    ASSERT(size&gt;0);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    ASSERT(size &gt; 0);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    m_iBufSize = size;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    m_pBuffer = <span class="keyword">new</span> BYTE[m_iBufSize];</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    m_pBuffer  = <span class="keyword">new</span> BYTE[m_iBufSize];</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_iHeadPos = 0;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_iTailPos = 0;</div>

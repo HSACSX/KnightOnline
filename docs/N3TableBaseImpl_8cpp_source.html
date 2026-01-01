@@ -135,7 +135,7 @@ $(function(){initNavTree('N3TableBaseImpl_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::error_code ec;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// 파일 암호화 풀기.. .. 임시 파일에다 쓴다음 ..</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::string szFNTmp = szFN + <span class="stringliteral">&quot;.tmp&quot;</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::string szFNTmp      = szFN + <span class="stringliteral">&quot;.tmp&quot;</span>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">size_t</span> encryptedFileSize = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(encryptedFile.<a class="code hl_function" href="classFile.html#ae88f20e8ab7a572ef7ef5ec1cafd3a19">Size</a>());</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (encryptedFileSize == 0)</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
@@ -147,35 +147,35 @@ $(function(){initNavTree('N3TableBaseImpl_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 원래 파일을 읽고..</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t* pDatas = <span class="keyword">new</span> uint8_t[encryptedFileSize];</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    encryptedFile.<a class="code hl_function" href="classFileReader.html#a6ba6a4018be07b5737fc99c195b03aa6">Read</a>(pDatas, encryptedFileSize); <span class="comment">// 암호화된 데이터 읽고..</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    encryptedFile.<a class="code hl_function" href="classFileReader.html#a6c3e434277742d73b953018c043513e8">Close</a>(); <span class="comment">// 원래 파일 닫고</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    encryptedFile.<a class="code hl_function" href="classFileReader.html#a6c3e434277742d73b953018c043513e8">Close</a>();                         <span class="comment">// 원래 파일 닫고</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// 테이블 만드는 툴에서 쓰는 키와 같은 키..</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    uint16_t key_r = 0x0816;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                                   <span class="comment">// 테이블 만드는 툴에서 쓰는 키와 같은 키..</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    uint16_t key_r  = 0x0816;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    uint16_t key_c1 = 0x6081;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    uint16_t key_c2 = 0x1608;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">//uint8_t Encrypt(uint8_t plain)</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">//{</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">//  uint8_t cipher;</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//  cipher = (plain ^ (key_r&gt;&gt;8));</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">//  key_r = (cipher + key_r) * key_c1 + key_c2;</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">//  return cipher;</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">//}</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">//uint8_t Encrypt(uint8_t plain)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">//{</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//  uint8_t cipher;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">//  cipher = (plain ^ (key_r&gt;&gt;8));</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">//  key_r = (cipher + key_r) * key_c1 + key_c2;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">//  return cipher;</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">//}</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">//uint8_t Decrypt(uint8_t cipher)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">//{</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">//  uint8_t plain;</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">//  plain = (cipher ^ (m_r&gt;&gt;8));</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">//  m_r = (cipher + m_r) * m_c1 + m_c2;</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">//  return plain;</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">//}</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">//uint8_t Decrypt(uint8_t cipher)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">//{</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">//  uint8_t plain;</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">//  plain = (cipher ^ (m_r&gt;&gt;8));</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//  m_r = (cipher + m_r) * m_c1 + m_c2;</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">//  return plain;</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//}</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// 암호화 풀고..</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; encryptedFileSize; i++)</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        uint8_t byData = (pDatas[i] ^ (key_r &gt;&gt; 8));</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        key_r = (pDatas[i] + key_r) * key_c1 + key_c2;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        pDatas[i] = byData;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        key_r          = (pDatas[i] + key_r) * key_c1 + key_c2;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        pDatas[i]      = byData;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// TODO: Rather than write to file to read it back again, we should just read it from a memory stream.</span></div>
@@ -252,7 +252,7 @@ $(function(){initNavTree('N3TableBaseImpl_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        {</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            std::string&amp; szString = *((std::string*) pData);</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordtype">int</span> iStrLen = 0;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordtype">int</span> iStrLen           = 0;</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;iStrLen, <span class="keyword">sizeof</span>(iStrLen));</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            szString.clear();</div>
@@ -317,11 +317,11 @@ $(function(){initNavTree('N3TableBaseImpl_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 <div class="ttc" id="aclassFileReader_html_a139418fc585051ebc355f2a59d6cbbd2"><div class="ttname"><a href="classFileReader.html#a139418fc585051ebc355f2a59d6cbbd2">FileReader::OpenExisting</a></div><div class="ttdeci">bool OpenExisting(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Opens an existing file for reading.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00014">FileReader.cpp:14</a></div></div>
-<div class="ttc" id="aclassFileReader_html_a6ba6a4018be07b5737fc99c195b03aa6"><div class="ttname"><a href="classFileReader.html#a6ba6a4018be07b5737fc99c195b03aa6">FileReader::Read</a></div><div class="ttdeci">bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr) override</div><div class="ttdoc">Reads data from the file from the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00050">FileReader.cpp:50</a></div></div>
-<div class="ttc" id="aclassFileReader_html_a6c3e434277742d73b953018c043513e8"><div class="ttname"><a href="classFileReader.html#a6c3e434277742d73b953018c043513e8">FileReader::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and resets internal state.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00149">FileReader.cpp:149</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_a9ed127580f8c09ff478fc45bf9c34a3f"><div class="ttname"><a href="classFileWriter.html#a9ed127580f8c09ff478fc45bf9c34a3f">FileWriter::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and flush any pending writes.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00189">FileWriter.cpp:189</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_ac2ea337a2bb73faf40d298a2c892c107"><div class="ttname"><a href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">FileWriter::Write</a></div><div class="ttdeci">bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr) override</div><div class="ttdoc">Writes data to the file at the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00081">FileWriter.cpp:81</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00049">FileWriter.cpp:49</a></div></div>
+<div class="ttc" id="aclassFileReader_html_a6ba6a4018be07b5737fc99c195b03aa6"><div class="ttname"><a href="classFileReader.html#a6ba6a4018be07b5737fc99c195b03aa6">FileReader::Read</a></div><div class="ttdeci">bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr) override</div><div class="ttdoc">Reads data from the file from the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00046">FileReader.cpp:46</a></div></div>
+<div class="ttc" id="aclassFileReader_html_a6c3e434277742d73b953018c043513e8"><div class="ttname"><a href="classFileReader.html#a6c3e434277742d73b953018c043513e8">FileReader::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and resets internal state.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00146">FileReader.cpp:146</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_a9ed127580f8c09ff478fc45bf9c34a3f"><div class="ttname"><a href="classFileWriter.html#a9ed127580f8c09ff478fc45bf9c34a3f">FileWriter::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and flush any pending writes.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00180">FileWriter.cpp:180</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_ac2ea337a2bb73faf40d298a2c892c107"><div class="ttname"><a href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">FileWriter::Write</a></div><div class="ttdeci">bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr) override</div><div class="ttdoc">Writes data to the file at the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00073">FileWriter.cpp:73</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00045">FileWriter.cpp:45</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassFile_html_a3d5bcd83f8e56ead8b6c19c112a6d07a"><div class="ttname"><a href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File::Read</a></div><div class="ttdeci">virtual bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr)=0</div><div class="ttdoc">Reads data from the file at the current offset.</div></div>
 <div class="ttc" id="aclassFile_html_ae88f20e8ab7a572ef7ef5ec1cafd3a19"><div class="ttname"><a href="classFile.html#ae88f20e8ab7a572ef7ef5ec1cafd3a19">File::Size</a></div><div class="ttdeci">uint64_t Size() const</div><div class="ttdoc">Gets the current file size.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00029">File.h:29</a></div></div>

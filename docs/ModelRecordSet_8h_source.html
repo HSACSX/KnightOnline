@@ -119,219 +119,213 @@ $(function(){initNavTree('ModelRecordSet_8h_source.html',''); initResizable(true
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>db</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"></span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">    /// \brief queries the templated model table using an iterator to the result set</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">template</span> &lt;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">typename</span> ModelType,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">typename</span> BoundModelType = ModelType&gt;</div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html">   24</a></span>    <span class="keyword">class </span>ModelRecordSet</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        ModelRecordSet(<span class="keywordtype">bool</span> fetchRowCount = <span class="keyword">false</span>)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            : _fetchRowCount(fetchRowCount)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        ~ModelRecordSet()</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">close</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">        /// \brief closes and releases all associated database resources</span></div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">   38</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">close</a>()</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            _stmt.reset();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            _poolConn.reset();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/// \brief queries the templated model table using an iterator to the result set</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ModelType, <span class="keyword">typename</span> BoundModelType = ModelType&gt;</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html">   22</a></span><span class="keyword">class </span>ModelRecordSet</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    ModelRecordSet(<span class="keywordtype">bool</span> fetchRowCount = <span class="keyword">false</span>) : _fetchRowCount(fetchRowCount)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ~ModelRecordSet()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">close</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">    /// \brief closes and releases all associated database resources</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">   35</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">close</a>()</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        _stmt.reset();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        _poolConn.reset();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">        /// \brief fetches the current result set&#39;s row count, if requested and available</span></div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">   45</a></span>        <span class="keyword">const</span> std::optional&lt;int64_t&gt;&amp; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">return</span> _rowCount;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    /// \brief fetches the current result set&#39;s row count, if requested and available</span></div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">   42</a></span>    <span class="keyword">const</span> std::optional&lt;int64_t&gt;&amp; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> _rowCount;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"></span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">        /// \brief fetches the current result set&#39;s column count</span></div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">   51</a></span>        <span class="keywordtype">short</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">columnCount</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">return</span> _columnCount;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"></span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /// \brief fetches the current result set&#39;s column count</span></div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">   48</a></span>    <span class="keywordtype">short</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">columnCount</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> _columnCount;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">        /// \brief binds the current result record to an associated model object and returns it</span></div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">   57</a></span>        BoundModelType <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">get</a>()</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            BoundModelType model {};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <a class="code hl_function" href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">Model::BindResult&lt;BoundModelType&gt;</a>(_result, model, _bindingIndex);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">return</span> std::move(model);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// \brief binds the current result record to an associated model object and returns it</span></div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">   54</a></span>    BoundModelType <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">get</a>()</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        BoundModelType model {};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_function" href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">Model::BindResult&lt;BoundModelType&gt;</a>(_result, model, _bindingIndex);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> std::move(model);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"></span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">        /// \brief binds the current result record to an associated model object and returns it</span></div>
-<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">   65</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">get_ref</a>(BoundModelType&amp; model)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <a class="code hl_function" href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">Model::BindResult&lt;BoundModelType&gt;</a>(_result, model, _bindingIndex);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// \brief binds the current result record to an associated model object and returns it</span></div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">get_ref</a>(BoundModelType&amp; model)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_function" href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">Model::BindResult&lt;BoundModelType&gt;</a>(_result, model, _bindingIndex);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"></span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">        /// \brief attempts to move the result iterator one forward</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">        /// \return Boolean: true if there is a next record, false otherwise</span></div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">   73</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">next</a>()</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">return</span> _result.next();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// \brief attempts to move the result iterator one forward</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// \return Boolean: true if there is a next record, false otherwise</span></div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">   70</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">next</a>()</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> _result.next();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
 </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"></span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">        /// \brief opens a connection to the model&#39;s database and queries its table using </span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">        /// a SqlBuilder.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">        /// Results are accessed by iterating with next() and requesting a bound model object</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">        /// with get()</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">        /// \see next(), get()</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">        /// \throws db::DatasourceConfigNotFoundException</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">        /// \throws nanodbc::database_error</span></div>
-<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">   86</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">open</a>() noexcept(false)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a> filterObj {};</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>();</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"></span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    /// \brief opens a connection to the model&#39;s database and queries its table using</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// a SqlBuilder.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// Results are accessed by iterating with next() and requesting a bound model object</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    /// with get()</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /// \see next(), get()</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    /// \throws db::DatasourceConfigNotFoundException</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">    /// \throws nanodbc::database_error</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">   83</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">open</a>() noexcept(false)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a> filterObj {};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">        /// \brief opens a connection to the model&#39;s database and queries its table using </span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">        /// a SqlBuilder.</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">        /// Results are accessed by iterating with next() and requesting a bound model object</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">        /// with get()</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">        /// \see next(), get()</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">        /// \throws db::DatasourceConfigNotFoundException</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">        /// \throws nanodbc::database_error</span></div>
-<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">  101</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">open</a>(<a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a>&amp; filterObj) <span class="keyword">noexcept</span>(<span class="keyword">false</span>)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"></span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">    /// \brief opens a connection to the model&#39;s database and queries its table using</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">    /// a SqlBuilder.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">    /// Results are accessed by iterating with next() and requesting a bound model object</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /// with get()</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">    /// \see next(), get()</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">    /// \throws db::DatasourceConfigNotFoundException</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">    /// \throws nanodbc::database_error</span></div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">   98</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">open</a>(<a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a>&amp; filterObj) <span class="keyword">noexcept</span>(<span class="keyword">false</span>)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
 </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment"></span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">        /// \brief opens a connection to the model&#39;s database, resets the recordset&#39;s state,</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">        /// and prepares a new statement for the pending lookup.</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">        /// \throws db::DatasourceConfigNotFoundException</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">        /// \throws nanodbc::database_error</span></div>
-<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">  112</a></span>        std::shared_ptr&lt;nanodbc::statement&gt; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>() noexcept(false)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a> filterObj {};</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"></span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">    /// \brief opens a connection to the model&#39;s database, resets the recordset&#39;s state,</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">    /// and prepares a new statement for the pending lookup.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">    /// \throws db::DatasourceConfigNotFoundException</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">    /// \throws nanodbc::database_error</span></div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">  109</a></span>    std::shared_ptr&lt;nanodbc::statement&gt; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>() noexcept(false)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a> filterObj {};</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">prepare</a>(filterObj);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
 </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"></span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">        /// \brief opens a connection to the model&#39;s database, resets the recordset&#39;s state,</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">        /// and prepares a new statement for the pending lookup.</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">        /// \throws db::DatasourceConfigNotFoundException</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">        /// \throws nanodbc::database_error</span></div>
-<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">  123</a></span>        std::shared_ptr&lt;nanodbc::statement&gt; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">prepare</a>(<a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a>&amp; filterObj) <span class="keyword">noexcept</span>(<span class="keyword">false</span>)</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            _columnCount = 0;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            _rowCount.reset();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"></span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">    /// \brief opens a connection to the model&#39;s database, resets the recordset&#39;s state,</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">    /// and prepares a new statement for the pending lookup.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">    /// \throws db::DatasourceConfigNotFoundException</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">    /// \throws nanodbc::database_error</span></div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">  120</a></span>    std::shared_ptr&lt;nanodbc::statement&gt; <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">prepare</a>(<a class="code hl_class" href="classdb_1_1SqlBuilder.html">SqlBuilder&lt;ModelType&gt;</a>&amp; filterObj) <span class="keyword">noexcept</span>(<span class="keyword">false</span>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        _columnCount = 0;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        _rowCount.reset();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (_poolConn == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            _poolConn = <a class="code hl_function" href="classdb_1_1ConnectionManager.html#a1987e9f783476027ce73b8f93cf60e1c">ConnectionManager::CreatePoolConnection</a>(ModelType::DbType());</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">if</span> (_poolConn == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                _poolConn = <a class="code hl_function" href="classdb_1_1ConnectionManager.html#a1987e9f783476027ce73b8f93cf60e1c">ConnectionManager::CreatePoolConnection</a>(ModelType::DbType());</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (_fetchRowCount)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                _selectCountQuery = filterObj.SelectCountString();</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                _selectCountQuery.clear();</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            std::string query = filterObj.SelectString();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">if</span> (_fetchRowCount)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            _selectCountQuery = filterObj.SelectCountString();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            _selectCountQuery.clear();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        std::string query = filterObj.SelectString();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        _selectLimit      = filterObj.Limit;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        _stmt             = std::make_shared&lt;nanodbc::statement&gt;(_poolConn-&gt;CreateStatement(query));</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            _selectLimit = filterObj.Limit;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            _stmt = std::make_shared&lt;nanodbc::statement&gt;(_poolConn-&gt;CreateStatement(query));</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <span class="keywordflow">return</span> _stmt;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">return</span> _stmt;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
 </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment"></span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">        /// \brief executes the existing prepared statement using the existing connection.</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">        ///</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">        /// \see next(), get()</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">        /// \throws std::logic_error</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">        /// \throws nanodbc::database_error</span></div>
-<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">  149</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>() noexcept(false)</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        {</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            <span class="keywordflow">if</span> (_stmt == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Statement not initialized&quot;</span>);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            }</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordflow">if</span> (_fetchRowCount)</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            {</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                nanodbc::statement stmt = _poolConn-&gt;CreateStatement(_selectCountQuery);</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                nanodbc::result result = stmt.execute();</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                int64_t <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a> = 0;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <span class="keywordflow">if</span> (result.next())</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                    <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a> = result.get&lt;int64_t&gt;(0);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                    <span class="keywordflow">if</span> (_selectLimit &gt; 0)</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                        <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a> = (std::min)(<a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>, _selectLimit); <span class="comment">// NOTE: allow for Windows.h defining min</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                    _rowCount = <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            }</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"></span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">    /// \brief executes the existing prepared statement using the existing connection.</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">    /// \see next(), get()</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">    /// \throws std::logic_error</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">    /// \throws nanodbc::database_error</span></div>
+<div class="foldopen" id="foldopen00146" data-start="{" data-end="}">
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">  146</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">execute</a>() noexcept(false)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keywordflow">if</span> (_stmt == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Statement not initialized&quot;</span>);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (_fetchRowCount)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            nanodbc::statement stmt = _poolConn-&gt;CreateStatement(_selectCountQuery);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            nanodbc::result result  = stmt.execute();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            int64_t <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>        = 0;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">if</span> (result.next())</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a> = result.get&lt;int64_t&gt;(0);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <span class="keywordflow">if</span> (_selectLimit &gt; 0)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                    <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a> = std::min(<a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>, _selectLimit);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                _rowCount = <a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">rowCount</a>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            }</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        _result      = _stmt-&gt;execute();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        _columnCount = _result.columns();</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            _result = _stmt-&gt;execute();</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            _columnCount = _result.columns();</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        Model::IndexColumnNameBindings&lt;BoundModelType&gt;(_result, _columnCount, _bindingIndex);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    }</div>
+</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            Model::IndexColumnNameBindings&lt;BoundModelType&gt;(</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                _result,</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                _columnCount,</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                _bindingIndex);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    std::shared_ptr&lt;PoolConnection&gt; _poolConn {};</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    std::shared_ptr&lt;nanodbc::statement&gt; _stmt {};</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    nanodbc::result _result {};</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    Model::BindingIndex&lt;BoundModelType&gt; _bindingIndex {};</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">bool</span> _fetchRowCount {};</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    std::optional&lt;int64_t&gt; _rowCount {};</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordtype">short</span> _columnCount {};</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    std::string _selectCountQuery {};</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    int64_t _selectLimit {};</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>};</div>
 </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        std::shared_ptr&lt;PoolConnection&gt; _poolConn {};</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        std::shared_ptr&lt;nanodbc::statement&gt; _stmt {};</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        nanodbc::result _result {};</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        Model::BindingIndex&lt;BoundModelType&gt; _bindingIndex {};</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordtype">bool</span> _fetchRowCount {};</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        std::optional&lt;int64_t&gt; _rowCount {};</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">short</span> _columnCount {};</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        std::string _selectCountQuery {};</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        int64_t _selectLimit {};</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    };</div>
-</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>}</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#endif </span><span class="comment">// DBLIBRARY_MODELRECORDSET_H</span></div>
-<div class="ttc" id="aclassdb_1_1ConnectionManager_html_a1987e9f783476027ce73b8f93cf60e1c"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#a1987e9f783476027ce73b8f93cf60e1c">db::ConnectionManager::CreatePoolConnection</a></div><div class="ttdeci">static std::shared_ptr&lt; PoolConnection &gt; CreatePoolConnection(modelUtil::DbType dbType, long timeout=-1) noexcept(false)</div><div class="ttdoc">Fetches an established pool connection using the code-generated dbType, or otherwise attempt to estab...</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00058">ConnectionManager.cpp:58</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a021e26f262346e60755fd83fa8065eac"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">db::ModelRecordSet::next</a></div><div class="ttdeci">bool next()</div><div class="ttdoc">attempts to move the result iterator one forward</div><div class="ttdef"><b>Definition</b> <a href="#l00073">ModelRecordSet.h:73</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a0b83c32c94d2e81b9b76e9bd40678f9b"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">db::ModelRecordSet::get_ref</a></div><div class="ttdeci">void get_ref(BoundModelType &amp;model)</div><div class="ttdoc">binds the current result record to an associated model object and returns it</div><div class="ttdef"><b>Definition</b> <a href="#l00065">ModelRecordSet.h:65</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a3e2d1230b3d50a87ad8ee7506e4b6de9"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">db::ModelRecordSet::open</a></div><div class="ttdeci">void open(SqlBuilder&lt; ModelType &gt; &amp;filterObj) noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database and queries its table using a SqlBuilder....</div><div class="ttdef"><b>Definition</b> <a href="#l00101">ModelRecordSet.h:101</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a45972d66a255744fd65c77eaaa826e36"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">db::ModelRecordSet::open</a></div><div class="ttdeci">void open() noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database and queries its table using a SqlBuilder....</div><div class="ttdef"><b>Definition</b> <a href="#l00086">ModelRecordSet.h:86</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a480a527c87dc00d40c6471512c733f01"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">db::ModelRecordSet::rowCount</a></div><div class="ttdeci">const std::optional&lt; int64_t &gt; &amp; rowCount() const</div><div class="ttdoc">fetches the current result set&#39;s row count, if requested and available</div><div class="ttdef"><b>Definition</b> <a href="#l00045">ModelRecordSet.h:45</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a54412dc2eb0b2e89df1ef332ccc64699"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">db::ModelRecordSet::get</a></div><div class="ttdeci">BoundModelType get()</div><div class="ttdoc">binds the current result record to an associated model object and returns it</div><div class="ttdef"><b>Definition</b> <a href="#l00057">ModelRecordSet.h:57</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a611ec9b6c0fc9f8760cc18c5ca403c0e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">db::ModelRecordSet::prepare</a></div><div class="ttdeci">std::shared_ptr&lt; nanodbc::statement &gt; prepare() noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database, resets the recordset&#39;s state, and prepares a new statemen...</div><div class="ttdef"><b>Definition</b> <a href="#l00112">ModelRecordSet.h:112</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_ab0a70bf171de4edc1420c9604d802b0e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">db::ModelRecordSet::prepare</a></div><div class="ttdeci">std::shared_ptr&lt; nanodbc::statement &gt; prepare(SqlBuilder&lt; ModelType &gt; &amp;filterObj) noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database, resets the recordset&#39;s state, and prepares a new statemen...</div><div class="ttdef"><b>Definition</b> <a href="#l00123">ModelRecordSet.h:123</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_ac81f4cdb8dea32677df9007fa2298979"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">db::ModelRecordSet::columnCount</a></div><div class="ttdeci">short columnCount() const</div><div class="ttdoc">fetches the current result set&#39;s column count</div><div class="ttdef"><b>Definition</b> <a href="#l00051">ModelRecordSet.h:51</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_acc5cc86e2599b3c81aee21ad1716373e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">db::ModelRecordSet::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">closes and releases all associated database resources</div><div class="ttdef"><b>Definition</b> <a href="#l00038">ModelRecordSet.h:38</a></div></div>
-<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_acece6090743f50b6909606a48b77e61b"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">db::ModelRecordSet::execute</a></div><div class="ttdeci">void execute() noexcept(false)</div><div class="ttdoc">executes the existing prepared statement using the existing connection.</div><div class="ttdef"><b>Definition</b> <a href="#l00149">ModelRecordSet.h:149</a></div></div>
-<div class="ttc" id="aclassdb_1_1Model_html_abf52d78ee11c7d07b2169a9c9573d893"><div class="ttname"><a href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">db::Model::BindResult</a></div><div class="ttdeci">static void BindResult(const nanodbc::result &amp;result, T &amp;model, const BindingIndex&lt; T &gt; &amp;bindingIndex)</div><div class="ttdoc">attempts to bind a result row to a given model class&#39;s members</div><div class="ttdef"><b>Definition</b> <a href="Model_8h_source.html#l00093">Model.h:93</a></div></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>} <span class="comment">// namespace db</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#endif </span><span class="comment">// DBLIBRARY_MODELRECORDSET_H</span></div>
+<div class="ttc" id="aclassdb_1_1ConnectionManager_html_a1987e9f783476027ce73b8f93cf60e1c"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#a1987e9f783476027ce73b8f93cf60e1c">db::ConnectionManager::CreatePoolConnection</a></div><div class="ttdeci">static std::shared_ptr&lt; PoolConnection &gt; CreatePoolConnection(modelUtil::DbType dbType, long timeout=-1) noexcept(false)</div><div class="ttdoc">Fetches an established pool connection using the code-generated dbType, or otherwise attempt to estab...</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00054">ConnectionManager.cpp:54</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a021e26f262346e60755fd83fa8065eac"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">db::ModelRecordSet::next</a></div><div class="ttdeci">bool next()</div><div class="ttdoc">attempts to move the result iterator one forward</div><div class="ttdef"><b>Definition</b> <a href="#l00070">ModelRecordSet.h:70</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a0b83c32c94d2e81b9b76e9bd40678f9b"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">db::ModelRecordSet::get_ref</a></div><div class="ttdeci">void get_ref(BoundModelType &amp;model)</div><div class="ttdoc">binds the current result record to an associated model object and returns it</div><div class="ttdef"><b>Definition</b> <a href="#l00062">ModelRecordSet.h:62</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a3e2d1230b3d50a87ad8ee7506e4b6de9"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a3e2d1230b3d50a87ad8ee7506e4b6de9">db::ModelRecordSet::open</a></div><div class="ttdeci">void open(SqlBuilder&lt; ModelType &gt; &amp;filterObj) noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database and queries its table using a SqlBuilder....</div><div class="ttdef"><b>Definition</b> <a href="#l00098">ModelRecordSet.h:98</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a45972d66a255744fd65c77eaaa826e36"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a45972d66a255744fd65c77eaaa826e36">db::ModelRecordSet::open</a></div><div class="ttdeci">void open() noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database and queries its table using a SqlBuilder....</div><div class="ttdef"><b>Definition</b> <a href="#l00083">ModelRecordSet.h:83</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a480a527c87dc00d40c6471512c733f01"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a480a527c87dc00d40c6471512c733f01">db::ModelRecordSet::rowCount</a></div><div class="ttdeci">const std::optional&lt; int64_t &gt; &amp; rowCount() const</div><div class="ttdoc">fetches the current result set&#39;s row count, if requested and available</div><div class="ttdef"><b>Definition</b> <a href="#l00042">ModelRecordSet.h:42</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a54412dc2eb0b2e89df1ef332ccc64699"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a54412dc2eb0b2e89df1ef332ccc64699">db::ModelRecordSet::get</a></div><div class="ttdeci">BoundModelType get()</div><div class="ttdoc">binds the current result record to an associated model object and returns it</div><div class="ttdef"><b>Definition</b> <a href="#l00054">ModelRecordSet.h:54</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_a611ec9b6c0fc9f8760cc18c5ca403c0e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#a611ec9b6c0fc9f8760cc18c5ca403c0e">db::ModelRecordSet::prepare</a></div><div class="ttdeci">std::shared_ptr&lt; nanodbc::statement &gt; prepare() noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database, resets the recordset&#39;s state, and prepares a new statemen...</div><div class="ttdef"><b>Definition</b> <a href="#l00109">ModelRecordSet.h:109</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_ab0a70bf171de4edc1420c9604d802b0e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#ab0a70bf171de4edc1420c9604d802b0e">db::ModelRecordSet::prepare</a></div><div class="ttdeci">std::shared_ptr&lt; nanodbc::statement &gt; prepare(SqlBuilder&lt; ModelType &gt; &amp;filterObj) noexcept(false)</div><div class="ttdoc">opens a connection to the model&#39;s database, resets the recordset&#39;s state, and prepares a new statemen...</div><div class="ttdef"><b>Definition</b> <a href="#l00120">ModelRecordSet.h:120</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_ac81f4cdb8dea32677df9007fa2298979"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#ac81f4cdb8dea32677df9007fa2298979">db::ModelRecordSet::columnCount</a></div><div class="ttdeci">short columnCount() const</div><div class="ttdoc">fetches the current result set&#39;s column count</div><div class="ttdef"><b>Definition</b> <a href="#l00048">ModelRecordSet.h:48</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_acc5cc86e2599b3c81aee21ad1716373e"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#acc5cc86e2599b3c81aee21ad1716373e">db::ModelRecordSet::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">closes and releases all associated database resources</div><div class="ttdef"><b>Definition</b> <a href="#l00035">ModelRecordSet.h:35</a></div></div>
+<div class="ttc" id="aclassdb_1_1ModelRecordSet_html_acece6090743f50b6909606a48b77e61b"><div class="ttname"><a href="classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b">db::ModelRecordSet::execute</a></div><div class="ttdeci">void execute() noexcept(false)</div><div class="ttdoc">executes the existing prepared statement using the existing connection.</div><div class="ttdef"><b>Definition</b> <a href="#l00146">ModelRecordSet.h:146</a></div></div>
+<div class="ttc" id="aclassdb_1_1Model_html_abf52d78ee11c7d07b2169a9c9573d893"><div class="ttname"><a href="classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893">db::Model::BindResult</a></div><div class="ttdeci">static void BindResult(const nanodbc::result &amp;result, T &amp;model, const BindingIndex&lt; T &gt; &amp;bindingIndex)</div><div class="ttdoc">attempts to bind a result row to a given model class&#39;s members</div><div class="ttdef"><b>Definition</b> <a href="Model_8h_source.html#l00088">Model.h:88</a></div></div>
 <div class="ttc" id="aclassdb_1_1SqlBuilder_html"><div class="ttname"><a href="classdb_1_1SqlBuilder.html">db::SqlBuilder</a></div><div class="ttdoc">Used to create safe T-SQL statements for database ModelType objects.</div><div class="ttdef"><b>Definition</b> <a href="SqlBuilder_8h_source.html#l00016">SqlBuilder.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

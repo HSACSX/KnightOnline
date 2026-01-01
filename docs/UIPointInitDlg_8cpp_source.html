@@ -119,7 +119,7 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef _DEBUG</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#undef THIS_FILE</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[]=__FILE__;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[] = __FILE__;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define new DEBUG_NEW</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"></span> </div>
@@ -129,25 +129,25 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>CUIPointInitDlg::CUIPointInitDlg()</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m_pBtn_Ok           = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_pBtn_Cancel       = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m_pBtn_Ok        = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_pBtn_Cancel    = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_pText_NeedGold    = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_pText_NeedGold = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>CUIPointInitDlg::~CUIPointInitDlg()</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> CUIPointInitDlg::Release()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    CN3UIBase::Release();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">bool</span> CUIPointInitDlg::Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span>(CN3UIBase::Load(file)==<span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> CUIPointInitDlg::Release()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    CN3UIBase::Release();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">bool</span> CUIPointInitDlg::Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (CN3UIBase::Load(file) == <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    N3_VERIFY_UI_COMPONENT(m_pBtn_Ok, GetChildByID&lt;CN3UIButton&gt;(<span class="stringliteral">&quot;btn_ok&quot;</span>));</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    N3_VERIFY_UI_COMPONENT(m_pBtn_Cancel, GetChildByID&lt;CN3UIButton&gt;(<span class="stringliteral">&quot;btn_cancel&quot;</span>));</div>
@@ -159,14 +159,14 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">bool</span> CUIPointInitDlg::ReceiveMessage(<a class="code hl_class" href="classCN3UIBase.html">CN3UIBase</a>* pSender, uint32_t dwMsg)</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (dwMsg == UIMSG_BUTTON_CLICK)                    </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (dwMsg == UIMSG_BUTTON_CLICK)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span>(pSender == m_pBtn_Ok)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span> (pSender == m_pBtn_Ok)</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            Close();</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            PushOkButton();</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(pSender == m_pBtn_Cancel)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pSender == m_pBtn_Cancel)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            Close();</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
@@ -202,14 +202,14 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">//this_ui_add_start</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">bool</span> CUIPointInitDlg::OnKeyPress(<span class="keywordtype">int</span> iKey)</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">switch</span>(iKey)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">switch</span> (iKey)</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">case</span> DIK_RETURN:</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        ReceiveMessage(m_pBtn_Ok, UIMSG_BUTTON_CLICK);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">case</span> DIK_ESCAPE:</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        ReceiveMessage(m_pBtn_Cancel, UIMSG_BUTTON_CLICK);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">case</span> DIK_RETURN:</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            ReceiveMessage(m_pBtn_Ok, UIMSG_BUTTON_CLICK);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">case</span> DIK_ESCAPE:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            ReceiveMessage(m_pBtn_Cancel, UIMSG_BUTTON_CLICK);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> CN3UIBase::OnKeyPress(iKey);</div>
@@ -218,14 +218,14 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">void</span> CUIPointInitDlg::InitDlg(<span class="keywordtype">bool</span> bAllpoint, <span class="keywordtype">int</span> iGold)</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    m_bAllpoint = bAllpoint;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (m_pText_NeedGold) </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (m_pText_NeedGold)</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">switch</span> (bAllpoint)</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">case</span> <span class="keyword">true</span>: </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">case</span> <span class="keyword">true</span>:</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                m_pText_NeedGold-&gt;SetStringAsInt(iGold);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="keywordflow">case</span> <span class="keyword">false</span>: </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="keywordflow">case</span> <span class="keyword">false</span>:</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                m_pText_NeedGold-&gt;SetStringAsInt(iGold);</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        }</div>
@@ -233,7 +233,7 @@ $(function(){initNavTree('UIPointInitDlg_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">//this_ui_add_end</span></div>
-<div class="ttc" id="aclassCN3UIBase_html"><div class="ttname"><a href="classCN3UIBase.html">CN3UIBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIBase_8h_source.html#l00043">N3UIBase.h:44</a></div></div>
+<div class="ttc" id="aclassCN3UIBase_html"><div class="ttname"><a href="classCN3UIBase.html">CN3UIBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIBase_8h_source.html#l00044">N3UIBase.h:45</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

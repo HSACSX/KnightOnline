@@ -116,8 +116,8 @@ Public Types</h2></td></tr>
 <tr class="memitem:a0f49312b58a64816161e6bdb8f5adba0" id="r_a0f49312b58a64816161e6bdb8f5adba0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f49312b58a64816161e6bdb8f5adba0">AudioCallback</a> = std::function&lt;void(<a class="el" href="classAudioHandle.html">AudioHandle</a>*)&gt;</td></tr>
 <tr class="memdesc:a0f49312b58a64816161e6bdb8f5adba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback type executed on the audio thread with an <a class="el" href="classAudioHandle.html" title="Base class representing an active audio playback instance.">AudioHandle</a>.  <br /></td></tr>
 <tr class="separator:a0f49312b58a64816161e6bdb8f5adba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2b5a3e92f8441df59aec5bf47d6a8da" id="r_ad2b5a3e92f8441df59aec5bf47d6a8da"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2b5a3e92f8441df59aec5bf47d6a8da">QueueType</a></td></tr>
-<tr class="separator:ad2b5a3e92f8441df59aec5bf47d6a8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdab3c3a69196206212cef3a01260247" id="r_abdab3c3a69196206212cef3a01260247"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdab3c3a69196206212cef3a01260247">QueueType</a> = std::tuple&lt;e_AudioQueueType, std::shared_ptr&lt;<a class="el" href="classAudioHandle.html">AudioHandle</a>&gt;, <a class="el" href="#a0f49312b58a64816161e6bdb8f5adba0">AudioCallback</a>&gt;</td></tr>
+<tr class="separator:abdab3c3a69196206212cef3a01260247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -149,7 +149,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:af015561c02b5830be43f11bd03341950" id="r_af015561c02b5830be43f11bd03341950"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ad2b5a3e92f8441df59aec5bf47d6a8da">QueueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af015561c02b5830be43f11bd03341950">_pendingQueue</a></td></tr>
+<tr class="memitem:af015561c02b5830be43f11bd03341950" id="r_af015561c02b5830be43f11bd03341950"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#abdab3c3a69196206212cef3a01260247">QueueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af015561c02b5830be43f11bd03341950">_pendingQueue</a></td></tr>
 <tr class="memdesc:af015561c02b5830be43f11bd03341950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue of pending operations for the audio thread.  <br /></td></tr>
 <tr class="separator:af015561c02b5830be43f11bd03341950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a606dcb84b325d5ba67cbdae12db385b3" id="r_a606dcb84b325d5ba67cbdae12db385b3"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAudioDecoderThread.html">AudioDecoderThread</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a606dcb84b325d5ba67cbdae12db385b3">_decoderThread</a></td></tr>
@@ -199,23 +199,18 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad2b5a3e92f8441df59aec5bf47d6a8da" name="ad2b5a3e92f8441df59aec5bf47d6a8da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2b5a3e92f8441df59aec5bf47d6a8da">&#9670;&#160;</a></span>QueueType</h2>
+<a id="abdab3c3a69196206212cef3a01260247" name="abdab3c3a69196206212cef3a01260247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdab3c3a69196206212cef3a01260247">&#9670;&#160;</a></span>QueueType</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ad2b5a3e92f8441df59aec5bf47d6a8da">AudioThread::QueueType</a></td>
+          <td class="memname">using <a class="el" href="#abdab3c3a69196206212cef3a01260247">AudioThread::QueueType</a> = std::tuple&lt;e_AudioQueueType, std::shared_ptr&lt;<a class="el" href="classAudioHandle.html">AudioHandle</a>&gt;, <a class="el" href="#a0f49312b58a64816161e6bdb8f5adba0">AudioCallback</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> std::tuple&lt;</div>
-<div class="line">        e_AudioQueueType,</div>
-<div class="line">        std::shared_ptr&lt;AudioHandle&gt;,</div>
-<div class="line">        <a class="code hl_typedef" href="#a0f49312b58a64816161e6bdb8f5adba0">AudioCallback</a>&gt;</div>
-<div class="ttc" id="aclassAudioThread_html_a0f49312b58a64816161e6bdb8f5adba0"><div class="ttname"><a href="#a0f49312b58a64816161e6bdb8f5adba0">AudioThread::AudioCallback</a></div><div class="ttdeci">std::function&lt; void(AudioHandle *)&gt; AudioCallback</div><div class="ttdoc">Callback type executed on the audio thread with an AudioHandle.</div><div class="ttdef"><b>Definition</b> <a href="AudioThread_8h_source.html#l00044">AudioThread.h:44</a></div></div>
-</div><!-- fragment --><p>Tuple representing a queued operation in the audio thread.</p>
+<p>Tuple representing a queued operation in the audio thread.</p>
 <p>Consists of:</p><ul>
 <li>e_AudioQueueType: the type of operation.</li>
 <li>shared_ptr&lt;AudioHandle&gt;: the handle affected by the operation.</li>
@@ -359,7 +354,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="AudioThread_8cpp_source.html#l00138">138</a> of file <a class="el" href="AudioThread_8cpp_source.html">AudioThread.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioThread_8cpp_source.html#l00139">139</a> of file <a class="el" href="AudioThread_8cpp_source.html">AudioThread.cpp</a>.</p>
 
 </div>
 </div>
@@ -417,7 +412,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Background decoder thread for streamed audio assets. </p>
 
-<p class="definition">Definition at line <a class="el" href="AudioThread_8h_source.html#l00150">150</a> of file <a class="el" href="AudioThread_8h_source.html">AudioThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioThread_8h_source.html#l00147">147</a> of file <a class="el" href="AudioThread_8h_source.html">AudioThread.h</a>.</p>
 
 </div>
 </div>
@@ -431,7 +426,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="#ad2b5a3e92f8441df59aec5bf47d6a8da">QueueType</a>&gt; AudioThread::_pendingQueue</td>
+          <td class="memname">std::vector&lt;<a class="el" href="#abdab3c3a69196206212cef3a01260247">QueueType</a>&gt; AudioThread::_pendingQueue</td>
         </tr>
       </table>
   </td>
@@ -443,7 +438,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Queue of pending operations for the audio thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="AudioThread_8h_source.html#l00147">147</a> of file <a class="el" href="AudioThread_8h_source.html">AudioThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioThread_8h_source.html#l00144">144</a> of file <a class="el" href="AudioThread_8h_source.html">AudioThread.h</a>.</p>
 
 </div>
 </div>

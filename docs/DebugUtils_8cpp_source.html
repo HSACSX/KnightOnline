@@ -112,10 +112,10 @@ $(function(){initNavTree('DebugUtils_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    va_start(args, fmt);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    n = _vsnprintf(p, <span class="keyword">sizeof</span>(buf) - 3, fmt, args); <span class="comment">// allow for proper linefeed &amp; null terminator</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    va_end(args);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    p += (n &lt; 0) ? <span class="keyword">sizeof</span>(buf) - 3 : n;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    *p++ = <span class="charliteral">&#39;\r&#39;</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    *p++ = <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    *p   = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    p    += (n &lt; 0) ? <span class="keyword">sizeof</span>(buf) - 3 : n;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    *p++  = <span class="charliteral">&#39;\r&#39;</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    *p++  = <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    *p    = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef WIN32</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    OutputDebugStringA(buf);</div>

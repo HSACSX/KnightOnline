@@ -112,15 +112,15 @@ $(function(){initNavTree('N3BaseFileAccess_8cpp_source.html',''); initResizable(
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifdef _DEBUG</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#undef THIS_FILE</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[]=__FILE__;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[] = __FILE__;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>CN3BaseFileAccess::CN3BaseFileAccess()</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_iFileFormatVersion = N3FORMAT_VER_UNKN;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_iFileFormatVersion  = N3FORMAT_VER_UNKN;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_dwType |= OBJ_BASE_FILEACCESS;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_iLOD = 0; <span class="comment">// 로딩할때 쓸 LOD</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_dwType             |= OBJ_BASE_FILEACCESS;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_iLOD                = 0; <span class="comment">// 로딩할때 쓸 LOD</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>CN3BaseFileAccess::~CN3BaseFileAccess()</div>
@@ -139,7 +139,7 @@ $(function(){initNavTree('N3BaseFileAccess_8cpp_source.html',''); initResizable(
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string szTmpFN = szFileName;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (!szTmpFN.empty())</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        CharLower(&amp;szTmpFN[0]); <span class="comment">// 모두 소문자로 만든다..</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        CharLower(&amp;szTmpFN[0]);          <span class="comment">// 모두 소문자로 만든다..</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">size_t</span> pos = szTmpFN.find(s_szPath); <span class="comment">// 문자열에 Base Path 와 일치하는 이름이 있는지 본다.</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (pos != std::string::npos)</div>
@@ -199,7 +199,7 @@ $(function(){initNavTree('N3BaseFileAccess_8cpp_source.html',''); initResizable(
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#ifdef _N3TOOL</span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        MessageBox(s_hWndBase, szErr.c_str(), <span class="stringliteral">&quot;File Handle error&quot;</span>, MB_OK);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#ifdef _N3GAME </span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#ifdef _N3GAME</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        CLogWriter::Write(szErr);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -270,7 +270,7 @@ $(function(){initNavTree('N3BaseFileAccess_8cpp_source.html',''); initResizable(
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
 <div class="ttc" id="aclassFileReader_html_a139418fc585051ebc355f2a59d6cbbd2"><div class="ttname"><a href="classFileReader.html#a139418fc585051ebc355f2a59d6cbbd2">FileReader::OpenExisting</a></div><div class="ttdeci">bool OpenExisting(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Opens an existing file for reading.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00014">FileReader.cpp:14</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00049">FileWriter.cpp:49</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00045">FileWriter.cpp:45</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassFile_html_a072f38a4bcdfa02fede967f2c9505780"><div class="ttname"><a href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">File::Write</a></div><div class="ttdeci">virtual bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr)=0</div><div class="ttdoc">Writes data to the file at the current offset.</div></div>
 <div class="ttc" id="aclassFile_html_a3d5bcd83f8e56ead8b6c19c112a6d07a"><div class="ttname"><a href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File::Read</a></div><div class="ttdeci">virtual bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr)=0</div><div class="ttdoc">Reads data from the file at the current offset.</div></div>

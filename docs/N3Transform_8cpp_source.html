@@ -108,20 +108,20 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef _DEBUG</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#undef THIS_FILE</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[]=__FILE__;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">static</span> <span class="keywordtype">char</span> THIS_FILE[] = __FILE__;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>CN3Transform::CN3Transform()</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    m_dwType |= OBJ_TRANSFORM;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    m_vPos.Set(0,0,0); <span class="comment">// 위치, 스케일, 회전 벡터. </span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    m_vScale.Set(1,1,1);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    m_vPos.Set(0, 0, 0); <span class="comment">// 위치, 스케일, 회전 벡터.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    m_vScale.Set(1, 1, 1);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_qRot.Identity();</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_Matrix.Identity();</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// 에니메이션 키</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_fFrmCur = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_fFrmCur   = 0;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_fFrmWhole = 0;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
@@ -131,14 +131,14 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> CN3Transform::Release()</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m_vPos.Set(0,0,0); <span class="comment">// 위치, 스케일, 회전 벡터. </span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_vScale.Set(1,1,1);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m_vPos.Set(0, 0, 0); <span class="comment">// 위치, 스케일, 회전 벡터.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_vScale.Set(1, 1, 1);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_qRot.Identity();</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_Matrix.Identity();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// 에니메이션 키</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    m_fFrmCur = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    m_fFrmCur   = 0;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    m_fFrmWhole = 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    m_KeyPos.Release();</div>
@@ -152,7 +152,7 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    CN3BaseFileAccess::Load(file);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;m_vPos, <span class="keyword">sizeof</span>(__Vector3)); <span class="comment">// 위치, 스케일, 회전 벡터. </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;m_vPos, <span class="keyword">sizeof</span>(__Vector3)); <span class="comment">// 위치, 스케일, 회전 벡터.</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;m_qRot, <span class="keyword">sizeof</span>(__Quaternion));</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;m_vScale, <span class="keyword">sizeof</span>(__Vector3));</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
@@ -161,12 +161,12 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    m_KeyRot.Load(file);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    m_KeyScale.Load(file);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    m_fFrmCur = 0;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    m_fFrmWhole = 0;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    m_fFrmCur       = 0;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    m_fFrmWhole     = 0;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span> fFrmWhole = 0;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    fFrmWhole = m_KeyPos.Count() * m_KeyPos.SamplingRate() / 30.0f;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    fFrmWhole       = m_KeyPos.Count() * m_KeyPos.SamplingRate() / 30.0f;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (fFrmWhole &gt; m_fFrmWhole)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        m_fFrmWhole = fFrmWhole;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
@@ -188,7 +188,7 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>{</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    CN3BaseFileAccess::Save(file);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    file.<a class="code hl_function" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">Write</a>(&amp;m_vPos, <span class="keyword">sizeof</span>(__Vector3)); <span class="comment">// 위치, 스케일, 회전 벡터. </span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    file.<a class="code hl_function" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">Write</a>(&amp;m_vPos, <span class="keyword">sizeof</span>(__Vector3)); <span class="comment">// 위치, 스케일, 회전 벡터.</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    file.<a class="code hl_function" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">Write</a>(&amp;m_qRot, <span class="keyword">sizeof</span>(__Quaternion));</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    file.<a class="code hl_function" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">Write</a>(&amp;m_vScale, <span class="keyword">sizeof</span>(__Vector3));</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
@@ -203,140 +203,157 @@ $(function(){initNavTree('N3Transform_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> CN3Transform::Tick(<span class="keywordtype">float</span> fFrm)</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span>(FRAME_SELFPLAY == fFrm)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (FRAME_SELFPLAY == fFrm)</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        m_fFrmCur += s_fSecPerFrm;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span>(m_fFrmCur &lt; 0) m_fFrmCur = 0.0f;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">if</span>(m_fFrmCur &gt;= m_fFrmWhole) m_fFrmCur = 0.0f;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        fFrm = m_fFrmCur;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        m_fFrmCur = fFrm;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">bool</span> bNdeedReCalcMatrix = this-&gt;TickAnimationKey(m_fFrmCur);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span>(m_dwType &amp; OBJ_JOINT) <span class="keywordflow">return</span>; <span class="comment">// Joint 일 경우는 행렬을 계산하는 방법이 다르기 땜시 넘어간다..</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (m_fFrmCur &lt; 0)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            m_fFrmCur = 0.0f;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">if</span> (m_fFrmCur &gt;= m_fFrmWhole)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            m_fFrmCur = 0.0f;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        fFrm = m_fFrmCur;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        m_fFrmCur = fFrm;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">bool</span> bNdeedReCalcMatrix = this-&gt;TickAnimationKey(m_fFrmCur);</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span>(bNdeedReCalcMatrix) this-&gt;ReCalcMatrix();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (m_dwType &amp; OBJ_JOINT)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span>; <span class="comment">// Joint 일 경우는 행렬을 계산하는 방법이 다르기 땜시 넘어간다..</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordtype">void</span> CN3Transform::ReCalcMatrix()</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>{</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    m_Matrix.Scale(m_vScale);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (m_qRot.w != 0)</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        m_Matrix *= m_qRot;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    m_Matrix.PosSet(m_vPos);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">bool</span> CN3Transform::TickAnimationKey(<span class="keywordtype">float</span> fFrm)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>{</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">// 에니메이션 키</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">int</span> nKCP = m_KeyPos.Count();</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">int</span> nKCR = m_KeyRot.Count();</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> nKCS = m_KeyScale.Count();</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">if</span>(nKCP &lt;= 0 &amp;&amp; nKCR &lt;= 0 &amp;&amp; nKCS &lt;= 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">bool</span> bNeedReCalcMatrix = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span>(m_KeyPos.DataGet(fFrm, m_vPos) == <span class="keyword">true</span>) bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">if</span>(m_KeyRot.DataGet(fFrm, m_qRot) == <span class="keyword">true</span>) bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">if</span>(m_KeyScale.DataGet(fFrm, m_vScale) == <span class="keyword">true</span>) bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (bNdeedReCalcMatrix)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        this-&gt;ReCalcMatrix();</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keywordtype">void</span> CN3Transform::ReCalcMatrix()</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    m_Matrix.Scale(m_vScale);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">if</span> (m_qRot.w != 0)</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        m_Matrix *= m_qRot;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    m_Matrix.PosSet(m_vPos);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">bool</span> CN3Transform::TickAnimationKey(<span class="keywordtype">float</span> fFrm)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>{</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="comment">// 에니메이션 키</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">int</span> nKCP = m_KeyPos.Count();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">int</span> nKCR = m_KeyRot.Count();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">int</span> nKCS = m_KeyScale.Count();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">if</span> (nKCP &lt;= 0 &amp;&amp; nKCR &lt;= 0 &amp;&amp; nKCS &lt;= 0)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">return</span> bNeedReCalcMatrix;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">#ifdef _N3TOOL</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordtype">void</span> CN3Transform::Render(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>* pMtxParent, <span class="keywordtype">float</span> fUnitSize)</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>{</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="comment">// 축 그리기..</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keyword">static</span> __Vector3 vAxis[9];</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAxisCreated = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">if</span>(<span class="keyword">false</span> == bAxisCreated)</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        __Vector3 v0(0,0,0), v1(1,0,0), v2(0.8f,0.2f,0);</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        __Matrix44 mtxRot;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">if</span>(i == 0) { mtxRot.Identity(); } <span class="comment">// X 축</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i == 1) { mtxRot.RotationZ(DegreesToRadians(90.0f)); } <span class="comment">// Y 축</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i == 2) { mtxRot.RotationY(DegreesToRadians(-90.0f)); } <span class="comment">// Z 축</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            vAxis[i*3+0] = v0*mtxRot;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            vAxis[i*3+1] = v1*mtxRot;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            vAxis[i*3+2] = v2*mtxRot;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        }</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        bAxisCreated = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    __Matrix44 mtxBox;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    mtxBox.Scale(fUnitSize, fUnitSize, fUnitSize); <span class="comment">// 관절부 박스에 스케일 적용</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    mtxBox *= m_Matrix;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    s_lpD3DDev-&gt;SetTransform(D3DTS_WORLD, mtxBox.toD3D());</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    CN3Base::RenderLines(&amp;(vAxis[0]), 2, 0xffff0000); <span class="comment">// 선그리기..</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    CN3Base::RenderLines(&amp;(vAxis[3]), 2, 0xff00ff00); <span class="comment">// 선그리기..</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    CN3Base::RenderLines(&amp;(vAxis[6]), 2, 0xff0000ff); <span class="comment">// 선그리기..</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#endif </span><span class="comment">// end of _N3TOOL</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">#if _DEBUG </span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">// 선택 상자 만들기.</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">void CN3Transform::GenerateSelectBox(__Vector3 &amp;vMin, __Vector3 &amp;vMax)</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">{</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">    // Bounding Box Vertex Buffer 생성</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">    if(m_lpVBBox != nullptr) { m_lpVBBox-&gt;Release(); m_lpVBBox = nullptr; }</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">    HRESULT rval = m_lpDevRef-&gt;CreateVertexBuffer(54 * sizeof(__VertexColor), 0, FVF_CV, D3DPOOL_MANAGED, &amp;m_lpVBBox);</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">    if(rval != D3D_OK)</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">    {</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">        rval = m_lpDevRef-&gt;CreateVertexBuffer(54 * sizeof(__VertexColor), 0, FVF_CV, D3DPOOL_MANAGED, &amp;m_lpVBBox);</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">        if(rval != D3D_OK)</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">        {</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">            char szDebug[256]; D3DXGetErrorString(rval, szDebug, 256);</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">            MessageBox(s_hWndBase, szDebug, &quot;VertexBuffer 생성 실패&quot;, MB_OK);</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">            return;</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">        }</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">    }</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"></span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">    float fW = (vMax.x - vMin.x)/5, fH = (vMax.y - vMin.y)/5, fL = (vMax.z - vMin.z)/5; // 길이 높이 너비 (x y z)</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment"></span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">    __VertexColor* pVC;</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">    m_lpVBBox-&gt;Lock(0, 0, (uint8_t**)&amp;pVC, nullptr);</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">    </span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">    pVC[4] =  pVC[2] =  pVC[0] =  __VertexColor(vMin.x, vMax.y, vMin.z, 0xff7f7f7f);  // 정면 - 아래와 같은 선 리스트를 만든다.</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">    pVC[10] = pVC[8] =  pVC[6] =  __VertexColor(vMax.x, vMax.y, vMin.z, 0xff7f7f7f);  //  /          /</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">    pVC[16] = pVC[14] = pVC[12] = __VertexColor(vMax.x, vMin.y, vMin.z, 0xff7f7f7f);  // +--      --+</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">    pVC[22] = pVC[20] = pVC[18] = __VertexColor(vMin.x, vMin.y, vMin.z, 0xff7f7f7f);  // |          |</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">    pVC[28] = pVC[26] = pVC[24] = __VertexColor(vMax.x, vMax.y, vMax.z, 0xff7f7f7f);  // </span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">    pVC[34] = pVC[32] = pVC[30] = __VertexColor(vMin.x, vMax.y, vMax.z, 0xff7f7f7f);  // |/         |/</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">    pVC[40] = pVC[38] = pVC[36] = __VertexColor(vMin.x, vMin.y, vMax.z, 0xff7f7f7f);  // +--      --+</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">    pVC[46] = pVC[44] = pVC[42] = __VertexColor(vMax.x, vMin.y, vMax.z, 0xff7f7f7f);  // </span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment"></span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">    pVC[1] =  pVC[0];  pVC[1].x  += fW;   pVC[3] =  pVC[2];  pVC[3].y  -= fH;   pVC[5] =  pVC[4];  pVC[5].z  += fL;</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">    pVC[7] =  pVC[6];  pVC[7].x  -= fW;   pVC[9] =  pVC[8];  pVC[9].y  -= fH;   pVC[11] = pVC[10]; pVC[11].z += fL;</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">    pVC[13] = pVC[12]; pVC[13].x -= fW;   pVC[15] = pVC[14]; pVC[15].y += fH;   pVC[17] = pVC[16]; pVC[17].z += fL;</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">    pVC[19] = pVC[18]; pVC[19].x += fW;   pVC[21] = pVC[20]; pVC[21].y += fH;   pVC[23] = pVC[22]; pVC[23].z += fL;</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">    </span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">    pVC[25] = pVC[24]; pVC[25].x -= fW;   pVC[27] = pVC[26]; pVC[27].y -= fH;   pVC[29] = pVC[28]; pVC[29].z -= fL;</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">    pVC[31] = pVC[30]; pVC[31].x += fW;   pVC[33] = pVC[32]; pVC[33].y -= fH;   pVC[35] = pVC[34]; pVC[35].z -= fL;</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">    pVC[37] = pVC[36]; pVC[37].x += fW;   pVC[39] = pVC[38]; pVC[39].y += fH;   pVC[41] = pVC[40]; pVC[41].z -= fL;</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">    pVC[43] = pVC[42]; pVC[43].x -= fW;   pVC[45] = pVC[44]; pVC[45].y += fH;   pVC[47] = pVC[46]; pVC[47].z -= fL;</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment"></span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">    __Vector3 vLength = (vMax - vMin);</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">    float fLength = vLength.Magnitude();</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">    __Vector3 vCenter = vMin + (vMax - vMin)/2.0f;</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">    pVC[48].Set(0, 0, 0, 0xffff0000); pVC[48].x -= vLength.x/2 + fLength/5 + 0.5f;// x 축 빨간색 -&gt; 빨간색</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">    pVC[49].Set(0, 0, 0, 0xffff0000); pVC[49].x += vLength.x/2 + fLength/5 + 0.5f;// x 축 빨간색 -&gt; 빨간색</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">    pVC[50].Set(0, 0, 0, 0xff00ff00); pVC[50].y -= vLength.y/2 + fLength/5 + 0.5f;// y 축 녹색 -&gt; 녹색</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment">    pVC[51].Set(0, 0, 0, 0xff00ff00); pVC[51].y += vLength.y/2 + fLength/5 + 0.5f;// y 축 녹색 -&gt; 녹색</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">    pVC[52].Set(0, 0, 0, 0xff0000ff); pVC[52].z -= vLength.z/2 + fLength/5 + 0.5f;// z 축 파란색 -&gt; 파란색</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">    pVC[53].Set(0, 0, 0, 0xff0000ff); pVC[53].z += vLength.z/2 + fLength/5 + 0.5f;// z 축 파란색 -&gt; 파란색</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">    m_lpVBBox-&gt;Unlock();</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">}</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">#endif</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">bool</span> bNeedReCalcMatrix = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">if</span> (m_KeyPos.DataGet(fFrm, m_vPos) == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">if</span> (m_KeyRot.DataGet(fFrm, m_qRot) == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">if</span> (m_KeyScale.DataGet(fFrm, m_vScale) == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        bNeedReCalcMatrix = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">return</span> bNeedReCalcMatrix;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>}</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="preprocessor">#ifdef _N3TOOL</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="keywordtype">void</span> CN3Transform::Render(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>* pMtxParent, <span class="keywordtype">float</span> fUnitSize)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>{</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment">// 축 그리기..</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keyword">static</span> __Vector3 vAxis[9];</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAxisCreated = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">if</span> (<span class="keyword">false</span> == bAxisCreated)</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        __Vector3 v0(0, 0, 0), v1(1, 0, 0), v2(0.8f, 0.2f, 0);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        __Matrix44 mtxRot;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">if</span> (i == 0)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                mtxRot.Identity();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            } <span class="comment">// X 축</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i == 1)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                mtxRot.RotationZ(DegreesToRadians(90.0f));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            } <span class="comment">// Y 축</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i == 2)</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                mtxRot.RotationY(DegreesToRadians(-90.0f));</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            } <span class="comment">// Z 축</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            vAxis[i * 3 + 0] = v0 * mtxRot;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            vAxis[i * 3 + 1] = v1 * mtxRot;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            vAxis[i * 3 + 2] = v2 * mtxRot;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        bAxisCreated = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    __Matrix44 mtxBox;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    mtxBox.Scale(fUnitSize, fUnitSize, fUnitSize); <span class="comment">// 관절부 박스에 스케일 적용</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    mtxBox *= m_Matrix;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    s_lpD3DDev-&gt;SetTransform(D3DTS_WORLD, mtxBox.toD3D());</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    CN3Base::RenderLines(&amp;(vAxis[0]), 2, 0xffff0000); <span class="comment">// 선그리기..</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    CN3Base::RenderLines(&amp;(vAxis[3]), 2, 0xff00ff00); <span class="comment">// 선그리기..</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    CN3Base::RenderLines(&amp;(vAxis[6]), 2, 0xff0000ff); <span class="comment">// 선그리기..</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>}</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="preprocessor">#endif                                                </span><span class="comment">// end of _N3TOOL</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">#if _DEBUG </span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">// 선택 상자 만들기.</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">void CN3Transform::GenerateSelectBox(__Vector3 &amp;vMin, __Vector3 &amp;vMax)</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">{</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">    // Bounding Box Vertex Buffer 생성</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">    if(m_lpVBBox != nullptr) { m_lpVBBox-&gt;Release(); m_lpVBBox = nullptr; }</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">    HRESULT rval = m_lpDevRef-&gt;CreateVertexBuffer(54 * sizeof(__VertexColor), 0, FVF_CV, D3DPOOL_MANAGED, &amp;m_lpVBBox);</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">    if(rval != D3D_OK)</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">        rval = m_lpDevRef-&gt;CreateVertexBuffer(54 * sizeof(__VertexColor), 0, FVF_CV, D3DPOOL_MANAGED, &amp;m_lpVBBox);</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">        if(rval != D3D_OK)</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">        {</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">            char szDebug[256]; D3DXGetErrorString(rval, szDebug, 256);</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">            MessageBox(s_hWndBase, szDebug, &quot;VertexBuffer 생성 실패&quot;, MB_OK);</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">            return;</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">        }</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment"></span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">    float fW = (vMax.x - vMin.x)/5, fH = (vMax.y - vMin.y)/5, fL = (vMax.z - vMin.z)/5; // 길이 높이 너비 (x y z)</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment"></span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">    __VertexColor* pVC;</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">    m_lpVBBox-&gt;Lock(0, 0, (uint8_t**)&amp;pVC, nullptr);</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">    </span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">    pVC[4] =  pVC[2] =  pVC[0] =  __VertexColor(vMin.x, vMax.y, vMin.z, 0xff7f7f7f);  // 정면 - 아래와 같은 선 리스트를 만든다.</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">    pVC[10] = pVC[8] =  pVC[6] =  __VertexColor(vMax.x, vMax.y, vMin.z, 0xff7f7f7f);  //  /          /</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">    pVC[16] = pVC[14] = pVC[12] = __VertexColor(vMax.x, vMin.y, vMin.z, 0xff7f7f7f);  // +--      --+</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">    pVC[22] = pVC[20] = pVC[18] = __VertexColor(vMin.x, vMin.y, vMin.z, 0xff7f7f7f);  // |          |</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">    pVC[28] = pVC[26] = pVC[24] = __VertexColor(vMax.x, vMax.y, vMax.z, 0xff7f7f7f);  // </span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">    pVC[34] = pVC[32] = pVC[30] = __VertexColor(vMin.x, vMax.y, vMax.z, 0xff7f7f7f);  // |/         |/</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">    pVC[40] = pVC[38] = pVC[36] = __VertexColor(vMin.x, vMin.y, vMax.z, 0xff7f7f7f);  // +--      --+</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">    pVC[46] = pVC[44] = pVC[42] = __VertexColor(vMax.x, vMin.y, vMax.z, 0xff7f7f7f);  // </span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment"></span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">    pVC[1] =  pVC[0];  pVC[1].x  += fW;   pVC[3] =  pVC[2];  pVC[3].y  -= fH;   pVC[5] =  pVC[4];  pVC[5].z  += fL;</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">    pVC[7] =  pVC[6];  pVC[7].x  -= fW;   pVC[9] =  pVC[8];  pVC[9].y  -= fH;   pVC[11] = pVC[10]; pVC[11].z += fL;</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">    pVC[13] = pVC[12]; pVC[13].x -= fW;   pVC[15] = pVC[14]; pVC[15].y += fH;   pVC[17] = pVC[16]; pVC[17].z += fL;</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">    pVC[19] = pVC[18]; pVC[19].x += fW;   pVC[21] = pVC[20]; pVC[21].y += fH;   pVC[23] = pVC[22]; pVC[23].z += fL;</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">    </span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">    pVC[25] = pVC[24]; pVC[25].x -= fW;   pVC[27] = pVC[26]; pVC[27].y -= fH;   pVC[29] = pVC[28]; pVC[29].z -= fL;</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">    pVC[31] = pVC[30]; pVC[31].x += fW;   pVC[33] = pVC[32]; pVC[33].y -= fH;   pVC[35] = pVC[34]; pVC[35].z -= fL;</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">    pVC[37] = pVC[36]; pVC[37].x += fW;   pVC[39] = pVC[38]; pVC[39].y += fH;   pVC[41] = pVC[40]; pVC[41].z -= fL;</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">    pVC[43] = pVC[42]; pVC[43].x -= fW;   pVC[45] = pVC[44]; pVC[45].y += fH;   pVC[47] = pVC[46]; pVC[47].z -= fL;</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment"></span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">    __Vector3 vLength = (vMax - vMin);</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">    float fLength = vLength.Magnitude();</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">    __Vector3 vCenter = vMin + (vMax - vMin)/2.0f;</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">    pVC[48].Set(0, 0, 0, 0xffff0000); pVC[48].x -= vLength.x/2 + fLength/5 + 0.5f;// x 축 빨간색 -&gt; 빨간색</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">    pVC[49].Set(0, 0, 0, 0xffff0000); pVC[49].x += vLength.x/2 + fLength/5 + 0.5f;// x 축 빨간색 -&gt; 빨간색</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment">    pVC[50].Set(0, 0, 0, 0xff00ff00); pVC[50].y -= vLength.y/2 + fLength/5 + 0.5f;// y 축 녹색 -&gt; 녹색</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment">    pVC[51].Set(0, 0, 0, 0xff00ff00); pVC[51].y += vLength.y/2 + fLength/5 + 0.5f;// y 축 녹색 -&gt; 녹색</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment">    pVC[52].Set(0, 0, 0, 0xff0000ff); pVC[52].z -= vLength.z/2 + fLength/5 + 0.5f;// z 축 파란색 -&gt; 파란색</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">    pVC[53].Set(0, 0, 0, 0xff0000ff); pVC[53].z += vLength.z/2 + fLength/5 + 0.5f;// z 축 파란색 -&gt; 파란색</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">    m_lpVBBox-&gt;Unlock();</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">}</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">#endif</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">*/</span></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassFile_html_a072f38a4bcdfa02fede967f2c9505780"><div class="ttname"><a href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">File::Write</a></div><div class="ttdeci">virtual bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr)=0</div><div class="ttdoc">Writes data to the file at the current offset.</div></div>
 <div class="ttc" id="aclassFile_html_a3d5bcd83f8e56ead8b6c19c112a6d07a"><div class="ttname"><a href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File::Read</a></div><div class="ttdeci">virtual bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr)=0</div><div class="ttdoc">Reads data from the file at the current offset.</div></div>

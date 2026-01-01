@@ -120,10 +120,10 @@ $(function(){initNavTree('KscViewerDoc_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>IMPLEMENT_DYNCREATE(<a class="code hl_class" href="classCKscViewerDoc.html">CKscViewerDoc</a>, CDocument)</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>BEGIN_MESSAGE_MAP(<a class="code hl_class" href="classCKscViewerDoc.html">CKscViewerDoc</a>, CDocument)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//{{AFX_MSG_MAP(CKscViewerDoc)</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ON_COMMAND(ID_FILE_SAVE, OnFileSave)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ON_COMMAND(ID_FILE_SAVE_AS, OnFileSaveAs)</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">//}}AFX_MSG_MAP</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//{{AFX_MSG_MAP(CKscViewerDoc)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>ON_COMMAND(ID_FILE_SAVE, OnFileSave)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>ON_COMMAND(ID_FILE_SAVE_AS, OnFileSaveAs)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//}}AFX_MSG_MAP</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>END_MESSAGE_MAP()</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
@@ -137,23 +137,23 @@ $(function(){initNavTree('KscViewerDoc_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>CKscViewerDoc::~CKscViewerDoc()</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span>(m_pJpegFile) <span class="keyword">delete</span> m_pJpegFile; m_pJpegFile = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>BOOL CKscViewerDoc::OnNewDocument()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (!CDocument::OnNewDocument())</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span>(m_pJpegFile)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        m_pJpegFile-&gt;Release();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    m_szKscPath.Empty();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (m_pJpegFile)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">delete</span> m_pJpegFile;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    m_pJpegFile = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>BOOL CKscViewerDoc::OnNewDocument()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (!CDocument::OnNewDocument())</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (m_pJpegFile)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        m_pJpegFile-&gt;Release();</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    m_szKscPath.Empty();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// CKscViewerDoc serialization</span></div>
@@ -188,16 +188,16 @@ $(function(){initNavTree('KscViewerDoc_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">// CKscViewerDoc commands</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>BOOL CKscViewerDoc::OnOpenDocument(LPCTSTR lpszPathName) </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>BOOL CKscViewerDoc::OnOpenDocument(LPCTSTR lpszPathName)</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>{</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">//  if (!CDocument::OnOpenDocument(lpszPathName))</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">//      return FALSE;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">//  if (!CDocument::OnOpenDocument(lpszPathName))</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">//      return FALSE;</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (m_pJpegFile == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::string pathA = CT2A(lpszPathName).m_psz;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::string pathA  = CT2A(lpszPathName).m_psz;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">size_t</span> nLen = _tcslen(lpszPathName);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">size_t</span> nLen        = _tcslen(lpszPathName);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">const</span> TCHAR* szExt = lpszPathName + nLen - 3;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (0 == lstrcmpi(szExt, _T(<span class="stringliteral">&quot;ksc&quot;</span>)))</div>
@@ -220,7 +220,7 @@ $(function(){initNavTree('KscViewerDoc_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> m_pJpegFile;</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>BOOL CKscViewerDoc::OnSaveDocument(LPCTSTR lpszPathName) </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>BOOL CKscViewerDoc::OnSaveDocument(LPCTSTR lpszPathName)</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>{</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (m_pJpegFile == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> FALSE;</div>
@@ -232,59 +232,58 @@ $(function(){initNavTree('KscViewerDoc_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">if</span> (szTemp.CompareNoCase(_T(<span class="stringliteral">&quot;ksc&quot;</span>)) != 0)</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    std::string kscPath(CT2A(m_szKscPath).m_psz),</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        jpegPath(CT2A(lpszPathName).m_psz);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    m_pJpegFile-&gt;SaveFromDecryptToJpeg(kscPath, jpegPath);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>}</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keywordtype">void</span> CKscViewerDoc::OnFileSave() </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>{</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    AfxGetApp()-&gt;DoWaitCursor(1);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    CString fileName = m_szKscPath.Left(m_szKscPath.GetLength()-3);</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    fileName += <span class="stringliteral">&quot;jpg&quot;</span>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    OnSaveDocument(fileName);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    AfxGetApp()-&gt;DoWaitCursor(-1);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keywordtype">void</span> CKscViewerDoc::OnFileSaveAs() </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">if</span> (m_szKscPath.IsEmpty())</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    CString szTemp = m_szKscPath.Right(3);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordflow">if</span> (szTemp.CompareNoCase(_T(<span class="stringliteral">&quot;ksc&quot;</span>)) != 0)</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    szTemp = m_szKscPath.Right(m_szKscPath.GetLength() - (m_szKscPath.ReverseFind(_T(<span class="charliteral">&#39;\\&#39;</span>)) + 1));</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    szTemp = szTemp.Left(szTemp.GetLength() - 3) + _T(<span class="stringliteral">&quot;jpg&quot;</span>);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    CString fileName;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    CString filt = _T(<span class="stringliteral">&quot;Jpeg File (*.jpg)|*.jpg||&quot;</span>);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="comment">// OPENFILENAME - so I can get to its help page easily</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    CFileDialog fileDlg(FALSE, szTemp, szTemp, dwFlags, filt);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    CString initial_dir;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    GetCurrentDirectory(MAX_PATH, initial_dir.GetBuffer(MAX_PATH));</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    fileDlg.m_ofn.lpstrInitialDir = initial_dir.GetString();</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    fileDlg.m_ofn.Flags |= OFN_FILEMUSTEXIST;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">if</span> (fileDlg.DoModal() == IDOK)</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    {</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        AfxGetApp()-&gt;DoWaitCursor(1);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        fileName = fileDlg.GetPathName();</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        OnSaveDocument(fileName);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        AfxGetApp()-&gt;DoWaitCursor(-1);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
-<div class="ttc" id="aclassCKscViewerDoc_html"><div class="ttname"><a href="classCKscViewerDoc.html">CKscViewerDoc</a></div><div class="ttdef"><b>Definition</b> <a href="KscViewerDoc_8h_source.html#l00014">KscViewerDoc.h:15</a></div></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    std::string kscPath(CT2A(m_szKscPath).m_psz), jpegPath(CT2A(lpszPathName).m_psz);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    m_pJpegFile-&gt;SaveFromDecryptToJpeg(kscPath, jpegPath);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>}</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keywordtype">void</span> CKscViewerDoc::OnFileSave()</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>{</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    AfxGetApp()-&gt;DoWaitCursor(1);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    CString fileName  = m_szKscPath.Left(m_szKscPath.GetLength() - 3);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    fileName         += <span class="stringliteral">&quot;jpg&quot;</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    OnSaveDocument(fileName);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    AfxGetApp()-&gt;DoWaitCursor(-1);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>}</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keywordtype">void</span> CKscViewerDoc::OnFileSaveAs()</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>{</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">if</span> (m_szKscPath.IsEmpty())</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    CString szTemp = m_szKscPath.Right(3);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">if</span> (szTemp.CompareNoCase(_T(<span class="stringliteral">&quot;ksc&quot;</span>)) != 0)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    szTemp = m_szKscPath.Right(m_szKscPath.GetLength() - (m_szKscPath.ReverseFind(_T(<span class="charliteral">&#39;\\&#39;</span>)) + 1));</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    szTemp = szTemp.Left(szTemp.GetLength() - 3) + _T(<span class="stringliteral">&quot;jpg&quot;</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    CString fileName;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    CString filt  = _T(<span class="stringliteral">&quot;Jpeg File (*.jpg)|*.jpg||&quot;</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">// OPENFILENAME - so I can get to its help page easily</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    CFileDialog fileDlg(FALSE, szTemp, szTemp, dwFlags, filt);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    CString initial_dir;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    GetCurrentDirectory(MAX_PATH, initial_dir.GetBuffer(MAX_PATH));</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    fileDlg.m_ofn.lpstrInitialDir  = initial_dir.GetString();</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    fileDlg.m_ofn.Flags           |= OFN_FILEMUSTEXIST;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">if</span> (fileDlg.DoModal() == IDOK)</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        AfxGetApp()-&gt;DoWaitCursor(1);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        fileName = fileDlg.GetPathName();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        OnSaveDocument(fileName);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        AfxGetApp()-&gt;DoWaitCursor(-1);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
+<div class="ttc" id="aclassCKscViewerDoc_html"><div class="ttname"><a href="classCKscViewerDoc.html">CKscViewerDoc</a></div><div class="ttdef"><b>Definition</b> <a href="KscViewerDoc_8h_source.html#l00013">KscViewerDoc.h:14</a></div></div>
 <div class="ttc" id="aclassCN3JpegFile_html"><div class="ttname"><a href="classCN3JpegFile.html">CN3JpegFile</a></div><div class="ttdef"><b>Definition</b> <a href="N3JpegFile_8h_source.html#l00014">N3JpegFile.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

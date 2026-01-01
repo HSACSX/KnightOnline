@@ -1,6 +1,6 @@
 var classAudioDecoderThread =
 [
-    [ "QueueType", "classAudioDecoderThread.html#a50ec77e45cd875a0bd73cd61541e929d", null ],
+    [ "QueueType", "classAudioDecoderThread.html#af1444d06fc40c589773adfd05268084d", null ],
     [ "Add", "classAudioDecoderThread.html#aa5177a3bd4194b1c882ab8a5f75d6b17", null ],
     [ "decode_impl", "classAudioDecoderThread.html#aaa7ded70043ac47f1e28689078d40a39", null ],
     [ "decode_impl_mp3", "classAudioDecoderThread.html#a4ae87b6dfb9c6b142a18e55a3ac59d3c", null ],

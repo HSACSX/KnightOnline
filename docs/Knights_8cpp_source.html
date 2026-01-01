@@ -118,24 +118,24 @@ $(function(){initNavTree('Knights_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> CKnights::InitializeValue()</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_sIndex = 0;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_byFlag = 0;           <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_byNation = 0;         <span class="comment">// nation</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_byGrade = 0;          <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_byRanking = 0;        <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    m_sMembers = 0;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_sIndex    = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_byFlag    = 0; <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_byNation  = 0; <span class="comment">// nation</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_byGrade   = 0; <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_byRanking = 0; <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    m_sMembers  = 0;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    memset(m_strName, 0, <span class="keyword">sizeof</span>(m_strName));</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    memset(m_strChief, 0, <span class="keyword">sizeof</span>(m_strChief));</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    memset(m_strViceChief_1, 0, <span class="keyword">sizeof</span>(m_strViceChief_1));  <span class="comment">// 부단장 1</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    memset(m_strViceChief_2, 0, <span class="keyword">sizeof</span>(m_strViceChief_2));  <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    memset(m_strViceChief_3, 0, <span class="keyword">sizeof</span>(m_strViceChief_3));  <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    memset(m_strViceChief_1, 0, <span class="keyword">sizeof</span>(m_strViceChief_1)); <span class="comment">// 부단장 1</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    memset(m_strViceChief_2, 0, <span class="keyword">sizeof</span>(m_strViceChief_2)); <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    memset(m_strViceChief_3, 0, <span class="keyword">sizeof</span>(m_strViceChief_3)); <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    memset(m_Image, 0, <span class="keyword">sizeof</span>(m_Image));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_nMoney = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_nMoney           = 0;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m_sAllianceKnights = 0;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_sMarkVersion = 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_sCape = -1;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    m_sDomination = 0;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_nPoints = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_sMarkVersion     = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_sCape            = -1;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    m_sDomination      = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_nPoints          = 0;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_CLAN; i++)</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
@@ -145,8 +145,8 @@ $(function(){initNavTree('Knights_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_KNIGHTS_BANK; i++)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        m_StashItem[i].nNum = 0;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        m_StashItem[i].sCount = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        m_StashItem[i].nNum      = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        m_StashItem[i].sCount    = 0;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        m_StashItem[i].sDuration = 0;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>

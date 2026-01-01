@@ -162,8 +162,8 @@ $(function(){initNavTree('LogWriter_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    buff = <span class="stringliteral">&quot;---------------------------------------------------------------------------\r\n&quot;</span>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    file.<a class="code hl_function" href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">Write</a>(buff.data(), buff.length());</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    buff = fmt::format(<span class="stringliteral">&quot;// Begin writing log... [{:02}/{:02} {:02}:{:02}]\r\n&quot;</span>,</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        time.wMonth, time.wDay, time.wHour, time.wMinute);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    buff = fmt::format(<span class="stringliteral">&quot;// Begin writing log... [{:02}/{:02} {:02}:{:02}]\r\n&quot;</span>, time.wMonth,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        time.wDay, time.wHour, time.wMinute);</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    file.<a class="code hl_function" href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">Write</a>(buff.data(), buff.length());</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
@@ -182,8 +182,8 @@ $(function(){initNavTree('LogWriter_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    SYSTEMTIME time;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    GetLocalTime(&amp;time);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    buff = fmt::format(<span class="stringliteral">&quot;// End writing log... [{:02}/{:02} {:02}:{:02}]\r\n&quot;</span>,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        time.wMonth, time.wDay, time.wHour, time.wMinute);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    buff = fmt::format(<span class="stringliteral">&quot;// End writing log... [{:02}/{:02} {:02}:{:02}]\r\n&quot;</span>, time.wMonth,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        time.wDay, time.wHour, time.wMinute);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    file.<a class="code hl_function" href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">Write</a>(buff.data(), buff.length());</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    buff = <span class="stringliteral">&quot;---------------------------------------------------------------------------\r\n&quot;</span>;</div>
@@ -192,31 +192,30 @@ $(function(){initNavTree('LogWriter_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> CLogWriter::Write(<span class="keyword">const</span> std::string_view message)</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>{</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (s_szFileName.empty()</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        || message.empty())</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    FileWriter file;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">if</span> (!file.<a class="code hl_function" href="classFileWriter.html#a018bf563128dd46b91e94c7b660600fa">OpenExisting</a>(s_szFileName))</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> (!file.<a class="code hl_function" href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">Create</a>(s_szFileName))</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    SYSTEMTIME time;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    GetLocalTime(&amp;time);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::string outputMessage = fmt::format(<span class="stringliteral">&quot;    [{:02}:{:02}:{:02}] {}\r\n&quot;</span>,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        time.wHour, time.wMinute, time.wSecond, message);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    file.<a class="code hl_function" href="classFileWriter.html#a3a4104393c88e4a5590a86460ba3acaa">Seek</a>(0, SEEK_END); <span class="comment">// 추가 하기 위해서 파일의 끝으로 옮기고..</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    file.<a class="code hl_function" href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">Write</a>(outputMessage.data(), outputMessage.length());</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (s_szFileName.empty() || message.empty())</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    FileWriter file;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!file.<a class="code hl_function" href="classFileWriter.html#a018bf563128dd46b91e94c7b660600fa">OpenExisting</a>(s_szFileName))</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">if</span> (!file.<a class="code hl_function" href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">Create</a>(s_szFileName))</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    SYSTEMTIME time;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    GetLocalTime(&amp;time);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    std::string outputMessage = fmt::format(</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="stringliteral">&quot;    [{:02}:{:02}:{:02}] {}\r\n&quot;</span>, time.wHour, time.wMinute, time.wSecond, message);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    file.<a class="code hl_function" href="classFileWriter.html#a3a4104393c88e4a5590a86460ba3acaa">Seek</a>(0, SEEK_END); <span class="comment">// 추가 하기 위해서 파일의 끝으로 옮기고..</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    file.<a class="code hl_function" href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">Write</a>(outputMessage.data(), outputMessage.length());</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aclassFileWriter_html_a018bf563128dd46b91e94c7b660600fa"><div class="ttname"><a href="classFileWriter.html#a018bf563128dd46b91e94c7b660600fa">FileWriter::OpenExisting</a></div><div class="ttdeci">bool OpenExisting(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Opens an existing file for writing.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00013">FileWriter.cpp:13</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_a3a4104393c88e4a5590a86460ba3acaa"><div class="ttname"><a href="classFileWriter.html#a3a4104393c88e4a5590a86460ba3acaa">FileWriter::Seek</a></div><div class="ttdeci">bool Seek(int64_t offset, int origin) override</div><div class="ttdoc">Changes the current write offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00122">FileWriter.cpp:122</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_a9ed127580f8c09ff478fc45bf9c34a3f"><div class="ttname"><a href="classFileWriter.html#a9ed127580f8c09ff478fc45bf9c34a3f">FileWriter::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and flush any pending writes.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00189">FileWriter.cpp:189</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_ac2ea337a2bb73faf40d298a2c892c107"><div class="ttname"><a href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">FileWriter::Write</a></div><div class="ttdeci">bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr) override</div><div class="ttdoc">Writes data to the file at the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00081">FileWriter.cpp:81</a></div></div>
-<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00049">FileWriter.cpp:49</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_a3a4104393c88e4a5590a86460ba3acaa"><div class="ttname"><a href="classFileWriter.html#a3a4104393c88e4a5590a86460ba3acaa">FileWriter::Seek</a></div><div class="ttdeci">bool Seek(int64_t offset, int origin) override</div><div class="ttdoc">Changes the current write offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00114">FileWriter.cpp:114</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_a9ed127580f8c09ff478fc45bf9c34a3f"><div class="ttname"><a href="classFileWriter.html#a9ed127580f8c09ff478fc45bf9c34a3f">FileWriter::Close</a></div><div class="ttdeci">bool Close() override</div><div class="ttdoc">Closes the file and flush any pending writes.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00180">FileWriter.cpp:180</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_ac2ea337a2bb73faf40d298a2c892c107"><div class="ttname"><a href="classFileWriter.html#ac2ea337a2bb73faf40d298a2c892c107">FileWriter::Write</a></div><div class="ttdeci">bool Write(const void *buffer, size_t bytesToWrite, size_t *bytesWritten=nullptr) override</div><div class="ttdoc">Writes data to the file at the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00073">FileWriter.cpp:73</a></div></div>
+<div class="ttc" id="aclassFileWriter_html_ac3d48eaf382725252fa8dde693c776a9"><div class="ttname"><a href="classFileWriter.html#ac3d48eaf382725252fa8dde693c776a9">FileWriter::Create</a></div><div class="ttdeci">bool Create(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Creates a new file for writing, truncating if it exists.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8cpp_source.html#l00045">FileWriter.cpp:45</a></div></div>
 <div class="ttc" id="aclassFile_html_ae88f20e8ab7a572ef7ef5ec1cafd3a19"><div class="ttname"><a href="classFile.html#ae88f20e8ab7a572ef7ef5ec1cafd3a19">File::Size</a></div><div class="ttdeci">uint64_t Size() const</div><div class="ttdoc">Gets the current file size.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00029">File.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
