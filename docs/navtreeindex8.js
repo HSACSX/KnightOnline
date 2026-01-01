@@ -1,5 +1,8 @@
 var NAVTREEINDEX8 =
 {
+"struct____TABLE__UPC__SKILL__TYPE__6.html":[2,0,76],
+"struct____TABLE__UPC__SKILL__TYPE__7.html":[2,0,77],
+"struct____TABLE__UPC__SKILL__TYPE__9.html":[2,0,78],
 "struct____TABLE__ZONE.html":[2,0,79],
 "struct____TerrainBGMInfo.html":[2,0,80],
 "struct____TerrainTileTexInfo.html":[2,0,81],
@@ -40,15 +43,15 @@ var NAVTREEINDEX8 =
 "structtagShapePart.html":[2,0,565],
 "structtagVisPartIndex.html":[2,0,566],
 "structtagVisPortalPriority.html":[2,0,567],
-"targetver_8h_source.html":[3,0,13,4],
-"text__resources_8h_source.html":[3,0,0,5,102],
+"targetver_8h_source.html":[3,0,0,7,7,4],
+"text__resources_8h_source.html":[3,0,0,0,4,102],
 "todo.html":[1],
 "unionMYINT64.html":[2,0,541],
 "unionMYSHORT.html":[2,0,542],
 "union____ParticleEmitCondition.html":[2,0,45],
-"utilities_8cpp_source.html":[3,0,10,4,27],
-"utilities_8h_source.html":[3,0,10,4,28],
-"utils_8cpp_source.html":[3,0,2,18],
-"utils_8h_source.html":[3,0,2,19],
-"version_8h_source.html":[3,0,11,25]
+"utilities_8cpp_source.html":[3,0,0,5,4,27],
+"utilities_8h_source.html":[3,0,0,5,4,28],
+"utils_8cpp_source.html":[3,0,0,1,18],
+"utils_8h_source.html":[3,0,0,1,19],
+"version_8h_source.html":[3,0,0,6,25]
 };
