@@ -199,158 +199,157 @@ $(function(){initNavTree('VersionManagerApp_8cpp_source.html',''); initResizable
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"></span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">/// \returns The application&#39;s ini config path.</span></div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">  100</a></span>std::filesystem::path <a class="code hl_function" href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">VersionManagerApp::ConfigPath</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Version.ini&quot;</span>;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">   99</a></span>std::filesystem::path <a class="code hl_function" href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">VersionManagerApp::ConfigPath</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Version.ini&quot;</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
 </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">  105</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">VersionManagerApp::LoadConfig</a>(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; iniFile)</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// ftp config</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    iniFile.GetString(ini::DOWNLOAD, ini::URL, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, _ftpUrl, <span class="keyword">sizeof</span>(_ftpUrl));</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    iniFile.GetString(ini::DOWNLOAD, ini::PATH, <span class="stringliteral">&quot;/&quot;</span>, _ftpPath, <span class="keyword">sizeof</span>(_ftpPath));</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="comment">// TODO: KN_online should be Knight_Account</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    std::string datasourceName = iniFile.GetString(ini::ODBC, ini::DSN, <span class="stringliteral">&quot;KN_online&quot;</span>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    std::string datasourceUser = iniFile.GetString(ini::ODBC, ini::UID, <span class="stringliteral">&quot;knight&quot;</span>);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::string datasourcePass = iniFile.GetString(ini::ODBC, ini::PWD, <span class="stringliteral">&quot;knight&quot;</span>);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_function" href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a>(</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        modelUtil::DbType::ACCOUNT,</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        datasourceName, datasourceUser, datasourcePass);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">// TODO: Remove this - currently all models are assigned to GAME</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_function" href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a>(</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        modelUtil::DbType::GAME,</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        datasourceName, datasourceUser, datasourcePass);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">int</span> serverCount = iniFile.GetInt(ini::SERVER_LIST, ini::COUNT, 1);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">if</span> (strlen(_ftpUrl) == 0)</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: The FTP URL must be set.&quot;</span>);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">if</span> (strlen(_ftpPath) == 0)</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    {</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: The FTP path must be set.&quot;</span>);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    }</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordflow">if</span> (datasourceName.empty()</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="comment">// TODO: Should we not validate UID/Pass length?  Would that allow Windows Auth?</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        || datasourceUser.empty()</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        || datasourcePass.empty())</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: Datasource config must be set.&quot;</span>);</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">if</span> (serverCount &lt;= 0)</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: At least 1 server must exist in the server list.&quot;</span>);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    }</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">char</span> key[32] = {};</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    ServerList.reserve(serverCount);</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; serverCount; i++)</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_struct" href="struct__SERVER__INFO.html">_SERVER_INFO</a>* pInfo = <span class="keyword">new</span> <a class="code hl_struct" href="struct__SERVER__INFO.html">_SERVER_INFO</a>;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;SERVER_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        iniFile.GetString(ini::SERVER_LIST, key, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, pInfo-&gt;strServerIP, <span class="keyword">sizeof</span>(pInfo-&gt;strServerIP));</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;NAME_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        iniFile.GetString(ini::SERVER_LIST, key, <span class="stringliteral">&quot;TEST|Server 1&quot;</span>, pInfo-&gt;strServerName, <span class="keyword">sizeof</span>(pInfo-&gt;strServerName));</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;ID_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        pInfo-&gt;sServerID = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(iniFile.GetInt(ini::SERVER_LIST, key, 1));</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;USER_LIMIT_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        pInfo-&gt;sUserLimit = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(iniFile.GetInt(ini::SERVER_LIST, key, MAX_USER));</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        ServerList.push_back(pInfo);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="comment">// Read news from INI (max 3 blocks)</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    std::stringstream ss;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    std::string title, message;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    News.Size = 0;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_NEWS_COUNT; i++)</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    {</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;TITLE_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        title = iniFile.GetString(<span class="stringliteral">&quot;NEWS&quot;</span>, key, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordflow">if</span> (title.empty())</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;MESSAGE_%02d&quot;</span>, i);</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        message = iniFile.GetString(<span class="stringliteral">&quot;NEWS&quot;</span>, key, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> (message.empty())</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        ss &lt;&lt; title;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        ss.write(NEWS_MESSAGE_START, <span class="keyword">sizeof</span>(NEWS_MESSAGE_START));</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        ss &lt;&lt; message;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        ss.write(NEWS_MESSAGE_END, <span class="keyword">sizeof</span>(NEWS_MESSAGE_END));</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keyword">const</span> std::string newsContent = ss.str();</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">if</span> (!newsContent.empty())</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">if</span> (newsContent.size() &gt; <span class="keyword">sizeof</span>(News.Content))</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        {</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: News too long&quot;</span>);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        }</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        memcpy(&amp;News.Content, newsContent.c_str(), newsContent.size());</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        News.Size = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(newsContent.size());</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">  104</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">VersionManagerApp::LoadConfig</a>(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; iniFile)</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>{</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// ftp config</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    iniFile.GetString(ini::DOWNLOAD, ini::URL, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, _ftpUrl, <span class="keyword">sizeof</span>(_ftpUrl));</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    iniFile.GetString(ini::DOWNLOAD, ini::PATH, <span class="stringliteral">&quot;/&quot;</span>, _ftpPath, <span class="keyword">sizeof</span>(_ftpPath));</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// TODO: KN_online should be Knight_Account</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::string datasourceName = iniFile.GetString(ini::ODBC, ini::DSN, <span class="stringliteral">&quot;KN_online&quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    std::string datasourceUser = iniFile.GetString(ini::ODBC, ini::UID, <span class="stringliteral">&quot;knight&quot;</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    std::string datasourcePass = iniFile.GetString(ini::ODBC, ini::PWD, <span class="stringliteral">&quot;knight&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_function" href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a>(</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        modelUtil::DbType::ACCOUNT,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        datasourceName, datasourceUser, datasourcePass);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">// TODO: Remove this - currently all models are assigned to GAME</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_function" href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a>(</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        modelUtil::DbType::GAME,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        datasourceName, datasourceUser, datasourcePass);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">int</span> serverCount = iniFile.GetInt(ini::SERVER_LIST, ini::COUNT, 1);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (strlen(_ftpUrl) == 0)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: The FTP URL must be set.&quot;</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (strlen(_ftpPath) == 0)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: The FTP path must be set.&quot;</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">if</span> (datasourceName.empty()</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment">// TODO: Should we not validate UID/Pass length?  Would that allow Windows Auth?</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        || datasourceUser.empty()</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        || datasourcePass.empty())</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: Datasource config must be set.&quot;</span>);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">if</span> (serverCount &lt;= 0)</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: At least 1 server must exist in the server list.&quot;</span>);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordtype">char</span> key[32] = {};</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    ServerList.reserve(serverCount);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; serverCount; i++)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_struct" href="struct__SERVER__INFO.html">_SERVER_INFO</a>* pInfo = <span class="keyword">new</span> <a class="code hl_struct" href="struct__SERVER__INFO.html">_SERVER_INFO</a>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;SERVER_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        iniFile.GetString(ini::SERVER_LIST, key, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, pInfo-&gt;strServerIP, <span class="keyword">sizeof</span>(pInfo-&gt;strServerIP));</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;NAME_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        iniFile.GetString(ini::SERVER_LIST, key, <span class="stringliteral">&quot;TEST|Server 1&quot;</span>, pInfo-&gt;strServerName, <span class="keyword">sizeof</span>(pInfo-&gt;strServerName));</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;ID_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        pInfo-&gt;sServerID = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(iniFile.GetInt(ini::SERVER_LIST, key, 1));</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;USER_LIMIT_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        pInfo-&gt;sUserLimit = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(iniFile.GetInt(ini::SERVER_LIST, key, MAX_USER));</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        ServerList.push_back(pInfo);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    }</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="comment">// Read news from INI (max 3 blocks)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    std::stringstream ss;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    std::string title, message;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    News.Size = 0;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_NEWS_COUNT; i++)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;TITLE_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        title = iniFile.GetString(<span class="stringliteral">&quot;NEWS&quot;</span>, key, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">if</span> (title.empty())</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        snprintf(key, <span class="keyword">sizeof</span>(key), <span class="stringliteral">&quot;MESSAGE_%02d&quot;</span>, i);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        message = iniFile.GetString(<span class="stringliteral">&quot;NEWS&quot;</span>, key, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (message.empty())</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        ss &lt;&lt; title;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        ss.write(NEWS_MESSAGE_START, <span class="keyword">sizeof</span>(NEWS_MESSAGE_START));</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        ss &lt;&lt; message;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        ss.write(NEWS_MESSAGE_END, <span class="keyword">sizeof</span>(NEWS_MESSAGE_END));</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keyword">const</span> std::string newsContent = ss.str();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">if</span> (!newsContent.empty())</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordflow">if</span> (newsContent.size() &gt; <span class="keyword">sizeof</span>(News.Content))</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            spdlog::error(<span class="stringliteral">&quot;VersionManagerApp::LoadConfig: News too long&quot;</span>);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        memcpy(&amp;News.Content, newsContent.c_str(), newsContent.size());</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        News.Size = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(newsContent.size());</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    }</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
 </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="keywordtype">bool</span> VersionManagerApp::LoadVersionList()</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>{</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    VersionInfoList versionList;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">if</span> (!DbProcess.<a class="code hl_function" href="classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6">LoadVersionList</a>(&amp;versionList))</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">int</span> lastVersion = 0;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [_, pInfo] : versionList)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">if</span> (lastVersion &lt; pInfo-&gt;Number)</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            lastVersion = pInfo-&gt;Number;</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">if</span> (lastVersion != _lastVersion)</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        spdlog::info(<span class="stringliteral">&quot;Latest Version: {}&quot;</span>, lastVersion);</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    _lastVersion = lastVersion;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    VersionList.Swap(versionList);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>}</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="keywordtype">bool</span> VersionManagerApp::LoadVersionList()</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>{</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    VersionInfoList versionList;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span> (!DbProcess.<a class="code hl_function" href="classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6">LoadVersionList</a>(&amp;versionList))</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordtype">int</span> lastVersion = 0;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [_, pInfo] : versionList)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    {</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (lastVersion &lt; pInfo-&gt;Number)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            lastVersion = pInfo-&gt;Number;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">if</span> (lastVersion != _lastVersion)</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        spdlog::info(<span class="stringliteral">&quot;Latest Version: {}&quot;</span>, lastVersion);</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    _lastVersion = lastVersion;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    VersionList.Swap(versionList);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
 <div class="ttc" id="aclassAppThread_html"><div class="ttname"><a href="classAppThread.html">AppThread</a></div><div class="ttdef"><b>Definition</b> <a href="AppThread_8h_source.html#l00017">AppThread.h:18</a></div></div>
-<div class="ttc" id="aclassCDBProcess_html_a4577a14c728ba19eee33131a712a1bd6"><div class="ttname"><a href="classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6">CDBProcess::LoadVersionList</a></div><div class="ttdeci">bool LoadVersionList(VersionInfoList *versionList)</div><div class="ttdoc">loads the VERSION table into versionList</div><div class="ttdef"><b>Definition</b> <a href="DBProcess_8cpp_source.html#l00052">DBProcess.cpp:52</a></div></div>
+<div class="ttc" id="aclassCDBProcess_html_a4577a14c728ba19eee33131a712a1bd6"><div class="ttname"><a href="classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6">CDBProcess::LoadVersionList</a></div><div class="ttdeci">bool LoadVersionList(VersionInfoList *versionList)</div><div class="ttdoc">loads the VERSION table into versionList</div><div class="ttdef"><b>Definition</b> <a href="DBProcess_8cpp_source.html#l00047">DBProcess.cpp:47</a></div></div>
 <div class="ttc" id="aclassCIni_html"><div class="ttname"><a href="classCIni.html">CIni</a></div><div class="ttdef"><b>Definition</b> <a href="Ini_8h_source.html#l00012">Ini.h:13</a></div></div>
 <div class="ttc" id="aclassCUser_html"><div class="ttname"><a href="classCUser.html">CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00012">User.h:13</a></div></div>
 <div class="ttc" id="aclassVersionManagerApp_html_a0b68b0600855e46ac1c056b8a84e904d"><div class="ttname"><a href="classVersionManagerApp.html#a0b68b0600855e46ac1c056b8a84e904d">VersionManagerApp::OnStart</a></div><div class="ttdeci">bool OnStart() override</div><div class="ttdoc">Loads config, database caches, then starts sockets and thread pools.</div><div class="ttdef"><b>Definition</b> <a href="#l00060">VersionManagerApp.cpp:60</a></div></div>
-<div class="ttc" id="aclassVersionManagerApp_html_ada0d66d94053fd997097aabe2acbdb94"><div class="ttname"><a href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">VersionManagerApp::ConfigPath</a></div><div class="ttdeci">std::filesystem::path ConfigPath() const override</div><div class="ttdef"><b>Definition</b> <a href="#l00100">VersionManagerApp.cpp:100</a></div></div>
-<div class="ttc" id="aclassVersionManagerApp_html_afd2ff16663133be425014bab250bf397"><div class="ttname"><a href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">VersionManagerApp::LoadConfig</a></div><div class="ttdeci">bool LoadConfig(CIni &amp;iniFile) override</div><div class="ttdoc">Loads application-specific config from the loaded application ini file (iniFile).</div><div class="ttdef"><b>Definition</b> <a href="#l00105">VersionManagerApp.cpp:105</a></div></div>
-<div class="ttc" id="aclassdb_1_1ConnectionManager_html_a2947c214972eda40b682601380ec389f"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#a2947c214972eda40b682601380ec389f">db::ConnectionManager::GetOdbcConnectionString</a></div><div class="ttdeci">static std::string GetOdbcConnectionString(modelUtil::DbType dbType)</div><div class="ttdoc">Returns the current ODBC connection string for a given DbType, or empty string if there is none.</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00071">ConnectionManager.cpp:71</a></div></div>
-<div class="ttc" id="aclassdb_1_1ConnectionManager_html_afb7c2599a6457793f93c1bd6e78384a4"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a></div><div class="ttdeci">static void SetDatasourceConfig(modelUtil::DbType dbType, const std::string_view datasourceName, const std::string_view datasourceUserName, const std::string_view datasourcePassword)</div><div class="ttdoc">Fetches the associated previously stored database config using the code-generated dbType.</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00033">ConnectionManager.cpp:33</a></div></div>
+<div class="ttc" id="aclassVersionManagerApp_html_ada0d66d94053fd997097aabe2acbdb94"><div class="ttname"><a href="classVersionManagerApp.html#ada0d66d94053fd997097aabe2acbdb94">VersionManagerApp::ConfigPath</a></div><div class="ttdeci">std::filesystem::path ConfigPath() const override</div><div class="ttdef"><b>Definition</b> <a href="#l00099">VersionManagerApp.cpp:99</a></div></div>
+<div class="ttc" id="aclassVersionManagerApp_html_afd2ff16663133be425014bab250bf397"><div class="ttname"><a href="classVersionManagerApp.html#afd2ff16663133be425014bab250bf397">VersionManagerApp::LoadConfig</a></div><div class="ttdeci">bool LoadConfig(CIni &amp;iniFile) override</div><div class="ttdoc">Loads application-specific config from the loaded application ini file (iniFile).</div><div class="ttdef"><b>Definition</b> <a href="#l00104">VersionManagerApp.cpp:104</a></div></div>
+<div class="ttc" id="aclassdb_1_1ConnectionManager_html_a2947c214972eda40b682601380ec389f"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#a2947c214972eda40b682601380ec389f">db::ConnectionManager::GetOdbcConnectionString</a></div><div class="ttdeci">static std::string GetOdbcConnectionString(modelUtil::DbType dbType)</div><div class="ttdoc">Returns the current ODBC connection string for a given DbType, or empty string if there is none.</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00063">ConnectionManager.cpp:63</a></div></div>
+<div class="ttc" id="aclassdb_1_1ConnectionManager_html_afb7c2599a6457793f93c1bd6e78384a4"><div class="ttname"><a href="classdb_1_1ConnectionManager.html#afb7c2599a6457793f93c1bd6e78384a4">db::ConnectionManager::SetDatasourceConfig</a></div><div class="ttdeci">static void SetDatasourceConfig(modelUtil::DbType dbType, const std::string_view datasourceName, const std::string_view datasourceUserName, const std::string_view datasourcePassword)</div><div class="ttdoc">Fetches the associated previously stored database config using the code-generated dbType.</div><div class="ttdef"><b>Definition</b> <a href="ConnectionManager_8cpp_source.html#l00034">ConnectionManager.cpp:34</a></div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html"><div class="ttname"><a href="classlogger_1_1Logger.html">logger::Logger</a></div><div class="ttdef"><b>Definition</b> <a href="logger_8h_source.html#l00026">logger.h:27</a></div></div>
 <div class="ttc" id="astruct__SERVER__INFO_html"><div class="ttname"><a href="struct__SERVER__INFO.html">_SERVER_INFO</a></div><div class="ttdef"><b>Definition</b> <a href="Server_2VersionManager_2Define_8h_source.html#l00051">Define.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

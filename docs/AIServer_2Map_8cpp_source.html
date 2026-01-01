@@ -993,27 +993,26 @@ $(function(){initNavTree('AIServer_2Map_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        m_byInitRoomCount = 0;</div>
 <div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>    }</div>
 <div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>}</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span><span class="comment"></span> </div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span><span class="comment">/// \brief Checks if a position is valid for the map</span></div>
-<div class="foldopen" id="foldopen00896" data-start="{" data-end="}">
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno"><a class="line" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">  896</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    <span class="keywordtype">int</span> mapMaxX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>((m_sizeMap.cx - 1) * m_fUnitDist);</div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>    <span class="keywordtype">int</span> mapMaxZ = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>((m_sizeMap.cy - 1) * m_fUnitDist);</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span> </div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    <span class="keywordflow">if</span> (x &lt; 0 || x &gt; mapMaxX)</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span> </div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>    <span class="keywordflow">if</span> (z &lt; 0 || z &gt; mapMaxZ)</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span> </div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>}</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span> </div>
+<div class="foldopen" id="foldopen00895" data-start="{" data-end="}">
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno"><a class="line" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">  895</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>    <span class="keywordtype">int</span> mapMaxX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>((m_sizeMap.cx - 1) * m_fUnitDist);</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    <span class="keywordtype">int</span> mapMaxZ = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>((m_sizeMap.cy - 1) * m_fUnitDist);</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span> </div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    <span class="keywordflow">if</span> (x &lt; 0 || x &gt; mapMaxX)</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span> </div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>    <span class="keywordflow">if</span> (z &lt; 0 || z &gt; mapMaxZ)</div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span> </div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>}</div>
 </div>
 <div class="ttc" id="aclassCRoomEvent_html"><div class="ttname"><a href="classCRoomEvent.html">CRoomEvent</a></div><div class="ttdef"><b>Definition</b> <a href="RoomEvent_8h_source.html#l00022">RoomEvent.h:23</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassFile_html_a3d5bcd83f8e56ead8b6c19c112a6d07a"><div class="ttname"><a href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File::Read</a></div><div class="ttdeci">virtual bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr)=0</div><div class="ttdoc">Reads data from the file at the current offset.</div></div>
-<div class="ttc" id="aclassMAP_html_a283a1694eccccc729cc86f930265bd1c"><div class="ttname"><a href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a></div><div class="ttdeci">bool IsValidPosition(float x, float z) const</div><div class="ttdoc">Checks if a position is valid for the map.</div><div class="ttdef"><b>Definition</b> <a href="#l00896">Map.cpp:896</a></div></div>
+<div class="ttc" id="aclassMAP_html_a283a1694eccccc729cc86f930265bd1c"><div class="ttname"><a href="classMAP.html#a283a1694eccccc729cc86f930265bd1c">MAP::IsValidPosition</a></div><div class="ttdeci">bool IsValidPosition(float x, float z) const</div><div class="ttdoc">Checks if a position is valid for the map.</div><div class="ttdef"><b>Definition</b> <a href="#l00895">Map.cpp:895</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

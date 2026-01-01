@@ -165,13 +165,23 @@ $(function(){initNavTree('RoomEvent_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> Initialize();</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">bool</span> CheckEvent(<span class="keywordtype">int</span> event_num, <span class="keywordtype">double</span> currentTime);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">bool</span> RunEvent(<span class="keywordtype">int</span> event_num);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">bool</span> CheckMonsterCount(<span class="keywordtype">int</span> sid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> type);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_class" href="classCNpc.html">CNpc</a>* GetNpcPtr(<span class="keywordtype">int</span> sid);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> EndEventSay(<span class="keywordtype">int</span> option1, <span class="keywordtype">int</span> option2);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"></span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// \brief checks if monster counts match given type</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /// \param sid npcId</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /// \param count number of monsters to check against</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// \param type one of:</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// 1: Count of monsters killed</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// 2: Count of active monsters</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /// 3: All monsters dead (count unused)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /// 4: Reset monster (?)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">bool</span> CheckMonsterCount(<span class="keywordtype">int</span> sid, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> type);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="classCNpc.html">CNpc</a>* GetNpcPtr(<span class="keywordtype">int</span> sid);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> EndEventSay(<span class="keywordtype">int</span> option1, <span class="keywordtype">int</span> option2);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_ROOMEVENT_H</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_ROOMEVENT_H</span></div>
 <div class="ttc" id="aclassAIServerApp_html"><div class="ttname"><a href="classAIServerApp.html">AIServerApp</a></div><div class="ttdef"><b>Definition</b> <a href="AIServerApp_8h_source.html#l00043">AIServerApp.h:44</a></div></div>
 <div class="ttc" id="aclassCNpc_html"><div class="ttname"><a href="classCNpc.html">CNpc</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00114">Npc.h:115</a></div></div>
 <div class="ttc" id="astruct__RoomEvent_html"><div class="ttname"><a href="struct__RoomEvent.html">_RoomEvent</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">RoomEvent.h:13</a></div></div>
