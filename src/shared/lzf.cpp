@@ -1,5 +1,6 @@
 ﻿#include "lzf.h"
 #include <cstddef>
+#include <cstdint>
 
 // NOLINTBEGIN
 

@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include <chrono>
+#include <climits>
 #include <mutex>
 #include <random>
 
