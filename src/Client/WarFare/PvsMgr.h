@@ -12,8 +12,6 @@
 #include "PortalVolume.h"
 #include <string>
 
-const int ciVersion = 1;
-
 typedef std::list<CPortalVolume*>::iterator iter;
 
 class CPvsMgr : public CN3BaseFileAccess
@@ -36,7 +34,7 @@ public:
 	static ShapeInfo* GetShapeInfoByManager(int iID);
 
 private:
-	void Tick(bool bWarp = false, __Vector3 vPos = __Vector3());
+	void Tick(bool bWarp = false, const __Vector3* vPos = nullptr);
 	void Render();
 
 	void DeleteAllPvsObj();
@@ -53,9 +51,9 @@ private:
 	////////////////////////////////////////////////////////////////
 	bool CheckCollisionCameraWithTerrain(__Vector3& vEyeResult, const __Vector3& vAt, float fNP);
 	bool CheckCollisionCameraWithShape(__Vector3& vEyeResult, const __Vector3& vAt, float fNP);
-	float GetHeightWithTerrain(float x, float z, bool bWarp = false);
-	float GetHeightNearstPosWithShape(const __Vector3& vPos, float fDist, __Vector3* pvNormal = nullptr);
-	bool IsInTerrainWithTerrain(float x, float z, __Vector3 vPosBefore = __Vector3());
+	float GetHeightWithTerrain(float x, float z);
+	float GetHeightNearstPosWithShape(const __Vector3& vPos, __Vector3* pvNormal = nullptr);
+	bool IsInTerrainWithTerrain(float x, float z);
 	float GetHeightWithShape(float fX, float fZ, __Vector3* pvNormal = nullptr);
 	BOOL PickWideWithTerrain(int x, int y, __Vector3& vPick);
 	CN3Shape* PickWithShape(int iXScreen, int iYScreen, bool bMustHaveEvent, __Vector3* pvPick = nullptr);

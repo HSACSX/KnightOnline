@@ -22,7 +22,8 @@ public:
 	bool Load(File& file) override;
 	void SetColor(uint32_t dwColor = 0xffffffff);
 	HRESULT Create(int iNumVertices, int iNumIndices);
-	void operator=(const CN3FXPMesh& fxPMesh);
+	CN3FXPMesh& operator=(const CN3FXPMesh& fxPMesh);
+
 	__VertexXyzColorT1* GetColorVertices()
 	{
 		return m_pColorVertices;

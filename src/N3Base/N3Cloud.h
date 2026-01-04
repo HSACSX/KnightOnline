@@ -16,7 +16,7 @@
 const int NUM_CLOUD_VERTEX = 8;
 //const int NUM_CLOUD_VERTEX = 12;
 
-enum e_CLOUDTEX
+enum e_CLOUDTEX : int8_t
 {
 	CLOUD_NONE  = -1,
 	CLOUD_WISPS = 0,
@@ -34,7 +34,7 @@ class CN3Cloud : public CN3Base
 
 public:
 	CN3Cloud();
-	virtual ~CN3Cloud();
+	~CN3Cloud() override;
 
 protected:
 	__VertexXyzColorT2 m_pVertices[NUM_CLOUD_VERTEX]; // 구름층의 버텍스
@@ -58,13 +58,15 @@ public:
 	{
 		m_Color1.ChangeColor(color, fSec);
 	}
+
 	void ChangeColor2(D3DCOLOR color, float fSec)
 	{
 		m_Color2.ChangeColor(color, fSec);
 	}
+
 	void SetCloud(e_CLOUDTEX eCloud1, e_CLOUDTEX eCloud2, float fSec);
 	void Init(const std::string* pszFNs);
-	virtual void Release();
+	void Release() override;
 	virtual void Render();
 	virtual void Tick();
 

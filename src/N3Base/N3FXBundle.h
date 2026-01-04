@@ -63,7 +63,7 @@ public:
 	virtual void Trigger(
 		int iSourceID = 0, int iTargetID = 0, int iTargetJoint = 0, int iSndID = -1);
 	virtual bool Tick();
-	virtual void Duplicate(CN3FXBundle* pDestBundle);
+	void Duplicate(CN3FXBundle* pDestBundle);
 
 	void Init();
 	void Stop(bool immediately = false);
@@ -92,7 +92,7 @@ public:
 
 	//생성자 소멸자..
 	CN3FXBundle();
-	virtual ~CN3FXBundle();
+	~CN3FXBundle() override;
 
 #ifdef _N3TOOL //툴에서만 쓰는 함수들...
 public:

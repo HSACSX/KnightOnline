@@ -23,9 +23,10 @@ public:
 	std::string m_szArg1;
 
 public:
-	void SetVisible(bool bVisible);
+	void SetVisible(bool bVisible) override;
 	void Open(const std::string& msg);
 
+	void Release() override;
 	bool Load(File& file) override;
 	bool ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg) override;
 

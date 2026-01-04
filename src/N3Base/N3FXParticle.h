@@ -41,7 +41,7 @@ public:
 
 	//생성자 소멸자..
 	CN3FXParticle();
-	virtual ~CN3FXParticle();
+	~CN3FXParticle() override;
 };
 
 #endif // #ifndef __N3FXPARTICLE_H__

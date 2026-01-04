@@ -58,7 +58,6 @@ public:
 
 	int NumPart();
 	int NumVertices(int Part);
-	LPDIRECT3DVERTEXBUFFER9 GetVB(int Part);
 
 	CN3FXPartMesh();
 	~CN3FXPartMesh() override;

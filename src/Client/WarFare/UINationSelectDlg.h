@@ -20,6 +20,7 @@ public:
 	class CGameProcNationSelect* m_pProcNationSelectRef;
 
 public:
+	void Release() override;
 	bool Load(File& file) override;
 	bool ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg) override;
 

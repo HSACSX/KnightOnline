@@ -12,20 +12,9 @@
 #include <N3Base/N3UIString.h>
 #include <N3Base/N3UITooltip.h>
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#define new DEBUG_NEW
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CUICharacterSelect::CUICharacterSelect()
 {
-	m_eType = UI_TYPE_BASE;
-	CUICharacterSelect::Release();
+	m_eType        = UI_TYPE_BASE;
 
 	m_pBtnLeft     = nullptr;
 	m_pBtnRight    = nullptr;
@@ -96,10 +85,10 @@ bool CUICharacterSelect::Load(File& file)
 	{
 		// Previous point in sane cases should be be the exit button.
 		// There's a 15 pixel gap between them in the UIF's layout.
-		POINT ptPrev = pt;
-		pt           = m_pBtnBack->GetPos();
-		pt.x         = (int) (pt.x * fRatio);
-		pt.y         = ptPrev.y - 15 - m_pBtnBack->GetHeight();
+		POINT ptPrev {};
+		ptPrev = m_pBtnBack->GetPos();
+		pt.x   = (int) (ptPrev.x * fRatio);
+		pt.y   = ptPrev.y - 15 - m_pBtnBack->GetHeight();
 		m_pBtnBack->SetPos(pt.x, pt.y);
 	}
 
@@ -193,16 +182,13 @@ void CUICharacterSelect::DisplayChrInfo(__CharacterSelectInfo* pCSInfo)
 	if (m_pUserInfoStr != nullptr)
 	{
 		m_pUserInfoStr->SetVisible(true);
-		((CN3UIString*) m_pUserInfoStr)->SetString(szTotal);
+		m_pUserInfoStr->SetString(szTotal);
 	}
 }
 
 void CUICharacterSelect::DontDisplayInfo()
 {
-	CN3UIBase* m_pUserInfoStr;
-	N3_VERIFY_UI_COMPONENT(m_pUserInfoStr, GetChildByID("text00"));
-
-	if (m_pUserInfoStr)
+	if (m_pUserInfoStr != nullptr)
 		m_pUserInfoStr->SetVisible(false);
 }
 
@@ -225,6 +211,9 @@ bool CUICharacterSelect::OnKeyPress(int iKey)
 			case DIK_RETURN:
 				CGameProcedure::s_pProcCharacterSelect->CharacterSelectOrCreate();
 				return true;
+
+			default:
+				break;
 		}
 	}
 

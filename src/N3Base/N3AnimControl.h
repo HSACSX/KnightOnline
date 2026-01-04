@@ -38,17 +38,22 @@ public:
 
 	__AnimData()
 	{
-		fFrmPerSec = 30.0f; // 초당 30프레임이 표준이다..
+		fFrmPerSec         = 30.0f; // 초당 30프레임이 표준이다..
+		fFrmStart          = 0.0f;
+		fFrmEnd            = 0.0f;
+		fFrmPlugTraceStart = 0.0f;
+		fFrmPlugTraceEnd   = 0.0f;
+		fFrmSound0         = 0.0f;
+		fFrmSound1         = 0.0f;
+		fTimeBlend         = 0.25f; // 기본 블렌딩 시간..
 
-		fFrmStart = fFrmEnd = 0;
-		fFrmPlugTraceStart = fFrmPlugTraceEnd = 0;
-		fFrmSound0 = fFrmSound1 = 0;
-		fTimeBlend              = 0.25f; // 기본 블렌딩 시간..
-		iBlendFlags = 0; // 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
-		fFrmStrike0 = fFrmStrike1 = 0;
+		// 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+		iBlendFlags        = 0;
+		fFrmStrike0        = 0.0f;
+		fFrmStrike1        = 0.0f;
 	}
 
-	void operator=(const __AnimData& other)
+	__AnimData& operator=(const __AnimData& other)
 	{
 		fFrmStart          = other.fFrmStart;
 		fFrmEnd            = other.fFrmEnd;
@@ -61,14 +66,16 @@ public:
 		fFrmSound1         = other.fFrmSound1;
 
 		fTimeBlend         = other.fTimeBlend;
-		iBlendFlags =
-			other
-				.iBlendFlags; // 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
 
-		fFrmStrike0 = other.fFrmStrike0;
-		fFrmStrike1 = other.fFrmStrike1;
+		// 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+		iBlendFlags        = other.iBlendFlags;
 
-		szName      = other.szName;
+		fFrmStrike0        = other.fFrmStrike0;
+		fFrmStrike1        = other.fFrmStrike1;
+
+		szName             = other.szName;
+
+		return *this;
 	}
 
 	void Load(File& file)
@@ -87,8 +94,9 @@ public:
 		file.Read(&fFrmSound1, 4);
 
 		file.Read(&fTimeBlend, 4);
-		file.Read(&iBlendFlags,
-			4); // 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+
+		// 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+		file.Read(&iBlendFlags, 4);
 
 		file.Read(&fFrmStrike0, 4);
 		file.Read(&fFrmStrike1, 4);
@@ -122,8 +130,9 @@ public:
 		file.Write(&fFrmSound1, 4);
 
 		file.Write(&fTimeBlend, 4);
-		file.Write(&iBlendFlags,
-			4); // 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+
+		// 블렌딩 플래그 0 이면 걍 블렌딩.. 1이면 루핑시 블렌딩 타임만큼 시간 지연
+		file.Write(&iBlendFlags, 4);
 
 		file.Write(&fFrmStrike0, 4);
 		file.Write(&fFrmStrike1, 4);
@@ -140,21 +149,25 @@ public:
 	{
 		if (fFrmStart != 0)
 			fFrmStart += fFrmOffset;
+
 		if (fFrmEnd != 0)
 			fFrmEnd += fFrmOffset;
 
 		if (fFrmPlugTraceStart != 0)
 			fFrmPlugTraceStart += fFrmOffset;
+
 		if (fFrmPlugTraceEnd != 0)
 			fFrmPlugTraceEnd += fFrmOffset;
 
 		if (fFrmSound0 != 0)
 			fFrmSound0 += fFrmOffset;
+
 		if (fFrmSound1 != 0)
 			fFrmSound1 += fFrmOffset;
 
 		if (fFrmStrike0 != 0)
 			fFrmStrike0 += fFrmOffset;
+
 		if (fFrmStrike1 != 0)
 			fFrmStrike1 += fFrmOffset;
 	}
@@ -192,10 +205,11 @@ public:
 		for (int i = 0; i < iADC; i++)
 		{
 			if (szName == m_Datas[i].szName)
-				return &(m_Datas[i]);
+				return &m_Datas[i];
 		}
 		return nullptr;
 	}
+
 	void Swap(int nAni1, int nAni2);
 	void Delete(int nIndex);
 	__AnimData* Add();

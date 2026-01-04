@@ -72,7 +72,7 @@ public:
 	void ReleaseIndices();
 
 	CN3Mesh();
-	virtual ~CN3Mesh();
+	~CN3Mesh() override;
 };
 
 #endif // !defined(AFX_N3Mesh_h__INCLUDED_)

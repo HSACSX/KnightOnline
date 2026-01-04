@@ -21,7 +21,8 @@ class CN3Moon : public CN3Base
 
 public:
 	CN3Moon();
-	virtual ~CN3Moon();
+	~CN3Moon() override;
+
 	// Attributes
 public:
 	int GetMoonPhaseIndex() const
@@ -40,13 +41,15 @@ protected:
 public:
 	void Init(const std::string& szTexFN);
 	void SetMoonPhase(int iIndex); // 달의 모양 설정
+
+	// 현재 각도설정
 	void SetCurAngle(float fAngle)
 	{
 		m_fCurRadian = DegreesToRadians(fAngle);
-	} // 현재 각도설정
+	}
 
 	void Render(__Matrix44& matView, __Matrix44& matProj);
-	void Release();
+	void Release() override;
 };
 
 #endif // !defined(AFX_N3MOON_H__A89DCBCF_C959_4D36_92C1_E138448717D9__INCLUDED_)

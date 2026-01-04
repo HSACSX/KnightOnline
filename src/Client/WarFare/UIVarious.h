@@ -100,17 +100,18 @@ public:
 	~CUIState() override;
 };
 
-struct __KnightsMemberInfo // 기사 단원 정보..
+// 기사 단원 정보..
+struct __KnightsMemberInfo
 {
 	std::string szName;
-	e_KnightsDuty eDuty;   // 기사단 직위.
-	int iLevel;            // 플레이어 레벨..
-	e_Class eClass;        // 직업.
-	int iConnected;
+	e_KnightsDuty eDuty = KNIGHTS_DUTY_UNKNOWN; // 기사단 직위.
+	int iLevel          = 0;                    // 플레이어 레벨..
+	e_Class eClass      = CLASS_UNKNOWN;        // 직업.
+	int iConnected      = 0;
 };
 
 typedef std::list<__KnightsMemberInfo>::iterator it_KMI;
-#define MAX_CLAN_GRADE 5
+constexpr int MAX_CLAN_GRADE = 5;
 
 class CUIKnights : public CN3UIBase
 {

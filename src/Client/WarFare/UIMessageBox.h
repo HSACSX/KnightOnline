@@ -12,7 +12,7 @@
 #include <N3Base/N3UIBase.h>
 #include "GameDef.h"
 
-#define MB_CANCEL 0x00000006L
+constexpr int MB_CANCEL = 0x00000006L;
 
 class CUIMessageBox : public CN3UIBase
 {

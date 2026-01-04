@@ -34,7 +34,7 @@ protected:
 
 public:
 	CN3UIString();
-	virtual ~CN3UIString();
+	~CN3UIString() override;
 
 	// Attributes
 public:
@@ -42,22 +42,27 @@ public:
 	{
 		m_Color = color;
 	}
+
 	D3DCOLOR GetColor() const
 	{
 		return m_Color;
 	}
-	const std::string& GetString()
+
+	const std::string& GetString() const
 	{
 		return m_szString;
 	}
+
 	int GetLineCount() const
 	{
 		return m_iLineCount;
 	}
+
 	int GetStartLine() const
 	{
 		return m_iStartLine;
 	}
+
 	int GetStringRealWidth(int iNum) const;
 	int GetStringRealWidth(const std::string& szText) const;
 
@@ -67,13 +72,16 @@ public:
 	void Init(CN3UIBase* pParent) override;
 	BOOL MoveOffset(int iOffsetX, int iOffsetY) override; // 글씨찍는 위치도 바뀌어 준다.
 	bool Load(File& file) override;
+
+	// string 버퍼만 지운다.
 	void ClearOnlyStringBuffer()
 	{
 		m_szString.clear();
-	} // string 버퍼만 지운다.
+	}
+
 	void SetStartLine(int iLine); // multiline일경우 시작하는 라인 변경하기
 
-	virtual void operator=(const CN3UIString& other);
+	CN3UIString& operator=(const CN3UIString& other);
 
 #ifdef _N3TOOL
 	bool Save(File& file) override;
@@ -87,38 +95,51 @@ public:
 	virtual void SetString(const std::string& szString);
 	virtual void SetStringAsInt(int iVal);
 	void SetString_NoWordWrap(const std::string& szString); // 글자 정렬 하지 않는다.
-	virtual void SetFont(const std::string& szFontName, uint32_t dwHeight, BOOL bBold,
-		BOOL bItalic);                                      // dwHeight는 point size이다.
+
+	// dwHeight는 point size이다.
+	virtual void SetFont(
+		const std::string& szFontName, uint32_t dwHeight, BOOL bBold, BOOL bItalic);
 
 	BOOL GetTextExtent(const std::string& szString, int iStrLen, SIZE* pSize)
 	{
-		if (m_pDFont)
+		if (m_pDFont != nullptr)
 			return m_pDFont->GetTextExtent(szString, iStrLen, pSize);
+
+		if (pSize != nullptr)
+			*pSize = {};
+
 		return FALSE;
 	}
 
 	uint32_t GetFontColor() const
 	{
-		if (m_pDFont)
+		if (m_pDFont != nullptr)
 			return m_pDFont->GetFontColor();
+
 		return 0xffffffff;
 	}
+
 	const std::string& GetFontName() const
 	{
-		if (m_pDFont)
+		if (m_pDFont != nullptr)
 			return m_pDFont->GetFontName();
+
 		return s_szStringTmp;
 	}
+
 	uint32_t GetFontHeight() const
 	{
-		if (m_pDFont)
+		if (m_pDFont != nullptr)
 			return m_pDFont->GetFontHeight();
+
 		return 0;
 	}
+
 	uint32_t GetFontFlags() const
 	{
-		if (m_pDFont)
+		if (m_pDFont != nullptr)
 			return m_pDFont->GetFontFlags();
+
 		return 0;
 	}
 

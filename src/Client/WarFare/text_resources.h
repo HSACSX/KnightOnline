@@ -3,7 +3,7 @@
 #include "ClientResourceFormatter.h"
 
 // Resource IDs from Data\Texts_us.tbl in the client.
-enum e_TextResourceID
+enum e_TextResourceID : uint16_t
 {
 	IDS_BIND_POINT_FAILED                   = 1001, // Failed designating re-spawn point.
 	IDS_BIND_POINT_REQUEST_FAIL             = 1002, // The re-spawn point is too far away.

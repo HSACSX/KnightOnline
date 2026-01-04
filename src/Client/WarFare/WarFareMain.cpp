@@ -11,8 +11,7 @@
 
 #include <shared/Ini.h>
 
-#include <WinSock2.h>
-#include <time.h>
+#include <ctime>
 
 #include "UIManager.h"
 #include "UIMessageBoxManager.h"
@@ -26,7 +25,7 @@
 HWND CreateMainWindow(HINSTANCE hInstance);
 LRESULT CALLBACK WndProcMain(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE /*hPrevInstance*/, _In_ LPSTR /*lpCmdLine*/, _In_ int nShowCmd)
 {
 	// NOTE: get the current directory and make it known to CN3Base
 	char szPath[_MAX_PATH] = "";
@@ -68,14 +67,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	CN3Base::s_Options.iViewWidth  = ini.GetInt("ViewPort", "Width", 1024);
 	CN3Base::s_Options.iViewHeight = ini.GetInt("ViewPort", "Height", 768);
 
-	if (CN3Base::s_Options.iViewWidth == 1024)
+	if (CN3Base::s_Options.iViewWidth == 1024 || CN3Base::s_Options.iViewWidth == 1366)
 		CN3Base::s_Options.iViewHeight = 768;
 	else if (1280 == CN3Base::s_Options.iViewWidth)
 		CN3Base::s_Options.iViewHeight = 1024;
 	else if (1600 == CN3Base::s_Options.iViewWidth)
 		CN3Base::s_Options.iViewHeight = 1200;
-	else if (1366 == CN3Base::s_Options.iViewWidth)
-		CN3Base::s_Options.iViewHeight = 768;
 	else if (1920 == CN3Base::s_Options.iViewWidth)
 		CN3Base::s_Options.iViewHeight = 1080;
 	/*
@@ -135,7 +132,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		exit(-1);
 	}
 
-	::ShowWindow(hWndMain, nCmdShow); // 보여준다..
+	::ShowWindow(hWndMain, nShowCmd); // 보여준다..
 	::SetActiveWindow(hWndMain);
 
 	CGameProcedure::s_bWindowed = true;
@@ -151,7 +148,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	HDC hDC       = GetDC(hWndMain);
 #endif // #if _DEBUG
 
-	MSG msg      = {};
+	MSG msg {};
 	BOOL bGotMsg = FALSE;
 
 	while (WM_QUIT != msg.message)
@@ -214,8 +211,8 @@ HWND CreateMainWindow(HINSTANCE hInstance)
 		exit(-1);
 	}
 
-	DWORD style;
-	int iViewWidth, iViewHeight;
+	DWORD style    = 0;
+	int iViewWidth = 0, iViewHeight = 0;
 	if (CN3Base::s_Options.bWindowMode)
 	{
 		style = WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_GROUP;
@@ -238,7 +235,8 @@ HWND CreateMainWindow(HINSTANCE hInstance)
 		iViewHeight = CN3Base::s_Options.iViewHeight;
 	}
 
-	return ::CreateWindowExA(0, wc.lpszClassName, "Knight OnLine Client", style, 0, 0, iViewWidth, iViewHeight, 0, 0, hInstance, nullptr);
+	return ::CreateWindowExA(
+		0, wc.lpszClassName, "Knight OnLine Client", style, 0, 0, iViewWidth, iViewHeight, nullptr, nullptr, hInstance, nullptr);
 }
 
 /*
@@ -255,7 +253,7 @@ LRESULT CALLBACK WndProcMain(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 
 			if (wNotifyCode == EN_CHANGE && pEdit)
 			{
-				uint16_t wID = LOWORD(wParam); // item, control, or accelerator identifier
+				// NOLINTNEXTLINE(performance-no-int-to-ptr)
 				HWND hwndCtl = (HWND) lParam;
 
 				if (CN3UIEdit::s_hWndEdit == hwndCtl)
@@ -273,36 +271,28 @@ LRESULT CALLBACK WndProcMain(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 			switch (WSAGETSELECTEVENT(lParam))
 			{
 				case FD_CONNECT:
-				{
-					//TRACE("Socket connected..\n");
-				}
-				break;
+					TRACE("Socket connected");
+					break;
+
 				case FD_CLOSE:
-				{
 					CGameProcedure::ReportServerConnectionClosed(true);
-					//TRACE("Socket closed..\n");
-				}
-				break;
+					TRACE("Socket closed");
+					break;
+
 				case FD_READ:
-				{
 					CGameProcedure::s_pSocket->Receive();
-				}
-				break;
+					break;
+
 				default:
-				{
 					__ASSERT(0, "WM_SOCKETMSG: unknown socket flag.");
-				}
-				break;
+					break;
 			}
 		}
 		break;
 
 		case WM_ACTIVATE:
 		{
-			int iActive       = LOWORD(wParam);        // activation flag
-			int iMinimized    = (BOOL) HIWORD(wParam); // minimized flag
-			HWND hwndPrevious = (HWND) lParam;         // window handle
-
+			int iActive = LOWORD(wParam); // activation flag
 			switch (iActive)
 			{
 				case WA_CLICKACTIVE:
@@ -329,6 +319,9 @@ LRESULT CALLBACK WndProcMain(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 						CLogWriter::Write("WA_INACTIVE.");
 						PostQuitMessage(0);
 					}
+					break;
+
+				default:
 					break;
 			}
 		}
@@ -387,6 +380,9 @@ LRESULT CALLBACK WndProcMain(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 				CGameProcedure::s_pEng->CameraZoom(delta * 0.05f);
 		}
 		break;
+
+		default:
+			break;
 	}
 
 	return DefWindowProc(hWnd, message, wParam, lParam);

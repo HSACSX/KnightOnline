@@ -1,7 +1,9 @@
 ﻿#ifndef _LocalInput_H_
 #define _LocalInput_H_
 
-#include <DInput.h>
+#pragma once
+
+#include <dinput.h>
 
 #include <N3Base/My_3DStruct.h>
 
@@ -112,11 +114,12 @@ public:
 
 	BOOL KeyboardGetKeyState(int nDIKey); // 최근 눌려진 키 검사..
 
-	const POINT MouseGetPos()
+	POINT MouseGetPos() const
 	{
 		return m_ptCurMouse;
 	}
-	const POINT MouseGetPosOld()
+
+	POINT MouseGetPosOld() const
 	{
 		return m_ptOldMouse;
 	}

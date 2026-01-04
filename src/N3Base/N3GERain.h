@@ -15,7 +15,7 @@ class CN3GERain : public CN3GlobalEffect
 {
 public:
 	CN3GERain();
-	virtual ~CN3GERain();
+	~CN3GERain() override;
 
 	// Attributes
 public:
@@ -23,7 +23,8 @@ public:
 	{
 		m_fRainLength = fLen;
 	}
-	void SetVelocity(__Vector3& v)
+
+	void SetVelocity(const __Vector3& v)
 	{
 		m_vVelocity = v;
 	}
@@ -36,9 +37,9 @@ protected:
 
 	// Operations
 public:
-	void Release();
-	void Tick();
-	void Render(__Vector3& vPos);
+	void Release() override;
+	void Tick() override;
+	void Render(__Vector3& vPos) override;
 
 	void Create(float fDensity, float fWidth, float fHeight, float fRainLength,
 		const __Vector3& vVelocity, float fTimeToFade = 3.0f);

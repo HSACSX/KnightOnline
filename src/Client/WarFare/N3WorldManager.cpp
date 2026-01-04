@@ -17,15 +17,6 @@
 #include <N3Base/N3SndObj.h>
 #include <N3Base/N3SndMgr.h>
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CN3WorldManager::CN3WorldManager()
 {
 	m_pActiveWorld = nullptr;

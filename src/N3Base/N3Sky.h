@@ -19,7 +19,7 @@ class CN3Sky : public CN3Base
 
 public:
 	CN3Sky();
-	virtual ~CN3Sky();
+	~CN3Sky() override;
 
 	// Attributes
 public:
@@ -27,8 +27,8 @@ protected:
 	CN3ColorChange m_SkyColor;
 	CN3ColorChange m_FogColor;
 
-	__VertexXyzColor m_vFronts[4];
-	__VertexXyzColor m_Bottom[4];
+	__VertexXyzColor m_vFronts[4] = {};
+	__VertexXyzColor m_Bottom[4]  = {};
 
 	// Operations
 public:

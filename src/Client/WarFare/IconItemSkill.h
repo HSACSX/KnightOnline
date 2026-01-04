@@ -22,6 +22,7 @@ struct __IconItemSkill
 		__TABLE_UPC_SKILL* pSkill; // Skill.. ^^
 	};
 
+	__IconItemSkill();
 	int GetBuyPrice() const;
 	int GetSellPrice(bool bHasPremium = false) const;
 };

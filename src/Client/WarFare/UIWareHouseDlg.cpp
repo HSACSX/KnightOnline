@@ -25,15 +25,6 @@
 #include <N3Base/N3UIEdit.h>
 #include <N3Base/N3SndObj.h>
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CUIWareHouseDlg::CUIWareHouseDlg()
 {
 	m_iCurPage = 0;
@@ -64,7 +55,7 @@ CUIWareHouseDlg::CUIWareHouseDlg()
 
 CUIWareHouseDlg::~CUIWareHouseDlg()
 {
-	Release();
+	CUIWareHouseDlg::Release();
 }
 
 void CUIWareHouseDlg::Release()
@@ -127,11 +118,8 @@ void CUIWareHouseDlg::Render()
 			CN3UIString* pStr = GetChildStringByiOrder(i + 100);
 			if (pStr != nullptr)
 			{
-				if ((GetState() == UI_STATE_ICON_MOVING) && (spItemWare == s_sSelectedIconInfo.pItemSelect))
-				{
-					pStr->SetVisible(false);
-				}
-				else if (spItemWare->pUIIcon->IsVisible())
+				if ((GetState() != UI_STATE_ICON_MOVING || spItemWare != s_sSelectedIconInfo.pItemSelect)
+					&& spItemWare->pUIIcon->IsVisible())
 				{
 					pStr->SetVisible(true);
 					pStr->SetStringAsInt(spItemWare->iCount);
@@ -163,11 +151,7 @@ void CUIWareHouseDlg::Render()
 			CN3UIString* pStr = GetChildStringByiOrder(i);
 			if (pStr != nullptr)
 			{
-				if ((GetState() == UI_STATE_ICON_MOVING) && (spItemInv == s_sSelectedIconInfo.pItemSelect))
-				{
-					pStr->SetVisible(false);
-				}
-				else if (spItemInv->pUIIcon->IsVisible())
+				if ((GetState() != UI_STATE_ICON_MOVING || spItemInv != s_sSelectedIconInfo.pItemSelect) && spItemInv->pUIIcon->IsVisible())
 				{
 					pStr->SetVisible(true);
 					pStr->SetStringAsInt(spItemInv->iCount);
@@ -246,8 +230,6 @@ void CUIWareHouseDlg::InitIconUpdate()
 
 int CUIWareHouseDlg::GetItemiOrder(__IconItemSkill* spItem, e_UIWND_DISTRICT eWndDist)
 {
-	int iReturn = -1;
-
 	switch (eWndDist)
 	{
 		case UIWND_DISTRICT_TRADE_NPC:
@@ -265,9 +247,12 @@ int CUIWareHouseDlg::GetItemiOrder(__IconItemSkill* spItem, e_UIWND_DISTRICT eWn
 					return i;
 			}
 			break;
+
+		default:
+			break;
 	}
 
-	return iReturn;
+	return -1;
 }
 
 RECT CUIWareHouseDlg::GetSampleRect()
@@ -312,6 +297,7 @@ uint32_t CUIWareHouseDlg::MouseProc(uint32_t dwFlags, const POINT& ptCur, const 
 
 	if (s_bWaitFromServer)
 	{
+		// NOLINTNEXTLINE(bugprone-parent-virtual-call)
 		dwRet |= CN3UIBase::MouseProc(dwFlags, ptCur, ptOld);
 		return dwRet;
 	}
@@ -328,13 +314,6 @@ uint32_t CUIWareHouseDlg::MouseProc(uint32_t dwFlags, const POINT& ptCur, const 
 
 bool CUIWareHouseDlg::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 {
-// Temp Define
-#define FAIL_CODE                       \
-	{                                   \
-		SetState(UI_STATE_COMMON_NONE); \
-		return false;                   \
-	}
-
 	if (pSender == nullptr)
 		return false;
 
@@ -429,10 +408,10 @@ bool CUIWareHouseDlg::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 	}
 
 	__IconItemSkill* spItem = nullptr;
-	e_UIWND_DISTRICT eUIWnd;
-	int iOrder;
+	e_UIWND_DISTRICT eUIWnd = UIWND_DISTRICT_UNKNOWN;
+	int iOrder              = -1;
 
-	uint32_t dwBitMask = 0x000f0000;
+	uint32_t dwBitMask      = 0x000f0000;
 
 	switch (dwMsg & dwBitMask)
 	{
@@ -446,12 +425,18 @@ bool CUIWareHouseDlg::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 			s_sSelectedIconInfo.UIWndSelect.UIWnd = UIWND_WARE_HOUSE;
 			eUIWnd                                = GetWndDistrict(spItem);
 			if (eUIWnd == UIWND_DISTRICT_UNKNOWN)
-				FAIL_CODE
+			{
+				SetState(UI_STATE_COMMON_NONE);
+				return false;
+			}
 
 			s_sSelectedIconInfo.UIWndSelect.UIWndDistrict = eUIWnd;
 			iOrder                                        = GetItemiOrder(spItem, eUIWnd);
 			if (iOrder == -1)
-				FAIL_CODE
+			{
+				SetState(UI_STATE_COMMON_NONE);
+				return false;
+			}
 
 			s_sSelectedIconInfo.UIWndSelect.iOrder = iOrder;
 			s_sSelectedIconInfo.pItemSelect        = spItem;
@@ -482,6 +467,9 @@ bool CUIWareHouseDlg::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 				s_sSelectedIconInfo.pItemSelect->pUIIcon->SetRegion(GetSampleRect());
 				s_sSelectedIconInfo.pItemSelect->pUIIcon->SetMoveRect(GetSampleRect());
 			}
+			break;
+
+		default:
 			break;
 	}
 
@@ -649,31 +637,28 @@ void CUIWareHouseDlg::IconRestore()
 				}
 			}
 			break;
+
+		default:
+			break;
 	}
 }
 
 bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 {
-// Temp Define
-#define FAIL_RETURN                     \
-	{                                   \
-		AllHighLightIconFree();         \
-		SetState(UI_STATE_COMMON_NONE); \
-		return false;                   \
-	}
-
 	CN3UIArea* pArea        = nullptr;
 	e_UIWND_DISTRICT eUIWnd = UIWND_DISTRICT_UNKNOWN;
 	if (!m_bVisible)
 		return false;
 
 	// 내가 가졌던 아이콘이 아니면..
-	if (s_sSelectedIconInfo.UIWndSelect.UIWnd != m_eUIWnd)
-		FAIL_RETURN
-
-	if (s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_NPC
-		&& s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_MY)
-		FAIL_RETURN
+	if ((s_sSelectedIconInfo.UIWndSelect.UIWnd != m_eUIWnd)
+		|| (s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_NPC
+			&& s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_MY))
+	{
+		AllHighLightIconFree();
+		SetState(UI_STATE_COMMON_NONE);
+		return false;
+	}
 
 	// 내가 가졌던 아이콘이면.. npc영역인지 검사한다..
 	int iDestiOrder = -1;
@@ -706,7 +691,11 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 	}
 
 	if (!bFound)
-		FAIL_RETURN
+	{
+		AllHighLightIconFree();
+		SetState(UI_STATE_COMMON_NONE);
+		return false;
+	}
 
 	// 본격적으로 Recovery Info를 활용하기 시작한다..
 	// 먼저 WaitFromServer를 On으로 하고.. Select Info를 Recovery Info로 복사.. 이때 Dest는 팰요없다..
@@ -772,7 +761,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 								s_bWaitFromServer              = false;
 								s_sRecoveryJobInfo.pItemSource = nullptr;
 								s_sRecoveryJobInfo.pItemTarget = nullptr;
-								FAIL_RETURN
+
+								AllHighLightIconFree();
+								SetState(UI_STATE_COMMON_NONE);
+								return false;
 							}
 						}
 					}
@@ -781,7 +773,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_bWaitFromServer                        = false;
 
 					s_pCountableItemEdit->Open(UIWND_WARE_HOUSE, s_sSelectedIconInfo.UIWndSelect.UIWndDistrict, false);
-					FAIL_RETURN
 				}
 				else
 				{
@@ -807,7 +798,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 							s_bWaitFromServer              = false;
 							s_sRecoveryJobInfo.pItemSource = nullptr;
 							s_sRecoveryJobInfo.pItemTarget = nullptr;
-							FAIL_RETURN
+
+							AllHighLightIconFree();
+							SetState(UI_STATE_COMMON_NONE);
+							return false;
 						}
 					}
 
@@ -823,7 +817,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 						s_bWaitFromServer              = false;
 						s_sRecoveryJobInfo.pItemSource = nullptr;
 						s_sRecoveryJobInfo.pItemTarget = nullptr;
-						FAIL_RETURN
+
+						AllHighLightIconFree();
+						SetState(UI_STATE_COMMON_NONE);
+						return false;
 					}
 
 					SendToServerFromWareMsg(
@@ -839,13 +836,12 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 						m_pMyWareInv[iDestiOrder]->pUIIcon->SetRegion(pArea->GetRegion());
 						m_pMyWareInv[iDestiOrder]->pUIIcon->SetMoveRect(pArea->GetRegion());
 					}
-					FAIL_RETURN
 				}
 			}
 			else
 			{
 				// 이동..
-				__IconItemSkill *spItemSource, *spItemTarget = nullptr;
+				__IconItemSkill *spItemSource = nullptr, *spItemTarget = nullptr;
 				spItemSource = s_sRecoveryJobInfo.pItemSource;
 
 				pArea        = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_NPC, iDestiOrder);
@@ -864,7 +860,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_bWaitFromServer              = false;
 					s_sRecoveryJobInfo.pItemSource = nullptr;
 					s_sRecoveryJobInfo.pItemTarget = nullptr;
-					FAIL_RETURN
+
+					AllHighLightIconFree();
+					SetState(UI_STATE_COMMON_NONE);
+					return false;
 				}
 				else
 				{
@@ -877,8 +876,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 				// 이동 메시지를 보낸다..
 				SendToServerWareToWareMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
 					m_iCurPage, s_sRecoveryJobInfo.UIWndSourceStart.iOrder, iDestiOrder);
-
-				FAIL_RETURN
 			}
 			break;
 
@@ -947,7 +944,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 									s_bWaitFromServer              = false;
 									s_sRecoveryJobInfo.pItemSource = nullptr;
 									s_sRecoveryJobInfo.pItemTarget = nullptr;
-									FAIL_RETURN
+
+									AllHighLightIconFree();
+									SetState(UI_STATE_COMMON_NONE);
+									return false;
 								}
 							}
 						}
@@ -961,7 +961,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_bWaitFromServer = false;
 
 					s_pCountableItemEdit->Open(UIWND_WARE_HOUSE, s_sSelectedIconInfo.UIWndSelect.UIWndDistrict, false);
-					FAIL_RETURN
 				}
 				else
 				{
@@ -1000,7 +999,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 							s_bWaitFromServer              = false;
 							s_sRecoveryJobInfo.pItemSource = nullptr;
 							s_sRecoveryJobInfo.pItemTarget = nullptr;
-							FAIL_RETURN
+
+							AllHighLightIconFree();
+							SetState(UI_STATE_COMMON_NONE);
+							return false;
 						}
 					}
 					else
@@ -1025,14 +1027,12 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 
 					if (s_sRecoveryJobInfo.m_iPage != m_iCurPage)
 						m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetVisibleWithNoSound(false);
-
-					FAIL_RETURN
 				}
 			}
 			else
 			{
 				// 이동..
-				__IconItemSkill *spItemSource, *spItemTarget = nullptr;
+				__IconItemSkill *spItemSource = nullptr, *spItemTarget = nullptr;
 				spItemSource = s_sRecoveryJobInfo.pItemSource;
 
 				pArea        = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_MY, iDestiOrder);
@@ -1076,9 +1076,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 				// 이동 메시지를 보낸다..
 				SendToServerInvToInvMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
 					m_iCurPage, s_sRecoveryJobInfo.UIWndSourceStart.iOrder, iDestiOrder);
-
-				FAIL_RETURN
 			}
+			break;
+
+		default:
 			break;
 	}
 
@@ -1088,13 +1089,13 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 	return false;
 }
 
-void CUIWareHouseDlg::CancelIconDrop(__IconItemSkill* spItem)
+void CUIWareHouseDlg::CancelIconDrop(__IconItemSkill* /*spItem*/)
 {
 	AllHighLightIconFree();
 	SetState(UI_STATE_COMMON_NONE);
 }
 
-void CUIWareHouseDlg::AcceptIconDrop(__IconItemSkill* spItem)
+void CUIWareHouseDlg::AcceptIconDrop(__IconItemSkill* /*spItem*/)
 {
 	AllHighLightIconFree();
 	SetState(UI_STATE_COMMON_NONE);
@@ -1461,11 +1462,11 @@ void CUIWareHouseDlg::ReceiveResultInvToInvMsg(uint8_t bResult)
 
 void CUIWareHouseDlg::ItemCountOK()
 {
-	int iGold               = s_pCountableItemEdit->GetQuantity();
-	__IconItemSkill* spItem = nullptr;
-	CN3UIArea* pArea        = nullptr;
-	float fUVAspect         = 45.0f / 64.0f;
-	int iWeight;
+	constexpr float UVAspect     = 45.0f / 64.0f;
+	int iGold                    = s_pCountableItemEdit->GetQuantity();
+	__IconItemSkill* spItem      = nullptr;
+	CN3UIArea* pArea             = nullptr;
+	int iWeight                  = 0;
 	__InfoPlayerMySelf* pInfoExt = &CGameBase::s_pPlayer->m_InfoExt;
 
 	switch (s_pCountableItemEdit->GetCallerWndDistrict())
@@ -1556,6 +1557,9 @@ void CUIWareHouseDlg::ItemCountOK()
 						return;
 					}
 					break;
+
+				default:
+					break;
 			}
 
 			spItem            = m_pMyWare[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
@@ -1579,7 +1583,7 @@ void CUIWareHouseDlg::ItemCountOK()
 				spItemNew->pUIIcon         = new CN3UIIcon();
 				spItemNew->pUIIcon->Init(this);
 				spItemNew->pUIIcon->SetTex(spItem->szIconFN);
-				spItemNew->pUIIcon->SetUVRect(0, 0, fUVAspect, fUVAspect);
+				spItemNew->pUIIcon->SetUVRect(0, 0, UVAspect, UVAspect);
 				spItemNew->pUIIcon->SetUIType(UI_TYPE_ICON);
 				spItemNew->pUIIcon->SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);
 				spItemNew->pUIIcon->SetVisible(true);
@@ -1665,6 +1669,9 @@ void CUIWareHouseDlg::ItemCountOK()
 						}
 					}
 					break;
+
+				default:
+					break;
 			}
 
 			spItem            = m_pMyWareInv[s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
@@ -1689,7 +1696,7 @@ void CUIWareHouseDlg::ItemCountOK()
 				spItemNew->pUIIcon         = new CN3UIIcon();
 				spItemNew->pUIIcon->Init(this);
 				spItemNew->pUIIcon->SetTex(spItem->szIconFN);
-				spItemNew->pUIIcon->SetUVRect(0, 0, fUVAspect, fUVAspect);
+				spItemNew->pUIIcon->SetUVRect(0, 0, UVAspect, UVAspect);
 				spItemNew->pUIIcon->SetUIType(UI_TYPE_ICON);
 				spItemNew->pUIIcon->SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);
 				spItemNew->pUIIcon->SetVisible(true);
@@ -1718,6 +1725,9 @@ void CUIWareHouseDlg::ItemCountOK()
 			SendToServerToWareMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
 				s_sRecoveryJobInfo.m_iPage, s_sRecoveryJobInfo.UIWndSourceStart.iOrder, s_sRecoveryJobInfo.UIWndSourceEnd.iOrder, iGold);
 
+			break;
+
+		default:
 			break;
 	}
 
@@ -1816,10 +1826,10 @@ void CUIWareHouseDlg::AddItemInWare(int iItem, int iDurability, int iCount, int 
 		return;
 	}
 
-	e_PartPosition ePart;
-	e_PlugPosition ePlug;
+	e_PartPosition ePart = PART_POS_UNKNOWN;
+	e_PlugPosition ePlug = PLUG_POS_UNKNOWN;
 	// 아이템에 따른 파일 이름을 만들어서
-	e_ItemType eType = CGameBase::MakeResrcFileNameForUPC(pItem, pItemExt, nullptr, &szIconFN, ePart, ePlug);
+	e_ItemType eType     = CGameBase::MakeResrcFileNameForUPC(pItem, pItemExt, nullptr, &szIconFN, ePart, ePlug);
 	if (ITEM_TYPE_UNKNOWN == eType)
 		CLogWriter::Write("MyInfo - slot - Unknown Item");
 	__ASSERT(ITEM_TYPE_UNKNOWN != eType, "Unknown Item");
@@ -1833,14 +1843,13 @@ void CUIWareHouseDlg::AddItemInWare(int iItem, int iDurability, int iCount, int 
 	spItem->iDurability                                         = iDurability;
 
 	m_pMyWare[iIndex / MAX_ITEM_TRADE][iIndex % MAX_ITEM_TRADE] = spItem;
-	//TRACE("Init Inv Msg Inve %d, iOrder %d \n", iItem, iIndex);
 }
 
 // 돈을 넣는 경우..
 void CUIWareHouseDlg::GoldCountToWareOK()
 {
 	// 인벤토리의 값..
-	int iGold, iMyMoney, iWareMoney;
+	int iGold = 0, iMyMoney = 0, iWareMoney = 0;
 	std::string str;
 
 	// 돈을 보관함에 보관하는 경우..
@@ -1897,7 +1906,7 @@ void CUIWareHouseDlg::GoldCountToWareOK()
 // 돈을 빼는 경우..
 void CUIWareHouseDlg::GoldCountFromWareOK()
 {
-	int iGold, iMyMoney, iWareMoney; // 인벤토리의 값..
+	int iGold = 0, iMyMoney = 0, iWareMoney = 0; // 인벤토리의 값..
 	std::string str;
 
 	// 돈을 보관함에서 빼는 경우..
@@ -1985,7 +1994,7 @@ void CUIWareHouseDlg::ReceiveResultGoldToWareFail()
 	m_bSendedItemGold = false;
 
 	// 인벤토리의 값..
-	int iGold, iMyMoney, iWareMoney;
+	int iGold = 0, iMyMoney = 0, iWareMoney = 0;
 	std::string str;
 
 	// 돈을 보관함에서 빼는 경우..
@@ -2027,7 +2036,7 @@ void CUIWareHouseDlg::ReceiveResultGoldFromWareFail()
 	m_bSendedItemGold = false;
 
 	// 인벤토리의 값..
-	int iGold, iMyMoney, iWareMoney;
+	int iGold = 0, iMyMoney = 0, iWareMoney = 0;
 	std::string str;
 
 	// 돈을 보관함에 보관하는 경우..
@@ -2078,6 +2087,9 @@ bool CUIWareHouseDlg::OnKeyPress(int iKey)
 		case DIK_ESCAPE:
 			ReceiveMessage(m_pBtnClose, UIMSG_BUTTON_CLICK);
 			return true;
+
+		default:
+			break;
 	}
 
 	return CN3UIBase::OnKeyPress(iKey);

@@ -1,23 +1,21 @@
 ﻿#include "StdAfxBase.h"
-#include <stdarg.h>
 
-void FormattedDebugString(const char* fmt, ...)
+void DebugString(const std::string_view logMessage)
 {
-	char buf[4096], *p = buf;
-	va_list args;
-	int n;
+#ifdef _WIN32
+	constexpr std::string_view NewLine = "\r\n";
+#else
+	constexpr std::string_view NewLine = "\n";
+#endif
 
-	va_start(args, fmt);
-	n = _vsnprintf(p, sizeof(buf) - 3, fmt, args); // allow for proper linefeed & null terminator
-	va_end(args);
-	p    += (n < 0) ? sizeof(buf) - 3 : n;
-	*p++  = '\r';
-	*p++  = '\n';
-	*p    = '\0';
+	std::string outputMessage;
+	outputMessage.reserve(logMessage.size() + NewLine.size());
+	outputMessage  = logMessage;
+	outputMessage += NewLine;
 
 #ifdef WIN32
-	OutputDebugStringA(buf);
+	OutputDebugStringA(outputMessage.c_str());
 #else
-	printf("%s", buf);
+	printf("%s", outputMessage.c_str());
 #endif
 }

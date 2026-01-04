@@ -16,10 +16,10 @@
 #include <queue>
 #include <string>
 
-#define WM_SOCKETMSG     (WM_USER + 1)
-#define RECEIVE_BUF_SIZE 262144 // 최대 버퍼..
+constexpr int WM_SOCKETMSG     = (WM_USER + 1);
+constexpr int RECEIVE_BUF_SIZE = 262144; // 최대 버퍼..
 
-#define _CRYPTION               // 암호화 사용
+#define _CRYPTION                        // 암호화 사용
 #ifdef _CRYPTION
 #include <shared/JvCryption.h>
 #endif
@@ -79,12 +79,13 @@ public:
 	{
 		__ASSERT(len > 0 && len <= GetValidCount(), "GetData error");
 		if (len < m_iBufSize - m_iHeadPos)
+		{
 			CopyMemory(pData, m_pBuffer + m_iHeadPos, len);
+		}
 		else
 		{
-			int fc, sc;
-			fc = m_iBufSize - m_iHeadPos;
-			sc = len - fc;
+			int fc = m_iBufSize - m_iHeadPos;
+			int sc = len - fc;
 			CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);
 			if (sc)
 				CopyMemory(pData + fc, m_pBuffer, sc);
@@ -93,11 +94,10 @@ public:
 	int GetOutData(uint8_t* pData) //HeadPos, 변화
 	{
 		int len = GetValidCount();
-		int fc, sc;
-		fc = m_iBufSize - m_iHeadPos;
+		int fc  = m_iBufSize - m_iHeadPos;
 		if (len > fc)
 		{
-			sc = len - fc;
+			int sc = len - fc;
 			CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);
 			CopyMemory(pData + fc, m_pBuffer, sc);
 			m_iHeadPos = sc;
@@ -110,8 +110,10 @@ public:
 			if (m_iHeadPos == m_iBufSize)
 				m_iHeadPos = 0;
 		}
+
 		return len;
 	}
+
 	void PutData(uint8_t& data)
 	{
 		int len = 1;
@@ -233,7 +235,7 @@ struct __SocketStatisics
 class CAPISocket
 {
 protected:
-	void* m_hSocket;
+	SOCKET m_hSocket;
 
 	HWND m_hWndTarget;
 	std::string m_szIP;
@@ -256,8 +258,9 @@ public:
 	std::queue<Packet*> m_qRecvPkt;
 
 	BOOL m_bEnableSend; // 보내기 가능..?
+
 public:
-	int Connect(HWND hWnd, const char* pszIP, uint32_t port);
+	int Connect(HWND hWnd, const std::string& szIP, uint32_t port);
 	void Disconnect();
 	BOOL IsConnected()
 	{

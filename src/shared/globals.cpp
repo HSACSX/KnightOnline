@@ -12,7 +12,7 @@ void SeedRNG()
 	if (!s_rngSeeded)
 	{
 		uint32_t nowTime = static_cast<uint32_t>(
-			std::chrono::high_resolution_clock::now().time_since_epoch().count() & 0xFFFFFFFF);
+			std::chrono::high_resolution_clock::now().time_since_epoch().count() & UINT_MAX);
 		s_randomNumberGenerator.seed(nowTime);
 		s_rngSeeded = true;
 	}

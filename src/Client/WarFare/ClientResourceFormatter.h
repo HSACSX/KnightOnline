@@ -50,8 +50,4 @@ inline std::string format_text_resource(uint32_t resourceId, Args&&... args)
 	}
 }
 
-inline std::string format_text_resource(uint32_t resourceId, const std::string_view str)
-{
-	return format_text_resource(resourceId, str);
-}
 } // namespace fmt

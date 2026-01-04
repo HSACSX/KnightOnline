@@ -11,7 +11,7 @@
 
 #include "N3UIBase.h"
 
-enum eUI_AREA_TYPE
+enum eUI_AREA_TYPE : uint8_t
 {
 	UI_AREA_TYPE_NONE = 0,
 	UI_AREA_TYPE_SLOT,
@@ -51,7 +51,7 @@ public:
 
 #ifdef _N3TOOL
 	// 툴에서 사용하기 위한 함수
-	virtual void operator=(const CN3UIArea& other);
+	CN3UIArea& operator=(const CN3UIArea& other);
 	bool Save(File& file) override;
 #endif
 };

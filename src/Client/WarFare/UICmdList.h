@@ -13,7 +13,7 @@
 
 #include <unordered_map>
 
-enum e_ChatCmd
+enum e_ChatCmd : uint8_t
 {
 	// Private
 	CMD_WHISPER,
@@ -106,7 +106,7 @@ enum e_ChatCmd
 	CMD_REWARD,
 
 	CMD_COUNT,
-	CMD_UNKNOWN = 0xffffffff
+	CMD_UNKNOWN
 };
 
 class CUICmdEdit;

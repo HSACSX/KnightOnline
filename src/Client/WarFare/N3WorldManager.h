@@ -24,16 +24,15 @@ public:
 	void InitWorld(int iZoneID, const __Vector3& vPosPlayer);
 
 	CN3WorldManager();
-	virtual ~CN3WorldManager();
+	~CN3WorldManager() override;
 
 	void Tick();
 
-	bool IsIndoor()
+	bool IsIndoor() const
 	{
 		return m_bIndoor;
 	}
 
-	//..
 	CN3WorldBase* GetActiveWorld()
 	{
 		//		__ASSERT(0, "No Acitive World!!");

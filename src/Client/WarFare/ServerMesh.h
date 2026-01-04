@@ -14,12 +14,12 @@
 class CN3Terrain;
 class CServerMesh : public CN3Base
 {
-	__Vector3 m_vSMesh[48];
-	void AutoConcMesh(D3DCOLOR color, float left, float right, float bottom, float top, float low, float high, int iStart);
+	__Vector3 m_vSMesh[48] = {};
+	void AutoConcMesh(float left, float right, float bottom, float top, float low, float high, int iStart);
 
 public:
 	CServerMesh();
-	virtual ~CServerMesh();
+	~CServerMesh() override;
 
 	void Tick(CN3Terrain* pTerrain, const __Vector3& vPosPlayer);
 	void Render();

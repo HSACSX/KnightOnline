@@ -6,15 +6,6 @@
 #include "N3FXPartBase.h"
 #include "N3FXBundle.h"
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CN3FXPartBase::CN3FXPartBase()
 {
 	m_iVersion     = 0;
@@ -128,11 +119,11 @@ bool CN3FXPartBase::ParseScript(
 	//	texture 이름과 개수 읽기.
 	if (lstrcmpi(szCommand, "<texture>") == 0)
 	{
-		m_iNumTex                  = atoi(szBuff1);
-		m_ppRefTex                 = new CN3Texture*[m_iNumTex];
+		m_iNumTex  = atoi(szBuff1);
+		m_ppRefTex = new CN3Texture*[m_iNumTex];
 
-		char szPathName[_MAX_PATH] = {}, szDir[_MAX_DIR] = {}, szFileName[_MAX_PATH] = {},
-			 szExt[_MAX_EXT] = {};
+		char szPathName[_MAX_PATH] {}, szDir[_MAX_DIR] {}, szFileName[_MAX_PATH] {},
+			szExt[_MAX_EXT] {};
 
 		strcpy(szPathName, szBuff0);
 		_splitpath(szPathName, nullptr, szDir, szFileName, szExt);
@@ -465,6 +456,11 @@ bool CN3FXPartBase::IsDead()
 	return true;
 }
 
+float CN3FXPartBase::GetGroundHeight(float /*x*/, float /*z*/)
+{
+	return 0.01f;
+}
+
 //
 //	Render..
 //
@@ -481,7 +477,7 @@ bool CN3FXPartBase::Load(File& file)
 	int iType = m_iType;
 #endif
 
-	uint8_t cTmp;
+	uint8_t cTmp = 0;
 
 	file.Read(&cTmp, sizeof(uint8_t));
 	m_iVersion = (int) cTmp;
@@ -495,7 +491,7 @@ bool CN3FXPartBase::Load(File& file)
 
 	if (m_iBaseVersion >= 3)
 	{
-		int iIDK0, iIDK1;
+		int iIDK0 = 0, iIDK1 = 0;
 		file.Read(&iIDK0, sizeof(int));
 		file.Read(&iIDK1, sizeof(int));
 	}
@@ -565,8 +561,8 @@ bool CN3FXPartBase::Load(File& file)
 #if defined(_DEBUG)
 	if (m_iBaseVersion > SUPPORTED_PART_BASE_VERSION)
 	{
-		TRACE("!!! WARNING: CN3FXPartBase::Load(%s [type=%d]) encountered base version %d (part "
-			  "version %d). Needs support!",
+		TRACE("!!! WARNING: CN3FXPartBase::Load({} [type={}]) encountered base version {} (part "
+			  "version {}). Needs support!",
 			m_pRefBundle != nullptr ? m_pRefBundle->FileName().c_str() : "<unknown>", iType,
 			m_iBaseVersion, m_iVersion);
 	}
@@ -589,9 +585,7 @@ bool CN3FXPartBase::Load(File& file)
 //
 bool CN3FXPartBase::Save(File& file)
 {
-	uint8_t cTmp;
-
-	cTmp = (uint8_t) m_iVersion;
+	uint8_t cTmp = (uint8_t) m_iVersion;
 	file.Write(&cTmp, sizeof(uint8_t));
 
 	cTmp = (uint8_t) m_iBaseVersion;
@@ -638,19 +632,22 @@ bool CN3FXPartBase::Save(File& file)
 
 	m_dwRenderFlag = RF_ALPHABLENDING | RF_NOTUSEFOG | RF_DIFFUSEALPHA | RF_NOTUSELIGHT
 					 | RF_DOUBLESIDED | RF_NOTZWRITE | RF_NOTZBUFFER;
-	if (m_dwZEnable == D3DZB_TRUE)
+	if (static_cast<D3DZBUFFERTYPE>(m_dwZEnable) == D3DZB_TRUE)
 		m_dwRenderFlag ^= RF_NOTZBUFFER;
+
 	if (m_dwZWrite == TRUE)
 		m_dwRenderFlag ^= RF_NOTZWRITE;
+
 	if (m_dwDoubleSide != D3DCULL_NONE)
 		m_dwRenderFlag ^= RF_DOUBLESIDED;
+
 	if (m_dwLight == TRUE)
 		m_dwRenderFlag ^= RF_NOTUSELIGHT;
+
 	if (m_bAlpha != TRUE)
 		m_dwRenderFlag ^= RF_ALPHABLENDING;
 
 	file.Write(&m_dwRenderFlag, sizeof(uint32_t));
-
 	return true;
 }
 

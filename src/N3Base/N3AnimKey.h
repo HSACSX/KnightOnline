@@ -11,11 +11,11 @@
 
 #include "N3Base.h"
 
-enum ANIMATION_KEY_TYPE
+enum ANIMATION_KEY_TYPE : uint8_t
 {
 	KEY_VECTOR3    = 0,
 	KEY_QUATERNION = 1,
-	KEY_UNKNOWN    = 0xffffffff
+	KEY_UNKNOWN    = 0xff
 };
 
 class CN3AnimKey : CN3Base
@@ -29,16 +29,19 @@ protected:
 	void* m_pDatas;
 
 public:
-	ANIMATION_KEY_TYPE Type()
+	// 키 형태, 벡터워 쿼터니언 형태가 있다..
+	ANIMATION_KEY_TYPE Type() const
 	{
 		return m_eType;
-	} // 키 형태, 벡터워 쿼터니언 형태가 있다..
+	}
+
 	void Add(CN3AnimKey& AKSrc, int nIndexS, int nIndexE);
-	//	void	Translate(int nIndexStart, int nIndexEnd, float fDelta, int nKFlags);
-	bool DataGet(float fFrm, __Vector3& v)
+
+	bool DataGet(float fFrm, __Vector3& v) const
 	{
 		if (KEY_VECTOR3 != m_eType)
 			return false;
+
 		if (m_nCount <= 0)
 			return false;
 
@@ -55,7 +58,9 @@ public:
 			fDelta = 0;
 		}
 		else
+		{
 			fDelta = (fFrm - nIndex * fD) / fD;
+		}
 
 		if (0.0f != fDelta)
 		{
@@ -66,10 +71,12 @@ public:
 			v = ((__Vector3*) m_pDatas)[nIndex];
 		return true;
 	}
-	bool DataGet(float fFrm, __Quaternion& q)
+
+	bool DataGet(float fFrm, __Quaternion& q) const
 	{
 		if (KEY_QUATERNION != m_eType)
 			return false;
+
 		if (m_nCount <= 0)
 			return false;
 
@@ -86,7 +93,9 @@ public:
 			fDelta = 0;
 		}
 		else
+		{
 			fDelta = (fFrm - nIndex * fD) / fD;
+		}
 
 		if (0.0f != fDelta)
 			q.Slerp(
@@ -113,26 +122,30 @@ public:
 	bool Save(File& file);
 #endif // end of
 
-	int Count()
+	int Count() const
 	{
 		return m_nCount;
 	}
-	float SamplingRate()
+
+	float SamplingRate() const
 	{
 		return m_fSamplingRate;
 	}
-	void Release();
+
+	void Release() override;
 	void Alloc(int nCount, float fSamplingRate = 30.0f, ANIMATION_KEY_TYPE eType = KEY_VECTOR3);
 
 	void Duplicate(CN3AnimKey* pSrc);
+
 	void* GetDatas()
 	{
 		return m_pDatas;
 	}
-	void MultiplyDataVector(__Vector3 vM);
+
+	void MultiplyDataVector(const __Vector3& vM);
 
 	CN3AnimKey();
-	virtual ~CN3AnimKey();
+	~CN3AnimKey() override;
 };
 
 #endif // !defined(AFX_N3AnimKey_h__INCLUDED_)

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <N3BASE/N3UIBase.h>
+#include <N3Base/N3UIBase.h>
 
 class CUIUpgradeSelect : public CN3UIBase
 {

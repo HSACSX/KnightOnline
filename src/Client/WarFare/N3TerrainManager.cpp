@@ -7,21 +7,11 @@
 #include "N3Terrain.h"
 #include "N3ClientShapeMgr.h"
 #include "BirdMng.h"
-//#include "GrassMng.h"
 #include "GameProcedure.h"
 #include "PlayerMySelf.h"
 
 #include <N3Base/N3SkyMng.h>
 #include <N3Base/LogWriter.h>
-
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
 
 CN3TerrainManager::CN3TerrainManager()
 {
@@ -65,7 +55,7 @@ CN3TerrainManager::~CN3TerrainManager()
 
 /////////////////////////////////////////////////////////////////////
 
-void CN3TerrainManager::InitWorld(int iZoneID, const __Vector3& vPosPlayer)
+void CN3TerrainManager::InitWorld(int iZoneID, const __Vector3& /*vPosPlayer*/)
 {
 	__TABLE_ZONE* pZone = s_pTbl_Zones.Find(s_pPlayer->m_InfoExt.iZoneCur);
 	if (pZone == nullptr)
@@ -158,7 +148,7 @@ bool CN3TerrainManager::CheckCollisionCameraWithTerrain(__Vector3& vEyeResult, c
 		return false;
 }
 
-float CN3TerrainManager::GetHeightWithTerrain(float x, float z, bool bWarp)
+float CN3TerrainManager::GetHeightWithTerrain(float x, float z)
 {
 	if (m_pTerrain)
 		return m_pTerrain->GetHeight(x, z);
@@ -196,7 +186,7 @@ float CN3TerrainManager::GetWidthByMeterWithTerrain()
 		return -FLT_MAX;
 }
 
-bool CN3TerrainManager::IsInTerrainWithTerrain(float x, float z, __Vector3 vPosBefore)
+bool CN3TerrainManager::IsInTerrainWithTerrain(float x, float z)
 {
 	if (m_pTerrain)
 		return m_pTerrain->IsInTerrain(x, z);
@@ -221,10 +211,10 @@ bool CN3TerrainManager::CheckCollisionCameraWithShape(__Vector3& vEyeResult, con
 		return false;
 }
 
-float CN3TerrainManager::GetHeightNearstPosWithShape(const __Vector3& vPos, float fDist, __Vector3* pvNormal)
+float CN3TerrainManager::GetHeightNearstPosWithShape(const __Vector3& vPos, __Vector3* pvNormal)
 {
 	if (m_pShapes)
-		return m_pShapes->GetHeightNearstPos(vPos, fDist, pvNormal);
+		return m_pShapes->GetHeightNearstPos(vPos, pvNormal);
 	else
 		return -FLT_MAX;
 }

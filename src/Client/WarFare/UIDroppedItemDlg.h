@@ -40,8 +40,7 @@ public:
 	void Render() override;
 	void EnterDroppedState(int xpos, int ypos);
 	void LeaveDroppedState();
-	void GetItemByIDToInventory(
-		uint8_t bResult, int iItemId, int iGold, int iPos, int iItemCount, int iStrLen, const std::string& characterName);
+	void GetItemByIDToInventory(uint8_t bResult, int iItemId, int iGold, int iPos, int iItemCount, const std::string& characterName);
 	void AddToItemTable(int iItemId, int iItemCount, int iOrder);
 	void AddToItemTableToInventory(int iItemId, int iItemCount, int iOrder);
 

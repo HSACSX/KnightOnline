@@ -21,9 +21,11 @@ public:
 	// 하위 셀 데이터
 	struct __CellSub
 	{
-		int nCCPolyCount; // Collision Check Polygon Count
-		uint32_t*
-			pdwCCVertIndices; // Collision Check Polygon Vertex Indices - wCCPolyCount * 3 만큼 생성된다.
+		// Collision Check Polygon Count
+		int nCCPolyCount           = 0;
+
+		// Collision Check Polygon Vertex Indices - wCCPolyCount * 3 만큼 생성된다.
+		uint32_t* pdwCCVertIndices = nullptr;
 
 		__CellSub();
 		void Load(File& fs);
@@ -33,8 +35,8 @@ public:
 	// 기본 셀 데이터
 	struct __CellMain
 	{
-		int nShapeCount;          // Shape Count;
-		uint16_t* pwShapeIndices; // Shape Indices
+		int nShapeCount          = 0;
+		uint16_t* pwShapeIndices = nullptr;
 		__CellSub SubCells[CELL_MAIN_DIVIDE][CELL_MAIN_DIVIDE];
 
 		__CellMain();
@@ -42,12 +44,12 @@ public:
 		~__CellMain();
 	};
 
-	__Vector3* m_pvCollisions;
+	__Vector3* m_pvCollisions = nullptr;
 
 protected:
-	float m_fMapWidth;  // 맵 너비.. 미터 단위
-	float m_fMapLength; // 맵 길이.. 미터 단위
-	int m_nCollisionFaceCount;
+	float m_fMapWidth         = 0.0f; // 맵 너비.. 미터 단위
+	float m_fMapLength        = 0.0f; // 맵 길이.. 미터 단위
+	int m_nCollisionFaceCount = 0;
 	__CellMain* m_pCells[MAX_CELL_MAIN][MAX_CELL_MAIN];
 
 public:

@@ -6,23 +6,16 @@
 
 #include <N3Base/N3Texture.h>
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-#define WAVE_TOP  0.02f
-//#define WAVE_STEP		0.0005f
-#define WAVE_STEP 0.001f
+constexpr float WAVE_TOP  = 0.02f;
+constexpr float WAVE_STEP = 0.001f;
 
 CN3River::CN3River()
 {
 	m_fTexIndex   = 0.0f;
 	m_pRiverInfo  = nullptr;
 	m_iRiverCount = 0;
+
+	memset(m_pTexRiver, 0, sizeof(m_pTexRiver));
 }
 
 CN3River::~CN3River()
@@ -72,9 +65,7 @@ bool CN3River::Load(File& file)
 		for (int l = 0; l < pInfo->iIC / 18; l++)
 		{
 			for (int j = 0; j < 18; j++)
-			{
 				pInfo->pwIndex[l * 18 + j] = wIndex[j] + l * 4;
-			}
 		}
 
 		//
@@ -88,6 +79,7 @@ bool CN3River::Load(File& file)
 				pInfo->pDiff[l].fWeight = 1.0f;
 			else
 				pInfo->pDiff[l].fWeight = -1.0f;
+
 			if (l % 4 == 0)
 			{
 				fAdd += fMul;
@@ -98,23 +90,31 @@ bool CN3River::Load(File& file)
 			}
 		}
 
-		int j, k;
+		// Below code expects at least 5 vertices.
+		assert(pInfo->iVC >= 5);
+		if (pInfo->iVC < 5)
+			return false;
+
 		__VertexRiver* ptVtx = pInfo->pVertices;
-		float StX, EnX, StZ, EnZ;
+		float StX = 0.0f, EnX = 0.0f, StZ = 0.0f, EnZ = 0.0f;
 		StX = ptVtx[0].x, EnX = ptVtx[4].x;
 		StZ = ptVtx[0].z, EnZ = ptVtx[pInfo->iVC / 4].z;
-		for (j = 0; j < pInfo->iVC / 4; j++)
+		for (int j = 0; j < pInfo->iVC / 4; j++)
 		{
-			for (k = 0; k < 4; k++)
+			for (int k = 0; k < 4; k++)
 			{
 				if (StX > ptVtx->x)
 					StX = ptVtx->x;
+
 				if (EnX < ptVtx->x)
 					EnX = ptVtx->x;
+
 				if (StZ > ptVtx->z)
 					StZ = ptVtx->z;
+
 				if (EnZ < ptVtx->z)
 					EnZ = ptVtx->z;
+
 				ptVtx++;
 			}
 		}
@@ -150,13 +150,16 @@ void CN3River::Render()
 	// Backup
 	__Matrix44 matWorld, matOld;
 	matWorld.Identity();
-	DWORD dwAlphaEnable, dwSrcBlend, dwDestBlend;
+
+	DWORD dwAlphaEnable = 0, dwSrcBlend = 0, dwDestBlend = 0;
+	DWORD dwColor_0 = 0, dwColorArg1_0 = 0, dwColorArg2_0 = 0, dwMipFilter_0 = 0;
+	DWORD dwColor_1 = 0, dwColorArg1_1 = 0, dwColorArg2_1 = 0, dwMipFilter_1 = 0;
+
 	s_lpD3DDev->GetTransform(D3DTS_WORLD, matOld.toD3D());
 	s_lpD3DDev->GetRenderState(D3DRS_ALPHABLENDENABLE, &dwAlphaEnable);
 	s_lpD3DDev->GetRenderState(D3DRS_SRCBLEND, &dwSrcBlend);
 	s_lpD3DDev->GetRenderState(D3DRS_DESTBLEND, &dwDestBlend);
-	DWORD dwColor_0, dwColorArg1_0, dwColorArg2_0, dwMipFilter_0;
-	DWORD dwColor_1, dwColorArg1_1, dwColorArg2_1, dwMipFilter_1;
+
 	s_lpD3DDev->GetTextureStageState(0, D3DTSS_COLOROP, &dwColor_0);
 	s_lpD3DDev->GetTextureStageState(0, D3DTSS_COLORARG1, &dwColorArg1_0);
 	s_lpD3DDev->GetTextureStageState(0, D3DTSS_COLORARG2, &dwColorArg2_0);
@@ -262,18 +265,14 @@ void CN3River::UpdateWaterPositions()
 	if (m_iRiverCount == 0)
 		return;
 
-	_RIVER_INFO* pInfo = nullptr;
-	_RIVER_DIFF* pDiff = nullptr;
-	__VertexRiver* pVertex;
-	int tmp;
-
+	int tmp = 0;
 	for (int i = 0; i < m_iRiverCount; i++)
 	{
-		pInfo = m_pRiverInfo + i;
+		_RIVER_INFO* pInfo = &m_pRiverInfo[i];
 		__ASSERT(pInfo, "pInfo is null");
-		pDiff   = pInfo->pDiff;
+		_RIVER_DIFF* pDiff     = pInfo->pDiff;
 
-		pVertex = pInfo->pVertices;
+		__VertexRiver* pVertex = pInfo->pVertices;
 		for (int j = 0; j < pInfo->iVC; j++)
 		{
 			// berserk

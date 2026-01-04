@@ -18,7 +18,7 @@ class CBird : public CN3Base
 {
 public:
 	CBird();
-	virtual ~CBird();
+	~CBird() override;
 
 	// Attributes
 public:
@@ -43,13 +43,11 @@ protected:
 
 	// Operations
 public:
-	virtual void Release();
+	void Release() override;
 	void Tick();
 	void Render();
 
 	int LoadBird(const std::string& szFN);
-
-protected:
 };
 
 #endif // !defined(AFX_BIRD_H__409CEF6D_6577_4CFB_90C9_6A8AA710D298__INCLUDED_)

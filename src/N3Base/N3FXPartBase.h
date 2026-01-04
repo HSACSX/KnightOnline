@@ -68,11 +68,7 @@ protected:
 	virtual bool IsDead();
 
 public:
-	virtual float GetGroundHeight(float x, float z)
-	{
-		return 0.01f;
-	}
-
+	virtual float GetGroundHeight(float x, float z);
 	virtual void Init();            // 각종 변수들을 처음 로딩한 상태로 초기화...
 	virtual void Start();           // 파트 구동 시작.
 	virtual void Stop();            // 파트 구동 멈춤..

@@ -20,23 +20,27 @@ class CN3UIProgress : public CN3UIBase
 
 public:
 	CN3UIProgress();
-	virtual ~CN3UIProgress();
+	~CN3UIProgress() override;
+
 	// Attributes
 public:
-	enum eIMAGE_TYPE
+	enum eIMAGE_TYPE : uint8_t
 	{
 		IMAGETYPE_BKGND = 0,
 		IMAGETYPE_FRGND,
 		NUM_IMAGETYPE
 	};
+
 	int GetMax() const
 	{
 		return m_iMaxValue;
 	}
+
 	int GetMin() const
 	{
 		return m_iMinValue;
 	}
+
 	int GetCurValue() const
 	{
 		return (int) m_fCurValue;
@@ -46,6 +50,7 @@ public:
 	{
 		m_iStepValue = iValue;
 	}
+
 	void StepIt()
 	{
 		SetCurValue((int) m_fCurValue + m_iStepValue);
@@ -75,34 +80,42 @@ public:
 	bool Load(File& file) override;
 
 	void SetCurValue(int iValue, float fTimeToDelay = 0, float fChangeSpeedPerSec = 0);
+
+	// 초당 몇 퍼센트 수치로 올라간다.
 	void SetCurValue_Smoothly(int iValue, float fPercentPerSec)
 	{
 		SetCurValue(iValue, 0, fPercentPerSec * (m_iMaxValue - m_iMinValue));
-	} // 초당 몇 퍼센트 수치로 올라간다.
+	}
+
 	void SetRange(int iMin, int iMax)
 	{
 		m_iMinValue = iMin;
 		m_iMaxValue = iMax;
 		UpdateFrGndImage();
 	}
-	void
-	SetFrGndUVFromFrGndImage(); // m_pFrGndImgRef로부터 uv좌표를 얻어와서 m_frcFrGndImgUV를 세팅한다.
+
+	// m_pFrGndImgRef로부터 uv좌표를 얻어와서 m_frcFrGndImgUV를 세팅한다.
+	void SetFrGndUVFromFrGndImage();
+
 protected:
-	void UpdateFrGndImage();    //m_FrGndImgRef 의 영역과 uv좌표를 m_fCurValue에 따라 알맞게 바꾼다.
+	void UpdateFrGndImage(); // m_FrGndImgRef 의 영역과 uv좌표를 m_fCurValue에 따라 알맞게 바꾼다.
 
 #ifdef _N3TOOL
 	// tool에서 사용하는 함수들
 public:
-	virtual void operator=(const CN3UIProgress& other);
+	CN3UIProgress& operator=(const CN3UIProgress& other);
 	bool Save(File& file) override;
+
 	CN3UIImage* GetBkGndImgRef() const
 	{
 		return m_pBkGndImgRef;
 	}
+
 	CN3UIImage* GetFrGndImgRef() const
 	{
 		return m_pFrGndImgRef;
 	}
+
 	void CreateImages();     // 이미지 생성
 	void DeleteBkGndImage(); // Back ground이미지는 필요 없는 경우가 있다.
 #endif

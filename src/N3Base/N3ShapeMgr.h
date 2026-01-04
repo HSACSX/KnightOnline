@@ -43,7 +43,7 @@ public:
 
 				file.Read(pdwCCVertIndices, nCCPolyCount * 3 * 4);
 
-				// TRACE(_T("CollisionCheckPolygon : %d\n"), nCCPolyCount);
+				// TRACE("CollisionCheckPolygon : {}\n", nCCPolyCount);
 			}
 		}
 
@@ -169,9 +169,6 @@ public:
 	}
 
 	// 가장 가까운 높이을 돌려준다. 없으면 -FLT_MAX 을 돌려준다.
-	float GetHeightNearstPos(const __Vector3& vPos, float fDist, __Vector3* pvNormal = nullptr);
-
-	// 가장 가까운 높이을 돌려준다. 없으면 -FLT_MAX 을 돌려준다.
 	float GetHeightNearstPos(const __Vector3& vPos, __Vector3* pvNormal = nullptr);
 
 	// 현재 지점에서 제일 높은 값을 돌려준다. 없으면 -FLT_MAX 을 돌려준다.
@@ -205,7 +202,7 @@ public:
 
 	void Tick();
 	void Render();
-	bool Load(File& file);
+	bool Load(File& file) override;
 	bool CheckCollisionCamera(__Vector3& vEye, const __Vector3& vAt, float fNP);
 	static int SortByCameraDistance(const void* pArg1, const void* pArg2);
 #endif                                              // end of #ifndef _3DSERVER
@@ -231,7 +228,7 @@ public:
 	bool SaveCollisionData(File& file);
 #endif // end of _N3TOOL
 
-	void Release();
+	void Release() override;
 	CN3ShapeMgr();
-	virtual ~CN3ShapeMgr();
+	~CN3ShapeMgr() override;
 };

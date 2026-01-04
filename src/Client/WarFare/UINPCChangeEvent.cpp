@@ -14,15 +14,6 @@
 
 #include <N3Base/N3UIButton.h>
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CUINPCChangeEvent::CUINPCChangeEvent()
 {
 	m_pBtn_Repoint0   = nullptr;
@@ -72,7 +63,7 @@ bool CUINPCChangeEvent::Load(File& file)
 	m_pDlg->LoadFromFile(pTbl->szChangeInitBill);
 
 	// 위치 계산 ..
-	int iXPos, iYPos;
+	int iXPos = 0, iYPos = 0;
 	iXPos = (iW / 2) - (m_pDlg->GetRegion().right - m_pDlg->GetRegion().left) / 2;
 	iYPos = (iH / 2) - (m_pDlg->GetRegion().bottom - m_pDlg->GetRegion().top) / 2;
 	m_pDlg->SetPos(iXPos, iYPos);
@@ -166,11 +157,10 @@ void CUINPCChangeEvent::SetVisible(bool bVisible)
 
 bool CUINPCChangeEvent::OnKeyPress(int iKey)
 {
-	switch (iKey)
+	if (iKey == DIK_ESCAPE)
 	{
-		case DIK_ESCAPE:
-			ReceiveMessage(m_pBtn_Close, UIMSG_BUTTON_CLICK);
-			return true;
+		ReceiveMessage(m_pBtn_Close, UIMSG_BUTTON_CLICK);
+		return true;
 	}
 
 	return CN3UIBase::OnKeyPress(iKey);

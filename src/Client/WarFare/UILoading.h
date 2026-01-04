@@ -23,6 +23,7 @@ public:
 	CUILoading();
 	~CUILoading() override;
 
+	// NOLINTNEXTLINE(clang-diagnostic-overloaded-virtual)
 	virtual void Render(const std::string& szInfo, int iPercentage);
 	void Release() override;
 };

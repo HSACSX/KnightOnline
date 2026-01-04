@@ -29,9 +29,6 @@ protected:
 	int m_iIndexSelected;                                     // 현재 선택된 멤버인덱스..
 
 public:
-	int m_iPartyOrForce;                                      // 파티냐? 부대냐?? 1 이면 파티 2 이면 부대..
-
-public:
 	bool OnKeyPress(int iKey) override;
 	void Tick() override;
 	void MemberClassChange(int iID, e_Class eClass);

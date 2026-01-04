@@ -18,6 +18,12 @@ public:
 	ZoneNpcArray m_RegionNpcArray;
 	uint8_t m_byMoving; // move : 1, not moving : 0
 
+	CRegion()
+	{
+		m_byMoving = 0;
+		m_nIndex   = 0;
+	}
+
 protected:
 	int m_nIndex;
 };

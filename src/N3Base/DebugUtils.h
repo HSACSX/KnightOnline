@@ -1,9 +1,20 @@
-﻿#pragma once
+﻿#ifndef CLIENT_N3BASE_DEBUGUTILS_H
+#define CLIENT_N3BASE_DEBUGUTILS_H
+
+#pragma once
 
 #if defined(_DEBUG) || defined(DEBUG)
-void FormattedDebugString(const char* fmt, ...);
-
 #include <cassert>
+
+#include <spdlog/fmt/bundled/format.h>
+
+void DebugString(const std::string_view logMessage);
+
+template <typename... Args>
+static inline void FormattedDebugString(fmt::format_string<Args...> fmt, Args&&... args)
+{
+	DebugString(fmt::format(fmt, std::forward<Args>(args)...));
+}
 
 #define ASSERT assert
 #define TRACE  FormattedDebugString
@@ -21,3 +32,5 @@ void FormattedDebugString(const char* fmt, ...);
 #define ASSERT(...)
 #define TRACE(...)
 #endif
+
+#endif // CLIENT_N3BASE_DEBUGUTILS_H

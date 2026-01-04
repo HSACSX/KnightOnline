@@ -20,7 +20,7 @@ private:
 
 public:
 	void DrawImage(HDC hDC);
-	BOOL LoadJpegFile(std::string csJpeg);
+	BOOL LoadJpegFile(const std::string& csJpeg);
 	UINT GetWidth()
 	{
 		return m_uiWidth;

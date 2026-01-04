@@ -17,9 +17,11 @@
 
 class CUIImageTooltipDlg : public CN3UIBase
 {
+public:
 	static constexpr int MAX_TOOLTIP_COUNT       = 30;
 	static constexpr int MIN_WORDS_TO_SPLIT_DESC = 5;
 
+protected:
 	const D3DCOLOR m_CYellow;               // 레어...
 	const D3DCOLOR m_CBlue;                 // 매직...
 	const D3DCOLOR m_CGold;                 // 유니크...
@@ -46,6 +48,7 @@ protected:
 	bool SetTooltipTextColor(e_Race eMyValue, e_Race eTooltipValue);
 	bool SetTooltipTextColor(e_Class eMyValue, e_Class eTooltipValue);
 	int CalcTooltipStringNumAndWrite(__IconItemSkill* spItem, bool bPrice, bool bBuy);
+	void CalcTooltipStringNumAndWriteImpl(__IconItemSkill* spItem, bool bPrice, int& iIndex);
 	void SetPosSomething(int xpos, int ypos);
 
 public:

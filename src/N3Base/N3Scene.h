@@ -53,10 +53,10 @@ public:
 	//	void DeleteOverlappedShapes();
 
 	void Tick(float fFrm = FRAME_SELFPLAY);
-	void TickCameras(float fFrm = FRAME_SELFPLAY);
-	void TickLights(float fFrm = FRAME_SELFPLAY);
-	void TickShapes(float fFrm = FRAME_SELFPLAY);
-	void TickChrs(float fFrm = FRAME_SELFPLAY);
+	void TickCameras();
+	void TickLights();
+	void TickShapes();
+	void TickChrs();
 	void Render();
 
 	int CameraCount() const
