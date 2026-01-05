@@ -26,9 +26,6 @@ CN3TerrainManager::CN3TerrainManager()
 
 	// Bird..
 	m_pBirdMng = new CBirdMng();
-
-	//	// Grass..
-	//	m_pGrasses = new CGrassMng();
 }
 
 CN3TerrainManager::~CN3TerrainManager()
@@ -48,14 +45,11 @@ CN3TerrainManager::~CN3TerrainManager()
 	// Bird..
 	delete m_pBirdMng;
 	m_pBirdMng = nullptr;
-
-	// Grass..
-	//	delete m_pGrasses; m_pGrasses = nullptr;
 }
 
 /////////////////////////////////////////////////////////////////////
 
-void CN3TerrainManager::InitWorld(int iZoneID, const __Vector3& /*vPosPlayer*/)
+void CN3TerrainManager::InitWorld(int iZoneID)
 {
 	__TABLE_ZONE* pZone = s_pTbl_Zones.Find(s_pPlayer->m_InfoExt.iZoneCur);
 	if (pZone == nullptr)
@@ -64,16 +58,12 @@ void CN3TerrainManager::InitWorld(int iZoneID, const __Vector3& /*vPosPlayer*/)
 		return;
 	}
 
-	/*if(iZoneID == 1) m_pTerrain->LoadFromFile(pZone->szTerrainFN, N3FORMAT_VER_1068);//N3FORMAT_VER_1298);//pZone->dwVersion);
-	else*/
-	m_pTerrain->LoadFromFile(pZone->szTerrainFN);  //, N3FORMAT_VER_1298);
+	m_pTerrain->LoadFromFile(pZone->szTerrainFN);
 
-	m_pTerrain->LoadColorMap(pZone->szColorMapFN); // 컬러맵 로드..
+	m_pTerrain->LoadColorMap(pZone->szColorMapFN);      // 컬러맵 로드..
 	m_pShapes->Release();
 
-	/*if(iZoneID == 1) m_pShapes->LoadFromFile(pZone->szObjectPostDataFN, N3FORMAT_VER_1068);
-	else*/
-	m_pShapes->LoadFromFile(pZone->szObjectPostDataFN); //, N3FORMAT_VER_1298);//, pZone->dwVersion);	// 오브젝트 데이터 로드..
+	m_pShapes->LoadFromFile(pZone->szObjectPostDataFN); // 오브젝트 데이터 로드..
 
 	char szFName[_MAX_PATH];
 	_splitpath(pZone->szTerrainFN.c_str(), nullptr, nullptr, szFName, nullptr);
@@ -83,7 +73,6 @@ void CN3TerrainManager::InitWorld(int iZoneID, const __Vector3& /*vPosPlayer*/)
 	_makepath(szFullPathName, nullptr, "misc\\bird", szFName2.c_str(), "lst");
 	m_pBirdMng->LoadFromFile(szFullPathName);
 
-	//	m_pGrasses->Init(vPosPlayer);
 	m_pSky->LoadFromFile(pZone->szSkySetting);                        // 하늘, 구름, 태양, 날씨 변화등 정보 및 텍스처 로딩..
 	m_pSky->SunAndMoonDirectionFixByHour(pZone->iFixedSundDirection); // 해, 달 방향을 고정하든가 혹은 0 이면 고정하지 않는다.
 }
@@ -92,7 +81,6 @@ void CN3TerrainManager::Tick()
 {
 	m_pTerrain->Tick();
 	m_pShapes->Tick();
-	//	m_pGrasses->Tick((CGameProcedure* )CGameProcedure::s_pProcMain);
 	m_pSky->Tick();
 	m_pBirdMng->Tick();
 }

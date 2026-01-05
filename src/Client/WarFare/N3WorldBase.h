@@ -28,7 +28,7 @@ public:
 	virtual CN3SkyMng* GetSkyRef()                                                                                = 0;
 
 	//..
-	virtual void InitWorld(int iZoneID, const __Vector3& vPosPlayer)                                              = 0;
+	virtual void InitWorld(int iZoneID)                                                                           = 0;
 	virtual void Tick()                                                                                           = 0;
 
 	// Terrain..

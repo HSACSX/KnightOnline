@@ -20,7 +20,7 @@ class CDungeonManager : public CN3WorldBase
 	CPvsMgr m_pvsmgr;
 
 	// Function..
-	void InitWorld(int iZoneID, const __Vector3& vPosPlayer) override;
+	void InitWorld(int iZoneID) override;
 	void Tick() override;
 
 	//////////////////////////////////////////////////////////////////////

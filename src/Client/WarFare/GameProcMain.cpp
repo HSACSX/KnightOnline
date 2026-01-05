@@ -4458,7 +4458,7 @@ void CGameProcMain::InitZone(int iZone, const __Vector3& vPosPlayer)
 		}
 
 		s_pOPMgr->Release(); // 다른 넘들 다 날린다..
-		s_pWorldMgr->InitWorld(iZone, vPosPlayer);
+		s_pWorldMgr->InitWorld(iZone);
 
 		// 미니맵 로딩..
 		float fWidth = ACT_WORLD->GetWidthByMeterWithTerrain();

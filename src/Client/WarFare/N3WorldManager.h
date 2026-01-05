@@ -21,7 +21,7 @@ class CN3WorldManager : public CGameBase
 	CN3WorldBase* m_pActiveWorld;
 
 public:
-	void InitWorld(int iZoneID, const __Vector3& vPosPlayer);
+	void InitWorld(int iZoneID);
 
 	CN3WorldManager();
 	~CN3WorldManager() override;

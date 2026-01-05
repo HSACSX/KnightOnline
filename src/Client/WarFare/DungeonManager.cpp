@@ -17,7 +17,7 @@ CDungeonManager::~CDungeonManager()
 
 //////////////////////////////////////////////////////////////////////
 
-void CDungeonManager::InitWorld(int iZoneID, const __Vector3& /*vPosPlayer*/)
+void CDungeonManager::InitWorld(int iZoneID)
 {
 	__TABLE_ZONE* pZone = s_pTbl_Zones.Find(s_pPlayer->m_InfoExt.iZoneCur);
 	if (pZone == nullptr)

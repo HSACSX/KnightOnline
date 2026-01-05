@@ -25,17 +25,15 @@ CN3WorldManager::CN3WorldManager()
 
 CN3WorldManager::~CN3WorldManager()
 {
-	if (m_pActiveWorld)
-		delete m_pActiveWorld;
+	delete m_pActiveWorld;
 	m_pActiveWorld = nullptr;
 }
 
-void CN3WorldManager::InitWorld(int iZoneID, const __Vector3& vPosPlayer)
+void CN3WorldManager::InitWorld(int iZoneID)
 {
 	CLogWriter::Write("CN3WorldManager::InitWorld Pre delete"); // TmpLog_11_22
 
-	if (m_pActiveWorld)
-		delete m_pActiveWorld;
+	delete m_pActiveWorld;
 
 	// Zone 선택..
 	if (iZoneID != 51)                                                                       // N3Terrain..
@@ -54,12 +52,12 @@ void CN3WorldManager::InitWorld(int iZoneID, const __Vector3& vPosPlayer)
 	}
 
 	// Zone 초기화..
-	m_pActiveWorld->InitWorld(iZoneID, vPosPlayer);
+	m_pActiveWorld->InitWorld(iZoneID);
 }
 
 void CN3WorldManager::Tick()
 {
-	if (m_pActiveWorld)
+	if (m_pActiveWorld != nullptr)
 		m_pActiveWorld->Tick();
 }
 

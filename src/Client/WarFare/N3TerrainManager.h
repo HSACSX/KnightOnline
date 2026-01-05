@@ -19,7 +19,7 @@ class CN3TerrainManager : public CN3WorldBase
 	class CBirdMng* m_pBirdMng;   // 하늘에 날라다니는 새들 관리..
 
 	// Function..
-	void InitWorld(int iZoneID, const __Vector3& vPosPlayer) override;
+	void InitWorld(int iZoneID) override;
 	void Tick() override;
 
 	//////////////////////////////////////////////////////////////////////
