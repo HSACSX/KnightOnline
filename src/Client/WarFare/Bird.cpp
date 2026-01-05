@@ -120,9 +120,8 @@ void CBird::Tick()
 
 void CBird::Render()
 {
-	if (m_pShape == nullptr)
-		return;
-	m_pShape->Render();
+	if (m_pShape != nullptr)
+		m_pShape->Render();
 }
 
 int CBird::LoadBird(const std::string& szFN)
@@ -142,7 +141,7 @@ int CBird::LoadBird(const std::string& szFN)
 	char szRrcName[_MAX_PATH + 1] {};
 	float fSpeed = 0.0f;
 
-	// NOLINTBEGIN(cppcoreguidelines-pro-type-vararg)
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
 	int result   = fscanf(stream, "ResourceName = %s\n", szRrcName);
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
 
@@ -152,6 +151,7 @@ int CBird::LoadBird(const std::string& szFN)
 		return false;
 	}
 
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
 	result = fscanf(stream, "Pivot = %f %f %f\n", &(m_vPivot.x), &(m_vPivot.y), &(m_vPivot.z));
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
 
@@ -161,6 +161,7 @@ int CBird::LoadBird(const std::string& szFN)
 		return false;
 	}
 
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
 	result = fscanf(stream, "Radius = %f\n", &m_fRadius);
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
 
@@ -170,6 +171,7 @@ int CBird::LoadBird(const std::string& szFN)
 		return false;
 	}
 
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
 	result = fscanf(stream, "RadiusY = %f\n", &m_fRadiusY);
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
 
@@ -179,9 +181,9 @@ int CBird::LoadBird(const std::string& szFN)
 		return false;
 	}
 
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
 	result = fscanf(stream, "Speed = %f\n", &fSpeed);
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
-	// NOLINTEND(cppcoreguidelines-pro-type-vararg)
 
 	fclose(stream);
 
@@ -197,8 +199,8 @@ int CBird::LoadBird(const std::string& szFN)
 	m_fFactorYSpeed1 = 0.35f + ((rand() % 3000) / 10000.0f);
 	m_fFactorYSpeed2 = 0.18f + ((rand() % 3500) / 10000.0f);
 
-	if (nullptr == m_pSnd)
-		m_pSnd = CN3Base::s_SndMgr.CreateObj(1000);
+	if (m_pSnd == nullptr)
+		m_pSnd = s_SndMgr.CreateObj(1000);
 	m_fSndInterval = 0.0f;
 
 	return true;
