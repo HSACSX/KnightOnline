@@ -66,9 +66,9 @@ bool CUIWarp::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 	return true;
 }
 
-void CUIWarp::InfoAdd(const __WarpInfo& WI)
+void CUIWarp::InfoAdd(__WarpInfo&& WI)
 {
-	m_ListInfos.push_back(WI);
+	m_ListInfos.push_back(std::move(WI));
 }
 
 bool CUIWarp::InfoGetCur(__WarpInfo& WI)

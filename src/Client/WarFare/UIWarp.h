@@ -13,13 +13,13 @@
 
 struct __WarpInfo
 {
-	int iID = 0;             // 이 번호를 서버에게 날린다..
-	std::string szName;
-	std::string szAgreement; // 유저한테 알리고 동의를 구하는 글..
-	int iZone      = 0;
-	int iMaxUser   = 0;      // 최대 제한 인원수..
-	int iGold      = 0;
-	__Vector3 vPos = {};
+	int iID                 = 0;  // 이 번호를 서버에게 날린다..
+	std::string szName      = {};
+	std::string szAgreement = {}; // 유저한테 알리고 동의를 구하는 글..
+	int iZone               = 0;
+	int iMaxUser            = 0;  // 최대 제한 인원수..
+	int iGold               = 0;
+	__Vector3 vPos          = {};
 };
 
 typedef std::list<__WarpInfo>::iterator it_WI;
@@ -42,7 +42,7 @@ public:
 	CUIWarp();
 	~CUIWarp() override;
 
-	void InfoAdd(const __WarpInfo& ZW);
+	void InfoAdd(__WarpInfo&& ZW);
 	bool InfoGetCur(__WarpInfo& ZW);
 	void UpdateList();
 	void UpdateAgreement();

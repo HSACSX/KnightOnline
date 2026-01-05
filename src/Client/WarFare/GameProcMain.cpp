@@ -6758,10 +6758,9 @@ void CGameProcMain::MsgRecv_WarpList(Packet& pkt) // 워프 리스트 - 존 체�
 		return;
 
 	int iStrLen = 0;
-
 	for (int i = 0; i < iListCount; i++)
 	{
-		__WarpInfo WI;
+		__WarpInfo WI {};
 
 		WI.iID  = pkt.read<int16_t>();               // 워프 ID
 		iStrLen = pkt.read<int16_t>();               // 이름 길이
@@ -6775,7 +6774,7 @@ void CGameProcMain::MsgRecv_WarpList(Packet& pkt) // 워프 리스트 - 존 체�
 		WI.vPos.z   = (pkt.read<int16_t>()) / 10.0f; //
 		WI.vPos.y   = (pkt.read<int16_t>()) / 10.0f; //
 
-		m_pUIWarp->InfoAdd(WI);
+		m_pUIWarp->InfoAdd(std::move(WI));
 	}
 
 	m_pUIWarp->UpdateList();
