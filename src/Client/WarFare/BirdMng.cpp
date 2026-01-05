@@ -32,16 +32,22 @@ void CBirdMng::LoadFromFile(const std::string& szFN)
 	char szRrcName[_MAX_PATH + 1] {};
 	int iBirdCount = 0;
 
+	_birds.clear();
+
 	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
-	int result     = fscanf(stream, "count = %d\n", &iBirdCount);
+	int result = fscanf(stream, "count = %d\n", &iBirdCount);
 	__ASSERT(result != EOF, "잘못된 Machine 세팅 파일");
 
-	_birds.clear();
+	if (result == EOF)
+	{
+		fclose(stream);
+		return;
+	}
 
 	if (iBirdCount > 0)
 		_birds.resize(iBirdCount);
 
-	for (int i = 0; i < iBirdCount; i++)
+	for (CBird& bird : _birds)
 	{
 		if (result != EOF)
 		{
@@ -50,7 +56,7 @@ void CBirdMng::LoadFromFile(const std::string& szFN)
 			__ASSERT(result != EOF, "잘못된 bird list 세팅 파일");
 		}
 
-		_birds[i].LoadBird(szRrcName);
+		bird.LoadBird(szRrcName);
 	}
 
 	fclose(stream);
