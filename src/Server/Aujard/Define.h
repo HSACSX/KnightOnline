@@ -1,5 +1,5 @@
-﻿#ifndef _DEFINE_H
-#define _DEFINE_H
+﻿#ifndef SERVER_AUJARD_DEFINE_H
+#define SERVER_AUJARD_DEFINE_H
 
 #if defined(_DEBUG)
 #include <iostream>
@@ -65,4 +65,4 @@ static constexpr std::string_view ZONE_INFO   = "ZONE_INFO";
 static constexpr std::string_view GROUP_INFO  = "GROUP_INFO";
 } // namespace ini
 
-#endif
+#endif // SERVER_AUJARD_DEFINE_H

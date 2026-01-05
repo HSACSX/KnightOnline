@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef SERVER_AUJARD_AUJARDAPP_H
+#define SERVER_AUJARD_AUJARDAPP_H
+
+#pragma once
 
 #include "DBAgent.h"
 #include "Define.h"
@@ -210,3 +213,5 @@ private:
 
 	std::unique_ptr<ReadQueueThread> _readQueueThread;
 };
+
+#endif // SERVER_AUJARD_AUJARDAPP_H

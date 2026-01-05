@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef SERVER_AUJARD_DBAGENT_H
+#define SERVER_AUJARD_DBAGENT_H
+
+#pragma once
 
 #include <memory>
 
@@ -153,3 +156,5 @@ private:
 	/// \brief reference back to the main AujardApp instance
 	AujardApp* _main = nullptr;
 };
+
+#endif // SERVER_AUJARD_DBAGENT_H
