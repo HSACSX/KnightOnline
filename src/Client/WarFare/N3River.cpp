@@ -91,7 +91,7 @@ bool CN3River::Load(File& file)
 		}
 
 		// Below code expects at least 5 vertices.
-		assert(pInfo->iVC >= 5);
+		__ASSERT(pInfo->iVC >= 5, "Requires at least 5 vertices per river mesh");
 		if (pInfo->iVC < 5)
 			return false;
 
