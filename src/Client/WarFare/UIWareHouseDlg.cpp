@@ -655,8 +655,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 		|| (s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_NPC
 			&& s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_MY))
 	{
-		AllHighLightIconFree();
-		SetState(UI_STATE_COMMON_NONE);
 		return false;
 	}
 
@@ -691,11 +689,7 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 	}
 
 	if (!bFound)
-	{
-		AllHighLightIconFree();
-		SetState(UI_STATE_COMMON_NONE);
 		return false;
-	}
 
 	// 본격적으로 Recovery Info를 활용하기 시작한다..
 	// 먼저 WaitFromServer를 On으로 하고.. Select Info를 Recovery Info로 복사.. 이때 Dest는 팰요없다..
@@ -762,8 +756,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 								s_sRecoveryJobInfo.pItemSource = nullptr;
 								s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-								AllHighLightIconFree();
-								SetState(UI_STATE_COMMON_NONE);
 								return false;
 							}
 						}
@@ -799,8 +791,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 							s_sRecoveryJobInfo.pItemSource = nullptr;
 							s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-							AllHighLightIconFree();
-							SetState(UI_STATE_COMMON_NONE);
 							return false;
 						}
 					}
@@ -818,8 +808,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 						s_sRecoveryJobInfo.pItemSource = nullptr;
 						s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-						AllHighLightIconFree();
-						SetState(UI_STATE_COMMON_NONE);
 						return false;
 					}
 
@@ -861,14 +849,10 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_sRecoveryJobInfo.pItemSource = nullptr;
 					s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-					AllHighLightIconFree();
-					SetState(UI_STATE_COMMON_NONE);
 					return false;
 				}
-				else
-				{
-					s_sRecoveryJobInfo.pItemTarget = nullptr;
-				}
+
+				s_sRecoveryJobInfo.pItemTarget                                    = nullptr;
 
 				m_pMyWare[m_iCurPage][iDestiOrder]                                = spItemSource;
 				m_pMyWare[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder] = spItemTarget;
@@ -945,8 +929,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 									s_sRecoveryJobInfo.pItemSource = nullptr;
 									s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-									AllHighLightIconFree();
-									SetState(UI_STATE_COMMON_NONE);
 									return false;
 								}
 							}
@@ -961,73 +943,70 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_bWaitFromServer = false;
 
 					s_pCountableItemEdit->Open(UIWND_WARE_HOUSE, s_sSelectedIconInfo.UIWndSelect.UIWndDistrict, false);
+					return false;
+				}
+
+				// 일반 아이템인 경우..
+				if (m_pMyWare[m_iCurPage][iDestiOrder] != nullptr) // 해당 위치에 아이콘이 있으면..
+				{
+					// 인벤토리 빈슬롯을 찾아 들어간다..
+					bFound = false;
+
+					// 10개의 폐이지를 다 뒤진다..
+					for (int iPage = 0; iPage < MAX_ITEM_WARE_PAGE; iPage++)
+					{
+						if (bFound)
+							break;
+
+						for (int i = 0; i < MAX_ITEM_TRADE; i++)
+						{
+							if (bFound)
+							{
+								s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
+								s_sRecoveryJobInfo.m_iPage               = iPage;
+								break;
+							}
+
+							if (m_pMyWare[iPage][i] == nullptr)
+							{
+								bFound      = true;
+								iDestiOrder = i;
+							}
+						}
+					}
+
+					// 빈 슬롯을 찾지 못했으면..
+					if (!bFound)
+					{
+						s_bWaitFromServer              = false;
+						s_sRecoveryJobInfo.pItemSource = nullptr;
+						s_sRecoveryJobInfo.pItemTarget = nullptr;
+
+						return false;
+					}
 				}
 				else
 				{
-					// 일반 아이템인 경우..
-					if (m_pMyWare[m_iCurPage][iDestiOrder] != nullptr) // 해당 위치에 아이콘이 있으면..
-					{
-						// 인벤토리 빈슬롯을 찾아 들어간다..
-						bFound = false;
-
-						// 10개의 폐이지를 다 뒤진다..
-						for (int iPage = 0; iPage < MAX_ITEM_WARE_PAGE; iPage++)
-						{
-							if (bFound)
-								break;
-
-							for (int i = 0; i < MAX_ITEM_TRADE; i++)
-							{
-								if (bFound)
-								{
-									s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
-									s_sRecoveryJobInfo.m_iPage               = iPage;
-									break;
-								}
-
-								if (m_pMyWare[iPage][i] == nullptr)
-								{
-									bFound      = true;
-									iDestiOrder = i;
-								}
-							}
-						}
-
-						// 빈 슬롯을 찾지 못했으면..
-						if (!bFound)
-						{
-							s_bWaitFromServer              = false;
-							s_sRecoveryJobInfo.pItemSource = nullptr;
-							s_sRecoveryJobInfo.pItemTarget = nullptr;
-
-							AllHighLightIconFree();
-							SetState(UI_STATE_COMMON_NONE);
-							return false;
-						}
-					}
-					else
-					{
-						s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
-						s_sRecoveryJobInfo.m_iPage               = m_iCurPage;
-					}
-
-					SendToServerToWareMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
-						s_sRecoveryJobInfo.m_iPage, s_sRecoveryJobInfo.UIWndSourceStart.iOrder, iDestiOrder,
-						s_sRecoveryJobInfo.pItemSource->iCount);
-
-					m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]       = m_pMyWareInv[s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
-					m_pMyWareInv[s_sRecoveryJobInfo.UIWndSourceStart.iOrder] = nullptr;
-
-					pArea                                                    = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_NPC, iDestiOrder);
-					if (pArea != nullptr)
-					{
-						m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetRegion(pArea->GetRegion());
-						m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetMoveRect(pArea->GetRegion());
-					}
-
-					if (s_sRecoveryJobInfo.m_iPage != m_iCurPage)
-						m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetVisibleWithNoSound(false);
+					s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
+					s_sRecoveryJobInfo.m_iPage               = m_iCurPage;
 				}
+
+				SendToServerToWareMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
+					s_sRecoveryJobInfo.m_iPage, s_sRecoveryJobInfo.UIWndSourceStart.iOrder, iDestiOrder,
+					s_sRecoveryJobInfo.pItemSource->iCount);
+
+				m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]       = m_pMyWareInv[s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
+				m_pMyWareInv[s_sRecoveryJobInfo.UIWndSourceStart.iOrder] = nullptr;
+
+				pArea                                                    = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_NPC, iDestiOrder);
+				if (pArea != nullptr)
+				{
+					m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetRegion(pArea->GetRegion());
+					m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetMoveRect(pArea->GetRegion());
+				}
+
+				if (s_sRecoveryJobInfo.m_iPage != m_iCurPage)
+					m_pMyWare[s_sRecoveryJobInfo.m_iPage][iDestiOrder]->pUIIcon->SetVisibleWithNoSound(false);
 			}
 			else
 			{
@@ -1082,9 +1061,6 @@ bool CUIWareHouseDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 		default:
 			break;
 	}
-
-	AllHighLightIconFree();
-	SetState(UI_STATE_COMMON_NONE);
 
 	return false;
 }
