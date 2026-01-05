@@ -33,8 +33,8 @@ protected:
 		CN3Texture* pTex                 = nullptr; // texture
 		__VertexTransformed pVertices[4] = {};      // vertex
 
-		CN3ColorChange Color;                       // 색을 담당하는 클래스
-		CN3DeltaChange Delta;
+		CN3ColorChange Color             = {};      // 색을 담당하는 클래스
+		CN3DeltaChange Delta             = {};
 	};
 
 	__SunPart m_Parts[NUM_SUNPART];

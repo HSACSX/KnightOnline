@@ -12,14 +12,14 @@
 
 #pragma once
 
-#include <string>      // std::string
+#include <string>          // std::string
 
-struct __TABLE_SOUND   // Sound 리소스 레코드...
+struct __TABLE_SOUND       // Sound 리소스 레코드...
 {
-	uint32_t dwID = 0; // 고유 ID
-	std::string szFN;  // wave file name
-	int iType    = 0;  // 사운드 타입...
-	int iNumInst = 0;  // 최대 사용할 수 있는 인스턴스의 갯수..
+	uint32_t dwID    = 0;  // 고유 ID
+	std::string szFN = {}; // wave file name
+	int iType        = 0;  // 사운드 타입...
+	int iNumInst     = 0;  // 최대 사용할 수 있는 인스턴스의 갯수..
 };
 
 /// \struct SoundSettings

@@ -22,7 +22,8 @@ constexpr int CONVERT_SEC(int h, int m, int s)
 }
 
 // 시간 관리
-enum eSKY_DAYCHANGE : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format, must be this size
+enum eSKY_DAYCHANGE : int32_t
 {
 	SDC_SKYCOLOR = 0, // 하늘색
 	SDC_FOGCOLOR,     // 안개색
@@ -41,7 +42,7 @@ enum eSKY_DAYCHANGE : uint8_t
 
 	NUM_SKYDAYCHANGE,
 
-	SDC_UNKNOWN
+	SDC_UNKNOWN = -1
 };
 
 struct __SKY_DAYCHANGE
@@ -55,7 +56,7 @@ struct __SKY_DAYCHANGE
 
 	void Init()
 	{
-		szName        = "";
+		szName.clear();
 		eSkyDayChange = SDC_UNKNOWN;
 		dwWhen = dwParam1 = dwParam2 = 0;
 		fHowLong                     = 0;

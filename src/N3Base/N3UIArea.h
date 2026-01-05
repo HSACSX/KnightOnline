@@ -9,7 +9,8 @@
 
 #include "N3UIBase.h"
 
-enum eUI_AREA_TYPE : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format (albeit indirectly), must be this size
+enum eUI_AREA_TYPE : int32_t
 {
 	UI_AREA_TYPE_NONE = 0,
 	UI_AREA_TYPE_SLOT,

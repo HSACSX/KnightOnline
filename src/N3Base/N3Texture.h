@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef N3BASE_N3TEXTURE_H
+#define N3BASE_N3TEXTURE_H
 
 #pragma once
 
@@ -74,3 +75,5 @@ public:
 	CN3Texture();
 	~CN3Texture() override;
 };
+
+#endif // N3BASE_N3TEXTURE_H
