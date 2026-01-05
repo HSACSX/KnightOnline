@@ -149,8 +149,7 @@ uint32_t CUIMessageBoxManager::MouseProcAndTick(uint32_t& dwFlags, const POINT& 
 		if (dwRet != UI_MOUSEPROC_NONE)
 			dwFlags = 0;
 
-		if (m_pMsgBoxLatestRef != nullptr)
-			m_pMsgBoxLatestRef->Tick();
+		m_pMsgBoxLatestRef->Tick();
 	}
 
 	for (auto& [_, pMB] : m_UBMs)
