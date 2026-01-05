@@ -13,7 +13,8 @@ const float UI_DEFAULT_Z   = 0.9f;
 const float UI_DEFAULT_RHW = 1.0f;
 
 // type
-enum eUI_TYPE : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format, must be this size
+enum eUI_TYPE : uint32_t
 {
 	UI_TYPE_BASE = 0,  // none
 	UI_TYPE_BUTTON,    // button
