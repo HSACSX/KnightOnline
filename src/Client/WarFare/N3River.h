@@ -8,6 +8,7 @@
 #pragma once
 
 #include <N3Base/N3Base.h>
+#include <vector>
 
 constexpr int MAX_RIVER_TEX = 32;
 
@@ -76,9 +77,7 @@ public:
 	};
 
 protected:
-	_RIVER_INFO* m_pRiverInfo;
-	int m_iRiverCount;
-
+	std::vector<_RIVER_INFO> m_Rivers;
 	CN3Texture* m_pTexRiver[MAX_RIVER_TEX];
 
 	float m_fTexIndex;

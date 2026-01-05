@@ -13,6 +13,8 @@ constexpr int MAX_POND_TEX        = 32;
 
 #include <N3Base/N3BaseFileAccess.h>
 
+#include <vector>
+
 class CN3Pond : public CN3BaseFileAccess
 {
 public:
@@ -91,8 +93,7 @@ public:
 	};
 
 public:
-	int m_iPondMeshNum;      //	전체 연못의 갯수
-	CPondMesh* m_pCPondMesh; //	연못의 정보
+	std::vector<CPondMesh> m_PondMeshes; //	연못의 정보
 
 	CN3Texture* m_pTexPond[MAX_POND_TEX];
 	float m_fTexIndex;
@@ -107,14 +108,6 @@ public:
 	void Tick();
 
 private:
-	void CheckHeight(float& ChkHeight)
-	{
-		if (ChkHeight < -0.01f)
-			ChkHeight += 0.01f;
-		else if (ChkHeight > 0.01f)
-			ChkHeight += -0.01f;
-	};
-
 	void UpdateWaterPositions();
 };
 
