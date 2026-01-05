@@ -12,21 +12,16 @@
 
 #include <FileIO/File.h>
 
-//-----------------------------------------------------------------------------
 enum e_N3FormatVersion : uint32_t
 {
-	N3FORMAT_VER_UNKN = 0x00000000,
-	N3FORMAT_VER_1068 = 0x00000001, // (1<<0)
-	N3FORMAT_VER_1264 = 0x00000002, // (1<<1)
-	N3FORMAT_VER_1298 = 0x00000004, // (1<<2)
-	N3FORMAT_VER_2062 = 0x00000008, // (1<<3)
-	N3FORMAT_VER_CURR = 0x40000000, // NOTE: not even going to attempt this right now
-	N3FORMAT_VER_HERO = 0x80000000  // NOTE: Hero Online formatting
+	N3FORMAT_VER_UNKN = 0,
+	N3FORMAT_VER_1068 = 1068,
+	N3FORMAT_VER_1264 = 1264,
+	N3FORMAT_VER_1298 = 1298,
 };
 
 static constexpr e_N3FormatVersion N3FORMAT_VER_DEFAULT = N3FORMAT_VER_1298;
 
-//-----------------------------------------------------------------------------
 class CN3BaseFileAccess : public CN3Base
 {
 protected:

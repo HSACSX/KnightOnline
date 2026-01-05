@@ -2156,15 +2156,16 @@ bool CGameProcMain::MsgRecv_MyInfo_All(Packet& pkt)
 	////////////////////////////////////////////////////////////
 	// 기본값 읽기..
 	int iRun = 1;
-	if (!CGameProcedure::RegGetSetting("UserRun", &iRun, 4))
+	if (!CGameProcedure::RegGetSetting("UserRun", &iRun, sizeof(int)))
 		iRun = 1;               // 걷고 뛰는 상태를 레지스트리에서 읽고.. 기본값은 뛰는 상태이다..
-	if (1 == iRun)
+
+	if ((iRun == 1 && !s_pPlayer->IsRunning()) || (iRun == 0 && s_pPlayer->IsRunning()))
 		CommandToggleWalkRun(); // 뛰게 만든다..
 
-	e_ViewPoint eVP = VP_THIRD_PERSON;
-	if (false == CGameProcedure::RegGetSetting("CameraMode", &eVP, 4))
-		eVP = VP_THIRD_PERSON; // 카메라 상태 기록
-	s_pEng->ViewPointChange(eVP);
+	int iVP = VP_THIRD_PERSON;
+	if (!CGameProcedure::RegGetSetting("CameraMode", &iVP, sizeof(int)))
+		iVP = VP_THIRD_PERSON; // 카메라 상태 기록
+	s_pEng->ViewPointChange(static_cast<e_ViewPoint>(iVP));
 	// 기본값 읽기..
 	////////////////////////////////////////////////////////////
 
@@ -4121,7 +4122,7 @@ void CGameProcMain::InitUI()
 
 	// 파티 지원 게시판..
 	m_pUIPartyBBS->Init(s_pUIMgr);
-	m_pUIPartyBBS->LoadFromFile(pTbl->szPartyBBS); //, N3FORMAT_VER_1298);
+	m_pUIPartyBBS->LoadFromFile(pTbl->szPartyBBS);
 	m_pUIPartyBBS->SetVisibleWithNoSound(false);
 	rc = m_pUIPartyBBS->GetRegion();
 	iX = (iW - (rc.right - rc.left)) / 2;

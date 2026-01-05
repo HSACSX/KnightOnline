@@ -191,16 +191,6 @@ bool CN3ShapeMgr::LoadCollisionData(File& file)
 		file.Read(m_pvCollisions, sizeof(__Vector3) * m_nCollisionFaceCount * 3);
 	}
 
-#if !defined(_3DSERVER)
-	if (m_iFileFormatVersion == N3FORMAT_VER_HERO)
-	{
-		// NOTE(srmeier): for the "ah_hapbi_zone.opd" the jump seems to be specifically 0x338 bytes
-		uint8_t* tmp = new uint8_t[0x338];
-		file.Read(tmp, 0x338);
-		delete[] tmp;
-	}
-#endif
-
 	const int MapLength = static_cast<int>(m_fMapLength / CELL_MAIN_SIZE);
 	const int MapWidth  = static_cast<int>(m_fMapWidth / CELL_MAIN_SIZE);
 

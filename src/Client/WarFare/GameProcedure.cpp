@@ -231,14 +231,14 @@ void CGameProcedure::StaticMemberRelease()
 	// 기본값 쓰기..
 	if (s_pPlayer)
 	{
-		int iRun = s_pPlayer->IsRunning();                  // 이동 모드가 뛰는 상태였으면
-		CGameProcedure::RegPutSetting("UserRun", &iRun, 4); // 걷기, 뛰기 상태 기록..
+		int iRun = s_pPlayer->IsRunning();                            // 이동 모드가 뛰는 상태였으면
+		CGameProcedure::RegPutSetting("UserRun", &iRun, sizeof(int)); // 걷기, 뛰기 상태 기록..
 	}
 
 	if (s_pEng)
 	{
-		e_ViewPoint eVP = s_pEng->ViewPoint();
-		CGameProcedure::RegPutSetting("CameraMode", &eVP, 4); // 카메라 상태 기록
+		int iVP = s_pEng->ViewPoint();
+		CGameProcedure::RegPutSetting("CameraMode", &iVP, sizeof(int)); // 카메라 상태 기록
 	}
 	// 기본값 쓰기..
 	////////////////////////////////////////////////////////////
@@ -953,11 +953,11 @@ bool CGameProcedure::MsgRecv_CharacterSelect(Packet& pkt) // virtual
 		int iVictoryNation = pkt.read<uint8_t>();
 		CGameProcedure::LoadingUIChange(iVictoryNation);
 
-		int iZonePrev = 0;
-		if (N3FORMAT_VER_DEFAULT & N3FORMAT_VER_1264)
-			iZonePrev = s_pPlayer->m_InfoExt.iZoneCur = 10 * iZoneCur;
-		else
-			iZonePrev = s_pPlayer->m_InfoExt.iZoneCur = iZoneCur;
+		int iZonePrev = s_pPlayer->m_InfoExt.iZoneCur;
+		if (N3FORMAT_VER_DEFAULT >= N3FORMAT_VER_1264)
+			iZoneCur *= 10;
+
+		s_pPlayer->m_InfoExt.iZoneCur = iZoneCur;
 		s_pPlayer->PositionSet(__Vector3(fX, fY, fZ), true);
 
 		CLogWriter::Write("MsgRecv_CharacterSelect - name({}) zone({} -> {})", s_pPlayer->m_InfoBase.szID, iZonePrev, iZoneCur);
