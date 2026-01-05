@@ -726,8 +726,8 @@ void CUser::Parsing(int len, char* pData)
 
 		default:
 			spdlog::error(
-				"User::Parsing: Unhandled opcode {:02X} [accountName={} characterName={}]", command,
-				m_strAccountID, m_pUserData->m_id);
+				"User::Parsing: Unhandled opcode {:02X} [ip={} accountName={} characterName={}]",
+				command, GetRemoteIP(), m_strAccountID, m_pUserData->m_id);
 
 #ifndef _DEBUG
 			Close();

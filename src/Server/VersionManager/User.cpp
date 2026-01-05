@@ -141,7 +141,7 @@ void CUser::Parsing(int /*len*/, char* pData)
 			break;
 
 		default:
-			spdlog::error("User::Parsing: Unhandled opcode {:02X}", command);
+			spdlog::error("User::Parsing: Unhandled opcode {:02X} [ip={}]", command, GetRemoteIP());
 			break;
 	}
 }
