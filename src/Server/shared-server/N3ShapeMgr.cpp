@@ -327,6 +327,7 @@ int CN3ShapeMgr::SubCellPathThru(
 			{
 				bPathThru = true;
 			}
+			// 두 L점 모두 셀 외부에 있지만 판단을 다시 해야 한다.
 			else if ((dwOC0 & dwOC1) == 0)
 			{
 				// 위의 변과의 교차점을 계산하고..
