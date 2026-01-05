@@ -335,14 +335,12 @@ int CN3ShapeMgr::SubCellPathThru(
 			if (dwOC0 & dwOC1)
 				bPathThru = false;
 			// 선분이 사각형 내부에 있음
-			// NOLINTBEGIN(bugprone-branch-clone)
-			else if (dwOC0 == 0 && dwOC1 == 0)
+			else if ((dwOC0 == 0 && dwOC1 == 0)
+					 // 선분 한점은 셀의 내부에 한점은 외부에 있음.
+					 || (dwOC0 == 0 && dwOC1 != 0) || (dwOC0 != 0 && dwOC1 == 0))
+			{
 				bPathThru = true;
-			// 선분 한점은 셀의 내부에 한점은 외부에 있음.
-			else if ((dwOC0 == 0 && dwOC1 != 0) || (dwOC0 != 0 && dwOC1 == 0))
-				bPathThru = true;
-			// 두 L점 모두 셀 외부에 있지만 판단을 다시 해야 한다.
-			// NOLINTEND(bugprone-branch-clone)
+			}
 			else if ((dwOC0 & dwOC1) == 0)
 			{
 				// 위의 변과의 교차점을 계산하고..
