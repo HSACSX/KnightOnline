@@ -69,48 +69,52 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE /*hPrevInstanc
 
 	if (CN3Base::s_Options.iViewWidth == 1024 || CN3Base::s_Options.iViewWidth == 1366)
 		CN3Base::s_Options.iViewHeight = 768;
-	else if (1280 == CN3Base::s_Options.iViewWidth)
+	else if (CN3Base::s_Options.iViewWidth == 1280)
 		CN3Base::s_Options.iViewHeight = 1024;
-	else if (1600 == CN3Base::s_Options.iViewWidth)
+	else if (CN3Base::s_Options.iViewWidth == 1600)
 		CN3Base::s_Options.iViewHeight = 1200;
-	else if (1920 == CN3Base::s_Options.iViewWidth)
+	else if (CN3Base::s_Options.iViewWidth == 1920)
 		CN3Base::s_Options.iViewHeight = 1080;
-	/*
-	else {
+#if 0
+	else
+	{
 		CN3Base::s_Options.iViewWidth = 1024;
 		CN3Base::s_Options.iViewHeight = 768;
-	*/
+	}
+#endif
 
-	// NOTE: what is the viewport's color depth?
+	// Load the viewport's color depth
 	// Officially this defaults to 16-bit, but this isn't as supported these days so we should
 	// just default to 32-bit to ensure compatibility with ChangeDisplaySettings().
 	CN3Base::s_Options.iViewColorDepth = ini.GetInt("ViewPort", "ColorDepth", 32);
 	if (CN3Base::s_Options.iViewColorDepth != 16 && CN3Base::s_Options.iViewColorDepth != 32)
 		CN3Base::s_Options.iViewColorDepth = 32;
 
-	// NOTE: what is the viewport's draw distance?
+	// Load the viewport's draw distance
 	CN3Base::s_Options.iViewDist = ini.GetInt("ViewPort", "Distance", 512);
 	if (CN3Base::s_Options.iViewDist < 256)
 		CN3Base::s_Options.iViewDist = 256;
 	if (CN3Base::s_Options.iViewDist > 512)
 		CN3Base::s_Options.iViewDist = 512;
 
-	// NOTE: what is the distance for sound events?
+	// Load the max distance for sound effects
 	CN3Base::s_Options.iEffectSndDist = ini.GetInt("Sound", "Distance", 48);
 	if (CN3Base::s_Options.iEffectSndDist < 20)
 		CN3Base::s_Options.iEffectSndDist = 20;
 	if (CN3Base::s_Options.iEffectSndDist > 48)
 		CN3Base::s_Options.iEffectSndDist = 48;
 
-	// NOTE: is sound enabled?
+	// Load the sound enabled flags
 	CN3Base::s_Options.bSndBgmEnable    = ini.GetBool("Sound", "Bgm", true);
 	CN3Base::s_Options.bSndEffectEnable = ini.GetBool("Sound", "Effect", true);
 	CN3Base::s_Options.bSndEnable       = (CN3Base::s_Options.bSndBgmEnable || CN3Base::s_Options.bSndEffectEnable);
 
-	// NOTE: should we use the Windows cursor? If false, will use the software cursor (CGameCursor) instead.
+	// Load config to determine if we should we use the Windows cursor
+	// If false, will use the software cursor (CGameCursor) instead.
 	CN3Base::s_Options.bWindowCursor    = ini.GetBool("Cursor", "WindowCursor", true);
 
-	// NOTE: should we show window full screen?
+	// Load config to determine if we should run the game windowed or not.
+	// true is windowed, false is fullscreen.
 	CN3Base::s_Options.bWindowMode      = ini.GetBool("Screen", "WindowMode",
 	// In debug builds, if not otherwise configured, we should just prefer to use windowed mode.
 #if defined(_DEBUG)
@@ -120,6 +124,8 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE /*hPrevInstanc
 #endif
 	);
 
+	// Load unofficial config to determine if we should enable vsync or not
+	// This is officially enabled by default.
 	CN3Base::s_Options.bVSyncEnabled = ini.GetBool("Screen", "VSyncEnabled", true);
 
 	srand((uint32_t) time(nullptr));
