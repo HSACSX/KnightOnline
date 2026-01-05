@@ -11994,8 +11994,8 @@ bool CUser::RobItem(int itemid, int16_t count)
 	if (pTable == nullptr)
 		return false;
 
-	int i = -1;
-	for (i = SLOT_MAX; i < SLOT_MAX + HAVE_MAX; i++)
+	int i = SLOT_MAX;
+	for (; i < SLOT_MAX + HAVE_MAX; i++)
 	{
 		if (m_pUserData->m_sItemArray[i].nNum != itemid)
 			continue;
