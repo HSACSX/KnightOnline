@@ -349,8 +349,11 @@ bool CN3Mesh::Import(CN3PMesh* pPMesh)
 	// vertex index buffer 복사
 	__VertexT1* pVertices = PMeshInstance.GetVertices();
 	uint16_t* pIndices    = PMeshInstance.GetIndices();
-	memcpy(&m_pVertices, pVertices, sizeof(__VertexT1) * m_nVC);
-	memcpy(&m_psnIndices, pIndices, sizeof(uint16_t) * m_nIC);
+
+	for (int i = 0; i < m_nVC; i++)
+		m_pVertices[i] = pVertices[i];
+
+	memcpy(m_psnIndices, pIndices, sizeof(uint16_t) * m_nIC);
 
 	m_szName = pPMesh->m_szName; // 이름..
 	return true;
