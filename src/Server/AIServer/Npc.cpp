@@ -502,7 +502,7 @@ void CNpc::NpcTracing()
 	int nFlag = IsCloseTarget(m_byAttackRange, 1);
 
 	// 근접전을 벌일만큼 가까운 거리인가?
-	if (nFlag == 10 || (nFlag == 2 && m_tNpcLongType == 2))
+	if (nFlag == 1 || (nFlag == 2 && m_tNpcLongType == 2))
 	{
 		NpcMoveEnd(); // 이동 끝..
 		m_NpcState   = NPC_FIGHTING;
@@ -510,10 +510,12 @@ void CNpc::NpcTracing()
 		m_fDelayTime = TimeGet();
 		return;
 	}
-	else if (nFlag == -1) // 타겟이 없어짐...
+
+	// 타겟이 없어짐...
+	if (nFlag == -1)
 	{
 		InitTarget();
-		NpcMoveEnd();     // 이동 끝..
+		NpcMoveEnd(); // 이동 끝..
 		m_NpcState   = NPC_STANDING;
 		m_Delay      = m_sStandTime;
 		m_fDelayTime = TimeGet();
@@ -1672,6 +1674,7 @@ bool CNpc::RandomBackMove()
 				break;
 
 			case 4:
+				// NOTE: This was - but this seems very much unintentional
 				fDestZ = m_fCurZ + iRandomX;
 				if (iRandomValue == 0)
 					fDestX = m_fCurX - iRandomX;
@@ -1693,10 +1696,6 @@ bool CNpc::RandomBackMove()
 			fDestX = vEnd22.x;
 			fDestZ = vEnd22.z;
 		}
-	}
-	// Target 이 Npc 인 경우
-	else if (nID >= NPC_BAND && m_Target.id < INVALID_BAND)
-	{
 	}
 
 	_POINT start, end;
