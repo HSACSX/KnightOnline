@@ -2459,6 +2459,9 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 	{
 		std::vector<int> npcIds;
 
+		// NOTE: In the original code, this entire section was bugged.
+		// It inadvertently defines 2 vars for the monster count; 1 in scope, and 1 out.
+		// This means that it was previously NEVER hostile towards any other NPCs.
 		{
 			std::lock_guard<std::mutex> lock(g_region_mutex);
 			const auto& regionNpcArray = pMap->m_ppRegion[nRX][nRZ].m_RegionNpcArray.m_UserTypeMap;
