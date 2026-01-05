@@ -1004,105 +1004,102 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 					s_bWaitFromServer                        = false;
 
 					s_pCountableItemEdit->Open(UIWND_TRANSACTION, s_sSelectedIconInfo.UIWndSelect.UIWndDistrict, false);
+					return false;
 				}
-				else
+
+				__InfoPlayerMySelf* pInfoExt = &(CGameBase::s_pPlayer->m_InfoExt);
+
+				// 매수가 X 갯수가 내가 가진 돈보다 많으면.. 그냥 리턴..
+				if ((s_sRecoveryJobInfo.pItemSource->pItemBasic->iPrice) > pInfoExt->iGold)
 				{
-					__InfoPlayerMySelf* pInfoExt = &(CGameBase::s_pPlayer->m_InfoExt);
+					std::string szMsg = fmt::format_text_resource(IDS_COUNTABLE_ITEM_BUY_NOT_ENOUGH_MONEY);
+					CGameProcedure::s_pProcMain->MsgOutput(szMsg, 0xffff3b3b);
 
-					// 매수가 X 갯수가 내가 가진 돈보다 많으면.. 그냥 리턴..
-					if ((s_sRecoveryJobInfo.pItemSource->pItemBasic->iPrice) > pInfoExt->iGold)
-					{
-						std::string szMsg = fmt::format_text_resource(IDS_COUNTABLE_ITEM_BUY_NOT_ENOUGH_MONEY);
-						CGameProcedure::s_pProcMain->MsgOutput(szMsg, 0xffff3b3b);
+					s_bWaitFromServer              = false;
+					s_sRecoveryJobInfo.pItemSource = nullptr;
+					s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-						s_bWaitFromServer              = false;
-						s_sRecoveryJobInfo.pItemSource = nullptr;
-						s_sRecoveryJobInfo.pItemTarget = nullptr;
-
-						return false;
-					}
-
-					// 무게 체크..
-					if ((pInfoExt->iWeight + s_sRecoveryJobInfo.pItemSource->pItemBasic->siWeight) > pInfoExt->iWeightMax)
-					{
-						std::string szMsg = fmt::format_text_resource(IDS_ITEM_WEIGHT_OVERFLOW);
-						CGameProcedure::s_pProcMain->MsgOutput(szMsg, 0xffff3b3b);
-
-						s_bWaitFromServer              = false;
-						s_sRecoveryJobInfo.pItemSource = nullptr;
-						s_sRecoveryJobInfo.pItemTarget = nullptr;
-
-						AllHighLightIconFree();
-						SetState(UI_STATE_COMMON_NONE);
-						return false;
-					}
-
-					// 일반 아이템인 경우..
-					// 해당 위치에 아이콘이 있으면..
-					if (m_pMyTradeInv[iDestiOrder] != nullptr)
-					{
-						// 인벤토리 빈슬롯을 찾아 들어간다..
-						bFound = false;
-						for (i = 0; i < MAX_ITEM_INVENTORY; i++)
-						{
-							if (m_pMyTradeInv[i] == nullptr)
-							{
-								bFound      = true;
-								iDestiOrder = i;
-								break;
-							}
-						}
-
-						if (!bFound) // 빈 슬롯을 찾지 못했으면..
-						{
-							s_bWaitFromServer              = false;
-							s_sRecoveryJobInfo.pItemSource = nullptr;
-							s_sRecoveryJobInfo.pItemTarget = nullptr;
-
-							return false;
-						}
-					}
-
-					s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
-
-					SendToServerBuyMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
-						iDestiOrder, s_sRecoveryJobInfo.pItemSource->iCount);
-
-					std::string szIconFN;
-					e_PartPosition ePart         = PART_POS_UNKNOWN;
-					e_PlugPosition ePlug         = PLUG_POS_UNKNOWN;
-
-					__IconItemSkill* spItemTrade = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
-					CGameBase::MakeResrcFileNameForUPC(spItemTrade->pItemBasic, spItemTrade->pItemExt, nullptr, &szIconFN, ePart,
-						ePlug); // 아이템에 따른 파일 이름을 만들어서
-
-					__IconItemSkill* spItemNew = new __IconItemSkill;
-					spItemNew->pItemBasic      = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic;
-					spItemNew->pItemExt        = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemExt;
-					spItemNew->szIconFN        = szIconFN; // 아이콘 파일 이름 복사..
-					spItemNew->iCount          = 1;
-					spItemNew->iDurability = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic->siMaxDurability
-											 + m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]
-												   ->pItemExt->siMaxDurability;
-
-					// 아이콘 리소스 만들기..
-					spItemNew->pUIIcon = new CN3UIIcon;
-					float fUVAspect    = (float) 45.0f / (float) 64.0f;
-					spItemNew->pUIIcon->Init(this);
-					spItemNew->pUIIcon->SetTex(szIconFN);
-					spItemNew->pUIIcon->SetUVRect(0, 0, fUVAspect, fUVAspect);
-					spItemNew->pUIIcon->SetUIType(UI_TYPE_ICON);
-					spItemNew->pUIIcon->SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);
-					spItemNew->pUIIcon->SetVisible(true);
-					pArea = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_MY, iDestiOrder);
-					if (pArea != nullptr)
-					{
-						spItemNew->pUIIcon->SetRegion(pArea->GetRegion());
-						spItemNew->pUIIcon->SetMoveRect(pArea->GetRegion());
-					}
-
-					m_pMyTradeInv[iDestiOrder] = spItemNew;
+					return false;
 				}
+
+				// 무게 체크..
+				if ((pInfoExt->iWeight + s_sRecoveryJobInfo.pItemSource->pItemBasic->siWeight) > pInfoExt->iWeightMax)
+				{
+					std::string szMsg = fmt::format_text_resource(IDS_ITEM_WEIGHT_OVERFLOW);
+					CGameProcedure::s_pProcMain->MsgOutput(szMsg, 0xffff3b3b);
+
+					s_bWaitFromServer              = false;
+					s_sRecoveryJobInfo.pItemSource = nullptr;
+					s_sRecoveryJobInfo.pItemTarget = nullptr;
+
+					return false;
+				}
+
+				// 일반 아이템인 경우..
+				// 해당 위치에 아이콘이 있으면..
+				if (m_pMyTradeInv[iDestiOrder] != nullptr)
+				{
+					// 인벤토리 빈슬롯을 찾아 들어간다..
+					bFound = false;
+					for (i = 0; i < MAX_ITEM_INVENTORY; i++)
+					{
+						if (m_pMyTradeInv[i] == nullptr)
+						{
+							bFound      = true;
+							iDestiOrder = i;
+							break;
+						}
+					}
+
+					if (!bFound) // 빈 슬롯을 찾지 못했으면..
+					{
+						s_bWaitFromServer              = false;
+						s_sRecoveryJobInfo.pItemSource = nullptr;
+						s_sRecoveryJobInfo.pItemTarget = nullptr;
+
+						return false;
+					}
+				}
+
+				s_sRecoveryJobInfo.UIWndSourceEnd.iOrder = iDestiOrder;
+
+				SendToServerBuyMsg(s_sRecoveryJobInfo.pItemSource->pItemBasic->dwID + s_sRecoveryJobInfo.pItemSource->pItemExt->dwID,
+					iDestiOrder, s_sRecoveryJobInfo.pItemSource->iCount);
+
+				std::string szIconFN;
+				e_PartPosition ePart         = PART_POS_UNKNOWN;
+				e_PlugPosition ePlug         = PLUG_POS_UNKNOWN;
+
+				__IconItemSkill* spItemTrade = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder];
+				CGameBase::MakeResrcFileNameForUPC(spItemTrade->pItemBasic, spItemTrade->pItemExt, nullptr, &szIconFN, ePart,
+					ePlug); // 아이템에 따른 파일 이름을 만들어서
+
+				__IconItemSkill* spItemNew = new __IconItemSkill;
+				spItemNew->pItemBasic      = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic;
+				spItemNew->pItemExt        = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemExt;
+				spItemNew->szIconFN        = szIconFN; // 아이콘 파일 이름 복사..
+				spItemNew->iCount          = 1;
+				spItemNew->iDurability = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic->siMaxDurability
+											+ m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]
+												->pItemExt->siMaxDurability;
+
+				// 아이콘 리소스 만들기..
+				spItemNew->pUIIcon = new CN3UIIcon;
+				float fUVAspect    = (float) 45.0f / (float) 64.0f;
+				spItemNew->pUIIcon->Init(this);
+				spItemNew->pUIIcon->SetTex(szIconFN);
+				spItemNew->pUIIcon->SetUVRect(0, 0, fUVAspect, fUVAspect);
+				spItemNew->pUIIcon->SetUIType(UI_TYPE_ICON);
+				spItemNew->pUIIcon->SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);
+				spItemNew->pUIIcon->SetVisible(true);
+				pArea = GetChildAreaByiOrder(UI_AREA_TYPE_TRADE_MY, iDestiOrder);
+				if (pArea != nullptr)
+				{
+					spItemNew->pUIIcon->SetRegion(pArea->GetRegion());
+					spItemNew->pUIIcon->SetMoveRect(pArea->GetRegion());
+				}
+
+				m_pMyTradeInv[iDestiOrder] = spItemNew;
 			}
 			else
 			{
