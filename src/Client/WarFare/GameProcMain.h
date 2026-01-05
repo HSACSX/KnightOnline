@@ -1,5 +1,5 @@
-﻿#ifndef CLIENT_GAMEPROCMAIN_H
-#define CLIENT_GAMEPROCMAIN_H
+﻿#ifndef CLIENT_WARFARE_GAMEPROCMAIN_H
+#define CLIENT_WARFARE_GAMEPROCMAIN_H
 
 #pragma once
 
@@ -340,4 +340,4 @@ public:
 	~CGameProcMain() override; // 소멸자.
 };
 
-#endif                         // CLIENT_GAMEPROCMAIN_H
+#endif                         // CLIENT_WARFARE_GAMEPROCMAIN_H

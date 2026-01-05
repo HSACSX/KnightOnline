@@ -9,6 +9,8 @@
 #include <inttypes.h>
 #include <cmath>
 
+#include <spdlog/fmt/bundled/format.h>
+
 #if defined(_N3TOOL)
 #include <afx.h>
 #endif

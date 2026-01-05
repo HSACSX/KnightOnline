@@ -53,7 +53,6 @@ CN3Eng::~CN3Eng()
 	if (s_lpD3DDev)
 	{
 		int nRefCount = s_lpD3DDev->Release();
-
 		if (nRefCount == 0)
 		{
 			s_lpD3DDev = nullptr;

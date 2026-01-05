@@ -232,15 +232,6 @@ public:
 constexpr int MAX_PLUG_FX_POSITION = 5;
 constexpr int MAX_FXTAIL           = 3;
 
-enum e_PlugAttr : uint8_t
-{
-	PLUGATTR_FIRE = 0,
-	PLUGATTR_ICE,
-	PLUGATTR_LIGHTENNING,
-	PLUGATTR_POISON,
-	PLUGATTR_TOTAL
-};
-
 class CN3CPlug : public CN3CPlugBase
 {
 public:

@@ -101,6 +101,7 @@ CN3ColorChange& CN3ColorChange::operator=(const CN3ColorChange& other)
 
 	return *this;
 }
+
 CN3DeltaChange::CN3DeltaChange()
 {
 	m_fCurDelta   = 0.0f;

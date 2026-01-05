@@ -5,13 +5,13 @@
 #if !defined(AFX_PlayerOtherMgr_H__B32C59B8_6C08_494E_B9DE_338B3CD026C5__INCLUDED_)
 #define AFX_PlayerOtherMgr_H__B32C59B8_6C08_494E_B9DE_338B3CD026C5__INCLUDED_
 
-#include <map>
-
 #pragma once
 
 #include "PlayerOther.h"
 #include "GameBase.h"
 #include "GameProcedure.h"
+
+#include <map>
 
 //typedef std::list<CPlayerOther*>::iterator it_UPC;
 //typedef std::list<CPlayerNPC*>::iterator it_NPC;

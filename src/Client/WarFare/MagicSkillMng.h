@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef CLIENT_WARFARE_MAGICSKILLMNG_H
+#define CLIENT_WARFARE_MAGICSKILLMNG_H
+
+#pragma once
 
 #include "GameDef.h"
 #include "GameBase.h"
@@ -143,3 +146,5 @@ public:
 	CMagicSkillMng(CGameProcMain* pGameProcMain);
 	~CMagicSkillMng() override;
 };
+
+#endif // CLIENT_WARFARE_MAGICSKILLMNG_H

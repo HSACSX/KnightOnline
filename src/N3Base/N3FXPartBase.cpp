@@ -6,6 +6,8 @@
 #include "N3FXPartBase.h"
 #include "N3FXBundle.h"
 
+#include <shared/StringUtils.h>
+
 CN3FXPartBase::CN3FXPartBase()
 {
 	m_iVersion     = 0;
@@ -125,7 +127,7 @@ bool CN3FXPartBase::ParseScript(
 		char szPathName[_MAX_PATH] {}, szDir[_MAX_DIR] {}, szFileName[_MAX_PATH] {},
 			szExt[_MAX_EXT] {};
 
-		strcpy(szPathName, szBuff0);
+		strcpy_safe(szPathName, szBuff0);
 		_splitpath(szPathName, nullptr, szDir, szFileName, szExt);
 
 		memset(m_pTexName, 0, sizeof(m_pTexName));

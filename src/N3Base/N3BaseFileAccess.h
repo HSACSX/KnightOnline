@@ -12,7 +12,7 @@
 
 #include <FileIO/File.h>
 
-enum e_N3FormatVersion : uint32_t
+enum e_N3FormatVersion : uint16_t
 {
 	N3FORMAT_VER_UNKN = 0,
 	N3FORMAT_VER_1068 = 1068,

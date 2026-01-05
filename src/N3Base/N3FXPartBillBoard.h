@@ -5,6 +5,8 @@
 #ifndef __N3FXPARTBILLBOARD_H__
 #define __N3FXPARTBILLBOARD_H__
 
+#pragma once
+
 #include "N3FXPartBase.h"
 
 class CN3FXPartBillBoard : public CN3FXPartBase

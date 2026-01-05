@@ -7,25 +7,25 @@
 
 #include <N3Base/My_3DStruct.h>
 
-const int DK_NONE         = 0;
-const int DK_RELEASE      = 1;
-const int DK_PRESS        = 2;
-const int DK_REPEAT       = 4;
-const int NUMDIKEYS       = 256;
+constexpr int DK_NONE         = 0;
+constexpr int DK_RELEASE      = 1;
+constexpr int DK_PRESS        = 2;
+constexpr int DK_REPEAT       = 4;
+constexpr int NUMDIKEYS       = 256;
 
 // 마우스 플래그 - 한개 이상의 플래그가 OR 연산으로 조합되어 있다..
-const int MOUSE_LBCLICK   = 0x1;
-const int MOUSE_LBCLICKED = 0x2;
-const int MOUSE_LBDOWN    = 0x4;
-const int MOUSE_MBCLICK   = 0x8;
-const int MOUSE_MBCLICKED = 0x10;
-const int MOUSE_MBDOWN    = 0x20;
-const int MOUSE_RBCLICK   = 0x40;
-const int MOUSE_RBCLICKED = 0x80;
-const int MOUSE_RBDOWN    = 0x100;
-const int MOUSE_LBDBLCLK  = 0x200;
-const int MOUSE_MBDBLCLK  = 0x400;
-const int MOUSE_RBDBLCLK  = 0x800;
+constexpr int MOUSE_LBCLICK   = 0x1;
+constexpr int MOUSE_LBCLICKED = 0x2;
+constexpr int MOUSE_LBDOWN    = 0x4;
+constexpr int MOUSE_MBCLICK   = 0x8;
+constexpr int MOUSE_MBCLICKED = 0x10;
+constexpr int MOUSE_MBDOWN    = 0x20;
+constexpr int MOUSE_RBCLICK   = 0x40;
+constexpr int MOUSE_RBCLICKED = 0x80;
+constexpr int MOUSE_RBDOWN    = 0x100;
+constexpr int MOUSE_LBDBLCLK  = 0x200;
+constexpr int MOUSE_MBDBLCLK  = 0x400;
+constexpr int MOUSE_RBDBLCLK  = 0x800;
 
 //////////////////////////////////////////////////////////////////////////////////
 // CLocalInput is a class wrapper for DirectInput and contains functions to receive

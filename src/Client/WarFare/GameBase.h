@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef CLIENT_WARFARE_GAMEBASE_H
+#define CLIENT_WARFARE_GAMEBASE_H
+
+#pragma once
 
 #include <N3Base/N3Base.h>
 #include <N3Base/N3TableBase.h>
@@ -65,3 +68,5 @@ public:
 	CGameBase();
 	~CGameBase() override;
 };
+
+#endif // CLIENT_WARFARE_GAMEBASE_H

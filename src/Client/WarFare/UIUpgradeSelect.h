@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef CLIENT_WARFARE_UIUPGRADESELECT_H
+#define CLIENT_WARFARE_UIUPGRADESELECT_H
+
+#pragma once
 
 #include <N3Base/N3UIBase.h>
 
@@ -22,3 +25,5 @@ protected:
 	CN3UIButton* m_pBtn_Close;
 	int m_iNpcID;
 };
+
+#endif

@@ -10,8 +10,6 @@
 #include "PlayerBase.h"
 #include "GameBase.h"
 
-#include "PlayerBase.h"
-
 class CPlayerNPC : public CPlayerBase
 {
 	friend class CPlayerOtherMgr;

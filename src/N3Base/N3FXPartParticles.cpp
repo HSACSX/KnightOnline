@@ -292,7 +292,7 @@ bool CN3FXPartParticles::ParseScript(
 			return false;
 
 		char szPath[MAX_PATH] {};
-		strcpy(szPath, szBuff0);
+		strcpy_safe(szPath, szBuff0);
 
 		m_pShape    = new CN3FXShape();
 		m_pRefShape = s_MngFXShape.Get(szPath);
@@ -745,17 +745,14 @@ void CN3FXPartParticles::Render()
 				continue;
 
 			__AlphaPrimitive* pAP = s_AlphaMgr.Add();
-			if (pAP)
+			if (pAP != nullptr)
 			{
-				//for(int i=0;i<6;i++) m_pIB[i] = m_wUnitIB[i];
-
 				pAP->bUseVB          = FALSE;
 				pAP->dwBlendDest     = m_dwDestBlend;
 				pAP->dwBlendSrc      = m_dwSrcBlend;
 				pAP->dwFVF           = FVF_XYZCOLORT1;
 				pAP->dwPrimitiveSize = sizeof(__VertexXyzColorT1);
 				pAP->fCameraDistance = CameraDist(
-					// NOLINTNEXTLINE(cppcoreguidelines-slicing)
 					pParticle->m_pVB[0], pParticle->m_pVB[1], pParticle->m_pVB[2]);
 
 				if (m_ppRefTex[pParticle->m_iTexIdx])
@@ -763,9 +760,7 @@ void CN3FXPartParticles::Render()
 				else
 					pAP->lpTex = nullptr;
 
-				__Matrix44 mtxWorld;
-				mtxWorld.Identity();
-				pAP->MtxWorld        = mtxWorld;
+				pAP->MtxWorld        = __Matrix44::GetIdentity();
 				pAP->nRenderFlags    = m_dwRenderFlag; // | RF_UV_CLAMP;
 				pAP->ePrimitiveType  = D3DPT_TRIANGLEFAN;
 				pAP->nPrimitiveCount = 2;
@@ -857,7 +852,7 @@ void CN3FXPartParticles::Render()
 }
 
 float CN3FXPartParticles::CameraDist(
-	const __Vector3& v1, const __Vector3& v2, const __Vector3& v3) const
+	const __VertexXyzColorT1& v1, const __VertexXyzColorT1& v2, const __VertexXyzColorT1& v3) const
 {
 	__Vector3 vA = v1 - v3;
 	__Vector3 vB = v2 - v3;

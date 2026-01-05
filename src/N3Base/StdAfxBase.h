@@ -6,6 +6,4 @@
 #include "My_3DStruct.h"
 #include <filesystem>
 
-#include <spdlog/fmt/bundled/format.h>
-
 #endif // N3BASE_STDAFX_H

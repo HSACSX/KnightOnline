@@ -8,6 +8,8 @@
 #ifndef __N3FXDEF_H__
 #define __N3FXDEF_H__
 
+#pragma once
+
 #include "N3Base.h"
 #include "My_3DStruct.h"
 
@@ -31,7 +33,8 @@ constexpr int NUM_VERTEX_BOTTOM   = 10; //
 constexpr int NUM_KEY_COLOR       = 100;
 
 // 이펙트 스타일...매쉬를 이용한 건지, 파티클을 이용한 건지..등등..
-enum e_FXPartType : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format (albeit indirectly), must be this size
+enum e_FXPartType : int32_t
 {
 	FX_PART_TYPE_NONE        = 0,
 	FX_PART_TYPE_PARTICLE    = 1, //'particle'
@@ -70,11 +73,12 @@ enum e_FXBundleAct : int8_t
 };
 
 // 이펙트 파트가 어떤 모양으로 전개되는지...
-enum e_FXPartParticleEmitType : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format (albeit indirectly), must be this size
+enum e_FXPartParticleEmitType : uint32_t
 {
-	FX_PART_PARTICLE_EMIT_TYPE_NORMAL = 0, //'normal'
-	FX_PART_PARTICLE_EMIT_TYPE_SPREAD = 1, //'spread'
-	FX_PART_PARTICLE_EMIT_TYPE_GATHER = 2, //'gather'
+	FX_PART_PARTICLE_EMIT_TYPE_NORMAL = 0,
+	FX_PART_PARTICLE_EMIT_TYPE_SPREAD = 1,
+	FX_PART_PARTICLE_EMIT_TYPE_GATHER = 2
 };
 
 //

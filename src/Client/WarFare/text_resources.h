@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef CLIENT_WARFARE_TEXT_RESOURCES_H
+#define CLIENT_WARFARE_TEXT_RESOURCES_H
+
+#pragma once
 
 #include "ClientResourceFormatter.h"
 
@@ -640,3 +643,5 @@ enum e_TextResourceID : uint16_t
 };
 
 // clang-format on
+
+#endif // CLIENT_WARFARE_TEXT_RESOURCES_H

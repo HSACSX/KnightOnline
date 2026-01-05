@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#pragma once
+
 #include "N3BaseFileAccess.h"
 #include <string>
 

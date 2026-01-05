@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#pragma once
+
 #ifdef _3DSERVER
 #include "My_3DStruct.h"
 #else

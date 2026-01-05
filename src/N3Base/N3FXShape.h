@@ -5,7 +5,7 @@
 #ifndef __N3FXSHAPE_H__
 #define __N3FXSHAPE_H__
 
-#pragma warning(disable : 4786)
+#pragma once
 
 #include "N3TransformCollision.h"
 #include "N3Texture.h"

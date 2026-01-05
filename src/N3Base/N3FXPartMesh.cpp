@@ -64,7 +64,7 @@ bool CN3FXPartMesh::ParseScript(
 	if (lstrcmpi(szCommand, "<shape_name>") == 0)
 	{
 		char szPath[MAX_PATH] {};
-		strcpy(szPath, szBuff0);
+		strcpy_safe(szPath, szBuff0);
 
 		m_pShape    = new CN3FXShape();
 		m_pRefShape = s_MngFXShape.Get(szPath);

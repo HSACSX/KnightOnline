@@ -5,6 +5,8 @@
 #ifndef __N3FXPARTPARTICLES_H__
 #define __N3FXPARTPARTICLES_H__
 
+#pragma once
+
 #include <list>
 #include "N3FXPartBase.h"
 
@@ -95,7 +97,8 @@ protected:
 
 	bool RotateQuaternion(
 		const __Vector3& vSrcDir, const __Vector3& vDestDir, __Quaternion* pQt) const;
-	float CameraDist(const __Vector3& v1, const __Vector3& v2, const __Vector3& v3) const;
+	float CameraDist(const __VertexXyzColorT1& v1, const __VertexXyzColorT1& v2,
+		const __VertexXyzColorT1& v3) const;
 
 public:
 	void Init() override;           // 각종 변수들을 처음 로딩한 상태로 초기화...

@@ -5,6 +5,8 @@
 #ifndef __N3FXPARTMESH_H__
 #define __N3FXPARTMESH_H__
 
+#pragma once
+
 #include "N3FXPartBase.h"
 
 class CN3FXShape;

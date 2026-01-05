@@ -13,16 +13,17 @@
 
 constexpr int NUM_CLOUD_VERTEX = 8; // 12
 
-enum e_CLOUDTEX : int8_t
+// NOLINTNEXTLINE(performance-enum-size): copied from __SKY_DAYCHANGE::dwParam2, __SKY_DAYCHANGE::dwParam2
+enum e_CLOUDTEX : uint32_t
 {
-	CLOUD_NONE  = -1,
 	CLOUD_WISPS = 0,
 	CLOUD_PUFFS,
 	CLOUD_TATTERS,
 	CLOUD_STREAKS,
 	CLOUD_DENSE,
 	CLOUD_OVERCAST,
-	NUM_CLOUD
+	NUM_CLOUD,
+	CLOUD_NONE = 0xFFFFFFFF
 };
 
 class CN3Cloud : public CN3Base

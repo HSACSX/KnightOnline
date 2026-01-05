@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef CLIENT_WARFARE_CLIENTRESOURCEFORMATTER_H
+#define CLIENT_WARFARE_CLIENTRESOURCEFORMATTER_H
+
+#pragma once
 
 // TODO: Replace CLogWriter's implementation
 // #include <spdlog/spdlog.h>
@@ -51,3 +54,5 @@ inline std::string format_text_resource(uint32_t resourceId, Args&&... args)
 }
 
 } // namespace fmt
+
+#endif // CLIENT_WARFARE_CLIENTRESOURCEFORMATTER_H
