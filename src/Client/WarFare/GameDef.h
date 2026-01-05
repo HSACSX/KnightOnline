@@ -344,7 +344,7 @@ enum e_StateDying : int8_t
 {
 	// Dies with a twisting/rolling death animation.
 	// NOTE: The original comment indicated the body physically breaking apart,
-	// but this ismisleading -- the actual animations for players and NPCs
+	// but this is misleading -- the actual animations for players and NPCs
 	// simply twist and roll.
 	PSD_DISJOINT = 0,
 
@@ -1063,34 +1063,34 @@ struct __TABLE_PLAYER_LOOKS
 	std::string szJointFN     = {}; // Joint filename
 	std::string szAniFN       = {}; // Animation filename
 	std::string szPartFNs[10] = {}; // Each character part - upper body, lower body, head, arms, legs, hair, cape
-	std::string szSkinFN;
-	std::string szChrFN;
-	std::string szFXPlugFN;
+	std::string szSkinFN      = {};
+	std::string szChrFN       = {};
+	std::string szFXPlugFN    = {};
 
-	int iIdk1            = 0;
+	int iIdk1                 = 0;
 
-	int iJointRH         = -1; // Joint index for tip of right hand
-	int iJointLH         = -1; // Joint index for tip of left hand
-	int iJointLH2        = -1; // Joint index for left forearm
-	int iJointCloak      = -1; // Joint index for cape attachment
+	int iJointRH              = -1; // Joint index for tip of right hand
+	int iJointLH              = -1; // Joint index for tip of left hand
+	int iJointLH2             = -1; // Joint index for left forearm
+	int iJointCloak           = -1; // Joint index for cape attachment
 
-	int iSndID_Move      = 0;
-	int iSndID_Attack0   = 0;
-	int iSndID_Attack1   = 0;
-	int iSndID_Struck0   = 0;
-	int iSndID_Struck1   = 0;
-	int iSndID_Dead0     = 0;
-	int iSndID_Dead1     = 0;
-	int iSndID_Breathe0  = 0;
-	int iSndID_Breathe1  = 0;
-	int iSndID_Reserved0 = 0;
-	int iSndID_Reserved1 = 0;
+	int iSndID_Move           = 0;
+	int iSndID_Attack0        = 0;
+	int iSndID_Attack1        = 0;
+	int iSndID_Struck0        = 0;
+	int iSndID_Struck1        = 0;
+	int iSndID_Dead0          = 0;
+	int iSndID_Dead1          = 0;
+	int iSndID_Breathe0       = 0;
+	int iSndID_Breathe1       = 0;
+	int iSndID_Reserved0      = 0;
+	int iSndID_Reserved1      = 0;
 
-	int iIdk2            = 0;
-	int iIdk3            = 0;
-	uint8_t byIdk4       = 0;
-	uint8_t byIdk5       = 0;
-	uint8_t byIdk6       = 0;
+	int iIdk2                 = 0;
+	int iIdk3                 = 0;
+	uint8_t byIdk4            = 0;
+	uint8_t byIdk5            = 0;
+	uint8_t byIdk6            = 0;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1280,7 +1280,7 @@ struct __TABLE_HELP
 	int iMaxLevel           = 0;
 	int iReqClass           = 0;
 	std::string szQuestName = {};
-	std::string szQuestDesc;
+	std::string szQuestDesc = {};
 };
 
 // Max equipment slots for other players (including NPCs): 0-4 = upper body, lower body, helmet, arms, legs; 5 = cloak; 6 = right hand; 7 = left hand
