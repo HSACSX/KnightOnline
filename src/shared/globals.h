@@ -284,7 +284,7 @@ enum e_NpcType : uint8_t
 	NPC_BATTLE_MONUMENT    = 211
 };
 
-enum e_ObjectType : uint8_t
+enum e_ObjectType : int8_t
 {
 	OBJECT_TYPE_BIND           = 0,
 	OBJECT_TYPE_BINDPOINT      = OBJECT_TYPE_BIND,
@@ -300,7 +300,7 @@ enum e_ObjectType : uint8_t
 	OBJECT_TYPE_REMOVE_BIND    = 7, // this seems to behave identically to OBJECT_TYPE_BIND
 	OBJECT_TYPE_ANVIL          = 8,
 	OBJECT_TYPE_ARTIFACT       = 9,
-	OBJECT_TYPE_UNKNOWN        = 0xff
+	OBJECT_TYPE_UNKNOWN        = -1
 };
 
 enum e_QuestState : uint8_t

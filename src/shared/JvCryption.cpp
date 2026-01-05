@@ -54,7 +54,6 @@ int CJvCryption::JvDecryptionWithCRC32(int len, uint8_t* datain, uint8_t* dataou
 {
 #ifdef USE_CRYPTION
 	int result = -1;
-	;
 	JvDecryptionFast(len, datain, dataout);
 
 	if (crc32(dataout, len - 4, -1) == *(uint32_t*) (len - 4 + dataout))
