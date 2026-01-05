@@ -8,12 +8,12 @@
 
 #include <spdlog/fmt/bundled/format.h>
 
-void DebugString(const std::string_view logMessage);
+void DebugStringToOutput(const std::string_view logMessage);
 
 template <typename... Args>
 static inline void FormattedDebugString(fmt::format_string<Args...> fmt, Args&&... args)
 {
-	DebugString(fmt::format(fmt, std::forward<Args>(args)...));
+	DebugStringToOutput(fmt::format(fmt, std::forward<Args>(args)...));
 }
 
 #define ASSERT assert

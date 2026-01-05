@@ -1,6 +1,6 @@
 ﻿#include "StdAfxBase.h"
 
-void DebugString(const std::string_view logMessage)
+void DebugStringToOutput(const std::string_view logMessage)
 {
 #ifdef _WIN32
 	constexpr std::string_view NewLine = "\r\n";
