@@ -150,6 +150,7 @@ bool AIServerApp::OnStart()
 	// Server start message
 	spdlog::info("AIServerApp::OnStart: starting...");
 
+	_itemLogger = spdlog::get(std::string(logger::AIServerItem));
 	_userLogger = spdlog::get(std::string(logger::AIServerUser));
 
 	//----------------------------------------------------------------------

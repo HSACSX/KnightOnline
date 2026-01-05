@@ -6069,7 +6069,7 @@ void CNpc::GiveNpcHaveItem()
 		SetShort(pBuf, GiveItemList[i].count, index);
 
 		if (GiveItemList[i].sSid != TYPE_MONEY_SID)
-			spdlog::get(std::string(logger::AIServerItem))->info(GiveItemList[i].sSid);
+			m_pMain->itemLogger()->info(GiveItemList[i].sSid);
 
 		//TRACE(_T("Npc-GiveNpcHaveItem() : [nid - %d,%hs,  giveme=%d, count=%d, num=%d], list=%d, count=%d\n"), m_sNid+NPC_BAND, m_strName, m_sMaxDamageUserid, nCount, i, GiveItemList[i].sSid, GiveItemList[i].count);
 	}

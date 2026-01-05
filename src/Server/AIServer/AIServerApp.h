@@ -48,6 +48,11 @@ public:
 		return static_cast<AIServerApp*>(s_instance);
 	}
 
+	std::shared_ptr<spdlog::logger>& itemLogger()
+	{
+		return _itemLogger;
+	}
+
 	std::shared_ptr<spdlog::logger>& userLogger()
 	{
 		return _userLogger;
@@ -148,6 +153,7 @@ private:
 	std::filesystem::path _eventDir;
 	std::string _overrideEventDir;
 
+	std::shared_ptr<spdlog::logger> _itemLogger;
 	std::shared_ptr<spdlog::logger> _userLogger;
 
 protected:
