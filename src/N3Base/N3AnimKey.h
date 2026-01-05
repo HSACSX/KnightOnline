@@ -9,11 +9,12 @@
 
 #include "N3Base.h"
 
-enum ANIMATION_KEY_TYPE : uint8_t
+// NOLINTNEXTLINE(performance-enum-size): used by the file format, must be this size
+enum ANIMATION_KEY_TYPE : uint32_t
 {
 	KEY_VECTOR3    = 0,
 	KEY_QUATERNION = 1,
-	KEY_UNKNOWN    = 0xff
+	KEY_UNKNOWN    = 0xFFFFFFFF
 };
 
 class CN3AnimKey : CN3Base

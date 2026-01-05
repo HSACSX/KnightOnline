@@ -53,6 +53,9 @@ public:
 
 	__AnimData& operator=(const __AnimData& other)
 	{
+		if (this == &other)
+			return *this;
+
 		fFrmStart          = other.fFrmStart;
 		fFrmEnd            = other.fFrmEnd;
 		fFrmPerSec         = other.fFrmPerSec;
