@@ -120,7 +120,6 @@ public:
 	void StunMySelf(__TABLE_UPC_SKILL_TYPE_3* pType3);
 	void StopCastingByRatio();
 	void ClearDurationalMagic();
-	D3DCOLOR TraceColorGet(__TABLE_UPC_SKILL* pSkill); // 스킬의 종류에 따라 검기의 색을 정한다..
 
 	bool IsPositiveMagic(uint32_t dwMagicID);
 	bool IsCasting();

@@ -1176,10 +1176,6 @@ void CMagicSkillMng::StartSkillMagicAtTargetPacket(__TABLE_UPC_SKILL* pSkill, in
 		if (pType1 == nullptr)
 			return;
 
-		// 검기 색을 바꾸어 준다..
-		//		D3DCOLOR crTrace = TraceColorGet(pSkill); // 스킬의 종류에 따라 검기의 색을 정한다..
-		//		s_pPlayer->PlugTraceColorRemake(crTrace); // 검기 색 적용..
-
 		s_pPlayer->RotateTo(pTarget);
 
 		m_iTarget = TargetID;
@@ -2299,11 +2295,6 @@ bool CMagicSkillMng::EffectingType1(uint32_t dwMagicID, int iSourceID, int iTarg
 				__ASSERT(pPlayer, "NULL Player Pointer!!");
 				if (pPlayer != nullptr)
 				{
-					// 검기 색을 바꾸어 준다..
-					//					__TABLE_UPC_SKILL* pSkill = s_pTbl_Skill.Find(dwMagicID);
-					//					D3DCOLOR crTrace = TraceColorGet(pSkill); // 스킬의 종류에 따라 검기의 색을 정한다..
-					//					pPlayer->PlugTraceColorRemake(crTrace); // 검기 색 적용..
-
 					pPlayer->RotateTo(pTarget);
 
 					// TODO: Update this. It's intended to apply based on the equipped weapon type,
@@ -2573,14 +2564,6 @@ uint32_t CMagicSkillMng::GetMagicID(int idx)
 {
 	std::map<int, uint32_t>::iterator it = m_MySelf.find(idx);
 	return it->second;
-}
-
-D3DCOLOR CMagicSkillMng::TraceColorGet(__TABLE_UPC_SKILL* pSkill) // 스킬의 종류에 따라 검기의 색을 정한다..
-{
-	if (pSkill == nullptr)
-		return 0xff404040;
-
-	return 0xff4040ff;
 }
 
 bool CMagicSkillMng::IsPositiveMagic(uint32_t dwMagicID)
