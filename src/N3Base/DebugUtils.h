@@ -5,6 +5,7 @@
 
 #if defined(_DEBUG) || defined(DEBUG)
 #include <cassert>
+#include <string_view>
 
 #include <spdlog/fmt/bundled/format.h>
 
@@ -16,8 +17,10 @@ static inline void FormattedDebugString(fmt::format_string<Args...> fmt, Args&&.
 	DebugStringToOutput(fmt::format(fmt, std::forward<Args>(args)...));
 }
 
+#ifndef _N3TOOL
 #define ASSERT assert
 #define TRACE  FormattedDebugString
+#endif
 
 //	Ensure both typically used debug defines behave as intended
 #ifndef DEBUG
@@ -29,8 +32,12 @@ static inline void FormattedDebugString(fmt::format_string<Args...> fmt, Args&&.
 #endif
 
 #else
+
+#ifndef _N3TOOL
 #define ASSERT(...)
 #define TRACE(...)
+#endif
+
 #endif
 
 #endif // CLIENT_N3BASE_DEBUGUTILS_H

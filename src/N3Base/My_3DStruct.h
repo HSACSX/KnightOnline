@@ -11,9 +11,9 @@
 
 #if defined(_N3TOOL)
 #include <afx.h>
-#else
-#include "DebugUtils.h"
 #endif
+
+#include "DebugUtils.h"
 
 #include <MathUtils/MathUtils.h>
 
@@ -798,15 +798,13 @@ constexpr uint32_t OBJ_ANIM_CONTROL         = 0x40000000;
 #define __ASSERT(expr, expMessage)
 #else
 #include "CrtDbg.h"
-#include <spdlog/fmt/fmt.h>
 
 // NOLINTBEGIN(cppcoreguidelines-pro-type-vararg,cppcoreguidelines-macro-usage)
 #define __ASSERT(expr, expMessage)                                                               \
 	if (!(expr))                                                                                 \
 	{                                                                                            \
 		_CrtDbgReport(_CRT_ASSERT, __FILE__, __LINE__, "N3 Custom Assert Function", expMessage); \
-		std::string __szErr = fmt::format("{}({}): {}\n", __FILE__, __LINE__, expMessage);       \
-		OutputDebugStringA(__szErr.c_str());                                                     \
+		FormattedDebugString("{}({}): {}\n", __FILE__, __LINE__, expMessage);                    \
 		_CrtDbgBreak();                                                                          \
 	}
 // NOLINTEND(cppcoreguidelines-pro-type-vararg,cppcoreguidelines-macro-usage)
