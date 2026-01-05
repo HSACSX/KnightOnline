@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef N3BASE_N3SHAPEMGR_H
+#define N3BASE_N3SHAPEMGR_H
 
 #pragma once
 
@@ -6,16 +7,22 @@
 #include "My_3DStruct.h"
 #else
 #include "N3BaseFileAccess.h"
-#endif                                           // end of #ifndef _3DSERVER
+#endif // end of #ifndef _3DSERVER
 
-constexpr int CELL_MAIN_DIVIDE = 4;              // 메인셀은 4 X 4 의 서브셀로 나뉜다..
-constexpr int CELL_SUB_SIZE    = 4;              // 4 Meter 가 서브셀의 사이즈이다..
-constexpr int CELL_MAIN_SIZE   = CELL_MAIN_DIVIDE
-							   * CELL_SUB_SIZE;  // 메인셀 크기는 서브셀갯수 X 서브셀 크기이다.
-constexpr int MAX_CELL_MAIN = 4096
-							  / CELL_MAIN_SIZE;  // 메인셀의 최대 갯수는 지형크기 / 메인셀크기 이다.
-constexpr int MAX_CELL_SUB = MAX_CELL_MAIN
-							 * CELL_MAIN_DIVIDE; // 서브셀 최대 갯수는 메인셀 * 메인셀나눔수 이다.
+// 메인셀은 4 X 4 의 서브셀로 나뉜다..
+constexpr int CELL_MAIN_DIVIDE = 4;
+
+// 4 Meter 가 서브셀의 사이즈이다..
+constexpr int CELL_SUB_SIZE    = 4;
+
+// 메인셀 크기는 서브셀갯수 X 서브셀 크기이다.
+constexpr int CELL_MAIN_SIZE   = CELL_MAIN_DIVIDE * CELL_SUB_SIZE;
+
+// 메인셀의 최대 갯수는 지형크기 / 메인셀크기 이다.
+constexpr int MAX_CELL_MAIN    = 4096 / CELL_MAIN_SIZE;
+
+// 서브셀 최대 갯수는 메인셀 * 메인셀나눔수 이다.
+constexpr int MAX_CELL_SUB     = MAX_CELL_MAIN * CELL_MAIN_DIVIDE;
 
 #ifdef _3DSERVER
 class CN3ShapeMgr
@@ -24,22 +31,27 @@ class CN3ShapeMgr
 #include <vector>
 class CN3Shape;
 class CN3ShapeMgr : public CN3BaseFileAccess
-#endif                    // end of #ifndef _3DSERVER
+#endif // end of #ifndef _3DSERVER
 {
 public:
-	struct __CellSub      // 하위 셀 데이터
+	// 하위 셀 데이터
+	struct __CellSub
 	{
-		int nCCPolyCount; // Collision Check Polygon Count
-		uint32_t*
-			pdwCCVertIndices; // Collision Check Polygon Vertex Indices - wCCPolyCount * 3 만큼 생성된다.
+		// Collision Check Polygon Count
+		int nCCPolyCount;
+
+		// Collision Check Polygon Vertex Indices - wCCPolyCount * 3 만큼 생성된다.
+		uint32_t* pdwCCVertIndices;
 
 		void Load(File& file)
 		{
 			file.Read(&nCCPolyCount, 4);
 
+			delete[] pdwCCVertIndices;
+			pdwCCVertIndices = nullptr;
+
 			if (nCCPolyCount > 0)
 			{
-				delete[] pdwCCVertIndices;
 				pdwCCVertIndices = new uint32_t[nCCPolyCount * 3];
 				__ASSERT(pdwCCVertIndices, "New memory failed");
 
@@ -70,19 +82,22 @@ public:
 		}
 	};
 
-	struct __CellMain             // 기본 셀 데이터
+	// 기본 셀 데이터
+	struct __CellMain
 	{
-		int nShapeCount;          // Shape Count;
-		uint16_t* pwShapeIndices; // Shape Indices
+		int nShapeCount;
+		uint16_t* pwShapeIndices;
 		__CellSub SubCells[CELL_MAIN_DIVIDE][CELL_MAIN_DIVIDE];
 
 		void Load(File& file)
 		{
 			file.Read(&nShapeCount, 4);
 
+			delete[] pwShapeIndices;
+			pwShapeIndices = nullptr;
+
 			if (nShapeCount > 0)
 			{
-				delete[] pwShapeIndices;
 				pwShapeIndices = new uint16_t[nShapeCount];
 				file.Read(pwShapeIndices, nShapeCount * 2);
 			}
@@ -125,19 +140,29 @@ public:
 
 protected:
 #ifndef _3DSERVER
-	std::vector<CN3Shape*> m_Shapes; // 리스트로 안 만든 이유는... 배열이 훨씬 효율적이기 때문이다.
-	std::list<CN3Shape*> m_ShapesToRender; // Tick 을 호출하면 렌더링할 것만 추린다..
-	std::list<CN3Shape*> m_ShapesHaveID;   // ID 를 갖고 있어 NPC 가 될수 있는 Shapes....
-#endif                                     // end of #ifndef _3DSERVER
+	// 리스트로 안 만든 이유는... 배열이 훨씬 효율적이기 때문이다.
+	std::vector<CN3Shape*> m_Shapes;
 
-	float m_fMapWidth;                     // 맵 너비.. 미터 단위
-	float m_fMapLength;                    // 맵 길이.. 미터 단위
+	// Tick 을 호출하면 렌더링할 것만 추린다..
+	std::list<CN3Shape*> m_ShapesToRender;
+
+	// ID 를 갖고 있어 NPC 가 될수 있는 Shapes....
+	std::list<CN3Shape*> m_ShapesHaveID;
+#endif // end of #ifndef _3DSERVER
+
+	// 맵 너비.. 미터 단위
+	float m_fMapWidth;
+
+	// 맵 길이.. 미터 단위
+	float m_fMapLength;
+
 	int m_nCollisionFaceCount;
 	__CellMain* m_pCells[MAX_CELL_MAIN][MAX_CELL_MAIN];
 
 #ifdef _N3TOOL
-	std::list<__Vector3> m_CollisionExtras; // 추가로 넣을 충돌체크 데이터
-#endif                                      // end of #ifedef _N3TOOL
+	// 추가로 넣을 충돌체크 데이터
+	std::list<__Vector3> m_CollisionExtras;
+#endif // end of #ifedef _N3TOOL
 
 public:
 #ifndef _3DSERVER
@@ -149,6 +174,7 @@ public:
 
 	CN3Shape* PickMovable(int iXScreen, int iYScreen, __Vector3* pvPick);
 #endif // end of #ifndef _3DSERVER
+
 	void SubCell(const __Vector3& vPos, __CellSub** ppSubCell);
 
 	// 해당 위치의 셀 포인터를 돌려준다.
@@ -234,3 +260,5 @@ public:
 	CN3ShapeMgr();
 	~CN3ShapeMgr() override;
 };
+
+#endif // N3BASE_N3SHAPEMGR_H
