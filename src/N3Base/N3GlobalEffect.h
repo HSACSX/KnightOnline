@@ -5,13 +5,15 @@
 #if !defined(AFX_N3GLOBALEFFECT_H__01468E41_4EE1_4893_8886_E57EE2491007__INCLUDED_)
 #define AFX_N3GLOBALEFFECT_H__01468E41_4EE1_4893_8886_E57EE2491007__INCLUDED_
 
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
 
 #include "N3Transform.h"
-const uint32_t GETYPE_RAIN = 0x00000001;
-const uint32_t GETYPE_SNOW = 0x00000002;
+
+enum e_GlobalEffectType : uint8_t
+{
+	GETYPE_RAIN = 1,
+	GETYPE_SNOW = 2
+};
 
 class CN3GlobalEffect : public CN3Transform
 {

@@ -10,6 +10,7 @@
 #include "APISocket.h"
 #include "UIInventory.h"
 #include "UIManager.h"
+#include "UIPointInitDlg.h"
 #include "text_resources.h"
 
 #include <N3Base/N3UIButton.h>

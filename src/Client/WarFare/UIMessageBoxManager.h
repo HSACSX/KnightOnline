@@ -5,11 +5,9 @@
 #if !defined(AFX_UIMESSAGEBOXMANAGER_H__34454EC5_5C0E_42EE_8321_6C0ECC0EACD0__INCLUDED_)
 #define AFX_UIMESSAGEBOXMANAGER_H__34454EC5_5C0E_42EE_8321_6C0ECC0EACD0__INCLUDED_
 
-#include <map>
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
+
+#include <map>
 
 #include "UIMessageBox.h"
 #include "GameBase.h"

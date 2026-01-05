@@ -5,9 +5,7 @@
 #if !defined(AFX_UICmdList_H)
 #define AFX_UICmdList_H
 
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
 
 #include <N3Base/N3UIBase.h>
 

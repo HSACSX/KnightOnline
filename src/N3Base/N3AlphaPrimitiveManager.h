@@ -5,16 +5,9 @@
 #if !defined(AFX_N3ALPHAPRIMITIVEMANAGER_H__616E318C_49E4_4468_9719_E62E384FC48D__INCLUDED_)
 #define AFX_N3ALPHAPRIMITIVEMANAGER_H__616E318C_49E4_4468_9719_E62E384FC48D__INCLUDED_
 
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
 
 #include "My_3DStruct.h"
-
-//const uint32_t RF_NOTHING = 0;
-//const uint32_t RF_ALPHABLENDING = 1;
-//const uint32_t RF_NOTUSEFOG = 2;
-//const uint32_t RF_DOUBLESIDED = 4;
 
 struct __AlphaPrimitive
 {

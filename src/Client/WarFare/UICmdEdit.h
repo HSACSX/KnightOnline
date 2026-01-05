@@ -5,9 +5,7 @@
 #if !defined(__UICMDEDIT_H__)
 #define __UICMDEDIT_H__
 
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
 
 #include <N3Base/N3UIBase.h>
 
