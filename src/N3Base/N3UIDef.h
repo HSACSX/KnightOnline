@@ -9,8 +9,8 @@
 
 #include <string>
 
-const float UI_DEFAULT_Z   = 0.9f;
-const float UI_DEFAULT_RHW = 1.0f;
+constexpr float UI_DEFAULT_Z   = 0.9f;
+constexpr float UI_DEFAULT_RHW = 1.0f;
 
 // type
 // NOLINTNEXTLINE(performance-enum-size): used by the file format, must be this size

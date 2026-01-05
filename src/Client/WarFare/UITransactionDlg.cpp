@@ -881,8 +881,6 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 		|| (s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_NPC
 			&& s_sSelectedIconInfo.UIWndSelect.UIWndDistrict != UIWND_DISTRICT_TRADE_MY))
 	{
-		AllHighLightIconFree();
-		SetState(UI_STATE_COMMON_NONE);
 		return false;
 	}
 
@@ -916,11 +914,7 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 
 	// 같은 윈도우 내에서의 움직임은 fail!!!!!
 	if (!bFound || (eUIWnd == s_sSelectedIconInfo.UIWndSelect.UIWndDistrict && eUIWnd != UIWND_DISTRICT_TRADE_MY))
-	{
-		AllHighLightIconFree();
-		SetState(UI_STATE_COMMON_NONE);
 		return false;
-	}
 
 	// 본격적으로 Recovery Info를 활용하기 시작한다..
 	// 먼저 WaitFromServer를 On으로 하고.. Select Info를 Recovery Info로 복사.. 이때 Dest는 팰요없다..
@@ -948,11 +942,7 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 	}
 
 	if (iDestiOrder < 0)
-	{
-		AllHighLightIconFree();
-		SetState(UI_STATE_COMMON_NONE);
 		return false;
-	}
 
 	switch (s_sSelectedIconInfo.UIWndSelect.UIWndDistrict)
 	{
@@ -1005,8 +995,6 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 								s_sRecoveryJobInfo.pItemSource = nullptr;
 								s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-								AllHighLightIconFree();
-								SetState(UI_STATE_COMMON_NONE);
 								return false;
 							}
 						}
@@ -1031,8 +1019,6 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 						s_sRecoveryJobInfo.pItemSource = nullptr;
 						s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-						AllHighLightIconFree();
-						SetState(UI_STATE_COMMON_NONE);
 						return false;
 					}
 
@@ -1073,8 +1059,6 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 							s_sRecoveryJobInfo.pItemSource = nullptr;
 							s_sRecoveryJobInfo.pItemTarget = nullptr;
 
-							AllHighLightIconFree();
-							SetState(UI_STATE_COMMON_NONE);
 							return false;
 						}
 					}
@@ -1197,8 +1181,6 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 			break;
 	}
 
-	AllHighLightIconFree();
-	SetState(UI_STATE_COMMON_NONE);
 	return false;
 }
 
