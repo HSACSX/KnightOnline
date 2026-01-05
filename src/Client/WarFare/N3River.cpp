@@ -22,10 +22,10 @@ CN3River::~CN3River()
 bool CN3River::Load(File& file)
 {
 	uint16_t wIndex[18] = { 4, 0, 1, 4, 1, 5, 5, 1, 2, 5, 2, 6, 6, 2, 3, 6, 3, 7 };
-	int iRiverCount     = 0;
 
 	m_Rivers.clear();
 
+	int iRiverCount = 0;
 	file.Read(&iRiverCount, sizeof(iRiverCount));
 	if (iRiverCount <= 0)
 		return true;
@@ -221,6 +221,7 @@ void CN3River::Tick()
 	if (m_Rivers.empty())
 		return;
 
+	const float vDelta = 0.01f * s_fSecPerFrm;
 	for (_RIVER_INFO& river : m_Rivers)
 	{
 		if (CN3Base::s_CameraData.IsOutOfFrustum(river.m_vCenterPo, river.m_fRadius))
@@ -233,8 +234,8 @@ void CN3River::Tick()
 
 		for (int j = 0; j < river.iVC; j++)
 		{
-			(river.pVertices + j)->v  += 0.01f * s_fSecPerFrm;
-			(river.pVertices + j)->v2 += 0.01f * s_fSecPerFrm;
+			river.pVertices[j].v  += vDelta;
+			river.pVertices[j].v2 += vDelta;
 		}
 	}
 

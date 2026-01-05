@@ -46,9 +46,13 @@ bool CN3Pond::Load(File& file)
 {
 	Release();
 
-	int iPondMeshNum = 0;
-
 	m_PondMeshes.clear();
+
+	// TODO: Update format; prior to this commit, this method was effectively disabled.
+	// We'll preserve this for now.
+	// Note that this is the last thing in the GTD file, so stopping here is OK.
+#if 0
+	int iPondMeshNum = 0;
 
 	file.Read(&iPondMeshNum, sizeof(int));
 	if (iPondMeshNum <= 0)
@@ -192,6 +196,7 @@ bool CN3Pond::Load(File& file)
 		m_pTexPond[i] = CN3Base::s_MngTex.Get(szFileName);
 		__ASSERT(m_pTexPond[i], "CN3Pond::texture load failed");
 	}
+#endif
 
 	return true;
 }
