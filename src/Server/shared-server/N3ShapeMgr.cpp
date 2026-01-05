@@ -9,11 +9,6 @@
 #include <spdlog/fmt/bundled/format.h>
 
 #include <cfloat>
-#include <istream>
-
-CN3ShapeMgr::__CellSub::__CellSub()
-{
-}
 
 void CN3ShapeMgr::__CellSub::Load(File& fs)
 {
@@ -36,10 +31,6 @@ void CN3ShapeMgr::__CellSub::Load(File& fs)
 CN3ShapeMgr::__CellSub::~__CellSub()
 {
 	delete[] pdwCCVertIndices;
-}
-
-CN3ShapeMgr::__CellMain::__CellMain()
-{
 }
 
 void CN3ShapeMgr::__CellMain::Load(File& fs)
@@ -67,11 +58,6 @@ CN3ShapeMgr::__CellMain::~__CellMain()
 
 CN3ShapeMgr::CN3ShapeMgr()
 {
-	for (int z = 0; z < MAX_CELL_MAIN; z++)
-	{
-		for (int x = 0; x < MAX_CELL_MAIN; x++)
-			m_pCells[x][z] = nullptr;
-	}
 }
 
 CN3ShapeMgr::~CN3ShapeMgr()

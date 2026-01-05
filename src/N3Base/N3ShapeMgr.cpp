@@ -777,7 +777,8 @@ bool CN3ShapeMgr::CheckCollision(const __Vector3& vPos, // 충돌 위치
 
 	for (int i = 0; i < iSubCellCount; i++)
 	{
-		if (ppCells[i]->nCCPolyCount <= 0)
+		if (ppCells[i] == nullptr
+			|| ppCells[i]->nCCPolyCount <= 0)
 			continue;
 
 		for (int j = 0; j < ppCells[i]->nCCPolyCount; j++)

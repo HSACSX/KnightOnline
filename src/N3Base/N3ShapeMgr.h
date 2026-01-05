@@ -38,10 +38,10 @@ public:
 	struct __CellSub
 	{
 		// Collision Check Polygon Count
-		int nCCPolyCount;
+		int nCCPolyCount           = 0;
 
 		// Collision Check Polygon Vertex Indices - wCCPolyCount * 3 만큼 생성된다.
-		uint32_t* pdwCCVertIndices;
+		uint32_t* pdwCCVertIndices = nullptr;
 
 		void Load(File& file)
 		{
@@ -70,12 +70,7 @@ public:
 		}
 #endif // end of _N3TOOL
 
-		__CellSub()
-		{
-			nCCPolyCount     = 0;
-			pdwCCVertIndices = nullptr;
-		}
-
+		__CellSub() = default;
 		~__CellSub()
 		{
 			delete[] pdwCCVertIndices;
@@ -85,9 +80,9 @@ public:
 	// 기본 셀 데이터
 	struct __CellMain
 	{
-		int nShapeCount;
-		uint16_t* pwShapeIndices;
-		__CellSub SubCells[CELL_MAIN_DIVIDE][CELL_MAIN_DIVIDE];
+		int nShapeCount                                        = 0;
+		uint16_t* pwShapeIndices                               = nullptr;
+		__CellSub SubCells[CELL_MAIN_DIVIDE][CELL_MAIN_DIVIDE] = {};
 
 		void Load(File& file)
 		{
@@ -124,12 +119,7 @@ public:
 		}
 #endif // end of _N3TOOL
 
-		__CellMain()
-		{
-			nShapeCount    = 0;
-			pwShapeIndices = nullptr;
-		}
-
+		__CellMain() = default;
 		~__CellMain()
 		{
 			delete[] pwShapeIndices;
@@ -151,13 +141,13 @@ protected:
 #endif // end of #ifndef _3DSERVER
 
 	// 맵 너비.. 미터 단위
-	float m_fMapWidth;
+	float m_fMapWidth                                  = 0.0f;
 
 	// 맵 길이.. 미터 단위
-	float m_fMapLength;
+	float m_fMapLength                                 = 0.0f;
 
-	int m_nCollisionFaceCount;
-	__CellMain* m_pCells[MAX_CELL_MAIN][MAX_CELL_MAIN];
+	int m_nCollisionFaceCount                          = 0;
+	__CellMain* m_pCells[MAX_CELL_MAIN][MAX_CELL_MAIN] = {};
 
 #ifdef _N3TOOL
 	// 추가로 넣을 충돌체크 데이터
