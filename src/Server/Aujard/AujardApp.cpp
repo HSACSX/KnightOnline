@@ -255,13 +255,7 @@ void AujardApp::SelectCharacter(const char* buffer)
 
 	_recvPacketCount++; // packet count
 
-	if (userId < 0 || userId >= MAX_USER)
-	{
-		SendSelectCharacterFailed(userId);
-		return;
-	}
-
-	if (strlen(accountId) == 0 || strlen(charId) == 0)
+	if (userId < 0 || userId >= MAX_USER || strlen(accountId) == 0 || strlen(charId) == 0)
 	{
 		SendSelectCharacterFailed(userId);
 		return;
@@ -278,13 +272,8 @@ void AujardApp::SelectCharacter(const char* buffer)
 		return;
 	}
 
-	if (!_dbAgent.LoadUserData(accountId, charId, userId))
-	{
-		SendSelectCharacterFailed(userId);
-		return;
-	}
-
-	if (!_dbAgent.LoadWarehouseData(accountId, userId))
+	if (!_dbAgent.LoadUserData(accountId, charId, userId)
+		|| !_dbAgent.LoadWarehouseData(accountId, userId))
 	{
 		SendSelectCharacterFailed(userId);
 		return;
