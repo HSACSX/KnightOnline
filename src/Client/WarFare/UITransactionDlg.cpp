@@ -1079,9 +1079,8 @@ bool CUITransactionDlg::ReceiveIconDrop(__IconItemSkill* spItem, POINT ptCur)
 				spItemNew->pItemExt        = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemExt;
 				spItemNew->szIconFN        = szIconFN; // 아이콘 파일 이름 복사..
 				spItemNew->iCount          = 1;
-				spItemNew->iDurability = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic->siMaxDurability
-											+ m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]
-												->pItemExt->siMaxDurability;
+				spItemNew->iDurability     = m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemBasic->siMaxDurability
+										 + m_pMyTrade[m_iCurPage][s_sRecoveryJobInfo.UIWndSourceStart.iOrder]->pItemExt->siMaxDurability;
 
 				// 아이콘 리소스 만들기..
 				spItemNew->pUIIcon = new CN3UIIcon;
