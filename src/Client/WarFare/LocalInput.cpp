@@ -121,20 +121,19 @@ void CLocalInput::MouseSetLimits(int x1, int y1, int x2, int y2)
 /////////////////////////////////////////////////////////////////////////////////////////////
 void CLocalInput::MouseSetPos(int x, int y)
 {
-	// clamp non-free mouse values to limits
 	m_ptCurMouse.x = x;
+	m_ptCurMouse.y = y;
+
+	// clamp non-free mouse values to limits
 	if (m_ptCurMouse.x >= m_rcMLimit.right)
 		m_ptCurMouse.x = m_rcMLimit.right - 1;
 
-	m_ptCurMouse.y = y;
 	if (m_ptCurMouse.y >= m_rcMLimit.bottom)
 		m_ptCurMouse.y = m_rcMLimit.bottom - 1;
 
-	m_ptCurMouse.x = x;
 	if (m_ptCurMouse.x <= m_rcMLimit.left)
 		m_ptCurMouse.x = m_rcMLimit.left + 1;
 
-	m_ptCurMouse.y = y;
 	if (m_ptCurMouse.y <= m_rcMLimit.top)
 		m_ptCurMouse.y = m_rcMLimit.top + 1;
 }
