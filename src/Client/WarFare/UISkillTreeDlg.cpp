@@ -303,7 +303,7 @@ bool CUISkillTreeDlg::ReceiveMessage(CN3UIBase* pSender, uint32_t dwMsg)
 				{
 					// Get Item..
 					spSkill = GetHighlightIconItem((CN3UIIcon*) pSender);
-					if (CheckSkillCanBeUse(spSkill->pSkill))
+					if (IsSkillUsable(spSkill->pSkill))
 					{
 						spSkillCopy           = new __IconItemSkill();
 						spSkillCopy->pSkill   = spSkill->pSkill;
@@ -1648,14 +1648,14 @@ void CUISkillTreeDlg::ButtonVisibleStateSet()
 	}
 }
 
-std::optional<std::pair<int, int>> CUISkillTreeDlg::FindSlotForSkill(const __TABLE_UPC_SKILL* pUSkill, int iPageOffset /*= 0*/) const
+std::optional<std::pair<int, int>> CUISkillTreeDlg::FindSlotForSkill(const __TABLE_UPC_SKILL* pUSkill, int iCategoryOffset /*= 0*/) const
 {
 	// Find an existing skill icon to replace
 	for (int i = 0; i < MAX_SKILL_PAGE_NUM; i++)
 	{
 		for (int j = 0; j < MAX_SKILL_IN_PAGE; j++)
 		{
-			if (m_pMySkillTree[iPageOffset][i][j] != nullptr && m_pMySkillTree[iPageOffset][i][j]->pSkill->dwID == pUSkill->dwID)
+			if (m_pMySkillTree[iCategoryOffset][i][j] != nullptr && m_pMySkillTree[iCategoryOffset][i][j]->pSkill->dwID == pUSkill->dwID)
 				return std::make_pair(i, j);
 		}
 	}
@@ -1665,7 +1665,7 @@ std::optional<std::pair<int, int>> CUISkillTreeDlg::FindSlotForSkill(const __TAB
 	{
 		for (int j = 0; j < MAX_SKILL_IN_PAGE; j++)
 		{
-			if (m_pMySkillTree[iPageOffset][i][j] == nullptr)
+			if (m_pMySkillTree[iCategoryOffset][i][j] == nullptr)
 				return std::make_pair(i, j);
 		}
 	}
@@ -1673,9 +1673,9 @@ std::optional<std::pair<int, int>> CUISkillTreeDlg::FindSlotForSkill(const __TAB
 	return std::nullopt;
 }
 
-void CUISkillTreeDlg::AddSkillToPage(__TABLE_UPC_SKILL* pUSkill, int iOffset, bool bHasLevelToUse)
+void CUISkillTreeDlg::AddSkillToPage(__TABLE_UPC_SKILL* pUSkill, int iCategoryOffset, bool bHasLevelToUse)
 {
-	auto slot = FindSlotForSkill(pUSkill, iOffset);
+	auto slot = FindSlotForSkill(pUSkill, iCategoryOffset);
 	if (!slot.has_value())
 		return;
 
@@ -1706,10 +1706,10 @@ void CUISkillTreeDlg::AddSkillToPage(__TABLE_UPC_SKILL* pUSkill, int iOffset, bo
 	}
 
 	// 아이콘 정보 저장..
-	m_pMySkillTree[iOffset][i][j] = spSkill;
+	m_pMySkillTree[iCategoryOffset][i][j] = spSkill;
 }
 
-bool CUISkillTreeDlg::CheckSkillCanBeUse(__TABLE_UPC_SKILL* pUSkill)
+bool CUISkillTreeDlg::IsSkillUsable(const __TABLE_UPC_SKILL* pUSkill) const
 {
 	int iModulo = pUSkill->iNeedSkill % 10;
 	switch (iModulo)
