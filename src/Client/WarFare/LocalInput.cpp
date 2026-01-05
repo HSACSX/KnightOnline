@@ -30,8 +30,6 @@ CLocalInput::CLocalInput()
 	SetRect(&m_rcMBDrag, 0, 0, 0, 0);
 	SetRect(&m_rcRBDrag, 0, 0, 0, 0);
 
-	SetRect(&m_rcMLimit, 0, 0, 0, 0);
-
 	memset(m_byCurKeys, 0, sizeof(m_byCurKeys));
 	memset(m_byOldKeys, 0, sizeof(m_byOldKeys));
 	memset(m_bKeyPresses, 0, sizeof(m_bKeyPresses));
@@ -106,36 +104,12 @@ void CLocalInput::KeyboardFlushData()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-// This restricts the mouse to a defined area.
-/////////////////////////////////////////////////////////////////////////////////////////////
-void CLocalInput::MouseSetLimits(int x1, int y1, int x2, int y2)
-{
-	m_rcMLimit.left   = x1;
-	m_rcMLimit.top    = y1;
-	m_rcMLimit.right  = x2;
-	m_rcMLimit.bottom = y2;
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////
 // Sets the mouse position. This restricts the position to the physical display.
 /////////////////////////////////////////////////////////////////////////////////////////////
 void CLocalInput::MouseSetPos(int x, int y)
 {
 	m_ptCurMouse.x = x;
 	m_ptCurMouse.y = y;
-
-	// clamp non-free mouse values to limits
-	if (m_ptCurMouse.x >= m_rcMLimit.right)
-		m_ptCurMouse.x = m_rcMLimit.right - 1;
-
-	if (m_ptCurMouse.y >= m_rcMLimit.bottom)
-		m_ptCurMouse.y = m_rcMLimit.bottom - 1;
-
-	if (m_ptCurMouse.x <= m_rcMLimit.left)
-		m_ptCurMouse.x = m_rcMLimit.left + 1;
-
-	if (m_ptCurMouse.y <= m_rcMLimit.top)
-		m_ptCurMouse.y = m_rcMLimit.top + 1;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////

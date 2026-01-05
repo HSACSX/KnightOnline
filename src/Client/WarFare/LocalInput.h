@@ -43,9 +43,6 @@ protected:
 
 	HWND m_hWnd;
 
-	//	BOOL m_bMouse;
-	//	BOOL m_bKeyboard;
-
 	int m_nMouseFlag, m_nMouseFlagOld; // 마우스 버튼 눌림 플래그
 	uint32_t m_dwTickLBDown;           // 마우스 왼쪽 버튼 더블 클릭 감지용
 	uint32_t m_dwTickRBDown;           // 마우스 오른쪽 버튼 더블 클릭 감지용
@@ -57,7 +54,6 @@ protected:
 	RECT m_rcMBDrag;                   // 드래그 영역
 	RECT m_rcRBDrag;                   // 드래그 영역
 
-	RECT m_rcMLimit;                   // 마우스 움직임 제한 영역
 	uint8_t m_byCurKeys[NUMDIKEYS];    // 현재 키 상태
 	uint8_t m_byOldKeys[NUMDIKEYS];    // 직전 키 상태
 	BOOL m_bKeyPresses[NUMDIKEYS];     // 키를 누른 순간인지
@@ -67,7 +63,8 @@ protected:
 	uint32_t m_dwTickKeyPress[NUMDIKEYS];
 
 public:
-	void KeyboardClearInput(int iIndex = -1) // 키보드 입력을 무효화 시킨다.. 기본값은 몽땅 무효화이다..
+	// 키보드 입력을 무효화 시킨다.. 기본값은 몽땅 무효화이다..
+	void KeyboardClearInput(int iIndex = -1)
 	{
 		if (-1 == iIndex)
 		{
@@ -81,34 +78,43 @@ public:
 			m_byCurKeys[iIndex] = m_byOldKeys[iIndex] = m_bKeyPresses[iIndex] = m_bKeyPresseds[iIndex] = 0;
 		}
 	}
-	BOOL IsNoKeyDown()
+
+	BOOL IsNoKeyDown() const
 	{
 		return m_bNoKeyDown;
 	}
-	BOOL IsKeyDown(int iIndex)
+
+	// 키보드가 눌려있는지... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
+	BOOL IsKeyDown(int iIndex) const
 	{
 		if (iIndex < 0 || iIndex >= NUMDIKEYS)
 			return FALSE;
+
 		return m_byCurKeys[iIndex];
-	} // 키보드가 눌려있는지... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
-	BOOL IsKeyPress(int iIndex)
+	}
+
+	// 키보드를 누르는 순간... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
+	BOOL IsKeyPress(int iIndex) const
 	{
 		if (iIndex < 0 || iIndex >= NUMDIKEYS)
 			return FALSE;
+
 		return m_bKeyPresses[iIndex];
-	} // 키보드를 누르는 순간... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
-	BOOL IsKeyPressed(int iIndex)
+	}
+
+	// 키보드를 누르고나서 떼는 순간... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
+	BOOL IsKeyPressed(int iIndex) const
 	{
 		if (iIndex < 0 || iIndex >= NUMDIKEYS)
 			return FALSE;
+
 		return m_bKeyPresseds[iIndex];
-	} // 키보드를 누르고나서 떼는 순간... "DInput.h" 에 정의 되어 있는 DIK_???? 스캔코드를 참조..
+	}
 
 	BOOL Init(HINSTANCE hInst, HWND hWnd);
 
-	void Tick(void);
+	void Tick();
 	void KeyboardFlushData();
-	void MouseSetLimits(int x1, int y1, int x2, int y2);
 	void SetActiveDevices(BOOL bKeyboard);
 	void MouseSetPos(int x, int y);
 
@@ -124,37 +130,43 @@ public:
 		return m_ptOldMouse;
 	}
 
-	RECT MouseGetLBDragRect()
+	RECT MouseGetLBDragRect() const
 	{
 		return m_rcLBDrag;
 	}
-	RECT MouseGetMBDragRect()
+
+	RECT MouseGetMBDragRect() const
 	{
 		return m_rcMBDrag;
 	}
-	RECT MouseGetRBDragRect()
+
+	RECT MouseGetRBDragRect() const
 	{
 		return m_rcRBDrag;
 	}
 
-	int MouseGetFlag()
+	// Mouse Flag 의 or 연산으로 조합되어 있다.
+	int MouseGetFlag() const
 	{
 		return m_nMouseFlag;
-	} // Mouse Flag 의 or 연산으로 조합되어 있다.
-	int MouseGetFlagOld()
+	}
+
+	int MouseGetFlagOld() const
 	{
 		return m_nMouseFlagOld;
 	}
+
+	// 특정한 Mouse Flag 제거
 	void MouseRemoveFlag(int nFlag = -1)
 	{
 		if (-1 == nFlag)
 			m_nMouseFlag = m_nMouseFlagOld = 0;
 		else
 			m_nMouseFlag &= (~nFlag);
-	} // 특정한 Mouse Flag 제거
+	}
 
-	CLocalInput(void);
-	~CLocalInput(void);
+	CLocalInput();
+	~CLocalInput();
 };
 
 #endif // end of _LocalInput_H_
