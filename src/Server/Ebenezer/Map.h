@@ -84,8 +84,10 @@ public:
 	float m_fInitX       = 0.0f;
 	float m_fInitZ       = 0.0f;
 	float m_fInitY       = 0.0f;
+
 	// Zone Type : 1 -> common zone,  2 -> battle zone, 3 -> 24 hour open battle zone
 	uint8_t m_bType      = 0;
+
 	int16_t m_sMaxUser   = 150; // Max user in Battlezone!!!
 
 	CRegion** m_ppRegion = nullptr;

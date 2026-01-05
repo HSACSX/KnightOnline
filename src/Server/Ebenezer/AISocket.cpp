@@ -1617,8 +1617,8 @@ void CAISocket::RecvNpcEventItem(char* pBuf)
 	int index    = 0;
 	CUser* pUser = nullptr;
 
-	int16_t sUid = GetShort(
-		pBuf, index); // Item을 가져갈 사람의 아이디... (이것을 참조해서 작업하셈~)
+	// Item을 가져갈 사람의 아이디... (이것을 참조해서 작업하셈~)
+	int16_t sUid = GetShort(pBuf, index);
 	/*int16_t sNid =*/GetShort(pBuf, index);
 	int nItemNumber = GetDWORD(pBuf, index);
 	int nCount      = GetDWORD(pBuf, index);

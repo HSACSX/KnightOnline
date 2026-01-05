@@ -376,9 +376,9 @@ struct _KNIGHTS_USER
 
 struct _ZONE_SERVERINFO
 {
-	int16_t sServerNo = 0;
-	int16_t sPort     = 0;
-	std::string strServerIP;
+	int16_t sServerNo       = 0;
+	int16_t sPort           = 0;
+	std::string strServerIP = {};
 };
 
 // NOTE: This is loaded as-is from the SMD, padding and all.

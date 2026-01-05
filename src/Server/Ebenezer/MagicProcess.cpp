@@ -3174,17 +3174,13 @@ void CMagicProcess::Type3Cancel(int magicid, int tid)
 
 void CMagicProcess::SendType4BuffRemove(int tid, uint8_t buff)
 {
-	int sendIndex = 0;
-	char sendBuffer[128];
-
-	CUser* pTUser = m_pMain->GetUserPtr(tid);
-
 	// Check if target exists.
+	CUser* pTUser = m_pMain->GetUserPtr(tid);
 	if (pTUser == nullptr)
 		return;
 
-	memset(sendBuffer, 0, sizeof(sendBuffer));
-	sendIndex = 0;
+	int sendIndex = 0;
+	char sendBuffer[128] {};
 	SetByte(sendBuffer, WIZ_MAGIC_PROCESS, sendIndex);
 	SetByte(sendBuffer, MAGIC_TYPE4_END, sendIndex);
 	SetByte(sendBuffer, buff, sendIndex);
