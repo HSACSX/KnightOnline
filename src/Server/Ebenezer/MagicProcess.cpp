@@ -410,6 +410,10 @@ void CMagicProcess::MagicPacket(char* pBuf)
 
 		switch (pTable->Type1)
 		{
+			case 0:
+				/* do nothing */
+				break;
+
 			case 1:
 				initial_result = ExecuteType1(pTable->ID, sid, tid, data1, data2, data3);
 				break;
@@ -460,6 +464,10 @@ void CMagicProcess::MagicPacket(char* pBuf)
 		{
 			switch (pTable->Type2)
 			{
+				case 0:
+					/* do nothing */
+					break;
+
 				case 1:
 					ExecuteType1(pTable->ID, sid, tid, data1, data2, data3);
 					break;
