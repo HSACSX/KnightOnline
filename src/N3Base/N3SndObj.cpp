@@ -214,7 +214,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 			return;
 
 		CN3Base::s_SndMgr.QueueCallback(_handle,
-			[fFadeInTime, delay, isLooping, playImmediately, audioAsset](AudioHandle* handle)
+			[fFadeInTime, delay, playImmediately, audioAsset, isLooping](AudioHandle* handle)
 			{
 				handle->FadeInTime     = fFadeInTime;
 				handle->FadeOutTime    = 0.0f;
@@ -277,7 +277,7 @@ void CN3SndObj::Play(const __Vector3* pvPos, float delay, float fFadeInTime)
 		}
 
 		CN3Base::s_SndMgr.QueueCallback(_handle,
-			[fFadeInTime, delay, isLooping, playImmediately, audioAsset, position, hasPosition](
+			[fFadeInTime, delay, playImmediately, audioAsset, hasPosition, position, isLooping](
 				AudioHandle* handle)
 			{
 				handle->FadeInTime     = fFadeInTime;
