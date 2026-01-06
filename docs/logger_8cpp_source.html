@@ -114,7 +114,7 @@ $(function(){initNavTree('logger_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;spdlog/async_logger.h&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html#a592356dff4af0cdc88194aa71712c70a">   14</a></span><a class="code hl_function" href="classlogger_1_1Logger.html#a592356dff4af0cdc88194aa71712c70a">logger::Logger::Logger</a>(<span class="keyword">const</span> std::string&amp; appName) : _appName(appName)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html#ae832310604ea54efe53174c3294fc68b">   14</a></span><a class="code hl_function" href="classlogger_1_1Logger.html#ae832310604ea54efe53174c3294fc68b">logger::Logger::Logger</a>(<span class="keyword">const</span> std::string_view appName) : _appName(appName)</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    _defaultLogPath = fmt::format(<span class="stringliteral">&quot;logs/{}.log&quot;</span>, appName);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
@@ -177,52 +177,54 @@ $(function(){initNavTree('logger_8cpp_source.html',''); initResizable(true); });
 </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keywordtype">void</span> logger::Logger::SetupExtraLoggers(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; <span class="comment">/*ini*/</span>,</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; <span class="comment">/*threadPool*/</span>,</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">const</span> std::filesystem::path&amp; <span class="comment">/*baseDir*/</span>)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">/* do nothing - consumers will implement this */</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">void</span> logger::Logger::SetupExtraLogger(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; ini,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; threadPool, <span class="keyword">const</span> std::filesystem::path&amp; baseDir,</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">const</span> std::string&amp; appName, <span class="keyword">const</span> std::string&amp; logFileConfigProp)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// setup file logger</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::string fileName = ini.GetString(ini::LOGGER, logFileConfigProp, _defaultLogPath);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    std::filesystem::path configuredLogPath(fileName);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">if</span> (configuredLogPath.is_relative())</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        configuredLogPath = baseDir / fileName;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    std::u8string utf8String = configuredLogPath.u8string();</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    fileName.assign(utf8String.begin(), utf8String.end());</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">auto</span> fileLogger = std::make_shared&lt;spdlog::sinks::daily_file_format_sink_mt&gt;(fileName, 0, 0);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// NOLINTNEXTLINE(performance-unnecessary-value-param)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; <span class="comment">/*threadPool*/</span>,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">const</span> std::filesystem::path&amp; <span class="comment">/*baseDir*/</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">/* do nothing - consumers will implement this */</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">void</span> logger::Logger::SetupExtraLogger(<a class="code hl_class" href="classCIni.html">CIni</a>&amp; ini,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// NOLINTNEXTLINE(performance-unnecessary-value-param): threadPool</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::shared_ptr&lt;spdlog::details::thread_pool&gt; threadPool, <span class="keyword">const</span> std::filesystem::path&amp; baseDir,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">const</span> std::string_view appName, <span class="keyword">const</span> std::string_view logFileConfigProp)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// setup file logger</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    std::string fileName = ini.GetString(ini::LOGGER, logFileConfigProp, _defaultLogPath);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    std::filesystem::path configuredLogPath(fileName);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (configuredLogPath.is_relative())</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        configuredLogPath = baseDir / fileName;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    std::u8string utf8String = configuredLogPath.u8string();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    fileName.assign(utf8String.begin(), utf8String.end());</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::string logPattern = ini.GetString(ini::LOGGER, ini::PATTERN, ini::DEFAULT_LOG_PATTERN);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    fileLogger-&gt;set_pattern(logPattern);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// setup multi-sink async logger as default (combines file + console logger [under fxtui])</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    spdlog::sinks_init_list sinks = { fileLogger, _fxtuiSink };</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">auto</span> extraLogger              = std::make_shared&lt;spdlog::async_logger&gt;(</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        appName, sinks.begin(), sinks.end(), threadPool, spdlog::async_overflow_policy::block);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// set default logger level and pattern</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// we default to debug level logging</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">int</span> logLevel = ini.GetInt(ini::LOGGER, ini::LEVEL, spdlog::level::debug);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    extraLogger-&gt;set_level(<span class="keyword">static_cast&lt;</span>spdlog::level::level_enum<span class="keyword">&gt;</span>(logLevel));</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// register the logger</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    spdlog::register_logger(extraLogger);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    spdlog::get(appName)-&gt;info(<span class="stringliteral">&quot;{} logger configured&quot;</span>, appName);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>logger::Logger::~Logger()</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">auto</span> fileLogger = std::make_shared&lt;spdlog::sinks::daily_file_format_sink_mt&gt;(fileName, 0, 0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    std::string logPattern = ini.GetString(ini::LOGGER, ini::PATTERN, ini::DEFAULT_LOG_PATTERN);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    fileLogger-&gt;set_pattern(logPattern);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// setup multi-sink async logger as default (combines file + console logger [under fxtui])</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    spdlog::sinks_init_list sinks = { fileLogger, _fxtuiSink };</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">auto</span> extraLogger = std::make_shared&lt;spdlog::async_logger&gt;(std::string(appName), sinks.begin(),</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        sinks.end(), threadPool, spdlog::async_overflow_policy::block);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// set default logger level and pattern</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// we default to debug level logging</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">int</span> logLevel     = ini.GetInt(ini::LOGGER, ini::LEVEL, spdlog::level::debug);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    extraLogger-&gt;set_level(<span class="keyword">static_cast&lt;</span>spdlog::level::level_enum<span class="keyword">&gt;</span>(logLevel));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="comment">// register the logger</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    spdlog::register_logger(extraLogger);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    extraLogger-&gt;info(<span class="stringliteral">&quot;{} logger configured&quot;</span>, appName);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>logger::Logger::~Logger()</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
 <div class="ttc" id="aclassCIni_html"><div class="ttname"><a href="classCIni.html">CIni</a></div><div class="ttdef"><b>Definition</b> <a href="Ini_8h_source.html#l00012">Ini.h:13</a></div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html_a588108b0a2829cb619653961519ebae4"><div class="ttname"><a href="classlogger_1_1Logger.html#a588108b0a2829cb619653961519ebae4">logger::Logger::Setup</a></div><div class="ttdeci">void Setup(CIni &amp;ini, const std::filesystem::path &amp;baseDir)</div><div class="ttdoc">Sets up spdlog from an ini file using standardized server settings.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">logger.cpp:19</a></div></div>
-<div class="ttc" id="aclasslogger_1_1Logger_html_a592356dff4af0cdc88194aa71712c70a"><div class="ttname"><a href="classlogger_1_1Logger.html#a592356dff4af0cdc88194aa71712c70a">logger::Logger::Logger</a></div><div class="ttdeci">Logger(const std::string &amp;appName)</div><div class="ttdef"><b>Definition</b> <a href="#l00014">logger.cpp:14</a></div></div>
+<div class="ttc" id="aclasslogger_1_1Logger_html_ae832310604ea54efe53174c3294fc68b"><div class="ttname"><a href="classlogger_1_1Logger.html#ae832310604ea54efe53174c3294fc68b">logger::Logger::Logger</a></div><div class="ttdeci">Logger(const std::string_view appName)</div><div class="ttdef"><b>Definition</b> <a href="#l00014">logger.cpp:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

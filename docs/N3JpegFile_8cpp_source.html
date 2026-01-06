@@ -142,13 +142,13 @@ $(function(){initNavTree('N3JpegFile_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    m_uiHeight  = 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>BOOL CN3JpegFile::LoadJpegFile(std::string csJpeg)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>BOOL CN3JpegFile::LoadJpegFile(<span class="keyword">const</span> std::string&amp; csJpeg)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// m_buf is the global buffer</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    Release();</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// read to buffer tmp</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    m_pImageBuf = CJpegFile::JpegFileToRGB(csJpeg.c_str(), &amp;m_uiWidth, &amp;m_uiHeight);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    m_pImageBuf = JpegFileToRGB(csJpeg, &amp;m_uiWidth, &amp;m_uiHeight);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"></span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    //////////////////////</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// set up for display</span></div>
@@ -156,10 +156,10 @@ $(function(){initNavTree('N3JpegFile_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// do this before DWORD-alignment!!!</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// this works on packed (not DWORD-aligned) buffers</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// swap red and blue for display</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    CJpegFile::BGRFromRGB(m_pImageBuf, m_uiWidth, m_uiHeight);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    BGRFromRGB(m_pImageBuf, m_uiWidth, m_uiHeight);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// vertical flip for display</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    CJpegFile::VertFlipBuf(m_pImageBuf, m_uiWidth * 3, m_uiHeight);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    VertFlipBuf(m_pImageBuf, m_uiWidth * 3, m_uiHeight);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> TRUE;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>

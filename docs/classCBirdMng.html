@@ -107,8 +107,8 @@ $(function(){initNavTree('classCBirdMng.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8131e0db3347f6755d38dbcabf4b6969" id="r_a8131e0db3347f6755d38dbcabf4b6969"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8131e0db3347f6755d38dbcabf4b6969">Release</a> ()</td></tr>
-<tr class="separator:a8131e0db3347f6755d38dbcabf4b6969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a288287be241643920ae7d8a0d4a8ef15" id="r_a288287be241643920ae7d8a0d4a8ef15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a288287be241643920ae7d8a0d4a8ef15">Release</a> () override</td></tr>
+<tr class="separator:a288287be241643920ae7d8a0d4a8ef15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd4495b0550c3fde33080227520f17f2" id="r_afd4495b0550c3fde33080227520f17f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd4495b0550c3fde33080227520f17f2">Tick</a> ()</td></tr>
 <tr class="separator:afd4495b0550c3fde33080227520f17f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acecf0e81492718140bbb07ae9682c51a" id="r_acecf0e81492718140bbb07ae9682c51a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acecf0e81492718140bbb07ae9682c51a">Render</a> ()</td></tr>
@@ -126,10 +126,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SaveResrc</b> ()</td>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aefc50f0ebfc073ee4f02af6ef4c76c16" id="r_aefc50f0ebfc073ee4f02af6ef4c76c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCBird.html">CBird</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefc50f0ebfc073ee4f02af6ef4c76c16">m_pBird</a></td></tr>
-<tr class="separator:aefc50f0ebfc073ee4f02af6ef4c76c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa95ea035edc64386a0da9e8a3831b65b" id="r_aa95ea035edc64386a0da9e8a3831b65b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa95ea035edc64386a0da9e8a3831b65b">m_iBirdCount</a></td></tr>
-<tr class="separator:aa95ea035edc64386a0da9e8a3831b65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b004f6ade7f0312876ec86bfec0a847" id="r_a7b004f6ade7f0312876ec86bfec0a847"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCBird.html">CBird</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b004f6ade7f0312876ec86bfec0a847">_birds</a></td></tr>
+<tr class="separator:a7b004f6ade7f0312876ec86bfec0a847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
 <tr class="memitem:ab86a5ade9bb33feaff70f6b4ad35ac37 inherit pro_attribs_classCN3Base" id="r_ab86a5ade9bb33feaff70f6b4ad35ac37"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#ab86a5ade9bb33feaff70f6b4ad35ac37">m_dwType</a></td></tr>
 <tr class="separator:ab86a5ade9bb33feaff70f6b4ad35ac37 inherit pro_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,7 +199,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="BirdMng_8h_source.html#l00024">24</a> of file <a class="el" href="BirdMng_8h_source.html">BirdMng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8h_source.html#l00013">13</a> of file <a class="el" href="BirdMng_8h_source.html">BirdMng.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a611db5aefa99e501ff2135a24fa44067" name="a611db5aefa99e501ff2135a24fa44067"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a611db5aefa99e501ff2135a24fa44067">&#9670;&#160;</a></span>CBirdMng()</h2>
@@ -218,12 +216,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00018">18</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00008">8</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
-<a id="afac0832ab23129bd50237f63e8b68176" name="afac0832ab23129bd50237f63e8b68176"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afac0832ab23129bd50237f63e8b68176">&#9670;&#160;</a></span>~CBirdMng()</h2>
+<a id="a483cc80925c0e202797a09bb6819e83e" name="a483cc80925c0e202797a09bb6819e83e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a483cc80925c0e202797a09bb6819e83e">&#9670;&#160;</a></span>~CBirdMng()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,12 +238,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00024">24</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00012">12</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
@@ -265,12 +263,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00039">39</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00021">21</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a8131e0db3347f6755d38dbcabf4b6969" name="a8131e0db3347f6755d38dbcabf4b6969"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8131e0db3347f6755d38dbcabf4b6969">&#9670;&#160;</a></span>Release()</h2>
+<a id="a288287be241643920ae7d8a0d4a8ef15" name="a288287be241643920ae7d8a0d4a8ef15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a288287be241643920ae7d8a0d4a8ef15">&#9670;&#160;</a></span>Release()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,14 +285,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classCN3Base.html">CN3Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00029">29</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00016">16</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +311,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00074">74</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00071">71</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
@@ -332,13 +330,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00066">66</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8cpp_source.html#l00065">65</a> of file <a class="el" href="BirdMng_8cpp_source.html">BirdMng.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa95ea035edc64386a0da9e8a3831b65b" name="aa95ea035edc64386a0da9e8a3831b65b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa95ea035edc64386a0da9e8a3831b65b">&#9670;&#160;</a></span>m_iBirdCount</h2>
+<a id="a7b004f6ade7f0312876ec86bfec0a847" name="a7b004f6ade7f0312876ec86bfec0a847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b004f6ade7f0312876ec86bfec0a847">&#9670;&#160;</a></span>_birds</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +345,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int CBirdMng::m_iBirdCount</td>
+          <td class="memname">std::vector&lt;<a class="el" href="classCBird.html">CBird</a>&gt; CBirdMng::_birds</td>
         </tr>
       </table>
   </td>
@@ -357,31 +355,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BirdMng_8h_source.html#l00033">33</a> of file <a class="el" href="BirdMng_8h_source.html">BirdMng.h</a>.</p>
-
-</div>
-</div>
-<a id="aefc50f0ebfc073ee4f02af6ef4c76c16" name="aefc50f0ebfc073ee4f02af6ef4c76c16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefc50f0ebfc073ee4f02af6ef4c76c16">&#9670;&#160;</a></span>m_pBird</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classCBird.html">CBird</a>* CBirdMng::m_pBird</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="BirdMng_8h_source.html#l00032">32</a> of file <a class="el" href="BirdMng_8h_source.html">BirdMng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BirdMng_8h_source.html#l00021">21</a> of file <a class="el" href="BirdMng_8h_source.html">BirdMng.h</a>.</p>
 
 </div>
 </div>

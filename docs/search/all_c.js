@@ -20,7 +20,7 @@ var searchData=
   ['loadversionlist_17',['LoadVersionList',['../classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6',1,'CDBProcess']]],
   ['loadwarehousedata_18',['LoadWarehouseData',['../classCDBAgent.html#ac76aef063abc35a7d99985dc4495e4a9',1,'CDBAgent']]],
   ['logbasedir_19',['LogBaseDir',['../classAppThread.html#a930bbcf82f3ed108604b0404c7af7353',1,'AppThread']]],
-  ['logger_20',['Logger',['../classlogger_1_1Logger.html',1,'logger::Logger'],['../classlogger_1_1Logger.html#a592356dff4af0cdc88194aa71712c70a',1,'logger::Logger::Logger()']]],
+  ['logger_20',['Logger',['../classlogger_1_1Logger.html',1,'logger::Logger'],['../classlogger_1_1Logger.html#ae832310604ea54efe53174c3294fc68b',1,'logger::Logger::Logger()']]],
   ['logic_5felse_21',['LOGIC_ELSE',['../classLOGIC__ELSE.html',1,'']]],
   ['lookat_22',['LookAt',['../classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79',1,'CN3Eng']]],
   ['looping_23',['Looping',['../classCN3SndObj.html#a40f54d517bc99551a67c40591be5740e',1,'CN3SndObj']]]

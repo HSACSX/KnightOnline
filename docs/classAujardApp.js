@@ -30,6 +30,7 @@ var classAujardApp =
     [ "OnStart", "classAujardApp.html#a73cb8f13b6f60b975ecf29ae4da19fab", null ],
     [ "SelectCharacter", "classAujardApp.html#aa021c2726a8877ad99c60422d2b115ef", null ],
     [ "SelectNation", "classAujardApp.html#afdf371646c56549e9d9a56d99f7a01c2", null ],
+    [ "SendSelectCharacterFailed", "classAujardApp.html#adcef09e4a616135a22e3f0800c704a77", null ],
     [ "SetLogInInfo", "classAujardApp.html#aad8107966838afaa93f98a1bf3f75084", null ],
     [ "UserDataSave", "classAujardApp.html#a398f68fbdb0d0a95c686edf12d57cca5", null ],
     [ "UserKickOut", "classAujardApp.html#a18cdf3054b1caa7bdc5845ab8dd450f3", null ],

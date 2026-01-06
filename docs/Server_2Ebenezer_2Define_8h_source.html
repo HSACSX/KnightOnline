@@ -140,7 +140,7 @@ $(function(){initNavTree('Server_2Ebenezer_2Define_8h_source.html',''); initResi
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// 지금 쓰이는것만 정의 해 놨습니다.</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// logic관련 define</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">enum</span> e_LogicCheck</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">enum</span> e_LogicCheck : uint8_t</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    LOGIC_CHECK_NONE                        = 0x00,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    LOGIC_CHECK_UNDER_WEIGHT                = 0x01,</div>
@@ -201,7 +201,7 @@ $(function(){initNavTree('Server_2Ebenezer_2Define_8h_source.html',''); initResi
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">// 실행관련 define</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">enum</span> e_Exec</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">enum</span> e_Exec : uint8_t</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    EXEC_NONE                         = 0x00,</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    EXEC_SAY                          = 0x01,</div>
@@ -285,132 +285,152 @@ $(function(){initNavTree('Server_2Ebenezer_2Define_8h_source.html',''); initResi
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> BBS_CHECK_TIME        = 36000;</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment"></span> </div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">///////////////// NATION ///////////////////////////////////</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#define UNIFY_NATION                   0</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#define KARUS                          1</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#define ELMORAD                        2</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#define BATTLE                         3</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#define BATTLE_ZONE                    101</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment"></span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">// Attack Type</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#define DIRECT_ATTACK                  0</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="preprocessor">#define LONG_ATTACK                    1</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#define MAGIC_ATTACK                   2</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="preprocessor">#define DURATION_ATTACK                3</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"></span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">////////////////// ETC Define //////////////////////////////</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">// UserInOut //</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">#define USER_IN                        0X01</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="preprocessor">#define USER_OUT                       0X02</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">#define USER_REGENE                    0X03 </span><span class="comment">// Userin하고 같은것인데 효과를 주기위해서.. 분리(게임시작, 리젠. 소환시)</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">#define USER_WARP                      0X04</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#define USER_SUMMON                    0X05</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="preprocessor">#define NPC_IN                         0X01</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#define NPC_OUT                        0X02</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keyword">enum</span> e_Nation : uint8_t</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>{</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    NATION_KARUS   = 1,</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    NATION_ELMORAD = 2</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>};</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">enum</span> e_ServerZoneType : uint8_t</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>{</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    SERVER_ZONE_UNIFY   = 0,</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    SERVER_ZONE_KARUS   = 1,</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    SERVER_ZONE_ELMORAD = 2,</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    SERVER_ZONE_BATTLE  = 3</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>};</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"></span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">// Attack Type</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">enum</span> e_AttackType : uint8_t</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>{</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    DIRECT_ATTACK   = 0,</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    LONG_ATTACK     = 1,</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    MAGIC_ATTACK    = 2,</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    DURATION_ATTACK = 3</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>};</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"></span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">////////////////// Resurrection related ////////////////////</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">#define BLINK_TIME                     10</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="preprocessor">#define CLAN_SUMMON_TIME               180</span><span class="comment"></span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">// Socket Define</span><span class="comment"></span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">#define SOCKET_BUFF_SIZE               (1024 * 16)</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">#define MAX_PACKET_SIZE                (1024 * 8)</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">#define REGION_BUFF_SIZE               (1024 * 16)</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="preprocessor">#define PACKET_START1                  0XAA</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="preprocessor">#define PACKET_START2                  0X55</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#define PACKET_END1                    0X55</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="preprocessor">#define PACKET_END2                    0XAA</span><span class="comment"></span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">// ==================================================================</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">//  About Map Object</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">// ==================================================================</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">#define USER_BAND                      0     </span><span class="comment">// Map 위에 유저가 있다.</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">#define NPC_BAND                       10000 </span><span class="comment">// Map 위에 NPC(몹포함)가 있다.</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#define INVALID_BAND                   30000 </span><span class="comment">// 잘못된 ID BAND</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#define EVENT_MONSTER                  20    </span><span class="comment">// Event monster 총 수</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment"></span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">///////////////// snow event define //////////////////////////////</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">#define SNOW_EVENT_MONEY               2000</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#define SNOW_EVENT_SKILL               490043</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment"></span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">// DEFINE Shared Memory Queue</span><span class="comment"></span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">// DEFINE Shared Memory Costumizing</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#define SMQ_LOGGERSEND                 &quot;KNIGHT_SEND&quot;</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#define SMQ_LOGGERRECV                 &quot;KNIGHT_RECV&quot;</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#define SMQ_ITEMLOGGER                 &quot;ITEMLOG_SEND&quot;</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">// Reply packet define...</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#define SEND_ME                        0x01</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#define SEND_REGION                    0x02</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#define SEND_ALL                       0x03</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#define SEND_ZONE                      0x04</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">// Battlezone Announcement</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#define BATTLEZONE_OPEN                0x00</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#define BATTLEZONE_CLOSE               0x01</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor">#define DECLARE_WINNER                 0x02</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#define DECLARE_LOSER                  0x03</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#define DECLARE_BAN                    0x04</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor">#define KARUS_CAPTAIN_NOTIFY           0x05</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="preprocessor">#define ELMORAD_CAPTAIN_NOTIFY         0x06</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">#define KARUS_CAPTAIN_DEPRIVE_NOTIFY   0x07</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">#define ELMORAD_CAPTAIN_DEPRIVE_NOTIFY 0x08</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">#define SNOW_BATTLEZONE_OPEN           0x09</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment">// Battle define</span></div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="preprocessor">#define NO_BATTLE                      0</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="preprocessor">#define NATION_BATTLE                  1</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="preprocessor">#define SNOW_BATTLE                    2</span></div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="preprocessor">#define MAX_BATTLE_ZONE_USERS          150</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment"></span> </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"></span> </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment">/////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="keyword">typedef</span> <span class="keyword">union</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>{</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    uint16_t w;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    uint8_t b[2];</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>} <a class="code hl_union" href="unionMYSHORT.html">MYSHORT</a>;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="foldopen" id="foldopen00287" data-start="{" data-end="};">
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="unionMYINT64.html">  287</a></span><span class="keyword">typedef</span> <span class="keyword">union</span></div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>{</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    int64_t i;</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    uint8_t b[8];</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>} <a class="code hl_union" href="unionMYINT64.html">MYINT64</a>;</div>
-</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">////////////////// ETC Define //////////////////////////////</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">// UserInOut //</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keyword">enum</span> e_UserInOutType : uint8_t</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>{</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    USER_IN     = 1,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    USER_OUT    = 2,</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="comment">// Userin하고 같은것인데 효과를 주기위해서.. 분리(게임시작, 리젠. 소환시)</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    USER_REGENE = 3,</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    USER_WARP   = 4,</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    USER_SUMMON = 5</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>};</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keyword">enum</span> e_NpcInOutType : uint8_t</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>{</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    NPC_IN  = 1,</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    NPC_OUT = 2</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>};</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment"></span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">////////////////// Resurrection related ////////////////////</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> BLINK_TIME        = 10;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> CLAN_SUMMON_TIME  = 180;<span class="comment"></span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">// Socket Define</span><span class="comment"></span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> SOCKET_BUFF_SIZE  = (1024 * 16);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_PACKET_SIZE   = (1024 * 8);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> REGION_BUFF_SIZE  = (1024 * 16);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keyword">constexpr</span> uint8_t PACKET_START1 = 0xAA;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="keyword">constexpr</span> uint8_t PACKET_START2 = 0x55;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">constexpr</span> uint8_t PACKET_END1   = 0x55;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="keyword">constexpr</span> uint8_t PACKET_END2   = 0xAA;<span class="comment"></span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">// ==================================================================</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment">//  About Map Object</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment">// ==================================================================</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> USER_BAND         = 0;     <span class="comment">// Map 위에 유저가 있다.</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NPC_BAND          = 10000; <span class="comment">// Map 위에 NPC(몹포함)가 있다.</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> INVALID_BAND      = 30000; <span class="comment">// 잘못된 ID BAND</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment"></span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">///////////////// snow event define //////////////////////////////</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> SNOW_EVENT_MONEY  = 2000;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> SNOW_EVENT_SKILL  = 490043;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment"></span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment">// DEFINE Shared Memory Queue</span><span class="comment"></span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment">// DEFINE Shared Memory Customisation</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERSEND[] = <span class="stringliteral">&quot;KNIGHT_SEND&quot;</span>;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERRECV[] = <span class="stringliteral">&quot;KNIGHT_RECV&quot;</span>;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_ITEMLOGGER[] = <span class="stringliteral">&quot;ITEMLOG_SEND&quot;</span>;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">//</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">//  To Who ???</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">//</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="keyword">enum</span> e_SendTarget : uint8_t</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>{</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    SEND_ME     = 0x01,</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    SEND_REGION = 0x02,</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    SEND_ALL    = 0x03,</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    SEND_ZONE   = 0x04</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>};</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment">// Battlezone Announcement</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="keyword">enum</span> e_BattleZoneNoticeType : uint8_t</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>{</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    BATTLEZONE_OPEN                = 0x00,</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    BATTLEZONE_CLOSE               = 0x01,</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    DECLARE_WINNER                 = 0x02,</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    DECLARE_LOSER                  = 0x03,</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    DECLARE_BAN                    = 0x04,</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    KARUS_CAPTAIN_NOTIFY           = 0x05,</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    ELMORAD_CAPTAIN_NOTIFY         = 0x06,</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    KARUS_CAPTAIN_DEPRIVE_NOTIFY   = 0x07,</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    ELMORAD_CAPTAIN_DEPRIVE_NOTIFY = 0x08,</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    SNOW_BATTLEZONE_OPEN           = 0x09,</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>};</div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="foldopen" id="foldopen00293" data-start="{" data-end="};">
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno"><a class="line" href="struct__REGION__BUFFER.html">  293</a></span><span class="keyword">struct </span>_REGION_BUFFER</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>{</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keywordtype">int</span> iLength;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordtype">char</span> pDataBuff[REGION_BUFF_SIZE];</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    _REGION_BUFFER()</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    {</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        iLength = 0;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        memset(pDataBuff, 0, <span class="keyword">sizeof</span>(pDataBuff));</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    }</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>};</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="comment">// Battle define</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="keyword">enum</span> e_BattleType : uint8_t</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>{</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    NO_BATTLE     = 0,</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    NATION_BATTLE = 1,</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    SNOW_BATTLE   = 2</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>};</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_BATTLE_ZONE_USERS = 150;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment"></span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">//////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment"></span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">/////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="keyword">typedef</span> <span class="keyword">union</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>{</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    uint16_t w;</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    uint8_t b[2];</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>} <a class="code hl_union" href="unionMYSHORT.html">MYSHORT</a>;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="foldopen" id="foldopen00312" data-start="{" data-end="};">
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno"><a class="line" href="unionMYINT64.html">  312</a></span><span class="keyword">typedef</span> <span class="keyword">union</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>{</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    int64_t i;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    uint8_t b[8];</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>} <a class="code hl_union" href="unionMYINT64.html">MYINT64</a>;</div>
 </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_EBENEZER_DEFINE_H</span></div>
-<div class="ttc" id="aunionMYINT64_html"><div class="ttname"><a href="unionMYINT64.html">MYINT64</a></div><div class="ttdef"><b>Definition</b> <a href="#l00287">Define.h:288</a></div></div>
-<div class="ttc" id="aunionMYSHORT_html"><div class="ttname"><a href="unionMYSHORT.html">MYSHORT</a></div><div class="ttdef"><b>Definition</b> <a href="Server_2AIServer_2Define_8h_source.html#l00070">Define.h:71</a></div></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="foldopen" id="foldopen00318" data-start="{" data-end="};">
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno"><a class="line" href="struct__REGION__BUFFER.html">  318</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct__REGION__BUFFER.html">_REGION_BUFFER</a></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>{</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="keywordtype">int</span> iLength = 0;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="keywordtype">char</span> pDataBuff[REGION_BUFF_SIZE] {};</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>};</div>
+</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_EBENEZER_DEFINE_H</span></div>
+<div class="ttc" id="astruct__REGION__BUFFER_html"><div class="ttname"><a href="struct__REGION__BUFFER.html">_REGION_BUFFER</a></div><div class="ttdef"><b>Definition</b> <a href="#l00318">Define.h:319</a></div></div>
+<div class="ttc" id="aunionMYINT64_html"><div class="ttname"><a href="unionMYINT64.html">MYINT64</a></div><div class="ttdef"><b>Definition</b> <a href="#l00312">Define.h:313</a></div></div>
+<div class="ttc" id="aunionMYSHORT_html"><div class="ttname"><a href="unionMYSHORT.html">MYSHORT</a></div><div class="ttdef"><b>Definition</b> <a href="Server_2AIServer_2Define_8h_source.html#l00066">Define.h:67</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

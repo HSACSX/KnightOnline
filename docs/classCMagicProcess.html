@@ -129,6 +129,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa4e82b357271d345badfe414884d5cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf4957c1a9d02428a75c291ecce3f202" id="r_adf4957c1a9d02428a75c291ecce3f202"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf4957c1a9d02428a75c291ecce3f202">ExecuteType1</a> (int magicid, int tid, int data1, int data2, int data3, uint8_t sequence)</td></tr>
 <tr class="separator:adf4957c1a9d02428a75c291ecce3f202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada6dd24add1df6b9b58d264d2eca0c8a" id="r_ada6dd24add1df6b9b58d264d2eca0c8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada6dd24add1df6b9b58d264d2eca0c8a">SendMagicAttackResult</a> (uint8_t opcode, int magicId, int sourceId, int targetId, int data1=0, int data2=0, int data3=0, int data4=0, int data5=0, int data6=0, int data7=0)</td></tr>
+<tr class="separator:ada6dd24add1df6b9b58d264d2eca0c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1ae1da350f94a82e9e6aa9e85ad3439" id="r_af1ae1da350f94a82e9e6aa9e85ad3439"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1ae1da350f94a82e9e6aa9e85ad3439">GetMagicDamage</a> (int tid, int total_hit, int attribute, int dexpoint, int righthand_damage)</td></tr>
 <tr class="separator:af1ae1da350f94a82e9e6aa9e85ad3439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace842ffce7642c4629b0b90a51e40a8d" id="r_ace842ffce7642c4629b0b90a51e40a8d"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace842ffce7642c4629b0b90a51e40a8d">AreaAttack</a> (int magictype, int magicid, int moral, int data1, int data2, int data3, int dexpoint, int righthand_damage)</td></tr>
@@ -185,12 +187,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MagicPacket</b> (char
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa96cc1ac9d6e45146e35a68fc6112b66" id="r_aa96cc1ac9d6e45146e35a68fc6112b66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAIServerApp.html">AIServerApp</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa96cc1ac9d6e45146e35a68fc6112b66">m_pMain</a></td></tr>
 <tr class="separator:aa96cc1ac9d6e45146e35a68fc6112b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e0d999702f97a8024ce0c3a7d6feb0f" id="r_a0e0d999702f97a8024ce0c3a7d6feb0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCUser.html">CUser</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e0d999702f97a8024ce0c3a7d6feb0f">m_pSrcUser</a></td></tr>
+<tr class="memitem:a0e0d999702f97a8024ce0c3a7d6feb0f" id="r_a0e0d999702f97a8024ce0c3a7d6feb0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCUser.html">CUser</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e0d999702f97a8024ce0c3a7d6feb0f">m_pSrcUser</a> = nullptr</td></tr>
 <tr class="separator:a0e0d999702f97a8024ce0c3a7d6feb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fa101cfc79c4b1502509f5f2200abdc" id="r_a9fa101cfc79c4b1502509f5f2200abdc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fa101cfc79c4b1502509f5f2200abdc">m_bMagicState</a></td></tr>
-<tr class="separator:a9fa101cfc79c4b1502509f5f2200abdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0704ce39a74bac8d8de44d021d33176" id="r_ad0704ce39a74bac8d8de44d021d33176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEbenezerApp.html">EbenezerApp</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0704ce39a74bac8d8de44d021d33176">m_pMain</a></td></tr>
+<tr class="memitem:ad0704ce39a74bac8d8de44d021d33176" id="r_ad0704ce39a74bac8d8de44d021d33176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEbenezerApp.html">EbenezerApp</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0704ce39a74bac8d8de44d021d33176">m_pMain</a> = nullptr</td></tr>
 <tr class="separator:ad0704ce39a74bac8d8de44d021d33176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa101cfc79c4b1502509f5f2200abdc" id="r_a9fa101cfc79c4b1502509f5f2200abdc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fa101cfc79c4b1502509f5f2200abdc">m_bMagicState</a> = 0</td></tr>
+<tr class="separator:a9fa101cfc79c4b1502509f5f2200abdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -238,7 +240,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00020">20</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00019">19</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +294,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00761">761</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00664">664</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -355,7 +357,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00858">858</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00761">761</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +400,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01008">1008</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01038">1038</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +443,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00171">171</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00181">181</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -460,7 +462,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00665">665</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00547">547</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +505,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01099">1099</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01129">1129</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -541,7 +543,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00238">238</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00231">231</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -584,7 +586,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01223">1223</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01252">1252</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -637,7 +639,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00319">319</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00277">277</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -680,7 +682,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01608">1608</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01631">1631</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -728,7 +730,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00475">475</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00413">413</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -747,7 +749,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00580">580</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00473">473</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -790,7 +792,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01910">1910</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l01933">1933</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -809,7 +811,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00584">584</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00477">477</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -828,7 +830,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02240">2240</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02259">2259</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -871,7 +873,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00588">588</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00481">481</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -890,7 +892,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00657">657</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00539">539</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -933,7 +935,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02244">2244</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02263">2263</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -952,7 +954,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00661">661</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00543">543</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -985,7 +987,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02642">2642</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02657">2657</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1025,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00669">669</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00576">576</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1046,7 +1048,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l01156">1156</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l01028">1028</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1096,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l00521">521</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l00552">552</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1122,7 +1124,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00147">147</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00165">165</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1143,75 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00024">24</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00023">23</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada6dd24add1df6b9b58d264d2eca0c8a" name="ada6dd24add1df6b9b58d264d2eca0c8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6dd24add1df6b9b58d264d2eca0c8a">&#9670;&#160;</a></span>SendMagicAttackResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CMagicProcess::SendMagicAttackResult </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>opcode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>magicId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sourceId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>targetId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data1</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data2</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data3</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data4</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data5</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data6</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data7</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8cpp_source.html#l00551">551</a> of file <a class="el" href="AIServer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1164,7 +1234,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l03161">3161</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l03183">3183</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1257,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l03103">3103</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l03125">3125</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1210,7 +1280,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02917">2917</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02934">2934</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1323,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02766">2766</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html#l02781">2781</a> of file <a class="el" href="Ebenezer_2MagicProcess_8cpp_source.html">MagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -1265,12 +1335,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t CMagicProcess::m_bMagicState</td>
+          <td class="memname">uint8_t CMagicProcess::m_bMagicState = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServer_2MagicProcess_8h_source.html#l00016">16</a> of file <a class="el" href="AIServer_2MagicProcess_8h_source.html">MagicProcess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8h_source.html#l00053">53</a> of file <a class="el" href="Ebenezer_2MagicProcess_8h_source.html">MagicProcess.h</a>.</p>
 
 </div>
 </div>
@@ -1297,12 +1367,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classEbenezerApp.html">EbenezerApp</a>* CMagicProcess::m_pMain</td>
+          <td class="memname"><a class="el" href="classEbenezerApp.html">EbenezerApp</a>* CMagicProcess::m_pMain = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8h_source.html#l00048">48</a> of file <a class="el" href="Ebenezer_2MagicProcess_8h_source.html">MagicProcess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2MagicProcess_8h_source.html#l00051">51</a> of file <a class="el" href="Ebenezer_2MagicProcess_8h_source.html">MagicProcess.h</a>.</p>
 
 </div>
 </div>
@@ -1313,7 +1383,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCUser.html">CUser</a> * CMagicProcess::m_pSrcUser</td>
+          <td class="memname"><a class="el" href="classCUser.html">CUser</a> * CMagicProcess::m_pSrcUser = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">

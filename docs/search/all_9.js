@@ -22,5 +22,7 @@ var searchData=
   ['it_20must_20respect_20our_20project_20goals_19',['It must respect our project goals',['../index.html#autotoc_md6',1,'']]],
   ['itemmanagerapp_20',['ItemManagerApp',['../classItemManagerApp.html',1,'']]],
   ['itemmanagerlogger_21',['ItemManagerLogger',['../classItemManagerLogger.html',1,'']]],
-  ['itemmanagerreadqueuethread_22',['ItemManagerReadQueueThread',['../classItemManagerReadQueueThread.html',1,'']]]
+  ['itemmanagerreadqueuethread_22',['ItemManagerReadQueueThread',['../classItemManagerReadQueueThread.html',1,'']]],
+  ['itemtooltipbuildercontext_23',['ItemTooltipBuilderContext',['../classItemTooltipBuilderContext.html',1,'']]],
+  ['itemtooltiptoolargeexception_24',['ItemTooltipTooLargeException',['../classItemTooltipTooLargeException.html',1,'']]]
 ];

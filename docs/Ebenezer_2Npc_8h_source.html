@@ -111,46 +111,46 @@ $(function(){initNavTree('Ebenezer_2Npc_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">class </span><a class="code hl_class" href="classCNpc.html">CNpc</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    EbenezerApp* m_pMain;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    EbenezerApp* m_pMain                  = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">    /// \brief Serial number of NPC (server-side) || NPC (서버상의)일련번호</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    int16_t <a class="code hl_variable" href="classCNpc.html#a0e41a4f192fec49727cfa42f1192a93a">m_sNid</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    int16_t <a class="code hl_variable" href="classCNpc.html#a0e41a4f192fec49727cfa42f1192a93a">m_sNid</a>                        = -1;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"></span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">    /// \brief Reference number for the NPC table || NPC 테이블 참조번호</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    int16_t <a class="code hl_variable" href="classCNpc.html#abf65a565a2ab7ae7ef54d7059e8e440a">m_sSid</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    int16_t <a class="code hl_variable" href="classCNpc.html#abf65a565a2ab7ae7ef54d7059e8e440a">m_sSid</a>                        = -1;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    int16_t m_sCurZone;                    <span class="comment">// Current Zone;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    int16_t m_sZoneIndex;                  <span class="comment">// NPC 가 존재하고 있는 존의 인덱스</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">float</span> m_fCurX;                         <span class="comment">// Current X Pos;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">float</span> m_fCurY;                         <span class="comment">// Current Y Pos;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">float</span> m_fCurZ;                         <span class="comment">// Current Z Pos;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    int16_t m_sPid;                        <span class="comment">// MONSTER(NPC) Picture ID</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    int16_t m_sSize;                       <span class="comment">// MONSTER(NPC) Size</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> m_iWeapon_1;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> m_iWeapon_2;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">char</span> m_strName[MAX_NPC_NAME_SIZE + 1]; <span class="comment">// MONSTER(NPC) Name</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> m_iMaxHP;                          <span class="comment">// 최대 HP</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">int</span> m_iHP;                             <span class="comment">// 현재 HP</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint8_t m_byState;                     <span class="comment">// 몬스터 (NPC) 상태</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint8_t m_byGroup;                     <span class="comment">// 소속 집단</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint8_t m_byLevel;                     <span class="comment">// 레벨</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint8_t m_tNpcType;                    <span class="comment">// NPC Type</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                           <span class="comment">// 0 : Normal Monster</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                           <span class="comment">// 1 : NPC</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                           <span class="comment">// 2 : 각 입구,출구 NPC</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                           <span class="comment">// 3 : 경비병</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> m_iSellingGroup;                   <span class="comment">// ItemGroup</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    int16_t m_sCurZone                    = 0;  <span class="comment">// Current Zone;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    int16_t m_sZoneIndex                  = -1; <span class="comment">// NPC 가 존재하고 있는 존의 인덱스</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">float</span> m_fCurX                         = 0;  <span class="comment">// Current X Pos;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">float</span> m_fCurY                         = 0;  <span class="comment">// Current Y Pos;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">float</span> m_fCurZ                         = 0;  <span class="comment">// Current Z Pos;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    int16_t m_sPid                        = 0;  <span class="comment">// MONSTER(NPC) Picture ID</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    int16_t m_sSize                       = 0;  <span class="comment">// MONSTER(NPC) Size</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> m_iWeapon_1                       = 0;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> m_iWeapon_2                       = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">char</span> m_strName[MAX_NPC_NAME_SIZE + 1] = {}; <span class="comment">// MONSTER(NPC) Name</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> m_iMaxHP                          = 0;  <span class="comment">// 최대 HP</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">int</span> m_iHP                             = 0;  <span class="comment">// 현재 HP</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint8_t m_byState                     = 0;  <span class="comment">// 몬스터 (NPC) 상태</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint8_t m_byGroup                     = 0;  <span class="comment">// 소속 집단</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint8_t m_byLevel                     = 0;  <span class="comment">// 레벨</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint8_t m_tNpcType                    = 0;  <span class="comment">// NPC Type</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                                <span class="comment">// 0 : Normal Monster</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                                <span class="comment">// 1 : NPC</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                                <span class="comment">// 2 : 각 입구,출구 NPC</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                                <span class="comment">// 3 : 경비병</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> m_iSellingGroup                   = 0;  <span class="comment">// ItemGroup</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    int16_t m_sRegion_X;                   <span class="comment">// region x position</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    int16_t m_sRegion_Z;                   <span class="comment">// region z position</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint8_t m_NpcState;                    <span class="comment">// NPC의 상태 - 살았다, 죽었다, 서있다 등등...</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint8_t m_byGateOpen;                  <span class="comment">// Gate Npc Status -&gt; 1 : open 0 : close</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    int16_t m_sHitRate;                    <span class="comment">// 공격 성공률</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t m_byObjectType;                <span class="comment">// 보통은 0, object타입(성문, 레버)은 1</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t m_byDirection;                 <span class="comment">// NPC가 보고 있는 방향</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    int16_t m_sRegion_X                   = -1; <span class="comment">// region x position</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    int16_t m_sRegion_Z                   = -1; <span class="comment">// region z position</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint8_t m_NpcState                    = 0;  <span class="comment">// NPC의 상태 - 살았다, 죽었다, 서있다 등등...</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint8_t m_byGateOpen                  = 0;  <span class="comment">// Gate Npc Status -&gt; 1 : open 0 : close</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    int16_t m_sHitRate                    = 0;  <span class="comment">// 공격 성공률</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t m_byObjectType                = 0;  <span class="comment">// 보통은 0, object타입(성문, 레버)은 1</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t m_byDirection                 = 0;  <span class="comment">// NPC가 보고 있는 방향</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int16_t m_byEvent;                     <span class="comment">// This is for the quest.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    uint8_t m_byTrapNumber;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int16_t m_byEvent                     = -1; <span class="comment">// This is for the quest.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    uint8_t m_byTrapNumber                = 0;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    CNpc();</div>
@@ -174,7 +174,7 @@ $(function(){initNavTree('Ebenezer_2Npc_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_EBENEZER_NPC_H</span></div>
 <div class="ttc" id="aclassCNpc_html"><div class="ttname"><a href="classCNpc.html">CNpc</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00114">Npc.h:115</a></div></div>
 <div class="ttc" id="aclassCNpc_html_a0e41a4f192fec49727cfa42f1192a93a"><div class="ttname"><a href="classCNpc.html#a0e41a4f192fec49727cfa42f1192a93a">CNpc::m_sNid</a></div><div class="ttdeci">int16_t m_sNid</div><div class="ttdoc">Serial number of NPC (server-side) || NPC (서버상의)일련번호</div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00146">Npc.h:146</a></div></div>
-<div class="ttc" id="aclassCNpc_html_abf65a565a2ab7ae7ef54d7059e8e440a"><div class="ttname"><a href="classCNpc.html#abf65a565a2ab7ae7ef54d7059e8e440a">CNpc::m_sSid</a></div><div class="ttdeci">int16_t m_sSid</div><div class="ttdoc">Reference number for the NPC table || NPC 테이블 참조번호</div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00201">Npc.h:201</a></div></div>
+<div class="ttc" id="aclassCNpc_html_abf65a565a2ab7ae7ef54d7059e8e440a"><div class="ttname"><a href="classCNpc.html#abf65a565a2ab7ae7ef54d7059e8e440a">CNpc::m_sSid</a></div><div class="ttdeci">int16_t m_sSid</div><div class="ttdoc">Reference number for the NPC table || NPC 테이블 참조번호</div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Npc_8h_source.html#l00221">Npc.h:221</a></div></div>
 <div class="ttc" id="aclassEbenezerApp_html"><div class="ttname"><a href="classEbenezerApp.html">EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00062">EbenezerApp.h:63</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

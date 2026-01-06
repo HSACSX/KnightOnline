@@ -115,7 +115,7 @@ $(function(){initNavTree('AudioThread_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/// \brief Type of operation queued for the audio thread.</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">///</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/// Used internally by \ref AudioThread to manage audio handles and callbacks.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">enum</span> e_AudioQueueType</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">enum</span> e_AudioQueueType : uint8_t</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{<span class="comment"></span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">    /// Add a handle to the audio thread for playback and decoding.</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    AUDIO_QUEUE_ADD = 0,</div>

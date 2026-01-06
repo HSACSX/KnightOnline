@@ -108,15 +108,15 @@ $(function(){initNavTree('structftxui_1_1ReplayLog.html',''); initResizable(true
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab29a94bcb7aa991cb664302e14758ef9" id="r_ab29a94bcb7aa991cb664302e14758ef9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29a94bcb7aa991cb664302e14758ef9">logger_name</a></td></tr>
 <tr class="separator:ab29a94bcb7aa991cb664302e14758ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74d99ada4f71a28a44784bdfdc00ec88" id="r_a74d99ada4f71a28a44784bdfdc00ec88"><td class="memItemLeft" align="right" valign="top">spdlog::level::level_enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74d99ada4f71a28a44784bdfdc00ec88">level</a></td></tr>
+<tr class="memitem:a74d99ada4f71a28a44784bdfdc00ec88" id="r_a74d99ada4f71a28a44784bdfdc00ec88"><td class="memItemLeft" align="right" valign="top">spdlog::level::level_enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74d99ada4f71a28a44784bdfdc00ec88">level</a> = spdlog::level::debug</td></tr>
 <tr class="separator:a74d99ada4f71a28a44784bdfdc00ec88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae83beaa6e79736f85f61b4bef5943c8c" id="r_ae83beaa6e79736f85f61b4bef5943c8c"><td class="memItemLeft" align="right" valign="top">spdlog::log_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae83beaa6e79736f85f61b4bef5943c8c">time</a></td></tr>
 <tr class="separator:ae83beaa6e79736f85f61b4bef5943c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad35db45421b3f5d2fa962107c5b66f16" id="r_ad35db45421b3f5d2fa962107c5b66f16"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad35db45421b3f5d2fa962107c5b66f16">thread_id</a></td></tr>
+<tr class="memitem:ad35db45421b3f5d2fa962107c5b66f16" id="r_ad35db45421b3f5d2fa962107c5b66f16"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad35db45421b3f5d2fa962107c5b66f16">thread_id</a> = 0</td></tr>
 <tr class="separator:ad35db45421b3f5d2fa962107c5b66f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a52e199fc3ba9d7e57312580172cb21" id="r_a4a52e199fc3ba9d7e57312580172cb21"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a52e199fc3ba9d7e57312580172cb21">source_filename</a></td></tr>
 <tr class="separator:a4a52e199fc3ba9d7e57312580172cb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbfc207add294db4bb38b92586b898a2" id="r_afbfc207add294db4bb38b92586b898a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbfc207add294db4bb38b92586b898a2">source_line</a></td></tr>
+<tr class="memitem:afbfc207add294db4bb38b92586b898a2" id="r_afbfc207add294db4bb38b92586b898a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbfc207add294db4bb38b92586b898a2">source_line</a> = 0</td></tr>
 <tr class="separator:afbfc207add294db4bb38b92586b898a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad878b1799a2c291df9a52811e8cfdb26" id="r_ad878b1799a2c291df9a52811e8cfdb26"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad878b1799a2c291df9a52811e8cfdb26">source_funcname</a></td></tr>
 <tr class="separator:ad878b1799a2c291df9a52811e8cfdb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,7 +134,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">spdlog::level::level_enum ftxui::ReplayLog::level</td>
+          <td class="memname">spdlog::level::level_enum ftxui::ReplayLog::level = spdlog::level::debug</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -214,7 +214,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ftxui::ReplayLog::source_line</td>
+          <td class="memname">int ftxui::ReplayLog::source_line = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,7 +230,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t ftxui::ReplayLog::thread_id</td>
+          <td class="memname">size_t ftxui::ReplayLog::thread_id = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

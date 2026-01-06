@@ -688,9 +688,9 @@ $(function(){initNavTree('N3CE_2FormViewProperty_8cpp_source.html',''); initResi
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    {</div>
 <div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; pFXP-&gt;m_FXPParts.size(); i++)</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        {</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>            CN3FXPlugPart* pPart    = pFXP-&gt;m_FXPParts[i];</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>            CN3FXPlugPart* pPart = pFXP-&gt;m_FXPParts[i];</div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>            TCHAR szName[_MAX_PATH] = {};</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>            TCHAR szName[_MAX_PATH] {};</div>
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>            _stprintf(szName, _T(<span class="stringliteral">&quot;FXPlugPart_%03zu&quot;</span>), i);</div>
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>            hInsert = m_TreeChr.InsertItem(szName, 11, 11, m_hTI_FXPlug);</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>            m_TreeChr.SetItemData(hInsert, (DWORD_PTR) pPart);</div>
@@ -984,7 +984,7 @@ $(function(){initNavTree('N3CE_2FormViewProperty_8cpp_source.html',''); initResi
 <div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pChr)</div>
 <div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span> </div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    CN3CPlugBase* pPlug = pChr-&gt;PlugAdd(PLUGTYPE_CLOAK);</div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    CN3CPlugBase* pPlug = pChr-&gt;PlugAdd(<span class="comment">/*PLUGTYPE_CLOAK*/</span>);</div>
 <div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>    <span class="keywordflow">if</span> (pPlug)</div>
 <div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    {</div>
 <div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>        pPlug-&gt;m_szName = <span class="stringliteral">&quot;Untitled&quot;</span>;</div>
@@ -1361,14 +1361,14 @@ $(function(){initNavTree('N3CE_2FormViewProperty_8cpp_source.html',''); initResi
 <div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span> </div>
 <div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span>    pDoc-&gt;UpdateAllViews(<span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span>}</div>
-<div class="ttc" id="aclassCFormViewProperty_html"><div class="ttname"><a href="classCFormViewProperty.html">CFormViewProperty</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2FormViewProperty_8h_source.html#l00023">FormViewProperty.h:24</a></div></div>
-<div class="ttc" id="aclassCN3Base_html"><div class="ttname"><a href="classCN3Base.html">CN3Base</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_8h_source.html#l00197">N3Base.h:198</a></div></div>
-<div class="ttc" id="aclassCN3CEDoc_html"><div class="ttname"><a href="classCN3CEDoc.html">CN3CEDoc</a></div><div class="ttdef"><b>Definition</b> <a href="N3CEDoc_8h_source.html#l00014">N3CEDoc.h:15</a></div></div>
-<div class="ttc" id="aclassCN3CPart_html"><div class="ttname"><a href="classCN3CPart.html">CN3CPart</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00047">N3Chr.h:48</a></div></div>
-<div class="ttc" id="aclassCN3CPlug_html"><div class="ttname"><a href="classCN3CPlug.html">CN3CPlug</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00230">N3Chr.h:231</a></div></div>
-<div class="ttc" id="aclassCN3Joint_html"><div class="ttname"><a href="classCN3Joint.html">CN3Joint</a></div><div class="ttdef"><b>Definition</b> <a href="N3Joint_8h_source.html#l00022">N3Joint.h:23</a></div></div>
-<div class="ttc" id="aclassCN3Texture_html"><div class="ttname"><a href="classCN3Texture.html">CN3Texture</a></div><div class="ttdef"><b>Definition</b> <a href="N3Texture_8h_source.html#l00006">N3Texture.h:7</a></div></div>
-<div class="ttc" id="astruct____Material_html"><div class="ttname"><a href="struct____Material.html">__Material</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00091">My_3DStruct.h:92</a></div></div>
+<div class="ttc" id="aclassCFormViewProperty_html"><div class="ttname"><a href="classCFormViewProperty.html">CFormViewProperty</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2FormViewProperty_8h_source.html#l00022">FormViewProperty.h:23</a></div></div>
+<div class="ttc" id="aclassCN3Base_html"><div class="ttname"><a href="classCN3Base.html">CN3Base</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_8h_source.html#l00151">N3Base.h:152</a></div></div>
+<div class="ttc" id="aclassCN3CEDoc_html"><div class="ttname"><a href="classCN3CEDoc.html">CN3CEDoc</a></div><div class="ttdef"><b>Definition</b> <a href="N3CEDoc_8h_source.html#l00012">N3CEDoc.h:13</a></div></div>
+<div class="ttc" id="aclassCN3CPart_html"><div class="ttname"><a href="classCN3CPart.html">CN3CPart</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00043">N3Chr.h:44</a></div></div>
+<div class="ttc" id="aclassCN3CPlug_html"><div class="ttname"><a href="classCN3CPlug.html">CN3CPlug</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00235">N3Chr.h:236</a></div></div>
+<div class="ttc" id="aclassCN3Joint_html"><div class="ttname"><a href="classCN3Joint.html">CN3Joint</a></div><div class="ttdef"><b>Definition</b> <a href="N3Joint_8h_source.html#l00018">N3Joint.h:19</a></div></div>
+<div class="ttc" id="aclassCN3Texture_html"><div class="ttname"><a href="classCN3Texture.html">CN3Texture</a></div><div class="ttdef"><b>Definition</b> <a href="N3Texture_8h_source.html#l00009">N3Texture.h:10</a></div></div>
+<div class="ttc" id="astruct____Material_html"><div class="ttname"><a href="struct____Material.html">__Material</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00093">My_3DStruct.h:94</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -110,7 +110,7 @@ $(function(){initNavTree('classCN3Pond.html',''); initResizable(true); });
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCN3Pond_1_1____VertexPond.html">__VertexPond</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Pond_1_1CPongMesh.html">CPongMesh</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Pond_1_1CPondMesh.html">CPondMesh</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -149,10 +149,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SaveResrc</b> ()</td>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adfccb980d4362d24b5eb96f3615865f7" id="r_adfccb980d4362d24b5eb96f3615865f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfccb980d4362d24b5eb96f3615865f7">m_iPondMeshNum</a></td></tr>
-<tr class="separator:adfccb980d4362d24b5eb96f3615865f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4bdc0b87a8cd2e82d76961f1bad8f3" id="r_a0d4bdc0b87a8cd2e82d76961f1bad8f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3Pond_1_1CPongMesh.html">CPongMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d4bdc0b87a8cd2e82d76961f1bad8f3">m_pCPondMesh</a></td></tr>
-<tr class="separator:a0d4bdc0b87a8cd2e82d76961f1bad8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a8a0b3a678d29f0332c13d98581fc54" id="r_a3a8a0b3a678d29f0332c13d98581fc54"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCN3Pond_1_1CPondMesh.html">CPondMesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a8a0b3a678d29f0332c13d98581fc54">m_PondMeshes</a></td></tr>
+<tr class="separator:a3a8a0b3a678d29f0332c13d98581fc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5ef158d239b8e4f604a2d007fd8311d" id="r_ae5ef158d239b8e4f604a2d007fd8311d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3Texture.html">CN3Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5ef158d239b8e4f604a2d007fd8311d">m_pTexPond</a> [MAX_POND_TEX]</td></tr>
 <tr class="separator:ae5ef158d239b8e4f604a2d007fd8311d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6682dcf286b04ffe629512fb41e3649" id="r_ab6682dcf286b04ffe629512fb41e3649"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6682dcf286b04ffe629512fb41e3649">m_fTexIndex</a></td></tr>
@@ -257,12 +255,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00022">22</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00013">13</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7c4ae26ec9bbc64f3407d1566ecc51bc" name="a7c4ae26ec9bbc64f3407d1566ecc51bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c4ae26ec9bbc64f3407d1566ecc51bc">&#9670;&#160;</a></span>~CN3Pond()</h2>
+<a id="a6b2c574e9b5e9283b19de6cba350c584" name="a6b2c574e9b5e9283b19de6cba350c584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b2c574e9b5e9283b19de6cba350c584">&#9670;&#160;</a></span>~CN3Pond()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,12 +277,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00031">31</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00023">23</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
@@ -314,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00065">65</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00045">45</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +341,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00036">36</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00028">28</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
@@ -362,7 +360,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00279">279</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00247">247</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
@@ -381,7 +379,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00232">232</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8cpp_source.html#l00204">204</a> of file <a class="el" href="N3Pond_8cpp_source.html">N3Pond.cpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +396,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00090">90</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00099">99</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
 
 </div>
 </div>
@@ -414,39 +412,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00092">92</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
-
-</div>
-</div>
-<a id="adfccb980d4362d24b5eb96f3615865f7" name="adfccb980d4362d24b5eb96f3615865f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfccb980d4362d24b5eb96f3615865f7">&#9670;&#160;</a></span>m_iPondMeshNum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int CN3Pond::m_iPondMeshNum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00086">86</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
-
-</div>
-</div>
-<a id="a0d4bdc0b87a8cd2e82d76961f1bad8f3" name="a0d4bdc0b87a8cd2e82d76961f1bad8f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d4bdc0b87a8cd2e82d76961f1bad8f3">&#9670;&#160;</a></span>m_pCPondMesh</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classCN3Pond_1_1CPongMesh.html">CPongMesh</a>* CN3Pond::m_pCPondMesh</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00087">87</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00101">101</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
 
 </div>
 </div>
@@ -462,7 +428,23 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00093">93</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00102">102</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
+
+</div>
+</div>
+<a id="a3a8a0b3a678d29f0332c13d98581fc54" name="a3a8a0b3a678d29f0332c13d98581fc54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a8a0b3a678d29f0332c13d98581fc54">&#9670;&#160;</a></span>m_PondMeshes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classCN3Pond_1_1CPondMesh.html">CPondMesh</a>&gt; CN3Pond::m_PondMeshes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00096">96</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
 
 </div>
 </div>
@@ -478,7 +460,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00089">89</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Pond_8h_source.html#l00098">98</a> of file <a class="el" href="N3Pond_8h_source.html">N3Pond.h</a>.</p>
 
 </div>
 </div>

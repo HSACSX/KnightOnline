@@ -107,168 +107,166 @@ $(function(){initNavTree('PondMng_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_PONDMNG_H__B71BF3BD_5F4F_4E5B_9F9F_B8BD45E2685B__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_PONDMNG_H__B71BF3BD_5F4F_4E5B_9F9F_B8BD45E2685B__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;N3Base/N3BaseFileAccess.h&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;VtxPosDummy.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;afxtempl.h&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;PondMesh.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">enum</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    PCM_NONE   = 0,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    PCM_SELECT = 1,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    PCM_CREATE = 2,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    PCM_SELECTING</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//class CPondMesh;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">class </span><a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgPondProperty.html">CDlgPondProperty</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;list&gt;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">typedef</span> std::list&lt;CPondMesh*&gt;::iterator it_PondMesh;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">typedef</span> std::list&lt;__Vector3*&gt;::iterator it_SelVtxBak;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classCPondMng.html">   33</a></span><span class="keyword">class </span>CPondMng : <span class="keyword">public</span> CN3BaseFileAccess</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    CPondMng(<a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* pMainFrm);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    ~CPondMng() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structCPondMng_1_1____VertexPond.html">   39</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCPondMng_1_1____VertexPond.html">__VertexPond</a></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">float</span> x, y, z;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">float</span> nx, ny, nz;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        D3DCOLOR color;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">float</span> u, v, u2, v2;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> Set(<a class="code hl_struct" href="struct____VertexXyzT2.html">__VertexXyzT2</a>&amp; __Vtx, <span class="keywordtype">float</span> snx, <span class="keywordtype">float</span> sny, <span class="keywordtype">float</span> snz, DWORD dwColor)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            x = __Vtx.x, y = __Vtx.y, z = __Vtx.z;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            u = __Vtx.tu, v = __Vtx.tv;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            u2 = __Vtx.tu2, v2 = __Vtx.tv2;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            nx = snx, ny = sny, nz = snz;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            color = dwColor;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;N3Base/N3BaseFileAccess.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;VtxPosDummy.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;afxtempl.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;PondMesh.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">enum</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    PCM_NONE   = 0,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    PCM_SELECT = 1,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    PCM_CREATE = 2,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    PCM_SELECTING</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//class CPondMesh;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">class </span><a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgPondProperty.html">CDlgPondProperty</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">typedef</span> std::list&lt;CPondMesh*&gt;::iterator it_PondMesh;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">typedef</span> std::list&lt;__Vector3*&gt;::iterator it_SelVtxBak;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classCPondMng.html">   31</a></span><span class="keyword">class </span>CPondMng : <span class="keyword">public</span> CN3BaseFileAccess</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    CPondMng(<a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* pMainFrm);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    ~CPondMng() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structCPondMng_1_1____VertexPond.html">   37</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCPondMng_1_1____VertexPond.html">__VertexPond</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">float</span> x, y, z;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">float</span> nx, ny, nz;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        D3DCOLOR color;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">float</span> u, v, u2, v2;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> Set(<a class="code hl_struct" href="struct____VertexXyzT2.html">__VertexXyzT2</a>&amp; __Vtx, <span class="keywordtype">float</span> snx, <span class="keywordtype">float</span> sny, <span class="keywordtype">float</span> snz, DWORD dwColor)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            x = __Vtx.x, y = __Vtx.y, z = __Vtx.z;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            u = __Vtx.tu, v = __Vtx.tv;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            u2 = __Vtx.tu2, v2 = __Vtx.tv2;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            nx = snx, ny = sny, nz = snz;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            color = dwColor;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    };</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Attributes</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classCPondMesh.html">CPondMesh</a>* GetSelPond();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">int</span> GetDrawPondNum()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_PondMeshes.size());</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// Attributes</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="classCPondMesh.html">CPondMesh</a>* GetSelPond();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> GetDrawPondNum()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_PondMeshes.size());</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    it_PondMesh GetDrawPond();</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    it_PondMesh GetDrawPond();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">int</span> GetPCursorMode()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> m_PCursorMode;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::list&lt;CPondMesh*&gt; m_PondMeshes;                      <span class="comment">// Pond Mesh list</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::list&lt;CPondMesh*&gt; m_pSelPonds;                       <span class="comment">// 선택된 PondMesh</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    CTypedPtrArray&lt;CPtrArray, __VertexXyzT2*&gt; m_SelVtxArray; <span class="comment">// 선택된 점들</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::list&lt;__Vector3*&gt; m_SelVtxBakArray;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    CVtxPosDummy m_VtxPosDummy;                              <span class="comment">// 점을 움직일수 있는 dummy object</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    BOOL m_bEditMode;                                        <span class="comment">// 연못물 편집모드인가?</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    BOOL m_bChooseGroup;                                     <span class="comment">// 연못물 그룹으로 편집하는가</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    BOOL m_bChooseEditPond;                                  <span class="comment">// 현재 쓰는 연못내에서만 편집할것인가</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    BOOL m_bMovePond;                                        <span class="comment">// 선택한 연못을 통째로 움직일 것인가</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> m_PCursorMode;                <span class="comment">// 연못을 추가?하는 것인가 점을 선택하는 것인가?</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    CMainFrame* m_pMainFrm;           <span class="comment">// mainframe pointer</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    CDlgPondProperty* m_pDlgProperty; <span class="comment">// property dialog</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    RECT m_rcSelDrag;                 <span class="comment">// 드래그 영역</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    __VertexXyzColor m_CreateLine[5]; <span class="comment">// 연못 처음 생성할때 보이는 선</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">int</span> GetPCursorMode()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">return</span> m_PCursorMode;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    std::list&lt;CPondMesh*&gt; m_PondMeshes;                      <span class="comment">// Pond Mesh list</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    std::list&lt;CPondMesh*&gt; m_pSelPonds;                       <span class="comment">// 선택된 PondMesh</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    CTypedPtrArray&lt;CPtrArray, __VertexXyzT2*&gt; m_SelVtxArray; <span class="comment">// 선택된 점들</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::list&lt;__Vector3*&gt; m_SelVtxBakArray;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    CVtxPosDummy m_VtxPosDummy;                              <span class="comment">// 점을 움직일수 있는 dummy object</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    BOOL m_bEditMode;                                        <span class="comment">// 연못물 편집모드인가?</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    BOOL m_bChooseGroup;                                     <span class="comment">// 연못물 그룹으로 편집하는가</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    BOOL m_bChooseEditPond;                                  <span class="comment">// 현재 쓰는 연못내에서만 편집할것인가</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    BOOL m_bMovePond;                                        <span class="comment">// 선택한 연못을 통째로 움직일 것인가</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> m_PCursorMode;                <span class="comment">// 연못을 추가?하는 것인가 점을 선택하는 것인가?</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    CMainFrame* m_pMainFrm;           <span class="comment">// mainframe pointer</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    CDlgPondProperty* m_pDlgProperty; <span class="comment">// property dialog</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    RECT m_rcSelDrag;                 <span class="comment">// 드래그 영역</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    __VertexXyzColor m_CreateLine[5]; <span class="comment">// 연못 처음 생성할때 보이는 선</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    __Vector3 m_vPondsCenter;         <span class="comment">//    연못(들)의 중간점</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    __Vector3 m_vPondsCenter;         <span class="comment">//    연못(들)의 중간점</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    BOOL m_bShift;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    BOOL m_bShift;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Operations</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> Tick();</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> Render();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">bool</span> Load(File&amp; file) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">bool</span> Save(File&amp; file) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    BOOL MouseMsgFilter(LPMSG pMsg);             <span class="comment">// Mouse 메세지 처리</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> MakeGameFiles(File&amp; file, <span class="keywordtype">float</span> fSize); <span class="comment">// Game file로 저장</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// Operations</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">void</span> Tick();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> Render();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> Load(File&amp; file) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">bool</span> Save(File&amp; file) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    BOOL MouseMsgFilter(LPMSG pMsg);             <span class="comment">// Mouse 메세지 처리</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> MakeGameFiles(File&amp; file, <span class="keywordtype">float</span> fSize); <span class="comment">// Game file로 저장</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    CPondMesh* CreateNewPondMesh(); <span class="comment">// 시작점과 끝난점(사각형)으로 새로운 연못을 추가한다.</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    CPondMesh* CreateNewPondMesh(); <span class="comment">// 시작점과 끝난점(사각형)으로 새로운 연못을 추가한다.</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    BOOL SetPondID(CPondMesh* pPondMesh, <span class="keywordtype">int</span> iPondID); <span class="comment">// 연못의 ID를 설정</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> SetEditMode(BOOL bEditMode);                  <span class="comment">// 연못 EditMode설정</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    CPondMesh* GetPondMesh(<span class="keywordtype">int</span> iPondID);               <span class="comment">// PondMesh 얻기</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    BOOL SetPondID(CPondMesh* pPondMesh, <span class="keywordtype">int</span> iPondID); <span class="comment">// 연못의 ID를 설정</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> SetEditMode(BOOL bEditMode);                  <span class="comment">// 연못 EditMode설정</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    CPondMesh* GetPondMesh(<span class="keywordtype">int</span> iPondID);               <span class="comment">// PondMesh 얻기</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> MainInvalidate();                             <span class="comment">// 화면 강재로 다시 찍기</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> MainInvalidate();                             <span class="comment">// 화면 강재로 다시 찍기</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">//  CDlgPondProperty에서 쓰인 함수들</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> RemovePondMesh(<span class="keywordtype">int</span> iPondID); <span class="comment">// 선택된 연못을 삭제한다.</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> GoPond(<span class="keywordtype">int</span> iPondID);         <span class="comment">// 선택된 연못으로 갑니다.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">void</span> StationPond();               <span class="comment">// 선택된 연못의 점들을 다시 배치</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">void</span> MovePond();                  <span class="comment">// 선택된 연못을 통째 옮기려 한다</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    BOOL GetChooseGroup()</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">return</span> m_bChooseGroup;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    BOOL GetChooseEditPond()</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> m_bChooseEditPond;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">void</span> ChooseGroupPond()</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    {</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        m_bChooseGroup ^= 1;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">void</span> ChooseEditPond()</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        m_bChooseEditPond ^= 1;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="comment">//  나중에 지울지도</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">void</span> ReCalcSelectedVertex(); <span class="comment">// 지정된 스케일에 따라 다시 정렬</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> ReCalcUV();             <span class="comment">// 선택된 연못의 UV좌표 다시 계산.</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> SetSelPond(CPondMesh* pPondMesh, BOOL bChooseGroup = FALSE); <span class="comment">// PondMesh 선택하기</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    BOOL SelectVtxByDragRect(RECT* pRect, BOOL bAdd, BOOL bSelectPond = FALSE);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">void</span> ClearSelectRcAllPond(); <span class="comment">// 모든 연못의 선택한 점들의 임시영역 초기화 하기</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> SelPondRelease();</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">void</span> SelPondDelete(CPondMesh* pPondMesh);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">void</span> SetSelPonds(CPondMesh* pPondMesh);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">void</span> SetRotatePonds(<span class="keywordtype">float</span> fMove);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="comment">//  CDlgPondProperty에서 쓰인 함수들</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> RemovePondMesh(<span class="keywordtype">int</span> iPondID); <span class="comment">// 선택된 연못을 삭제한다.</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> GoPond(<span class="keywordtype">int</span> iPondID);         <span class="comment">// 선택된 연못으로 갑니다.</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> StationPond();               <span class="comment">// 선택된 연못의 점들을 다시 배치</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> MovePond();                  <span class="comment">// 선택된 연못을 통째 옮기려 한다</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    BOOL GetChooseGroup()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">return</span> m_bChooseGroup;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    BOOL GetChooseEditPond()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> m_bChooseEditPond;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">void</span> ChooseGroupPond()</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        m_bChooseGroup ^= 1;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">void</span> ChooseEditPond()</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        m_bChooseEditPond ^= 1;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">//  나중에 지울지도</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">void</span> ReCalcSelectedVertex(); <span class="comment">// 지정된 스케일에 따라 다시 정렬</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">void</span> ReCalcUV();             <span class="comment">// 선택된 연못의 UV좌표 다시 계산.</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> SetSelPond(CPondMesh* pPondMesh, BOOL bChooseGroup = FALSE); <span class="comment">// PondMesh 선택하기</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    BOOL SelectVtxByDragRect(RECT* pRect, BOOL bAdd, BOOL bSelectPond = FALSE);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> ClearSelectRcAllPond(); <span class="comment">// 모든 연못의 선택한 점들의 임시영역 초기화 하기</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">void</span> SelPondRelease();</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">void</span> SelPondDelete(CPondMesh* pPondMesh);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> SetSelPonds(CPondMesh* pPondMesh);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">void</span> SetRotatePonds(<span class="keywordtype">float</span> fMove);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">void</span> SetVtxCenter();</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span> SetVtxCenter();</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> VtxBackupRelease();</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordtype">void</span> SetVtxBackup();</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">void</span> ReSetVtxBackup();</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">void</span> ReSetDrawRect(__Vector3 vStrPos, __Vector3 vEndPos); <span class="comment">//    연못을 그리기위한 영역 재정리</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">void</span> InputDummyMovePos(__Vector3 vMovePos); <span class="comment">//  더미가 움직인 만큼 선택한 연못에 입력</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>};</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span> VtxBackupRelease();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordtype">void</span> SetVtxBackup();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> ReSetVtxBackup();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">void</span> ReSetDrawRect(__Vector3 vStrPos, __Vector3 vEndPos); <span class="comment">//    연못을 그리기위한 영역 재정리</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">void</span> InputDummyMovePos(__Vector3 vMovePos); <span class="comment">//  더미가 움직인 만큼 선택한 연못에 입력</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>};</div>
 </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_PONDMNG_H__B71BF3BD_5F4F_4E5B_9F9F_B8BD45E2685B__INCLUDED_)</span></div>
-<div class="ttc" id="aclassCDlgPondProperty_html"><div class="ttname"><a href="classCDlgPondProperty.html">CDlgPondProperty</a></div><div class="ttdef"><b>Definition</b> <a href="DlgPondProperty_8h_source.html#l00017">DlgPondProperty.h:18</a></div></div>
-<div class="ttc" id="aclassCMainFrame_html"><div class="ttname"><a href="classCMainFrame.html">CMainFrame</a></div><div class="ttdef"><b>Definition</b> <a href="Client_2KscViewer_2MainFrm_8h_source.html#l00012">MainFrm.h:13</a></div></div>
-<div class="ttc" id="aclassCPondMesh_html"><div class="ttname"><a href="classCPondMesh.html">CPondMesh</a></div><div class="ttdef"><b>Definition</b> <a href="PondMesh_8h_source.html#l00024">PondMesh.h:25</a></div></div>
-<div class="ttc" id="astructCPondMng_1_1____VertexPond_html"><div class="ttname"><a href="structCPondMng_1_1____VertexPond.html">CPondMng::__VertexPond</a></div><div class="ttdef"><b>Definition</b> <a href="#l00039">PondMng.h:40</a></div></div>
-<div class="ttc" id="astruct____VertexXyzT2_html"><div class="ttname"><a href="struct____VertexXyzT2.html">__VertexXyzT2</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00433">My_3DStruct.h:434</a></div></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_PONDMNG_H__B71BF3BD_5F4F_4E5B_9F9F_B8BD45E2685B__INCLUDED_)</span></div>
+<div class="ttc" id="aclassCDlgPondProperty_html"><div class="ttname"><a href="classCDlgPondProperty.html">CDlgPondProperty</a></div><div class="ttdef"><b>Definition</b> <a href="DlgPondProperty_8h_source.html#l00015">DlgPondProperty.h:16</a></div></div>
+<div class="ttc" id="aclassCMainFrame_html"><div class="ttname"><a href="classCMainFrame.html">CMainFrame</a></div><div class="ttdef"><b>Definition</b> <a href="Client_2KscViewer_2MainFrm_8h_source.html#l00010">MainFrm.h:11</a></div></div>
+<div class="ttc" id="aclassCPondMesh_html"><div class="ttname"><a href="classCPondMesh.html">CPondMesh</a></div><div class="ttdef"><b>Definition</b> <a href="PondMesh_8h_source.html#l00022">PondMesh.h:23</a></div></div>
+<div class="ttc" id="astructCPondMng_1_1____VertexPond_html"><div class="ttname"><a href="structCPondMng_1_1____VertexPond.html">CPondMng::__VertexPond</a></div><div class="ttdef"><b>Definition</b> <a href="#l00037">PondMng.h:38</a></div></div>
+<div class="ttc" id="astruct____VertexXyzT2_html"><div class="ttname"><a href="struct____VertexXyzT2.html">__VertexXyzT2</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00435">My_3DStruct.h:436</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

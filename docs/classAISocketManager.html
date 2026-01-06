@@ -99,7 +99,6 @@ $(function(){initNavTree('classAISocketManager.html',''); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classAISocketManager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AISocketManager Class Reference</div></div>
@@ -155,12 +154,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af48c8df8f7995e3addd74f4696c4a5fb inherit pub_methods_classSocketManager" id="r_af48c8df8f7995e3addd74f4696c4a5fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#af48c8df8f7995e3addd74f4696c4a5fb">Shutdown</a> ()</td></tr>
 <tr class="separator:af48c8df8f7995e3addd74f4696c4a5fb inherit pub_methods_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0b14229b0a398ae56334dc8f739a0178" id="r_a0b14229b0a398ae56334dc8f739a0178"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b14229b0a398ae56334dc8f739a0178">StartUserThreads</a> () override</td></tr>
-<tr class="separator:a0b14229b0a398ae56334dc8f739a0178"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb240d939fa1b1f820fa2f23aded2afd" id="r_abb240d939fa1b1f820fa2f23aded2afd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb240d939fa1b1f820fa2f23aded2afd">ShutdownUserThreads</a> () override</td></tr>
-<tr class="separator:abb240d939fa1b1f820fa2f23aded2afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ad427232cd0117d8bd2ebd694b923eb57" id="r_ad427232cd0117d8bd2ebd694b923eb57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSendThreadMain.html">SendThreadMain</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad427232cd0117d8bd2ebd694b923eb57">_sendThreadMain</a></td></tr>
+<tr class="separator:ad427232cd0117d8bd2ebd694b923eb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classSocketManager"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classSocketManager')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSocketManager.html">SocketManager</a></td></tr>
+<tr class="memitem:aca6cf8a311a74f836d157b2221b71e58 inherit pro_attribs_classSocketManager" id="r_aca6cf8a311a74f836d157b2221b71e58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpSocket.html">TcpSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aca6cf8a311a74f836d157b2221b71e58">_serverSocketArray</a> = nullptr</td></tr>
+<tr class="separator:aca6cf8a311a74f836d157b2221b71e58 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe5cd63642aa42ce1bf17ffe0c627f0 inherit pro_attribs_classSocketManager" id="r_acfe5cd63642aa42ce1bf17ffe0c627f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpSocket.html">TcpSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#acfe5cd63642aa42ce1bf17ffe0c627f0">_inactiveServerSocketArray</a> = nullptr</td></tr>
+<tr class="separator:acfe5cd63642aa42ce1bf17ffe0c627f0 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8cc6fef820294bacd4bb3fb58ce7823 inherit pro_attribs_classSocketManager" id="r_ab8cc6fef820294bacd4bb3fb58ce7823"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#ab8cc6fef820294bacd4bb3fb58ce7823">_clientSocketArray</a> = nullptr</td></tr>
+<tr class="separator:ab8cc6fef820294bacd4bb3fb58ce7823 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe62a62d90a52152ac0d87afce4a340f inherit pro_attribs_classSocketManager" id="r_afe62a62d90a52152ac0d87afce4a340f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#afe62a62d90a52152ac0d87afce4a340f">_serverSocketCount</a> = 0</td></tr>
+<tr class="separator:afe62a62d90a52152ac0d87afce4a340f inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26034ff09545f0dec01a2e7beec2207 inherit pro_attribs_classSocketManager" id="r_aa26034ff09545f0dec01a2e7beec2207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aa26034ff09545f0dec01a2e7beec2207">_clientSocketCount</a> = 0</td></tr>
+<tr class="separator:aa26034ff09545f0dec01a2e7beec2207 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b002f9a3e84831663df531db9c7d4d inherit pro_attribs_classSocketManager" id="r_a73b002f9a3e84831663df531db9c7d4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a73b002f9a3e84831663df531db9c7d4d">_recvBufferSize</a> = 0</td></tr>
+<tr class="separator:a73b002f9a3e84831663df531db9c7d4d inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa92ae0549d3a68d26560ba0008938e7 inherit pro_attribs_classSocketManager" id="r_afa92ae0549d3a68d26560ba0008938e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#afa92ae0549d3a68d26560ba0008938e7">_sendBufferSize</a> = 0</td></tr>
+<tr class="separator:afa92ae0549d3a68d26560ba0008938e7 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa0ae17975ee6e44f53af93979cebe7 inherit pro_attribs_classSocketManager" id="r_aefa0ae17975ee6e44f53af93979cebe7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aefa0ae17975ee6e44f53af93979cebe7">_workerThreadCount</a> = 0</td></tr>
+<tr class="separator:aefa0ae17975ee6e44f53af93979cebe7 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06cb5ecf0194999e7253ca5a1ced0de5 inherit pro_attribs_classSocketManager" id="r_a06cb5ecf0194999e7253ca5a1ced0de5"><td class="memItemLeft" align="right" valign="top">asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a06cb5ecf0194999e7253ca5a1ced0de5">_io</a></td></tr>
+<tr class="separator:a06cb5ecf0194999e7253ca5a1ced0de5 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbee7a8056fde690200daa7eb7760d50 inherit pro_attribs_classSocketManager" id="r_abbee7a8056fde690200daa7eb7760d50"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; asio::ip::tcp::acceptor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#abbee7a8056fde690200daa7eb7760d50">_acceptor</a></td></tr>
+<tr class="separator:abbee7a8056fde690200daa7eb7760d50 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c37b1e870c2e9f6f02d43c839ae0ac8 inherit pro_attribs_classSocketManager" id="r_a4c37b1e870c2e9f6f02d43c839ae0ac8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; asio::thread_pool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a4c37b1e870c2e9f6f02d43c839ae0ac8">_workerPool</a></td></tr>
+<tr class="separator:a4c37b1e870c2e9f6f02d43c839ae0ac8 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0254e827380971a6ead1562b0f9055a inherit pro_attribs_classSocketManager" id="r_ad0254e827380971a6ead1562b0f9055a"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#ad0254e827380971a6ead1562b0f9055a">_acceptingConnections</a> = false</td></tr>
+<tr class="separator:ad0254e827380971a6ead1562b0f9055a inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77271fae78ecf1b0bffd42381082ba96 inherit pro_attribs_classSocketManager" id="r_a77271fae78ecf1b0bffd42381082ba96"><td class="memItemLeft" align="right" valign="top">std::queue&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a77271fae78ecf1b0bffd42381082ba96">_socketIdQueue</a></td></tr>
+<tr class="separator:a77271fae78ecf1b0bffd42381082ba96 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf518b9b39c547c56365d762497e797c inherit pro_attribs_classSocketManager" id="r_adf518b9b39c547c56365d762497e797c"><td class="memItemLeft" align="right" valign="top">std::recursive_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#adf518b9b39c547c56365d762497e797c">_mutex</a></td></tr>
+<tr class="separator:adf518b9b39c547c56365d762497e797c inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc64c32f0822142409e1d7ba91f7509 inherit pro_attribs_classSocketManager" id="r_abbc64c32f0822142409e1d7ba91f7509"><td class="memItemLeft" align="right" valign="top">StartUserThreadCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#abbc64c32f0822142409e1d7ba91f7509">_startUserThreadCallback</a> = nullptr</td></tr>
+<tr class="separator:abbc64c32f0822142409e1d7ba91f7509 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d3cb10921fce64816f6392b1efd7e08 inherit pro_attribs_classSocketManager" id="r_a3d3cb10921fce64816f6392b1efd7e08"><td class="memItemLeft" align="right" valign="top">ShutdownUserThreadCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a3d3cb10921fce64816f6392b1efd7e08">_shutdownUserThreadCallback</a> = nullptr</td></tr>
+<tr class="separator:a3d3cb10921fce64816f6392b1efd7e08 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classSocketManager"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classSocketManager')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classSocketManager.html">SocketManager</a></td></tr>
 <tr class="memitem:a3eb50183711ad1b3cacb1c9d71a39e22 inherit pro_methods_classSocketManager" id="r_a3eb50183711ad1b3cacb1c9d71a39e22"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpSocket.html">TcpSocket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a3eb50183711ad1b3cacb1c9d71a39e22">AcquireServerSocket</a> (int &amp;socketId)</td></tr>
 <tr class="separator:a3eb50183711ad1b3cacb1c9d71a39e22 inherit pro_methods_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,40 +215,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a07acb6a5f4ed1eb88c0b157cf506b7cc inherit pro_methods_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bc2f7c3c100cf296868adab152feeab inherit pro_methods_classSocketManager" id="r_a8bc2f7c3c100cf296868adab152feeab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a8bc2f7c3c100cf296868adab152feeab">ProcessClose</a> (<a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
 <tr class="separator:a8bc2f7c3c100cf296868adab152feeab inherit pro_methods_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:ad427232cd0117d8bd2ebd694b923eb57" id="r_ad427232cd0117d8bd2ebd694b923eb57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSendThreadMain.html">SendThreadMain</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad427232cd0117d8bd2ebd694b923eb57">_sendThreadMain</a></td></tr>
-<tr class="separator:ad427232cd0117d8bd2ebd694b923eb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classSocketManager"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classSocketManager')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSocketManager.html">SocketManager</a></td></tr>
-<tr class="memitem:aca6cf8a311a74f836d157b2221b71e58 inherit pro_attribs_classSocketManager" id="r_aca6cf8a311a74f836d157b2221b71e58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpSocket.html">TcpSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aca6cf8a311a74f836d157b2221b71e58">_serverSocketArray</a></td></tr>
-<tr class="separator:aca6cf8a311a74f836d157b2221b71e58 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfe5cd63642aa42ce1bf17ffe0c627f0 inherit pro_attribs_classSocketManager" id="r_acfe5cd63642aa42ce1bf17ffe0c627f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpSocket.html">TcpSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#acfe5cd63642aa42ce1bf17ffe0c627f0">_inactiveServerSocketArray</a></td></tr>
-<tr class="separator:acfe5cd63642aa42ce1bf17ffe0c627f0 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8cc6fef820294bacd4bb3fb58ce7823 inherit pro_attribs_classSocketManager" id="r_ab8cc6fef820294bacd4bb3fb58ce7823"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#ab8cc6fef820294bacd4bb3fb58ce7823">_clientSocketArray</a></td></tr>
-<tr class="separator:ab8cc6fef820294bacd4bb3fb58ce7823 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe62a62d90a52152ac0d87afce4a340f inherit pro_attribs_classSocketManager" id="r_afe62a62d90a52152ac0d87afce4a340f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#afe62a62d90a52152ac0d87afce4a340f">_serverSocketCount</a></td></tr>
-<tr class="separator:afe62a62d90a52152ac0d87afce4a340f inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa26034ff09545f0dec01a2e7beec2207 inherit pro_attribs_classSocketManager" id="r_aa26034ff09545f0dec01a2e7beec2207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aa26034ff09545f0dec01a2e7beec2207">_clientSocketCount</a></td></tr>
-<tr class="separator:aa26034ff09545f0dec01a2e7beec2207 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b002f9a3e84831663df531db9c7d4d inherit pro_attribs_classSocketManager" id="r_a73b002f9a3e84831663df531db9c7d4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a73b002f9a3e84831663df531db9c7d4d">_recvBufferSize</a></td></tr>
-<tr class="separator:a73b002f9a3e84831663df531db9c7d4d inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa92ae0549d3a68d26560ba0008938e7 inherit pro_attribs_classSocketManager" id="r_afa92ae0549d3a68d26560ba0008938e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#afa92ae0549d3a68d26560ba0008938e7">_sendBufferSize</a></td></tr>
-<tr class="separator:afa92ae0549d3a68d26560ba0008938e7 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefa0ae17975ee6e44f53af93979cebe7 inherit pro_attribs_classSocketManager" id="r_aefa0ae17975ee6e44f53af93979cebe7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#aefa0ae17975ee6e44f53af93979cebe7">_workerThreadCount</a></td></tr>
-<tr class="separator:aefa0ae17975ee6e44f53af93979cebe7 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06cb5ecf0194999e7253ca5a1ced0de5 inherit pro_attribs_classSocketManager" id="r_a06cb5ecf0194999e7253ca5a1ced0de5"><td class="memItemLeft" align="right" valign="top">asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a06cb5ecf0194999e7253ca5a1ced0de5">_io</a></td></tr>
-<tr class="separator:a06cb5ecf0194999e7253ca5a1ced0de5 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbee7a8056fde690200daa7eb7760d50 inherit pro_attribs_classSocketManager" id="r_abbee7a8056fde690200daa7eb7760d50"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; asio::ip::tcp::acceptor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#abbee7a8056fde690200daa7eb7760d50">_acceptor</a></td></tr>
-<tr class="separator:abbee7a8056fde690200daa7eb7760d50 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c37b1e870c2e9f6f02d43c839ae0ac8 inherit pro_attribs_classSocketManager" id="r_a4c37b1e870c2e9f6f02d43c839ae0ac8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; asio::thread_pool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a4c37b1e870c2e9f6f02d43c839ae0ac8">_workerPool</a></td></tr>
-<tr class="separator:a4c37b1e870c2e9f6f02d43c839ae0ac8 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0254e827380971a6ead1562b0f9055a inherit pro_attribs_classSocketManager" id="r_ad0254e827380971a6ead1562b0f9055a"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#ad0254e827380971a6ead1562b0f9055a">_acceptingConnections</a></td></tr>
-<tr class="separator:ad0254e827380971a6ead1562b0f9055a inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77271fae78ecf1b0bffd42381082ba96 inherit pro_attribs_classSocketManager" id="r_a77271fae78ecf1b0bffd42381082ba96"><td class="memItemLeft" align="right" valign="top">std::queue&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#a77271fae78ecf1b0bffd42381082ba96">_socketIdQueue</a></td></tr>
-<tr class="separator:a77271fae78ecf1b0bffd42381082ba96 inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf518b9b39c547c56365d762497e797c inherit pro_attribs_classSocketManager" id="r_adf518b9b39c547c56365d762497e797c"><td class="memItemLeft" align="right" valign="top">std::recursive_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketManager.html#adf518b9b39c547c56365d762497e797c">_mutex</a></td></tr>
-<tr class="separator:adf518b9b39c547c56365d762497e797c inherit pro_attribs_classSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -263,7 +262,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00011">11</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00013">13</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,7 +282,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00016">16</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00018">18</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +301,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00021">21</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00023">23</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -321,65 +320,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00026">26</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
-
-</div>
-</div>
-<a id="abb240d939fa1b1f820fa2f23aded2afd" name="abb240d939fa1b1f820fa2f23aded2afd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb240d939fa1b1f820fa2f23aded2afd">&#9670;&#160;</a></span>ShutdownUserThreads()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AISocketManager::ShutdownUserThreads </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="classSocketManager.html">SocketManager</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00036">36</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a0b14229b0a398ae56334dc8f739a0178" name="a0b14229b0a398ae56334dc8f739a0178"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b14229b0a398ae56334dc8f739a0178">&#9670;&#160;</a></span>StartUserThreads()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AISocketManager::StartUserThreads </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="classSocketManager.html">SocketManager</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00031">31</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AISocketManager_8cpp_source.html#l00028">28</a> of file <a class="el" href="AISocketManager_8cpp_source.html">AISocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -404,7 +345,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AISocketManager_8h_source.html#l00034">34</a> of file <a class="el" href="AISocketManager_8h_source.html">AISocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AISocketManager_8h_source.html#l00030">30</a> of file <a class="el" href="AISocketManager_8h_source.html">AISocketManager.h</a>.</p>
 
 </div>
 </div>

@@ -129,8 +129,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaf6d379dbd7cbed7fbc77195b33677d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4272d930565f442b6a780327fff3fca" id="r_ae4272d930565f442b6a780327fff3fca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4272d930565f442b6a780327fff3fca">ExecuteType1</a> (int magicid, int tid, int data1, int data2, int data3)</td></tr>
 <tr class="separator:ae4272d930565f442b6a780327fff3fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74a7e71f04a76940487c074d2d65431b" id="r_a74a7e71f04a76940487c074d2d65431b"><td class="memItemLeft" align="right" valign="top">model::Magic *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74a7e71f04a76940487c074d2d65431b">IsAvailable</a> (int magicid, int tid, uint8_t type)</td></tr>
-<tr class="separator:a74a7e71f04a76940487c074d2d65431b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3362b79c8d7b838dfe5e60f0aa9516f9" id="r_a3362b79c8d7b838dfe5e60f0aa9516f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3362b79c8d7b838dfe5e60f0aa9516f9">SendMagicAttackResult</a> (uint8_t opcode, int magicId, int sourceId, int targetId, int data1, int data2, int data3, int data4=0, int data5=0, int data6=0, int data7=0)</td></tr>
+<tr class="separator:a3362b79c8d7b838dfe5e60f0aa9516f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f554a2571f3a159532d22ffcbc12ac" id="r_a20f554a2571f3a159532d22ffcbc12ac"><td class="memItemLeft" align="right" valign="top">model::Magic *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f554a2571f3a159532d22ffcbc12ac">IsAvailable</a> (int magicid, int tid)</td></tr>
+<tr class="separator:a20f554a2571f3a159532d22ffcbc12ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc647e5bee3f85145b9a716b1890f60" id="r_abbc647e5bee3f85145b9a716b1890f60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbc647e5bee3f85145b9a716b1890f60">MagicPacket</a> (char *pBuf, int len)</td></tr>
 <tr class="separator:abbc647e5bee3f85145b9a716b1890f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -140,8 +142,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a8fcd8e29e8f5d97aea2d7992ce7323a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a726cd61802ab653af726c52bc9a84337" id="r_a726cd61802ab653af726c52bc9a84337"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCNpc.html">CNpc</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a726cd61802ab653af726c52bc9a84337">m_pSrcNpc</a></td></tr>
 <tr class="separator:a726cd61802ab653af726c52bc9a84337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fbb4d76ade669edd1cd2098e07e5119" id="r_a0fbb4d76ade669edd1cd2098e07e5119"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fbb4d76ade669edd1cd2098e07e5119">m_bMagicState</a></td></tr>
-<tr class="separator:a0fbb4d76ade669edd1cd2098e07e5119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -189,7 +189,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00014">14</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00013">13</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +228,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00291">291</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00307">307</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00431">431</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00399">399</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -285,7 +285,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00296">296</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00312">312</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,7 +328,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00301">301</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00317">317</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00405">405</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00373">373</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00409">409</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00377">377</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00413">413</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00381">381</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +408,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00417">417</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00385">385</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +451,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00422">422</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00390">390</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00427">427</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00395">395</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -503,12 +503,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00435">435</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00403">403</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a74a7e71f04a76940487c074d2d65431b" name="a74a7e71f04a76940487c074d2d65431b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74a7e71f04a76940487c074d2d65431b">&#9670;&#160;</a></span>IsAvailable()</h2>
+<a id="a20f554a2571f3a159532d22ffcbc12ac" name="a20f554a2571f3a159532d22ffcbc12ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f554a2571f3a159532d22ffcbc12ac">&#9670;&#160;</a></span>IsAvailable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -521,17 +521,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tid</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tid</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00155">155</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00190">190</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,27 +549,79 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00018">18</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00017">17</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0fbb4d76ade669edd1cd2098e07e5119" name="a0fbb4d76ade669edd1cd2098e07e5119"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fbb4d76ade669edd1cd2098e07e5119">&#9670;&#160;</a></span>m_bMagicState</h2>
+<a id="a3362b79c8d7b838dfe5e60f0aa9516f9" name="a3362b79c8d7b838dfe5e60f0aa9516f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3362b79c8d7b838dfe5e60f0aa9516f9">&#9670;&#160;</a></span>SendMagicAttackResult()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t CNpcMagicProcess::m_bMagicState</td>
+          <td class="memname">void CNpcMagicProcess::SendMagicAttackResult </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>opcode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>magicId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sourceId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>targetId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data3</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data4</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data5</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data6</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>data7</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8h_source.html#l00015">15</a> of file <a class="el" href="NpcMagicProcess_8h_source.html">NpcMagicProcess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcMagicProcess_8cpp_source.html#l00165">165</a> of file <a class="el" href="NpcMagicProcess_8cpp_source.html">NpcMagicProcess.cpp</a>.</p>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a8fcd8e29e8f5d97aea2d7992ce7323a9" name="a8fcd8e29e8f5d97aea2d7992ce7323a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fcd8e29e8f5d97aea2d7992ce7323a9">&#9670;&#160;</a></span>m_pMain</h2>
 

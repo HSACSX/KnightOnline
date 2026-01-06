@@ -62,10 +62,10 @@ var NAVTREEINDEX =
 "N3SndMgr_8h_source.html",
 "Tools_2N3TexViewer_2MainFrm_8cpp_source.html",
 "classAudioThread.html#a00f4017141af67fff0e85f4d7c1595e3",
-"classCN3FXPartBillBoard.html",
-"classCUIQuest.html",
-"ftxui__sink__mt_8h_source.html",
-"struct____TABLE__UPC__SKILL__TYPE__6.html"
+"classCN3FXPartBase.html",
+"classCUIPointInitDlg.html",
+"files.html",
+"struct____TABLE__UPC__SKILL__TYPE__4.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

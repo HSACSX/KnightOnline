@@ -407,8 +407,8 @@ $(function(){initNavTree('TblEditorView_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    CTblEditorDoc* pDoc = GetDocument();</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    ASSERT_VALID(pDoc);</div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    TCHAR szFile[MAX_PATH + 1] = {};</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    UINT uiFiles               = DragQueryFile(hDropInfo, 0xFFFF, <span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    TCHAR szFile[MAX_PATH + 1] {};</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    UINT uiFiles = DragQueryFile(hDropInfo, 0xFFFF, <span class="keyword">nullptr</span>, 0);</div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    ::DragQueryFile(hDropInfo, 0, szFile, MAX_PATH);</div>
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    ::DragFinish(hDropInfo);</div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>

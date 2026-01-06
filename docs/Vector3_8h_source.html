@@ -113,8 +113,8 @@ $(function(){initNavTree('Vector3_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    __Vector3() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    __Vector3(<span class="keywordtype">float</span> fx, <span class="keywordtype">float</span> fy, <span class="keywordtype">float</span> fz);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    __Vector3(<span class="keyword">const</span> __Vector3&amp; vec);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    __Vector3(<span class="keyword">const</span> __Vector3&amp; vec);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    __Vector3(<span class="keywordtype">float</span> fx, <span class="keywordtype">float</span> fy, <span class="keywordtype">float</span> fz);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> Normalize();</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> Normalize(<span class="keyword">const</span> __Vector3&amp; vec);</div>
@@ -126,7 +126,7 @@ $(function(){initNavTree('Vector3_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> Zero();</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> Set(<span class="keywordtype">float</span> fx, <span class="keywordtype">float</span> fy, <span class="keywordtype">float</span> fz);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">const</span> __Vector3&amp; operator=(<span class="keyword">const</span> __Vector3&amp; vec);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    __Vector3&amp; operator=(<span class="keyword">const</span> __Vector3&amp; vec) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">const</span> __Vector3 operator*(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>&amp; mtx) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> operator*=(<span class="keywordtype">float</span> fDelta);</div>

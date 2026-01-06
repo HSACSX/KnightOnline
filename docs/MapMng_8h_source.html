@@ -107,291 +107,289 @@ $(function(){initNavTree('MapMng_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_MAPMNG_H__995D141A_97C5_4CE7_B100_D729B35E9959__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_MAPMNG_H__995D141A_97C5_4CE7_B100_D729B35E9959__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Cursor Mode</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">enum</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    CM_SELECT         = 1,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    CM_OBJECT_BRUSH   = 2,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    CM_POS            = 3,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    CM_ROTATE         = 4,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    CM_SCALE          = 5,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    CM_EDIT_TERRAIN   = 6,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    CM_SMOOTH_TERRAIN = 7,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    CM_SET_DTEX       = 8,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    CM_EDIT_RIVER     = 9,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    CM_EDIT_LIGHTMAP  = 10,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    CM_MAKE_NPCPATH   = 11,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    CM_MAKE_WALL      = 12,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    CM_EDIT_EVENT     = 13,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    CM_EDIT_POND      = 14,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    CM_FLAT_TERRAIN   = 15,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    CM_EDIT_REGENUSER = 16,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    CM_EDIT_SOUND     = 17,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    CM_EDIT_SEED      = 18,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    CM_EDIT_LIGHT     = 19</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// Cursor Mode</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">enum</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    CM_SELECT         = 1,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    CM_OBJECT_BRUSH   = 2,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    CM_POS            = 3,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    CM_ROTATE         = 4,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    CM_SCALE          = 5,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    CM_EDIT_TERRAIN   = 6,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    CM_SMOOTH_TERRAIN = 7,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    CM_SET_DTEX       = 8,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    CM_EDIT_RIVER     = 9,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    CM_EDIT_LIGHTMAP  = 10,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    CM_MAKE_NPCPATH   = 11,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    CM_MAKE_WALL      = 12,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    CM_EDIT_EVENT     = 13,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    CM_EDIT_POND      = 14,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    CM_FLAT_TERRAIN   = 15,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    CM_EDIT_REGENUSER = 16,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    CM_EDIT_SOUND     = 17,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    CM_EDIT_SEED      = 18,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    CM_EDIT_LIGHT     = 19</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">const</span> <span class="keywordtype">int</span> NUM_UNIT_LIGHT = 2;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">const</span> <span class="keywordtype">int</span> NUM_UNIT_LIGHT = 2;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;afxtempl.h&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;PosDummy.h&quot;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;RotDummy.h&quot;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;ScaleDummy.h&quot;</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;RiverMng.h&quot;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;PondMng.h&quot;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;LyTerrain.h&quot;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &quot;RegenUser.h&quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;SowSeedMng.h&quot;</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">class </span><a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Camera.html">CN3Camera</a>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Light.html">CN3Light</a>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">//class CDlgSceneGraph;</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">class </span><a class="code hl_class" href="classCBrushDlg.html">CBrushDlg</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">class </span><a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgBase.html">CDlgBase</a>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Base.html">CN3Base</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">class </span><a class="code hl_class" href="classCNPCPathMgr.html">CNPCPathMgr</a>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">class </span><a class="code hl_class" href="classCWallMgr.html">CWallMgr</a>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">class </span><a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">class </span><a class="code hl_class" href="classCEventMgr.html">CEventMgr</a>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">class </span><a class="code hl_class" href="classCRegenUser.html">CRegenUser</a>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">class </span><a class="code hl_class" href="classCWarpMgr.html">CWarpMgr</a>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">class </span><a class="code hl_class" href="classCSoundMgr.html">CSoundMgr</a>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">class </span><a class="code hl_class" href="classCLightObjMgr.html">CLightObjMgr</a>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classCMapMng.html">   69</a></span><span class="keyword">class </span>CMapMng : <span class="keyword">public</span> CN3Base</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    CMapMng(<a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* pMainFrm);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">virtual</span> ~CMapMng();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Attributes</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* GetSelOutputObj(<span class="keywordtype">int</span> iIndex)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> (iIndex &lt; 0 || iIndex &gt;= m_SelOutputObjArray.GetSize())</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> m_SelOutputObjArray.GetAt(iIndex);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> GetSelOutputObjCount()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_SelOutputObjArray.GetSize());</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_class" href="classCLyTerrain.html">CLyTerrain</a>* GetTerrain()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">return</span> m_pTerrain;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    CWnd* GetDlgSourceList()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgSourceList;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    CWnd* GetDlgOutputList()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgOutputList;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    CWnd* GetDlgBase()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgBase;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* GetSceneOutput()</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> m_pSceneOutput;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    D3DSHADEMODE m_ShadeMode;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    D3DFILLMODE m_FillMode;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">bool</span> m_bViewWireFrame;           <span class="comment">// 선택된 오브젝트를 와이어 프레임으로 보게 한다..</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">bool</span> m_bRenderAxisAndGrid;       <span class="comment">// 축과 그리드를 그릴지 안그릴지 결정..</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> m_iZoneID;                   <span class="comment">// 존 아이디...</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">bool</span> m_bHideObj;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">bool</span> m_bLoadingComplete;         <span class="comment">// 이게 참이어야만 렌더링을 한다..</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* m_pMainFrm;          <span class="comment">// Main 윈도우</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_class" href="classCSowSeedMng.html">CSowSeedMng</a> m_SowSeedMng;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>* m_pDlgSourceList; <span class="comment">// Object 목록을 보여줄 다이알로그</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* GetSelSourceObj()</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">return</span> m_pSelSourceObj;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">enum</span> ENUM_EDIT_STATE</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    {</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        eEDIT_NOT = 0,</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        eEDIT_COPY,</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        eEDIT_PASTE,</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        eEDIT_NUM</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    };</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_class" href="classCLightObjMgr.html">CLightObjMgr</a>* m_pLightObjMgr;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_class" href="classCSoundMgr.html">CSoundMgr</a>* m_pSoundMgr;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_class" href="classCWarpMgr.html">CWarpMgr</a>* m_pWarpMgr;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <a class="code hl_class" href="classCRegenUser.html">CRegenUser</a>* m_pRegenUser;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_class" href="classCEventMgr.html">CEventMgr</a>* m_pEventMgr;   <span class="comment">//존 이벤트 관리...</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_class" href="classCWallMgr.html">CWallMgr</a>* m_pWall;        <span class="comment">//존 외각 가지 못하는 벽관리..</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <a class="code hl_class" href="classCNPCPathMgr.html">CNPCPathMgr</a>* m_pNPCPath;  <span class="comment">// NPC 길 만드는 클래스..</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <a class="code hl_class" href="classCLyTerrain.html">CLyTerrain</a>* m_pTerrain;   <span class="comment">// 지형</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* m_pSceneSource; <span class="comment">// source object 목록에 보여줄 것들을 담은 Scene</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* m_pSceneOutput; <span class="comment">// 맵에 배치한 Object를 포함한 Scene</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="comment">//CDlgSceneGraph*       m_pDlgSourceList;           // Object 목록을 보여줄 다이알로그</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="comment">//CDlgSceneGraph*       m_pDlgOutputList;           // 맵에 배치한 Object를 보여줄 다이알로그</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>* m_pDlgOutputList; <span class="comment">// 맵에 배치한 Object를 보여줄 다이알로그</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_class" href="classCDlgBase.html">CDlgBase</a>* m_pDlgBase;            <span class="comment">// 객체 등록정보 편집 대화상자..</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_class" href="classCBrushDlg.html">CBrushDlg</a>* m_pBrushDlg;          <span class="comment">// 지형 편집 브러쉬 옵션지정해주는 대화상자</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* m_pSelSourceObj;   <span class="comment">// source object 목록에서 선택한 것</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">//  CTypedPtrArray&lt;CPtrArray, CN3TransformCollision*&gt; m_SelOutputObjArray;  // 맵에 배치한 Object 중 선택한 것들</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    CTypedPtrArray&lt;CPtrArray, CN3Transform*&gt;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        m_SelOutputObjArray;            <span class="comment">// 맵에 배치한 Object 중 선택한 것들</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    ENUM_EDIT_STATE m_eSelObjBackState; <span class="comment">//  임시복사(ctrl+c)의 상태표시</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    CTypedPtrArray&lt;CPtrArray, CN3Transform*&gt;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        m_SelOutputObjBack;             <span class="comment">// 맵에 배치한 Object 중 선택한 것들 가지고 있음</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">int</span> m_CursorMode;                   <span class="comment">// 마우스의 기능 모드 구분</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    BOOL m_bRenderSelObj;               <span class="comment">// source object 목록에서 선택된 것을 그릴지 안그릴지 결정</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_class" href="classCTransDummy.html">CTransDummy</a>* m_pDummy;              <span class="comment">// 물체를 이동 회전 확대/축소 하는 기능을 담당하는 클래스</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_class" href="classCPosDummy.html">CPosDummy</a> m_PosDummy;               <span class="comment">// 이동</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <a class="code hl_class" href="classCRotDummy.html">CRotDummy</a> m_RotDummy;               <span class="comment">// 회전</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_class" href="classCScaleDummy.html">CScaleDummy</a> m_ScaleDummy;           <span class="comment">// 확대/축소</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <a class="code hl_class" href="classCRiverMng.html">CRiverMng</a> m_RiverMng;               <span class="comment">// 강물 정보관리</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <a class="code hl_class" href="classCPondMng.html">CPondMng</a> m_PondMng;                 <span class="comment">// 연못 정보관리</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;afxtempl.h&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;PosDummy.h&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;RotDummy.h&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;ScaleDummy.h&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;RiverMng.h&quot;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;PondMng.h&quot;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;LyTerrain.h&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;RegenUser.h&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;SowSeedMng.h&quot;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">class </span><a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Camera.html">CN3Camera</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Light.html">CN3Light</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//class CDlgSceneGraph;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">class </span><a class="code hl_class" href="classCBrushDlg.html">CBrushDlg</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">class </span><a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">class </span><a class="code hl_class" href="classCDlgBase.html">CDlgBase</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Base.html">CN3Base</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">class </span><a class="code hl_class" href="classCNPCPathMgr.html">CNPCPathMgr</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">class </span><a class="code hl_class" href="classCWallMgr.html">CWallMgr</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">class </span><a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">class </span><a class="code hl_class" href="classCEventMgr.html">CEventMgr</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">class </span><a class="code hl_class" href="classCRegenUser.html">CRegenUser</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">class </span><a class="code hl_class" href="classCWarpMgr.html">CWarpMgr</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">class </span><a class="code hl_class" href="classCSoundMgr.html">CSoundMgr</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">class </span><a class="code hl_class" href="classCLightObjMgr.html">CLightObjMgr</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="};">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classCMapMng.html">   67</a></span><span class="keyword">class </span>CMapMng : <span class="keyword">public</span> CN3Base</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    CMapMng(<a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* pMainFrm);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">virtual</span> ~CMapMng();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// Attributes</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* GetSelOutputObj(<span class="keywordtype">int</span> iIndex)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">if</span> (iIndex &lt; 0 || iIndex &gt;= m_SelOutputObjArray.GetSize())</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span> m_SelOutputObjArray.GetAt(iIndex);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> GetSelOutputObjCount()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m_SelOutputObjArray.GetSize());</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_class" href="classCLyTerrain.html">CLyTerrain</a>* GetTerrain()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span> m_pTerrain;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    CWnd* GetDlgSourceList()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgSourceList;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    CWnd* GetDlgOutputList()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgOutputList;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    CWnd* GetDlgBase()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> (CWnd*) m_pDlgBase;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* GetSceneOutput()</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> m_pSceneOutput;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    D3DSHADEMODE m_ShadeMode;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    D3DFILLMODE m_FillMode;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">bool</span> m_bViewWireFrame;           <span class="comment">// 선택된 오브젝트를 와이어 프레임으로 보게 한다..</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">bool</span> m_bRenderAxisAndGrid;       <span class="comment">// 축과 그리드를 그릴지 안그릴지 결정..</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">int</span> m_iZoneID;                   <span class="comment">// 존 아이디...</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">bool</span> m_bHideObj;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">bool</span> m_bLoadingComplete;         <span class="comment">// 이게 참이어야만 렌더링을 한다..</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_class" href="classCMainFrame.html">CMainFrame</a>* m_pMainFrm;          <span class="comment">// Main 윈도우</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_class" href="classCSowSeedMng.html">CSowSeedMng</a> m_SowSeedMng;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>* m_pDlgSourceList; <span class="comment">// Object 목록을 보여줄 다이알로그</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* GetSelSourceObj()</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">return</span> m_pSelSourceObj;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">enum</span> ENUM_EDIT_STATE</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        eEDIT_NOT = 0,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        eEDIT_COPY,</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        eEDIT_PASTE,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        eEDIT_NUM</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    };</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_class" href="classCLightObjMgr.html">CLightObjMgr</a>* m_pLightObjMgr;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_class" href="classCSoundMgr.html">CSoundMgr</a>* m_pSoundMgr;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_class" href="classCWarpMgr.html">CWarpMgr</a>* m_pWarpMgr;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_class" href="classCRegenUser.html">CRegenUser</a>* m_pRegenUser;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_class" href="classCEventMgr.html">CEventMgr</a>* m_pEventMgr;   <span class="comment">//존 이벤트 관리...</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <a class="code hl_class" href="classCWallMgr.html">CWallMgr</a>* m_pWall;        <span class="comment">//존 외각 가지 못하는 벽관리..</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_class" href="classCNPCPathMgr.html">CNPCPathMgr</a>* m_pNPCPath;  <span class="comment">// NPC 길 만드는 클래스..</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_class" href="classCLyTerrain.html">CLyTerrain</a>* m_pTerrain;   <span class="comment">// 지형</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* m_pSceneSource; <span class="comment">// source object 목록에 보여줄 것들을 담은 Scene</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <a class="code hl_class" href="classCN3Scene.html">CN3Scene</a>* m_pSceneOutput; <span class="comment">// 맵에 배치한 Object를 포함한 Scene</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="comment">//CDlgSceneGraph*       m_pDlgSourceList;           // Object 목록을 보여줄 다이알로그</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">//CDlgSceneGraph*       m_pDlgOutputList;           // 맵에 배치한 Object를 보여줄 다이알로그</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <a class="code hl_class" href="classCDlgShapeList.html">CDlgShapeList</a>* m_pDlgOutputList; <span class="comment">// 맵에 배치한 Object를 보여줄 다이알로그</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_class" href="classCDlgBase.html">CDlgBase</a>* m_pDlgBase;            <span class="comment">// 객체 등록정보 편집 대화상자..</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_class" href="classCBrushDlg.html">CBrushDlg</a>* m_pBrushDlg;          <span class="comment">// 지형 편집 브러쉬 옵션지정해주는 대화상자</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_class" href="classCN3Transform.html">CN3Transform</a>* m_pSelSourceObj;   <span class="comment">// source object 목록에서 선택한 것</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="comment">//  CTypedPtrArray&lt;CPtrArray, CN3TransformCollision*&gt; m_SelOutputObjArray;  // 맵에 배치한 Object 중 선택한 것들</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    CTypedPtrArray&lt;CPtrArray, CN3Transform*&gt;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        m_SelOutputObjArray;            <span class="comment">// 맵에 배치한 Object 중 선택한 것들</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    ENUM_EDIT_STATE m_eSelObjBackState; <span class="comment">//  임시복사(ctrl+c)의 상태표시</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    CTypedPtrArray&lt;CPtrArray, CN3Transform*&gt;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        m_SelOutputObjBack;             <span class="comment">// 맵에 배치한 Object 중 선택한 것들 가지고 있음</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">int</span> m_CursorMode;                   <span class="comment">// 마우스의 기능 모드 구분</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    BOOL m_bRenderSelObj;               <span class="comment">// source object 목록에서 선택된 것을 그릴지 안그릴지 결정</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <a class="code hl_class" href="classCTransDummy.html">CTransDummy</a>* m_pDummy;              <span class="comment">// 물체를 이동 회전 확대/축소 하는 기능을 담당하는 클래스</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <a class="code hl_class" href="classCPosDummy.html">CPosDummy</a> m_PosDummy;               <span class="comment">// 이동</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_class" href="classCRotDummy.html">CRotDummy</a> m_RotDummy;               <span class="comment">// 회전</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_class" href="classCScaleDummy.html">CScaleDummy</a> m_ScaleDummy;           <span class="comment">// 확대/축소</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <a class="code hl_class" href="classCRiverMng.html">CRiverMng</a> m_RiverMng;               <span class="comment">// 강물 정보관리</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_class" href="classCPondMng.html">CPondMng</a> m_PondMng;                 <span class="comment">// 연못 정보관리</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    RECT m_rcSelDrag;                   <span class="comment">// 드래그 영역</span></div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    RECT m_rcSelDrag;                   <span class="comment">// 드래그 영역</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="foldopen" id="foldopen00179" data-start="{" data-end="};">
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="structCMapMng_1_1____Sort.html">  179</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCMapMng_1_1____Sort.html">__Sort</a>                       <span class="comment">// Object picking할때 정렬하는 구조체</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>* pObj;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordtype">float</span> fCamDist;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vMin, vMax;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    };</div>
+<div class="foldopen" id="foldopen00177" data-start="{" data-end="};">
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="structCMapMng_1_1____Sort.html">  177</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCMapMng_1_1____Sort.html">__Sort</a>                       <span class="comment">// Object picking할때 정렬하는 구조체</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>* pObj;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordtype">float</span> fCamDist;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vMin, vMax;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    };</div>
 </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">// Operations</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> SetLight(<span class="keywordtype">float</span> fLgt);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">void</span> ActWarpMgr();</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordtype">bool</span> IsWarpMgrActive();</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">void</span> DeleteSelectedSourceObjects();</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> DeleteOverlappedObjects();</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">void</span> DeleteUnusedFiles();</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordtype">void</span> SetZoneID(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    {</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        m_iZoneID = id;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (m_pTerrain)</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            m_pTerrain-&gt;m_iZoneID = id;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    } <span class="comment">//지형 존 아이디 셋팅.</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">void</span> ImportShape(<span class="keyword">const</span> <span class="keywordtype">char</span>* szFullPath);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> MakeTerrainMovableAttr(</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>* pShapeMgr); <span class="comment">//지형에서 갈수 있는 타일과 갈 수 없는 타일을 정리해라..</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">void</span> ImportPostDataFromScene(<span class="keyword">const</span> <span class="keywordtype">char</span>* szFileName); <span class="comment">// Scene 에서 오브젝트 배치된걸 불러온다..</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">void</span> UpDateFP();</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">void</span> Tick();</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">void</span> Render();</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordtype">void</span> Release();</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordtype">void</span> SavePartition(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> width);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">void</span> SaveToFile(LPCTSTR lpszPathName);          <span class="comment">// Map 파일 저장</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordtype">void</span> LoadFromFile(LPCTSTR lpszPathName);        <span class="comment">// Map 파일 불러오기</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    BOOL MouseMsgFilter(LPMSG pMsg);                <span class="comment">// 마우스의 기능</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordtype">void</span> ImportTerrain(<span class="keyword">const</span> <span class="keywordtype">char</span>* szMeshFN);       <span class="comment">// VMesh 파일에서 지형 데이터 읽어오기</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordtype">void</span> ImportTerrainHeight(<span class="keyword">const</span> <span class="keywordtype">char</span>* szMeshFN); <span class="comment">// VMesh 파일에서 지형의 높이값만 읽어오기..</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordtype">void</span> MakeGameFiles(LPCTSTR lpszPathName, <span class="keywordtype">float</span> fSize = 128.0f);        <span class="comment">// 게임 데이터로 변환하기</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordtype">void</span> MakeServerDataFiles(LPCTSTR lpszPathName);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordtype">void</span> SelectObject(<a class="code hl_class" href="classCN3Base.html">CN3Base</a>* pObj, BOOL IsSourceObj, BOOL bAdd = FALSE); <span class="comment">// 객체를 선택한다.</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordtype">void</span> RenderObjectToWindow(</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>* pObj, HWND hWnd); <span class="comment">// 특정 윈도우에 Object를 그려준다.</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">void</span> SetCursorMode(<span class="keywordtype">int</span> iMode);               <span class="comment">// 마우스커서의 이용방법을 바꾼다.</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keywordtype">int</span> GetCursorMode()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordflow">return</span> m_CursorMode;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    } <span class="comment">// 마우스 커서의 이용방법을 얻는다.</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">void</span> Invalidate();                             <span class="comment">// View 화면 갱신</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordtype">void</span> FocusSelObj();                            <span class="comment">// 선택된 객체로 포터스를 옮긴다.</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordtype">void</span> FocusAll();                               <span class="comment">// 전체 맵을 볼수 있도록 한다.</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordtype">void</span> FocusAt(__Vector3 v);                     <span class="comment">// 지정된 점으로 포커스 옮겨.</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordtype">void</span> DropSelObjToTerrain();                    <span class="comment">// 선택한 객체를 지형에 붙인다.(Y값만 조정)</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordtype">void</span> DeleteSelObjectFromOutputScene();         <span class="comment">// OutputScene에서 선택한 객체를 지운다.</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordtype">void</span> RenderDragRect(RECT* rc);                 <span class="comment">// 드래그 영역을 그린다.</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordtype">void</span> UpdateAll();                              <span class="comment">// source 와 output dialog를 update시킨다.</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">void</span> LoadObjectPostData(LPCTSTR lpszFileName); <span class="comment">// Shape 배치정보를 text파일에서 읽어온다.</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">void</span> SaveObjectPostData(LPCTSTR lpszFileName); <span class="comment">// Shape 배치정보를 text파일로 저장한다.</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordtype">void</span> SaveObjectPostDataPartition(LPCTSTR lpszFileName, <span class="keywordtype">float</span> psx, <span class="keywordtype">float</span> psz, <span class="keywordtype">float</span> width);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordtype">void</span> RenderGrid(<span class="keywordtype">float</span> fGridSize, <span class="keywordtype">float</span> fMaxDistance); <span class="comment">// 맵에 일정간격으로Grid를 그려준다</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">void</span> OnSelChanged();                                  <span class="comment">// 선택한 객체가 바뀌었을때 해줄것들</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordtype">void</span> SelectObjectByDragRect(RECT* pRect, BOOL bAdd);  <span class="comment">// 드래그 해서 객체 선택하기</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordtype">void</span> LoadSourceObjects();                             <span class="comment">// Folder 에서 Source Object 를 읽어온다.</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    CN3Transform* AddChr(CN3Scene* pDestScene, <span class="keyword">const</span> std::string&amp; szFN,</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        BOOL bGenerateChainNumber);                       <span class="comment">// 특정Scene에 캐릭터 객체를 복사해 추가</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    CN3Transform* AddShape(CN3Scene* pDestScene, <span class="keyword">const</span> std::string&amp; szFN,</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        BOOL bGenerateChainNumber);                       <span class="comment">// 특정Scene에 Shape 객체를 복사해 추가</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    CN3Transform* AddObjectToOutputScene(CN3Transform*</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            pObj); <span class="comment">// 소스목록에서 선택한 Object를 넣으면 OutputScene으로 복사해서 넣어준다.</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    CN3Camera* CameraGet();</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    CN3Base* Pick(POINT point, <span class="keywordtype">int</span>* pnPart);   <span class="comment">// 객체 picking 함수</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> SortByCameraDistance(</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* pArg1, <span class="keyword">const</span> <span class="keywordtype">void</span>* pArg2); <span class="comment">// 카메라 거리에 따른 정렬함수 qsort에 이용</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="comment">//  BOOL    CameraMove(LPMSG pMsg);     // 카메라 이동에 관한 메세지 처리</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    BOOL GetObjectMinMax(</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        CN3Transform* pObj, __Vector3&amp; vMin, __Vector3&amp; vMax); <span class="comment">// 객체의 최대최소점 찾기</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="comment">// Operations</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordtype">void</span> SetLight(<span class="keywordtype">float</span> fLgt);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> ActWarpMgr();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">bool</span> IsWarpMgrActive();</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">void</span> DeleteSelectedSourceObjects();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordtype">void</span> DeleteOverlappedObjects();</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">void</span> DeleteUnusedFiles();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> SetZoneID(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        m_iZoneID = id;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">if</span> (m_pTerrain)</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            m_pTerrain-&gt;m_iZoneID = id;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    } <span class="comment">//지형 존 아이디 셋팅.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">void</span> ImportShape(<span class="keyword">const</span> <span class="keywordtype">char</span>* szFullPath);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordtype">void</span> MakeTerrainMovableAttr(</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>* pShapeMgr); <span class="comment">//지형에서 갈수 있는 타일과 갈 수 없는 타일을 정리해라..</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> ImportPostDataFromScene(<span class="keyword">const</span> <span class="keywordtype">char</span>* szFileName); <span class="comment">// Scene 에서 오브젝트 배치된걸 불러온다..</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">void</span> UpDateFP();</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">void</span> Tick();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">void</span> Render();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">void</span> SavePartition(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> width);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordtype">void</span> SaveToFile(LPCTSTR lpszPathName);          <span class="comment">// Map 파일 저장</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordtype">void</span> LoadFromFile(LPCTSTR lpszPathName);        <span class="comment">// Map 파일 불러오기</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    BOOL MouseMsgFilter(LPMSG pMsg);                <span class="comment">// 마우스의 기능</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordtype">void</span> ImportTerrain(<span class="keyword">const</span> <span class="keywordtype">char</span>* szMeshFN);       <span class="comment">// VMesh 파일에서 지형 데이터 읽어오기</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordtype">void</span> ImportTerrainHeight(<span class="keyword">const</span> <span class="keywordtype">char</span>* szMeshFN); <span class="comment">// VMesh 파일에서 지형의 높이값만 읽어오기..</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordtype">void</span> MakeGameFiles(LPCTSTR lpszPathName, <span class="keywordtype">float</span> fSize = 128.0f);        <span class="comment">// 게임 데이터로 변환하기</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordtype">void</span> MakeServerDataFiles(LPCTSTR lpszPathName);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordtype">void</span> SelectObject(<a class="code hl_class" href="classCN3Base.html">CN3Base</a>* pObj, BOOL IsSourceObj, BOOL bAdd = FALSE); <span class="comment">// 객체를 선택한다.</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordtype">void</span> RenderObjectToWindow(</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <a class="code hl_class" href="classCN3TransformCollision.html">CN3TransformCollision</a>* pObj, HWND hWnd); <span class="comment">// 특정 윈도우에 Object를 그려준다.</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordtype">void</span> SetCursorMode(<span class="keywordtype">int</span> iMode);               <span class="comment">// 마우스커서의 이용방법을 바꾼다.</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordtype">int</span> GetCursorMode()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">return</span> m_CursorMode;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    } <span class="comment">// 마우스 커서의 이용방법을 얻는다.</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">void</span> Invalidate();                             <span class="comment">// View 화면 갱신</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordtype">void</span> FocusSelObj();                            <span class="comment">// 선택된 객체로 포터스를 옮긴다.</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">void</span> FocusAll();                               <span class="comment">// 전체 맵을 볼수 있도록 한다.</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordtype">void</span> FocusAt(__Vector3 v);                     <span class="comment">// 지정된 점으로 포커스 옮겨.</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordtype">void</span> DropSelObjToTerrain();                    <span class="comment">// 선택한 객체를 지형에 붙인다.(Y값만 조정)</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordtype">void</span> DeleteSelObjectFromOutputScene();         <span class="comment">// OutputScene에서 선택한 객체를 지운다.</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordtype">void</span> RenderDragRect(RECT* rc);                 <span class="comment">// 드래그 영역을 그린다.</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordtype">void</span> UpdateAll();                              <span class="comment">// source 와 output dialog를 update시킨다.</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordtype">void</span> LoadObjectPostData(LPCTSTR lpszFileName); <span class="comment">// Shape 배치정보를 text파일에서 읽어온다.</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordtype">void</span> SaveObjectPostData(LPCTSTR lpszFileName); <span class="comment">// Shape 배치정보를 text파일로 저장한다.</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">void</span> SaveObjectPostDataPartition(LPCTSTR lpszFileName, <span class="keywordtype">float</span> psx, <span class="keywordtype">float</span> psz, <span class="keywordtype">float</span> width);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">void</span> RenderGrid(<span class="keywordtype">float</span> fGridSize, <span class="keywordtype">float</span> fMaxDistance); <span class="comment">// 맵에 일정간격으로Grid를 그려준다</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordtype">void</span> OnSelChanged();                                  <span class="comment">// 선택한 객체가 바뀌었을때 해줄것들</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordtype">void</span> SelectObjectByDragRect(RECT* pRect, BOOL bAdd);  <span class="comment">// 드래그 해서 객체 선택하기</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">void</span> LoadSourceObjects();                             <span class="comment">// Folder 에서 Source Object 를 읽어온다.</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    CN3Transform* AddChr(CN3Scene* pDestScene, <span class="keyword">const</span> std::string&amp; szFN,</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        BOOL bGenerateChainNumber);                       <span class="comment">// 특정Scene에 캐릭터 객체를 복사해 추가</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    CN3Transform* AddShape(CN3Scene* pDestScene, <span class="keyword">const</span> std::string&amp; szFN,</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        BOOL bGenerateChainNumber);                       <span class="comment">// 특정Scene에 Shape 객체를 복사해 추가</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    CN3Transform* AddObjectToOutputScene(CN3Transform*</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            pObj); <span class="comment">// 소스목록에서 선택한 Object를 넣으면 OutputScene으로 복사해서 넣어준다.</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    CN3Camera* CameraGet();</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    CN3Base* Pick(POINT point, <span class="keywordtype">int</span>* pnPart);   <span class="comment">// 객체 picking 함수</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> SortByCameraDistance(</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keyword">const</span> <span class="keywordtype">void</span>* pArg1, <span class="keyword">const</span> <span class="keywordtype">void</span>* pArg2); <span class="comment">// 카메라 거리에 따른 정렬함수 qsort에 이용</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="comment">//  BOOL    CameraMove(LPMSG pMsg);     // 카메라 이동에 관한 메세지 처리</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    BOOL GetObjectMinMax(</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        CN3Transform* pObj, __Vector3&amp; vMin, __Vector3&amp; vMax); <span class="comment">// 객체의 최대최소점 찾기</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    CStatusBar* GetStatusBar();</div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    CStatusBar* GetStatusBar();</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordtype">void</span> SetEditState(ENUM_EDIT_STATE eEditStat); <span class="comment">//    드로우해서 선택한 오브젝트를 edit</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>};</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">void</span> SetEditState(ENUM_EDIT_STATE eEditStat); <span class="comment">//    드로우해서 선택한 오브젝트를 edit</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>};</div>
 </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_MAPMNG_H__995D141A_97C5_4CE7_B100_D729B35E9959__INCLUDED_)</span></div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_MAPMNG_H__995D141A_97C5_4CE7_B100_D729B35E9959__INCLUDED_)</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="ttc" id="aclassCBrushDlg_html"><div class="ttname"><a href="classCBrushDlg.html">CBrushDlg</a></div><div class="ttdef"><b>Definition</b> <a href="BrushDlg_8h_source.html#l00013">BrushDlg.h:14</a></div></div>
-<div class="ttc" id="aclassCDlgBase_html"><div class="ttname"><a href="classCDlgBase.html">CDlgBase</a></div><div class="ttdef"><b>Definition</b> <a href="DlgBase_8h_source.html#l00016">DlgBase.h:17</a></div></div>
-<div class="ttc" id="aclassCDlgShapeList_html"><div class="ttname"><a href="classCDlgShapeList.html">CDlgShapeList</a></div><div class="ttdef"><b>Definition</b> <a href="DlgShapeList_8h_source.html#l00018">DlgShapeList.h:19</a></div></div>
-<div class="ttc" id="aclassCEventMgr_html"><div class="ttname"><a href="classCEventMgr.html">CEventMgr</a></div><div class="ttdef"><b>Definition</b> <a href="EventMgr_8h_source.html#l00019">EventMgr.h:20</a></div></div>
-<div class="ttc" id="aclassCLightObjMgr_html"><div class="ttname"><a href="classCLightObjMgr.html">CLightObjMgr</a></div><div class="ttdef"><b>Definition</b> <a href="LightObjMgr_8h_source.html#l00035">LightObjMgr.h:36</a></div></div>
-<div class="ttc" id="aclassCLyTerrain_html"><div class="ttname"><a href="classCLyTerrain.html">CLyTerrain</a></div><div class="ttdef"><b>Definition</b> <a href="LyTerrain_8h_source.html#l00041">LyTerrain.h:42</a></div></div>
-<div class="ttc" id="aclassCMainFrame_html"><div class="ttname"><a href="classCMainFrame.html">CMainFrame</a></div><div class="ttdef"><b>Definition</b> <a href="Client_2KscViewer_2MainFrm_8h_source.html#l00012">MainFrm.h:13</a></div></div>
-<div class="ttc" id="aclassCN3Base_html"><div class="ttname"><a href="classCN3Base.html">CN3Base</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_8h_source.html#l00197">N3Base.h:198</a></div></div>
-<div class="ttc" id="aclassCN3Camera_html"><div class="ttname"><a href="classCN3Camera.html">CN3Camera</a></div><div class="ttdef"><b>Definition</b> <a href="N3Camera_8h_source.html#l00014">N3Camera.h:15</a></div></div>
-<div class="ttc" id="aclassCN3Light_html"><div class="ttname"><a href="classCN3Light.html">CN3Light</a></div><div class="ttdef"><b>Definition</b> <a href="N3Light_8h_source.html#l00014">N3Light.h:15</a></div></div>
-<div class="ttc" id="aclassCN3Scene_html"><div class="ttname"><a href="classCN3Scene.html">CN3Scene</a></div><div class="ttdef"><b>Definition</b> <a href="N3Scene_8h_source.html#l00028">N3Scene.h:29</a></div></div>
-<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00024">N3ShapeMgr.h:26</a></div></div>
-<div class="ttc" id="aclassCN3TransformCollision_html"><div class="ttname"><a href="classCN3TransformCollision.html">CN3TransformCollision</a></div><div class="ttdef"><b>Definition</b> <a href="N3TransformCollision_8h_source.html#l00017">N3TransformCollision.h:18</a></div></div>
-<div class="ttc" id="aclassCN3Transform_html"><div class="ttname"><a href="classCN3Transform.html">CN3Transform</a></div><div class="ttdef"><b>Definition</b> <a href="N3Transform_8h_source.html#l00015">N3Transform.h:16</a></div></div>
-<div class="ttc" id="aclassCNPCPathMgr_html"><div class="ttname"><a href="classCNPCPathMgr.html">CNPCPathMgr</a></div><div class="ttdef"><b>Definition</b> <a href="NPCPathMgr_8h_source.html#l00022">NPCPathMgr.h:23</a></div></div>
-<div class="ttc" id="aclassCPondMng_html"><div class="ttname"><a href="classCPondMng.html">CPondMng</a></div><div class="ttdef"><b>Definition</b> <a href="PondMng_8h_source.html#l00033">PondMng.h:34</a></div></div>
-<div class="ttc" id="aclassCPosDummy_html"><div class="ttname"><a href="classCPosDummy.html">CPosDummy</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2PosDummy_8h_source.html#l00014">PosDummy.h:15</a></div></div>
-<div class="ttc" id="aclassCRegenUser_html"><div class="ttname"><a href="classCRegenUser.html">CRegenUser</a></div><div class="ttdef"><b>Definition</b> <a href="RegenUser_8h_source.html#l00026">RegenUser.h:27</a></div></div>
-<div class="ttc" id="aclassCRiverMng_html"><div class="ttname"><a href="classCRiverMng.html">CRiverMng</a></div><div class="ttdef"><b>Definition</b> <a href="RiverMng_8h_source.html#l00030">RiverMng.h:31</a></div></div>
-<div class="ttc" id="aclassCRotDummy_html"><div class="ttname"><a href="classCRotDummy.html">CRotDummy</a></div><div class="ttdef"><b>Definition</b> <a href="RotDummy_8h_source.html#l00014">RotDummy.h:15</a></div></div>
-<div class="ttc" id="aclassCScaleDummy_html"><div class="ttname"><a href="classCScaleDummy.html">CScaleDummy</a></div><div class="ttdef"><b>Definition</b> <a href="ScaleDummy_8h_source.html#l00014">ScaleDummy.h:15</a></div></div>
-<div class="ttc" id="aclassCSoundMgr_html"><div class="ttname"><a href="classCSoundMgr.html">CSoundMgr</a></div><div class="ttdef"><b>Definition</b> <a href="SoundMgr_8h_source.html#l00044">SoundMgr.h:45</a></div></div>
-<div class="ttc" id="aclassCSowSeedMng_html"><div class="ttname"><a href="classCSowSeedMng.html">CSowSeedMng</a></div><div class="ttdef"><b>Definition</b> <a href="SowSeedMng_8h_source.html#l00066">SowSeedMng.h:67</a></div></div>
-<div class="ttc" id="aclassCTransDummy_html"><div class="ttname"><a href="classCTransDummy.html">CTransDummy</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2TransDummy_8h_source.html#l00034">TransDummy.h:35</a></div></div>
-<div class="ttc" id="aclassCWallMgr_html"><div class="ttname"><a href="classCWallMgr.html">CWallMgr</a></div><div class="ttdef"><b>Definition</b> <a href="WallMgr_8h_source.html#l00020">WallMgr.h:21</a></div></div>
-<div class="ttc" id="aclassCWarpMgr_html"><div class="ttname"><a href="classCWarpMgr.html">CWarpMgr</a></div><div class="ttdef"><b>Definition</b> <a href="WarpMgr_8h_source.html#l00041">WarpMgr.h:42</a></div></div>
-<div class="ttc" id="astructCMapMng_1_1____Sort_html"><div class="ttname"><a href="structCMapMng_1_1____Sort.html">CMapMng::__Sort</a></div><div class="ttdef"><b>Definition</b> <a href="#l00179">MapMng.h:180</a></div></div>
+<div class="ttc" id="aclassCBrushDlg_html"><div class="ttname"><a href="classCBrushDlg.html">CBrushDlg</a></div><div class="ttdef"><b>Definition</b> <a href="BrushDlg_8h_source.html#l00012">BrushDlg.h:13</a></div></div>
+<div class="ttc" id="aclassCDlgBase_html"><div class="ttname"><a href="classCDlgBase.html">CDlgBase</a></div><div class="ttdef"><b>Definition</b> <a href="DlgBase_8h_source.html#l00015">DlgBase.h:16</a></div></div>
+<div class="ttc" id="aclassCDlgShapeList_html"><div class="ttname"><a href="classCDlgShapeList.html">CDlgShapeList</a></div><div class="ttdef"><b>Definition</b> <a href="DlgShapeList_8h_source.html#l00017">DlgShapeList.h:18</a></div></div>
+<div class="ttc" id="aclassCEventMgr_html"><div class="ttname"><a href="classCEventMgr.html">CEventMgr</a></div><div class="ttdef"><b>Definition</b> <a href="EventMgr_8h_source.html#l00017">EventMgr.h:18</a></div></div>
+<div class="ttc" id="aclassCLightObjMgr_html"><div class="ttname"><a href="classCLightObjMgr.html">CLightObjMgr</a></div><div class="ttdef"><b>Definition</b> <a href="LightObjMgr_8h_source.html#l00033">LightObjMgr.h:34</a></div></div>
+<div class="ttc" id="aclassCLyTerrain_html"><div class="ttname"><a href="classCLyTerrain.html">CLyTerrain</a></div><div class="ttdef"><b>Definition</b> <a href="LyTerrain_8h_source.html#l00039">LyTerrain.h:40</a></div></div>
+<div class="ttc" id="aclassCMainFrame_html"><div class="ttname"><a href="classCMainFrame.html">CMainFrame</a></div><div class="ttdef"><b>Definition</b> <a href="Client_2KscViewer_2MainFrm_8h_source.html#l00010">MainFrm.h:11</a></div></div>
+<div class="ttc" id="aclassCN3Base_html"><div class="ttname"><a href="classCN3Base.html">CN3Base</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_8h_source.html#l00151">N3Base.h:152</a></div></div>
+<div class="ttc" id="aclassCN3Camera_html"><div class="ttname"><a href="classCN3Camera.html">CN3Camera</a></div><div class="ttdef"><b>Definition</b> <a href="N3Camera_8h_source.html#l00012">N3Camera.h:13</a></div></div>
+<div class="ttc" id="aclassCN3Light_html"><div class="ttname"><a href="classCN3Light.html">CN3Light</a></div><div class="ttdef"><b>Definition</b> <a href="N3Light_8h_source.html#l00012">N3Light.h:13</a></div></div>
+<div class="ttc" id="aclassCN3Scene_html"><div class="ttname"><a href="classCN3Scene.html">CN3Scene</a></div><div class="ttdef"><b>Definition</b> <a href="N3Scene_8h_source.html#l00026">N3Scene.h:27</a></div></div>
+<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00033">N3ShapeMgr.h:35</a></div></div>
+<div class="ttc" id="aclassCN3TransformCollision_html"><div class="ttname"><a href="classCN3TransformCollision.html">CN3TransformCollision</a></div><div class="ttdef"><b>Definition</b> <a href="N3TransformCollision_8h_source.html#l00013">N3TransformCollision.h:14</a></div></div>
+<div class="ttc" id="aclassCN3Transform_html"><div class="ttname"><a href="classCN3Transform.html">CN3Transform</a></div><div class="ttdef"><b>Definition</b> <a href="N3Transform_8h_source.html#l00013">N3Transform.h:14</a></div></div>
+<div class="ttc" id="aclassCNPCPathMgr_html"><div class="ttname"><a href="classCNPCPathMgr.html">CNPCPathMgr</a></div><div class="ttdef"><b>Definition</b> <a href="NPCPathMgr_8h_source.html#l00020">NPCPathMgr.h:21</a></div></div>
+<div class="ttc" id="aclassCPondMng_html"><div class="ttname"><a href="classCPondMng.html">CPondMng</a></div><div class="ttdef"><b>Definition</b> <a href="PondMng_8h_source.html#l00031">PondMng.h:32</a></div></div>
+<div class="ttc" id="aclassCPosDummy_html"><div class="ttname"><a href="classCPosDummy.html">CPosDummy</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2PosDummy_8h_source.html#l00012">PosDummy.h:13</a></div></div>
+<div class="ttc" id="aclassCRegenUser_html"><div class="ttname"><a href="classCRegenUser.html">CRegenUser</a></div><div class="ttdef"><b>Definition</b> <a href="RegenUser_8h_source.html#l00024">RegenUser.h:25</a></div></div>
+<div class="ttc" id="aclassCRiverMng_html"><div class="ttname"><a href="classCRiverMng.html">CRiverMng</a></div><div class="ttdef"><b>Definition</b> <a href="RiverMng_8h_source.html#l00028">RiverMng.h:29</a></div></div>
+<div class="ttc" id="aclassCRotDummy_html"><div class="ttname"><a href="classCRotDummy.html">CRotDummy</a></div><div class="ttdef"><b>Definition</b> <a href="RotDummy_8h_source.html#l00012">RotDummy.h:13</a></div></div>
+<div class="ttc" id="aclassCScaleDummy_html"><div class="ttname"><a href="classCScaleDummy.html">CScaleDummy</a></div><div class="ttdef"><b>Definition</b> <a href="ScaleDummy_8h_source.html#l00012">ScaleDummy.h:13</a></div></div>
+<div class="ttc" id="aclassCSoundMgr_html"><div class="ttname"><a href="classCSoundMgr.html">CSoundMgr</a></div><div class="ttdef"><b>Definition</b> <a href="SoundMgr_8h_source.html#l00042">SoundMgr.h:43</a></div></div>
+<div class="ttc" id="aclassCSowSeedMng_html"><div class="ttname"><a href="classCSowSeedMng.html">CSowSeedMng</a></div><div class="ttdef"><b>Definition</b> <a href="SowSeedMng_8h_source.html#l00064">SowSeedMng.h:65</a></div></div>
+<div class="ttc" id="aclassCTransDummy_html"><div class="ttname"><a href="classCTransDummy.html">CTransDummy</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2TransDummy_8h_source.html#l00032">TransDummy.h:33</a></div></div>
+<div class="ttc" id="aclassCWallMgr_html"><div class="ttname"><a href="classCWallMgr.html">CWallMgr</a></div><div class="ttdef"><b>Definition</b> <a href="WallMgr_8h_source.html#l00018">WallMgr.h:19</a></div></div>
+<div class="ttc" id="aclassCWarpMgr_html"><div class="ttname"><a href="classCWarpMgr.html">CWarpMgr</a></div><div class="ttdef"><b>Definition</b> <a href="WarpMgr_8h_source.html#l00039">WarpMgr.h:40</a></div></div>
+<div class="ttc" id="astructCMapMng_1_1____Sort_html"><div class="ttname"><a href="structCMapMng_1_1____Sort.html">CMapMng::__Sort</a></div><div class="ttdef"><b>Definition</b> <a href="#l00177">MapMng.h:178</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -74,8 +74,6 @@ var hierarchy =
     [ "CN3ViewerView::__Sort", "structCN3ViewerView_1_1____Sort.html", null ],
     [ "__SoundInfo", "struct____SoundInfo.html", null ],
     [ "CN3Sun::__SunPart", "structCN3Sun_1_1____SunPart.html", null ],
-    [ "__TABLE_BIRD", "struct____TABLE__BIRD.html", null ],
-    [ "__TABLE_EXCHANGE_QUEST", "struct____TABLE__EXCHANGE__QUEST.html", null ],
     [ "__TABLE_FX", "struct____TABLE__FX.html", null ],
     [ "__TABLE_HELP", "struct____TABLE__HELP.html", null ],
     [ "__TABLE_ITEM_BASIC", "struct____TABLE__ITEM__BASIC.html", null ],
@@ -98,7 +96,6 @@ var hierarchy =
     [ "__TABLE_UPC_SKILL_TYPE_7", "struct____TABLE__UPC__SKILL__TYPE__7.html", null ],
     [ "__TABLE_UPC_SKILL_TYPE_9", "struct____TABLE__UPC__SKILL__TYPE__9.html", null ],
     [ "__TABLE_ZONE", "struct____TABLE__ZONE.html", null ],
-    [ "__TerrainBGMInfo", "struct____TerrainBGMInfo.html", null ],
     [ "__TerrainTileTexInfo", "struct____TerrainTileTexInfo.html", null ],
     [ "__UIWndIconInfo", "struct____UIWndIconInfo.html", null ],
     [ "__Vector2", "struct____Vector2.html", null ],
@@ -557,7 +554,6 @@ var hierarchy =
       [ "CN3Sky", "classCN3Sky.html", null ],
       [ "CN3Star", "classCN3Star.html", null ],
       [ "CN3Sun", "classCN3Sun.html", null ],
-      [ "CN3TerrainPatch", "classCN3TerrainPatch.html", null ],
       [ "CNPCPath", "classCNPCPath.html", null ],
       [ "CNPCPathMgr", "classCNPCPathMgr.html", null ],
       [ "CRegenUser", "classCRegenUser.html", null ],
@@ -578,7 +574,6 @@ var hierarchy =
       [ "CN3TableBase< __TABLE_ITEM_EXT >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< __TABLE_PLAYER_LOOKS >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< __TABLE_UPC_SKILL >", "classCN3TableBase.html", null ],
-      [ "CN3TableBase< __TABLE_EXCHANGE_QUEST >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< __TABLE_FX >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< __TABLE_QUEST_MENU >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< __TABLE_QUEST_TALK >", "classCN3TableBase.html", null ],
@@ -593,6 +588,7 @@ var hierarchy =
       [ "CN3TableBase< __TABLE_SOUND >", "classCN3TableBase.html", null ],
       [ "CN3TableBase< Type >", "classCN3TableBase.html", null ]
     ] ],
+    [ "CN3TerrainPatch", "classCN3TerrainPatch.html", null ],
     [ "CNpc", "classCNpc.html", null ],
     [ "CNpcItem", "classCNpcItem.html", null ],
     [ "CNpcMagicProcess", "classCNpcMagicProcess.html", null ],
@@ -604,7 +600,7 @@ var hierarchy =
     [ "CParty", "classCParty.html", null ],
     [ "CPathFind", "classCPathFind.html", null ],
     [ "CPick", "classCPick.html", null ],
-    [ "CN3Pond::CPongMesh", "classCN3Pond_1_1CPongMesh.html", null ],
+    [ "CN3Pond::CPondMesh", "classCN3Pond_1_1CPondMesh.html", null ],
     [ "CProgressCtrl", null, [
       [ "CMacProgressCtrl", "classCMacProgressCtrl.html", null ],
       [ "CProgressBar", "classCProgressBar.html", null ],
@@ -684,6 +680,7 @@ var hierarchy =
       [ "FileWriter", "classFileWriter.html", null ]
     ] ],
     [ "FileReaderHandle", "structFileReaderHandle.html", null ],
+    [ "ItemTooltipBuilderContext", "classItemTooltipBuilderContext.html", null ],
     [ "logger::Logger", "classlogger_1_1Logger.html", [
       [ "AIServerLogger", "classAIServerLogger.html", null ],
       [ "EbenezerLogger", "classEbenezerLogger.html", null ],
@@ -714,6 +711,7 @@ var hierarchy =
     [ "RIFF_Header", "structRIFF__Header.html", null ],
     [ "RIFF_SubChunk", "structRIFF__SubChunk.html", null ],
     [ "std::runtime_error", null, [
+      [ "ItemTooltipTooLargeException", "classItemTooltipTooLargeException.html", null ],
       [ "db::DatasourceConfigNotFoundException", "classdb_1_1DatasourceConfigNotFoundException.html", null ]
     ] ],
     [ "shared_memory_object", null, [

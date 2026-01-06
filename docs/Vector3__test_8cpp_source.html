@@ -148,35 +148,35 @@ $(function(){initNavTree('Vector3__test_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, ConstructFromVector3_MatchesReference)</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> initialisedVector(1.0f, 2.0f, 3.0f);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVec(1.0f, 2.0f, 3.0f);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    SCOPED_TRACE(<span class="stringliteral">&quot;__Vector3::__Vector3(const __Vector3&amp;)&quot;</span>);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec(initialisedVector);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    ExpectVector3Near(vec, initialisedVector);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec(expectedVec);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    ExpectVector3Near(vec, expectedVec);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Normalize_Self_MatchesReference)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVector = { 0.218217880f, 0.436435759f, 0.872871518f };</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVec = { 0.218217880f, 0.436435759f, 0.872871518f };</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    SCOPED_TRACE(<span class="stringliteral">&quot;__Vector3::Normalize()&quot;</span>);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec = { 64.0f, 128.0f, 256.0f };</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    vec.Normalize();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    ExpectVector3Near(vec, expectedVector);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    ExpectVector3Near(vec, expectedVec);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Normalize_Vector3_MatchesReference)</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVector = { 0.218217880f, 0.436435759f, 0.872871518f };</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVec = { 0.218217880f, 0.436435759f, 0.872871518f };</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    SCOPED_TRACE(<span class="stringliteral">&quot;__Vector3::Normalize(const __Vector3&amp;)&quot;</span>);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> inputVec = { 64.0f, 128.0f, 256.0f };</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec      = {};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec {};</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    vec.Normalize(inputVec);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    ExpectVector3Near(vec, expectedVector);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    ExpectVector3Near(vec, expectedVec);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Magnitude_MatchesReference)</div>
@@ -247,24 +247,24 @@ $(function(){initNavTree('Vector3__test_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Set_Floats_MatchesReference)</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>{</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVector = { 64.0f, 128.0f, 256.0f };</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVec = { 64.0f, 128.0f, 256.0f };</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    SCOPED_TRACE(<span class="stringliteral">&quot;__Vector3::Set(float, float, float)&quot;</span>);</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec;</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    vec.Set(64.0f, 128.0f, 256.0f);</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    ExpectVector3Near(vec, expectedVector);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    ExpectVector3Near(vec, expectedVec);</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>}</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Assign_Vector3_MatchesReference)</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>{</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVector = { 64.0f, 128.0f, 256.0f };</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> expectedVec = { 64.0f, 128.0f, 256.0f };</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    SCOPED_TRACE(<span class="stringliteral">&quot;__Vector3::operator=(const __Vector3&amp;)&quot;</span>);</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vec;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    vec = expectedVector;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    ExpectVector3Near(vec, expectedVector);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    vec = expectedVec;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    ExpectVector3Near(vec, expectedVec);</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>}</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>TEST_F(<a class="code hl_class" href="classVector3Test.html">Vector3Test</a>, Multiply_Matrix_MatchesReferenceWithinTolerance)</div>

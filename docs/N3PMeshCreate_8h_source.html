@@ -107,107 +107,106 @@ $(function(){initNavTree('N3PMeshCreate_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_N3PMeshCreate_h__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_N3PMeshCreate_h__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define _SAME_VERTEXPOS</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Mesh.html">CN3Mesh</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">class </span><a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>;</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classCN3PMeshCreate.html">   17</a></span><span class="keyword">class </span>CN3PMeshCreate</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    CN3PMeshCreate();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> ~CN3PMeshCreate();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structCN3PMeshCreate_1_1____PMCreateOption.html">   24</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCreateOption.html">__PMCreateOption</a></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">bool</span> bUseSumOfLoss;   <span class="comment">// Loss의 합을 사용할 것인가 아니면 ..</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">bool</span> bTriangleWeight; <span class="comment">// 사라질 삼각형 가중치 계산 할 것인가?</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">bool</span> bArea;    <span class="comment">// false = sum of side 가중치를 넓이로 할 것인가? 세 변의 합으로 할 것인가?</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">float</span> fWeight; <span class="comment">// 가중치</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define _SAME_VERTEXPOS</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span><a class="code hl_class" href="classCN3Mesh.html">CN3Mesh</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>;</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classCN3PMeshCreate.html">   16</a></span><span class="keyword">class </span>CN3PMeshCreate</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    CN3PMeshCreate();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> ~CN3PMeshCreate();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structCN3PMeshCreate_1_1____PMCreateOption.html">   23</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCreateOption.html">__PMCreateOption</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">bool</span> bUseSumOfLoss;   <span class="comment">// Loss의 합을 사용할 것인가 아니면 ..</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">bool</span> bTriangleWeight; <span class="comment">// 사라질 삼각형 가중치 계산 할 것인가?</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">bool</span> bArea;    <span class="comment">// false = sum of side 가중치를 넓이로 할 것인가? 세 변의 합으로 할 것인가?</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">float</span> fWeight; <span class="comment">// 가중치</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    };</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// An edge collapse. No-one but this module needs to see this.</span></div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">   34</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">float</span> Value;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">//PMCMaterial *Material;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">int</span> NumTrianglesToLose, NumIndicesToChange, NumVerticesToLose;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">int</span>* IndexChanges;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">int</span> CollapseTo;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// An edge collapse. No-one but this module needs to see this.</span></div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">   33</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">float</span> Value;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">//PMCMaterial *Material;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">int</span> NumTrianglesToLose, NumIndicesToChange, NumVerticesToLose;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">int</span>* IndexChanges;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">int</span> CollapseTo;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    };</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Helper function</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> swap_triangle(uint16_t* t1, uint16_t* t2);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">float</span> GetTriCollapsesLoss(uint16_t* pTriIndex, <span class="keywordtype">bool</span> bArea);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> combine_modified(<span class="keywordtype">float</span>&amp; sofar, uint16_t* tri, <span class="keywordtype">int</span> which, <span class="keywordtype">int</span> what_to, <span class="keywordtype">bool</span> bSumOfLoss);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">int</span> ReGenerate(<a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* pPMesh); <span class="comment">// 다시 생성한다..</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// Do the calculation</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> CreateCollapseList();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Then output a mesh for the renderer (this could be saved to disk)</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* CreateRendererMesh();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCreateOption.html">__PMCreateOption</a> m_PMCOption;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// N3Mesh -&gt; CN3PMeshCreate 로 컨버팅..</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">bool</span> ConvertFromN3Mesh(<a class="code hl_class" href="classCN3Mesh.html">CN3Mesh</a>* pN3Mesh);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">bool</span> ConvertFromN3PMesh(<a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* pN3PMesh);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> Release();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// For internal use:</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// There is a list of all the index changes in all collapses</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">int</span> m_iTotalIndexChanges;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">int</span>* m_pAllIndexChanges;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// These are all the collapses, in reverse order (highest resolution mesh collapse first)</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a> *m_pCollapses, *m_pCollapseUpTo;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">bool</span> FindACollapse(<span class="keywordtype">float</span>&amp; val_so_far);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> TryEdge(<span class="keywordtype">int</span> pt_a, <span class="keywordtype">int</span> pt_b, <span class="keywordtype">float</span>&amp; be_val, uint16_t&amp; be_a, uint16_t&amp; be_b, <span class="keywordtype">bool</span>&amp; IsOver);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> Collapse(uint16_t&amp; pt_to, uint16_t&amp; pt_from, <span class="keywordtype">float</span> edge_val);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// mesh 정보</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// A material is an array of vertices and an array of triangles (which is an array of 3x as many indices)</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Fill these in with your raw mesh data.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_struct" href="struct____VertexT1.html">__VertexT1</a>* m_pVertices;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    uint16_t* m_pIndices;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> m_iNumVertices, m_iNumIndices;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// After collapse, NumVertices will be the lowest detail level and OriginalNumVertices the original highest</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">int</span> m_iOriginalNumVertices, m_iOriginalNumIndices;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// Internal to collapse code.</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> SwapToEnd(uint16_t swapper, <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a>* collapses, <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a>* collapses_end,</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        uint16_t&amp; pt_to, uint16_t&amp; pt_from);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#ifdef _SAME_VERTEXPOS</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">float</span> GetLossOfSamePosVertex(uint16_t pt_to, uint16_t pt_from);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif </span><span class="comment">// _SAME_VERTEXPOS</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>};</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// Helper function</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> swap_triangle(uint16_t* t1, uint16_t* t2);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">float</span> GetTriCollapsesLoss(uint16_t* pTriIndex, <span class="keywordtype">bool</span> bArea);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> combine_modified(<span class="keywordtype">float</span>&amp; sofar, uint16_t* tri, <span class="keywordtype">int</span> which, <span class="keywordtype">int</span> what_to, <span class="keywordtype">bool</span> bSumOfLoss);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> ReGenerate(<a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* pPMesh); <span class="comment">// 다시 생성한다..</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Do the calculation</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> CreateCollapseList();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Then output a mesh for the renderer (this could be saved to disk)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* CreateRendererMesh();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCreateOption.html">__PMCreateOption</a> m_PMCOption;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// N3Mesh -&gt; CN3PMeshCreate 로 컨버팅..</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">bool</span> ConvertFromN3Mesh(<a class="code hl_class" href="classCN3Mesh.html">CN3Mesh</a>* pN3Mesh);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">bool</span> ConvertFromN3PMesh(<a class="code hl_class" href="classCN3PMesh.html">CN3PMesh</a>* pN3PMesh);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// For internal use:</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// There is a list of all the index changes in all collapses</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">int</span> m_iTotalIndexChanges;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">int</span>* m_pAllIndexChanges;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// These are all the collapses, in reverse order (highest resolution mesh collapse first)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a> *m_pCollapses, *m_pCollapseUpTo;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">bool</span> FindACollapse(<span class="keywordtype">float</span>&amp; val_so_far);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> TryEdge(<span class="keywordtype">int</span> pt_a, <span class="keywordtype">int</span> pt_b, <span class="keywordtype">float</span>&amp; be_val, uint16_t&amp; be_a, uint16_t&amp; be_b, <span class="keywordtype">bool</span>&amp; IsOver);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> Collapse(uint16_t&amp; pt_to, uint16_t&amp; pt_from, <span class="keywordtype">float</span> edge_val);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// mesh 정보</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// A material is an array of vertices and an array of triangles (which is an array of 3x as many indices)</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// Fill these in with your raw mesh data.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_struct" href="struct____VertexT1.html">__VertexT1</a>* m_pVertices;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    uint16_t* m_pIndices;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> m_iNumVertices, m_iNumIndices;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// After collapse, NumVertices will be the lowest detail level and OriginalNumVertices the original highest</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> m_iOriginalNumVertices, m_iOriginalNumIndices;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Internal to collapse code.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> SwapToEnd(uint16_t swapper, <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a>* collapses, <a class="code hl_struct" href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">__PMCEdgeCollapse</a>* collapses_end,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        uint16_t&amp; pt_to, uint16_t&amp; pt_from);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#ifdef _SAME_VERTEXPOS</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">float</span> GetLossOfSamePosVertex(uint16_t pt_to, uint16_t pt_from);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#endif </span><span class="comment">// _SAME_VERTEXPOS</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
 </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3PMeshCreate_h__INCLUDED_)</span></div>
-<div class="ttc" id="aclassCN3Mesh_html"><div class="ttname"><a href="classCN3Mesh.html">CN3Mesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3Mesh_8h_source.html#l00017">N3Mesh.h:18</a></div></div>
-<div class="ttc" id="aclassCN3PMesh_html"><div class="ttname"><a href="classCN3PMesh.html">CN3PMesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3PMesh_8h_source.html#l00014">N3PMesh.h:15</a></div></div>
-<div class="ttc" id="astructCN3PMeshCreate_1_1____PMCEdgeCollapse_html"><div class="ttname"><a href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">CN3PMeshCreate::__PMCEdgeCollapse</a></div><div class="ttdef"><b>Definition</b> <a href="#l00034">N3PMeshCreate.h:35</a></div></div>
-<div class="ttc" id="astructCN3PMeshCreate_1_1____PMCreateOption_html"><div class="ttname"><a href="structCN3PMeshCreate_1_1____PMCreateOption.html">CN3PMeshCreate::__PMCreateOption</a></div><div class="ttdef"><b>Definition</b> <a href="#l00024">N3PMeshCreate.h:25</a></div></div>
-<div class="ttc" id="astruct____VertexT1_html"><div class="ttname"><a href="struct____VertexT1.html">__VertexT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00242">My_3DStruct.h:243</a></div></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3PMeshCreate_h__INCLUDED_)</span></div>
+<div class="ttc" id="aclassCN3Mesh_html"><div class="ttname"><a href="classCN3Mesh.html">CN3Mesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3Mesh_8h_source.html#l00014">N3Mesh.h:15</a></div></div>
+<div class="ttc" id="aclassCN3PMesh_html"><div class="ttname"><a href="classCN3PMesh.html">CN3PMesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3PMesh_8h_source.html#l00012">N3PMesh.h:13</a></div></div>
+<div class="ttc" id="astructCN3PMeshCreate_1_1____PMCEdgeCollapse_html"><div class="ttname"><a href="structCN3PMeshCreate_1_1____PMCEdgeCollapse.html">CN3PMeshCreate::__PMCEdgeCollapse</a></div><div class="ttdef"><b>Definition</b> <a href="#l00033">N3PMeshCreate.h:34</a></div></div>
+<div class="ttc" id="astructCN3PMeshCreate_1_1____PMCreateOption_html"><div class="ttname"><a href="structCN3PMeshCreate_1_1____PMCreateOption.html">CN3PMeshCreate::__PMCreateOption</a></div><div class="ttdef"><b>Definition</b> <a href="#l00023">N3PMeshCreate.h:24</a></div></div>
+<div class="ttc" id="astruct____VertexT1_html"><div class="ttname"><a href="struct____VertexT1.html">__VertexT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00244">My_3DStruct.h:245</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

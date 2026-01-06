@@ -121,7 +121,7 @@ $(function(){initNavTree('UdpSocket_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">bool</span> CreateSocket();</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> AsyncReceive();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> SendUDPPacket(<span class="keywordtype">char</span>* strAddress, <span class="keywordtype">char</span>* pBuf, <span class="keywordtype">int</span> len);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> SendUDPPacket(<span class="keyword">const</span> std::string&amp; strAddress, <span class="keywordtype">char</span>* pBuf, <span class="keywordtype">int</span> len);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">bool</span> PacketProcess(<span class="keywordtype">int</span> len);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> Parsing(<span class="keywordtype">char</span>* pBuf, <span class="keywordtype">int</span> len);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> ServerChat(<span class="keywordtype">char</span>* pBuf);</div>
@@ -141,8 +141,8 @@ $(function(){initNavTree('UdpSocket_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    asio::ip::udp::socket _socket;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    asio::ip::udp::endpoint _sender;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">char</span> _recvBuff[UDP_SOCKET_BUFFER_SIZE];</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classEbenezerApp.html">EbenezerApp</a>* _main;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">char</span> _recvBuff[UDP_SOCKET_BUFFER_SIZE] = {};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classEbenezerApp.html">EbenezerApp</a>* _main                     = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>

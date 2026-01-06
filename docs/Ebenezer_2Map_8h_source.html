@@ -131,14 +131,14 @@ $(function(){initNavTree('Ebenezer_2Map_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    EventArray m_EventArray;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="classCN3ShapeMgr.html">CN3ShapeMgr</a> m_N3ShapeMgr;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">float</span>** m_fHeight;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">float</span>** m_fHeight = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> m_nXRegion;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">int</span> m_nZRegion;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> m_nXRegion    = -1;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">int</span> m_nZRegion    = -1;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> m_nMapSize;    <span class="comment">// Grid Unit ex) 4m</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span> m_fUnitDist; <span class="comment">// i Grid Distance</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> m_nMapSize    = 0;    <span class="comment">// Grid Unit ex) 4m</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span> m_fUnitDist = 0.0f; <span class="comment">// i Grid Distance</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> LoadWarpList(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> LoadRegeneEvent(<a class="code hl_class" href="classFile.html">File</a>&amp; fs);</div>
@@ -182,36 +182,38 @@ $(function(){initNavTree('Ebenezer_2Map_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    C3DMap();</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">virtual</span> ~C3DMap();</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> m_nServerNo;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> m_nZoneNumber;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">float</span> m_fInitX;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">float</span> m_fInitZ;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">float</span> m_fInitY;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    uint8_t</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        m_bType; <span class="comment">// Zone Type : 1 -&gt; common zone,  2 -&gt; battle zone, 3 -&gt; 24 hour open battle zone</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    int16_t m_sMaxUser;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> m_nServerNo      = 0;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> m_nZoneNumber    = 0;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">float</span> m_fInitX       = 0.0f;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">float</span> m_fInitZ       = 0.0f;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">float</span> m_fInitY       = 0.0f;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// Zone Type : 1 -&gt; common zone,  2 -&gt; battle zone, 3 -&gt; 24 hour open battle zone</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    uint8_t m_bType      = 0;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_class" href="classCRegion.html">CRegion</a>** m_ppRegion;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    int16_t** m_ppnEvent;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    WarpArray m_WarpArray;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    int16_t m_sMaxUser   = 150; <span class="comment">// Max user in Battlezone!!!</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_class" href="classCRegion.html">CRegion</a>** m_ppRegion = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    int16_t** m_ppnEvent = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_class" href="classEbenezerApp.html">EbenezerApp</a>* m_pMain;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    WarpArray m_WarpArray;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    uint32_t m_wBundle; <span class="comment">// Zone Item Max Count</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_class" href="classEbenezerApp.html">EbenezerApp</a>* m_pMain = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    uint32_t m_wBundle   = 1; <span class="comment">// Zone Item Max Count</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
 </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif                  </span><span class="comment">// SERVER_EBENEZER_MAP_H</span></div>
-<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00024">N3ShapeMgr.h:26</a></div></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif                        </span><span class="comment">// SERVER_EBENEZER_MAP_H</span></div>
+<div class="ttc" id="aclassCN3ShapeMgr_html"><div class="ttname"><a href="classCN3ShapeMgr.html">CN3ShapeMgr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2N3ShapeMgr_8h_source.html#l00033">N3ShapeMgr.h:35</a></div></div>
 <div class="ttc" id="aclassCRegion_html"><div class="ttname"><a href="classCRegion.html">CRegion</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Region_8h_source.html#l00014">Region.h:15</a></div></div>
 <div class="ttc" id="aclassCSTLMap_html"><div class="ttname"><a href="classCSTLMap.html">CSTLMap</a></div><div class="ttdef"><b>Definition</b> <a href="STLMap_8h_source.html#l00009">STLMap.h:10</a></div></div>
 <div class="ttc" id="aclassCUser_html"><div class="ttname"><a href="classCUser.html">CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00012">User.h:13</a></div></div>
 <div class="ttc" id="aclassEbenezerApp_html"><div class="ttname"><a href="classEbenezerApp.html">EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00062">EbenezerApp.h:63</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
-<div class="ttc" id="astruct__OBJECT__EVENT_html"><div class="ttname"><a href="struct__OBJECT__EVENT.html">_OBJECT_EVENT</a></div><div class="ttdef"><b>Definition</b> <a href="Server_2AIServer_2Define_8h_source.html#l00094">Define.h:95</a></div></div>
-<div class="ttc" id="astruct__REGENE__EVENT_html"><div class="ttname"><a href="struct__REGENE__EVENT.html">_REGENE_EVENT</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00334">GameDefine.h:335</a></div></div>
-<div class="ttc" id="astruct__ZONE__ITEM_html"><div class="ttname"><a href="struct__ZONE__ITEM.html">_ZONE_ITEM</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00275">GameDefine.h:276</a></div></div>
+<div class="ttc" id="astruct__OBJECT__EVENT_html"><div class="ttname"><a href="struct__OBJECT__EVENT.html">_OBJECT_EVENT</a></div><div class="ttdef"><b>Definition</b> <a href="Server_2AIServer_2Define_8h_source.html#l00090">Define.h:91</a></div></div>
+<div class="ttc" id="astruct__REGENE__EVENT_html"><div class="ttname"><a href="struct__REGENE__EVENT.html">_REGENE_EVENT</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00358">GameDefine.h:359</a></div></div>
+<div class="ttc" id="astruct__ZONE__ITEM_html"><div class="ttname"><a href="struct__ZONE__ITEM.html">_ZONE_ITEM</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00286">GameDefine.h:287</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

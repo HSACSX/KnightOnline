@@ -112,13 +112,13 @@ $(function(){initNavTree('TimerThread_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keywordtype">void</span> TimerThread::thread_loop()</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">while</span> (_canTick)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">while</span> (CanTick())</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            std::cv_status status = _cv.wait_for(lock, _tickDelay);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            std::unique_lock&lt;std::mutex&gt; lock(ThreadMutex());</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            std::cv_status status = ThreadCondition().wait_for(lock, _tickDelay);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">if</span> (!_canTick)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">if</span> (!CanTick())</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="comment">// Only tick every _tickDelay, ignore spurious wakeups</span></div>

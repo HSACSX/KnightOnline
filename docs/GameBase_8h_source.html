@@ -100,84 +100,87 @@ $(function(){initNavTree('GameBase_8h_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">GameBase.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;N3Base/N3TableBase.h&gt;</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CLIENT_WARFARE_GAMEBASE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CLIENT_WARFARE_GAMEBASE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;GameDef.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classCGameBase.html">    8</a></span><span class="keyword">class </span>CGameBase : <span class="keyword">public</span> CN3Base</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define ACT_WORLD s_pWorldMgr-&gt;GetActiveWorld()</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_TEXTS&gt;</a> s_pTbl_Texts;                             <span class="comment">// Main string resources</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ZONE&gt;</a> s_pTbl_Zones;                              <span class="comment">// Zone data (filenames and settings)</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_UI_RESRC&gt;</a> s_pTbl_UI;                             <span class="comment">// Maps UI filenames per-nation</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ITEM_BASIC&gt;</a> s_pTbl_Items_Basic;                  <span class="comment">// Base item data</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ITEM_EXT&gt;</a> s_pTbl_Items_Exts[MAX_ITEM_EXTENSION]; <span class="comment">// Extended item data for a base item</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_PLAYER_LOOKS&gt;</a> s_pTbl_UPC_Looks;                  <span class="comment">// Default model information for player characters</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_PLAYER_LOOKS&gt;</a> s_pTbl_NPC_Looks;                  <span class="comment">// Default model information for NPCs/monsters</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_UPC_SKILL&gt;</a> s_pTbl_Skill;                         <span class="comment">// Base skill data</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_EXCHANGE_QUEST&gt;</a></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        s_pTbl_Exchange_Quest;                                <span class="comment">// Old officially unused data for what were originally &#39;exchange quests&#39;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_FX&gt;</a> s_pTbl_FXSource;          <span class="comment">// Effect data (filename and settings)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_MENU&gt;</a> s_pTbl_QuestMenu; <span class="comment">// Quest menu button resources</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_TALK&gt;</a> s_pTbl_QuestTalk; <span class="comment">// Quest dialogue resources</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_CONTENT&gt;</a> s_pTbl_QuestContent;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_HELP&gt;</a> s_pTbl_Help;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCN3WorldManager.html">CN3WorldManager</a>* s_pWorldMgr; <span class="comment">// Manages the current loaded zone</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCPlayerOtherMgr.html">CPlayerOtherMgr</a>* s_pOPMgr;    <span class="comment">// Manages other loaded characters and NPCs</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCPlayerMySelf.html">CPlayerMySelf</a>* s_pPlayer;     <span class="comment">// The local player instance</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Initializes base game resources - table data, the world manager, character management, and more.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> StaticMemberInit();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// Releases base game resources - table data, the world manager, character management, and more.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> StaticMemberRelease();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByAttrib(e_ItemAttrib eAttrib, std::string&amp; szAttrib);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByClass(e_Class eClass, std::string&amp; szText);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByItemClass(e_ItemClass eItemClass, std::string&amp; szText);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByKnightsDuty(e_KnightsDuty eDuty, std::string&amp; szText);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByNation(e_Nation eNation, std::string&amp; szText);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByRace(e_Race eRace, std::string&amp; szText);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Returns a colour code based on level difference relative to a player</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">static</span> D3DCOLOR GetIDColorByLevelDifference(<span class="keywordtype">int</span> iLevelDiff);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Returns the representative class for a given player class.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">static</span> e_Class_Represent GetRepresentClass(e_Class eClass);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> e_ItemType MakeResrcFileNameForUPC(<a class="code hl_struct" href="struct____TABLE__ITEM__BASIC.html">__TABLE_ITEM_BASIC</a>* pItem, <a class="code hl_struct" href="struct____TABLE__ITEM__EXT.html">__TABLE_ITEM_EXT</a>* pItemExt, std::string* szResrcFN,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        std::string* szIconFN, e_PartPosition&amp; ePartPosition, e_PlugPosition&amp; ePlugPosition, e_Race eRace = RACE_UNKNOWN);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">class </span><a class="code hl_class" href="classCPlayerBase.html">CPlayerBase</a>* CharacterGetByID(<span class="keywordtype">int</span> iID, <span class="keywordtype">bool</span> bFromAlive);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">bool</span> IsValidCharacter(<a class="code hl_class" href="classCPlayerBase.html">CPlayerBase</a>* pCharacter);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">static</span> std::string FormatNumber(<span class="keywordtype">int</span> iNumber);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> std::string UnformatNumber(<span class="keyword">const</span> std::string&amp; input);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> ConvertPipesToNewlines(std::string&amp; input);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsItemClassWeapon(e_ItemClass itemClass);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">static</span> e_ZoneAbilityType GetCurrentZoneAbilityType();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    CGameBase();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">virtual</span> ~CGameBase();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;N3Base/N3TableBase.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;GameDef.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classCGameBase.html">   11</a></span><span class="keyword">class </span>CGameBase : <span class="keyword">public</span> CN3Base</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define ACT_WORLD s_pWorldMgr-&gt;GetActiveWorld()</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_TEXTS&gt;</a> s_pTbl_Texts;                             <span class="comment">// Main string resources</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ZONE&gt;</a> s_pTbl_Zones;                              <span class="comment">// Zone data (filenames and settings)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_UI_RESRC&gt;</a> s_pTbl_UI;                             <span class="comment">// Maps UI filenames per-nation</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ITEM_BASIC&gt;</a> s_pTbl_Items_Basic;                  <span class="comment">// Base item data</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_ITEM_EXT&gt;</a> s_pTbl_Items_Exts[MAX_ITEM_EXTENSION]; <span class="comment">// Extended item data for a base item</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_PLAYER_LOOKS&gt;</a> s_pTbl_UPC_Looks;                  <span class="comment">// Default model information for player characters</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_PLAYER_LOOKS&gt;</a> s_pTbl_NPC_Looks;                  <span class="comment">// Default model information for NPCs/monsters</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_UPC_SKILL&gt;</a> s_pTbl_Skill;                         <span class="comment">// Base skill data</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_FX&gt;</a> s_pTbl_FXSource;                             <span class="comment">// Effect data (filename and settings)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_MENU&gt;</a> s_pTbl_QuestMenu;                    <span class="comment">// Quest menu button resources</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_TALK&gt;</a> s_pTbl_QuestTalk;                    <span class="comment">// Quest dialogue resources</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_QUEST_CONTENT&gt;</a> s_pTbl_QuestContent;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3TableBase.html">CN3TableBase&lt;__TABLE_HELP&gt;</a> s_pTbl_Help;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCN3WorldManager.html">CN3WorldManager</a>* s_pWorldMgr; <span class="comment">// Manages the current loaded zone</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCPlayerOtherMgr.html">CPlayerOtherMgr</a>* s_pOPMgr;    <span class="comment">// Manages other loaded characters and NPCs</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="classCPlayerMySelf.html">CPlayerMySelf</a>* s_pPlayer;     <span class="comment">// The local player instance</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// Initializes base game resources - table data, the world manager, character management, and more.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> StaticMemberInit();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Releases base game resources - table data, the world manager, character management, and more.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> StaticMemberRelease();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByAttrib(e_ItemAttrib eAttrib, std::string&amp; szAttrib);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByClass(e_Class eClass, std::string&amp; szText);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByItemClass(e_ItemClass eItemClass, std::string&amp; szText);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByKnightsDuty(e_KnightsDuty eDuty, std::string&amp; szText);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByNation(e_Nation eNation, std::string&amp; szText);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> GetTextByRace(e_Race eRace, std::string&amp; szText);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// Returns a colour code based on level difference relative to a player</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">static</span> D3DCOLOR GetIDColorByLevelDifference(<span class="keywordtype">int</span> iLevelDiff);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Returns the representative class for a given player class.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">static</span> e_Class_Represent GetRepresentClass(e_Class eClass);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">static</span> e_ItemType MakeResrcFileNameForUPC(<a class="code hl_struct" href="struct____TABLE__ITEM__BASIC.html">__TABLE_ITEM_BASIC</a>* pItem, <a class="code hl_struct" href="struct____TABLE__ITEM__EXT.html">__TABLE_ITEM_EXT</a>* pItemExt, std::string* szResrcFN,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::string* szIconFN, e_PartPosition&amp; ePartPosition, e_PlugPosition&amp; ePlugPosition, e_Race eRace = RACE_UNKNOWN);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">class </span><a class="code hl_class" href="classCPlayerBase.html">CPlayerBase</a>* CharacterGetByID(<span class="keywordtype">int</span> iID, <span class="keywordtype">bool</span> bFromAlive);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">bool</span> IsValidCharacter(<a class="code hl_class" href="classCPlayerBase.html">CPlayerBase</a>* pCharacter);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> std::string FormatNumber(<span class="keywordtype">int</span> iNumber);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">static</span> std::string UnformatNumber(<span class="keyword">const</span> std::string&amp; input);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> ConvertPipesToNewlines(std::string&amp; input);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsItemClassWeapon(e_ItemClass itemClass);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">static</span> e_ZoneAbilityType GetCurrentZoneAbilityType();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    CGameBase();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    ~CGameBase() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
 </div>
-<div class="ttc" id="aclassCN3TableBase_html"><div class="ttname"><a href="classCN3TableBase.html">CN3TableBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3TableBase_8h_source.html#l00019">N3TableBase.h:20</a></div></div>
-<div class="ttc" id="aclassCN3WorldManager_html"><div class="ttname"><a href="classCN3WorldManager.html">CN3WorldManager</a></div><div class="ttdef"><b>Definition</b> <a href="N3WorldManager_8h_source.html#l00018">N3WorldManager.h:19</a></div></div>
-<div class="ttc" id="aclassCPlayerBase_html"><div class="ttname"><a href="classCPlayerBase.html">CPlayerBase</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerBase_8h_source.html#l00074">PlayerBase.h:75</a></div></div>
-<div class="ttc" id="aclassCPlayerMySelf_html"><div class="ttname"><a href="classCPlayerMySelf.html">CPlayerMySelf</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerMySelf_8h_source.html#l00016">PlayerMySelf.h:17</a></div></div>
-<div class="ttc" id="aclassCPlayerOtherMgr_html"><div class="ttname"><a href="classCPlayerOtherMgr.html">CPlayerOtherMgr</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerOtherMgr_8h_source.html#l00030">PlayerOtherMgr.h:31</a></div></div>
-<div class="ttc" id="astruct____TABLE__ITEM__BASIC_html"><div class="ttname"><a href="struct____TABLE__ITEM__BASIC.html">__TABLE_ITEM_BASIC</a></div><div class="ttdef"><b>Definition</b> <a href="GameDef_8h_source.html#l00867">GameDef.h:868</a></div></div>
-<div class="ttc" id="astruct____TABLE__ITEM__EXT_html"><div class="ttname"><a href="struct____TABLE__ITEM__EXT.html">__TABLE_ITEM_EXT</a></div><div class="ttdef"><b>Definition</b> <a href="GameDef_8h_source.html#l00924">GameDef.h:925</a></div></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// CLIENT_WARFARE_GAMEBASE_H</span></div>
+<div class="ttc" id="aclassCN3TableBase_html"><div class="ttname"><a href="classCN3TableBase.html">CN3TableBase</a></div><div class="ttdef"><b>Definition</b> <a href="N3TableBase_8h_source.html#l00017">N3TableBase.h:18</a></div></div>
+<div class="ttc" id="aclassCN3WorldManager_html"><div class="ttname"><a href="classCN3WorldManager.html">CN3WorldManager</a></div><div class="ttdef"><b>Definition</b> <a href="N3WorldManager_8h_source.html#l00015">N3WorldManager.h:16</a></div></div>
+<div class="ttc" id="aclassCPlayerBase_html"><div class="ttname"><a href="classCPlayerBase.html">CPlayerBase</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerBase_8h_source.html#l00078">PlayerBase.h:79</a></div></div>
+<div class="ttc" id="aclassCPlayerMySelf_html"><div class="ttname"><a href="classCPlayerMySelf.html">CPlayerMySelf</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerMySelf_8h_source.html#l00014">PlayerMySelf.h:15</a></div></div>
+<div class="ttc" id="aclassCPlayerOtherMgr_html"><div class="ttname"><a href="classCPlayerOtherMgr.html">CPlayerOtherMgr</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerOtherMgr_8h_source.html#l00028">PlayerOtherMgr.h:29</a></div></div>
+<div class="ttc" id="astruct____TABLE__ITEM__BASIC_html"><div class="ttname"><a href="struct____TABLE__ITEM__BASIC.html">__TABLE_ITEM_BASIC</a></div><div class="ttdef"><b>Definition</b> <a href="GameDef_8h_source.html#l00863">GameDef.h:864</a></div></div>
+<div class="ttc" id="astruct____TABLE__ITEM__EXT_html"><div class="ttname"><a href="struct____TABLE__ITEM__EXT.html">__TABLE_ITEM_EXT</a></div><div class="ttdef"><b>Definition</b> <a href="GameDef_8h_source.html#l00922">GameDef.h:923</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

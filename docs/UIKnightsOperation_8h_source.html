@@ -107,9 +107,9 @@ $(function(){initNavTree('UIKnightsOperation_8h_source.html',''); initResizable(
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_UIKNIGHTSOPERATION_H__1AE95FA6_E4DE_45DF_9EEA_6AEDE400ECA7__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_UIKNIGHTSOPERATION_H__1AE95FA6_E4DE_45DF_9EEA_6AEDE400ECA7__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;GameDef.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;N3Base/N3UIBase.h&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
@@ -119,7 +119,7 @@ $(function(){initNavTree('UIKnightsOperation_8h_source.html',''); initResizable(
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct____KnightsInfoBase.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____KnightsInfoBase.html">__KnightsInfoBase</a></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">int</span> iID;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">int</span> iID = 0;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::string szName;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
 </div>
@@ -128,8 +128,8 @@ $(function(){initNavTree('UIKnightsOperation_8h_source.html',''); initResizable(
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="struct____KnightsInfoExt.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____KnightsInfoExt.html">__KnightsInfoExt</a> : <span class="keyword">public</span> <a class="code hl_struct" href="struct____KnightsInfoBase.html">__KnightsInfoBase</a></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::string szChiefName;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">int</span> iMemberCount;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> iPoint;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">int</span> iMemberCount = 0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> iPoint       = 0;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
 </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
@@ -159,8 +159,8 @@ $(function(){initNavTree('UIKnightsOperation_8h_source.html',''); initResizable(
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="classCN3UIEdit.html">CN3UIEdit</a>* m_pEdit_KnightsName;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> ChangeUIByDuty(<span class="keyword">enum</span> e_KnightsDuty eDuty); <span class="comment">// 권한에 따라 UI 변경..</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> Open(<span class="keyword">enum</span> e_KnightsDuty eDuty);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> ChangeUIByDuty(e_KnightsDuty eDuty); <span class="comment">// 권한에 따라 UI 변경..</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> Open(e_KnightsDuty eDuty);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> Close();</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_struct" href="struct____KnightsInfoBase.html">__KnightsInfoBase</a>* KnightsInfoFind(<span class="keywordtype">int</span> iID);</div>
@@ -190,9 +190,9 @@ $(function(){initNavTree('UIKnightsOperation_8h_source.html',''); initResizable(
 </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_UIKNIGHTSOPERATION_H__1AE95FA6_E4DE_45DF_9EEA_6AEDE400ECA7__INCLUDED_)</span></div>
-<div class="ttc" id="aclassCN3UIButton_html"><div class="ttname"><a href="classCN3UIButton.html">CN3UIButton</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIButton_8h_source.html#l00015">N3UIButton.h:16</a></div></div>
-<div class="ttc" id="aclassCN3UIEdit_html"><div class="ttname"><a href="classCN3UIEdit.html">CN3UIEdit</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIEdit_8h_source.html#l00014">N3UIEdit.h:15</a></div></div>
-<div class="ttc" id="aclassCN3UIList_html"><div class="ttname"><a href="classCN3UIList.html">CN3UIList</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIList_8h_source.html#l00018">N3UIList.h:19</a></div></div>
+<div class="ttc" id="aclassCN3UIButton_html"><div class="ttname"><a href="classCN3UIButton.html">CN3UIButton</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIButton_8h_source.html#l00014">N3UIButton.h:15</a></div></div>
+<div class="ttc" id="aclassCN3UIEdit_html"><div class="ttname"><a href="classCN3UIEdit.html">CN3UIEdit</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIEdit_8h_source.html#l00012">N3UIEdit.h:13</a></div></div>
+<div class="ttc" id="aclassCN3UIList_html"><div class="ttname"><a href="classCN3UIList.html">CN3UIList</a></div><div class="ttdef"><b>Definition</b> <a href="N3UIList_8h_source.html#l00016">N3UIList.h:17</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="aclassPacket_html"><div class="ttname"><a href="classPacket.html">Packet</a></div><div class="ttdef"><b>Definition</b> <a href="shared_2Packet_8h_source.html#l00008">Packet.h:9</a></div></div>
 <div class="ttc" id="astruct____KnightsInfoBase_html"><div class="ttname"><a href="struct____KnightsInfoBase.html">__KnightsInfoBase</a></div><div class="ttdef"><b>Definition</b> <a href="#l00017">UIKnightsOperation.h:18</a></div></div>

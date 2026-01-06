@@ -101,28 +101,22 @@ $(function(){initNavTree('DebugUtils_8cpp_source.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;StdAfxBase.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;spdlog/spdlog.h&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">void</span> FormattedDebugString(<span class="keyword">const</span> <span class="keywordtype">char</span>* fmt, ...)</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">void</span> DebugStringToOutput(<span class="keyword">const</span> std::string_view logMessage)</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="keywordtype">char</span> buf[4096], *p = buf;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    va_list args;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordtype">int</span> n;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    va_start(args, fmt);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    n = _vsnprintf(p, <span class="keyword">sizeof</span>(buf) - 3, fmt, args); <span class="comment">// allow for proper linefeed &amp; null terminator</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    va_end(args);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    p    += (n &lt; 0) ? <span class="keyword">sizeof</span>(buf) - 3 : n;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    *p++  = <span class="charliteral">&#39;\r&#39;</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    *p++  = <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    *p    = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef WIN32</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    OutputDebugStringA(buf);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    printf(<span class="stringliteral">&quot;%s&quot;</span>, buf);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">constexpr</span> std::string_view NewLine = <span class="stringliteral">&quot;\r\n&quot;</span>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    std::string outputMessage;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    outputMessage.reserve(logMessage.size() + NewLine.size());</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    outputMessage  = logMessage;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    outputMessage += NewLine;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    OutputDebugStringA(outputMessage.c_str());</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    spdlog::trace(logMessage);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

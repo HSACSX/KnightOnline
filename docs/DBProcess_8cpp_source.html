@@ -189,7 +189,7 @@ $(function(){initNavTree('DBProcess_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (!recordSet.<a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a021e26f262346e60755fd83fa8065eac">next</a>())</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">return</span> AUTH_NOT_FOUND;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        model::TbUser user = {};</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        model::TbUser user {};</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        recordSet.<a class="code hl_function" href="classdb_1_1ModelRecordSet.html#a0b83c32c94d2e81b9b76e9bd40678f9b">get_ref</a>(user);</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> (user.Password != password)</div>

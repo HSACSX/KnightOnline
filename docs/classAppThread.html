@@ -137,6 +137,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf837cc0ca7f987aa27df0be6bebd1eb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread" id="r_a5808f26160479e3478efe7872a09a59f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a5808f26160479e3478efe7872a09a59f">IsShutdown</a> () const</td></tr>
 <tr class="separator:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread" id="r_a4a52d7425f6c14832fbce49bb695ee8b"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a4a52d7425f6c14832fbce49bb695ee8b">ThreadMutex</a> () const</td></tr>
+<tr class="separator:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread" id="r_a25b83df089760f3877d0d6e6dc2ab077"><td class="memItemLeft" align="right" valign="top">std::condition_variable &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a25b83df089760f3877d0d6e6dc2ab077">ThreadCondition</a> ()</td></tr>
+<tr class="separator:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread" id="r_a1f53ee62bd30a7924186ef26150ce262"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">start</a> ()</td></tr>
 <tr class="separator:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a221711b56608703df63e399c35e87284 inherit pub_methods_classThread" id="r_a221711b56608703df63e399c35e87284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a221711b56608703df63e399c35e87284">shutdown</a> (bool waitForShutdown=true)</td></tr>
@@ -178,17 +182,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a18b87d1b059b017382f015c220a214bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48c8139d147d040ec9fa0f13e3fed499" id="r_a48c8139d147d040ec9fa0f13e3fed499"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48c8139d147d040ec9fa0f13e3fed499">_headless</a></td></tr>
 <tr class="separator:a48c8139d147d040ec9fa0f13e3fed499"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
-<tr class="memitem:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread" id="r_ad017d81db19923e40d87a2668f348647"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad017d81db19923e40d87a2668f348647">_mutex</a></td></tr>
-<tr class="separator:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread" id="r_ad2d958b5dbd95049b9e12b57259b6f60"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad2d958b5dbd95049b9e12b57259b6f60">_cv</a></td></tr>
-<tr class="separator:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread" id="r_ab188a5ebf8a6f5af21107bb37cd10ce4"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ab188a5ebf8a6f5af21107bb37cd10ce4">_thread</a></td></tr>
-<tr class="separator:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread" id="r_ad33a646f7196c68a78c3dd7fcad3af5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad33a646f7196c68a78c3dd7fcad3af5b">_canTick</a></td></tr>
-<tr class="separator:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread" id="r_ada004eb51974c7fe04eb645e4e0f7cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ada004eb51974c7fe04eb645e4e0f7cf7">_isShutdown</a></td></tr>
-<tr class="separator:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -199,7 +192,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00017">17</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00019">19</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a48c2563fe028c0b206179704bd4132d2" name="a48c2563fe028c0b206179704bd4132d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48c2563fe028c0b206179704bd4132d2">&#9670;&#160;</a></span>AppThread()</h2>
@@ -220,11 +213,14 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="adcc918a35e347c77675b2776d4141fce" name="adcc918a35e347c77675b2776d4141fce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcc918a35e347c77675b2776d4141fce">&#9670;&#160;</a></span>~AppThread()</h2>
+<a id="ae8dfd9e95bfebe68754354499c47a998" name="ae8dfd9e95bfebe68754354499c47a998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8dfd9e95bfebe68754354499c47a998">&#9670;&#160;</a></span>~AppThread()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">AppThread::~AppThread </td>
@@ -233,6 +229,11 @@ Static Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="AppThread_8cpp_source.html#l00033">33</a> of file <a class="el" href="AppThread_8cpp_source.html">AppThread.cpp</a>.</p>
@@ -291,7 +292,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00020">20</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00022">22</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -382,7 +383,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00025">25</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00027">27</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -486,7 +487,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00095">95</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00097">97</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -665,7 +666,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00123">123</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00128">128</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -689,7 +690,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00124">124</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00129">129</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -713,7 +714,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00122">122</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00127">127</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -737,7 +738,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00126">126</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00131">131</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>
@@ -761,7 +762,7 @@ template&lt;typename AppThreadType, typename LoggerType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00127">127</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AppThread_8h_source.html#l00132">132</a> of file <a class="el" href="AppThread_8h_source.html">AppThread.h</a>.</p>
 
 </div>
 </div>

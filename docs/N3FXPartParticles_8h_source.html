@@ -107,7 +107,7 @@ $(function(){initNavTree('N3FXPartParticles_8h_source.html',''); initResizable(t
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef __N3FXPARTPARTICLES_H__</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define __N3FXPARTPARTICLES_H__</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma warning(disable : 4786)</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;N3FXPartBase.h&quot;</span></div>
@@ -170,8 +170,8 @@ $(function(){initNavTree('N3FXPartParticles_8h_source.html',''); initResizable(t
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">bool</span> m_bAnimKey;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//particle local rotate......2002.10.21.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">float</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        m_fTexRotateVelocity; <span class="comment">//    파티클 텍스쳐를 로컬 Z축으로 회전시켜서 빙글빙글 도는 것처럼 보이게...(속도)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">//  파티클 텍스쳐를 로컬 Z축으로 회전시켜서 빙글빙글 도는 것처럼 보이게...(속도)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> m_fTexRotateVelocity;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> m_fScaleVelX;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">float</span> m_fScaleVelY;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
@@ -198,50 +198,44 @@ $(function(){initNavTree('N3FXPartParticles_8h_source.html',''); initResizable(t
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">bool</span> IsDead() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> RotateQuaternion(<a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vSrcDir, <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vDestDir, <a class="code hl_struct" href="struct____Quaternion.html">__Quaternion</a>* pQt);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">float</span> CameraDist(<a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> v1, <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> v2, <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> v3);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"></span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">    //////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">//m_pVBList_Alive를 소트하기위함이야..</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">void</span> PSort();</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> PMerge(std::list&lt;CN3FXParticle*&gt;&amp; l1, std::list&lt;CN3FXParticle*&gt;&amp; l2);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">bool</span> PComp(<a class="code hl_class" href="classCN3FXParticle.html">CN3FXParticle</a>* pP1, <a class="code hl_class" href="classCN3FXParticle.html">CN3FXParticle</a>* pP2);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">//</span><span class="comment"></span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">    //////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> Init() <span class="keyword">override</span>;           <span class="comment">// 각종 변수들을 처음 로딩한 상태로 초기화...</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">void</span> Start() <span class="keyword">override</span>;          <span class="comment">// 파트 구동 시작.</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> Stop() <span class="keyword">override</span>;           <span class="comment">// 파트 구동 멈춤..</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">bool</span> Tick() <span class="keyword">override</span>;           <span class="comment">// ticktick...</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> Render() <span class="keyword">override</span>;         <span class="comment">// 화면에 뿌리기..</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">bool</span> Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file) <span class="keyword">override</span>; <span class="comment">// 게임파일 불러오기.</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">bool</span> Save(<a class="code hl_class" href="classFile.html">File</a>&amp; file) <span class="keyword">override</span>; <span class="comment">// 게임파일 저장오기.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">void</span> Duplicate(CN3FXPartParticles* pSrc);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">bool</span> GetColor(<span class="keywordtype">int</span> key, uint32_t&amp; color);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> RotateQuaternion(</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vSrcDir, <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vDestDir, <a class="code hl_struct" href="struct____Quaternion.html">__Quaternion</a>* pQt) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">float</span> CameraDist(<span class="keyword">const</span> <a class="code hl_struct" href="struct____VertexXyzColorT1.html">__VertexXyzColorT1</a>&amp; v1, <span class="keyword">const</span> <a class="code hl_struct" href="struct____VertexXyzColorT1.html">__VertexXyzColorT1</a>&amp; v2,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct____VertexXyzColorT1.html">__VertexXyzColorT1</a>&amp; v3) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> Init() <span class="keyword">override</span>;           <span class="comment">// 각종 변수들을 처음 로딩한 상태로 초기화...</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> Start() <span class="keyword">override</span>;          <span class="comment">// 파트 구동 시작.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> Stop() <span class="keyword">override</span>;           <span class="comment">// 파트 구동 멈춤..</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">bool</span> Tick() <span class="keyword">override</span>;           <span class="comment">// ticktick...</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> Render() <span class="keyword">override</span>;         <span class="comment">// 화면에 뿌리기..</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">bool</span> Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file) <span class="keyword">override</span>; <span class="comment">// 게임파일 불러오기.</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">bool</span> Save(<a class="code hl_class" href="classFile.html">File</a>&amp; file) <span class="keyword">override</span>; <span class="comment">// 게임파일 저장오기.</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">void</span> Duplicate(CN3FXPartParticles* pSrc);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">bool</span> GetColor(<span class="keywordtype">int</span> key, uint32_t&amp; color) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    CN3FXPartParticles();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    ~CN3FXPartParticles() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">#ifdef _N3TOOL</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">bool</span> ParseScript(<span class="keywordtype">char</span>* szCommand, <span class="keywordtype">char</span>* szBuff0, <span class="keywordtype">char</span>* szBuff1, <span class="keywordtype">char</span>* szBuff2, <span class="keywordtype">char</span>* szBuff3);</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    CN3FXPartParticles();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    ~CN3FXPartParticles() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#ifdef _N3TOOL</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">bool</span> ParseScript(<span class="keywordtype">char</span>* szCommand, <span class="keywordtype">char</span>* szBuff0, <span class="keywordtype">char</span>* szBuff1, <span class="keywordtype">char</span>* szBuff2, <span class="keywordtype">char</span>* szBuff3);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">bool</span> m_bChangeColorKey[NUM_KEY_COLOR];</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">bool</span> m_bChangeAlphaKey[NUM_KEY_COLOR];</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif </span><span class="comment">// end of _N3TOOL</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>};</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">bool</span> m_bChangeColorKey[NUM_KEY_COLOR];</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">bool</span> m_bChangeAlphaKey[NUM_KEY_COLOR];</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#endif </span><span class="comment">// end of _N3TOOL</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>};</div>
 </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef __N3FXPARTPARTICLES_H__</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="ttc" id="aclassCN3FXParticle_html"><div class="ttname"><a href="classCN3FXParticle.html">CN3FXParticle</a></div><div class="ttdef"><b>Definition</b> <a href="N3FXParticle_8h_source.html#l00012">N3FXParticle.h:13</a></div></div>
-<div class="ttc" id="aclassCN3FXShape_html"><div class="ttname"><a href="classCN3FXShape.html">CN3FXShape</a></div><div class="ttdef"><b>Definition</b> <a href="N3FXShape_8h_source.html#l00101">N3FXShape.h:102</a></div></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef __N3FXPARTPARTICLES_H__</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="ttc" id="aclassCN3FXParticle_html"><div class="ttname"><a href="classCN3FXParticle.html">CN3FXParticle</a></div><div class="ttdef"><b>Definition</b> <a href="N3FXParticle_8h_source.html#l00013">N3FXParticle.h:14</a></div></div>
+<div class="ttc" id="aclassCN3FXShape_html"><div class="ttname"><a href="classCN3FXShape.html">CN3FXShape</a></div><div class="ttdef"><b>Definition</b> <a href="N3FXShape_8h_source.html#l00100">N3FXShape.h:101</a></div></div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="astruct____Matrix44_html"><div class="ttname"><a href="struct____Matrix44.html">__Matrix44</a></div><div class="ttdef"><b>Definition</b> <a href="Matrix44_8h_source.html#l00011">Matrix44.h:12</a></div></div>
 <div class="ttc" id="astruct____Quaternion_html"><div class="ttname"><a href="struct____Quaternion.html">__Quaternion</a></div><div class="ttdef"><b>Definition</b> <a href="Quaternion_8h_source.html#l00009">Quaternion.h:10</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
-<div class="ttc" id="astruct____VertexXyzColorT1_html"><div class="ttname"><a href="struct____VertexXyzColorT1.html">__VertexXyzColorT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00572">My_3DStruct.h:573</a></div></div>
+<div class="ttc" id="astruct____VertexXyzColorT1_html"><div class="ttname"><a href="struct____VertexXyzColorT1.html">__VertexXyzColorT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00574">My_3DStruct.h:575</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

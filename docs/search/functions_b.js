@@ -18,7 +18,7 @@ var searchData=
   ['loadversionlist_15',['LoadVersionList',['../classCDBProcess.html#a4577a14c728ba19eee33131a712a1bd6',1,'CDBProcess']]],
   ['loadwarehousedata_16',['LoadWarehouseData',['../classCDBAgent.html#ac76aef063abc35a7d99985dc4495e4a9',1,'CDBAgent']]],
   ['logbasedir_17',['LogBaseDir',['../classAppThread.html#a930bbcf82f3ed108604b0404c7af7353',1,'AppThread']]],
-  ['logger_18',['Logger',['../classlogger_1_1Logger.html#a592356dff4af0cdc88194aa71712c70a',1,'logger::Logger']]],
+  ['logger_18',['Logger',['../classlogger_1_1Logger.html#ae832310604ea54efe53174c3294fc68b',1,'logger::Logger']]],
   ['lookat_19',['LookAt',['../classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79',1,'CN3Eng']]],
   ['looping_20',['Looping',['../classCN3SndObj.html#a40f54d517bc99551a67c40591be5740e',1,'CN3SndObj']]]
 ];

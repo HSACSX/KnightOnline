@@ -121,8 +121,8 @@ $(function(){initNavTree('SendThreadMain_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> SendThreadMain::queue(<a class="code hl_struct" href="struct__SEND__DATA.html">_SEND_DATA</a>* sendData)</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">if</span> (!_canTick)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        std::lock_guard&lt;std::mutex&gt; lock(ThreadMutex());</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">if</span> (!CanTick())</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keyword">delete</span> sendData;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">return</span>;</div>
@@ -133,7 +133,7 @@ $(function(){initNavTree('SendThreadMain_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// Ensure mutex is unlocked before notification to avoid unnecessary</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// contention on thread wakeup</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    _cv.notify_one();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ThreadCondition().notify_one();</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> SendThreadMain::thread_loop()</div>
@@ -141,21 +141,21 @@ $(function(){initNavTree('SendThreadMain_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::queue&lt;_SEND_DATA*&gt; processingQueue;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// Use a predicate here to avoid spurious wakeups</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">auto</span> waitUntilPredicate = [<span class="keyword">this</span>] -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">auto</span> waitUntilPredicate = [<span class="keyword">this</span>]() -&gt; <span class="keywordtype">bool</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// Wait until we&#39;re shutting down</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">return</span> !_canTick</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">return</span> !CanTick()</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>               <span class="comment">// Or there&#39;s something in the queue</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>               || !_insertionQueue.empty();</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    };</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">while</span> (_canTick)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">while</span> (CanTick())</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            _cv.wait(lock, waitUntilPredicate);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            std::unique_lock&lt;std::mutex&gt; lock(ThreadMutex());</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            ThreadCondition().wait(lock, waitUntilPredicate);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (!_canTick)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (!CanTick())</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="comment">// As tick() processes the entire queue, we don&#39;t need to worry</span></div>
@@ -219,7 +219,7 @@ $(function(){initNavTree('SendThreadMain_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">void</span> SendThreadMain::clear()</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    std::lock_guard&lt;std::mutex&gt; lock(ThreadMutex());</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">while</span> (!_insertionQueue.empty())</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">delete</span> _insertionQueue.front();</div>
@@ -229,9 +229,8 @@ $(function(){initNavTree('SendThreadMain_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>SendThreadMain::~SendThreadMain()</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>{</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    shutdown();</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    clear();</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    SendThreadMain::shutdown();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
 <div class="ttc" id="aclassAISocketManager_html"><div class="ttname"><a href="classAISocketManager.html">AISocketManager</a></div><div class="ttdef"><b>Definition</b> <a href="AISocketManager_8h_source.html#l00018">AISocketManager.h:19</a></div></div>
 <div class="ttc" id="astruct__SEND__DATA_html"><div class="ttname"><a href="struct__SEND__DATA.html">_SEND_DATA</a></div><div class="ttdef"><b>Definition</b> <a href="AISocketManager_8h_source.html#l00009">AISocketManager.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

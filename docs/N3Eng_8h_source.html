@@ -103,43 +103,43 @@ $(function(){initNavTree('N3Eng_8h_source.html',''); initResizable(true); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __N3ENG_H_</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __N3ENG_H_</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;ddraw.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;N3BaseFileAccess.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//-----------------------------------------------------------------------------</span><span class="comment"></span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">/*!</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">This class is used for initializing and configuring DirectX</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">*/</span></div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classCN3Eng.html">   12</a></span><span class="keyword">class </span>CN3Eng : <span class="keyword">public</span> CN3Base</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structCN3Eng_1_1____D3DDEV__INFO.html">   15</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCN3Eng_1_1____D3DDEV__INFO.html">__D3DDEV_INFO</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordtype">char</span> szDeviceName[128];</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">char</span> szDeviceDesc[128];</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">int</span> nAdapter;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">int</span> nDevice;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        D3DDEVTYPE DevType;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">int</span> nModeCount;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        D3DDISPLAYMODE* pModes;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    } __D3DDevInfo;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;N3BaseFileAccess.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//-----------------------------------------------------------------------------</span><span class="comment"></span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">/*!</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">This class is used for initializing and configuring DirectX</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">*/</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classCN3Eng.html">   13</a></span><span class="keyword">class </span>CN3Eng : <span class="keyword">public</span> CN3Base</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structCN3Eng_1_1____D3DDEV__INFO.html">   16</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCN3Eng_1_1____D3DDEV__INFO.html">__D3DDEV_INFO</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">char</span> szDeviceName[128];</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">char</span> szDeviceDesc[128];</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">int</span> nAdapter;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">int</span> nDevice;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        D3DDEVTYPE DevType;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">int</span> nModeCount;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        D3DDISPLAYMODE* pModes;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    } __D3DDevInfo;</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> m_nModeActive;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">int</span> m_nAdapterCount;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_struct" href="structCN3Eng_1_1____D3DDEV__INFO.html">__D3DDEV_INFO</a> m_DeviceInfo;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    LPDIRECT3D9 m_lpD3D;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    LPDIRECTDRAW m_lpDD;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">int</span> m_nModeActive;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> m_nAdapterCount;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_struct" href="structCN3Eng_1_1____D3DDEV__INFO.html">__D3DDEV_INFO</a> m_DeviceInfo;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    LPDIRECT3D9 m_lpD3D;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> SetViewPort(RECT&amp; pRC);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> SetDefaultEnvironment();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79">LookAt</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vEye, <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vAt, <span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vUp);</div>
@@ -159,15 +159,15 @@ $(function(){initNavTree('N3Eng_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        D3DFORMAT* pDepthStencilFormat);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    CN3Eng(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">virtual</span> ~CN3Eng(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    CN3Eng();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    ~CN3Eng() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassCN3Eng_html_a4b4c50bfd8a401618f56596d0702f3f4"><div class="ttname"><a href="classCN3Eng.html#a4b4c50bfd8a401618f56596d0702f3f4">CN3Eng::SetProjection</a></div><div class="ttdeci">void SetProjection(float fNear, float fFar, float fLens, float fAspect)</div><div class="ttdef"><b>Definition</b> <a href="N3Eng_8cpp_source.html#l00275">N3Eng.cpp:275</a></div></div>
-<div class="ttc" id="aclassCN3Eng_html_aaa739ab40868d64d10d51f506a4caa79"><div class="ttname"><a href="classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79">CN3Eng::LookAt</a></div><div class="ttdeci">void LookAt(const __Vector3 &amp;vEye, const __Vector3 &amp;vAt, const __Vector3 &amp;vUp)</div><div class="ttdef"><b>Definition</b> <a href="N3Eng_8cpp_source.html#l00178">N3Eng.cpp:178</a></div></div>
-<div class="ttc" id="astructCN3Eng_1_1____D3DDEV__INFO_html"><div class="ttname"><a href="structCN3Eng_1_1____D3DDEV__INFO.html">CN3Eng::__D3DDEV_INFO</a></div><div class="ttdef"><b>Definition</b> <a href="#l00015">N3Eng.h:16</a></div></div>
+<div class="ttc" id="aclassCN3Eng_html_a4b4c50bfd8a401618f56596d0702f3f4"><div class="ttname"><a href="classCN3Eng.html#a4b4c50bfd8a401618f56596d0702f3f4">CN3Eng::SetProjection</a></div><div class="ttdeci">void SetProjection(float fNear, float fFar, float fLens, float fAspect)</div><div class="ttdef"><b>Definition</b> <a href="N3Eng_8cpp_source.html#l00263">N3Eng.cpp:263</a></div></div>
+<div class="ttc" id="aclassCN3Eng_html_aaa739ab40868d64d10d51f506a4caa79"><div class="ttname"><a href="classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79">CN3Eng::LookAt</a></div><div class="ttdeci">void LookAt(const __Vector3 &amp;vEye, const __Vector3 &amp;vAt, const __Vector3 &amp;vUp)</div><div class="ttdef"><b>Definition</b> <a href="N3Eng_8cpp_source.html#l00166">N3Eng.cpp:166</a></div></div>
+<div class="ttc" id="astructCN3Eng_1_1____D3DDEV__INFO_html"><div class="ttname"><a href="structCN3Eng_1_1____D3DDEV__INFO.html">CN3Eng::__D3DDEV_INFO</a></div><div class="ttdef"><b>Definition</b> <a href="#l00016">N3Eng.h:17</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

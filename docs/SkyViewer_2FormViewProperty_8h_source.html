@@ -103,111 +103,110 @@ $(function(){initNavTree('SkyViewer_2FormViewProperty_8h_source.html',''); initR
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#if !defined(AFX_FORMVIEWPROPERTY_H__53610780_A85B_4CBC_BFC9_75E2E766FC43__INCLUDED_)</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define AFX_FORMVIEWPROPERTY_H__53610780_A85B_4CBC_BFC9_75E2E766FC43__INCLUDED_</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// FormViewProperty.h : header file</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// CFormViewProperty form view</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef __AFXEXT_H__</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;afxext.h&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../Common Control/PropertyList.h&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">class </span><a class="code hl_class" href="classCFormViewProperty.html">CFormViewProperty</a> : <span class="keyword">public</span> CFormView</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    BOOL m_bUpdatingNow;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    BOOL m_bPlayingNow;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Form Data</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">//{{AFX_DATA(CFormViewProperty)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">enum</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        IDD = IDD_FORMVIEW_PROPERTY</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    };</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    CSliderCtrl m_SldTime;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    CListBox m_ListCloudTextures;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    CListBox m_ListSunTextures;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    CListBox m_ListDayChanges;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    CPropertyList m_LPProperty;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">//}}AFX_DATA</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> UpdateTime();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> UpdateInfo();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> UpdateAllInfo();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    CSkyViewerDoc* GetDocument();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    CFormViewProperty(); <span class="comment">// protected constructor used by dynamic creation</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    DECLARE_DYNCREATE(CFormViewProperty)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                         <span class="comment">// Overrides</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// ClassWizard generated virtual function overrides</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">//{{AFX_VIRTUAL(CFormViewProperty)</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnInitialUpdate();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> DoDataExchange(CDataExchange* pDX); <span class="comment">// DDX/DDV support</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">virtual</span> BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">//}}AFX_VIRTUAL</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Implementation</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">virtual</span> ~CFormViewProperty();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> AssertValid() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Dump(CDumpContext&amp; dc) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// Generated message map functions</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">//{{AFX_MSG(CFormViewProperty)</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    afx_msg <span class="keywordtype">void</span> OnSelchangeListDayChange();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    afx_msg <span class="keywordtype">void</span> OnBAdd();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    afx_msg <span class="keywordtype">void</span> OnBInsert();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    afx_msg <span class="keywordtype">void</span> OnBDelete();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    afx_msg <span class="keywordtype">void</span> OnBMoveUp();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    afx_msg <span class="keywordtype">void</span> OnBMoveDown();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    afx_msg <span class="keywordtype">void</span> OnChangeEName();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    afx_msg <span class="keywordtype">void</span> OnCPlay();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    afx_msg <span class="keywordtype">void</span> OnTimer(UINT_PTR nIDEvent);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    afx_msg <span class="keywordtype">void</span> OnDblclkListCloudTextures();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    afx_msg <span class="keywordtype">void</span> OnDblclkListSunTextures();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    afx_msg <span class="keywordtype">void</span> OnBBrowseMoonTexture();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    afx_msg <span class="keywordtype">void</span> OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    afx_msg <span class="keywordtype">void</span> OnBRainy();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    afx_msg <span class="keywordtype">void</span> OnBSnows();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    afx_msg <span class="keywordtype">void</span> OnBClean();</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    afx_msg <span class="keywordtype">void</span> OnApplyDate();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    afx_msg <span class="keywordtype">void</span> OnSize(UINT nType, <span class="keywordtype">int</span> cx, <span class="keywordtype">int</span> cy);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">//}}AFX_MSG</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    DECLARE_MESSAGE_MAP()</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"></span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#ifndef _DEBUG </span><span class="comment">// debug version in SkyViewerView.cpp</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">inline</span> <a class="code hl_class" href="classCSkyViewerDoc.html">CSkyViewerDoc</a>* CFormViewProperty::GetDocument()</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> (CSkyViewerDoc*) m_pDocument;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">//{{AFX_INSERT_LOCATION}}</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">// Microsoft Visual C++ will insert additional declarations immediately before the previous line.</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_FORMVIEWPROPERTY_H__53610780_A85B_4CBC_BFC9_75E2E766FC43__INCLUDED_)</span></div>
-<div class="ttc" id="aclassCFormViewProperty_html"><div class="ttname"><a href="classCFormViewProperty.html">CFormViewProperty</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2FormViewProperty_8h_source.html#l00023">FormViewProperty.h:24</a></div></div>
-<div class="ttc" id="aclassCSkyViewerDoc_html"><div class="ttname"><a href="classCSkyViewerDoc.html">CSkyViewerDoc</a></div><div class="ttdef"><b>Definition</b> <a href="SkyViewerDoc_8h_source.html#l00015">SkyViewerDoc.h:16</a></div></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// FormViewProperty.h : header file</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"></span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// CFormViewProperty form view</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef __AFXEXT_H__</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;afxext.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;../Common Control/PropertyList.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span><a class="code hl_class" href="classCFormViewProperty.html">CFormViewProperty</a> : <span class="keyword">public</span> CFormView</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    BOOL m_bUpdatingNow;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    BOOL m_bPlayingNow;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// Form Data</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">//{{AFX_DATA(CFormViewProperty)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">enum</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        IDD = IDD_FORMVIEW_PROPERTY</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    CSliderCtrl m_SldTime;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    CListBox m_ListCloudTextures;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    CListBox m_ListSunTextures;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    CListBox m_ListDayChanges;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    CPropertyList m_LPProperty;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">//}}AFX_DATA</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> UpdateTime();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> UpdateInfo();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> UpdateAllInfo();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    CSkyViewerDoc* GetDocument();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    CFormViewProperty(); <span class="comment">// protected constructor used by dynamic creation</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    DECLARE_DYNCREATE(CFormViewProperty)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                         <span class="comment">// Overrides</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// ClassWizard generated virtual function overrides</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">//{{AFX_VIRTUAL(CFormViewProperty)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnInitialUpdate();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> DoDataExchange(CDataExchange* pDX); <span class="comment">// DDX/DDV support</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">virtual</span> BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">//}}AFX_VIRTUAL</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// Implementation</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">virtual</span> ~CFormViewProperty();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> AssertValid() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Dump(CDumpContext&amp; dc) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Generated message map functions</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">//{{AFX_MSG(CFormViewProperty)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    afx_msg <span class="keywordtype">void</span> OnSelchangeListDayChange();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    afx_msg <span class="keywordtype">void</span> OnBAdd();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    afx_msg <span class="keywordtype">void</span> OnBInsert();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    afx_msg <span class="keywordtype">void</span> OnBDelete();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    afx_msg <span class="keywordtype">void</span> OnBMoveUp();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    afx_msg <span class="keywordtype">void</span> OnBMoveDown();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    afx_msg <span class="keywordtype">void</span> OnChangeEName();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    afx_msg <span class="keywordtype">void</span> OnCPlay();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    afx_msg <span class="keywordtype">void</span> OnTimer(UINT_PTR nIDEvent);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    afx_msg <span class="keywordtype">void</span> OnDblclkListCloudTextures();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    afx_msg <span class="keywordtype">void</span> OnDblclkListSunTextures();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    afx_msg <span class="keywordtype">void</span> OnBBrowseMoonTexture();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    afx_msg <span class="keywordtype">void</span> OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    afx_msg <span class="keywordtype">void</span> OnBRainy();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    afx_msg <span class="keywordtype">void</span> OnBSnows();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    afx_msg <span class="keywordtype">void</span> OnBClean();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    afx_msg <span class="keywordtype">void</span> OnApplyDate();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    afx_msg <span class="keywordtype">void</span> OnSize(UINT nType, <span class="keywordtype">int</span> cx, <span class="keywordtype">int</span> cy);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">//}}AFX_MSG</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    DECLARE_MESSAGE_MAP()</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#ifndef _DEBUG </span><span class="comment">// debug version in SkyViewerView.cpp</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">inline</span> <a class="code hl_class" href="classCSkyViewerDoc.html">CSkyViewerDoc</a>* CFormViewProperty::GetDocument()</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> (CSkyViewerDoc*) m_pDocument;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">//{{AFX_INSERT_LOCATION}}</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">// Microsoft Visual C++ will insert additional declarations immediately before the previous line.</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_FORMVIEWPROPERTY_H__53610780_A85B_4CBC_BFC9_75E2E766FC43__INCLUDED_)</span></div>
+<div class="ttc" id="aclassCFormViewProperty_html"><div class="ttname"><a href="classCFormViewProperty.html">CFormViewProperty</a></div><div class="ttdef"><b>Definition</b> <a href="N3CE_2FormViewProperty_8h_source.html#l00022">FormViewProperty.h:23</a></div></div>
+<div class="ttc" id="aclassCSkyViewerDoc_html"><div class="ttname"><a href="classCSkyViewerDoc.html">CSkyViewerDoc</a></div><div class="ttdef"><b>Definition</b> <a href="SkyViewerDoc_8h_source.html#l00013">SkyViewerDoc.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

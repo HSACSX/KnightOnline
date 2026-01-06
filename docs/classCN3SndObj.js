@@ -16,7 +16,7 @@ var classCN3SndObj =
     [ "Release", "classCN3SndObj.html#af82eaf8dd773c7368280d76a7c68d0e4", null ],
     [ "ReleaseHandle", "classCN3SndObj.html#a2281dc2ba8d3c2dfc1901c444406f3ee", null ],
     [ "SetMaxVolume", "classCN3SndObj.html#afdfe481929d85ea1d4b53b3c984df4ed", null ],
-    [ "SetPos", "classCN3SndObj.html#a660caf9614b1de76e09072413f90d68d", null ],
+    [ "SetPos", "classCN3SndObj.html#abe37403b967c28623399e298a165fa50", null ],
     [ "SetVolume", "classCN3SndObj.html#a860b885bb90b34dcb8ba66acbee71f96", null ],
     [ "Stop", "classCN3SndObj.html#a9be201f109702ca9963b11c2e0232c93", null ],
     [ "Tick", "classCN3SndObj.html#af0b35aa06c654986ef547f3aa261709b", null ],

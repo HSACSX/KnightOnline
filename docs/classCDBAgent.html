@@ -111,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7603f96c28f31fc6b9a5ce18251f3841"><td class="mdescLeft">&#160;</td><td class="mdescRight">updates which nation won the war and which charId killed the commander  <br /></td></tr>
 <tr class="separator:a7603f96c28f31fc6b9a5ce18251f3841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd0f80fe8578a2c9b24d8718b65bc5a6" id="r_acd0f80fe8578a2c9b24d8718b65bc5a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd0f80fe8578a2c9b24d8718b65bc5a6">LoadKnightsAllList</a> (int nation)</td></tr>
-<tr class="memdesc:acd0f80fe8578a2c9b24d8718b65bc5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">loads knights ranking data by nation to handle KNIGHTS_ALLLIST_REQ  <br /></td></tr>
+<tr class="memdesc:acd0f80fe8578a2c9b24d8718b65bc5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">loads knights ranking data by nation to handle DB_KNIGHTS_ALLLIST_REQ  <br /></td></tr>
 <tr class="separator:acd0f80fe8578a2c9b24d8718b65bc5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34c9e1709329cc67ea94019cf0352ca9" id="r_a34c9e1709329cc67ea94019cf0352ca9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c9e1709329cc67ea94019cf0352ca9">CheckUserData</a> (const char *accountId, const char *charId, int checkType, int userUpdateTime, int compareData)</td></tr>
 <tr class="memdesc:a34c9e1709329cc67ea94019cf0352ca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">verifies that USERDATA or WAREHOUSE are in sync with the provided input  <br /></td></tr>
@@ -181,7 +181,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="DBAgent_8h_source.html#l00013">13</a> of file <a class="el" href="DBAgent_8h_source.html">DBAgent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8h_source.html#l00016">16</a> of file <a class="el" href="DBAgent_8h_source.html">DBAgent.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5bd80b3ae63e2bb067e9666fb785a363" name="a5bd80b3ae63e2bb067e9666fb785a363"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5bd80b3ae63e2bb067e9666fb785a363">&#9670;&#160;</a></span>CDBAgent()</h2>
@@ -252,7 +252,7 @@ Public Attributes</h2></td></tr>
 <p>attempts to login a character to the game server </p>
 <dl class="section return"><dt>Returns</dt><dd>-1 for failure, 0 for unselected nation, 1 for karus, 2 for elmorad </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00477">477</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00478">478</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -278,7 +278,7 @@ Public Attributes</h2></td></tr>
 <p>removes the CURRENTUSER record for accountId </p>
 <dl class="section return"><dt>Returns</dt><dd>true on success, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01119">1119</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01120">1120</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,7 +328,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true when input data matches database record, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01161">1161</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01162">1162</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -369,7 +369,7 @@ Public Attributes</h2></td></tr>
 <p>attempts to create a knights clan </p>
 <dl class="section return"><dt>Returns</dt><dd>0 for success, 3 for name already in use, 6 for db error </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00693">693</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00694">694</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -445,7 +445,7 @@ Public Attributes</h2></td></tr>
 <p>attempts to create a new character </p>
 <dl class="section return"><dt>Returns</dt><dd>NEW_CHAR_SUCCESS on success, or one of the following on error: NEW_CHAR_ERROR, NEW_CHAR_NO_FREE_SLOT, NEW_CHAR_INVALID_RACE, NEW_CHAR_NAME_IN_USE, NEW_CHAR_SYNC_ERROR </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00521">521</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00522">522</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -467,7 +467,7 @@ Public Attributes</h2></td></tr>
 <p>attemps to delete a knights clan from the database </p>
 <dl class="section return"><dt>Returns</dt><dd>0 for success, 7 if not found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00738">738</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00739">739</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -512,7 +512,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if charIds were successfully loaded, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00626">626</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00627">627</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -573,7 +573,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd>AllCharInfoReq(), WIZ_ALLCHAR_INFO_REQ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00542">542</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00543">543</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -592,17 +592,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>loads knights ranking data by nation to handle KNIGHTS_ALLLIST_REQ </p>
+<p>loads knights ranking data by nation to handle DB_KNIGHTS_ALLLIST_REQ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nation</td><td>1 = karus, 2 = elmorad, 3 = battlezone </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd>KNIGHTS_ALLLIST_REQ </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>DB_KNIGHTS_ALLLIST_REQ </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>most other functions in this file are db-ops only. This does db-ops and socket IO. Should likely be separated into separate functions </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01219">1219</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01220">1220</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -647,7 +647,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>rowCount - start </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00757">757</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00758">758</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -686,7 +686,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if data was successfully loaded to the buffer, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01011">1011</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01012">1012</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -742,7 +742,7 @@ Public Attributes</h2></td></tr>
 <p>attempts to load warehouse data for an account into UserData[userId] </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00852">852</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00853">853</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -768,7 +768,7 @@ Public Attributes</h2></td></tr>
 <p>ensures that database records are created in ACCOUNT_CHAR and WAREHOUSE prior to logging into the game </p>
 <dl class="section return"><dt>Returns</dt><dd>true if records are properly set, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00496">496</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00497">497</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -847,7 +847,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true when CURRENTUSER successfully updated, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01066">1066</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01067">1067</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -873,7 +873,7 @@ Public Attributes</h2></td></tr>
 <p>updates which nation won the war and which charId killed the commander </p>
 <dl class="section return"><dt>Returns</dt><dd>true if update successful, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01312">1312</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l01314">1314</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -904,7 +904,7 @@ Public Attributes</h2></td></tr>
 <p>updates concurrent zone count </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00822">822</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00823">823</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -940,7 +940,7 @@ Public Attributes</h2></td></tr>
 <p>attempts to update a knights clan </p>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, 2 for charId not found or db error, 7 for not found, 8 for capacity error </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00719">719</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00720">720</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -980,7 +980,7 @@ Public Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd>UPDATE_PACKET_SAVE, UPDATE_LOGOUT, UPDATE_ALL_SAVE </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true when database successfully updated, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00384">384</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00385">385</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1019,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true for success, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00947">947</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8cpp_source.html#l00948">948</a> of file <a class="el" href="DBAgent_8cpp_source.html">DBAgent.cpp</a>.</p>
 
 </div>
 </div>
@@ -1036,7 +1036,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="DBAgent_8h_source.html#l00150">150</a> of file <a class="el" href="DBAgent_8h_source.html">DBAgent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DBAgent_8h_source.html#l00153">153</a> of file <a class="el" href="DBAgent_8h_source.html">DBAgent.h</a>.</p>
 
 </div>
 </div>

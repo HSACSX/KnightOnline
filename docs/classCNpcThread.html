@@ -114,6 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf837cc0ca7f987aa27df0be6bebd1eb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread" id="r_a5808f26160479e3478efe7872a09a59f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a5808f26160479e3478efe7872a09a59f">IsShutdown</a> () const</td></tr>
 <tr class="separator:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread" id="r_a4a52d7425f6c14832fbce49bb695ee8b"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a4a52d7425f6c14832fbce49bb695ee8b">ThreadMutex</a> () const</td></tr>
+<tr class="separator:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread" id="r_a25b83df089760f3877d0d6e6dc2ab077"><td class="memItemLeft" align="right" valign="top">std::condition_variable &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a25b83df089760f3877d0d6e6dc2ab077">ThreadCondition</a> ()</td></tr>
+<tr class="separator:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread" id="r_a1f53ee62bd30a7924186ef26150ce262"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">start</a> ()</td></tr>
 <tr class="separator:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a221711b56608703df63e399c35e87284 inherit pub_methods_classThread" id="r_a221711b56608703df63e399c35e87284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a221711b56608703df63e399c35e87284">shutdown</a> (bool waitForShutdown=true)</td></tr>
@@ -125,8 +129,6 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a74c1601ce3b4fae39ff3c56c7d6ffe8f" id="r_a74c1601ce3b4fae39ff3c56c7d6ffe8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCNpc.html">CNpc</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74c1601ce3b4fae39ff3c56c7d6ffe8f">m_pNpc</a> [NPC_NUM]</td></tr>
 <tr class="separator:a74c1601ce3b4fae39ff3c56c7d6ffe8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcf1ccad12af12521c05d81ee5ae97dd" id="r_afcf1ccad12af12521c05d81ee5ae97dd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcf1ccad12af12521c05d81ee5ae97dd">m_byNpcUsed</a> [NPC_NUM]</td></tr>
-<tr class="separator:afcf1ccad12af12521c05d81ee5ae97dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac84c583d8872a13351d3fe19d2da5b16" id="r_ac84c583d8872a13351d3fe19d2da5b16"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac84c583d8872a13351d3fe19d2da5b16">m_sThreadNumber</a></td></tr>
 <tr class="separator:ac84c583d8872a13351d3fe19d2da5b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -137,17 +139,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3e400fe28fc59f6e095c332a18a631b9 inherit pro_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcff09428a1d7da118603ca050145c75 inherit pro_methods_classThread" id="r_abcff09428a1d7da118603ca050145c75"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#abcff09428a1d7da118603ca050145c75">before_shutdown</a> ()</td></tr>
 <tr class="separator:abcff09428a1d7da118603ca050145c75 inherit pro_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
-<tr class="memitem:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread" id="r_ad017d81db19923e40d87a2668f348647"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad017d81db19923e40d87a2668f348647">_mutex</a></td></tr>
-<tr class="separator:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread" id="r_ad2d958b5dbd95049b9e12b57259b6f60"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad2d958b5dbd95049b9e12b57259b6f60">_cv</a></td></tr>
-<tr class="separator:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread" id="r_ab188a5ebf8a6f5af21107bb37cd10ce4"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ab188a5ebf8a6f5af21107bb37cd10ce4">_thread</a></td></tr>
-<tr class="separator:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread" id="r_ad33a646f7196c68a78c3dd7fcad3af5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad33a646f7196c68a78c3dd7fcad3af5b">_canTick</a></td></tr>
-<tr class="separator:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread" id="r_ada004eb51974c7fe04eb645e4e0f7cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ada004eb51974c7fe04eb645e4e0f7cf7">_isShutdown</a></td></tr>
-<tr class="separator:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -168,7 +159,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcThread_8cpp_source.html#l00133">133</a> of file <a class="el" href="NpcThread_8cpp_source.html">NpcThread.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcThread_8cpp_source.html#l00140">140</a> of file <a class="el" href="NpcThread_8cpp_source.html">NpcThread.cpp</a>.</p>
 
 </div>
 </div>
@@ -203,22 +194,6 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afcf1ccad12af12521c05d81ee5ae97dd" name="afcf1ccad12af12521c05d81ee5ae97dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcf1ccad12af12521c05d81ee5ae97dd">&#9670;&#160;</a></span>m_byNpcUsed</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t CNpcThread::m_byNpcUsed[NPC_NUM]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="NpcThread_8h_source.html#l00019">19</a> of file <a class="el" href="NpcThread_8h_source.html">NpcThread.h</a>.</p>
-
-</div>
-</div>
 <a id="a74c1601ce3b4fae39ff3c56c7d6ffe8f" name="a74c1601ce3b4fae39ff3c56c7d6ffe8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74c1601ce3b4fae39ff3c56c7d6ffe8f">&#9670;&#160;</a></span>m_pNpc</h2>
 
@@ -247,7 +222,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NpcThread_8h_source.html#l00021">21</a> of file <a class="el" href="NpcThread_8h_source.html">NpcThread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NpcThread_8h_source.html#l00020">20</a> of file <a class="el" href="NpcThread_8h_source.html">NpcThread.h</a>.</p>
 
 </div>
 </div>

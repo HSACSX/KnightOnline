@@ -108,58 +108,44 @@ $(function(){initNavTree('classCJpegFile.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8b211f58e239a80cc98e29c3efafde6" id="r_aa8b211f58e239a80cc98e29c3efafde6"><td class="memItemLeft" align="right" valign="top">BYTE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8b211f58e239a80cc98e29c3efafde6">JpegFileToRGB</a> (std::string fileName, UINT *width, UINT *height)</td></tr>
-<tr class="separator:aa8b211f58e239a80cc98e29c3efafde6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fd01ab10a31afb7c3fc270a74451905" id="r_a4fd01ab10a31afb7c3fc270a74451905"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd01ab10a31afb7c3fc270a74451905">RGBToJpegFile</a> (std::string fileName, BYTE *dataBuf, UINT width, UINT height, BOOL color, int quality)</td></tr>
-<tr class="separator:a4fd01ab10a31afb7c3fc270a74451905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23c817c579569542eda10060a0e91969" id="r_a23c817c579569542eda10060a0e91969"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23c817c579569542eda10060a0e91969">GetJPGDimensions</a> (std::string fileName, UINT *width, UINT *height)</td></tr>
-<tr class="separator:a23c817c579569542eda10060a0e91969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014726d7b997319e6b3ec17822e520fd" id="r_a014726d7b997319e6b3ec17822e520fd"><td class="memItemLeft" align="right" valign="top">BYTE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a014726d7b997319e6b3ec17822e520fd">JpegFileToRGB</a> (const std::string &amp;fileName, UINT *width, UINT *height)</td></tr>
+<tr class="separator:a014726d7b997319e6b3ec17822e520fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c4d210b6114fad83965d4b7f9845687" id="r_a6c4d210b6114fad83965d4b7f9845687"><td class="memItemLeft" align="right" valign="top">BYTE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c4d210b6114fad83965d4b7f9845687">MakeDwordAlignedBuf</a> (BYTE *dataBuf, UINT widthPix, UINT height, UINT *uiOutWidthBytes)</td></tr>
 <tr class="separator:a6c4d210b6114fad83965d4b7f9845687"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a848d8ddbb3ffdfc505e9277f969c4e52" id="r_a848d8ddbb3ffdfc505e9277f969c4e52"><td class="memItemLeft" align="right" valign="top">BYTE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a848d8ddbb3ffdfc505e9277f969c4e52">RGBFromDWORDAligned</a> (BYTE *inBuf, UINT widthPix, UINT widthBytes, UINT height)</td></tr>
-<tr class="separator:a848d8ddbb3ffdfc505e9277f969c4e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08a33bc7775ae098110a3872aa878f9f" id="r_a08a33bc7775ae098110a3872aa878f9f"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a33bc7775ae098110a3872aa878f9f">VertFlipBuf</a> (BYTE *inbuf, UINT widthBytes, UINT height)</td></tr>
 <tr class="separator:a08a33bc7775ae098110a3872aa878f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bb06d5c1fbe34da036da951dcfdb96c" id="r_a9bb06d5c1fbe34da036da951dcfdb96c"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bb06d5c1fbe34da036da951dcfdb96c">MakeGrayScale</a> (BYTE *buf, UINT widthPix, UINT height)</td></tr>
-<tr class="separator:a9bb06d5c1fbe34da036da951dcfdb96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a788900488f6ecdbb9cba0bc556fb594e" id="r_a788900488f6ecdbb9cba0bc556fb594e"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a788900488f6ecdbb9cba0bc556fb594e">BGRFromRGB</a> (BYTE *buf, UINT widthPix, UINT height)</td></tr>
 <tr class="separator:a788900488f6ecdbb9cba0bc556fb594e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52f3b8370d51e1f5536263b748c78db2" id="r_a52f3b8370d51e1f5536263b748c78db2"><td class="memItemLeft" align="right" valign="top">int FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52f3b8370d51e1f5536263b748c78db2">PalEntriesOnDevice</a> (HDC hDC)</td></tr>
-<tr class="separator:a52f3b8370d51e1f5536263b748c78db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa19b86695bd1eb8a5327af4928104af7" id="r_aa19b86695bd1eb8a5327af4928104af7"><td class="memItemLeft" align="right" valign="top">WORD FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa19b86695bd1eb8a5327af4928104af7">DIBNumColors</a> (LPSTR lpDIB)</td></tr>
-<tr class="separator:aa19b86695bd1eb8a5327af4928104af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a719a21e7ab0d47fe6558b73665f66c04" id="r_a719a21e7ab0d47fe6558b73665f66c04"><td class="memItemLeft" align="right" valign="top">WORD FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a719a21e7ab0d47fe6558b73665f66c04">PaletteSize</a> (LPSTR lpDIB)</td></tr>
-<tr class="separator:a719a21e7ab0d47fe6558b73665f66c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7082aedd09c47efaccfc00084070ff99" id="r_a7082aedd09c47efaccfc00084070ff99"><td class="memItemLeft" align="right" valign="top">HDIB FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7082aedd09c47efaccfc00084070ff99">BitmapToDIB</a> (HBITMAP hBitmap, HPALETTE hPal)</td></tr>
-<tr class="separator:a7082aedd09c47efaccfc00084070ff99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6a05527dd0787db4669207920a9a74e" id="r_ab6a05527dd0787db4669207920a9a74e"><td class="memItemLeft" align="right" valign="top">HBITMAP FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6a05527dd0787db4669207920a9a74e">CopyScreenToBitmap</a> (LPRECT lpRect)</td></tr>
-<tr class="separator:ab6a05527dd0787db4669207920a9a74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91ffadb2edea7bb97162d0a2b0cbd272" id="r_a91ffadb2edea7bb97162d0a2b0cbd272"><td class="memItemLeft" align="right" valign="top">HDIB FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91ffadb2edea7bb97162d0a2b0cbd272">CopyScreenToDIB</a> (LPRECT lpRect)</td></tr>
-<tr class="separator:a91ffadb2edea7bb97162d0a2b0cbd272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf57e36ead4f94d0d8770435f261547f" id="r_acf57e36ead4f94d0d8770435f261547f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf57e36ead4f94d0d8770435f261547f">PalEntriesOnDevice</a> (HDC hDC)</td></tr>
+<tr class="separator:acf57e36ead4f94d0d8770435f261547f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07f9be978143c76cda08ad3dcbb8a2da" id="r_a07f9be978143c76cda08ad3dcbb8a2da"><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07f9be978143c76cda08ad3dcbb8a2da">DIBNumColors</a> (LPSTR lpDIB)</td></tr>
+<tr class="separator:a07f9be978143c76cda08ad3dcbb8a2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d59c72f30a924328c528e10d01d2219" id="r_a8d59c72f30a924328c528e10d01d2219"><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d59c72f30a924328c528e10d01d2219">PaletteSize</a> (LPSTR lpDIB)</td></tr>
+<tr class="separator:a8d59c72f30a924328c528e10d01d2219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e987e07e51a64ff789dd1f45cf274da" id="r_a1e987e07e51a64ff789dd1f45cf274da"><td class="memItemLeft" align="right" valign="top">HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e987e07e51a64ff789dd1f45cf274da">BitmapToDIB</a> (HBITMAP hBitmap, HPALETTE hPal)</td></tr>
+<tr class="separator:a1e987e07e51a64ff789dd1f45cf274da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e166fcfa5415c223ef034a07e078f7b" id="r_a3e166fcfa5415c223ef034a07e078f7b"><td class="memItemLeft" align="right" valign="top">HBITMAP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e166fcfa5415c223ef034a07e078f7b">CopyScreenToBitmap</a> (LPRECT lpRect)</td></tr>
+<tr class="separator:a3e166fcfa5415c223ef034a07e078f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43c4a1e7ae0fa568aa985b56a14cc05" id="r_ad43c4a1e7ae0fa568aa985b56a14cc05"><td class="memItemLeft" align="right" valign="top">HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad43c4a1e7ae0fa568aa985b56a14cc05">CopyScreenToDIB</a> (LPRECT lpRect)</td></tr>
+<tr class="separator:ad43c4a1e7ae0fa568aa985b56a14cc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a253431ac530379b5522a4d084757d5c9" id="r_a253431ac530379b5522a4d084757d5c9"><td class="memItemLeft" align="right" valign="top">HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a253431ac530379b5522a4d084757d5c9">AllocRoomForDIB</a> (BITMAPINFOHEADER bi, HBITMAP hBitmap)</td></tr>
 <tr class="separator:a253431ac530379b5522a4d084757d5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a235e93309f5bb47032a1fb0919648568" id="r_a235e93309f5bb47032a1fb0919648568"><td class="memItemLeft" align="right" valign="top">HDIB FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a235e93309f5bb47032a1fb0919648568">ChangeBitmapFormat</a> (HBITMAP hBitmap, WORD wBitCount, DWORD wCompression, HPALETTE hPal)</td></tr>
-<tr class="separator:a235e93309f5bb47032a1fb0919648568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4861f73e31e421dd77fc4212a79e67aa" id="r_a4861f73e31e421dd77fc4212a79e67aa"><td class="memItemLeft" align="right" valign="top">DWORD PASCAL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4861f73e31e421dd77fc4212a79e67aa">MyWrite</a> (int iFileHandle, VOID FAR *lpBuffer, DWORD dwBytes)</td></tr>
-<tr class="separator:a4861f73e31e421dd77fc4212a79e67aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa07620aba983e64a18f83dd1ccf33ad0" id="r_aa07620aba983e64a18f83dd1ccf33ad0"><td class="memItemLeft" align="right" valign="top">HPALETTE FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa07620aba983e64a18f83dd1ccf33ad0">GetSystemPalette</a> (void)</td></tr>
-<tr class="separator:aa07620aba983e64a18f83dd1ccf33ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02da38b00870d2d0674e4860b410723a" id="r_a02da38b00870d2d0674e4860b410723a"><td class="memItemLeft" align="right" valign="top">WORD FAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02da38b00870d2d0674e4860b410723a">SaveDIB</a> (HDIB hDib, LPSTR lpFileName)</td></tr>
-<tr class="separator:a02da38b00870d2d0674e4860b410723a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa35b13483da529d9b8397829c99bf2c7" id="r_aa35b13483da529d9b8397829c99bf2c7"><td class="memItemLeft" align="right" valign="top">HPALETTE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa35b13483da529d9b8397829c99bf2c7">GetSystemPalette</a> (void)</td></tr>
+<tr class="separator:aa35b13483da529d9b8397829c99bf2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72be2cfe0edeebdfa2508a9aee82b9e5" id="r_a72be2cfe0edeebdfa2508a9aee82b9e5"><td class="memItemLeft" align="right" valign="top">RGBQUAD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72be2cfe0edeebdfa2508a9aee82b9e5">QuadFromWord</a> (WORD b16)</td></tr>
 <tr class="separator:a72be2cfe0edeebdfa2508a9aee82b9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa70270273fb7622ff00a5a6482392f9e" id="r_aa70270273fb7622ff00a5a6482392f9e"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa70270273fb7622ff00a5a6482392f9e">DibToSamps</a> (HANDLE hDib, int nSampsPerRow, struct jpeg_compress_struct cinfo, JSAMPARRAY jsmpPixels, const char **pcsMsg)</td></tr>
-<tr class="separator:aa70270273fb7622ff00a5a6482392f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fb90a671ad1d02d88a89f307da55409" id="r_a5fb90a671ad1d02d88a89f307da55409"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fb90a671ad1d02d88a89f307da55409">JpegFromDib</a> (HANDLE hDib, int nQuality, std::string csJpeg, const char **pcsMsg)</td></tr>
-<tr class="separator:a5fb90a671ad1d02d88a89f307da55409"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cee4639ed64caa344d966f28438b758" id="r_a8cee4639ed64caa344d966f28438b758"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cee4639ed64caa344d966f28438b758">EncryptJPEG</a> (HANDLE hDib, int nQuality, std::string csJpeg, const char **pcsMsg)</td></tr>
-<tr class="separator:a8cee4639ed64caa344d966f28438b758"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89636cebc3c6fdc236f94e94f8a15675" id="r_a89636cebc3c6fdc236f94e94f8a15675"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89636cebc3c6fdc236f94e94f8a15675">SaveFromDecryptToJpeg</a> (std::string csKsc, std::string csJpeg)</td></tr>
-<tr class="separator:a89636cebc3c6fdc236f94e94f8a15675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a48c50deb8bd516c5eadd6e12985d05" id="r_a8a48c50deb8bd516c5eadd6e12985d05"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a48c50deb8bd516c5eadd6e12985d05">DecryptJPEG</a> (std::string csJpeg)</td></tr>
-<tr class="separator:a8a48c50deb8bd516c5eadd6e12985d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78227d3752c848427ff0ec846621e088" id="r_a78227d3752c848427ff0ec846621e088"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78227d3752c848427ff0ec846621e088">LoadJpegFile</a> (std::string csJpeg)</td></tr>
-<tr class="separator:a78227d3752c848427ff0ec846621e088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98d94d61b8e12a41fb1f0c4bef5c1ac9" id="r_a98d94d61b8e12a41fb1f0c4bef5c1ac9"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98d94d61b8e12a41fb1f0c4bef5c1ac9">DibToSamps</a> (HANDLE hDib, int nSampsPerRow, JSAMPARRAY jsmpPixels, const char **pcsMsg)</td></tr>
+<tr class="separator:a98d94d61b8e12a41fb1f0c4bef5c1ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae667ad76653b06118bd00c5927108022" id="r_ae667ad76653b06118bd00c5927108022"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae667ad76653b06118bd00c5927108022">JpegFromDib</a> (HANDLE hDib, int nQuality, const std::string &amp;csJpeg, const char **pcsMsg)</td></tr>
+<tr class="separator:ae667ad76653b06118bd00c5927108022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e21200bb550c4c1f2fc0e400d204a9f" id="r_a0e21200bb550c4c1f2fc0e400d204a9f"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e21200bb550c4c1f2fc0e400d204a9f">EncryptJPEG</a> (HANDLE hDib, int nQuality, const std::string &amp;csJpeg, const char **pcsMsg)</td></tr>
+<tr class="separator:a0e21200bb550c4c1f2fc0e400d204a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6522a57c9c586560ed7b232254323d" id="r_aee6522a57c9c586560ed7b232254323d"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee6522a57c9c586560ed7b232254323d">SaveFromDecryptToJpeg</a> (const std::string &amp;csKsc, const std::string &amp;csJpeg)</td></tr>
+<tr class="separator:aee6522a57c9c586560ed7b232254323d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eac6030cd29ce7ffd3fbf5a61ad26c5" id="r_a3eac6030cd29ce7ffd3fbf5a61ad26c5"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3eac6030cd29ce7ffd3fbf5a61ad26c5">DecryptJPEG</a> (const std::string &amp;csJpeg)</td></tr>
+<tr class="separator:a3eac6030cd29ce7ffd3fbf5a61ad26c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ddfe1335c72b4d8f8e3b5085983fb4" id="r_a84ddfe1335c72b4d8f8e3b5085983fb4"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84ddfe1335c72b4d8f8e3b5085983fb4">LoadJpegFile</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a84ddfe1335c72b4d8f8e3b5085983fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38aca8d36f28ea9b09decda4ce63157a" id="r_a38aca8d36f28ea9b09decda4ce63157a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38aca8d36f28ea9b09decda4ce63157a">DrawImage</a> (HDC hDC)</td></tr>
 <tr class="separator:a38aca8d36f28ea9b09decda4ce63157a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -181,7 +167,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00201">201</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00106">106</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab0fc5e110e6688839698d5fa432e58ca" name="ab0fc5e110e6688839698d5fa432e58ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0fc5e110e6688839698d5fa432e58ca">&#9670;&#160;</a></span>CJpegFile()</h2>
@@ -198,7 +184,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00085">85</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00092">92</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -207,6 +193,9 @@ Static Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">CJpegFile::~CJpegFile </td>
@@ -215,9 +204,14 @@ Static Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00093">93</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00100">100</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -241,7 +235,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01134">1134</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00817">817</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -269,18 +263,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00721">721</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00420">420</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7082aedd09c47efaccfc00084070ff99" name="a7082aedd09c47efaccfc00084070ff99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7082aedd09c47efaccfc00084070ff99">&#9670;&#160;</a></span>BitmapToDIB()</h2>
+<a id="a1e987e07e51a64ff789dd1f45cf274da" name="a1e987e07e51a64ff789dd1f45cf274da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e987e07e51a64ff789dd1f45cf274da">&#9670;&#160;</a></span>BitmapToDIB()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HDIB FAR CJpegFile::BitmapToDIB </td>
+          <td class="memname">HANDLE CJpegFile::BitmapToDIB </td>
           <td>(</td>
           <td class="paramtype">HBITMAP</td>          <td class="paramname"><span class="paramname"><em>hBitmap</em></span>, </td>
         </tr>
@@ -292,51 +286,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00904">904</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00566">566</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a235e93309f5bb47032a1fb0919648568" name="a235e93309f5bb47032a1fb0919648568"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a235e93309f5bb47032a1fb0919648568">&#9670;&#160;</a></span>ChangeBitmapFormat()</h2>
+<a id="a3e166fcfa5415c223ef034a07e078f7b" name="a3e166fcfa5415c223ef034a07e078f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e166fcfa5415c223ef034a07e078f7b">&#9670;&#160;</a></span>CopyScreenToBitmap()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HDIB FAR CJpegFile::ChangeBitmapFormat </td>
-          <td>(</td>
-          <td class="paramtype">HBITMAP</td>          <td class="paramname"><span class="paramname"><em>hBitmap</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">WORD</td>          <td class="paramname"><span class="paramname"><em>wBitCount</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">DWORD</td>          <td class="paramname"><span class="paramname"><em>wCompression</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">HPALETTE</td>          <td class="paramname"><span class="paramname"><em>hPal</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01187">1187</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ab6a05527dd0787db4669207920a9a74e" name="ab6a05527dd0787db4669207920a9a74e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6a05527dd0787db4669207920a9a74e">&#9670;&#160;</a></span>CopyScreenToBitmap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">HBITMAP FAR CJpegFile::CopyScreenToBitmap </td>
+          <td class="memname">HBITMAP CJpegFile::CopyScreenToBitmap </td>
           <td>(</td>
           <td class="paramtype">LPRECT</td>          <td class="paramname"><span class="paramname"><em>lpRect</em></span></td><td>)</td>
           <td></td>
@@ -344,18 +305,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01041">1041</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00724">724</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a91ffadb2edea7bb97162d0a2b0cbd272" name="a91ffadb2edea7bb97162d0a2b0cbd272"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91ffadb2edea7bb97162d0a2b0cbd272">&#9670;&#160;</a></span>CopyScreenToDIB()</h2>
+<a id="ad43c4a1e7ae0fa568aa985b56a14cc05" name="ad43c4a1e7ae0fa568aa985b56a14cc05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43c4a1e7ae0fa568aa985b56a14cc05">&#9670;&#160;</a></span>CopyScreenToDIB()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HDIB FAR CJpegFile::CopyScreenToDIB </td>
+          <td class="memname">HANDLE CJpegFile::CopyScreenToDIB </td>
           <td>(</td>
           <td class="paramtype">LPRECT</td>          <td class="paramname"><span class="paramname"><em>lpRect</em></span></td><td>)</td>
           <td></td>
@@ -363,7 +324,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01104">1104</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00787">787</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -390,12 +351,12 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00332">332</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00198">198</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
-<a id="a8a48c50deb8bd516c5eadd6e12985d05" name="a8a48c50deb8bd516c5eadd6e12985d05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a48c50deb8bd516c5eadd6e12985d05">&#9670;&#160;</a></span>DecryptJPEG()</h2>
+<a id="a3eac6030cd29ce7ffd3fbf5a61ad26c5" name="a3eac6030cd29ce7ffd3fbf5a61ad26c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eac6030cd29ce7ffd3fbf5a61ad26c5">&#9670;&#160;</a></span>DecryptJPEG()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,7 +367,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">BOOL CJpegFile::DecryptJPEG </td>
           <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -417,18 +378,18 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01856">1856</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01278">1278</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa19b86695bd1eb8a5327af4928104af7" name="aa19b86695bd1eb8a5327af4928104af7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa19b86695bd1eb8a5327af4928104af7">&#9670;&#160;</a></span>DIBNumColors()</h2>
+<a id="a07f9be978143c76cda08ad3dcbb8a2da" name="a07f9be978143c76cda08ad3dcbb8a2da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07f9be978143c76cda08ad3dcbb8a2da">&#9670;&#160;</a></span>DIBNumColors()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">WORD FAR CJpegFile::DIBNumColors </td>
+          <td class="memname">WORD CJpegFile::DIBNumColors </td>
           <td>(</td>
           <td class="paramtype">LPSTR</td>          <td class="paramname"><span class="paramname"><em>lpDIB</em></span></td><td>)</td>
           <td></td>
@@ -436,12 +397,12 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00851">851</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00515">515</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa70270273fb7622ff00a5a6482392f9e" name="aa70270273fb7622ff00a5a6482392f9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa70270273fb7622ff00a5a6482392f9e">&#9670;&#160;</a></span>DibToSamps()</h2>
+<a id="a98d94d61b8e12a41fb1f0c4bef5c1ac9" name="a98d94d61b8e12a41fb1f0c4bef5c1ac9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98d94d61b8e12a41fb1f0c4bef5c1ac9">&#9670;&#160;</a></span>DibToSamps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,11 +420,6 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct jpeg_compress_struct</td>          <td class="paramname"><span class="paramname"><em>cinfo</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">JSAMPARRAY</td>          <td class="paramname"><span class="paramname"><em>jsmpPixels</em></span>, </td>
         </tr>
         <tr>
@@ -474,7 +430,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01498">1498</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00902">902</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -501,7 +457,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00317">317</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00183">183</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
@@ -528,12 +484,12 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00324">324</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00190">190</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
-<a id="a8cee4639ed64caa344d966f28438b758" name="a8cee4639ed64caa344d966f28438b758"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cee4639ed64caa344d966f28438b758">&#9670;&#160;</a></span>EncryptJPEG()</h2>
+<a id="a0e21200bb550c4c1f2fc0e400d204a9f" name="a0e21200bb550c4c1f2fc0e400d204a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e21200bb550c4c1f2fc0e400d204a9f">&#9670;&#160;</a></span>EncryptJPEG()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -554,7 +510,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -569,46 +525,18 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01779">1779</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01201">1201</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a23c817c579569542eda10060a0e91969" name="a23c817c579569542eda10060a0e91969"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23c817c579569542eda10060a0e91969">&#9670;&#160;</a></span>GetJPGDimensions()</h2>
+<a id="aa35b13483da529d9b8397829c99bf2c7" name="aa35b13483da529d9b8397829c99bf2c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa35b13483da529d9b8397829c99bf2c7">&#9670;&#160;</a></span>GetSystemPalette()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">BOOL CJpegFile::GetJPGDimensions </td>
-          <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>fileName</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT *</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT *</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00281">281</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="aa07620aba983e64a18f83dd1ccf33ad0" name="aa07620aba983e64a18f83dd1ccf33ad0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa07620aba983e64a18f83dd1ccf33ad0">&#9670;&#160;</a></span>GetSystemPalette()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">HPALETTE FAR CJpegFile::GetSystemPalette </td>
+          <td class="memname">HPALETTE CJpegFile::GetSystemPalette </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -616,12 +544,12 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00802">802</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00464">464</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa8b211f58e239a80cc98e29c3efafde6" name="aa8b211f58e239a80cc98e29c3efafde6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8b211f58e239a80cc98e29c3efafde6">&#9670;&#160;</a></span>JpegFileToRGB()</h2>
+<a id="a014726d7b997319e6b3ec17822e520fd" name="a014726d7b997319e6b3ec17822e520fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014726d7b997319e6b3ec17822e520fd">&#9670;&#160;</a></span>JpegFileToRGB()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -629,7 +557,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">BYTE * CJpegFile::JpegFileToRGB </td>
           <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>fileName</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>fileName</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -644,12 +572,12 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00101">101</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00108">108</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5fb90a671ad1d02d88a89f307da55409" name="a5fb90a671ad1d02d88a89f307da55409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fb90a671ad1d02d88a89f307da55409">&#9670;&#160;</a></span>JpegFromDib()</h2>
+<a id="ae667ad76653b06118bd00c5927108022" name="ae667ad76653b06118bd00c5927108022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae667ad76653b06118bd00c5927108022">&#9670;&#160;</a></span>JpegFromDib()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -667,7 +595,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -677,12 +605,12 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01689">1689</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01106">1106</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a78227d3752c848427ff0ec846621e088" name="a78227d3752c848427ff0ec846621e088"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78227d3752c848427ff0ec846621e088">&#9670;&#160;</a></span>LoadJpegFile()</h2>
+<a id="a84ddfe1335c72b4d8f8e3b5085983fb4" name="a84ddfe1335c72b4d8f8e3b5085983fb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ddfe1335c72b4d8f8e3b5085983fb4">&#9670;&#160;</a></span>LoadJpegFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -693,7 +621,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual BOOL CJpegFile::LoadJpegFile </td>
           <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -704,7 +632,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00312">312</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00178">178</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
@@ -737,74 +665,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00613">613</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00324">324</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9bb06d5c1fbe34da036da951dcfdb96c" name="a9bb06d5c1fbe34da036da951dcfdb96c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bb06d5c1fbe34da036da951dcfdb96c">&#9670;&#160;</a></span>MakeGrayScale()</h2>
+<a id="acf57e36ead4f94d0d8770435f261547f" name="acf57e36ead4f94d0d8770435f261547f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf57e36ead4f94d0d8770435f261547f">&#9670;&#160;</a></span>PalEntriesOnDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">BOOL CJpegFile::MakeGrayScale </td>
-          <td>(</td>
-          <td class="paramtype">BYTE *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>widthPix</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00751">751</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a4861f73e31e421dd77fc4212a79e67aa" name="a4861f73e31e421dd77fc4212a79e67aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4861f73e31e421dd77fc4212a79e67aa">&#9670;&#160;</a></span>MyWrite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DWORD PASCAL CJpegFile::MyWrite </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iFileHandle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">VOID FAR *</td>          <td class="paramname"><span class="paramname"><em>lpBuffer</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">DWORD</td>          <td class="paramname"><span class="paramname"><em>dwBytes</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01305">1305</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a52f3b8370d51e1f5536263b748c78db2" name="a52f3b8370d51e1f5536263b748c78db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52f3b8370d51e1f5536263b748c78db2">&#9670;&#160;</a></span>PalEntriesOnDevice()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int FAR CJpegFile::PalEntriesOnDevice </td>
+          <td class="memname">int CJpegFile::PalEntriesOnDevice </td>
           <td>(</td>
           <td class="paramtype">HDC</td>          <td class="paramname"><span class="paramname"><em>hDC</em></span></td><td>)</td>
           <td></td>
@@ -812,18 +684,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00778">778</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00440">440</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a719a21e7ab0d47fe6558b73665f66c04" name="a719a21e7ab0d47fe6558b73665f66c04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a719a21e7ab0d47fe6558b73665f66c04">&#9670;&#160;</a></span>PaletteSize()</h2>
+<a id="a8d59c72f30a924328c528e10d01d2219" name="a8d59c72f30a924328c528e10d01d2219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d59c72f30a924328c528e10d01d2219">&#9670;&#160;</a></span>PaletteSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">WORD FAR CJpegFile::PaletteSize </td>
+          <td class="memname">WORD CJpegFile::PaletteSize </td>
           <td>(</td>
           <td class="paramtype">LPSTR</td>          <td class="paramname"><span class="paramname"><em>lpDIB</em></span></td><td>)</td>
           <td></td>
@@ -831,7 +703,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00895">895</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00557">557</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -850,111 +722,12 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01472">1472</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00876">876</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a848d8ddbb3ffdfc505e9277f969c4e52" name="a848d8ddbb3ffdfc505e9277f969c4e52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a848d8ddbb3ffdfc505e9277f969c4e52">&#9670;&#160;</a></span>RGBFromDWORDAligned()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BYTE * CJpegFile::RGBFromDWORDAligned </td>
-          <td>(</td>
-          <td class="paramtype">BYTE *</td>          <td class="paramname"><span class="paramname"><em>inBuf</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>widthPix</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>widthBytes</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00376">376</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a4fd01ab10a31afb7c3fc270a74451905" name="a4fd01ab10a31afb7c3fc270a74451905"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fd01ab10a31afb7c3fc270a74451905">&#9670;&#160;</a></span>RGBToJpegFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BOOL CJpegFile::RGBToJpegFile </td>
-          <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>fileName</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">BYTE *</td>          <td class="paramname"><span class="paramname"><em>dataBuf</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">BOOL</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>quality</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00400">400</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a02da38b00870d2d0674e4860b410723a" name="a02da38b00870d2d0674e4860b410723a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02da38b00870d2d0674e4860b410723a">&#9670;&#160;</a></span>SaveDIB()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">WORD FAR CJpegFile::SaveDIB </td>
-          <td>(</td>
-          <td class="paramtype">HDIB</td>          <td class="paramname"><span class="paramname"><em>hDib</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LPSTR</td>          <td class="paramname"><span class="paramname"><em>lpFileName</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01328">1328</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a89636cebc3c6fdc236f94e94f8a15675" name="a89636cebc3c6fdc236f94e94f8a15675"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89636cebc3c6fdc236f94e94f8a15675">&#9670;&#160;</a></span>SaveFromDecryptToJpeg()</h2>
+<a id="aee6522a57c9c586560ed7b232254323d" name="aee6522a57c9c586560ed7b232254323d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6522a57c9c586560ed7b232254323d">&#9670;&#160;</a></span>SaveFromDecryptToJpeg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -962,17 +735,17 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">BOOL CJpegFile::SaveFromDecryptToJpeg </td>
           <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csKsc</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>csKsc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>csJpeg</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01964">1964</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l01386">1386</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +773,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00668">668</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8cpp_source.html#l00373">373</a> of file <a class="el" href="JpegFile_8cpp_source.html">JpegFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +798,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00322">322</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00188">188</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +822,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00323">323</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00189">189</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>
@@ -1073,7 +846,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00321">321</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JpegFile_8h_source.html#l00187">187</a> of file <a class="el" href="JpegFile_8h_source.html">JpegFile.h</a>.</p>
 
 </div>
 </div>

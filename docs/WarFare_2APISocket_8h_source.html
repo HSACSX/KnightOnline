@@ -107,113 +107,113 @@ $(function(){initNavTree('WarFare_2APISocket_8h_source.html',''); initResizable(
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_APISOCKET_H__31D58152_3B8D_4CBD_BEB9_6BE23C4F0FFB__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_APISOCKET_H__31D58152_3B8D_4CBD_BEB9_6BE23C4F0FFB__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;GameDef.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;PacketDef.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;queue&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define WM_SOCKETMSG     (WM_USER + 1)</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define RECEIVE_BUF_SIZE 262144 </span><span class="comment">// 최대 버퍼..</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define _CRYPTION               </span><span class="comment">// 암호화 사용</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#ifdef _CRYPTION</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;shared/JvCryption.h&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">class </span><a class="code hl_class" href="classBB__CircularBuffer.html">BB_CircularBuffer</a></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    BB_CircularBuffer(<span class="keywordtype">int</span> size = RECEIVE_BUF_SIZE)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        __ASSERT(size &gt; 0, <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        m_iBufSize = size;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        m_pBuffer  = <span class="keyword">new</span> uint8_t[m_iBufSize];</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        m_iHeadPos = 0;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        m_iTailPos = 0;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">virtual</span> ~BB_CircularBuffer()</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        __ASSERT(m_pBuffer, <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (m_pBuffer)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">delete</span>[] m_pBuffer, m_pBuffer = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> PutData(uint8_t* pData, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (len &lt;= 0)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="comment">//OutputDebugString(&quot;BB_CircularBuffer::PutData len is &lt;= 0\n&quot;);</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">while</span> (IsOverFlowCondition(len))</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            BufferResize();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">if</span> (IsIndexOverFlow(len))</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordtype">int</span> FirstCopyLen  = m_iBufSize - m_iTailPos;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordtype">int</span> SecondCopyLen = len - FirstCopyLen;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            __ASSERT(FirstCopyLen, <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            CopyMemory(m_pBuffer + m_iTailPos, pData, FirstCopyLen);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (SecondCopyLen)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                CopyMemory(m_pBuffer, pData + FirstCopyLen, SecondCopyLen);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                m_iTailPos = SecondCopyLen;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                m_iTailPos = 0;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            CopyMemory(m_pBuffer + m_iTailPos, pData, len);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            m_iTailPos += len;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> GetData(uint8_t* pData, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        __ASSERT(len &gt; 0 &amp;&amp; len &lt;= GetValidCount(), <span class="stringliteral">&quot;GetData error&quot;</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (len &lt; m_iBufSize - m_iHeadPos)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, len);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;N3Base/N3Base.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;GameDef.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;PacketDef.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> WM_SOCKETMSG     = (WM_USER + 1);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> RECEIVE_BUF_SIZE = 262144; <span class="comment">// 최대 버퍼..</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define _CRYPTION                        </span><span class="comment">// 암호화 사용</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#ifdef _CRYPTION</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;shared/JvCryption.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">class </span><a class="code hl_class" href="classBB__CircularBuffer.html">BB_CircularBuffer</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    BB_CircularBuffer(<span class="keywordtype">int</span> size = RECEIVE_BUF_SIZE)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        __ASSERT(size &gt; 0, <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        m_iBufSize = size;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        m_pBuffer  = <span class="keyword">new</span> uint8_t[m_iBufSize];</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        m_iHeadPos = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        m_iTailPos = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">virtual</span> ~BB_CircularBuffer()</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        __ASSERT(m_pBuffer, <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (m_pBuffer)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">delete</span>[] m_pBuffer, m_pBuffer = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> PutData(uint8_t* pData, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">if</span> (len &lt;= 0)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="comment">//OutputDebugString(&quot;BB_CircularBuffer::PutData len is &lt;= 0\n&quot;);</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">while</span> (IsOverFlowCondition(len))</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            BufferResize();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> (IsIndexOverFlow(len))</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordtype">int</span> FirstCopyLen  = m_iBufSize - m_iTailPos;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">int</span> SecondCopyLen = len - FirstCopyLen;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            __ASSERT(FirstCopyLen, <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            CopyMemory(m_pBuffer + m_iTailPos, pData, FirstCopyLen);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">if</span> (SecondCopyLen)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                CopyMemory(m_pBuffer, pData + FirstCopyLen, SecondCopyLen);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                m_iTailPos = SecondCopyLen;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                m_iTailPos = 0;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            CopyMemory(m_pBuffer + m_iTailPos, pData, len);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            m_iTailPos += len;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> GetData(uint8_t* pData, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        __ASSERT(len &gt; 0 &amp;&amp; len &lt;= GetValidCount(), <span class="stringliteral">&quot;GetData error&quot;</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> (len &lt; m_iBufSize - m_iHeadPos)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, len);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordtype">int</span> fc, sc;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            fc = m_iBufSize - m_iHeadPos;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            sc = len - fc;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">if</span> (sc)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                CopyMemory(pData + fc, m_pBuffer, sc);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">int</span> GetOutData(uint8_t* pData) <span class="comment">//HeadPos, 변화</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordtype">int</span> len = GetValidCount();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordtype">int</span> fc, sc;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        fc = m_iBufSize - m_iHeadPos;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">if</span> (len &gt; fc)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            sc = len - fc;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            CopyMemory(pData + fc, m_pBuffer, sc);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            m_iHeadPos = sc;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            __ASSERT(m_iHeadPos == m_iTailPos, <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, len);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            m_iHeadPos += len;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">if</span> (m_iHeadPos == m_iBufSize)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                m_iHeadPos = 0;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> len;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordtype">int</span> fc = m_iBufSize - m_iHeadPos;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordtype">int</span> sc = len - fc;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordflow">if</span> (sc)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                CopyMemory(pData + fc, m_pBuffer, sc);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">int</span> GetOutData(uint8_t* pData) <span class="comment">//HeadPos, 변화</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordtype">int</span> len = GetValidCount();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordtype">int</span> fc  = m_iBufSize - m_iHeadPos;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (len &gt; fc)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordtype">int</span> sc = len - fc;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, fc);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            CopyMemory(pData + fc, m_pBuffer, sc);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            m_iHeadPos = sc;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            __ASSERT(m_iHeadPos == m_iTailPos, <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            CopyMemory(pData, m_pBuffer + m_iHeadPos, len);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            m_iHeadPos += len;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">if</span> (m_iHeadPos == m_iBufSize)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                m_iHeadPos = 0;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> len;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> PutData(uint8_t&amp; data)</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    {</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordtype">int</span> len = 1;</div>
@@ -335,7 +335,7 @@ $(function(){initNavTree('WarFare_2APISocket_8h_source.html',''); initResizable(
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="keyword">class </span><a class="code hl_class" href="classCAPISocket.html">CAPISocket</a></div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>{</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">void</span>* m_hSocket;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    SOCKET m_hSocket;</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    HWND m_hWndTarget;</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    std::string m_szIP;</div>
@@ -358,99 +358,100 @@ $(function(){initNavTree('WarFare_2APISocket_8h_source.html',''); initResizable(
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    std::queue&lt;Packet*&gt; m_qRecvPkt;</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    BOOL m_bEnableSend; <span class="comment">// 보내기 가능..?</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">int</span> Connect(HWND hWnd, <span class="keyword">const</span> <span class="keywordtype">char</span>* pszIP, uint32_t port);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">void</span> Disconnect();</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    BOOL IsConnected()</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span> m_bConnected;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordtype">int</span> ReConnect();</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    std::string GetCurrentIP()</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    {</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="keywordflow">return</span> m_szIP;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    }</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    uint32_t GetCurrentPort()</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">return</span> m_dwPort;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordtype">void</span> Release();</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordtype">void</span> Receive();</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    BOOL ReceiveProcess();</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordtype">void</span> Send(uint8_t* pData, <span class="keywordtype">int</span> nSize);</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="preprocessor">#ifdef _CRYPTION</span></div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keyword">static</span> BOOL s_bCryptionFlag; <span class="comment">//0 : 비암호화 , 1 : 암호화</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keyword">static</span> CJvCryption s_JvCrypt;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">static</span> uint32_t s_wSendVal;</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">static</span> uint32_t s_wRcvVal;</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> InitCrypt(int64_t PublicKey)</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    {</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        s_JvCrypt.SetPublicKey(PublicKey);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        s_JvCrypt.Init();</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        s_wSendVal = 0;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        s_wRcvVal  = 0;</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="keywordflow">if</span> (0 != PublicKey)</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            s_bCryptionFlag = TRUE;</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            s_bCryptionFlag = FALSE;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    }</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="comment">//패킷 만들기 함수</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddByte(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, uint8_t <span class="keywordtype">byte</span>)</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    {</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        memcpy(dest + iOffset, &amp;<span class="keywordtype">byte</span>, 1);</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        ++iOffset;</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    }</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddShort(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, int16_t value)</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    {</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        memcpy(dest + iOffset, &amp;value, 2);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        iOffset += 2;</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    }</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddWord(uint8_t* dest, <span class="keywordtype">int</span>&amp; offset, uint16_t value)</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    {</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        memcpy(dest + offset, &amp;value, 2);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        offset += 2;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    }</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddDword(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, uint32_t dword)</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    {</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        memcpy(dest + iOffset, &amp;dword, 4);</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        iOffset += 4;</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    }</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddFloat(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, <span class="keywordtype">float</span> value)</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    {</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        memcpy(dest + iOffset, &amp;value, 4);</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        iOffset += 4;</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    }</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddString(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, <span class="keyword">const</span> std::string&amp; szString)</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    {</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        <span class="keywordflow">if</span> (szString.empty())</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        memcpy(dest + iOffset, &amp;szString[0], szString.size());</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        iOffset += <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(szString.size());</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    }</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    CAPISocket();</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keyword">virtual</span> ~CAPISocket();</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>};</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_APISOCKET_H__31D58152_3B8D_4CBD_BEB9_6BE23C4F0FFB__INCLUDED_)</span></div>
-<div class="ttc" id="aclassBB__CircularBuffer_html"><div class="ttname"><a href="classBB__CircularBuffer.html">BB_CircularBuffer</a></div><div class="ttdef"><b>Definition</b> <a href="BB__CircularBuffer_8h_source.html#l00012">BB_CircularBuffer.h:13</a></div></div>
-<div class="ttc" id="aclassCAPISocket_html"><div class="ttname"><a href="classCAPISocket.html">CAPISocket</a></div><div class="ttdef"><b>Definition</b> <a href="Launcher_2APISocket_8h_source.html#l00046">APISocket.h:47</a></div></div>
-<div class="ttc" id="aclassDataPack_html"><div class="ttname"><a href="classDataPack.html">DataPack</a></div><div class="ttdef"><b>Definition</b> <a href="Launcher_2APISocket_8h_source.html#l00021">APISocket.h:22</a></div></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">int</span> Connect(HWND hWnd, <span class="keyword">const</span> std::string&amp; szIP, uint32_t port);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">void</span> Disconnect();</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    BOOL IsConnected()</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    {</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordflow">return</span> m_bConnected;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    }</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">int</span> ReConnect();</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    std::string GetCurrentIP()</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">return</span> m_szIP;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    uint32_t GetCurrentPort()</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="keywordflow">return</span> m_dwPort;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordtype">void</span> Receive();</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    BOOL ReceiveProcess();</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordtype">void</span> Send(uint8_t* pData, <span class="keywordtype">int</span> nSize);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="preprocessor">#ifdef _CRYPTION</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keyword">static</span> BOOL s_bCryptionFlag; <span class="comment">//0 : 비암호화 , 1 : 암호화</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">static</span> CJvCryption s_JvCrypt;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">static</span> uint32_t s_wSendVal;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keyword">static</span> uint32_t s_wRcvVal;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> InitCrypt(int64_t PublicKey)</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    {</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        s_JvCrypt.SetPublicKey(PublicKey);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        s_JvCrypt.Init();</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        s_wSendVal = 0;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        s_wRcvVal  = 0;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">if</span> (0 != PublicKey)</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            s_bCryptionFlag = TRUE;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            s_bCryptionFlag = FALSE;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="comment">//패킷 만들기 함수</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddByte(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, uint8_t <span class="keywordtype">byte</span>)</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    {</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        memcpy(dest + iOffset, &amp;<span class="keywordtype">byte</span>, 1);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        ++iOffset;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddShort(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, int16_t value)</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        memcpy(dest + iOffset, &amp;value, 2);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        iOffset += 2;</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddWord(uint8_t* dest, <span class="keywordtype">int</span>&amp; offset, uint16_t value)</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    {</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        memcpy(dest + offset, &amp;value, 2);</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        offset += 2;</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    }</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddDword(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, uint32_t dword)</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    {</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        memcpy(dest + iOffset, &amp;dword, 4);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        iOffset += 4;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddFloat(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, <span class="keywordtype">float</span> value)</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    {</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        memcpy(dest + iOffset, &amp;value, 4);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        iOffset += 4;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> MP_AddString(uint8_t* dest, <span class="keywordtype">int</span>&amp; iOffset, <span class="keyword">const</span> std::string&amp; szString)</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    {</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="keywordflow">if</span> (szString.empty())</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        memcpy(dest + iOffset, &amp;szString[0], szString.size());</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        iOffset += <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(szString.size());</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    }</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    CAPISocket();</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keyword">virtual</span> ~CAPISocket();</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>};</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_APISOCKET_H__31D58152_3B8D_4CBD_BEB9_6BE23C4F0FFB__INCLUDED_)</span></div>
+<div class="ttc" id="aclassBB__CircularBuffer_html"><div class="ttname"><a href="classBB__CircularBuffer.html">BB_CircularBuffer</a></div><div class="ttdef"><b>Definition</b> <a href="BB__CircularBuffer_8h_source.html#l00010">BB_CircularBuffer.h:11</a></div></div>
+<div class="ttc" id="aclassCAPISocket_html"><div class="ttname"><a href="classCAPISocket.html">CAPISocket</a></div><div class="ttdef"><b>Definition</b> <a href="Launcher_2APISocket_8h_source.html#l00045">APISocket.h:46</a></div></div>
+<div class="ttc" id="aclassDataPack_html"><div class="ttname"><a href="classDataPack.html">DataPack</a></div><div class="ttdef"><b>Definition</b> <a href="Launcher_2APISocket_8h_source.html#l00020">APISocket.h:21</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

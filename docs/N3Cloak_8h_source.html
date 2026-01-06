@@ -107,17 +107,17 @@ $(function(){initNavTree('N3Cloak_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if !defined(AFX_N3CLOAK_H__3ED1C9F5_2F40_47B7_8CEC_6881E0D9FAEE__INCLUDED_)</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define AFX_N3CLOAK_H__3ED1C9F5_2F40_47B7_8CEC_6881E0D9FAEE__INCLUDED_</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif </span><span class="comment">// _MSC_VER &gt; 1000</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;N3Base.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define CLOAK_MAX_WIDTH  7</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define CLOAK_MAX_HEIGHT 7</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define CLOAK_SKIP_LINE  2 </span><span class="comment">// 망토에서 장식용 버텍스가 들어가 있는 라인수. 이부분은 이동이 없다. ok?</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> CLOAK_MAX_WIDTH  = 7;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> CLOAK_MAX_HEIGHT = 7;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// 망토에서 장식용 버텍스가 들어가 있는 라인수. 이부분은 이동이 없다. ok?</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> CLOAK_SKIP_LINE  = 2;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">enum</span> e_Cloak_AnchorMovePattern</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">enum</span> e_Cloak_AnchorMovePattern : uint8_t</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    AMP_NONE = 0,</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    AMP_YAWCCW,</div>
@@ -129,7 +129,7 @@ $(function(){initNavTree('N3Cloak_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    AMP_MOVEXZ2</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">enum</span> e_CloakMove</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">enum</span> e_CloakMove : uint8_t</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    CLOAK_MOVE_STOP = 0,</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    CLOAK_MOVE_WALK,</div>
@@ -145,7 +145,7 @@ $(function(){initNavTree('N3Cloak_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    CN3Cloak();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">virtual</span> ~CN3Cloak();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    ~CN3Cloak() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classCN3Cloak_1_1____Particle.html">   47</a></span>    <span class="keyword">class </span>__Particle</div>
@@ -214,20 +214,20 @@ $(function(){initNavTree('N3Cloak_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">int</span> nLOD, <span class="keywordtype">float</span> fYaw, e_CloakMove eCurMove);</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Render(<a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>&amp; mtx);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>};</div>
 </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3CLOAK_H__3ED1C9F5_2F40_47B7_8CEC_6881E0D9FAEE__INCLUDED_)</span></div>
-<div class="ttc" id="aclassCN3CPlug__Cloak_html"><div class="ttname"><a href="classCN3CPlug__Cloak.html">CN3CPlug_Cloak</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00266">N3Chr.h:267</a></div></div>
-<div class="ttc" id="aclassCN3Chr_html"><div class="ttname"><a href="classCN3Chr.html">CN3Chr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00301">N3Chr.h:302</a></div></div>
+<div class="ttc" id="aclassCN3CPlug__Cloak_html"><div class="ttname"><a href="classCN3CPlug__Cloak.html">CN3CPlug_Cloak</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00271">N3Chr.h:272</a></div></div>
+<div class="ttc" id="aclassCN3Chr_html"><div class="ttname"><a href="classCN3Chr.html">CN3Chr</a></div><div class="ttdef"><b>Definition</b> <a href="N3Chr_8h_source.html#l00311">N3Chr.h:312</a></div></div>
 <div class="ttc" id="aclassCN3Cloak_1_1____Particle_html"><div class="ttname"><a href="classCN3Cloak_1_1____Particle.html">CN3Cloak::__Particle</a></div><div class="ttdef"><b>Definition</b> <a href="#l00047">N3Cloak.h:48</a></div></div>
-<div class="ttc" id="aclassCN3PMesh_html"><div class="ttname"><a href="classCN3PMesh.html">CN3PMesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3PMesh_8h_source.html#l00014">N3PMesh.h:15</a></div></div>
-<div class="ttc" id="aclassCN3Texture_html"><div class="ttname"><a href="classCN3Texture.html">CN3Texture</a></div><div class="ttdef"><b>Definition</b> <a href="N3Texture_8h_source.html#l00006">N3Texture.h:7</a></div></div>
-<div class="ttc" id="aclassCPlayerBase_html"><div class="ttname"><a href="classCPlayerBase.html">CPlayerBase</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerBase_8h_source.html#l00074">PlayerBase.h:75</a></div></div>
+<div class="ttc" id="aclassCN3PMesh_html"><div class="ttname"><a href="classCN3PMesh.html">CN3PMesh</a></div><div class="ttdef"><b>Definition</b> <a href="N3PMesh_8h_source.html#l00012">N3PMesh.h:13</a></div></div>
+<div class="ttc" id="aclassCN3Texture_html"><div class="ttname"><a href="classCN3Texture.html">CN3Texture</a></div><div class="ttdef"><b>Definition</b> <a href="N3Texture_8h_source.html#l00009">N3Texture.h:10</a></div></div>
+<div class="ttc" id="aclassCPlayerBase_html"><div class="ttname"><a href="classCPlayerBase.html">CPlayerBase</a></div><div class="ttdef"><b>Definition</b> <a href="PlayerBase_8h_source.html#l00078">PlayerBase.h:79</a></div></div>
 <div class="ttc" id="astruct____Matrix44_html"><div class="ttname"><a href="struct____Matrix44.html">__Matrix44</a></div><div class="ttdef"><b>Definition</b> <a href="Matrix44_8h_source.html#l00011">Matrix44.h:12</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
-<div class="ttc" id="astruct____VertexT1_html"><div class="ttname"><a href="struct____VertexT1.html">__VertexT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00242">My_3DStruct.h:243</a></div></div>
+<div class="ttc" id="astruct____VertexT1_html"><div class="ttname"><a href="struct____VertexT1.html">__VertexT1</a></div><div class="ttdef"><b>Definition</b> <a href="N3Base_2My__3DStruct_8h_source.html#l00244">My_3DStruct.h:245</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

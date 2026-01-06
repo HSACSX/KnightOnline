@@ -196,6 +196,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa021c2726a8877ad99c60422d2b115ef" id="r_aa021c2726a8877ad99c60422d2b115ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa021c2726a8877ad99c60422d2b115ef">SelectCharacter</a> (const char *buffer)</td></tr>
 <tr class="memdesc:aa021c2726a8877ad99c60422d2b115ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">loads and sends data after a character is selected  <br /></td></tr>
 <tr class="separator:aa021c2726a8877ad99c60422d2b115ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcef09e4a616135a22e3f0800c704a77" id="r_adcef09e4a616135a22e3f0800c704a77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcef09e4a616135a22e3f0800c704a77">SendSelectCharacterFailed</a> (int sessionId)</td></tr>
+<tr class="memdesc:adcef09e4a616135a22e3f0800c704a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the WIZ_SEL_CHAR response packet indicating character selection failed.  <br /></td></tr>
+<tr class="separator:adcef09e4a616135a22e3f0800c704a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAppThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classAppThread')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAppThread.html">AppThread</a></td></tr>
 <tr class="memitem:a2e0cda10136337b79f9bfaeaae052b8d inherit pub_methods_classAppThread" id="r_a2e0cda10136337b79f9bfaeaae052b8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppThread.html#a2e0cda10136337b79f9bfaeaae052b8d">ExitCode</a> () const</td></tr>
 <tr class="separator:a2e0cda10136337b79f9bfaeaae052b8d inherit pub_methods_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,6 +222,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf837cc0ca7f987aa27df0be6bebd1eb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread" id="r_a5808f26160479e3478efe7872a09a59f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a5808f26160479e3478efe7872a09a59f">IsShutdown</a> () const</td></tr>
 <tr class="separator:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread" id="r_a4a52d7425f6c14832fbce49bb695ee8b"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a4a52d7425f6c14832fbce49bb695ee8b">ThreadMutex</a> () const</td></tr>
+<tr class="separator:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread" id="r_a25b83df089760f3877d0d6e6dc2ab077"><td class="memItemLeft" align="right" valign="top">std::condition_variable &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a25b83df089760f3877d0d6e6dc2ab077">ThreadCondition</a> ()</td></tr>
+<tr class="separator:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread" id="r_a1f53ee62bd30a7924186ef26150ce262"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">start</a> ()</td></tr>
 <tr class="separator:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a221711b56608703df63e399c35e87284 inherit pub_methods_classThread" id="r_a221711b56608703df63e399c35e87284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a221711b56608703df63e399c35e87284">shutdown</a> (bool waitForShutdown=true)</td></tr>
@@ -291,15 +298,15 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a6fb988aa4752fc40e4fd921cd1ce7f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ec70cb753dbddfc54f8eb51dae439a2" id="r_a7ec70cb753dbddfc54f8eb51dae439a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSharedMemoryBlock.html">SharedMemoryBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ec70cb753dbddfc54f8eb51dae439a2">_userDataBlock</a></td></tr>
 <tr class="separator:a7ec70cb753dbddfc54f8eb51dae439a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac016550af0f7e13b4ff639b84f8d3559" id="r_ac016550af0f7e13b4ff639b84f8d3559"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac016550af0f7e13b4ff639b84f8d3559">_serverId</a></td></tr>
+<tr class="memitem:ac016550af0f7e13b4ff639b84f8d3559" id="r_ac016550af0f7e13b4ff639b84f8d3559"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac016550af0f7e13b4ff639b84f8d3559">_serverId</a> = 0</td></tr>
 <tr class="separator:ac016550af0f7e13b4ff639b84f8d3559"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0534eebe2f99722c3fa600429567b4b2" id="r_a0534eebe2f99722c3fa600429567b4b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0534eebe2f99722c3fa600429567b4b2">_zoneId</a></td></tr>
+<tr class="memitem:a0534eebe2f99722c3fa600429567b4b2" id="r_a0534eebe2f99722c3fa600429567b4b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0534eebe2f99722c3fa600429567b4b2">_zoneId</a> = 0</td></tr>
 <tr class="separator:a0534eebe2f99722c3fa600429567b4b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a328cc50c0cde532c26ca623fb6511427" id="r_a328cc50c0cde532c26ca623fb6511427"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a328cc50c0cde532c26ca623fb6511427">_packetCount</a></td></tr>
+<tr class="memitem:a328cc50c0cde532c26ca623fb6511427" id="r_a328cc50c0cde532c26ca623fb6511427"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a328cc50c0cde532c26ca623fb6511427">_packetCount</a> = 0</td></tr>
 <tr class="separator:a328cc50c0cde532c26ca623fb6511427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef78f28a30f93680200f8b5d7c3df1d" id="r_adef78f28a30f93680200f8b5d7c3df1d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adef78f28a30f93680200f8b5d7c3df1d">_sendPacketCount</a></td></tr>
+<tr class="memitem:adef78f28a30f93680200f8b5d7c3df1d" id="r_adef78f28a30f93680200f8b5d7c3df1d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adef78f28a30f93680200f8b5d7c3df1d">_sendPacketCount</a> = 0</td></tr>
 <tr class="separator:adef78f28a30f93680200f8b5d7c3df1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adda7a61b108c09cad53665b7432a438b" id="r_adda7a61b108c09cad53665b7432a438b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adda7a61b108c09cad53665b7432a438b">_recvPacketCount</a></td></tr>
+<tr class="memitem:adda7a61b108c09cad53665b7432a438b" id="r_adda7a61b108c09cad53665b7432a438b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adda7a61b108c09cad53665b7432a438b">_recvPacketCount</a> = 0</td></tr>
 <tr class="separator:adda7a61b108c09cad53665b7432a438b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classAppThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classAppThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classAppThread.html">AppThread</a></td></tr>
 <tr class="memitem:aff94dc381ca0a2a3dbf8d2c6c3e350ef inherit pro_attribs_classAppThread" id="r_aff94dc381ca0a2a3dbf8d2c6c3e350ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlogger_1_1Logger.html">logger::Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppThread.html#aff94dc381ca0a2a3dbf8d2c6c3e350ef">_logger</a></td></tr>
@@ -308,17 +315,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a18b87d1b059b017382f015c220a214bf inherit pro_attribs_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48c8139d147d040ec9fa0f13e3fed499 inherit pro_attribs_classAppThread" id="r_a48c8139d147d040ec9fa0f13e3fed499"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppThread.html#a48c8139d147d040ec9fa0f13e3fed499">_headless</a></td></tr>
 <tr class="separator:a48c8139d147d040ec9fa0f13e3fed499 inherit pro_attribs_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
-<tr class="memitem:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread" id="r_ad017d81db19923e40d87a2668f348647"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad017d81db19923e40d87a2668f348647">_mutex</a></td></tr>
-<tr class="separator:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread" id="r_ad2d958b5dbd95049b9e12b57259b6f60"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad2d958b5dbd95049b9e12b57259b6f60">_cv</a></td></tr>
-<tr class="separator:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread" id="r_ab188a5ebf8a6f5af21107bb37cd10ce4"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ab188a5ebf8a6f5af21107bb37cd10ce4">_thread</a></td></tr>
-<tr class="separator:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread" id="r_ad33a646f7196c68a78c3dd7fcad3af5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad33a646f7196c68a78c3dd7fcad3af5b">_canTick</a></td></tr>
-<tr class="separator:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread" id="r_ada004eb51974c7fe04eb645e4e0f7cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ada004eb51974c7fe04eb645e4e0f7cf7">_isShutdown</a></td></tr>
-<tr class="separator:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -330,7 +326,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00016">16</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00019">19</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac2f223bed8b5761352c53ea9a98bb597" name="ac2f223bed8b5761352c53ea9a98bb597"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2f223bed8b5761352c53ea9a98bb597">&#9670;&#160;</a></span>AujardApp()</h2>
@@ -351,11 +347,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a4bc819b02eb9858ef74f978788198bc9" name="a4bc819b02eb9858ef74f978788198bc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bc819b02eb9858ef74f978788198bc9">&#9670;&#160;</a></span>~AujardApp()</h2>
+<a id="af86e5f1e500409fd8b5e949e2721ac67" name="af86e5f1e500409fd8b5e949e2721ac67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86e5f1e500409fd8b5e949e2721ac67">&#9670;&#160;</a></span>~AujardApp()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">AujardApp::~AujardApp </td>
@@ -364,9 +363,14 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00054">54</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00050">50</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +393,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles a WIZ_LOGIN request to a selected game server </p>
 <dl class="section see"><dt>See also</dt><dd>WIZ_LOGIN </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00476">476</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00475">475</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -411,7 +415,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles a WIZ_ALLCHAR_INFO_REQ request </p>
 <p>Loads all character information and sends it to the client </p><dl class="section see"><dt>See also</dt><dd>WIZ_ALLCHAR_INFO_REQ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00591">591</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00587">587</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -431,9 +435,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to return a list of all knights members </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_MEMBER_REQ </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_MEMBER_REQ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00969">969</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00964">964</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +459,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handling for when OnTimer fails a PROCESS_CHECK with ebenezer </p>
 <p>Logs ebenezer outage, attempts to save all UserData, and resets all UserData[userId] objects </p><dl class="section see"><dt>See also</dt><dd>OnTimer(), <a class="el" href="#ac9ff2ec560347a8240d863ccc082fb65" title="handles user logout functions">HandleUserLogout()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00618">618</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00613">613</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -484,7 +488,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Attempts to open all shared memory queues &amp; blocks that we've yet to open. </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00167">167</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00163">163</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +518,7 @@ Additional Inherited Members</h2></td></tr>
 <p><a class="el" href="classThread.html">Thread</a> tick attempting to open all shared memory queues &amp; blocks that we've yet to open. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ab56ef8e6b63fbeebc1d7ec8b879dc453" title="Attempts to open all shared memory queues &amp; blocks that we&#39;ve yet to open.">AttemptOpenSharedMemory</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00185">185</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00181">181</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -536,7 +540,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles WIZ_BATTLE_EVENT requests </p>
 <p>contains which nation won the war and which charId killed the commander </p><dl class="section see"><dt>See also</dt><dd>WIZ_BATTLE_EVENT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01072">1072</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01067">1067</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +561,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>checks the time since the last received heartbeat and saves if </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01137">1137</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01132">1132</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -579,7 +583,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Called every 5min by _concurrentCheckThread. </p>
 <dl class="section see"><dt>See also</dt><dd>_concurrentCheckThread </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00659">659</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00654">654</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -609,7 +613,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classAppThread.html#a70e8eaa75b63b615c7109bba12107898">AppThread</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00110">110</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00106">106</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -632,7 +636,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo</a></b></dt><dd>related stored procedures are not implemented </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>DB_COUPON_EVENT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01090">1090</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01085">1085</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -652,9 +656,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to create a knights clan </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_CREATE </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_CREATE </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00780">780</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00775">775</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -676,7 +680,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles a WIZ_NEW_CHAR request </p>
 <dl class="section see"><dt>See also</dt><dd>WIZ_NEW_CHAR </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00524">524</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00520">520</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -699,7 +703,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo</a></b></dt><dd>not implemented, always returns an error to the client </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>WIZ_DEL_CHAR </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00558">558</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00554">554</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -719,9 +723,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to disband a knights clan </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_DESTROY </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_DESTROY </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00945">945</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00940">940</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -754,7 +758,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to UserData[userId] object if found, nullptr otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00707">707</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00702">702</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -801,7 +805,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a9b46d5543870a04d9ed75ec3d44c948d" title="Handles a WIZ_LOGOUT request when logging out of the game.">UserLogOut()</a>, <a class="el" href="#a57123716ebb3c3abed16e546a068fd3c" title="handling for when OnTimer fails a PROCESS_CHECK with ebenezer">AllSaveRoutine()</a>, <a class="el" href="#a18a8118b81576053bcfbae201a3f36f1" title="handles user update functions and retry logic">HandleUserUpdate()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00350">350</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00349">349</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -848,7 +852,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a398f68fbdb0d0a95c686edf12d57cca5" title="handles a WIZ_DATASAVE request">UserDataSave()</a>, <a class="el" href="#ac9ff2ec560347a8240d863ccc082fb65" title="handles user logout functions">HandleUserLogout()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00393">393</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00392">392</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -870,7 +874,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles DB_HEARTBEAT requests </p>
 <dl class="section see"><dt>See also</dt><dd>DB_HEARTBEAT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01149">1149</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01144">1144</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -891,7 +895,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>initializes shared memory with other server applications </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00208">208</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00204">204</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -918,7 +922,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00019">19</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00022">22</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -938,9 +942,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to add a character to a knights clan </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_JOIN </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_JOIN </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00818">818</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00813">813</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -960,9 +964,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to retrieve metadata for a knights clan </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_LIST_REQ </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_LIST_REQ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00998">998</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00993">993</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -984,7 +988,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for the subprocess op-code </p>
 <dl class="section see"><dt>See also</dt><dd>"Knights Packet sub define" section in Define.h </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00725">725</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00720">720</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1026,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAppThread.html#aca754393e3c2e213af753305b88d9edb">AppThread</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00115">115</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00111">111</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1047,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>loads information needed from the ITEM table to a cache map </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00227">227</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00224">224</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1067,9 +1071,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempts to modify a knights character </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_REMOVE, KNIGHTS_ADMIT, KNIGHTS_REJECT, KNIGHTS_CHIEF, KNIGHTS_VICECHIEF, KNIGHTS_OFFICER, KNIGHTS_PUNISH </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_REMOVE, DB_KNIGHTS_ADMIT, DB_KNIGHTS_REJECT, DB_KNIGHTS_CHIEF, DB_KNIGHTS_VICECHIEF, DB_KNIGHTS_OFFICER, DB_KNIGHTS_PUNISH </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00877">877</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00872">872</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1102,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Finishes server initialization and starts processing threads. </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00197">197</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00193">193</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1134,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classAppThread.html#aa130556414bab427657551fdc8efead7">AppThread</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00142">142</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00138">138</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1151,7 +1155,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>loads and sends data after a character is selected </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00239">239</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00236">236</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1177,34 @@ Additional Inherited Members</h2></td></tr>
 <p>handles a WIZ_SEL_NATION request to a selected game server </p>
 <dl class="section see"><dt>See also</dt><dd>WIZ_SEL_NATION </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00499">499</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00496">496</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adcef09e4a616135a22e3f0800c704a77" name="adcef09e4a616135a22e3f0800c704a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcef09e4a616135a22e3f0800c704a77">&#9670;&#160;</a></span>SendSelectCharacterFailed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AujardApp::SendSelectCharacterFailed </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sessionId</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends the WIZ_SEL_CHAR response packet indicating character selection failed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sessionId</td><td>The associated session ID to send it to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00313">313</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1226,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles WIZ_LOGIN_INFO requests, updating CURRENTUSER for a user </p>
 <dl class="section see"><dt>See also</dt><dd>WIZ_LOGIN_INFO </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01019">1019</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01014">1014</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1219,7 +1250,7 @@ Additional Inherited Members</h2></td></tr>
 <dd>
 <a class="el" href="#a18a8118b81576053bcfbae201a3f36f1" title="handles user update functions and retry logic">HandleUserUpdate()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00681">681</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00676">676</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1241,7 +1272,7 @@ Additional Inherited Members</h2></td></tr>
 <p>handles WIZ_KICKOUT requests </p>
 <dl class="section see"><dt>See also</dt><dd>WIZ_KICKOUT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01055">1055</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01050">1050</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1263,7 +1294,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Handles a WIZ_LOGOUT request when logging out of the game. </p>
 <p>Updates USERDATA and WAREHOUSE as part of logging out, then resets the UserData entry for re-use </p><dl class="section see"><dt>See also</dt><dd>WIZ_LOGOUT, <a class="el" href="#ac9ff2ec560347a8240d863ccc082fb65" title="handles user logout functions">HandleUserLogout()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00324">324</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00323">323</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1283,9 +1314,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attempt to remove a character from a knights clan </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, KNIGHTS_WITHDRAW </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af3fc9fd0dc445348a5253c93b5b841bd" title="handles WIZ_KNIGHTS_PROCESS and WIZ_CLAN_PROCESS requests \detail calls the appropriate method for th...">KnightsPacket()</a>, DB_KNIGHTS_WITHDRAW </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00848">848</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l00843">843</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1337,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>writes a packet summary line to the log file </p>
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01066">1066</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8cpp_source.html#l01061">1061</a> of file <a class="el" href="AujardApp_8cpp_source.html">AujardApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1362,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00152">152</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00159">159</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1345,7 +1376,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int AujardApp::_packetCount</td>
+          <td class="memname">int AujardApp::_packetCount = 0</td>
         </tr>
       </table>
   </td>
@@ -1355,7 +1386,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00158">158</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00165">165</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1369,7 +1400,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int AujardApp::_recvPacketCount</td>
+          <td class="memname">int AujardApp::_recvPacketCount = 0</td>
         </tr>
       </table>
   </td>
@@ -1379,7 +1410,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00160">160</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00167">167</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1393,7 +1424,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int AujardApp::_sendPacketCount</td>
+          <td class="memname">int AujardApp::_sendPacketCount = 0</td>
         </tr>
       </table>
   </td>
@@ -1403,7 +1434,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00159">159</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00166">166</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +1448,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int AujardApp::_serverId</td>
+          <td class="memname">int AujardApp::_serverId = 0</td>
         </tr>
       </table>
   </td>
@@ -1427,7 +1458,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00155">155</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00162">162</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1451,7 +1482,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00153">153</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00160">160</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1465,7 +1496,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int AujardApp::_zoneId</td>
+          <td class="memname">int AujardApp::_zoneId = 0</td>
         </tr>
       </table>
   </td>
@@ -1475,7 +1506,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00156">156</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00163">163</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1491,7 +1522,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00149">149</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00156">156</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1507,7 +1538,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00147">147</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00154">154</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1554,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00146">146</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AujardApp_8h_source.html#l00153">153</a> of file <a class="el" href="AujardApp_8h_source.html">AujardApp.h</a>.</p>
 
 </div>
 </div>

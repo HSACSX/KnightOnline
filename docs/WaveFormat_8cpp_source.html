@@ -181,7 +181,7 @@ $(function(){initNavTree('WaveFormat_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (pcmDataSize_ &gt; <span class="keyword">static_cast&lt;</span>uintptr_t<span class="keyword">&gt;</span>(end - pcmDataBuffer_))</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    ALenum format_;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    ALenum format_ = AL_FORMAT_STEREO16;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">if</span> (waveFormat-&gt;<a class="code hl_variable" href="structWAVE__Format.html#adeb57ad8da781ed0db9266c5f700c366">NumChannels</a> == 2)</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>

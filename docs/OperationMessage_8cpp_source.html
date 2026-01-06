@@ -954,27 +954,27 @@ $(function(){initNavTree('OperationMessage_8cpp_source.html',''); initResizable(
 <div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>    _main-&gt;m_bPermanentChatMode = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>    _main-&gt;m_bPermanentChatFlag = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span> </div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    <span class="keywordtype">char</span> sendBuff[1024]         = {};</div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    <span class="keywordtype">int</span> sendIndex               = 0;</div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    <span class="keywordtype">char</span> sendBuffer[1024] {};</div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    <span class="keywordtype">int</span> sendIndex = 0;</div>
 <div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span> </div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>    SetByte(sendBuff, WIZ_CHAT, sendIndex);</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>    SetByte(sendBuff, END_PERMANENT_CHAT, sendIndex);</div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>    SetByte(sendBuffer, WIZ_CHAT, sendIndex);</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>    SetByte(sendBuffer, END_PERMANENT_CHAT, sendIndex);</div>
 <div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span> </div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    SetByte(sendBuff, 0x01, sendIndex); <span class="comment">// nation</span></div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    SetShort(sendBuff, -1, sendIndex);  <span class="comment">// sid</span></div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>    SetByte(sendBuff, 0, sendIndex);    <span class="comment">// sender name length</span></div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>    SetString2(sendBuff, <span class="stringliteral">&quot;&quot;</span>, sendIndex);</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>    _main-&gt;Send_All(sendBuff, sendIndex);</div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    SetByte(sendBuffer, 0x01, sendIndex); <span class="comment">// nation</span></div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    SetShort(sendBuffer, -1, sendIndex);  <span class="comment">// sid</span></div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>    SetByte(sendBuffer, 0, sendIndex);    <span class="comment">// sender name length</span></div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>    SetString2(sendBuffer, <span class="stringliteral">&quot;&quot;</span>, sendIndex);</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>    _main-&gt;Send_All(sendBuffer, sendIndex);</div>
 <div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span> </div>
 <div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    sendIndex = 0;</div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    memset(sendBuff, 0, 1024);</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    SetByte(sendBuff, STS_CHAT, sendIndex);</div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    SetString2(sendBuff, _command, sendIndex);</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    memset(sendBuffer, 0, 1024);</div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    SetByte(sendBuffer, STS_CHAT, sendIndex);</div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    SetString2(sendBuffer, _command, sendIndex);</div>
 <div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span> </div>
 <div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [_, pInfo] : _main-&gt;m_ServerArray)</div>
 <div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    {</div>
 <div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>        <span class="keywordflow">if</span> (pInfo != <span class="keyword">nullptr</span> &amp;&amp; pInfo-&gt;sServerNo != _main-&gt;m_nServerNo)</div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            _main-&gt;m_pUdpSocket-&gt;SendUDPPacket(pInfo-&gt;strServerIP, sendBuff, sendIndex);</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            _main-&gt;m_pUdpSocket-&gt;SendUDPPacket(pInfo-&gt;strServerIP, sendBuffer, sendIndex);</div>
 <div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>    }</div>
 <div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>}</div>
 <div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span> </div>

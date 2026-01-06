@@ -100,6 +100,7 @@ $(function(){initNavTree('classEVENT.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classEVENT-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">EVENT Class Reference</div></div>
 </div><!--header-->
@@ -116,10 +117,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab711e0f3a6da8ec60bdd723e30d527e0" id="r_ab711e0f3a6da8ec60bdd723e30d527e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab711e0f3a6da8ec60bdd723e30d527e0">m_Zone</a></td></tr>
+<tr class="memitem:ab711e0f3a6da8ec60bdd723e30d527e0" id="r_ab711e0f3a6da8ec60bdd723e30d527e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab711e0f3a6da8ec60bdd723e30d527e0">m_Zone</a> = 0</td></tr>
 <tr class="separator:ab711e0f3a6da8ec60bdd723e30d527e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a55980c3530bb05f636342eb5ea288d" id="r_a2a55980c3530bb05f636342eb5ea288d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSTLMap.html">EventDataArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a55980c3530bb05f636342eb5ea288d">m_arEvent</a></td></tr>
 <tr class="separator:a2a55980c3530bb05f636342eb5ea288d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:afefc722da46d1b767e319c1db77613e8" id="r_afefc722da46d1b767e319c1db77613e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afefc722da46d1b767e319c1db77613e8">LoadEventImpl</a> (int zone, const std::filesystem::path &amp;questsDir)</td></tr>
+<tr class="separator:afefc722da46d1b767e319c1db77613e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -187,7 +193,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EVENT_8cpp_source.html#l00172">172</a> of file <a class="el" href="EVENT_8cpp_source.html">EVENT.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EVENT_8cpp_source.html#l00194">194</a> of file <a class="el" href="EVENT_8cpp_source.html">EVENT.cpp</a>.</p>
 
 </div>
 </div>
@@ -206,7 +212,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EVENT_8cpp_source.html#l00167">167</a> of file <a class="el" href="EVENT_8cpp_source.html">EVENT.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EVENT_8cpp_source.html#l00189">189</a> of file <a class="el" href="EVENT_8cpp_source.html">EVENT.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,6 +239,37 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="afefc722da46d1b767e319c1db77613e8" name="afefc722da46d1b767e319c1db77613e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefc722da46d1b767e319c1db77613e8">&#9670;&#160;</a></span>LoadEventImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EVENT::LoadEventImpl </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>zone</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>questsDir</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="EVENT_8cpp_source.html#l00033">33</a> of file <a class="el" href="EVENT_8cpp_source.html">EVENT.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a2a55980c3530bb05f636342eb5ea288d" name="a2a55980c3530bb05f636342eb5ea288d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a55980c3530bb05f636342eb5ea288d">&#9670;&#160;</a></span>m_arEvent</h2>
@@ -246,7 +283,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EVENT_8h_source.html#l00019">19</a> of file <a class="el" href="EVENT_8h_source.html">EVENT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EVENT_8h_source.html#l00023">23</a> of file <a class="el" href="EVENT_8h_source.html">EVENT.h</a>.</p>
 
 </div>
 </div>
@@ -257,12 +294,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int EVENT::m_Zone</td>
+          <td class="memname">int EVENT::m_Zone = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EVENT_8h_source.html#l00017">17</a> of file <a class="el" href="EVENT_8h_source.html">EVENT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EVENT_8h_source.html#l00022">22</a> of file <a class="el" href="EVENT_8h_source.html">EVENT.h</a>.</p>
 
 </div>
 </div>

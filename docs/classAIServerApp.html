@@ -109,6 +109,10 @@ $(function(){initNavTree('classAIServerApp.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac94db948e7fff494b6d5377c931bcd83" id="r_ac94db948e7fff494b6d5377c931bcd83"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac94db948e7fff494b6d5377c931bcd83">itemLogger</a> ()</td></tr>
+<tr class="separator:ac94db948e7fff494b6d5377c931bcd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47f04e9b442528a3ce2b0f8b0fce4bd" id="r_ae47f04e9b442528a3ce2b0f8b0fce4bd"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47f04e9b442528a3ce2b0f8b0fce4bd">userLogger</a> ()</td></tr>
+<tr class="separator:ae47f04e9b442528a3ce2b0f8b0fce4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0c18700874f102bd35e1c3ea44531b" id="r_a0c0c18700874f102bd35e1c3ea44531b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c0c18700874f102bd35e1c3ea44531b">GameServerAcceptThread</a> ()</td></tr>
 <tr class="separator:a0c0c18700874f102bd35e1c3ea44531b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb78be95bbe42c0cc30818edda3c29cd" id="r_adb78be95bbe42c0cc30818edda3c29cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb78be95bbe42c0cc30818edda3c29cd">AddObjectEventNpc</a> (<a class="el" href="struct__OBJECT__EVENT.html">_OBJECT_EVENT</a> *pEvent, int zone_number)</td></tr>
@@ -164,6 +168,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf837cc0ca7f987aa27df0be6bebd1eb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread" id="r_a5808f26160479e3478efe7872a09a59f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a5808f26160479e3478efe7872a09a59f">IsShutdown</a> () const</td></tr>
 <tr class="separator:a5808f26160479e3478efe7872a09a59f inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread" id="r_a4a52d7425f6c14832fbce49bb695ee8b"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a4a52d7425f6c14832fbce49bb695ee8b">ThreadMutex</a> () const</td></tr>
+<tr class="separator:a4a52d7425f6c14832fbce49bb695ee8b inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread" id="r_a25b83df089760f3877d0d6e6dc2ab077"><td class="memItemLeft" align="right" valign="top">std::condition_variable &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a25b83df089760f3877d0d6e6dc2ab077">ThreadCondition</a> ()</td></tr>
+<tr class="separator:a25b83df089760f3877d0d6e6dc2ab077 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread" id="r_a1f53ee62bd30a7924186ef26150ce262"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">start</a> ()</td></tr>
 <tr class="separator:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a221711b56608703df63e399c35e87284 inherit pub_methods_classThread" id="r_a221711b56608703df63e399c35e87284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#a221711b56608703df63e399c35e87284">shutdown</a> (bool waitForShutdown=true)</td></tr>
@@ -218,53 +226,53 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aa2df841f26df66558be3aa645c60cd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad11110e611471c50ea26f78b53708452" id="r_ad11110e611471c50ea26f78b53708452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSTLMap.html">ZoneInfoTableMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad11110e611471c50ea26f78b53708452">_zoneInfoTableMap</a></td></tr>
 <tr class="separator:ad11110e611471c50ea26f78b53708452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc3c9bab053b534da20ffbe516c24cbf" id="r_abc3c9bab053b534da20ffbe516c24cbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classZoneEventThread.html">ZoneEventThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc3c9bab053b534da20ffbe516c24cbf">_zoneEventThread</a></td></tr>
+<tr class="memitem:abc3c9bab053b534da20ffbe516c24cbf" id="r_abc3c9bab053b534da20ffbe516c24cbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classZoneEventThread.html">ZoneEventThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc3c9bab053b534da20ffbe516c24cbf">_zoneEventThread</a> = nullptr</td></tr>
 <tr class="separator:abc3c9bab053b534da20ffbe516c24cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a816a7c26fe8cbae8a56efdee84037e5b" id="r_a816a7c26fe8cbae8a56efdee84037e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCUser.html">CUser</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816a7c26fe8cbae8a56efdee84037e5b">_users</a> [MAX_USER]</td></tr>
+<tr class="memitem:a816a7c26fe8cbae8a56efdee84037e5b" id="r_a816a7c26fe8cbae8a56efdee84037e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCUser.html">CUser</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816a7c26fe8cbae8a56efdee84037e5b">_users</a> [MAX_USER] = {}</td></tr>
 <tr class="separator:a816a7c26fe8cbae8a56efdee84037e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a802c8ccbbf10ddf2208bd88c48bc1030" id="r_a802c8ccbbf10ddf2208bd88c48bc1030"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCNpcItem.html">CNpcItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a802c8ccbbf10ddf2208bd88c48bc1030">_npcItem</a></td></tr>
 <tr class="separator:a802c8ccbbf10ddf2208bd88c48bc1030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88a64ec073d60b13d77e38c3fe46699" id="r_af88a64ec073d60b13d77e38c3fe46699"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af88a64ec073d60b13d77e38c3fe46699">_totalNpcCount</a></td></tr>
+<tr class="memitem:af88a64ec073d60b13d77e38c3fe46699" id="r_af88a64ec073d60b13d77e38c3fe46699"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af88a64ec073d60b13d77e38c3fe46699">_totalNpcCount</a> = 0</td></tr>
 <tr class="separator:af88a64ec073d60b13d77e38c3fe46699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a839e0070e1ce023f283131e2fd1e04" id="r_a1a839e0070e1ce023f283131e2fd1e04"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a839e0070e1ce023f283131e2fd1e04">_loadedNpcCount</a></td></tr>
+<tr class="memitem:a1a839e0070e1ce023f283131e2fd1e04" id="r_a1a839e0070e1ce023f283131e2fd1e04"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a839e0070e1ce023f283131e2fd1e04">_loadedNpcCount</a> = 0</td></tr>
 <tr class="separator:a1a839e0070e1ce023f283131e2fd1e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca80a1557819b71248a4a273b9988cea" id="r_aca80a1557819b71248a4a273b9988cea"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca80a1557819b71248a4a273b9988cea">_mapCount</a></td></tr>
+<tr class="memitem:aca80a1557819b71248a4a273b9988cea" id="r_aca80a1557819b71248a4a273b9988cea"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca80a1557819b71248a4a273b9988cea">_mapCount</a> = 0</td></tr>
 <tr class="separator:aca80a1557819b71248a4a273b9988cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d90b11e0bcda36dd82bfe3aa06f211" id="r_a76d90b11e0bcda36dd82bfe3aa06f211"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d90b11e0bcda36dd82bfe3aa06f211">_mapEventNpcCount</a></td></tr>
+<tr class="memitem:a76d90b11e0bcda36dd82bfe3aa06f211" id="r_a76d90b11e0bcda36dd82bfe3aa06f211"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d90b11e0bcda36dd82bfe3aa06f211">_mapEventNpcCount</a> = 0</td></tr>
 <tr class="separator:a76d90b11e0bcda36dd82bfe3aa06f211"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a027ee971fd6585c8c95ab75c8aea371b" id="r_a027ee971fd6585c8c95ab75c8aea371b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a027ee971fd6585c8c95ab75c8aea371b">_firstServerFlag</a></td></tr>
+<tr class="memitem:a027ee971fd6585c8c95ab75c8aea371b" id="r_a027ee971fd6585c8c95ab75c8aea371b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a027ee971fd6585c8c95ab75c8aea371b">_firstServerFlag</a> = false</td></tr>
 <tr class="separator:a027ee971fd6585c8c95ab75c8aea371b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9527ab3e611ff2967ade59694d47791" id="r_ad9527ab3e611ff2967ade59694d47791"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9527ab3e611ff2967ade59694d47791">_socketCount</a></td></tr>
+<tr class="memitem:ad9527ab3e611ff2967ade59694d47791" id="r_ad9527ab3e611ff2967ade59694d47791"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9527ab3e611ff2967ade59694d47791">_socketCount</a> = 0</td></tr>
 <tr class="separator:ad9527ab3e611ff2967ade59694d47791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70adc61b9f3a7fba206c9afc14be901b" id="r_a70adc61b9f3a7fba206c9afc14be901b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70adc61b9f3a7fba206c9afc14be901b">_reconnectSocketCount</a></td></tr>
+<tr class="memitem:a70adc61b9f3a7fba206c9afc14be901b" id="r_a70adc61b9f3a7fba206c9afc14be901b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70adc61b9f3a7fba206c9afc14be901b">_reconnectSocketCount</a> = 0</td></tr>
 <tr class="separator:a70adc61b9f3a7fba206c9afc14be901b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2d537535189c365893d4b63a1731b4f" id="r_ae2d537535189c365893d4b63a1731b4f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2d537535189c365893d4b63a1731b4f">_reconnectStartTime</a></td></tr>
+<tr class="memitem:ae2d537535189c365893d4b63a1731b4f" id="r_ae2d537535189c365893d4b63a1731b4f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2d537535189c365893d4b63a1731b4f">_reconnectStartTime</a> = 0.0</td></tr>
 <tr class="separator:ae2d537535189c365893d4b63a1731b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a375c93c3cd6d1347855771a18db5afa9" id="r_a375c93c3cd6d1347855771a18db5afa9"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a375c93c3cd6d1347855771a18db5afa9">_aliveSocketCount</a></td></tr>
+<tr class="memitem:a375c93c3cd6d1347855771a18db5afa9" id="r_a375c93c3cd6d1347855771a18db5afa9"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a375c93c3cd6d1347855771a18db5afa9">_aliveSocketCount</a> = 0</td></tr>
 <tr class="separator:a375c93c3cd6d1347855771a18db5afa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca3ad8bacb896315c8388e27b2f6148f" id="r_aca3ad8bacb896315c8388e27b2f6148f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca3ad8bacb896315c8388e27b2f6148f">_battleEventType</a></td></tr>
+<tr class="memitem:aca3ad8bacb896315c8388e27b2f6148f" id="r_aca3ad8bacb896315c8388e27b2f6148f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca3ad8bacb896315c8388e27b2f6148f">_battleEventType</a> = BATTLEZONE_CLOSE</td></tr>
 <tr class="separator:aca3ad8bacb896315c8388e27b2f6148f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa59ac83b8f63b5ecce659ff715ca1e3d" id="r_aa59ac83b8f63b5ecce659ff715ca1e3d"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa59ac83b8f63b5ecce659ff715ca1e3d">_battleNpcsKilledByKarus</a></td></tr>
+<tr class="memitem:aa59ac83b8f63b5ecce659ff715ca1e3d" id="r_aa59ac83b8f63b5ecce659ff715ca1e3d"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa59ac83b8f63b5ecce659ff715ca1e3d">_battleNpcsKilledByKarus</a> = 0</td></tr>
 <tr class="separator:aa59ac83b8f63b5ecce659ff715ca1e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d4c5336200232198965a08ddfe34854" id="r_a3d4c5336200232198965a08ddfe34854"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d4c5336200232198965a08ddfe34854">_battleNpcsKilledByElmorad</a></td></tr>
+<tr class="memitem:a3d4c5336200232198965a08ddfe34854" id="r_a3d4c5336200232198965a08ddfe34854"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d4c5336200232198965a08ddfe34854">_battleNpcsKilledByElmorad</a> = 0</td></tr>
 <tr class="separator:a3d4c5336200232198965a08ddfe34854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bb27e808a7d9778dc33c527a3c98b53" id="r_a0bb27e808a7d9778dc33c527a3c98b53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bb27e808a7d9778dc33c527a3c98b53">_year</a></td></tr>
+<tr class="memitem:a0bb27e808a7d9778dc33c527a3c98b53" id="r_a0bb27e808a7d9778dc33c527a3c98b53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bb27e808a7d9778dc33c527a3c98b53">_year</a> = 0</td></tr>
 <tr class="separator:a0bb27e808a7d9778dc33c527a3c98b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ebba3db5be94dd571d37a10c1f61a07" id="r_a0ebba3db5be94dd571d37a10c1f61a07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ebba3db5be94dd571d37a10c1f61a07">_month</a></td></tr>
+<tr class="memitem:a0ebba3db5be94dd571d37a10c1f61a07" id="r_a0ebba3db5be94dd571d37a10c1f61a07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ebba3db5be94dd571d37a10c1f61a07">_month</a> = 0</td></tr>
 <tr class="separator:a0ebba3db5be94dd571d37a10c1f61a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae80712ee2552702593d72f554e3896ad" id="r_ae80712ee2552702593d72f554e3896ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae80712ee2552702593d72f554e3896ad">_dayOfMonth</a></td></tr>
+<tr class="memitem:ae80712ee2552702593d72f554e3896ad" id="r_ae80712ee2552702593d72f554e3896ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae80712ee2552702593d72f554e3896ad">_dayOfMonth</a> = 0</td></tr>
 <tr class="separator:ae80712ee2552702593d72f554e3896ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67e9fe9659a2937006e35323a7195cde" id="r_a67e9fe9659a2937006e35323a7195cde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67e9fe9659a2937006e35323a7195cde">_hour</a></td></tr>
+<tr class="memitem:a67e9fe9659a2937006e35323a7195cde" id="r_a67e9fe9659a2937006e35323a7195cde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67e9fe9659a2937006e35323a7195cde">_hour</a> = 0</td></tr>
 <tr class="separator:a67e9fe9659a2937006e35323a7195cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35029f4920c750d72530e73c8c6794c3" id="r_a35029f4920c750d72530e73c8c6794c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35029f4920c750d72530e73c8c6794c3">_minute</a></td></tr>
+<tr class="memitem:a35029f4920c750d72530e73c8c6794c3" id="r_a35029f4920c750d72530e73c8c6794c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35029f4920c750d72530e73c8c6794c3">_minute</a> = 0</td></tr>
 <tr class="separator:a35029f4920c750d72530e73c8c6794c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a4d971e81a5aa0d1a74db669bf28f45" id="r_a0a4d971e81a5aa0d1a74db669bf28f45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a4d971e81a5aa0d1a74db669bf28f45">_weatherType</a></td></tr>
+<tr class="memitem:a0a4d971e81a5aa0d1a74db669bf28f45" id="r_a0a4d971e81a5aa0d1a74db669bf28f45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a4d971e81a5aa0d1a74db669bf28f45">_weatherType</a> = 0</td></tr>
 <tr class="separator:a0a4d971e81a5aa0d1a74db669bf28f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a045177aeae8da7000b6720d21b42e807" id="r_a045177aeae8da7000b6720d21b42e807"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a045177aeae8da7000b6720d21b42e807">_weatherAmount</a></td></tr>
+<tr class="memitem:a045177aeae8da7000b6720d21b42e807" id="r_a045177aeae8da7000b6720d21b42e807"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a045177aeae8da7000b6720d21b42e807">_weatherAmount</a> = 0</td></tr>
 <tr class="separator:a045177aeae8da7000b6720d21b42e807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0f1ae4a1d4a9f84a26e1503b448ba66" id="r_ae0f1ae4a1d4a9f84a26e1503b448ba66"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0f1ae4a1d4a9f84a26e1503b448ba66">_nightMode</a></td></tr>
+<tr class="memitem:ae0f1ae4a1d4a9f84a26e1503b448ba66" id="r_ae0f1ae4a1d4a9f84a26e1503b448ba66"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0f1ae4a1d4a9f84a26e1503b448ba66">_nightMode</a> = 1</td></tr>
 <tr class="separator:ae0f1ae4a1d4a9f84a26e1503b448ba66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab94c826af8f33010300e2538927d4230" id="r_ab94c826af8f33010300e2538927d4230"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab94c826af8f33010300e2538927d4230">_testMode</a></td></tr>
+<tr class="memitem:ab94c826af8f33010300e2538927d4230" id="r_ab94c826af8f33010300e2538927d4230"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab94c826af8f33010300e2538927d4230">_testMode</a> = 0</td></tr>
 <tr class="separator:ab94c826af8f33010300e2538927d4230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6623fe64c6eac65c5c8890711e197bc8" id="r_a6623fe64c6eac65c5c8890711e197bc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAISocketManager.html">AISocketManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6623fe64c6eac65c5c8890711e197bc8">_socketManager</a></td></tr>
 <tr class="separator:a6623fe64c6eac65c5c8890711e197bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,17 +307,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a18b87d1b059b017382f015c220a214bf inherit pro_attribs_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48c8139d147d040ec9fa0f13e3fed499 inherit pro_attribs_classAppThread" id="r_a48c8139d147d040ec9fa0f13e3fed499"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppThread.html#a48c8139d147d040ec9fa0f13e3fed499">_headless</a></td></tr>
 <tr class="separator:a48c8139d147d040ec9fa0f13e3fed499 inherit pro_attribs_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
-<tr class="memitem:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread" id="r_ad017d81db19923e40d87a2668f348647"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad017d81db19923e40d87a2668f348647">_mutex</a></td></tr>
-<tr class="separator:ad017d81db19923e40d87a2668f348647 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread" id="r_ad2d958b5dbd95049b9e12b57259b6f60"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad2d958b5dbd95049b9e12b57259b6f60">_cv</a></td></tr>
-<tr class="separator:ad2d958b5dbd95049b9e12b57259b6f60 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread" id="r_ab188a5ebf8a6f5af21107bb37cd10ce4"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ab188a5ebf8a6f5af21107bb37cd10ce4">_thread</a></td></tr>
-<tr class="separator:ab188a5ebf8a6f5af21107bb37cd10ce4 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread" id="r_ad33a646f7196c68a78c3dd7fcad3af5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ad33a646f7196c68a78c3dd7fcad3af5b">_canTick</a></td></tr>
-<tr class="separator:ad33a646f7196c68a78c3dd7fcad3af5b inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread" id="r_ada004eb51974c7fe04eb645e4e0f7cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThread.html#ada004eb51974c7fe04eb645e4e0f7cf7">_isShutdown</a></td></tr>
-<tr class="separator:ada004eb51974c7fe04eb645e4e0f7cf7 inherit pro_attribs_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classAppThread"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classAppThread')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classAppThread.html">AppThread</a></td></tr>
 <tr class="memitem:ad9787223af1ad2b8e8cb31c12d86ab5e inherit pro_static_attribs_classAppThread" id="r_ad9787223af1ad2b8e8cb31c12d86ab5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classAppThread.html">AppThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppThread.html#ad9787223af1ad2b8e8cb31c12d86ab5e">s_instance</a> = nullptr</td></tr>
 <tr class="separator:ad9787223af1ad2b8e8cb31c12d86ab5e inherit pro_static_attribs_classAppThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -339,11 +336,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ab6a652f1e2db413402da43978b5928e7" name="ab6a652f1e2db413402da43978b5928e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6a652f1e2db413402da43978b5928e7">&#9670;&#160;</a></span>~AIServerApp()</h2>
+<a id="a6a23d26154b25c8ad6d0f60b2f1a369d" name="a6a23d26154b25c8ad6d0f60b2f1a369d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a23d26154b25c8ad6d0f60b2f1a369d">&#9670;&#160;</a></span>~AIServerApp()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">AIServerApp::~AIServerApp </td>
@@ -352,9 +352,14 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00062">62</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00046">46</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +383,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01422">1422</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01410">1410</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -397,7 +402,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01008">1008</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00995">995</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -416,7 +421,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01143">1143</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01130">1130</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -435,7 +440,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01176">1176</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01163">1163</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -454,7 +459,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00890">890</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00877">877</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -473,7 +478,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01297">1297</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01285">1285</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -504,7 +509,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd>_serverZoneType </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the associated listen port or -1 if invalid </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00348">348</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00335">335</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -523,7 +528,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01696">1696</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01684">1684</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +547,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01685">1685</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01673">1673</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -561,7 +566,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01507">1507</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01495">1495</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -580,7 +585,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01106">1106</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01093">1093</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -599,7 +604,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01494">1494</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01482">1482</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -630,6 +635,33 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ac94db948e7fff494b6d5377c931bcd83" name="ac94db948e7fff494b6d5377c931bcd83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94db948e7fff494b6d5377c931bcd83">&#9670;&#160;</a></span>itemLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; spdlog::logger &gt; &amp; AIServerApp::itemLogger </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00051">51</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+
+</div>
+</div>
 <a id="acaf5978d9afba206b5749a6263be3d78" name="acaf5978d9afba206b5749a6263be3d78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acaf5978d9afba206b5749a6263be3d78">&#9670;&#160;</a></span>ListenByServerZoneType()</h2>
 
@@ -657,7 +689,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd>_serverZoneType </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true when successful, otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00327">327</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00314">314</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -689,7 +721,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classAppThread.html#aa130556414bab427657551fdc8efead7">AppThread</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00139">139</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l00123">123</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -708,7 +740,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01662">1662</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01650">1650</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -736,7 +768,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01273">1273</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01261">1261</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -755,7 +787,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01229">1229</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01216">1216</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
 
 </div>
 </div>
@@ -788,7 +820,34 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01647">1647</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8cpp_source.html#l01635">1635</a> of file <a class="el" href="AIServerApp_8cpp_source.html">AIServerApp.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae47f04e9b442528a3ce2b0f8b0fce4bd" name="ae47f04e9b442528a3ce2b0f8b0fce4bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47f04e9b442528a3ce2b0f8b0fce4bd">&#9670;&#160;</a></span>userLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; spdlog::logger &gt; &amp; AIServerApp::userLogger </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00056">56</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -800,12 +859,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_aliveSocketCount</td>
+          <td class="memname">int16_t AIServerApp::_aliveSocketCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00108">108</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00118">118</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -816,12 +875,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t AIServerApp::_battleEventType</td>
+          <td class="memname">uint8_t AIServerApp::_battleEventType = BATTLEZONE_CLOSE</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00110">110</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00121">121</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -832,12 +891,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_battleNpcsKilledByElmorad</td>
+          <td class="memname">int16_t AIServerApp::_battleNpcsKilledByElmorad = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00111">111</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00125">125</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -848,12 +907,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_battleNpcsKilledByKarus</td>
+          <td class="memname">int16_t AIServerApp::_battleNpcsKilledByKarus = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00111">111</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00124">124</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -864,12 +923,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_dayOfMonth</td>
+          <td class="memname">int AIServerApp::_dayOfMonth = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00113">113</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00129">129</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -880,12 +939,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool AIServerApp::_firstServerFlag</td>
+          <td class="memname">bool AIServerApp::_firstServerFlag = false</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00104">104</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00114">114</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -896,12 +955,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_hour</td>
+          <td class="memname">int AIServerApp::_hour = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00113">113</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00130">130</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -912,12 +971,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;long&gt; AIServerApp::_loadedNpcCount</td>
+          <td class="memname">std::atomic&lt;long&gt; AIServerApp::_loadedNpcCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00099">99</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00109">109</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -933,7 +992,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00076">76</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00086">86</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -949,7 +1008,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00077">77</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00087">87</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -965,7 +1024,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00078">78</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00088">88</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1040,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00079">79</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00089">89</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -997,7 +1056,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00080">80</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00090">90</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1013,7 +1072,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00081">81</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00091">91</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1029,7 +1088,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00084">84</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00094">94</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1045,7 +1104,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00085">85</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00095">95</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1120,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00082">82</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00092">92</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1136,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00086">86</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00096">96</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1152,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00083">83</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00093">93</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1104,12 +1163,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_mapCount</td>
+          <td class="memname">int16_t AIServerApp::_mapCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00100">100</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00110">110</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1120,12 +1179,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_mapEventNpcCount</td>
+          <td class="memname">int16_t AIServerApp::_mapEventNpcCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00101">101</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00111">111</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1136,12 +1195,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_minute</td>
+          <td class="memname">int AIServerApp::_minute = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00113">113</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00131">131</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1157,7 +1216,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00072">72</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00082">82</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1168,12 +1227,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_month</td>
+          <td class="memname">int AIServerApp::_month = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00113">113</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00128">128</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1184,12 +1243,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t AIServerApp::_nightMode</td>
+          <td class="memname">uint8_t AIServerApp::_nightMode = 1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00115">115</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00134">134</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1205,7 +1264,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00095">95</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00105">105</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1280,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00071">71</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00081">81</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1237,7 +1296,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00073">73</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00083">83</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1312,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00074">74</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00084">84</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1269,7 +1328,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00075">75</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00085">85</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1280,12 +1339,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_reconnectSocketCount</td>
+          <td class="memname">int16_t AIServerApp::_reconnectSocketCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00106">106</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00116">116</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1296,12 +1355,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double AIServerApp::_reconnectStartTime</td>
+          <td class="memname">double AIServerApp::_reconnectStartTime = 0.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00107">107</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00117">117</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1312,12 +1371,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t AIServerApp::_socketCount</td>
+          <td class="memname">int16_t AIServerApp::_socketCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00105">105</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00115">115</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1333,7 +1392,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00118">118</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00137">137</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1344,12 +1403,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t AIServerApp::_testMode</td>
+          <td class="memname">uint8_t AIServerApp::_testMode = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00116">116</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00135">135</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1360,12 +1419,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long AIServerApp::_totalNpcCount</td>
+          <td class="memname">long AIServerApp::_totalNpcCount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00098">98</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00108">108</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1376,12 +1435,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCUser.html">CUser</a>* AIServerApp::_users[MAX_USER]</td>
+          <td class="memname"><a class="el" href="classCUser.html">CUser</a>* AIServerApp::_users[MAX_USER] = {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00092">92</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00102">102</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1392,12 +1451,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_weatherAmount</td>
+          <td class="memname">int AIServerApp::_weatherAmount = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00114">114</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00133">133</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1408,12 +1467,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_weatherType</td>
+          <td class="memname">int AIServerApp::_weatherType = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00114">114</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00132">132</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1424,12 +1483,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int AIServerApp::_year</td>
+          <td class="memname">int AIServerApp::_year = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00113">113</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00127">127</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1440,12 +1499,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classZoneEventThread.html">ZoneEventThread</a>* AIServerApp::_zoneEventThread</td>
+          <td class="memname"><a class="el" href="classZoneEventThread.html">ZoneEventThread</a>* AIServerApp::_zoneEventThread = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00090">90</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00100">100</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1461,7 +1520,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00088">88</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00098">98</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>
@@ -1477,7 +1536,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00087">87</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AIServerApp_8h_source.html#l00097">97</a> of file <a class="el" href="AIServerApp_8h_source.html">AIServerApp.h</a>.</p>
 
 </div>
 </div>

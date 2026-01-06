@@ -109,8 +109,8 @@ $(function(){initNavTree('classCUISkillTreeDlg.html',''); initResizable(true); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a9875a47ef89bd2bdfbab42eae194fe" id="r_a5a9875a47ef89bd2bdfbab42eae194fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a9875a47ef89bd2bdfbab42eae194fe">SetVisible</a> (bool bVisible)</td></tr>
-<tr class="separator:a5a9875a47ef89bd2bdfbab42eae194fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c65d3d5925223677fb7a532fc5adf41" id="r_a3c65d3d5925223677fb7a532fc5adf41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c65d3d5925223677fb7a532fc5adf41">SetVisible</a> (bool bVisible) override</td></tr>
+<tr class="separator:a3c65d3d5925223677fb7a532fc5adf41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efaf870867f08343092a8f18c2f3d15" id="r_a8efaf870867f08343092a8f18c2f3d15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8efaf870867f08343092a8f18c2f3d15">SetVisibleWithNoSound</a> (bool bVisible, bool bWork=false, bool bReFocus=false) override</td></tr>
 <tr class="separator:a8efaf870867f08343092a8f18c2f3d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82045b7a785e5401f2ba69a1512e6352" id="r_a82045b7a785e5401f2ba69a1512e6352"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82045b7a785e5401f2ba69a1512e6352">OnKeyPress</a> (int iKey) override</td></tr>
@@ -139,8 +139,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab7593310508fa33012d6d188b70725a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5adea1ff141461782dc1a8ca7c0cdb2" id="r_ad5adea1ff141461782dc1a8ca7c0cdb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5adea1ff141461782dc1a8ca7c0cdb2">GetSkilliOrder</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spSkill)</td></tr>
 <tr class="separator:ad5adea1ff141461782dc1a8ca7c0cdb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80af829c3ed8a21d90d9426359d94037" id="r_a80af829c3ed8a21d90d9426359d94037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80af829c3ed8a21d90d9426359d94037">AddSkillToPage</a> (<a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *pUSkill, int iOffset=0, bool bHasLevelToUse=true)</td></tr>
-<tr class="separator:a80af829c3ed8a21d90d9426359d94037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f53544f7048b6ed759117c7f654f51d" id="r_a7f53544f7048b6ed759117c7f654f51d"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f53544f7048b6ed759117c7f654f51d">FindSlotForSkill</a> (const <a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *pUSkill, int iCategoryOffset=0) const</td></tr>
+<tr class="separator:a7f53544f7048b6ed759117c7f654f51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d8e6079c2c7a9a5aad99d2ee3b42aa" id="r_aa5d8e6079c2c7a9a5aad99d2ee3b42aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5d8e6079c2c7a9a5aad99d2ee3b42aa">AddSkillToPage</a> (<a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *pUSkill, int iCategoryOffset=0, bool bHasLevelToUse=true)</td></tr>
+<tr class="separator:aa5d8e6079c2c7a9a5aad99d2ee3b42aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a638a677391f10c60171d93ebe033feab" id="r_a638a677391f10c60171d93ebe033feab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a638a677391f10c60171d93ebe033feab">SetPageInIconRegion</a> (int iKindOf, int iPageNum)</td></tr>
 <tr class="separator:a638a677391f10c60171d93ebe033feab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97cd250f9e36556f5867e3d229811dad" id="r_a97cd250f9e36556f5867e3d229811dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97cd250f9e36556f5867e3d229811dad">SetPageInCharRegion</a> ()</td></tr>
@@ -155,8 +157,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2f1792ab3fb1975b0a99682c094e5a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a3455980009fa1bd50eb0be9d3f46f3" id="r_a4a3455980009fa1bd50eb0be9d3f46f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a3455980009fa1bd50eb0be9d3f46f3">PointPushUpButton</a> (int iValue)</td></tr>
 <tr class="separator:a4a3455980009fa1bd50eb0be9d3f46f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c2b0b74d1819cfc79d3b97cdfb94596" id="r_a9c2b0b74d1819cfc79d3b97cdfb94596"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c2b0b74d1819cfc79d3b97cdfb94596">HasIDSkill</a> (int iID)</td></tr>
-<tr class="separator:a9c2b0b74d1819cfc79d3b97cdfb94596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc083c5519e25ec65119acbac0bd2b0" id="r_a9dc083c5519e25ec65119acbac0bd2b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc083c5519e25ec65119acbac0bd2b0">HasIDSkill</a> (int iID) const</td></tr>
+<tr class="separator:a9dc083c5519e25ec65119acbac0bd2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a076e05b7655e5de037609db8e3bbedb0" id="r_a076e05b7655e5de037609db8e3bbedb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a076e05b7655e5de037609db8e3bbedb0">ButtonVisibleStateSet</a> ()</td></tr>
 <tr class="separator:a076e05b7655e5de037609db8e3bbedb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7621f8bd3302103f5179ac8c0d8bb255" id="r_a7621f8bd3302103f5179ac8c0d8bb255"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7621f8bd3302103f5179ac8c0d8bb255">TooltipRenderEnable</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spSkill)</td></tr>
@@ -182,14 +184,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a76b4ed9f38624cc09d7439023f8f7aed inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27ec2f5fa43a3502273a1073b06ef2d9 inherit pub_methods_classCN3UIWndBase" id="r_a27ec2f5fa43a3502273a1073b06ef2d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a27ec2f5fa43a3502273a1073b06ef2d9">IconRestore</a> ()</td></tr>
 <tr class="separator:a27ec2f5fa43a3502273a1073b06ef2d9 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a906f1ac50ff1fc2929a5057ccc182b3d inherit pub_methods_classCN3UIWndBase" id="r_a906f1ac50ff1fc2929a5057ccc182b3d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a906f1ac50ff1fc2929a5057ccc182b3d">CheckIconDropFromOtherWnd</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spItem)</td></tr>
-<tr class="separator:a906f1ac50ff1fc2929a5057ccc182b3d inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03973f7ca5963f2a078968774c14daed inherit pub_methods_classCN3UIWndBase" id="r_a03973f7ca5963f2a078968774c14daed"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a03973f7ca5963f2a078968774c14daed">ReceiveIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spItem, POINT ptCur)</td></tr>
-<tr class="separator:a03973f7ca5963f2a078968774c14daed inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fde487ad86ecfa2a4fe92d8f2353b68 inherit pub_methods_classCN3UIWndBase" id="r_a9fde487ad86ecfa2a4fe92d8f2353b68"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a9fde487ad86ecfa2a4fe92d8f2353b68">CancelIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spItem)</td></tr>
-<tr class="separator:a9fde487ad86ecfa2a4fe92d8f2353b68 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9daec9187381d6344229c72b7e640833 inherit pub_methods_classCN3UIWndBase" id="r_a9daec9187381d6344229c72b7e640833"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a9daec9187381d6344229c72b7e640833">AcceptIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *spItem)</td></tr>
-<tr class="separator:a9daec9187381d6344229c72b7e640833 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1df761c8ce8e7875e6fd35f128f857 inherit pub_methods_classCN3UIWndBase" id="r_afe1df761c8ce8e7875e6fd35f128f857"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#afe1df761c8ce8e7875e6fd35f128f857">CheckIconDropFromOtherWnd</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *)</td></tr>
+<tr class="separator:afe1df761c8ce8e7875e6fd35f128f857 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72fd1fb30b34463b2fa3cce1f14697cf inherit pub_methods_classCN3UIWndBase" id="r_a72fd1fb30b34463b2fa3cce1f14697cf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a72fd1fb30b34463b2fa3cce1f14697cf">ReceiveIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *, POINT)</td></tr>
+<tr class="separator:a72fd1fb30b34463b2fa3cce1f14697cf inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617b12ada92ce30fc08406fae4547ca6 inherit pub_methods_classCN3UIWndBase" id="r_a617b12ada92ce30fc08406fae4547ca6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a617b12ada92ce30fc08406fae4547ca6">CancelIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *)</td></tr>
+<tr class="separator:a617b12ada92ce30fc08406fae4547ca6 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae28e19f831ea2d6a9d8d7243d0673b26 inherit pub_methods_classCN3UIWndBase" id="r_ae28e19f831ea2d6a9d8d7243d0673b26"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#ae28e19f831ea2d6a9d8d7243d0673b26">AcceptIconDrop</a> (<a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *)</td></tr>
+<tr class="separator:ae28e19f831ea2d6a9d8d7243d0673b26 inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b795f3946cfb665db952f4ce5531c7c inherit pub_methods_classCN3UIWndBase" id="r_a6b795f3946cfb665db952f4ce5531c7c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#a6b795f3946cfb665db952f4ce5531c7c">PlayItemSound</a> (<a class="el" href="struct____TABLE__ITEM__BASIC.html">__TABLE_ITEM_BASIC</a> *pBasic)</td></tr>
 <tr class="separator:a6b795f3946cfb665db952f4ce5531c7c inherit pub_methods_classCN3UIWndBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc753b9f43eec7495c107b326e4407e inherit pub_methods_classCN3UIWndBase" id="r_abbc753b9f43eec7495c107b326e4407e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIWndBase.html#abbc753b9f43eec7495c107b326e4407e">PlayGoldSound</a> ()</td></tr>
@@ -205,8 +207,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a40b918a2b51567967ba1d867807e3b62 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11e1515072137619e5ac61cc7634b620 inherit pub_methods_classCN3UIBase" id="r_a11e1515072137619e5ac61cc7634b620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a11e1515072137619e5ac61cc7634b620">SetTooltipColor</a> (D3DCOLOR crTooltip)</td></tr>
 <tr class="separator:a11e1515072137619e5ac61cc7634b620 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc4b8e949c4cdc073c55ea6602189cfd inherit pub_methods_classCN3UIBase" id="r_afc4b8e949c4cdc073c55ea6602189cfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#afc4b8e949c4cdc073c55ea6602189cfd">PrintChildIDs</a> ()</td></tr>
-<tr class="separator:afc4b8e949c4cdc073c55ea6602189cfd inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e3eebcdaa62c70fffa8c9f863b08ed inherit pub_methods_classCN3UIBase" id="r_a02e3eebcdaa62c70fffa8c9f863b08ed"><td class="memItemLeft" align="right" valign="top">eUI_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a02e3eebcdaa62c70fffa8c9f863b08ed">UIType</a> () const</td></tr>
 <tr class="separator:a02e3eebcdaa62c70fffa8c9f863b08ed inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1b80d36a375daecd9235ddba393ace6 inherit pub_methods_classCN3UIBase" id="r_aa1b80d36a375daecd9235ddba393ace6"><td class="memItemLeft" align="right" valign="top">eUI_STATE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#aa1b80d36a375daecd9235ddba393ace6">GetState</a> () const</td></tr>
@@ -217,16 +217,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab958823b9c922b40ae49302f8aa0c4e6 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5daca748d2bb45356f3886f28a74f49 inherit pub_methods_classCN3UIBase" id="r_ab5daca748d2bb45356f3886f28a74f49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ab5daca748d2bb45356f3886f28a74f49">SetMoveRect</a> (const RECT &amp;Rect)</td></tr>
 <tr class="separator:ab5daca748d2bb45356f3886f28a74f49 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e61e1bd3d4c252a8dfa3c18d9b4de06 inherit pub_methods_classCN3UIBase" id="r_a2e61e1bd3d4c252a8dfa3c18d9b4de06"><td class="memItemLeft" align="right" valign="top">RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a2e61e1bd3d4c252a8dfa3c18d9b4de06">GetMoveRect</a> ()</td></tr>
-<tr class="separator:a2e61e1bd3d4c252a8dfa3c18d9b4de06 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7ed0d4fb9b8dc30850d3a940eba1f0 inherit pub_methods_classCN3UIBase" id="r_a2a7ed0d4fb9b8dc30850d3a940eba1f0"><td class="memItemLeft" align="right" valign="top">RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a2a7ed0d4fb9b8dc30850d3a940eba1f0">GetMoveRect</a> () const</td></tr>
+<tr class="separator:a2a7ed0d4fb9b8dc30850d3a940eba1f0 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae64b3b4b4ac49b11041fc44f78cd3d20 inherit pub_methods_classCN3UIBase" id="r_ae64b3b4b4ac49b11041fc44f78cd3d20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ae64b3b4b4ac49b11041fc44f78cd3d20">SetReserved</a> (uint32_t dwReserved)</td></tr>
 <tr class="separator:ae64b3b4b4ac49b11041fc44f78cd3d20 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad364862d6aa883a5e80c0f85abcb91ed inherit pub_methods_classCN3UIBase" id="r_ad364862d6aa883a5e80c0f85abcb91ed"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ad364862d6aa883a5e80c0f85abcb91ed">GetReserved</a> () const</td></tr>
 <tr class="separator:ad364862d6aa883a5e80c0f85abcb91ed inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8e6b43ee251291457e80b6c805dfb40 inherit pub_methods_classCN3UIBase" id="r_af8e6b43ee251291457e80b6c805dfb40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3UIBase.html">CN3UIBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#af8e6b43ee251291457e80b6c805dfb40">GetParent</a> () const</td></tr>
 <tr class="separator:af8e6b43ee251291457e80b6c805dfb40 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a983cf43a73621ee89002533d6cef2a57 inherit pub_methods_classCN3UIBase" id="r_a983cf43a73621ee89002533d6cef2a57"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a983cf43a73621ee89002533d6cef2a57">GetStyle</a> ()</td></tr>
-<tr class="separator:a983cf43a73621ee89002533d6cef2a57 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ab7f3e81f3d09db6fc5b240c3c162f inherit pub_methods_classCN3UIBase" id="r_a41ab7f3e81f3d09db6fc5b240c3c162f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a41ab7f3e81f3d09db6fc5b240c3c162f">GetStyle</a> () const</td></tr>
+<tr class="separator:a41ab7f3e81f3d09db6fc5b240c3c162f inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4a9871695b43ac419a497d01bd98852 inherit pub_methods_classCN3UIBase" id="r_ac4a9871695b43ac419a497d01bd98852"><td class="memItemLeft" align="right" valign="top">const UIList &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ac4a9871695b43ac419a497d01bd98852">GetChildren</a> () const</td></tr>
 <tr class="separator:ac4a9871695b43ac419a497d01bd98852 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16c9751dda11ea59985747e922fcff5 inherit pub_methods_classCN3UIBase" id="r_ad16c9751dda11ea59985747e922fcff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ad16c9751dda11ea59985747e922fcff5">SetUIType</a> (eUI_TYPE eUIType)</td></tr>
@@ -239,10 +239,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac9e37fe755db2b02361781cb2e9327e inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a017ce56125f9841ade197715b921984e inherit pub_methods_classCN3UIBase" id="r_a017ce56125f9841ade197715b921984e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a017ce56125f9841ade197715b921984e">SetParent</a> (<a class="el" href="classCN3UIBase.html">CN3UIBase</a> *pParent)</td></tr>
 <tr class="separator:a017ce56125f9841ade197715b921984e inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a678e37b4b84450f171d655898e9fc60e inherit pub_methods_classCN3UIBase" id="r_a678e37b4b84450f171d655898e9fc60e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a678e37b4b84450f171d655898e9fc60e">GetWidth</a> ()</td></tr>
-<tr class="separator:a678e37b4b84450f171d655898e9fc60e inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d588c7d2bfa11b8fb31b914be3102ca inherit pub_methods_classCN3UIBase" id="r_a4d588c7d2bfa11b8fb31b914be3102ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a4d588c7d2bfa11b8fb31b914be3102ca">GetHeight</a> ()</td></tr>
-<tr class="separator:a4d588c7d2bfa11b8fb31b914be3102ca inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316899ac04b81afc8f333df1159cc5c9 inherit pub_methods_classCN3UIBase" id="r_a316899ac04b81afc8f333df1159cc5c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a316899ac04b81afc8f333df1159cc5c9">GetWidth</a> () const</td></tr>
+<tr class="separator:a316899ac04b81afc8f333df1159cc5c9 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392f29f0d80eb80276580c8cf825e3d1 inherit pub_methods_classCN3UIBase" id="r_a392f29f0d80eb80276580c8cf825e3d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a392f29f0d80eb80276580c8cf825e3d1">GetHeight</a> () const</td></tr>
+<tr class="separator:a392f29f0d80eb80276580c8cf825e3d1 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92a4a537bcc9c490abc72784ce43d98d inherit pub_methods_classCN3UIBase" id="r_a92a4a537bcc9c490abc72784ce43d98d"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a92a4a537bcc9c490abc72784ce43d98d">GetPos</a> () const</td></tr>
 <tr class="separator:a92a4a537bcc9c490abc72784ce43d98d inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e93cc18e6715c51c64b4b8c9229d07 inherit pub_methods_classCN3UIBase" id="r_af0e93cc18e6715c51c64b4b8c9229d07"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#af0e93cc18e6715c51c64b4b8c9229d07">SetPos</a> (int x, int y)</td></tr>
@@ -275,14 +275,14 @@ template&lt;typename T&gt; </td></tr>
 <tr class="separator:afd227b2fbfa37205fb7aa16253d8a640 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab200eb8feb317f7651940ae4e5b28657 inherit pub_methods_classCN3UIBase" id="r_ab200eb8feb317f7651940ae4e5b28657"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ab200eb8feb317f7651940ae4e5b28657">Init</a> (<a class="el" href="classCN3UIBase.html">CN3UIBase</a> *pParent)</td></tr>
 <tr class="separator:ab200eb8feb317f7651940ae4e5b28657 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7c7c8b20dcb27bac1c1a4c7dc0e846b inherit pub_methods_classCN3UIBase" id="r_aa7c7c8b20dcb27bac1c1a4c7dc0e846b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#aa7c7c8b20dcb27bac1c1a4c7dc0e846b">OnKeyPressed</a> (int iKey)</td></tr>
-<tr class="separator:aa7c7c8b20dcb27bac1c1a4c7dc0e846b inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3778b304b741450ff193a1a8abdcd81d inherit pub_methods_classCN3UIBase" id="r_a3778b304b741450ff193a1a8abdcd81d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a3778b304b741450ff193a1a8abdcd81d">OnKeyPressed</a> (int)</td></tr>
+<tr class="separator:a3778b304b741450ff193a1a8abdcd81d inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1643c4f472ff82200afc7b6f5df19283 inherit pub_methods_classCN3UIBase" id="r_a1643c4f472ff82200afc7b6f5df19283"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a1643c4f472ff82200afc7b6f5df19283">GetChildrenCount</a> () const</td></tr>
 <tr class="separator:a1643c4f472ff82200afc7b6f5df19283 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0b5d4ab2a4618485f900d8c4365906a inherit pub_methods_classCN3UIBase" id="r_ab0b5d4ab2a4618485f900d8c4365906a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3UIBase.html">CN3UIBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#ab0b5d4ab2a4618485f900d8c4365906a">GetChildByIndex</a> (int iIndex)</td></tr>
 <tr class="separator:ab0b5d4ab2a4618485f900d8c4365906a inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08d7b0f8604e3a7804c240fa6bdd4cd5 inherit pub_methods_classCN3UIBase" id="r_a08d7b0f8604e3a7804c240fa6bdd4cd5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a08d7b0f8604e3a7804c240fa6bdd4cd5">operator=</a> (const <a class="el" href="classCN3UIBase.html">CN3UIBase</a> &amp;other)</td></tr>
-<tr class="separator:a08d7b0f8604e3a7804c240fa6bdd4cd5 inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a962facf87d0e78deb370332bc1b6789b inherit pub_methods_classCN3UIBase" id="r_a962facf87d0e78deb370332bc1b6789b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3UIBase.html">CN3UIBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a962facf87d0e78deb370332bc1b6789b">operator=</a> (const <a class="el" href="classCN3UIBase.html">CN3UIBase</a> &amp;other)</td></tr>
+<tr class="separator:a962facf87d0e78deb370332bc1b6789b inherit pub_methods_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCN3BaseFileAccess"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classCN3BaseFileAccess')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a></td></tr>
 <tr class="memitem:aecb5321875c279640ce5e898947c2c56 inherit pub_methods_classCN3BaseFileAccess" id="r_aecb5321875c279640ce5e898947c2c56"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aecb5321875c279640ce5e898947c2c56">FileName</a> () const</td></tr>
 <tr class="separator:aecb5321875c279640ce5e898947c2c56 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -317,8 +317,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a468ca7a429d18f78d39aa076b5e55c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69ad44e20fcdf769e25bb8f8813477cb" id="r_a69ad44e20fcdf769e25bb8f8813477cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct____IconItemSkill.html">__IconItemSkill</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ad44e20fcdf769e25bb8f8813477cb">m_pMySkillTree</a> [MAX_SKILL_KIND_OF][MAX_SKILL_PAGE_NUM][MAX_SKILL_IN_PAGE]</td></tr>
 <tr class="separator:a69ad44e20fcdf769e25bb8f8813477cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bf84019217772b661d508723f4ebdef" id="r_a3bf84019217772b661d508723f4ebdef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bf84019217772b661d508723f4ebdef">m_iCurInPageOffset</a> [MAX_SKILL_KIND_OF]</td></tr>
-<tr class="separator:a3bf84019217772b661d508723f4ebdef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classCN3UIBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_classCN3UIBase')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classCN3UIBase.html">CN3UIBase</a></td></tr>
 <tr class="memitem:a9e39f17e81068c2926896d204346911f inherit pub_attribs_classCN3UIBase" id="r_a9e39f17e81068c2926896d204346911f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a9e39f17e81068c2926896d204346911f">m_szID</a></td></tr>
 <tr class="separator:a9e39f17e81068c2926896d204346911f inherit pub_attribs_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -347,8 +345,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:aaa876eb4e6338fa93f281ba4ff8584bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a689720506eefcfe277abe45c682299" id="r_a8a689720506eefcfe277abe45c682299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a689720506eefcfe277abe45c682299">PageButtonInitialize</a> ()</td></tr>
 <tr class="separator:a8a689720506eefcfe277abe45c682299"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bcfdb3f1f1ad35048403616f8cef648" id="r_a7bcfdb3f1f1ad35048403616f8cef648"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bcfdb3f1f1ad35048403616f8cef648">CheckSkillCanBeUse</a> (<a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *pUSkill)</td></tr>
-<tr class="separator:a7bcfdb3f1f1ad35048403616f8cef648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab305f9495edbe92a2aae58d34723c574" id="r_ab305f9495edbe92a2aae58d34723c574"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab305f9495edbe92a2aae58d34723c574">IsSkillUsable</a> (const <a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *pUSkill) const</td></tr>
+<tr class="separator:ab305f9495edbe92a2aae58d34723c574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -531,7 +529,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00032">32</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00023">23</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -563,8 +561,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a80af829c3ed8a21d90d9426359d94037" name="a80af829c3ed8a21d90d9426359d94037"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80af829c3ed8a21d90d9426359d94037">&#9670;&#160;</a></span>AddSkillToPage()</h2>
+<a id="aa5d8e6079c2c7a9a5aad99d2ee3b42aa" name="aa5d8e6079c2c7a9a5aad99d2ee3b42aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d8e6079c2c7a9a5aad99d2ee3b42aa">&#9670;&#160;</a></span>AddSkillToPage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -577,7 +575,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iOffset</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iCategoryOffset</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -587,7 +585,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01605">1605</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01676">1676</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -623,7 +621,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01851">1851</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01902">1902</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -642,7 +640,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00822">822</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00835">835</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -661,7 +659,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01312">1312</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01352">1352</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -680,34 +678,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00787">787</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a7bcfdb3f1f1ad35048403616f8cef648" name="a7bcfdb3f1f1ad35048403616f8cef648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bcfdb3f1f1ad35048403616f8cef648">&#9670;&#160;</a></span>CheckSkillCanBeUse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CUISkillTreeDlg::CheckSkillCanBeUse </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *</td>          <td class="paramname"><span class="paramname"><em>pUSkill</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01665">1665</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00802">802</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -726,7 +697,30 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01701">1701</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01751">1751</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7f53544f7048b6ed759117c7f654f51d" name="a7f53544f7048b6ed759117c7f654f51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f53544f7048b6ed759117c7f654f51d">&#9670;&#160;</a></span>FindSlotForSkill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; int, int &gt; &gt; CUISkillTreeDlg::FindSlotForSkill </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *</td>          <td class="paramname"><span class="paramname"><em>pUSkill</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iCategoryOffset</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01651">1651</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -745,7 +739,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02021">2021</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02082">2082</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -764,7 +758,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02010">2010</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02071">2071</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -793,7 +787,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classCN3UIWndBase.html">CN3UIWndBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01736">1736</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01786">1786</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -812,7 +806,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00223">223</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00210">210</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -839,7 +833,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01759">1759</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01809">1809</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -858,12 +852,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01748">1748</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01798">1798</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9c2b0b74d1819cfc79d3b97cdfb94596" name="a9c2b0b74d1819cfc79d3b97cdfb94596"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c2b0b74d1819cfc79d3b97cdfb94596">&#9670;&#160;</a></span>HasIDSkill()</h2>
+<a id="a9dc083c5519e25ec65119acbac0bd2b0" name="a9dc083c5519e25ec65119acbac0bd2b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc083c5519e25ec65119acbac0bd2b0">&#9670;&#160;</a></span>HasIDSkill()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -872,12 +866,12 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">bool CUISkillTreeDlg::HasIDSkill </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iID</em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00110">110</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00096">96</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -906,7 +900,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classCN3UIWndBase.html">CN3UIWndBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01164">1164</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01195">1195</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -935,7 +929,34 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIWndBase.html">CN3UIWndBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01152">1152</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01183">1183</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab305f9495edbe92a2aae58d34723c574" name="ab305f9495edbe92a2aae58d34723c574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab305f9495edbe92a2aae58d34723c574">&#9670;&#160;</a></span>IsSkillUsable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CUISkillTreeDlg::IsSkillUsable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct____TABLE__UPC__SKILL.html">__TABLE_UPC_SKILL</a> *</td>          <td class="paramname"><span class="paramname"><em>pUSkill</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01712">1712</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -973,7 +994,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIWndBase.html">CN3UIWndBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00195">195</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00185">185</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +1023,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02033">2033</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02094">2094</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1052,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00749">749</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00764">764</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1071,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01689">1689</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01739">1739</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1098,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01266">1266</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01306">1306</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1096,7 +1117,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00452">452</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00437">437</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1136,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00460">460</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00445">445</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1155,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00468">468</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00453">453</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1188,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00240">240</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00229">229</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1196,7 +1217,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00078">78</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00062">62</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1246,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00759">759</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00774">774</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1265,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01876">1876</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01927">1927</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1267,12 +1288,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01777">1777</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01828">1828</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5a9875a47ef89bd2bdfbab42eae194fe" name="a5a9875a47ef89bd2bdfbab42eae194fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a9875a47ef89bd2bdfbab42eae194fe">&#9670;&#160;</a></span>SetVisible()</h2>
+<a id="a3c65d3d5925223677fb7a532fc5adf41" name="a3c65d3d5925223677fb7a532fc5adf41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c65d3d5925223677fb7a532fc5adf41">&#9670;&#160;</a></span>SetVisible()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1289,14 +1310,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02065">2065</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02131">2131</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1334,7 +1355,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02052">2052</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l02118">2118</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1363,7 +1384,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00143">143</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00133">133</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1382,7 +1403,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01142">1142</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l01173">1173</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1401,7 +1422,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00969">969</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00997">997</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1420,7 +1441,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00126">126</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8cpp_source.html#l00113">113</a> of file <a class="el" href="UISkillTreeDlg_8cpp_source.html">UISkillTreeDlg.cpp</a>.</p>
 
 </div>
 </div>
@@ -1494,22 +1515,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8h_source.html#l00028">28</a> of file <a class="el" href="UISkillTreeDlg_8h_source.html">UISkillTreeDlg.h</a>.</p>
-
-</div>
-</div>
-<a id="a3bf84019217772b661d508723f4ebdef" name="a3bf84019217772b661d508723f4ebdef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bf84019217772b661d508723f4ebdef">&#9670;&#160;</a></span>m_iCurInPageOffset</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int CUISkillTreeDlg::m_iCurInPageOffset[MAX_SKILL_KIND_OF]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="UISkillTreeDlg_8h_source.html#l00045">45</a> of file <a class="el" href="UISkillTreeDlg_8h_source.html">UISkillTreeDlg.h</a>.</p>
 
 </div>
 </div>
