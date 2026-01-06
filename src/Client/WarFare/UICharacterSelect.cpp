@@ -53,7 +53,7 @@ bool CUICharacterSelect::Load(File& file)
 	N3_VERIFY_UI_COMPONENT(m_pUserInfoStr, GetChildByID<CN3UIString>("text00"));
 
 	// 위치를 화면 해상도에 맞게 바꾸기...
-	POINT pt;
+	POINT pt {};
 	RECT rc      = GetRegion();
 	float fRatio = (float) s_CameraData.vp.Width / (rc.right - rc.left);
 
@@ -85,10 +85,10 @@ bool CUICharacterSelect::Load(File& file)
 	{
 		// Previous point in sane cases should be be the exit button.
 		// There's a 15 pixel gap between them in the UIF's layout.
-		POINT ptPrev {};
-		ptPrev = m_pBtnBack->GetPos();
-		pt.x   = (int) (ptPrev.x * fRatio);
-		pt.y   = ptPrev.y - 15 - m_pBtnBack->GetHeight();
+		POINT ptPrev = pt;
+		pt           = m_pBtnBack->GetPos();
+		pt.x         = (int) (pt.x * fRatio);
+		pt.y         = ptPrev.y - 15 - m_pBtnBack->GetHeight();
 		m_pBtnBack->SetPos(pt.x, pt.y);
 	}
 
