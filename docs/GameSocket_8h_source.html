@@ -109,61 +109,66 @@ $(function(){initNavTree('GameSocket_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;shared-server/TcpServerSocket.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">class </span><a class="code hl_class" href="classAIServerApp.html">AIServerApp</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">class </span><a class="code hl_class" href="classCUser.html">CUser</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span><a class="code hl_class" href="classMAP.html">MAP</a>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">class </span>CIOCPort;</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classCGameSocket.html">   14</a></span><span class="keyword">class </span>CGameSocket : <span class="keyword">public</span> TcpServerSocket</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="classAIServerApp.html">AIServerApp</a>* m_pMain = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    int16_t _zoneNo      = 0;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="classCParty.html">CParty</a> m_Party;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    CGameSocket(SocketManager* socketManager);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ~CGameSocket() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> Initialize() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">bool</span> PullOutCore(<span class="keywordtype">char</span>*&amp; data, <span class="keywordtype">int</span>&amp; length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> Send(<span class="keywordtype">char</span>* pBuf, <span class="keywordtype">int</span> length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> CloseProcess() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> Parsing(<span class="keywordtype">int</span> length, <span class="keywordtype">char</span>* pData) <span class="keyword">override</span>; <span class="comment">// recv data parsing</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> RecvServerConnect(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>AIServer</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">class </span><a class="code hl_class" href="classAIServer_1_1AIServerApp.html">AIServerApp</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span><a class="code hl_class" href="classAIServer_1_1CUser.html">CUser</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="classAIServer_1_1MAP.html">MAP</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">class </span>CIOCPort;</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classAIServer_1_1CGameSocket.html">   17</a></span><span class="keyword">class </span>CGameSocket : <span class="keyword">public</span> TcpServerSocket</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_class" href="classAIServer_1_1AIServerApp.html">AIServerApp</a>* m_pMain = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    int16_t _zoneNo      = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_class" href="classAIServer_1_1CParty.html">CParty</a> m_Party;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    CGameSocket(SocketManager* socketManager);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    ~CGameSocket() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> Initialize() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> PullOutCore(<span class="keywordtype">char</span>*&amp; data, <span class="keywordtype">int</span>&amp; length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> Send(<span class="keywordtype">char</span>* pBuf, <span class="keywordtype">int</span> length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> CloseProcess() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">bool</span> SetUid(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> speed);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// GameServer에서 User정보 받는 부분</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> RecvUserInfo(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> RecvUserInOut(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> RecvUserMove(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> RecvUserMoveEdge(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> RecvUserLogOut(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> RecvUserRegene(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> RecvUserSetHP(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> RecvAttackReq(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> RecvUserUpdate(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> RecvZoneChange(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> RecvMagicAttackReq(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> RecvCompressedData(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> RecvUserInfoAllData(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> RecvPartyInfoAllData(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RecvGateOpen(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> RecvCheckAlive();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> RecvHealMagic(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> RecvTimeAndWeather(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> RecvUserFail(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> Send_UserError(int16_t uid, int16_t tid = 10000);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> RecvBattleEvent(<span class="keywordtype">char</span>* pBuf);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> Parsing(<span class="keywordtype">int</span> length, <span class="keywordtype">char</span>* pData) <span class="keyword">override</span>; <span class="comment">// recv data parsing</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> RecvServerConnect(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> SetUid(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> z, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// GameServer에서 User정보 받는 부분</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> RecvUserInfo(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> RecvUserInOut(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> RecvUserMove(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> RecvUserMoveEdge(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> RecvUserLogOut(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> RecvUserRegene(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> RecvUserSetHP(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> RecvAttackReq(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> RecvUserUpdate(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> RecvZoneChange(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> RecvMagicAttackReq(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RecvCompressedData(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> RecvUserInfoAllData(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> RecvPartyInfoAllData(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> RecvGateOpen(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> RecvCheckAlive();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> RecvHealMagic(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> RecvTimeAndWeather(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> RecvUserFail(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> Send_UserError(int16_t uid, int16_t tid = 10000);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> RecvBattleEvent(<span class="keywordtype">char</span>* pBuf);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_GAMESOCKET_H</span></div>
-<div class="ttc" id="aclassAIServerApp_html"><div class="ttname"><a href="classAIServerApp.html">AIServerApp</a></div><div class="ttdef"><b>Definition</b> <a href="AIServerApp_8h_source.html#l00043">AIServerApp.h:44</a></div></div>
-<div class="ttc" id="aclassCParty_html"><div class="ttname"><a href="classCParty.html">CParty</a></div><div class="ttdef"><b>Definition</b> <a href="Party_8h_source.html#l00007">Party.h:8</a></div></div>
-<div class="ttc" id="aclassCUser_html"><div class="ttname"><a href="classCUser.html">CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00012">User.h:13</a></div></div>
-<div class="ttc" id="aclassMAP_html"><div class="ttname"><a href="classMAP.html">MAP</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Map_8h_source.html#l00029">Map.h:30</a></div></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace AIServer</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_AISERVER_GAMESOCKET_H</span></div>
+<div class="ttc" id="aclassAIServer_1_1AIServerApp_html"><div class="ttname"><a href="classAIServer_1_1AIServerApp.html">AIServer::AIServerApp</a></div><div class="ttdef"><b>Definition</b> <a href="AIServerApp_8h_source.html#l00047">AIServerApp.h:48</a></div></div>
+<div class="ttc" id="aclassAIServer_1_1CParty_html"><div class="ttname"><a href="classAIServer_1_1CParty.html">AIServer::CParty</a></div><div class="ttdef"><b>Definition</b> <a href="Party_8h_source.html#l00010">Party.h:11</a></div></div>
+<div class="ttc" id="aclassAIServer_1_1CUser_html"><div class="ttname"><a href="classAIServer_1_1CUser.html">AIServer::CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00015">User.h:16</a></div></div>
+<div class="ttc" id="aclassAIServer_1_1MAP_html"><div class="ttname"><a href="classAIServer_1_1MAP.html">AIServer::MAP</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2Map_8h_source.html#l00034">Map.h:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

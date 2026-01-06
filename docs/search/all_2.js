@@ -4,7 +4,7 @@ var searchData=
   ['base_3c_20containertype_3a_3avaluetype_2c_20containertype_3a_3avaluetype_20_3e_1',['Base&lt; ContainerType::ValueType, ContainerType::ValueType &gt;',['../classrecordset__loader_1_1Base.html',1,'recordset_loader']]],
   ['base_3c_20modeltype_2c_20modeltype_20_3e_2',['Base&lt; ModelType, ModelType &gt;',['../classrecordset__loader_1_1Base.html',1,'recordset_loader']]],
   ['batchselect_3',['BatchSelect',['../classdb_1_1Model.html#a89251f417a74f94e0767fe6a13940160',1,'db::Model::BatchSelect(SqlBuilder&lt; T &gt; &amp;sql) noexcept(false)'],['../classdb_1_1Model.html#acc450c7e32ea1ab0d3806a2fa4d0b76d',1,'db::Model::BatchSelect() noexcept(false)']]],
-  ['battleeventresult_4',['BattleEventResult',['../classAujardApp.html#a1bdb544669d07d407036ffa7eb8f0c77',1,'AujardApp']]],
+  ['battleeventresult_4',['BattleEventResult',['../classAujard_1_1AujardApp.html#a765b079531177096bc8dff9371527504',1,'Aujard::AujardApp']]],
   ['bb_5fcircularbuffer_5',['BB_CircularBuffer',['../classBB__CircularBuffer.html',1,'']]],
   ['be_20made_20written_20by_20you_6',['It must be made / written by you',['../index.html#autotoc_md7',1,'']]],
   ['bindresult_7',['BindResult',['../classdb_1_1Model.html#abf52d78ee11c7d07b2169a9c9573d893',1,'db::Model']]],

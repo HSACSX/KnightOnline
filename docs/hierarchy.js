@@ -135,41 +135,43 @@ var hierarchy =
     [ "_D3DMATERIAL9", null, [
       [ "__Material", "struct____Material.html", null ]
     ] ],
-    [ "_EXCHANGE_ITEM", "struct__EXCHANGE__ITEM.html", null ],
-    [ "_ExpUserList", "struct__ExpUserList.html", null ],
+    [ "Ebenezer::_EXCHANGE_ITEM", "structEbenezer_1_1__EXCHANGE__ITEM.html", null ],
+    [ "AIServer::_ExpUserList", "structAIServer_1_1__ExpUserList.html", null ],
     [ "_ITEM_DATA", "struct__ITEM__DATA.html", null ],
-    [ "_KNIGHTS_USER", "struct__KNIGHTS__USER.html", null ],
-    [ "_MagicType3", "struct__MagicType3.html", null ],
-    [ "_MagicType4", "struct__MagicType4.html", null ],
-    [ "_NEWS", "struct__NEWS.html", null ],
-    [ "_NpcGiveItem", "struct__NpcGiveItem.html", null ],
-    [ "_NpcMovePosition", "struct__NpcMovePosition.html", null ],
-    [ "_NpcPosition", "struct__NpcPosition.html", null ],
-    [ "_NpcSkillList", "struct__NpcSkillList.html", null ],
-    [ "_OBJECT_EVENT", "struct__OBJECT__EVENT.html", null ],
-    [ "_PARTY_GROUP", "struct__PARTY__GROUP.html", null ],
-    [ "_PathList", "struct__PathList.html", null ],
-    [ "_PathNode", "class__PathNode.html", null ],
-    [ "_Patten", "struct__Patten.html", null ],
-    [ "_PattenPos", "struct__PattenPos.html", null ],
+    [ "Ebenezer::_KNIGHTS_USER", "structEbenezer_1_1__KNIGHTS__USER.html", null ],
+    [ "AIServer::_MagicType3", "structAIServer_1_1__MagicType3.html", null ],
+    [ "AIServer::_MagicType4", "structAIServer_1_1__MagicType4.html", null ],
+    [ "VersionManager::_NEWS", "structVersionManager_1_1__NEWS.html", null ],
+    [ "AIServer::_NpcGiveItem", "structAIServer_1_1__NpcGiveItem.html", null ],
+    [ "AIServer::_NpcMovePosition", "structAIServer_1_1__NpcMovePosition.html", null ],
+    [ "AIServer::_NpcPosition", "structAIServer_1_1__NpcPosition.html", null ],
+    [ "AIServer::_NpcSkillList", "structAIServer_1_1__NpcSkillList.html", null ],
+    [ "AIServer::_OBJECT_EVENT", "structAIServer_1_1__OBJECT__EVENT.html", null ],
+    [ "Ebenezer::_OBJECT_EVENT", "structEbenezer_1_1__OBJECT__EVENT.html", null ],
+    [ "AIServer::_PARTY_GROUP", "structAIServer_1_1__PARTY__GROUP.html", null ],
+    [ "Ebenezer::_PARTY_GROUP", "structEbenezer_1_1__PARTY__GROUP.html", null ],
+    [ "AIServer::_PathList", "structAIServer_1_1__PathList.html", null ],
+    [ "AIServer::_PathNode", "classAIServer_1_1__PathNode.html", null ],
+    [ "AIServer::_Patten", "structAIServer_1_1__Patten.html", null ],
+    [ "AIServer::_PattenPos", "structAIServer_1_1__PattenPos.html", null ],
     [ "_POINT", "struct__POINT.html", null ],
     [ "_RECT", "struct__RECT.html", null ],
-    [ "_REGENE_EVENT", "struct__REGENE__EVENT.html", null ],
-    [ "_REGION_BUFFER", "struct__REGION__BUFFER.html", null ],
+    [ "Ebenezer::_REGENE_EVENT", "structEbenezer_1_1__REGENE__EVENT.html", null ],
+    [ "Ebenezer::_REGION_BUFFER", "structEbenezer_1_1__REGION__BUFFER.html", null ],
     [ "CN3River::_RIVER_DIFF", "structCN3River_1_1__RIVER__DIFF.html", null ],
     [ "CN3River::_RIVER_INFO", "structCN3River_1_1__RIVER__INFO.html", null ],
-    [ "_RoomEvent", "struct__RoomEvent.html", null ],
-    [ "_SEND_DATA", "struct__SEND__DATA.html", null ],
-    [ "_SERVER_INFO", "struct__SERVER__INFO.html", null ],
+    [ "AIServer::_RoomEvent", "structAIServer_1_1__RoomEvent.html", null ],
+    [ "AIServer::_SEND_DATA", "structAIServer_1_1__SEND__DATA.html", null ],
+    [ "VersionManager::_SERVER_INFO", "structVersionManager_1_1__SERVER__INFO.html", null ],
     [ "_SIZE", "struct__SIZE.html", null ],
-    [ "_Target", "struct__Target.html", null ],
-    [ "_TargetHealer", "struct__TargetHealer.html", null ],
+    [ "AIServer::_Target", "structAIServer_1_1__Target.html", null ],
+    [ "AIServer::_TargetHealer", "structAIServer_1_1__TargetHealer.html", null ],
     [ "_USER_DATA", "struct__USER__DATA.html", null ],
     [ "_USER_QUEST", "struct__USER__QUEST.html", null ],
     [ "_WAREHOUSE_ITEM_DATA", "struct__WAREHOUSE__ITEM__DATA.html", null ],
-    [ "_WARP_INFO", "struct__WARP__INFO.html", null ],
-    [ "_ZONE_ITEM", "struct__ZONE__ITEM.html", null ],
-    [ "_ZONE_SERVERINFO", "struct__ZONE__SERVERINFO.html", null ],
+    [ "Ebenezer::_WARP_INFO", "structEbenezer_1_1__WARP__INFO.html", null ],
+    [ "Ebenezer::_ZONE_ITEM", "structEbenezer_1_1__ZONE__ITEM.html", null ],
+    [ "Ebenezer::_ZONE_SERVERINFO", "structEbenezer_1_1__ZONE__SERVERINFO.html", null ],
     [ "AudioAsset", "classAudioAsset.html", [
       [ "BufferedAudioAsset", "classBufferedAudioAsset.html", null ],
       [ "StreamedAudioAsset", "classStreamedAudioAsset.html", null ]
@@ -193,14 +195,14 @@ var hierarchy =
     [ "ByteBuffer", "classByteBuffer.html", [
       [ "Packet", "classPacket.html", null ]
     ] ],
-    [ "C3DMap", "classC3DMap.html", null ],
+    [ "Ebenezer::C3DMap", "classEbenezer_1_1C3DMap.html", null ],
     [ "CAPISocket", "classCAPISocket.html", null ],
     [ "CBackgroundUtil", "classCBackgroundUtil.html", null ],
     [ "CBitMapFile", "classCBitMapFile.html", null ],
     [ "CBitset", "classCBitset.html", null ],
     [ "CCircularBuffer", "classCCircularBuffer.html", null ],
-    [ "CDBAgent", "classCDBAgent.html", null ],
-    [ "CDBProcess", "classCDBProcess.html", null ],
+    [ "Aujard::CDBAgent", "classAujard_1_1CDBAgent.html", null ],
+    [ "VersionManager::CDBProcess", "classVersionManager_1_1CDBProcess.html", null ],
     [ "CDialog", null, [
       [ "CAboutDlg", "classCAboutDlg.html", null ],
       [ "CAboutDlg", "classCAboutDlg.html", null ],
@@ -315,7 +317,7 @@ var hierarchy =
       [ "CMainFrame", "classCMainFrame.html", null ],
       [ "CMainFrame", "classCMainFrame.html", null ]
     ] ],
-    [ "CGameEvent", "classCGameEvent.html", null ],
+    [ "Ebenezer::CGameEvent", "classEbenezer_1_1CGameEvent.html", null ],
     [ "CHotkeyData", "classCHotkeyData.html", null ],
     [ "CIni::ci_less", "structCIni_1_1ci__less.html", null ],
     [ "CIni", "classCIni.html", null ],
@@ -324,9 +326,9 @@ var hierarchy =
       [ "CN3JpegFile", "classCN3JpegFile.html", null ]
     ] ],
     [ "CJvCryption", "classCJvCryption.html", null ],
-    [ "CKnights", "classCKnights.html", null ],
-    [ "CKnightsManager", "classCKnightsManager.html", null ],
-    [ "CKnightsSiegeWar", "classCKnightsSiegeWar.html", null ],
+    [ "Ebenezer::CKnights", "classEbenezer_1_1CKnights.html", null ],
+    [ "Ebenezer::CKnightsManager", "classEbenezer_1_1CKnightsManager.html", null ],
+    [ "Ebenezer::CKnightsSiegeWar", "classEbenezer_1_1CKnightsSiegeWar.html", null ],
     [ "CListBox", null, [
       [ "CPropertyList", "classCPropertyList.html", null ],
       [ "CPropertyList", "classCPropertyList.html", null ]
@@ -336,8 +338,9 @@ var hierarchy =
     ] ],
     [ "CLocalInput", "classCLocalInput.html", null ],
     [ "CLogWriter", "classCLogWriter.html", null ],
-    [ "CMagicProcess", "classCMagicProcess.html", null ],
-    [ "CMapInfo", "classCMapInfo.html", null ],
+    [ "AIServer::CMagicProcess", "classAIServer_1_1CMagicProcess.html", null ],
+    [ "Ebenezer::CMagicProcess", "classEbenezer_1_1CMagicProcess.html", null ],
+    [ "AIServer::CMapInfo", "classAIServer_1_1CMapInfo.html", null ],
     [ "CN3AlphaPrimitiveManager", "classCN3AlphaPrimitiveManager.html", null ],
     [ "CN3Base", "classCN3Base.html", [
       [ "CBird", "classCBird.html", null ],
@@ -589,16 +592,17 @@ var hierarchy =
       [ "CN3TableBase< Type >", "classCN3TableBase.html", null ]
     ] ],
     [ "CN3TerrainPatch", "classCN3TerrainPatch.html", null ],
-    [ "CNpc", "classCNpc.html", null ],
-    [ "CNpcItem", "classCNpcItem.html", null ],
-    [ "CNpcMagicProcess", "classCNpcMagicProcess.html", null ],
+    [ "AIServer::CNpc", "classAIServer_1_1CNpc.html", null ],
+    [ "Ebenezer::CNpc", "classEbenezer_1_1CNpc.html", null ],
+    [ "AIServer::CNpcItem", "classAIServer_1_1CNpcItem.html", null ],
+    [ "AIServer::CNpcMagicProcess", "classAIServer_1_1CNpcMagicProcess.html", null ],
     [ "CUICmdList::CommandInfo", "structCUICmdList_1_1CommandInfo.html", null ],
     [ "db::Connection", "classdb_1_1Connection.html", null ],
     [ "db::ConnectionManager::ConnectionInfo", "structdb_1_1ConnectionManager_1_1ConnectionInfo.html", null ],
     [ "db::ConnectionManager", "classdb_1_1ConnectionManager.html", null ],
     [ "COrderMessage", "classCOrderMessage.html", null ],
-    [ "CParty", "classCParty.html", null ],
-    [ "CPathFind", "classCPathFind.html", null ],
+    [ "AIServer::CParty", "classAIServer_1_1CParty.html", null ],
+    [ "AIServer::CPathFind", "classAIServer_1_1CPathFind.html", null ],
     [ "CPick", "classCPick.html", null ],
     [ "CN3Pond::CPondMesh", "classCN3Pond_1_1CPondMesh.html", null ],
     [ "CProgressCtrl", null, [
@@ -608,8 +612,9 @@ var hierarchy =
     ] ],
     [ "CPropertyItem", "classCPropertyItem.html", null ],
     [ "CQTNode", "classCQTNode.html", null ],
-    [ "CRegion", "classCRegion.html", null ],
-    [ "CRoomEvent", "classCRoomEvent.html", null ],
+    [ "AIServer::CRegion", "classAIServer_1_1CRegion.html", null ],
+    [ "Ebenezer::CRegion", "classEbenezer_1_1CRegion.html", null ],
+    [ "AIServer::CRoomEvent", "classAIServer_1_1CRoomEvent.html", null ],
     [ "CShellPidl", "classCShellPidl.html", [
       [ "CShellTree", "classCShellTree.html", null ],
       [ "CShellTree", "classCShellTree.html", null ]
@@ -628,7 +633,8 @@ var hierarchy =
       [ "CHierarchyView", "classCHierarchyView.html", null ],
       [ "CViewSceneTree", "classCViewSceneTree.html", null ]
     ] ],
-    [ "CUdpSocket", "classCUdpSocket.html", null ],
+    [ "Ebenezer::CUdpSocket", "classEbenezer_1_1CUdpSocket.html", null ],
+    [ "AIServer::CUser", "classAIServer_1_1CUser.html", null ],
     [ "CView", null, [
       [ "CKscViewerView", "classCKscViewerView.html", null ],
       [ "CN3CEView", "classCN3CEView.html", null ],
@@ -672,9 +678,9 @@ var hierarchy =
     [ "db::DatasourceConfig", "structdb_1_1DatasourceConfig.html", null ],
     [ "DateTime", "classDateTime.html", null ],
     [ "recordset_loader::Error", "structrecordset__loader_1_1Error.html", null ],
-    [ "EVENT", "classEVENT.html", null ],
-    [ "EVENT_DATA", "classEVENT__DATA.html", null ],
-    [ "EXEC", "classEXEC.html", null ],
+    [ "Ebenezer::EVENT", "classEbenezer_1_1EVENT.html", null ],
+    [ "Ebenezer::EVENT_DATA", "classEbenezer_1_1EVENT__DATA.html", null ],
+    [ "Ebenezer::EXEC", "classEbenezer_1_1EXEC.html", null ],
     [ "File", "classFile.html", [
       [ "FileReader", "classFileReader.html", null ],
       [ "FileWriter", "classFileWriter.html", null ]
@@ -682,12 +688,12 @@ var hierarchy =
     [ "FileReaderHandle", "structFileReaderHandle.html", null ],
     [ "ItemTooltipBuilderContext", "classItemTooltipBuilderContext.html", null ],
     [ "logger::Logger", "classlogger_1_1Logger.html", [
-      [ "AIServerLogger", "classAIServerLogger.html", null ],
-      [ "EbenezerLogger", "classEbenezerLogger.html", null ],
-      [ "ItemManagerLogger", "classItemManagerLogger.html", null ]
+      [ "AIServer::AIServerLogger", "classAIServer_1_1AIServerLogger.html", null ],
+      [ "Ebenezer::EbenezerLogger", "classEbenezer_1_1EbenezerLogger.html", null ],
+      [ "ItemManager::ItemManagerLogger", "classItemManager_1_1ItemManagerLogger.html", null ]
     ] ],
-    [ "LOGIC_ELSE", "classLOGIC__ELSE.html", null ],
-    [ "MAP", "classMAP.html", null ],
+    [ "Ebenezer::LOGIC_ELSE", "classEbenezer_1_1LOGIC__ELSE.html", null ],
+    [ "AIServer::MAP", "classAIServer_1_1MAP.html", null ],
     [ "mapped_region", null, [
       [ "mapped_region_impl", "structmapped__region__impl.html", null ]
     ] ],
@@ -697,9 +703,11 @@ var hierarchy =
     [ "db::Model", "classdb_1_1Model.html", null ],
     [ "db::ModelRecordSet< ModelType, BoundModelType >", "classdb_1_1ModelRecordSet.html", null ],
     [ "my_error_mgr", "structmy__error__mgr.html", null ],
-    [ "MYINT64", "unionMYINT64.html", null ],
-    [ "MYSHORT", "unionMYSHORT.html", null ],
-    [ "OperationMessage", "classOperationMessage.html", null ],
+    [ "Ebenezer::MYINT64", "unionEbenezer_1_1MYINT64.html", null ],
+    [ "AIServer::MYSHORT", "unionAIServer_1_1MYSHORT.html", null ],
+    [ "Ebenezer::MYSHORT", "unionEbenezer_1_1MYSHORT.html", null ],
+    [ "VersionManager::MYSHORT", "unionVersionManager_1_1MYSHORT.html", null ],
+    [ "Ebenezer::OperationMessage", "classEbenezer_1_1OperationMessage.html", null ],
     [ "Point3D", "structPoint3D.html", null ],
     [ "db::PoolConnection", "classdb_1_1PoolConnection.html", null ],
     [ "ProcType", null, [
@@ -720,12 +728,12 @@ var hierarchy =
     [ "SharedMemoryBlock", "classSharedMemoryBlock.html", null ],
     [ "SharedMemoryQueue", "classSharedMemoryQueue.html", null ],
     [ "SocketManager", "classSocketManager.html", [
-      [ "AISocketManager", "classAISocketManager.html", null ],
-      [ "EbenezerSocketManager", "classEbenezerSocketManager.html", null ]
+      [ "AIServer::AISocketManager", "classAIServer_1_1AISocketManager.html", null ],
+      [ "Ebenezer::EbenezerSocketManager", "classEbenezer_1_1EbenezerSocketManager.html", null ]
     ] ],
     [ "SoundSettings", "structSoundSettings.html", null ],
     [ "db::SqlBuilder< ModelType >", "classdb_1_1SqlBuilder.html", null ],
-    [ "STACK", "classSTACK.html", null ],
+    [ "AIServer::STACK", "classAIServer_1_1STACK.html", null ],
     [ "tagCollisionIndex", "structtagCollisionIndex.html", null ],
     [ "CShellPidl::tagID", "structCShellPidl_1_1tagID.html", null ],
     [ "tagIDAndPriority", "structtagIDAndPriority.html", null ],
@@ -735,12 +743,12 @@ var hierarchy =
     [ "tagVisPortalPriority", "structtagVisPortalPriority.html", null ],
     [ "TcpSocket", "classTcpSocket.html", [
       [ "TcpClientSocket", "classTcpClientSocket.html", [
-        [ "CAISocket", "classCAISocket.html", null ]
+        [ "Ebenezer::CAISocket", "classEbenezer_1_1CAISocket.html", null ]
       ] ],
       [ "TcpServerSocket", "classTcpServerSocket.html", [
-        [ "CGameSocket", "classCGameSocket.html", null ],
-        [ "CUser", "classCUser.html", null ],
-        [ "CUser", "classCUser.html", null ]
+        [ "AIServer::CGameSocket", "classAIServer_1_1CGameSocket.html", null ],
+        [ "Ebenezer::CUser", "classEbenezer_1_1CUser.html", null ],
+        [ "VersionManager::CUser", "classVersionManager_1_1CUser.html", null ]
       ] ]
     ] ],
     [ "testing::Test", null, [
@@ -754,26 +762,26 @@ var hierarchy =
       [ "Vector4Test", "classVector4Test.html", null ]
     ] ],
     [ "Thread", "classThread.html", [
+      [ "AIServer::CNpcThread", "classAIServer_1_1CNpcThread.html", null ],
+      [ "AIServer::SendThreadMain", "classAIServer_1_1SendThreadMain.html", null ],
+      [ "AIServer::ZoneEventThread", "classAIServer_1_1ZoneEventThread.html", null ],
       [ "AppThread", "classAppThread.html", [
-        [ "AIServerApp", "classAIServerApp.html", null ],
-        [ "AujardApp", "classAujardApp.html", null ],
-        [ "EbenezerApp", "classEbenezerApp.html", null ],
-        [ "ItemManagerApp", "classItemManagerApp.html", null ],
-        [ "VersionManagerApp", "classVersionManagerApp.html", null ]
+        [ "AIServer::AIServerApp", "classAIServer_1_1AIServerApp.html", null ],
+        [ "Aujard::AujardApp", "classAujard_1_1AujardApp.html", null ],
+        [ "Ebenezer::EbenezerApp", "classEbenezer_1_1EbenezerApp.html", null ],
+        [ "ItemManager::ItemManagerApp", "classItemManager_1_1ItemManagerApp.html", null ],
+        [ "VersionManager::VersionManagerApp", "classVersionManager_1_1VersionManagerApp.html", null ]
       ] ],
       [ "AudioDecoderThread", "classAudioDecoderThread.html", null ],
       [ "AudioThread", "classAudioThread.html", null ],
-      [ "CNpcThread", "classCNpcThread.html", null ],
+      [ "Ebenezer::RecvUDPThread", "classEbenezer_1_1RecvUDPThread.html", null ],
+      [ "Ebenezer::SendWorkerThread", "classEbenezer_1_1SendWorkerThread.html", null ],
       [ "ReadQueueThread", "classReadQueueThread.html", [
-        [ "AujardReadQueueThread", "classAujardReadQueueThread.html", null ],
-        [ "EbenezerReadQueueThread", "classEbenezerReadQueueThread.html", null ],
-        [ "ItemManagerReadQueueThread", "classItemManagerReadQueueThread.html", null ]
+        [ "Aujard::AujardReadQueueThread", "classAujard_1_1AujardReadQueueThread.html", null ],
+        [ "Ebenezer::EbenezerReadQueueThread", "classEbenezer_1_1EbenezerReadQueueThread.html", null ],
+        [ "ItemManager::ItemManagerReadQueueThread", "classItemManager_1_1ItemManagerReadQueueThread.html", null ]
       ] ],
-      [ "RecvUDPThread", "classRecvUDPThread.html", null ],
-      [ "SendThreadMain", "classSendThreadMain.html", null ],
-      [ "SendWorkerThread", "classSendWorkerThread.html", null ],
-      [ "TimerThread", "classTimerThread.html", null ],
-      [ "ZoneEventThread", "classZoneEventThread.html", null ]
+      [ "TimerThread", "classTimerThread.html", null ]
     ] ],
     [ "std::vector", null, [
       [ "WriteBuffer", "structWriteBuffer.html", null ]

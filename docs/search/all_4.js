@@ -13,9 +13,9 @@ var searchData=
   ['decodermutex_10',['DecoderMutex',['../classAudioDecoderThread.html#a8c11c186b3dadc07d6542c760a22c9d4',1,'AudioDecoderThread']]],
   ['decodertype_11',['DecoderType',['../classAudioAsset.html#ae4127f23616a560bbb375ab7ecaca0cf',1,'AudioAsset']]],
   ['deletebyidstring_12',['DeleteByIdString',['../classdb_1_1SqlBuilder.html#a75cbd74a9fdf94acab473d3ad17a0f71',1,'db::SqlBuilder']]],
-  ['deletechar_13',['DeleteChar',['../classAujardApp.html#a9ec5b1d28ef353675e6f0725e0ee1008',1,'AujardApp']]],
-  ['deleteknights_14',['DeleteKnights',['../classCDBAgent.html#af0c5c560191610212b96e8ca05757349',1,'CDBAgent']]],
-  ['deleteversion_15',['DeleteVersion',['../classCDBProcess.html#a8f70e45a9481d138bebe3f2e71cd3934',1,'CDBProcess']]],
+  ['deletechar_13',['DeleteChar',['../classAujard_1_1AujardApp.html#a2319162972a2e6189f449b598787f53d',1,'Aujard::AujardApp']]],
+  ['deleteknights_14',['DeleteKnights',['../classAujard_1_1CDBAgent.html#ac7d29c0d2238aa987124443859cd99cf',1,'Aujard::CDBAgent']]],
+  ['deleteversion_15',['DeleteVersion',['../classVersionManager_1_1CDBProcess.html#a6e226f38657a6c95067379ec1ba28893',1,'VersionManager::CDBProcess']]],
   ['design_20decisions_16',['Intentional design decisions',['../index.html#autotoc_md4',1,'']]],
-  ['destroyknights_17',['DestroyKnights',['../classAujardApp.html#a3b47adba00ab43e76dac60cf3cc66c4a',1,'AujardApp']]]
+  ['destroyknights_17',['DestroyKnights',['../classAujard_1_1AujardApp.html#ae96bcba0ad5bfa2d8ef9b07ebf033317',1,'Aujard::AujardApp']]]
 ];

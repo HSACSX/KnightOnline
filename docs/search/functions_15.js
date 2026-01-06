@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['versioncheck_0',['VersionCheck',['../classCUser.html#a823a4a8d5a5d33d6be2677c17d0c6051',1,'CUser']]]
+  ['versioncheck_0',['VersionCheck',['../classEbenezer_1_1CUser.html#ab182e6ed530a7b22565780df05241491',1,'Ebenezer::CUser']]]
 ];

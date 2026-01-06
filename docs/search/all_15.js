@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['updatebattleevent_0',['UpdateBattleEvent',['../classCDBAgent.html#a7603f96c28f31fc6b9a5ce18251f3841',1,'CDBAgent']]],
-  ['updateconcurrentusercount_1',['UpdateConCurrentUserCount',['../classCDBAgent.html#a78b7ab970d162c8fffb05533f8e24309',1,'CDBAgent']]],
-  ['updateknights_2',['UpdateKnights',['../classCDBAgent.html#a6a5e7f496dd13b1b84a0fae401059e46',1,'CDBAgent']]],
-  ['updateuser_3',['UpdateUser',['../classCDBAgent.html#a89eed73f115f1e2b6abf65d924cbc2c3',1,'CDBAgent']]],
-  ['updatewarehousedata_4',['UpdateWarehouseData',['../classCDBAgent.html#a672f4eb6c171eedb354239faadbc82e0',1,'CDBAgent']]],
+  ['updatebattleevent_0',['UpdateBattleEvent',['../classAujard_1_1CDBAgent.html#aa42c0ce77ed39473f40392c994045fc7',1,'Aujard::CDBAgent']]],
+  ['updateconcurrentusercount_1',['UpdateConCurrentUserCount',['../classAujard_1_1CDBAgent.html#a8a80a0ea4458b6ba8e6447fb71a621fe',1,'Aujard::CDBAgent']]],
+  ['updateknights_2',['UpdateKnights',['../classAujard_1_1CDBAgent.html#a04638ceebda3013fd407cc1a0446ce1e',1,'Aujard::CDBAgent']]],
+  ['updateuser_3',['UpdateUser',['../classAujard_1_1CDBAgent.html#a1e836c262ecae7ef1218a0672023b8b5',1,'Aujard::CDBAgent']]],
+  ['updatewarehousedata_4',['UpdateWarehouseData',['../classAujard_1_1CDBAgent.html#aeb08cb01e3148467914ddf04c501b983',1,'Aujard::CDBAgent']]],
   ['use_5',['No AI use',['../index.html#autotoc_md8',1,'']]],
-  ['userdatasave_6',['UserDataSave',['../classAujardApp.html#a398f68fbdb0d0a95c686edf12d57cca5',1,'AujardApp']]],
-  ['userkickout_7',['UserKickOut',['../classAujardApp.html#a18cdf3054b1caa7bdc5845ab8dd450f3',1,'AujardApp']]],
-  ['userlogout_8',['UserLogOut',['../classAujardApp.html#a9b46d5543870a04d9ed75ec3d44c948d',1,'AujardApp']]]
+  ['userdatasave_6',['UserDataSave',['../classAujard_1_1AujardApp.html#a9ae2365e02c77bdb13b6e2c5b0a433cd',1,'Aujard::AujardApp']]],
+  ['userkickout_7',['UserKickOut',['../classAujard_1_1AujardApp.html#a2d9b09ad3604968a948166013140b3a1',1,'Aujard::AujardApp']]],
+  ['userlogout_8',['UserLogOut',['../classAujard_1_1AujardApp.html#a4a81ef61b493709b5f00d870fa6dd29d',1,'Aujard::AujardApp']]]
 ];

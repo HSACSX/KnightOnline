@@ -108,46 +108,51 @@ $(function(){initNavTree('Knights_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Define.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;GameDefine.h&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">class </span><a class="code hl_class" href="classCUser.html">CUser</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">class </span><a class="code hl_class" href="classEbenezerApp.html">EbenezerApp</a>;</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classCKnights.html">   11</a></span><span class="keyword">class </span>CKnights</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    int16_t m_sIndex                         = 0;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    uint8_t m_byFlag                         = 0; <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    uint8_t m_byNation                       = 0; <span class="comment">// nation</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    uint8_t m_byGrade                        = 0; <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    uint8_t m_byRanking                      = 0; <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">char</span> m_strName[MAX_ID_SIZE + 1]          = {};</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    int16_t m_sMembers                       = 0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">char</span> m_strChief[MAX_ID_SIZE + 1]         = {};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">char</span> m_strViceChief_1[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 1</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">char</span> m_strViceChief_2[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">char</span> m_strViceChief_3[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    int64_t m_nMoney                         = 0;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    int16_t m_sAllianceKnights               = 0;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    int16_t m_sMarkVersion                   = 0;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    int16_t m_sCape                          = 0;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    int16_t m_sDomination                    = 0;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> m_nPoints                            = 0;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint8_t m_Image[MAX_KNIGHTS_MARK]        = {};</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_struct" href="struct__ITEM__DATA.html">_ITEM_DATA</a> m_StashItem[MAX_KNIGHTS_BANK] = {};</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_struct" href="struct__KNIGHTS__USER.html">_KNIGHTS_USER</a> m_arKnightsUser[MAX_CLAN]  = {}; <span class="comment">// 클랜원의 정보</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    CKnights();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">virtual</span> ~CKnights();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> InitializeValue();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
-</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>Ebenezer</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span><a class="code hl_class" href="classEbenezer_1_1CUser.html">CUser</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">class </span><a class="code hl_class" href="classEbenezer_1_1EbenezerApp.html">EbenezerApp</a>;</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classEbenezer_1_1CKnights.html">   14</a></span><span class="keyword">class </span>CKnights</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    int16_t m_sIndex                         = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    uint8_t m_byFlag                         = 0; <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    uint8_t m_byNation                       = 0; <span class="comment">// nation</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    uint8_t m_byGrade                        = 0; <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    uint8_t m_byRanking                      = 0; <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">char</span> m_strName[MAX_ID_SIZE + 1]          = {};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    int16_t m_sMembers                       = 0;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">char</span> m_strChief[MAX_ID_SIZE + 1]         = {};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">char</span> m_strViceChief_1[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 1</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">char</span> m_strViceChief_2[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">char</span> m_strViceChief_3[MAX_ID_SIZE + 1]   = {}; <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    int64_t m_nMoney                         = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    int16_t m_sAllianceKnights               = 0;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    int16_t m_sMarkVersion                   = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    int16_t m_sCape                          = 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    int16_t m_sDomination                    = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> m_nPoints                            = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint8_t m_Image[MAX_KNIGHTS_MARK]        = {};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_struct" href="struct__ITEM__DATA.html">_ITEM_DATA</a> m_StashItem[MAX_KNIGHTS_BANK] = {};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_struct" href="structEbenezer_1_1__KNIGHTS__USER.html">_KNIGHTS_USER</a> m_arKnightsUser[MAX_CLAN]  = {}; <span class="comment">// 클랜원의 정보</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    CKnights();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">virtual</span> ~CKnights();</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_EBENEZER_KNIGHTS_H</span></div>
-<div class="ttc" id="aclassCUser_html"><div class="ttname"><a href="classCUser.html">CUser</a></div><div class="ttdef"><b>Definition</b> <a href="AIServer_2User_8h_source.html#l00012">User.h:13</a></div></div>
-<div class="ttc" id="aclassEbenezerApp_html"><div class="ttname"><a href="classEbenezerApp.html">EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00062">EbenezerApp.h:63</a></div></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> InitializeValue();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// namespace Ebenezer</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">// SERVER_EBENEZER_KNIGHTS_H</span></div>
+<div class="ttc" id="aclassEbenezer_1_1CUser_html"><div class="ttname"><a href="classEbenezer_1_1CUser.html">Ebenezer::CUser</a></div><div class="ttdef"><b>Definition</b> <a href="Ebenezer_2User_8h_source.html#l00029">User.h:30</a></div></div>
+<div class="ttc" id="aclassEbenezer_1_1EbenezerApp_html"><div class="ttname"><a href="classEbenezer_1_1EbenezerApp.html">Ebenezer::EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00066">EbenezerApp.h:67</a></div></div>
+<div class="ttc" id="astructEbenezer_1_1__KNIGHTS__USER_html"><div class="ttname"><a href="structEbenezer_1_1__KNIGHTS__USER.html">Ebenezer::_KNIGHTS_USER</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00370">GameDefine.h:371</a></div></div>
 <div class="ttc" id="astruct__ITEM__DATA_html"><div class="ttname"><a href="struct__ITEM__DATA.html">_ITEM_DATA</a></div><div class="ttdef"><b>Definition</b> <a href="__USER__DATA_8h_source.html#l00008">_USER_DATA.h:9</a></div></div>
-<div class="ttc" id="astruct__KNIGHTS__USER_html"><div class="ttname"><a href="struct__KNIGHTS__USER.html">_KNIGHTS_USER</a></div><div class="ttdef"><b>Definition</b> <a href="GameDefine_8h_source.html#l00368">GameDefine.h:369</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

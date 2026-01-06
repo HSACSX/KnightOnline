@@ -61,11 +61,11 @@ var NAVTREEINDEX =
 "FileWriter_8h_source.html",
 "N3SndMgr_8h_source.html",
 "Tools_2N3TexViewer_2MainFrm_8cpp_source.html",
-"classAudioThread.html#a00f4017141af67fff0e85f4d7c1595e3",
-"classCN3FXPartBase.html",
-"classCUIPointInitDlg.html",
-"files.html",
-"struct____TABLE__UPC__SKILL__TYPE__4.html"
+"classAudioDecoderThread.html#a6e58ac96acd287c3c7eb379847938f46",
+"classCN3FXEView.html",
+"classCUITradeBBSSelector.html",
+"dir_d8fdd7ee35a441d526ba2e9ecee64846.html",
+"struct____TABLE__SOUND.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -108,48 +108,53 @@ $(function(){initNavTree('Knights_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;shared/packets.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>CKnights::CKnights()</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>Ebenezer</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>CKnights::~CKnights()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> CKnights::InitializeValue()</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_sIndex    = 0;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_byFlag    = 0; <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_byNation  = 0; <span class="comment">// nation</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_byGrade   = 0; <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_byRanking = 0; <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    m_sMembers  = 0;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    memset(m_strName, 0, <span class="keyword">sizeof</span>(m_strName));</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    memset(m_strChief, 0, <span class="keyword">sizeof</span>(m_strChief));</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    memset(m_strViceChief_1, 0, <span class="keyword">sizeof</span>(m_strViceChief_1)); <span class="comment">// 부단장 1</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    memset(m_strViceChief_2, 0, <span class="keyword">sizeof</span>(m_strViceChief_2)); <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    memset(m_strViceChief_3, 0, <span class="keyword">sizeof</span>(m_strViceChief_3)); <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    memset(m_Image, 0, <span class="keyword">sizeof</span>(m_Image));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_nMoney           = 0;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m_sAllianceKnights = 0;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_sMarkVersion     = 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_sCape            = -1;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    m_sDomination      = 0;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_nPoints          = 0;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_CLAN; i++)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        m_arKnightsUser[i].byUsed = 0;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        memset(m_arKnightsUser[i].strUserName, 0, <span class="keyword">sizeof</span>(m_arKnightsUser[i].strUserName));</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_KNIGHTS_BANK; i++)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        m_StashItem[i].nNum      = 0;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        m_StashItem[i].sCount    = 0;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        m_StashItem[i].sDuration = 0;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>CKnights::CKnights()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>CKnights::~CKnights()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> CKnights::InitializeValue()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_sIndex    = 0;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_byFlag    = 0; <span class="comment">// 1 : Clan, 2 : 기사단</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    m_byNation  = 0; <span class="comment">// nation</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    m_byGrade   = 0; <span class="comment">// clan 등급 (1 ~ 5등급)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    m_byRanking = 0; <span class="comment">// clan 등급 (1 ~ 5등)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    m_sMembers  = 0;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    memset(m_strName, 0, <span class="keyword">sizeof</span>(m_strName));</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    memset(m_strChief, 0, <span class="keyword">sizeof</span>(m_strChief));</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    memset(m_strViceChief_1, 0, <span class="keyword">sizeof</span>(m_strViceChief_1)); <span class="comment">// 부단장 1</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    memset(m_strViceChief_2, 0, <span class="keyword">sizeof</span>(m_strViceChief_2)); <span class="comment">// 부단장 2 (기사단에서는 장교)</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    memset(m_strViceChief_3, 0, <span class="keyword">sizeof</span>(m_strViceChief_3)); <span class="comment">// 부단장 3 (기사단에서는 사용하지 않음)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    memset(m_Image, 0, <span class="keyword">sizeof</span>(m_Image));</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    m_nMoney           = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    m_sAllianceKnights = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_sMarkVersion     = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    m_sCape            = -1;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    m_sDomination      = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    m_nPoints          = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_CLAN; i++)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        m_arKnightsUser[i].byUsed = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        memset(m_arKnightsUser[i].strUserName, 0, <span class="keyword">sizeof</span>(m_arKnightsUser[i].strUserName));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_KNIGHTS_BANK; i++)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        m_StashItem[i].nNum      = 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        m_StashItem[i].sCount    = 0;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        m_StashItem[i].sDuration = 0;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <span class="comment">// namespace Ebenezer</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
