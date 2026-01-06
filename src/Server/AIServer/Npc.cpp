@@ -2379,8 +2379,7 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 	float fComp        = fCompDis;
 	float fSearchRange = (float) m_bySearchRange;
 	int target_uid     = -1;
-	__Vector3 vUser, vNpc, vMon;
-	vNpc.Set(m_fCurX, m_fCurY, m_fCurZ);
+	__Vector3 vNpc     = { m_fCurX, m_fCurY, m_fCurZ };
 
 	// user을 타겟으로 잡는 경우
 	if (nType == 1)
@@ -2416,7 +2415,9 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 			if (pUser->m_byIsOP == AUTHORITY_MANAGER)
 				continue;
 
+			__Vector3 vUser;
 			vUser.Set(pUser->m_curx, pUser->m_cury, pUser->m_curz);
+
 			fDis = GetDistance(vUser, vNpc);
 
 			// 작업 : 여기에서 나의 공격거리에 있는 유저인지를 판단
@@ -2455,13 +2456,15 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 		}
 	}
 	// 경비병이 몬스터를 타겟으로 잡는 경우
+	// NOTE: In the original code, this entire section was bugged.
+	// It inadvertently defines 2 vars for the monster count; 1 in scope, and 1 out.
+	// This means that it was previously NEVER hostile towards any other NPCs.
+	// We'll disable this temporarily just to replicate this behaviour, but it should be purposefully re-enabled.
+#if 0
 	else if (nType == 2)
 	{
 		std::vector<int> npcIds;
 
-		// NOTE: In the original code, this entire section was bugged.
-		// It inadvertently defines 2 vars for the monster count; 1 in scope, and 1 out.
-		// This means that it was previously NEVER hostile towards any other NPCs.
 		{
 			std::lock_guard<std::mutex> lock(g_region_mutex);
 			const auto& regionNpcArray = pMap->m_ppRegion[nRX][nRZ].m_RegionNpcArray.m_UserTypeMap;
@@ -2492,7 +2495,9 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 			if (m_byGroup == pNpc->m_byGroup)
 				continue;
 
+			__Vector3 vMon;
 			vMon.Set(pNpc->m_fCurX, pNpc->m_fCurY, pNpc->m_fCurZ);
+
 			fDis = GetDistance(vMon, vNpc);
 
 			// 작업 : 여기에서 나의 공격거리에 있는 유저인지를 판단
@@ -2512,6 +2517,7 @@ float CNpc::FindEnemyExpand(int nRX, int nRZ, float fCompDis, int nType)
 			//	TRACE(_T("Npc-IsCloseTarget - target_x = %.2f, z=%.2f\n"), m_Target.x, m_Target.z);
 		}
 	}
+#endif
 
 	return fComp;
 }
