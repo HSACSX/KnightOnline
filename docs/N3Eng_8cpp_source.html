@@ -703,105 +703,104 @@ $(function(){initNavTree('N3Eng_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>    {</div>
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>        HRESULT rval = s_lpD3DDev-&gt;TestCooperativeLevel();</div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span> </div>
-<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>        <span class="keywordflow">if</span> (D3DERR_DEVICENOTRESET == rval || D3D_OK == rval)</div>
-<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>        {</div>
-<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>            <span class="keywordflow">if</span> (D3D_OK == s_lpD3DDev-&gt;Reset(&amp;s_DevParam))</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>        <span class="keywordflow">if</span> (rval == D3DERR_DEVICENOTRESET || rval == D3D_OK)</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>        {</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>            rval = s_lpD3DDev-&gt;Reset(&amp;s_DevParam);</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>            <span class="keywordflow">if</span> (rval == D3D_OK)</div>
 <div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>            {</div>
 <div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span><span class="preprocessor">#ifdef _N3GAME</span></div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>                <span class="comment">// NOTE: Officially it&#39;s ErrCode(%d) but this is horrendously useless</span></div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>                <span class="comment">//CLogWriter::Write(&quot;Device Reset Success ErrCode({:X})&quot;, rval);</span></div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>                SetDefaultEnvironment();</div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>            }</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span> </div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span><span class="preprocessor">#ifdef _N3GAME</span></div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>            <span class="comment">// NOTE: Officially it&#39;s ErrCode(%d) but this is horrendously useless</span></div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>            CLogWriter::Write(<span class="stringliteral">&quot;Device Reset Failed - ErrCode(:X)&quot;</span>, rval);</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>        }</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>        MSG msg {};</div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>        <span class="keywordflow">while</span> (PeekMessage(&amp;msg, <span class="keyword">nullptr</span>, 0, 0, PM_REMOVE))</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>        {</div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>            TranslateMessage(&amp;msg);</div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>            DispatchMessage(&amp;msg);</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>        }</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span> </div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>        Sleep(2000);</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>    }</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>}</div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span> </div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span><span class="keywordtype">void</span> CN3Eng::Clear(D3DCOLOR crFill, RECT* pRC)</div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>{</div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    RECT rc;</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    <span class="keywordflow">if</span> (pRC == <span class="keyword">nullptr</span> &amp;&amp; s_DevParam.Windowed) <span class="comment">// 윈도우 모드면...</span></div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    {</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        GetClientRect(s_hWndBase, &amp;rc);</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>        pRC = &amp;rc;</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>    }</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span> </div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    <span class="keywordflow">if</span> (pRC != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    {</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        _D3DRECT rc3D = { pRC-&gt;left, pRC-&gt;top, pRC-&gt;right, pRC-&gt;bottom };</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>        s_lpD3DDev-&gt;Clear(1, &amp;rc3D, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, crFill, 1.0f, 0);</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    }</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>    {</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>        s_lpD3DDev-&gt;Clear(0, <span class="keyword">nullptr</span>, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, crFill, 1.0f, 0);</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    }</div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span><span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    memset(&amp;s_RenderInfo, 0, <span class="keyword">sizeof</span>(__RenderInfo));</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>}</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span> </div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span><span class="keywordtype">void</span> CN3Eng::ClearAuto(RECT* pRC)</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>{</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>    DWORD dwFillColor = D3DCOLOR_ARGB(255, 192, 192, 192); <span class="comment">// 기본색</span></div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    DWORD dwUseFog    = FALSE;</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>    s_lpD3DDev-&gt;GetRenderState(</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>        D3DRS_FOGENABLE, &amp;dwUseFog); <span class="comment">// 안개를 쓰면 바탕색을 안개색을 깔아준다..</span></div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="keywordflow">if</span> (dwUseFog != 0)</div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>        s_lpD3DDev-&gt;GetRenderState(D3DRS_FOGCOLOR, &amp;dwFillColor);</div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    {</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>        CN3Light::__Light Lgt;</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span> </div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>        BOOL bEnable = FALSE;</div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>        s_lpD3DDev-&gt;GetLightEnable(0, &amp;bEnable);</div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>        <span class="keywordflow">if</span> (bEnable)</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>        {</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>            s_lpD3DDev-&gt;GetLight(0, Lgt.toD3D());</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>            dwFillColor = D3DCOLOR_ARGB((uint8_t) (Lgt.Diffuse.a * 255.0f),</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>                (uint8_t) (Lgt.Diffuse.r * 255.0f), (uint8_t) (Lgt.Diffuse.g * 255.0f),</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>                (uint8_t) (Lgt.Diffuse.b * 255.0f));</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>        }</div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    }</div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span> </div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    CN3Eng::Clear(dwFillColor, pRC);</div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>}</div>
-<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span> </div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span><span class="keywordtype">void</span> CN3Eng::ClearZBuffer(<span class="keyword">const</span> RECT* pRC)</div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>{</div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    RECT rc;</div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    <span class="keywordflow">if</span> (pRC == <span class="keyword">nullptr</span> &amp;&amp; s_DevParam.Windowed) <span class="comment">// 윈도우 모드면...</span></div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    {</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>        GetClientRect(s_hWndBase, &amp;rc);</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>        pRC = &amp;rc;</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    }</div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span> </div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    <span class="keywordflow">if</span> (pRC != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    {</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>        D3DRECT rc3D = { pRC-&gt;left, pRC-&gt;top, pRC-&gt;right, pRC-&gt;bottom };</div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>        s_lpD3DDev-&gt;Clear(1, &amp;rc3D, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    }</div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>    {</div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>        s_lpD3DDev-&gt;Clear(0, <span class="keyword">nullptr</span>, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>    }</div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>}</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>                CLogWriter::Write(<span class="stringliteral">&quot;Device reset succeeded&quot;</span>);</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>                SetDefaultEnvironment();</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>            }</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span> </div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span><span class="preprocessor">#ifdef _N3GAME</span></div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>            <span class="comment">// NOTE: Officially it&#39;s ErrCode(%d) but this is horrendously useless</span></div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>            CLogWriter::Write(<span class="stringliteral">&quot;Device reset failed - ErrCode(:X)&quot;</span>, rval);</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>        }</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span> </div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>        MSG msg {};</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>        <span class="keywordflow">while</span> (PeekMessage(&amp;msg, <span class="keyword">nullptr</span>, 0, 0, PM_REMOVE))</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>        {</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>            TranslateMessage(&amp;msg);</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>            DispatchMessage(&amp;msg);</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>        }</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span> </div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>        Sleep(2000);</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>    }</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>}</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span> </div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span><span class="keywordtype">void</span> CN3Eng::Clear(D3DCOLOR crFill, RECT* pRC)</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>{</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>    RECT rc;</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    <span class="keywordflow">if</span> (pRC == <span class="keyword">nullptr</span> &amp;&amp; s_DevParam.Windowed) <span class="comment">// 윈도우 모드면...</span></div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    {</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>        GetClientRect(s_hWndBase, &amp;rc);</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        pRC = &amp;rc;</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>    }</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span> </div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    <span class="keywordflow">if</span> (pRC != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    {</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>        _D3DRECT rc3D = { pRC-&gt;left, pRC-&gt;top, pRC-&gt;right, pRC-&gt;bottom };</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        s_lpD3DDev-&gt;Clear(1, &amp;rc3D, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, crFill, 1.0f, 0);</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>    }</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    {</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>        s_lpD3DDev-&gt;Clear(0, <span class="keyword">nullptr</span>, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, crFill, 1.0f, 0);</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    }</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span><span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    memset(&amp;s_RenderInfo, 0, <span class="keyword">sizeof</span>(__RenderInfo));</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>}</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span> </div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span><span class="keywordtype">void</span> CN3Eng::ClearAuto(RECT* pRC)</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>{</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>    DWORD dwFillColor = D3DCOLOR_ARGB(255, 192, 192, 192); <span class="comment">// 기본색</span></div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>    DWORD dwUseFog    = FALSE;</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    s_lpD3DDev-&gt;GetRenderState(</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>        D3DRS_FOGENABLE, &amp;dwUseFog); <span class="comment">// 안개를 쓰면 바탕색을 안개색을 깔아준다..</span></div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    <span class="keywordflow">if</span> (dwUseFog != 0)</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>        s_lpD3DDev-&gt;GetRenderState(D3DRS_FOGCOLOR, &amp;dwFillColor);</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    {</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>        CN3Light::__Light Lgt;</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span> </div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>        BOOL bEnable = FALSE;</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>        s_lpD3DDev-&gt;GetLightEnable(0, &amp;bEnable);</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>        <span class="keywordflow">if</span> (bEnable)</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>        {</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>            s_lpD3DDev-&gt;GetLight(0, Lgt.toD3D());</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>            dwFillColor = D3DCOLOR_ARGB((uint8_t) (Lgt.Diffuse.a * 255.0f),</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>                (uint8_t) (Lgt.Diffuse.r * 255.0f), (uint8_t) (Lgt.Diffuse.g * 255.0f),</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>                (uint8_t) (Lgt.Diffuse.b * 255.0f));</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>        }</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    }</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    CN3Eng::Clear(dwFillColor, pRC);</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>}</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span> </div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span><span class="keywordtype">void</span> CN3Eng::ClearZBuffer(<span class="keyword">const</span> RECT* pRC)</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>{</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    RECT rc;</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    <span class="keywordflow">if</span> (pRC == <span class="keyword">nullptr</span> &amp;&amp; s_DevParam.Windowed) <span class="comment">// 윈도우 모드면...</span></div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    {</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>        GetClientRect(s_hWndBase, &amp;rc);</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>        pRC = &amp;rc;</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    }</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span> </div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>    <span class="keywordflow">if</span> (pRC != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    {</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>        D3DRECT rc3D = { pRC-&gt;left, pRC-&gt;top, pRC-&gt;right, pRC-&gt;bottom };</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>        s_lpD3DDev-&gt;Clear(1, &amp;rc3D, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    }</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    {</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>        s_lpD3DDev-&gt;Clear(0, <span class="keyword">nullptr</span>, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>    }</div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>}</div>
 <div class="ttc" id="aclassCN3Eng_html_a4b4c50bfd8a401618f56596d0702f3f4"><div class="ttname"><a href="classCN3Eng.html#a4b4c50bfd8a401618f56596d0702f3f4">CN3Eng::SetProjection</a></div><div class="ttdeci">void SetProjection(float fNear, float fFar, float fLens, float fAspect)</div><div class="ttdef"><b>Definition</b> <a href="#l00263">N3Eng.cpp:263</a></div></div>
 <div class="ttc" id="aclassCN3Eng_html_aaa739ab40868d64d10d51f506a4caa79"><div class="ttname"><a href="classCN3Eng.html#aaa739ab40868d64d10d51f506a4caa79">CN3Eng::LookAt</a></div><div class="ttdeci">void LookAt(const __Vector3 &amp;vEye, const __Vector3 &amp;vAt, const __Vector3 &amp;vUp)</div><div class="ttdef"><b>Definition</b> <a href="#l00166">N3Eng.cpp:166</a></div></div>
 <div class="ttc" id="astructCN3Eng_1_1____D3DDEV__INFO_html"><div class="ttname"><a href="structCN3Eng_1_1____D3DDEV__INFO.html">CN3Eng::__D3DDEV_INFO</a></div><div class="ttdef"><b>Definition</b> <a href="N3Eng_8h_source.html#l00016">N3Eng.h:17</a></div></div>

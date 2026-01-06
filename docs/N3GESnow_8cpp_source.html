@@ -166,7 +166,7 @@ $(function(){initNavTree('N3GESnow_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    __VertexXyzT1* pVertices = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    HRESULT hr               = m_pVB-&gt;Lock(0, 0, (<span class="keywordtype">void</span>**) &amp;pVertices, D3DLOCK_NOSYSLOCK);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    HRESULT hr               = m_pVB-&gt;Lock(0, 0, (<span class="keywordtype">void</span>**) &amp;pVertices, 0);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
@@ -360,60 +360,59 @@ $(function(){initNavTree('N3GESnow_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    __ASSERT(s_lpD3DDev, <span class="stringliteral">&quot;D3D Device pointer is NULL!&quot;</span>);</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    m_iVC      = iSnowCount * 3;</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    HRESULT hr = s_lpD3DDev-&gt;CreateVertexBuffer(m_iVC * <span class="keyword">sizeof</span>(__VertexXyzT1), D3DUSAGE_DYNAMIC,</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        FVF_XYZT1, D3DPOOL_DEFAULT, &amp;m_pVB, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    HRESULT hr = s_lpD3DDev-&gt;CreateVertexBuffer(</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        m_iVC * <span class="keyword">sizeof</span>(__VertexXyzT1), 0, FVF_XYZT1, D3DPOOL_MANAGED, &amp;m_pVB, <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    hr = m_pVB-&gt;Lock(</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        0, iSnowCount * 3 * <span class="keyword">sizeof</span>(__VertexXyzT1), (<span class="keywordtype">void</span>**) &amp;pVertices, D3DLOCK_NOSYSLOCK);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="comment">// const float sqrt3 = sqrtf(3.0f);</span></div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iSnowCount; ++i)</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        m_pSnowParticle[i].vPos.Set(fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            fHeight * (rand() % 10000 - 5000) / 10000.f,</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            fWidth * (rand() % 10000 - 5000) / 10000.f);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        m_pSnowParticle[i].fRadius = (rand() % 10000) / 10000.f;</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        m_pSnowParticle[i].fRadian = 2 * __PI * ((rand() % 10000) / 10000.f);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordtype">float</span> fRadian              = __PI * ((rand() % 10000) / 10000.f);</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="comment">//      정삼각형(한변의 길이가 fSnowSize)</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="comment">//      m_pSnowParticle[i].vOffset1.Set(0, sqrt3*fSnowSize/3.f, 0);</span></div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="comment">//      m_pSnowParticle[i].vOffset2.Set(cosf(fRadian)*fSnowSize/2, -sqrt3*fSnowSize/6.f, sinf(fRadian)*fSnowSize/2);</span></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="comment">//      m_pSnowParticle[i].vOffset3.Set(-cosf(fRadian)*fSnowSize/2, -sqrt3*fSnowSize/6.f, -sinf(fRadian)*fSnowSize/2);</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="comment">//      이등변 삼각형(밑변의 길이 fSnowSize, 높이 fSnowSize)</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        m_pSnowParticle[i].vOffset1.Set(0, fSnowSize / 2.f, 0);</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        m_pSnowParticle[i].vOffset2.Set(</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>            cosf(fRadian) * fSnowSize / 2.f, -fSnowSize / 2.f, sinf(fRadian) * fSnowSize / 2.f);</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        m_pSnowParticle[i].vOffset3.Set(</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            -cosf(fRadian) * fSnowSize / 2.f, -fSnowSize / 2.f, -sinf(fRadian) * fSnowSize / 2.f);</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        <span class="comment">// uv좌표 넣기</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        __VertexXyzT1 *pV1 = pVertices + i * 3, *pV2 = pVertices + i * 3 + 1,</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                      *pV3 = pVertices + i * 3 + 2;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="comment">// 정삼각형에 눈 동그라미가 삼각형에 꽉 차게 UV좌표 배치 (geforce2카드에서 border color가 제대로 되지 않아서..)</span></div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="comment">//      pV1-&gt;tu = 0.5f; pV1-&gt;tv = 0.5f - sqrt3/2.f;</span></div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="comment">//      pV2-&gt;tu = 0.5f + sqrt3/2.f; pV2-&gt;tv = 1.0f;</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="comment">//      pV3-&gt;tu = 0.5f - sqrt3/2.f; pV3-&gt;tv = 1.0f;</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        <span class="comment">// 이등변 삼각형에 UV좌표 넣기</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        pV1-&gt;tu            = 0.5f;</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        pV1-&gt;tv            = 0.0f;</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        pV2-&gt;tu            = 1.0f;</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        pV2-&gt;tv            = 1.0f;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        pV3-&gt;tu            = 0.0f;</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        pV3-&gt;tv            = 1.0f;</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="comment">// 이 방식은 눈텍스쳐 사각형에 삼각형을 넣는 방식(따라서 눈 텍스쳐를 삼각형에 맞게 그려주자)</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    }</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    m_pVB-&gt;Unlock();</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    m_pTex = s_MngTex.Get(<span class="stringliteral">&quot;Misc\\Snow.DXT&quot;</span>, TRUE);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>}</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    hr = m_pVB-&gt;Lock(0, iSnowCount * 3 * <span class="keyword">sizeof</span>(__VertexXyzT1), (<span class="keywordtype">void</span>**) &amp;pVertices, 0);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="comment">// const float sqrt3 = sqrtf(3.0f);</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iSnowCount; ++i)</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        m_pSnowParticle[i].vPos.Set(fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            fHeight * (rand() % 10000 - 5000) / 10000.f,</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            fWidth * (rand() % 10000 - 5000) / 10000.f);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        m_pSnowParticle[i].fRadius = (rand() % 10000) / 10000.f;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        m_pSnowParticle[i].fRadian = 2 * __PI * ((rand() % 10000) / 10000.f);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordtype">float</span> fRadian              = __PI * ((rand() % 10000) / 10000.f);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="comment">//      정삼각형(한변의 길이가 fSnowSize)</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="comment">//      m_pSnowParticle[i].vOffset1.Set(0, sqrt3*fSnowSize/3.f, 0);</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="comment">//      m_pSnowParticle[i].vOffset2.Set(cosf(fRadian)*fSnowSize/2, -sqrt3*fSnowSize/6.f, sinf(fRadian)*fSnowSize/2);</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="comment">//      m_pSnowParticle[i].vOffset3.Set(-cosf(fRadian)*fSnowSize/2, -sqrt3*fSnowSize/6.f, -sinf(fRadian)*fSnowSize/2);</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="comment">//      이등변 삼각형(밑변의 길이 fSnowSize, 높이 fSnowSize)</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        m_pSnowParticle[i].vOffset1.Set(0, fSnowSize / 2.f, 0);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        m_pSnowParticle[i].vOffset2.Set(</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            cosf(fRadian) * fSnowSize / 2.f, -fSnowSize / 2.f, sinf(fRadian) * fSnowSize / 2.f);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        m_pSnowParticle[i].vOffset3.Set(</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            -cosf(fRadian) * fSnowSize / 2.f, -fSnowSize / 2.f, -sinf(fRadian) * fSnowSize / 2.f);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="comment">// uv좌표 넣기</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        __VertexXyzT1 *pV1 = pVertices + i * 3, *pV2 = pVertices + i * 3 + 1,</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                      *pV3 = pVertices + i * 3 + 2;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="comment">// 정삼각형에 눈 동그라미가 삼각형에 꽉 차게 UV좌표 배치 (geforce2카드에서 border color가 제대로 되지 않아서..)</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="comment">//      pV1-&gt;tu = 0.5f; pV1-&gt;tv = 0.5f - sqrt3/2.f;</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="comment">//      pV2-&gt;tu = 0.5f + sqrt3/2.f; pV2-&gt;tv = 1.0f;</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="comment">//      pV3-&gt;tu = 0.5f - sqrt3/2.f; pV3-&gt;tv = 1.0f;</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="comment">// 이등변 삼각형에 UV좌표 넣기</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        pV1-&gt;tu            = 0.5f;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        pV1-&gt;tv            = 0.0f;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        pV2-&gt;tu            = 1.0f;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        pV2-&gt;tv            = 1.0f;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        pV3-&gt;tu            = 0.0f;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        pV3-&gt;tv            = 1.0f;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        <span class="comment">// 이 방식은 눈텍스쳐 사각형에 삼각형을 넣는 방식(따라서 눈 텍스쳐를 삼각형에 맞게 그려주자)</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    }</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    m_pVB-&gt;Unlock();</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    m_pTex = s_MngTex.Get(<span class="stringliteral">&quot;Misc\\Snow.DXT&quot;</span>, TRUE);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>}</div>
 <div class="ttc" id="astructCN3GESnow_1_1____SnowParticle_html"><div class="ttname"><a href="structCN3GESnow_1_1____SnowParticle.html">CN3GESnow::__SnowParticle</a></div><div class="ttdef"><b>Definition</b> <a href="N3GESnow_8h_source.html#l00016">N3GESnow.h:17</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

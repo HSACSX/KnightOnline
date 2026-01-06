@@ -160,7 +160,7 @@ $(function(){initNavTree('N3GERain_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    __VertexXyzColor* pVertices = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    HRESULT hr                  = m_pVB-&gt;Lock(0, 0, (<span class="keywordtype">void</span>**) &amp;pVertices, D3DLOCK_NOSYSLOCK);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    HRESULT hr                  = m_pVB-&gt;Lock(0, 0, (<span class="keywordtype">void</span>**) &amp;pVertices, 0);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
@@ -327,29 +327,28 @@ $(function(){initNavTree('N3GERain_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    __VertexXyzColor* pVertices = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    hr                          = m_pVB-&gt;Lock(</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        0, iRainCount * 2 * <span class="keyword">sizeof</span>(__VertexXyzColor), (<span class="keywordtype">void</span>**) &amp;pVertices, D3DLOCK_NOSYSLOCK);</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keyword">const</span> uint32_t dwColorA = 0x00bfbfbf; <span class="comment">// 꼬리</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keyword">const</span> uint32_t dwColorB = 0x80bfbfbf; <span class="comment">// 머리</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    __Vector3 vN            = vVelocity;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    vN.Normalize();</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    __Vector3 vAdd = vN * fRainLength;</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iRainCount; ++i)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        pVertices[i * 2 + 0].Set(fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            fHeight * (rand() % 10000 - 5000) / 10000.f, fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            dwColorA);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        pVertices[i * 2 + 1].Set(pVertices[i * 2 + 0].x + vAdd.x, pVertices[i * 2 + 0].y + vAdd.y,</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            pVertices[i * 2 + 0].z + vAdd.z, dwColorB);</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    }</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    m_pVB-&gt;Unlock();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>}</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    hr = m_pVB-&gt;Lock(0, iRainCount * 2 * <span class="keyword">sizeof</span>(__VertexXyzColor), (<span class="keywordtype">void</span>**) &amp;pVertices, 0);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">if</span> (FAILED(hr))</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keyword">const</span> uint32_t dwColorA = 0x00bfbfbf; <span class="comment">// 꼬리</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keyword">const</span> uint32_t dwColorB = 0x80bfbfbf; <span class="comment">// 머리</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    __Vector3 vN            = vVelocity;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    vN.Normalize();</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    __Vector3 vAdd = vN * fRainLength;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; iRainCount; ++i)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    {</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        pVertices[i * 2 + 0].Set(fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            fHeight * (rand() % 10000 - 5000) / 10000.f, fWidth * (rand() % 10000 - 5000) / 10000.f,</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            dwColorA);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        pVertices[i * 2 + 1].Set(pVertices[i * 2 + 0].x + vAdd.x, pVertices[i * 2 + 0].y + vAdd.y,</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            pVertices[i * 2 + 0].z + vAdd.z, dwColorB);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    m_pVB-&gt;Unlock();</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
