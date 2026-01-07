@@ -168,6 +168,7 @@ var NAVTREEINDEX7 =
 "structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94":[2,0,492,2],
 "structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be":[2,0,492,1],
 "structTcpSocket_1_1QueuedSend.html":[2,0,503,0],
+"structTcpSocket_1_1test__tag.html":[2,0,503,1],
 "structVersionManager_1_1__NEWS.html":[2,0,8,0],
 "structVersionManager_1_1__SERVER__INFO.html":[2,0,8,1],
 "structWAVE__Data.html":[2,0,508],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "struct____TABLE__NPC__SHOP.html":[2,0,66],
 "struct____TABLE__PLAYER__LOOKS.html":[2,0,67],
 "struct____TABLE__QUEST__CONTENT.html":[2,0,68],
-"struct____TABLE__QUEST__MENU.html":[2,0,69],
-"struct____TABLE__QUEST__TALK.html":[2,0,70]
+"struct____TABLE__QUEST__MENU.html":[2,0,69]
 };

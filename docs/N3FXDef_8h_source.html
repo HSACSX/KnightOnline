@@ -116,23 +116,23 @@ $(function(){initNavTree('N3FXDef_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;My_3DStruct.h&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// V0</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V0      = 8;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V0      = 8;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// V1 originally, before they changed it</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V1_ORIG = 16;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V1_ORIG = 16;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// V1(+) after it was changed - no version change to identify this change</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V1      = 26;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_V1      = 26;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// TODO: Fix this. The UI is just hardcoded for 16 (which got later updated to 26 without a version change).</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_TOOL    = MAX_FX_PART_V1_ORIG;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART_TOOL    = MAX_FX_PART_V1_ORIG;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// 한 인스턴스가 동시에 표현할수 있는 갯수..</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART         = MAX_FX_PART_V1;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_FX_PART         = MAX_FX_PART_V1;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_VERTEX_PARTICLE = 4;  <span class="comment">// 파티클 하나에 들어가는 점수..</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_VERTEX_BOTTOM   = 10; <span class="comment">//</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_KEY_COLOR       = 100;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_VERTEX_PARTICLE = 4;  <span class="comment">// 파티클 하나에 들어가는 점수..</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_VERTEX_BOTTOM   = 10; <span class="comment">//</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUM_KEY_COLOR       = 100;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// 이펙트 스타일...매쉬를 이용한 건지, 파티클을 이용한 건지..등등..</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// NOLINTNEXTLINE(performance-enum-size): used by the file format (albeit indirectly), must be this size</span></div>

@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"struct____TABLE__QUEST__TALK.html":[2,0,70],
 "struct____TABLE__SOUND.html":[2,0,71],
 "struct____TABLE__TEXTS.html":[2,0,72],
 "struct____TABLE__UI__RESRC.html":[2,0,73],

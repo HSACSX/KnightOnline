@@ -761,6 +761,7 @@ var hierarchy =
       [ "Vector3Test", "classVector3Test.html", null ],
       [ "Vector4Test", "classVector4Test.html", null ]
     ] ],
+    [ "TcpSocket::test_tag", "structTcpSocket_1_1test__tag.html", null ],
     [ "Thread", "classThread.html", [
       [ "AIServer::CNpcThread", "classAIServer_1_1CNpcThread.html", null ],
       [ "AIServer::SendThreadMain", "classAIServer_1_1SendThreadMain.html", null ],

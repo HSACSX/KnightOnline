@@ -65,7 +65,7 @@ var NAVTREEINDEX =
 "classCN3FXEView.html",
 "classCUITradeBBSSelector.html",
 "dir_d8fdd7ee35a441d526ba2e9ecee64846.html",
-"struct____TABLE__SOUND.html"
+"struct____TABLE__QUEST__TALK.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

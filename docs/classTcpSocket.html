@@ -100,8 +100,10 @@ $(function(){initNavTree('classTcpSocket.html',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classTcpSocket-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">TcpSocket Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
@@ -112,6 +114,8 @@ $(function(){initNavTree('classTcpSocket.html',''); initResizable(true); });
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpSocket_1_1QueuedSend.html">QueuedSend</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpSocket_1_1test__tag.html">test_tag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -121,6 +125,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a82b42011aed2686d79dc5f3e891be086"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46c83408f0fd87042dc163b4ab3be856" id="r_a46c83408f0fd87042dc163b4ab3be856"><td class="memItemLeft" align="right" valign="top">e_ConnectionState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46c83408f0fd87042dc163b4ab3be856">GetState</a> () const</td></tr>
 <tr class="separator:a46c83408f0fd87042dc163b4ab3be856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34551bbdcdd9626bfdd38d608249def0" id="r_a34551bbdcdd9626bfdd38d608249def0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34551bbdcdd9626bfdd38d608249def0">TcpSocket</a> (<a class="el" href="structTcpSocket_1_1test__tag.html">test_tag</a>)</td></tr>
+<tr class="separator:a34551bbdcdd9626bfdd38d608249def0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca040a7b384edaa0e3c644d44ede3011" id="r_aca040a7b384edaa0e3c644d44ede3011"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca040a7b384edaa0e3c644d44ede3011">TcpSocket</a> (<a class="el" href="classSocketManager.html">SocketManager</a> *socketManager)</td></tr>
 <tr class="separator:aca040a7b384edaa0e3c644d44ede3011"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8d7fe1de3ca2dbf36d7d2cf5ace1d72" id="r_aa8d7fe1de3ca2dbf36d7d2cf5ace1d72"><td class="memItemLeft" align="right" valign="top"><a id="aa8d7fe1de3ca2dbf36d7d2cf5ace1d72" name="aa8d7fe1de3ca2dbf36d7d2cf5ace1d72"></a>
@@ -145,6 +151,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Parsing</b> (
 <tr class="memitem:aa68cf38756e824470948af79b6f58a6e" id="r_aa68cf38756e824470948af79b6f58a6e"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa68cf38756e824470948af79b6f58a6e">GetRemoteIP</a> ()</td></tr>
 <tr class="separator:aa68cf38756e824470948af79b6f58a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:aae3d4c432fe83c9635afc3d5acd85532" id="r_aae3d4c432fe83c9635afc3d5acd85532"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae3d4c432fe83c9635afc3d5acd85532">RawSocket_t</a> = asio::ip::tcp::socket</td></tr>
+<tr class="separator:aae3d4c432fe83c9635afc3d5acd85532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a5c9e0060e4903876592401c3075a58aa" id="r_a5c9e0060e4903876592401c3075a58aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c9e0060e4903876592401c3075a58aa">QueueAndSend</a> (char *buffer, int length)</td></tr>
@@ -160,13 +171,13 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ReleaseToMana
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a3a6492b536eea3659a846cde2ebe57fa" id="r_a3a6492b536eea3659a846cde2ebe57fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSocketManager.html">SocketManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a6492b536eea3659a846cde2ebe57fa">_socketManager</a> = nullptr</td></tr>
 <tr class="separator:a3a6492b536eea3659a846cde2ebe57fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adadf727a3077fb49e747111619e139a8" id="r_adadf727a3077fb49e747111619e139a8"><td class="memItemLeft" align="right" valign="top">RawSocket_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adadf727a3077fb49e747111619e139a8">_socket</a></td></tr>
-<tr class="separator:adadf727a3077fb49e747111619e139a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8e3edf62c8fe2abc9098d63cef73a17" id="r_ae8e3edf62c8fe2abc9098d63cef73a17"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; RawSocket_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e3edf62c8fe2abc9098d63cef73a17">_socket</a> = nullptr</td></tr>
+<tr class="separator:ae8e3edf62c8fe2abc9098d63cef73a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05e60269ee6d9867b21d60289ad2a274" id="r_a05e60269ee6d9867b21d60289ad2a274"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05e60269ee6d9867b21d60289ad2a274">_recvBufferSize</a> = 0</td></tr>
 <tr class="separator:a05e60269ee6d9867b21d60289ad2a274"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8f95755f066fe629b6678b583d13f7f" id="r_ac8f95755f066fe629b6678b583d13f7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8f95755f066fe629b6678b583d13f7f">_sendBufferSize</a> = 0</td></tr>
 <tr class="separator:ac8f95755f066fe629b6678b583d13f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a835ccdaaea7b93c01f166965ce168e" id="r_a6a835ccdaaea7b93c01f166965ce168e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a835ccdaaea7b93c01f166965ce168e">_recvBuffer</a></td></tr>
+<tr class="memitem:a6a835ccdaaea7b93c01f166965ce168e" id="r_a6a835ccdaaea7b93c01f166965ce168e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a835ccdaaea7b93c01f166965ce168e">_recvBuffer</a> = {}</td></tr>
 <tr class="separator:a6a835ccdaaea7b93c01f166965ce168e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d80177a9384771c0e8fdf48f5d8b084" id="r_a1d80177a9384771c0e8fdf48f5d8b084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCCircularBuffer.html">CCircularBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d80177a9384771c0e8fdf48f5d8b084">_recvCircularBuffer</a></td></tr>
 <tr class="separator:a1d80177a9384771c0e8fdf48f5d8b084"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +191,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ab6fa735ae813076834e943c1cdcace13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b3c69d6655d532a3024827b93221406" id="r_a2b3c69d6655d532a3024827b93221406"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b3c69d6655d532a3024827b93221406">_remoteIpCached</a> = false</td></tr>
 <tr class="separator:a2b3c69d6655d532a3024827b93221406"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9659f615913165b0ee35fac59c105334" id="r_a9659f615913165b0ee35fac59c105334"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9659f615913165b0ee35fac59c105334">_remoteIp</a></td></tr>
+<tr class="memitem:a9659f615913165b0ee35fac59c105334" id="r_a9659f615913165b0ee35fac59c105334"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9659f615913165b0ee35fac59c105334">_remoteIp</a> = {}</td></tr>
 <tr class="separator:a9659f615913165b0ee35fac59c105334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ca0233a9e30a69482b36bdf32bf8b90" id="r_a5ca0233a9e30a69482b36bdf32bf8b90"><td class="memItemLeft" align="right" valign="top">e_ConnectionState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ca0233a9e30a69482b36bdf32bf8b90">_state</a> = CONNECTION_STATE_DISCONNECTED</td></tr>
 <tr class="separator:a5ca0233a9e30a69482b36bdf32bf8b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,6 +202,13 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a5b2be764fcd25be5a9b6ed34fae4c9d8" id="r_a5b2be764fcd25be5a9b6ed34fae4c9d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b2be764fcd25be5a9b6ed34fae4c9d8">_socketId</a> = -1</td></tr>
 <tr class="separator:a5b2be764fcd25be5a9b6ed34fae4c9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a3422817fe0bddf30100e14756661ddca" id="r_a3422817fe0bddf30100e14756661ddca"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3422817fe0bddf30100e14756661ddca">DEFAULT_SEND_BUFFER_SIZE</a> = 4096</td></tr>
+<tr class="separator:a3422817fe0bddf30100e14756661ddca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c7d8eeb85dd0dac3142c1539f62b84" id="r_ae1c7d8eeb85dd0dac3142c1539f62b84"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1c7d8eeb85dd0dac3142c1539f62b84">DEFAULT_RECV_BUFFER_SIZE</a> = 4096</td></tr>
+<tr class="separator:ae1c7d8eeb85dd0dac3142c1539f62b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a43e117b196c850619d5255046edb3e79" id="r_a43e117b196c850619d5255046edb3e79"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43e117b196c850619d5255046edb3e79">SocketManager</a></td></tr>
@@ -198,10 +216,54 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00021">21</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00022">22</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aae3d4c432fe83c9635afc3d5acd85532" name="aae3d4c432fe83c9635afc3d5acd85532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae3d4c432fe83c9635afc3d5acd85532">&#9670;&#160;</a></span>RawSocket_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using TcpSocket::RawSocket_t = asio::ip::tcp::socket</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00027">27</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a34551bbdcdd9626bfdd38d608249def0" name="a34551bbdcdd9626bfdd38d608249def0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34551bbdcdd9626bfdd38d608249def0">&#9670;&#160;</a></span>TcpSocket() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TcpSocket::TcpSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTcpSocket_1_1test__tag.html">test_tag</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00005">5</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+
+</div>
+</div>
 <a id="aca040a7b384edaa0e3c644d44ede3011" name="aca040a7b384edaa0e3c644d44ede3011"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca040a7b384edaa0e3c644d44ede3011">&#9670;&#160;</a></span>TcpSocket()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aca040a7b384edaa0e3c644d44ede3011">&#9670;&#160;</a></span>TcpSocket() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,7 +277,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00005">5</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00012">12</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +304,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00044">44</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00055">55</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -262,7 +324,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00129">129</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00143">143</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +351,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00174">174</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00191">191</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +370,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00225">225</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00242">242</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +397,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00028">28</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00037">37</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +424,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00038">38</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00047">47</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -391,7 +453,7 @@ Friends</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classEbenezer_1_1CUser.html#a5adc8b51b2100d52cd1d5c666a7be300">Ebenezer::CUser</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00220">220</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00237">237</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +472,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00205">205</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00222">222</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +503,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00015">15</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00022">22</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -460,7 +522,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00150">150</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8cpp_source.html#l00167">167</a> of file <a class="el" href="TcpSocket_8cpp_source.html">TcpSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -487,7 +549,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00033">33</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00042">42</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -512,7 +574,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00023">23</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00024">24</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -537,7 +599,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00112">112</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00123">123</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -551,7 +613,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;char&gt; TcpSocket::_recvBuffer</td>
+          <td class="memname">std::vector&lt;char&gt; TcpSocket::_recvBuffer = {}</td>
         </tr>
       </table>
   </td>
@@ -561,7 +623,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00076">76</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00087">87</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -585,7 +647,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00072">72</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00083">83</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -609,7 +671,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00080">80</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00091">91</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -623,7 +685,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string TcpSocket::_remoteIp</td>
+          <td class="memname">std::string TcpSocket::_remoteIp = {}</td>
         </tr>
       </table>
   </td>
@@ -633,7 +695,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00109">109</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00120">120</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -657,7 +719,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00108">108</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00119">119</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -681,7 +743,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00073">73</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00084">84</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -705,7 +767,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00105">105</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00116">116</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -729,7 +791,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00106">106</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00117">117</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -753,7 +815,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00103">103</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00114">114</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -777,12 +839,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00102">102</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00113">113</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
-<a id="adadf727a3077fb49e747111619e139a8" name="adadf727a3077fb49e747111619e139a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adadf727a3077fb49e747111619e139a8">&#9670;&#160;</a></span>_socket</h2>
+<a id="ae8e3edf62c8fe2abc9098d63cef73a17" name="ae8e3edf62c8fe2abc9098d63cef73a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8e3edf62c8fe2abc9098d63cef73a17">&#9670;&#160;</a></span>_socket</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -791,7 +853,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">RawSocket_t TcpSocket::_socket</td>
+          <td class="memname">std::unique_ptr&lt;RawSocket_t&gt; TcpSocket::_socket = nullptr</td>
         </tr>
       </table>
   </td>
@@ -801,7 +863,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00070">70</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00081">81</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -825,7 +887,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00113">113</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00124">124</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -849,7 +911,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00115">115</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00126">126</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -873,7 +935,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00069">69</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00080">80</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +959,55 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00111">111</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00122">122</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+
+</div>
+</div>
+<a id="ae1c7d8eeb85dd0dac3142c1539f62b84" name="ae1c7d8eeb85dd0dac3142c1539f62b84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c7d8eeb85dd0dac3142c1539f62b84">&#9670;&#160;</a></span>DEFAULT_RECV_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TcpSocket::DEFAULT_RECV_BUFFER_SIZE = 4096</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00030">30</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+
+</div>
+</div>
+<a id="a3422817fe0bddf30100e14756661ddca" name="a3422817fe0bddf30100e14756661ddca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3422817fe0bddf30100e14756661ddca">&#9670;&#160;</a></span>DEFAULT_SEND_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TcpSocket::DEFAULT_SEND_BUFFER_SIZE = 4096</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00029">29</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>

@@ -134,219 +134,220 @@ $(function(){initNavTree('N3Base_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    TEX_CAPS_POW2       = 0x80</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">constexpr</span> <span class="keywordtype">float</span> CAMERA_RADIUS_UNIT = 2.0f;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_CAMERA_RADIUS = 512; <span class="comment">// 2미터 단위로 128 개의 도트 프로덕트 미리 계산해 놓는다..</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">enum</span> TIMER_COMMAND : uint8_t</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    TIMER_RESET = 0,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    TIMER_START,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    TIMER_STOP,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    TIMER_ADVANCE,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    TIMER_GETABSOLUTETIME,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    TIMER_GETAPPTIME,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    TIMER_GETELAPSEDTIME</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct____CameraData.html">   49</a></span><span class="keyword">struct </span>__CameraData</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    __CameraData() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> Release()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        *<span class="keyword">this</span> = {};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vEye            = {};   <span class="comment">// Camera Position Vector</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vAt             = {};   <span class="comment">// Camera At Vector</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vUp             = {};   <span class="comment">// Camera Up Vector</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> fFOV                = 0.0f; <span class="comment">// 카메라 렌즈 각 : Field Of View</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> fAspect             = 0.0f; <span class="comment">// 종횡비</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">float</span> fNP                 = 0.0f; <span class="comment">// NearPlane</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span> fFP                 = 0.0f; <span class="comment">// FarPlane</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    D3DVIEWPORT9 vp           = {};   <span class="comment">// ViewPort;</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxView        = __Matrix44::GetIdentity();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxViewInverse = __Matrix44::GetIdentity();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxProjection  = __Matrix44::GetIdentity();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> fFrustum[6][4]      = {};</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// fRadius - 물체의 반지름보다 약간 더 여유 있게 잡고 넣으면 그만큼 클리핑을 여유있게 한다..</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// 미리 계산된 카메라 평면의 도트 프로덕트 값을 기준으로 카메라 사면체 밖에 있으면  참을 돌려준다.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">bool</span> IsOutOfFrustum(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vPosition, <span class="keywordtype">float</span> fRadius)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">if</span> ((vEye - vPosition).Magnitude() &gt; fFP + fRadius)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Far Plane 거리체크</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p = 0; p &lt; 6; p++)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">if</span> (fFrustum[p][0] * vPosition.x + fFrustum[p][1] * vPosition.y</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    + fFrustum[p][2] * vPosition.z + fFrustum[p][3]</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                &lt;= -fRadius)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> CAMERA_RADIUS_UNIT = 2.0f;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    MAX_CAMERA_RADIUS = 512; <span class="comment">// 2미터 단위로 128 개의 도트 프로덕트 미리 계산해 놓는다..</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">enum</span> TIMER_COMMAND : uint8_t</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    TIMER_RESET = 0,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    TIMER_START,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    TIMER_STOP,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    TIMER_ADVANCE,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    TIMER_GETABSOLUTETIME,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    TIMER_GETAPPTIME,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    TIMER_GETELAPSEDTIME</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="};">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="struct____CameraData.html">   50</a></span><span class="keyword">struct </span>__CameraData</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    __CameraData() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> Release()</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        *<span class="keyword">this</span> = {};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vEye            = {};   <span class="comment">// Camera Position Vector</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vAt             = {};   <span class="comment">// Camera At Vector</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a> vUp             = {};   <span class="comment">// Camera Up Vector</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> fFOV                = 0.0f; <span class="comment">// 카메라 렌즈 각 : Field Of View</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">float</span> fAspect             = 0.0f; <span class="comment">// 종횡비</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span> fNP                 = 0.0f; <span class="comment">// NearPlane</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">float</span> fFP                 = 0.0f; <span class="comment">// FarPlane</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    D3DVIEWPORT9 vp           = {};   <span class="comment">// ViewPort;</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxView        = __Matrix44::GetIdentity();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxViewInverse = __Matrix44::GetIdentity();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a> mtxProjection  = __Matrix44::GetIdentity();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> fFrustum[6][4]      = {};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// fRadius - 물체의 반지름보다 약간 더 여유 있게 잡고 넣으면 그만큼 클리핑을 여유있게 한다..</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// 미리 계산된 카메라 평면의 도트 프로덕트 값을 기준으로 카메라 사면체 밖에 있으면  참을 돌려준다.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">bool</span> IsOutOfFrustum(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>&amp; vPosition, <span class="keywordtype">float</span> fRadius)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">if</span> ((vEye - vPosition).Magnitude() &gt; fFP + fRadius)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Far Plane 거리체크</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p = 0; p &lt; 6; p++)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">if</span> (fFrustum[p][0] * vPosition.x + fFrustum[p][1] * vPosition.y</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    + fFrustum[p][2] * vPosition.z + fFrustum[p][3]</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                &lt;= -fRadius)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="};">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="struct____RenderInfo.html">   92</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____RenderInfo.html">__RenderInfo</a></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">int</span> nShape                = 0;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">int</span> nShape_Part           = 0;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">int</span> nShape_Polygon        = 0; <span class="comment">// 단순 폴리곤</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">int</span> nChr                  = 0;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">int</span> nChr_Part             = 0;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">int</span> nChr_Polygon          = 0; <span class="comment">// 캐릭터 폴리곤</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> nChr_Plug             = 0; <span class="comment">// 캐릭터에 붙은 무기등..</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">int</span> nChr_Plug_Polygon     = 0; <span class="comment">// 캐릭터에 붙은 무기등의 폴리곤..</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">int</span> nTerrain_Polygon      = 0; <span class="comment">// 타일 적용된 지형 폴리곤..</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">int</span> nTerrain_Tile_Polygon = 0; <span class="comment">// 타일 적용된 지형 폴리곤..</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">int</span> nAlpha_Polygon        = 0;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">int</span> nTexture_32X32        = 0; <span class="comment">// 32 X 32 Texture</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">int</span> nTexture_64X64        = 0; <span class="comment">// 64 X 64 Texture</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">int</span> nTexture_128X128      = 0; <span class="comment">// 128 X 128 Texture</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> nTexture_256X256      = 0; <span class="comment">// 256 X 256 Texture</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">int</span> nTexture_512X512      = 0; <span class="comment">// 512 X 512 Texture</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">int</span> nTexture_Huge         = 0; <span class="comment">// 512 X 512 이상 size</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">int</span> nTexture_OtherSize    = 0; <span class="comment">// Other size</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="};">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="struct____RenderInfo.html">   93</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____RenderInfo.html">__RenderInfo</a></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">int</span> nShape                = 0;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">int</span> nShape_Part           = 0;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">int</span> nShape_Polygon        = 0; <span class="comment">// 단순 폴리곤</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">int</span> nChr                  = 0;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">int</span> nChr_Part             = 0;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> nChr_Polygon          = 0; <span class="comment">// 캐릭터 폴리곤</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">int</span> nChr_Plug             = 0; <span class="comment">// 캐릭터에 붙은 무기등..</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">int</span> nChr_Plug_Polygon     = 0; <span class="comment">// 캐릭터에 붙은 무기등의 폴리곤..</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">int</span> nTerrain_Polygon      = 0; <span class="comment">// 타일 적용된 지형 폴리곤..</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">int</span> nTerrain_Tile_Polygon = 0; <span class="comment">// 타일 적용된 지형 폴리곤..</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">int</span> nAlpha_Polygon        = 0;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">int</span> nTexture_32X32        = 0; <span class="comment">// 32 X 32 Texture</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">int</span> nTexture_64X64        = 0; <span class="comment">// 64 X 64 Texture</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> nTexture_128X128      = 0; <span class="comment">// 128 X 128 Texture</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">int</span> nTexture_256X256      = 0; <span class="comment">// 256 X 256 Texture</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">int</span> nTexture_512X512      = 0; <span class="comment">// 512 X 512 Texture</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">int</span> nTexture_Huge         = 0; <span class="comment">// 512 X 512 이상 size</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">int</span> nTexture_OtherSize    = 0; <span class="comment">// Other size</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>};</div>
 </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="foldopen" id="foldopen00118" data-start="{" data-end="};">
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="struct____ResrcInfo.html">  118</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____ResrcInfo.html">__ResrcInfo</a></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> nTexture_Loaded_32X32     = 0; <span class="comment">// 32 X 32 Texture</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> nTexture_Loaded_64X64     = 0; <span class="comment">// 64 X 64 Texture</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">int</span> nTexture_Loaded_128X128   = 0; <span class="comment">// 128 X 128 Texture</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">int</span> nTexture_Loaded_256X256   = 0; <span class="comment">// 256 X 256 Texture</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">int</span> nTexture_Loaded_512X512   = 0; <span class="comment">// 512 X 512 Texture</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">int</span> nTexture_Loaded_Huge      = 0; <span class="comment">// 512 X 512 이상 size</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">int</span> nTexture_Loaded_OtherSize = 0; <span class="comment">// Other size</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>};</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="};">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="struct____ResrcInfo.html">  119</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____ResrcInfo.html">__ResrcInfo</a></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>{</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> nTexture_Loaded_32X32     = 0; <span class="comment">// 32 X 32 Texture</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">int</span> nTexture_Loaded_64X64     = 0; <span class="comment">// 64 X 64 Texture</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">int</span> nTexture_Loaded_128X128   = 0; <span class="comment">// 128 X 128 Texture</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">int</span> nTexture_Loaded_256X256   = 0; <span class="comment">// 256 X 256 Texture</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">int</span> nTexture_Loaded_512X512   = 0; <span class="comment">// 512 X 512 Texture</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">int</span> nTexture_Loaded_Huge      = 0; <span class="comment">// 512 X 512 이상 size</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">int</span> nTexture_Loaded_OtherSize = 0; <span class="comment">// Other size</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>};</div>
 </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="foldopen" id="foldopen00129" data-start="{" data-end="};">
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="struct____Options.html">  129</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____Options.html">__Options</a></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">int</span> iUseShadow        = 1;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">int</span> iTexLOD_Chr       = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">int</span> iTexLOD_Shape     = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">int</span> iTexLOD_Terrain   = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">int</span> iViewWidth        = 1024;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> iViewHeight       = 768;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">int</span> iViewColorDepth   = 16;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">int</span> iViewDist         = 512;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">int</span> iEffectSndDist    = 48; <span class="comment">// 이펙트 사운드 거리</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">bool</span> bSndEnable       = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">bool</span> bSndBgmEnable    = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">bool</span> bSndEffectEnable = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">bool</span> bWindowCursor    = <span class="keyword">true</span>; <span class="comment">// 0 - 게임에서 그려주는 커서 1 - 윈도우 커서 사용</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">bool</span> bWindowMode      = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">bool</span> bVSyncEnabled    = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>};</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="};">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="struct____Options.html">  130</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct____Options.html">__Options</a></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">int</span> iUseShadow        = 1;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">int</span> iTexLOD_Chr       = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">int</span> iTexLOD_Shape     = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">int</span> iTexLOD_Terrain   = 0; <span class="comment">// 0 - 원래 크기.. 1 - 한단계 작게. 2 - 두단계 작게..</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> iViewWidth        = 1024;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">int</span> iViewHeight       = 768;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">int</span> iViewColorDepth   = 16;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">int</span> iViewDist         = 512;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">int</span> iEffectSndDist    = 48; <span class="comment">// 이펙트 사운드 거리</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">bool</span> bSndEnable       = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">bool</span> bSndBgmEnable    = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">bool</span> bSndEffectEnable = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">bool</span> bWindowCursor    = <span class="keyword">true</span>; <span class="comment">// 0 - 게임에서 그려주는 커서 1 - 윈도우 커서 사용</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">bool</span> bWindowMode      = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">bool</span> bVSyncEnabled    = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>};</div>
 </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="foldopen" id="foldopen00151" data-start="{" data-end="};">
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classCN3Base.html">  151</a></span><span class="keyword">class </span>CN3Base</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">static</span> LPDIRECT3DDEVICE9 s_lpD3DDev;     <span class="comment">// Device 참조 포인터.. 멋대로 해제하면 안된다..</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">static</span> D3DPRESENT_PARAMETERS s_DevParam; <span class="comment">// Device 생성 Present Parameter</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keyword">static</span> D3DCAPS9 s_DevCaps;               <span class="comment">// Device 호환성...</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keyword">static</span> uint32_t s_dwTextureCaps;         <span class="comment">// Texture 지원.. DXT1 ~ DXT5, Square Only</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keyword">static</span> HWND s_hWndBase;                  <span class="comment">// Init 할때 쓴 Window Handle</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keyword">static</span> HWND s_hWndPresent;               <span class="comment">// 최근에 Present 한 Window Handle</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____CameraData.html">__CameraData</a> s_CameraData;        <span class="comment">// 카메라 데이터 정적 변수..</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____ResrcInfo.html">__ResrcInfo</a> s_ResrcInfo;          <span class="comment">// Rendering Information..</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____Options.html">__Options</a> s_Options;              <span class="comment">// 각종 옵션등...</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____RenderInfo.html">__RenderInfo</a> s_RenderInfo;        <span class="comment">// Rendering Information..</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> s_fFrmPerSec;               <span class="comment">// Frame Per Second</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> s_fSecPerFrm;               <span class="comment">// Second Per Frame = 1.0f/s_fFrmPerSec (Dino가 추가)</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#ifdef _N3GAME                               </span><span class="comment">// 게임이 아닌 툴에서는 필요없다...</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3SndMgr.html">CN3SndMgr</a> s_SndMgr;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#ifdef _N3TOOL                               </span><span class="comment">// ui 에디터일때는 필요하다.</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3SndMgr.html">CN3SndMgr</a> s_SndMgr;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3AlphaPrimitiveManager.html">CN3AlphaPrimitiveManager</a></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        s_AlphaMgr; <span class="comment">// Alpha blend 할 폴리곤들을 관리.. 추가했다가.. 카메라 거리에 ?上?정렬하고 한꺼번에 그린다..</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Texture&gt;</a> s_MngTex; <span class="comment">// Texture Manager</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Mesh&gt;</a> s_MngMesh;   <span class="comment">// Normal Mesh Manager</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3VMesh&gt;</a></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        s_MngVMesh; <span class="comment">// 단순히 폴리곤만 갖고 있는 메시 - 주로 충돌 체크에 쓴다..</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3PMesh&gt;</a> s_MngPMesh;         <span class="comment">// Progressive Mesh Manager</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Joint&gt;</a> s_MngJoint;         <span class="comment">// Joint Manager</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3CPartSkins&gt;</a> s_MngSkins;    <span class="comment">// Character Part Skin Manager</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3AnimControl&gt;</a> s_MngAniCtrl; <span class="comment">// Animation Manager</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3FXPMesh&gt;</a></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        s_MngFXPMesh;            <span class="comment">// FX에서 쓰는 PMesh - 파일은 일반 PMesh를 쓰지만 속은 다르다.</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3FXShape&gt;</a></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        s_MngFXShape;            <span class="comment">// FX에서 쓰는 Shape - 파일은 일반 shape를 쓰지만 속은 다르다.</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keyword">static</span> std::string s_szPath; <span class="comment">// 프로그램이 실행된 경로..</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    uint32_t m_dwType;           <span class="comment">// &quot;MESH&quot;, &quot;CAMERA&quot;, &quot;SCENE&quot;, &quot;???&quot; .... 등등등...</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    std::string m_szName;</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> TimeGet();</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::string&amp; PathGet()</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    {</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">return</span> s_szPath;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> PathSet(<span class="keyword">const</span> std::string&amp; szPath);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> RenderLines(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>* pvLines, <span class="keywordtype">int</span> nCount, D3DCOLOR color);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> RenderLines(<span class="keyword">const</span> RECT&amp; rc, D3DCOLOR color);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> TimerProcess(TIMER_COMMAND command);</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    uint32_t Type()</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    {</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">return</span> m_dwType;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    } <span class="comment">// 객체 종류..</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordtype">void</span> ReleaseResrc();</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="comment">//#ifdef _N3TOOL</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordtype">void</span> SaveResrc();</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="comment">//#endif // end of _N3TOOL</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Release();</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    CN3Base();</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keyword">virtual</span> ~CN3Base();</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>};</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="};">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classCN3Base.html">  152</a></span><span class="keyword">class </span>CN3Base</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>{</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">static</span> LPDIRECT3DDEVICE9 s_lpD3DDev;     <span class="comment">// Device 참조 포인터.. 멋대로 해제하면 안된다..</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keyword">static</span> D3DPRESENT_PARAMETERS s_DevParam; <span class="comment">// Device 생성 Present Parameter</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keyword">static</span> D3DCAPS9 s_DevCaps;               <span class="comment">// Device 호환성...</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keyword">static</span> uint32_t s_dwTextureCaps;         <span class="comment">// Texture 지원.. DXT1 ~ DXT5, Square Only</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keyword">static</span> HWND s_hWndBase;                  <span class="comment">// Init 할때 쓴 Window Handle</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">static</span> HWND s_hWndPresent;               <span class="comment">// 최근에 Present 한 Window Handle</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____CameraData.html">__CameraData</a> s_CameraData;        <span class="comment">// 카메라 데이터 정적 변수..</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____ResrcInfo.html">__ResrcInfo</a> s_ResrcInfo;          <span class="comment">// Rendering Information..</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____Options.html">__Options</a> s_Options;              <span class="comment">// 각종 옵션등...</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keyword">static</span> <a class="code hl_struct" href="struct____RenderInfo.html">__RenderInfo</a> s_RenderInfo;        <span class="comment">// Rendering Information..</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> s_fFrmPerSec;               <span class="comment">// Frame Per Second</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> s_fSecPerFrm;               <span class="comment">// Second Per Frame = 1.0f/s_fFrmPerSec (Dino가 추가)</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="preprocessor">#ifdef _N3GAME                               </span><span class="comment">// 게임이 아닌 툴에서는 필요없다...</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3SndMgr.html">CN3SndMgr</a> s_SndMgr;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#ifdef _N3TOOL                               </span><span class="comment">// ui 에디터일때는 필요하다.</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3SndMgr.html">CN3SndMgr</a> s_SndMgr;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3AlphaPrimitiveManager.html">CN3AlphaPrimitiveManager</a></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        s_AlphaMgr; <span class="comment">// Alpha blend 할 폴리곤들을 관리.. 추가했다가.. 카메라 거리에 ?上?정렬하고 한꺼번에 그린다..</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Texture&gt;</a> s_MngTex; <span class="comment">// Texture Manager</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Mesh&gt;</a> s_MngMesh;   <span class="comment">// Normal Mesh Manager</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3VMesh&gt;</a></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        s_MngVMesh; <span class="comment">// 단순히 폴리곤만 갖고 있는 메시 - 주로 충돌 체크에 쓴다..</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3PMesh&gt;</a> s_MngPMesh;         <span class="comment">// Progressive Mesh Manager</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3Joint&gt;</a> s_MngJoint;         <span class="comment">// Joint Manager</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3CPartSkins&gt;</a> s_MngSkins;    <span class="comment">// Character Part Skin Manager</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3AnimControl&gt;</a> s_MngAniCtrl; <span class="comment">// Animation Manager</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3FXPMesh&gt;</a></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        s_MngFXPMesh;            <span class="comment">// FX에서 쓰는 PMesh - 파일은 일반 PMesh를 쓰지만 속은 다르다.</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">static</span> <a class="code hl_class" href="classCN3Mng.html">CN3Mng&lt;class CN3FXShape&gt;</a></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        s_MngFXShape;            <span class="comment">// FX에서 쓰는 Shape - 파일은 일반 shape를 쓰지만 속은 다르다.</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keyword">static</span> std::string s_szPath; <span class="comment">// 프로그램이 실행된 경로..</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    uint32_t m_dwType;           <span class="comment">// &quot;MESH&quot;, &quot;CAMERA&quot;, &quot;SCENE&quot;, &quot;???&quot; .... 등등등...</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    std::string m_szName;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> TimeGet();</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::string&amp; PathGet()</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">return</span> s_szPath;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> PathSet(<span class="keyword">const</span> std::string&amp; szPath);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> RenderLines(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Vector3.html">__Vector3</a>* pvLines, <span class="keywordtype">int</span> nCount, D3DCOLOR color);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> RenderLines(<span class="keyword">const</span> RECT&amp; rc, D3DCOLOR color);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> TimerProcess(TIMER_COMMAND command);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    uint32_t Type()</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">return</span> m_dwType;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    } <span class="comment">// 객체 종류..</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">void</span> ReleaseResrc();</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="comment">//#ifdef _N3TOOL</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">void</span> SaveResrc();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="comment">//#endif // end of _N3TOOL</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Release();</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    CN3Base();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keyword">virtual</span> ~CN3Base();</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>};</div>
 </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3Base_h__INCLUDED_)</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3Base_h__INCLUDED_)</span></div>
 <div class="ttc" id="aclassCN3AlphaPrimitiveManager_html"><div class="ttname"><a href="classCN3AlphaPrimitiveManager.html">CN3AlphaPrimitiveManager</a></div><div class="ttdef"><b>Definition</b> <a href="N3AlphaPrimitiveManager_8h_source.html#l00032">N3AlphaPrimitiveManager.h:33</a></div></div>
 <div class="ttc" id="aclassCN3Mng_html"><div class="ttname"><a href="classCN3Mng.html">CN3Mng</a></div><div class="ttdef"><b>Definition</b> <a href="N3Mng_8h_source.html#l00018">N3Mng.h:19</a></div></div>
 <div class="ttc" id="aclassCN3SndMgr_html"><div class="ttname"><a href="classCN3SndMgr.html">CN3SndMgr</a></div><div class="ttdoc">Central sound manager for the engine.</div><div class="ttdef"><b>Definition</b> <a href="N3SndMgr_8h_source.html#l00033">N3SndMgr.h:34</a></div></div>
-<div class="ttc" id="astruct____CameraData_html"><div class="ttname"><a href="struct____CameraData.html">__CameraData</a></div><div class="ttdef"><b>Definition</b> <a href="#l00049">N3Base.h:50</a></div></div>
+<div class="ttc" id="astruct____CameraData_html"><div class="ttname"><a href="struct____CameraData.html">__CameraData</a></div><div class="ttdef"><b>Definition</b> <a href="#l00050">N3Base.h:51</a></div></div>
 <div class="ttc" id="astruct____Matrix44_html"><div class="ttname"><a href="struct____Matrix44.html">__Matrix44</a></div><div class="ttdef"><b>Definition</b> <a href="Matrix44_8h_source.html#l00011">Matrix44.h:12</a></div></div>
-<div class="ttc" id="astruct____Options_html"><div class="ttname"><a href="struct____Options.html">__Options</a></div><div class="ttdef"><b>Definition</b> <a href="#l00129">N3Base.h:130</a></div></div>
-<div class="ttc" id="astruct____RenderInfo_html"><div class="ttname"><a href="struct____RenderInfo.html">__RenderInfo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00092">N3Base.h:93</a></div></div>
-<div class="ttc" id="astruct____ResrcInfo_html"><div class="ttname"><a href="struct____ResrcInfo.html">__ResrcInfo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00118">N3Base.h:119</a></div></div>
+<div class="ttc" id="astruct____Options_html"><div class="ttname"><a href="struct____Options.html">__Options</a></div><div class="ttdef"><b>Definition</b> <a href="#l00130">N3Base.h:131</a></div></div>
+<div class="ttc" id="astruct____RenderInfo_html"><div class="ttname"><a href="struct____RenderInfo.html">__RenderInfo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00093">N3Base.h:94</a></div></div>
+<div class="ttc" id="astruct____ResrcInfo_html"><div class="ttname"><a href="struct____ResrcInfo.html">__ResrcInfo</a></div><div class="ttdef"><b>Definition</b> <a href="#l00119">N3Base.h:120</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -117,14 +117,14 @@ $(function(){initNavTree('Server_2Aujard_2Define_8h_source.html',''); initResiza
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>Aujard</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_USER            = 3000;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">constexpr</span> <span class="keywordtype">long</span> DB_PROCESS_TIMEOUT = 10;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> MAX_USER            = 3000;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">long</span> DB_PROCESS_TIMEOUT = 10;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"></span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// DEFINE Shared Memory Costumizing</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERSEND[]   = <span class="stringliteral">&quot;KNIGHT_SEND&quot;</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERRECV[]   = <span class="stringliteral">&quot;KNIGHT_RECV&quot;</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERSEND[]   = <span class="stringliteral">&quot;KNIGHT_SEND&quot;</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">char</span> SMQ_LOGGERRECV[]   = <span class="stringliteral">&quot;KNIGHT_RECV&quot;</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"></span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// Update User Data type define</span><span class="comment"></span></div>
@@ -154,17 +154,17 @@ $(function(){initNavTree('Server_2Aujard_2Define_8h_source.html',''); initResiza
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">namespace </span>ini</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// ODBC Config Section</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view ODBC        = <span class="stringliteral">&quot;ODBC&quot;</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view GAME_DSN    = <span class="stringliteral">&quot;GAME_DSN&quot;</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view GAME_UID    = <span class="stringliteral">&quot;GAME_UID&quot;</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view GAME_PWD    = <span class="stringliteral">&quot;GAME_PWD&quot;</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_DSN = <span class="stringliteral">&quot;ACCOUNT_DSN&quot;</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_UID = <span class="stringliteral">&quot;ACCOUNT_UID&quot;</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_PWD = <span class="stringliteral">&quot;ACCOUNT_PWD&quot;</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view ODBC        = <span class="stringliteral">&quot;ODBC&quot;</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view GAME_DSN    = <span class="stringliteral">&quot;GAME_DSN&quot;</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view GAME_UID    = <span class="stringliteral">&quot;GAME_UID&quot;</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view GAME_PWD    = <span class="stringliteral">&quot;GAME_PWD&quot;</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_DSN = <span class="stringliteral">&quot;ACCOUNT_DSN&quot;</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_UID = <span class="stringliteral">&quot;ACCOUNT_UID&quot;</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view ACCOUNT_PWD = <span class="stringliteral">&quot;ACCOUNT_PWD&quot;</span>;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// ZONE_INFO section</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view ZONE_INFO   = <span class="stringliteral">&quot;ZONE_INFO&quot;</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view GROUP_INFO  = <span class="stringliteral">&quot;GROUP_INFO&quot;</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view ZONE_INFO   = <span class="stringliteral">&quot;ZONE_INFO&quot;</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> std::string_view GROUP_INFO  = <span class="stringliteral">&quot;GROUP_INFO&quot;</span>;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace ini</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace Aujard</span></div>
