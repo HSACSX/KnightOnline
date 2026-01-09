@@ -160,6 +160,7 @@ var dir_ce3ab8ebaad3317c945aba0b65e79e73 =
     [ "Pick.h", "Pick_8h_source.html", null ],
     [ "StdAfxBase.cpp", "StdAfxBase_8cpp_source.html", null ],
     [ "StdAfxBase.h", "StdAfxBase_8h_source.html", null ],
+    [ "VertexTypes.inl", "VertexTypes_8inl_source.html", null ],
     [ "WaveFormat.cpp", "WaveFormat_8cpp_source.html", null ],
     [ "WaveFormat.h", "WaveFormat_8h_source.html", null ],
     [ "WinCrypt.cpp", "WinCrypt_8cpp_source.html", null ],

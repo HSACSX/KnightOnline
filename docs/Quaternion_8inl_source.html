@@ -108,7 +108,7 @@ $(function(){initNavTree('Quaternion_8inl_source.html',''); initResizable(true);
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;MathUtils.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;cmath&gt;</span> <span class="comment">// acosf(), cosf(), sinf(), sqrtf()</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>__Quaternion::__Quaternion(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>&amp; mtx)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>__Quaternion::__Quaternion(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Matrix44.html">__Matrix44</a>&amp; mtx) : x(0.0f), y(0.0f), z(0.0f), w(0.0f)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    this-&gt;operator=(mtx);</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
@@ -267,7 +267,7 @@ $(function(){initNavTree('Quaternion_8inl_source.html',''); initResizable(true);
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><a class="code hl_struct" href="struct____Quaternion.html">__Quaternion</a> __Quaternion::operator*(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Quaternion.html">__Quaternion</a>&amp; q)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    __Quaternion out;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    __Quaternion out {};</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    out.x = q.w * x + q.x * w + q.y * z - q.z * y;</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    out.y = q.w * y - q.x * z + q.y * w + q.z * x;</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    out.z = q.w * z + q.x * y - q.y * x + q.z * w;</div>

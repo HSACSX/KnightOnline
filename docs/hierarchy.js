@@ -101,7 +101,6 @@ var hierarchy =
     [ "__Vector2", "struct____Vector2.html", null ],
     [ "__Vector3", "struct____Vector3.html", [
       [ "__VertexColor", "struct____VertexColor.html", null ],
-      [ "__VertexParticle", "struct____VertexParticle.html", null ],
       [ "__VertexT1", "struct____VertexT1.html", [
         [ "__VertexT2", "struct____VertexT2.html", null ]
       ] ],
@@ -110,7 +109,6 @@ var hierarchy =
       ] ],
       [ "__VertexTransformedColor", "struct____VertexTransformedColor.html", null ],
       [ "__VertexXyzColor", "struct____VertexXyzColor.html", null ],
-      [ "__VertexXyzColorSpecularT1", "struct____VertexXyzColorSpecularT1.html", null ],
       [ "__VertexXyzColorT1", "struct____VertexXyzColorT1.html", [
         [ "__VertexXyzColorT2", "struct____VertexXyzColorT2.html", null ]
       ] ],
