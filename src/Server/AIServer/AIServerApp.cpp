@@ -38,6 +38,7 @@ std::mutex g_region_mutex;
 
 AIServerApp::AIServerApp(AIServerLogger& logger) : AppThread(logger)
 {
+	_telnetPort = 2323;
 	memset(_compressedPacketBuffer, 0, sizeof(_compressedPacketBuffer));
 
 	ConnectionManager::Create();

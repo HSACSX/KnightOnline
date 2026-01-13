@@ -44,6 +44,11 @@ EbenezerApp::EbenezerApp(EbenezerLogger& logger) :
 	AppThread(logger), m_LoggerSendQueue(MAX_SMQ_SEND_QUEUE_RETRY_COUNT),
 	m_ItemLoggerSendQ(MAX_SMQ_SEND_QUEUE_RETRY_COUNT)
 {
+	// Ebenezer is the only server that had built in command line support, so we'll
+	// default _enableTelnet to on.
+	_enableTelnet     = true;
+	_telnetPort       = 2324;
+
 	m_nYear           = 0;
 	m_nMonth          = 0;
 	m_nDate           = 0;
@@ -94,11 +99,6 @@ EbenezerApp::EbenezerApp(EbenezerLogger& logger) :
 	m_sDiscount                                                                   = 0;
 
 	m_pUdpSocket                                                                  = nullptr;
-
-	// Ebenezer is the only server that had built in command line support, so we'll
-	// default _enableTelnet to on.
-	_enableTelnet                                                                 = true;
-	_telnetPort                                                                   = 2324;
 
 	for (int h = 0; h < MAX_BBS_POST; h++)
 	{
