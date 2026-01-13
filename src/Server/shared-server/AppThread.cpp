@@ -22,9 +22,7 @@
 AppThread* AppThread::s_instance = nullptr;
 bool AppThread::s_shutdown       = false;
 
-AppThread::AppThread(logger::Logger& logger) :
-	_logger(logger), _exitCode(EXIT_SUCCESS), _headless(false),
-	_enableTelnet(false), _forceTelnet(false), _telnetPort(2323)
+AppThread::AppThread(logger::Logger& logger) : _logger(logger)
 {
 	assert(s_instance == nullptr);
 	s_instance = this;
@@ -173,9 +171,8 @@ int AppThread::thread_loop_ftxui(CIni& iniFile)
 				   {
             {
                 std::lock_guard<std::mutex> lock(fxtuiSink->lock());
-                logElements =
-                    fxtuiSink
-                        ->log_buffer(); // this is intentionally a copy, but it's a container of shared pointers
+            	// this is intentionally a copy, but it's a container of shared pointers
+            	logElements = fxtuiSink->log_buffer();
             }
 
             // clamping
@@ -354,9 +351,10 @@ bool AppThread::StartupImpl(CIni& iniFile)
 		}
 
 		// Load Telnet config
-		_enableTelnet = iniFile.GetBool("TELNET", "ENABLED", _enableTelnet);
-		_telnetPort = iniFile.GetInt("TELNET", "PORT", _telnetPort);
-		std::string whitelist = iniFile.GetString("TELNET", "WHITELIST", "localhost,127.0.0.1,0.0.0.0");
+		_enableTelnet         = iniFile.GetBool("TELNET", "ENABLED", _enableTelnet);
+		_telnetPort           = iniFile.GetInt("TELNET", "PORT", _telnetPort);
+		std::string whitelist = iniFile.GetString(
+			"TELNET", "WHITELIST", "localhost,127.0.0.1,0.0.0.0");
 
 		// Trigger a save to flush defaults to file.
 		iniFile.Save();

@@ -58,7 +58,6 @@ private:
 
 	/// \brief Used to track client socketIds
 	uint32_t _nextSocketId;
-
 };
 
 #endif //SERVER_SHAREDSERVER_TELNETTHREAD_H

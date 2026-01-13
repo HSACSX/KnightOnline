@@ -7,12 +7,12 @@
 #include <list>
 #include <ranges>
 
-TelnetThread::TelnetThread(const uint16_t port, std::unordered_set<std::string> clientAcceptList)
-	: _clientAcceptList(std::move(clientAcceptList)), _port(port)
+TelnetThread::TelnetThread(const uint16_t port, std::unordered_set<std::string> clientAcceptList) :
+	_clientAcceptList(std::move(clientAcceptList)), _port(port)
 {
 	_workerThreadCount = 1;
-	_workerPool = std::make_shared<asio::thread_pool>(_workerThreadCount);
-	_nextSocketId = 0;
+	_workerPool        = std::make_shared<asio::thread_pool>(_workerThreadCount);
+	_nextSocketId      = 0;
 }
 
 TelnetThread::~TelnetThread()
@@ -51,7 +51,8 @@ void TelnetThread::thread_loop()
 
 			if (clientThread->IsShutdown())
 			{
-				spdlog::debug("TelnetThread::thread_loop: Joining TelnetClientThread with id: {}", key);
+				spdlog::debug(
+					"TelnetThread::thread_loop: Joining TelnetClientThread with id: {}", key);
 				clientThread->join();
 				eraseKeys.insert(key);
 				spdlog::debug("TelnetThread::thread_loop: TelnetClientThread joined");
@@ -80,7 +81,8 @@ void TelnetThread::before_shutdown()
 
 	if (_telnetThreadMap.size() > 0)
 	{
-		spdlog::info("TelnetThread::before_shutdown: closing {} client connections", _telnetThreadMap.size());
+		spdlog::info("TelnetThread::before_shutdown: closing {} client connections",
+			_telnetThreadMap.size());
 		_io.stop();
 	}
 
@@ -91,7 +93,6 @@ void TelnetThread::before_shutdown()
 			clientSocket->shutdown();
 		}
 	}
-
 }
 
 bool TelnetThread::Listen()
@@ -120,8 +121,8 @@ bool TelnetThread::Listen()
 		_acceptor->bind(endpoint, ec);
 		if (ec)
 		{
-			spdlog::error("TelnetThread::Listen: bind() failed on 0.0.0.0:{}: {}",
-				_port, ec.message());
+			spdlog::error(
+				"TelnetThread::Listen: bind() failed on 0.0.0.0:{}: {}", _port, ec.message());
 			return false;
 		}
 
@@ -129,7 +130,8 @@ bool TelnetThread::Listen()
 		_acceptor->set_option(asio::socket_base::reuse_address(true), ec);
 		if (ec)
 		{
-			spdlog::error("TelnetThread::Listen: set_option(reuse_address) failed: {}", ec.message());
+			spdlog::error(
+				"TelnetThread::Listen: set_option(reuse_address) failed: {}", ec.message());
 			return false;
 		}
 
@@ -137,7 +139,8 @@ bool TelnetThread::Listen()
 		_acceptor->set_option(asio::socket_base::receive_buffer_size(recvBufferSize), ec);
 		if (ec)
 		{
-			spdlog::error("TelnetThread::Listen: set_option(receive_buffer_size) failed: {}", ec.message());
+			spdlog::error(
+				"TelnetThread::Listen: set_option(receive_buffer_size) failed: {}", ec.message());
 			return false;
 		}
 
@@ -145,7 +148,8 @@ bool TelnetThread::Listen()
 		_acceptor->set_option(asio::socket_base::send_buffer_size(sendBufferSize), ec);
 		if (ec)
 		{
-			spdlog::error("TelnetThread::Listen: set_option(send_buffer_size) failed: {}", ec.message());
+			spdlog::error(
+				"TelnetThread::Listen: set_option(send_buffer_size) failed: {}", ec.message());
 			return false;
 		}
 
@@ -159,8 +163,7 @@ bool TelnetThread::Listen()
 	}
 	catch (const asio::system_error& ex)
 	{
-		spdlog::error("TelnetThread::Listen: failed to bind on 0.0.0.0:{}: {}",
-			_port, ex.what());
+		spdlog::error("TelnetThread::Listen: failed to bind on 0.0.0.0:{}: {}", _port, ex.what());
 		return false;
 	}
 
@@ -178,35 +181,38 @@ void TelnetThread::AsyncAccept()
 
 	try
 	{
-		_acceptor->async_accept([this](const asio::error_code& ec, asio::ip::tcp::socket rawSocket)
-		{
-			if (!ec)
+		_acceptor->async_accept(
+			[this](const asio::error_code& ec, asio::ip::tcp::socket rawSocket)
 			{
-				spdlog::info("TelnetThread::thread_loop(): client connecting");
-				if (!isAcceptAddress(rawSocket))
+				if (!ec)
 				{
-					spdlog::warn("TelnetThread::thread_loop(): non-local client connection refused");
-					rawSocket.close();
-					return;
+					spdlog::info("TelnetThread::thread_loop(): client connecting");
+					if (!isAcceptAddress(rawSocket))
+					{
+						spdlog::warn(
+							"TelnetThread::thread_loop(): non-local client connection refused");
+						rawSocket.close();
+						return;
+					}
+
+					std::shared_ptr<TelnetClientThread>
+						clientThread            = std::make_shared<TelnetClientThread>(this);
+					clientThread->_clientSocket = std::move(rawSocket);
+					clientThread->_socketId     = _nextSocketId;
+					_telnetThreadMap.insert(std::make_pair(_nextSocketId, clientThread));
+					_nextSocketId++;
+					clientThread->start();
+				}
+				else
+				{
+					if (ec == asio::error::operation_aborted)
+						spdlog::debug("TelnetThread::AsyncAccept: accept operation cancelled");
+					else
+						spdlog::error("TelnetThread::AsyncAccept: accept failed: {}", ec.message());
 				}
 
-				std::shared_ptr<TelnetClientThread> clientThread = std::make_shared<TelnetClientThread>(this);
-				clientThread->_clientSocket = std::move(rawSocket);
-				clientThread->_socketId = _nextSocketId;
-				_telnetThreadMap.insert(std::make_pair(_nextSocketId, clientThread));
-				_nextSocketId++;
-				clientThread->start();
-			}
-			else
-			{
-				if (ec == asio::error::operation_aborted)
-					spdlog::debug("TelnetThread::AsyncAccept: accept operation cancelled");
-				else
-					spdlog::error("TelnetThread::AsyncAccept: accept failed: {}", ec.message());
-			}
-
-			AsyncAccept();
-		});
+				AsyncAccept();
+			});
 	}
 	catch (std::exception& e)
 	{

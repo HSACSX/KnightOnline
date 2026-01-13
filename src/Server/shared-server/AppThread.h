@@ -19,13 +19,14 @@ class ArgumentParser;
 enum class AppStatus : uint8_t
 {
 	INITIALIZING, ///< Initial state for an application, has not started loading resources
-	STARTING, ///< Loading resources, not ready for connections
-	READY, ///< Resources loaded, ready for connection
-	STOPPING ///< Shutdown underway
+	STARTING,     ///< Loading resources, not ready for connections
+	READY,        ///< Resources loaded, ready for connection
+	STOPPING      ///< Shutdown underway
 };
 
 class CIni;
 class TelnetThread;
+
 class AppThread : public Thread
 {
 public:
@@ -149,23 +150,23 @@ private:
 
 protected:
 	logger::Logger& _logger;
-	int _exitCode;
-	bool _headless;
+	int _exitCode        = EXIT_SUCCESS;
+	bool _headless       = true;
 
 	/// \brief Indicates if telnet was enabled through config or default constructor override
-	bool				_enableTelnet;
+	bool _enableTelnet   = false;
 
 	/// \brief Indicates if --force-telnet was passed as a command line argument. Overrides _enableTelnet
-	bool				_forceTelnet;
+	bool _forceTelnet    = false;
 
 	/// \brief Listen port for the Telnet server
-	uint16_t			_telnetPort;
+	uint16_t _telnetPort = 2323;
 
 	/// \brief Application status used for health checks
 	AppStatus _appStatus;
 
-	static AppThread*	s_instance;
-	static bool			s_shutdown;
+	static AppThread* s_instance;
+	static bool s_shutdown;
 };
 
 #endif // SERVER_SHAREDSERVER_APPTHREAD_H

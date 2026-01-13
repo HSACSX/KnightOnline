@@ -23,7 +23,7 @@ protected:
 	asio::ip::tcp::socket _clientSocket;
 
 	/// \brief Socket identifier used in the TelnetThread client map
-	uint32_t _socketId;
+	uint32_t _socketId = 0;
 
 private:
 	/// \brief Writes a line to the client telnet application

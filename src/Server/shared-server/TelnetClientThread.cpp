@@ -13,10 +13,8 @@
 
 #include "db-models/Full/model/FullModel.h"
 
-TelnetClientThread::TelnetClientThread(TelnetThread* parent)
-	: _clientSocket(*parent->_workerPool)
+TelnetClientThread::TelnetClientThread(TelnetThread* parent) : _clientSocket(*parent->_workerPool)
 {
-	_socketId = 0;
 }
 
 TelnetClientThread::~TelnetClientThread()
@@ -31,18 +29,21 @@ void TelnetClientThread::thread_loop()
 	do
 	{
 		username = ReadLine();
-	} while (username.empty());
+	}
+	while (username.empty());
 
 	WriteLine("Password:");
 	std::string password;
 	do
 	{
 		password = ReadLine();
-	} while (password.empty());
+	}
+	while (password.empty());
 
 	if (!Authenticate(username, password))
 	{
-		spdlog::warn("TelnetClientThread::thread_loop: failed authentication attempt for user {}", username);
+		spdlog::warn(
+			"TelnetClientThread::thread_loop: failed authentication attempt for user {}", username);
 		_clientSocket.close();
 		shutdown(false);
 	}
@@ -113,18 +114,19 @@ std::string TelnetClientThread::ReadLine()
 	asio::async_read_until(_clientSocket, buffer, delimiter,
 		[&](const std::error_code& err, std::size_t length)
 		{
-			ec = err;
+			ec        = err;
 			isReading = true;
 		});
 
-	timer.async_wait([&](const std::error_code& err)
-	{
-		if (!err && !isReading)
+	timer.async_wait(
+		[&](const std::error_code& err)
 		{
-			isTimeout = true;
-			_clientSocket.cancel();
-		}
-	});
+			if (!err && !isReading)
+			{
+				isTimeout = true;
+				_clientSocket.cancel();
+			}
+		});
 
 	localContext.run();
 
@@ -155,7 +157,8 @@ bool TelnetClientThread::Authenticate(const std::string& accountId, const std::s
 		auto stmt = recordSet.prepare(sql);
 		if (stmt == nullptr)
 		{
-			throw db::ApplicationError("TelnetClientThread::Authenticate: statement could not be allocated");
+			throw db::ApplicationError(
+				"TelnetClientThread::Authenticate: statement could not be allocated");
 		}
 
 		stmt->bind(0, accountId.c_str());
@@ -190,17 +193,17 @@ void TelnetClientThread::HealthCheck()
 {
 	switch (AppThread::instance()->GetAppStatus())
 	{
-	case AppStatus::INITIALIZING:
-		WriteLine("status: INITIALIZING");
-		break;
-	case AppStatus::STARTING:
-		WriteLine("status: STARTING");
-		break;
-	case AppStatus::READY:
-		WriteLine("status: READY");
-		break;
-	case AppStatus::STOPPING:
-		WriteLine("status: STOPPING");
-		break;
+		case AppStatus::INITIALIZING:
+			WriteLine("status: INITIALIZING");
+			break;
+		case AppStatus::STARTING:
+			WriteLine("status: STARTING");
+			break;
+		case AppStatus::READY:
+			WriteLine("status: READY");
+			break;
+		case AppStatus::STOPPING:
+			WriteLine("status: STOPPING");
+			break;
 	}
 }
