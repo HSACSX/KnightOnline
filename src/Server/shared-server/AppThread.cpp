@@ -171,8 +171,8 @@ int AppThread::thread_loop_ftxui(CIni& iniFile)
 				   {
             {
                 std::lock_guard<std::mutex> lock(fxtuiSink->lock());
-            	// this is intentionally a copy, but it's a container of shared pointers
-            	logElements = fxtuiSink->log_buffer();
+                // this is intentionally a copy, but it's a container of shared pointers
+                logElements = fxtuiSink->log_buffer();
             }
 
             // clamping
