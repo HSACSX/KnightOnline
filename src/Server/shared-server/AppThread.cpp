@@ -79,10 +79,13 @@ void AppThread::SetupCommandLineArgParser(argparse::ArgumentParser& parser)
 		.help("run in headless mode, without the ftxui terminal UI for input")
 		.flag()
 		.store_into(_headless);
-	parser.add_argument("--force-telnet")
-		.help("force enable telnet command server")
+	parser.add_argument("--enable-telnet")
+		.help("enables the telnet command server, overriding config")
 		.flag()
-		.store_into(_forceTelnet);
+		.store_into(_overrideEnableTelnet);
+	parser.add_argument("--telnet-address")
+		.help("sets the address for the telnet command server to listen on, overriding config")
+		.store_into(_overrideTelnetAddress);
 }
 
 bool AppThread::ProcessCommandLineArgs(const argparse::ArgumentParser& /*parser*/)
@@ -355,11 +358,14 @@ bool AppThread::StartupImpl(CIni& iniFile)
 		_telnetPort           = iniFile.GetInt("TELNET", "PORT", _telnetPort);
 		std::string whitelist = iniFile.GetString("TELNET", "WHITELIST", "127.0.0.1");
 
+		if (!_overrideTelnetAddress.empty())
+			_telnetAddress = _overrideTelnetAddress;
+
 		// Trigger a save to flush defaults to file.
 		iniFile.Save();
 
 		// Start the Telnet Server, if enabled
-		if (_enableTelnet || _forceTelnet)
+		if (_enableTelnet || _overrideEnableTelnet)
 		{
 			std::unordered_set<std::string> addressWhiteList;
 			std::stringstream ss(whitelist);
