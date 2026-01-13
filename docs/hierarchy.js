@@ -186,9 +186,6 @@ var hierarchy =
     [ "recordset_loader::Base< ModelType, ModelType >", "classrecordset__loader_1_1Base.html", [
       [ "recordset_loader::Vector< ModelType, BoundModelType >", "classrecordset__loader_1_1Vector.html", null ]
     ] ],
-    [ "spdlog::sinks::base_sink", null, [
-      [ "ftxui::sink_mt", "classftxui_1_1sink__mt.html", null ]
-    ] ],
     [ "BB_CircularBuffer", "classBB__CircularBuffer.html", null ],
     [ "ByteBuffer", "classByteBuffer.html", [
       [ "Packet", "classPacket.html", null ]
@@ -712,7 +709,6 @@ var hierarchy =
       [ "db::StoredProc< ProcType >", "classdb_1_1StoredProc.html", null ]
     ] ],
     [ "TcpSocket::QueuedSend", "structTcpSocket_1_1QueuedSend.html", null ],
-    [ "ftxui::ReplayLog", "structftxui_1_1ReplayLog.html", null ],
     [ "Resolution", "structResolution.html", null ],
     [ "RIFF_Header", "structRIFF__Header.html", null ],
     [ "RIFF_SubChunk", "structRIFF__SubChunk.html", null ],

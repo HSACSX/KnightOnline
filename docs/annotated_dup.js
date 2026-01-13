@@ -91,10 +91,6 @@ var annotated_dup =
       [ "RecvUDPThread", "classEbenezer_1_1RecvUDPThread.html", null ],
       [ "SendWorkerThread", "classEbenezer_1_1SendWorkerThread.html", null ]
     ] ],
-    [ "ftxui", null, [
-      [ "ReplayLog", "structftxui_1_1ReplayLog.html", null ],
-      [ "sink_mt", "classftxui_1_1sink__mt.html", null ]
-    ] ],
     [ "ItemManager", null, [
       [ "ItemManagerApp", "classItemManager_1_1ItemManagerApp.html", "classItemManager_1_1ItemManagerApp" ],
       [ "ItemManagerLogger", "classItemManager_1_1ItemManagerLogger.html", null ],

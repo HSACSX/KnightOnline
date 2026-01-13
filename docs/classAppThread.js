@@ -4,7 +4,6 @@ var classAppThread =
     [ "ConfigPath", "classAppThread.html#a70e8eaa75b63b615c7109bba12107898", null ],
     [ "GetAppStatus", "classAppThread.html#adfa69861f2985b8ba067755cf97b8337", null ],
     [ "HandleCommand", "classAppThread.html#a2fdc6a486c4e1302ba030db0e20ec517", null ],
-    [ "HandleInputEvent", "classAppThread.html#aad3cde1ff67201df2fb8351d65dadf3c", null ],
     [ "LoadConfig", "classAppThread.html#aca754393e3c2e213af753305b88d9edb", null ],
     [ "LogBaseDir", "classAppThread.html#a930bbcf82f3ed108604b0404c7af7353", null ],
     [ "OnStart", "classAppThread.html#aa130556414bab427657551fdc8efead7", null ],

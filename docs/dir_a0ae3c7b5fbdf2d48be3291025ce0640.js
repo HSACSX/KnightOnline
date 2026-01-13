@@ -3,8 +3,6 @@ var dir_a0ae3c7b5fbdf2d48be3291025ce0640 =
     [ "_USER_DATA.h", "__USER__DATA_8h_source.html", null ],
     [ "AppThread.cpp", "AppThread_8cpp_source.html", null ],
     [ "AppThread.h", "AppThread_8h_source.html", null ],
-    [ "ftxui_sink_mt.cpp", "ftxui__sink__mt_8cpp_source.html", null ],
-    [ "ftxui_sink_mt.h", "ftxui__sink__mt_8h_source.html", null ],
     [ "logger.cpp", "logger_8cpp_source.html", null ],
     [ "logger.h", "logger_8h_source.html", null ],
     [ "My_3DStruct.h", "Server_2shared-server_2My__3DStruct_8h_source.html", null ],

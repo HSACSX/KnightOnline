@@ -107,8 +107,6 @@ $(function(){initNavTree('classlogger_1_1Logger.html',''); initResizable(true); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a40961ec6d991b28fd7987d14af4ef027" id="r_a40961ec6d991b28fd7987d14af4ef027"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classftxui_1_1sink__mt.html">ftxui::sink_mt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40961ec6d991b28fd7987d14af4ef027">FxtuiSink</a> ()</td></tr>
-<tr class="separator:a40961ec6d991b28fd7987d14af4ef027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9676f46641ceee0429e4ccc3f140ed64" id="r_a9676f46641ceee0429e4ccc3f140ed64"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9676f46641ceee0429e4ccc3f140ed64">AppName</a> () const</td></tr>
 <tr class="separator:a9676f46641ceee0429e4ccc3f140ed64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae832310604ea54efe53174c3294fc68b" id="r_ae832310604ea54efe53174c3294fc68b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae832310604ea54efe53174c3294fc68b">Logger</a> (const std::string_view appName)</td></tr>
@@ -127,12 +125,12 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a2b3d5e199749f12c7bb15d77e0284b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20776c2e6ed874b176d758b3d6fd634" id="r_ac20776c2e6ed874b176d758b3d6fd634"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac20776c2e6ed874b176d758b3d6fd634">_defaultLogPath</a></td></tr>
 <tr class="separator:ac20776c2e6ed874b176d758b3d6fd634"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83d31469265a7cae56ed1344e223f766" id="r_a83d31469265a7cae56ed1344e223f766"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classftxui_1_1sink__mt.html">ftxui::sink_mt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83d31469265a7cae56ed1344e223f766">_fxtuiSink</a></td></tr>
-<tr class="separator:a83d31469265a7cae56ed1344e223f766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af62a65db34f8e27904e63a27f4806655" id="r_af62a65db34f8e27904e63a27f4806655"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::sinks::stdout_color_sink_mt &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62a65db34f8e27904e63a27f4806655">_consoleLogger</a></td></tr>
+<tr class="separator:af62a65db34f8e27904e63a27f4806655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00027">27</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00024">24</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae832310604ea54efe53174c3294fc68b" name="ae832310604ea54efe53174c3294fc68b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae832310604ea54efe53174c3294fc68b">&#9670;&#160;</a></span>Logger()</h2>
@@ -155,7 +153,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00014">14</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00012">12</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -182,7 +180,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00116">116</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00109">109</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -210,34 +208,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00039">39</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
-
-</div>
-</div>
-<a id="a40961ec6d991b28fd7987d14af4ef027" name="a40961ec6d991b28fd7987d14af4ef027"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40961ec6d991b28fd7987d14af4ef027">&#9670;&#160;</a></span>FxtuiSink()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classftxui_1_1sink__mt.html">ftxui::sink_mt</a> &gt; logger::Logger::FxtuiSink </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00034">34</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00031">31</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +240,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00019">19</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00017">17</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -307,7 +278,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00081">81</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00074">74</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +314,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00073">73</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00066">66</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +339,31 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00063">63</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00055">55</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="af62a65db34f8e27904e63a27f4806655" name="af62a65db34f8e27904e63a27f4806655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af62a65db34f8e27904e63a27f4806655">&#9670;&#160;</a></span>_consoleLogger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;spdlog::sinks::stdout_color_sink_mt&gt; logger::Logger::_consoleLogger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00058">58</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -392,31 +387,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00064">64</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
-
-</div>
-</div>
-<a id="a83d31469265a7cae56ed1344e223f766" name="a83d31469265a7cae56ed1344e223f766"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83d31469265a7cae56ed1344e223f766">&#9670;&#160;</a></span>_fxtuiSink</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classftxui_1_1sink__mt.html">ftxui::sink_mt</a>&gt; logger::Logger::_fxtuiSink</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00066">66</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8h_source.html#l00056">56</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
