@@ -44,6 +44,7 @@ void TelnetClientThread::Disconnect()
 	if (_clientSocket.is_open())
 	{
 		std::error_code ec;
+		_clientSocket.shutdown(asio::ip::tcp::socket::shutdown_both);
 		_clientSocket.close(ec);
 	}
 
