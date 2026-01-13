@@ -112,7 +112,7 @@ std::string TelnetClientThread::ReadLine()
 	std::error_code ec;
 
 	asio::async_read_until(_clientSocket, buffer, delimiter,
-		[&](const std::error_code& err, std::size_t length)
+		[&](const std::error_code& err, std::size_t)
 		{
 			ec        = err;
 			isReading = true;
