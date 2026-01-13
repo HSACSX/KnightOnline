@@ -85,6 +85,13 @@ void TelnetThread::before_shutdown()
 	{
 		spdlog::info("TelnetThread::before_shutdown: closing {} client connections",
 			_telnetThreadMap.size());
+
+		for (auto& clientSocket : _telnetThreadMap | std::views::values)
+		{
+			if (clientSocket != nullptr)
+				clientSocket->Disconnect();
+		}
+
 		_io.stop();
 	}
 
@@ -206,7 +213,7 @@ void TelnetThread::AsyncAccept()
 					}
 
 					auto clientThread = std::make_shared<TelnetClientThread>(
-						this, std::move(rawSocket), _nextSocketId++);
+						std::move(rawSocket), _nextSocketId++);
 					_telnetThreadMap.insert(std::make_pair(_nextSocketId, clientThread));
 					clientThread->start();
 				}

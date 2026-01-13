@@ -1938,6 +1938,9 @@ int EbenezerApp::GetZoneIndex(int zonenumber) const
 
 bool EbenezerApp::HandleCommand(const std::string& command)
 {
+	if (AppThread::HandleCommand(command))
+		return true;
+
 	OperationMessage opMessage(this, nullptr);
 	if (opMessage.Process(command))
 		return true;

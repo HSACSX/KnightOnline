@@ -17,8 +17,8 @@
 
 using namespace std::chrono_literals;
 
-TelnetClientThread::TelnetClientThread(TelnetThread* parent, asio::ip::tcp::socket&& rawSocket,
-	uint32_t socketId) : _clientSocket(std::move(rawSocket)), _socketId(socketId)
+TelnetClientThread::TelnetClientThread(asio::ip::tcp::socket&& rawSocket, uint32_t socketId) :
+	_clientSocket(std::move(rawSocket)), _socketId(socketId)
 {
 	asio::error_code ec;
 
@@ -39,17 +39,28 @@ TelnetClientThread::~TelnetClientThread()
 	spdlog::debug("TelnetClientThread::~TelnetClientThread()");
 }
 
+void TelnetClientThread::Disconnect()
+{
+	if (_clientSocket.is_open())
+	{
+		std::error_code ec;
+		_clientSocket.close(ec);
+	}
+
+	shutdown(false);
+}
+
 void TelnetClientThread::thread_loop()
 {
 	try
 	{
 		WriteLine("User:");
-		std::string username;
+		std::string accountId;
 		do
 		{
-			username = ReadLine();
+			accountId = ReadLine();
 		}
-		while (username.empty());
+		while (accountId.empty());
 
 		WriteLine("Password:");
 		std::string password;
@@ -59,20 +70,15 @@ void TelnetClientThread::thread_loop()
 		}
 		while (password.empty());
 
-		if (!Authenticate(username, password))
+		if (!Authenticate(accountId, password))
 		{
-			spdlog::warn(
-				"TelnetClientThread::thread_loop: failed authentication attempt for user {} "
-				"[remoteIp={}]",
-				username, _remoteIp);
-			_clientSocket.close();
-			shutdown(false);
+			Disconnect();
 			return;
 		}
 
-		_username = std::move(username);
+		_accountId = std::move(accountId);
 
-		spdlog::info("TelnetClientThread::thread_loop: {} authenticated [remoteIp={}]", _username,
+		spdlog::info("TelnetClientThread::thread_loop: {} authenticated [remoteIp={}]", _accountId,
 			_remoteIp);
 		WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
 
@@ -80,9 +86,9 @@ void TelnetClientThread::thread_loop()
 		{
 			if (!_clientSocket.is_open())
 			{
-				spdlog::info(
-					"TelnetClientThread::thread_loop: socket longer open [username={} remoteIp={}]",
-					_username, _remoteIp);
+				spdlog::info("TelnetClientThread::thread_loop: socket longer open [accountId={} "
+							 "remoteIp={}]",
+					_accountId, _remoteIp);
 
 				shutdown(false);
 				continue;
@@ -92,41 +98,42 @@ void TelnetClientThread::thread_loop()
 			if (input.empty())
 				continue;
 
-			spdlog::info("TelnetClientThread::thread_loop: input: {} [username={} remoteIp={}]",
-				input, _username, _remoteIp);
+			spdlog::info("TelnetClientThread::thread_loop: input: {} [accountId={} remoteIp={}]",
+				input, _accountId, _remoteIp);
 
 			if (input == "quit")
 			{
 				spdlog::info("TelnetClientThread::thread_loop: socket closed by request "
-							 "[username={} remoteIp={}]",
-					_username, _remoteIp);
+							 "[accountId={} remoteIp={}]",
+					accountId, _remoteIp);
 
-				_clientSocket.close();
+				Disconnect();
+				break;
 			}
-			else if (input == "healthcheck")
+
+			if (input == "healthcheck")
 			{
 				HealthCheck();
+				continue;
 			}
-			else
-			{
-				AppThread* appThread = AppThread::instance();
-				if (appThread == nullptr)
-				{
-					shutdown(false);
-					continue;
-				}
 
-				if (appThread->HandleCommand(input))
-					WriteLine("Input command accepted.");
-				else
-					WriteLine("Input command failed.");
+			AppThread* appThread = AppThread::instance();
+			if (appThread == nullptr)
+			{
+				Disconnect();
+				continue;
 			}
+
+			if (appThread->HandleCommand(input))
+				WriteLine(fmt::format("Input command accepted: {}", input));
+			else
+				WriteLine(fmt::format("Input command failed: {}", input));
 		}
 	}
 	catch (const std::exception& e)
 	{
-		spdlog::error("TelnetClientThread::thread_loop: {} [username={} remoteIp={}]", e.what(),
-			_username, _remoteIp);
+		spdlog::error("TelnetClientThread::thread_loop: {} [accountId={} remoteIp={}]", e.what(),
+			_accountId, _remoteIp);
 	}
 }
 
@@ -158,11 +165,13 @@ std::string TelnetClientThread::ReadLine()
 
 bool TelnetClientThread::Authenticate(const std::string& accountId, const std::string& password)
 {
-	db::SqlBuilder<full_model::TbUser> sql;
-	sql.IsWherePK = true;
+	full_model::TbUser user {};
 
 	try
 	{
+		db::SqlBuilder<full_model::TbUser> sql;
+		sql.IsWherePK = true;
+
 		db::ModelRecordSet<full_model::TbUser> recordSet;
 
 		auto stmt = recordSet.prepare(sql);
@@ -176,16 +185,15 @@ bool TelnetClientThread::Authenticate(const std::string& accountId, const std::s
 		recordSet.execute();
 
 		if (!recordSet.next())
+		{
+			spdlog::warn(
+				"TelnetClientThread::Authenticate: failed authentication attempt for user {} - "
+				"missing account [remoteIp={}]",
+				accountId, _remoteIp);
 			return false;
+		}
 
-		full_model::TbUser user {};
 		recordSet.get_ref(user);
-
-		if (user.Password != password)
-			return false;
-
-		if (user.Authority == AUTHORITY_MANAGER)
-			return true;
 	}
 	catch (const nanodbc::database_error& dbErr)
 	{
@@ -193,7 +201,25 @@ bool TelnetClientThread::Authenticate(const std::string& accountId, const std::s
 		return false;
 	}
 
-	return false;
+	if (user.Password != password)
+	{
+		spdlog::warn(
+			"TelnetClientThread::Authenticate: failed authentication attempt for user {} - "
+			"incorrect password [remoteIp={}]",
+			accountId, _remoteIp);
+		return false;
+	}
+
+	if (user.Authority != AUTHORITY_MANAGER)
+	{
+		spdlog::warn(
+			"TelnetClientThread::Authenticate: failed authentication attempt for user {} - "
+			"not AUTHORITY_MANAGER [remoteIp={}]",
+			accountId, _remoteIp);
+		return false;
+	}
+
+	return true;
 }
 
 void TelnetClientThread::HealthCheck()

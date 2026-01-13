@@ -13,8 +13,9 @@ class TelnetClientThread : public Thread
 	friend class TelnetThread;
 
 public:
-	TelnetClientThread(TelnetThread* parent, asio::ip::tcp::socket&& rawSocket, uint32_t socketId);
+	TelnetClientThread(asio::ip::tcp::socket&& rawSocket, uint32_t socketId);
 	~TelnetClientThread() override;
+	void Disconnect();
 
 protected:
 	/// \brief The main thread loop for the telnet server
@@ -29,8 +30,8 @@ protected:
 	/// \brief Remote IP address of the client.
 	std::string _remoteIp;
 
-	/// \brief Authenticated username of the client.
-	std::string _username;
+	/// \brief Authenticated account ID of the client.
+	std::string _accountId;
 
 private:
 	/// \brief Writes a line to the client telnet application
