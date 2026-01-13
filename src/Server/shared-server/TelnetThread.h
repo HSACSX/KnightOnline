@@ -15,7 +15,7 @@ class TelnetThread : public Thread
 	friend class TelnetClientThread;
 
 public:
-	TelnetThread(uint16_t port, std::unordered_set<std::string>&& addressWhitelist);
+	TelnetThread(const std::string& listenAddress, uint16_t port, std::unordered_set<std::string>&& addressWhitelist);
 	~TelnetThread() override;
 
 protected:
@@ -43,11 +43,14 @@ private:
 	/// \return true if the address is on the accept list; false otherwise
 	bool IsAddressWhitelisted(asio::ip::tcp::socket& clientSocket) const;
 
-	/// \brief List of whitelisted addresses to accept client connections from
-	std::unordered_set<std::string> _addressWhitelist;
+	/// \brief The Telnet listen address
+	std::string _listenAddress;
 
 	/// \brief The Telnet listen port
 	uint16_t _port;
+
+	/// \brief List of whitelisted addresses to accept client connections from
+	std::unordered_set<std::string> _addressWhitelist;
 
 	/// \brief Context object
 	asio::io_context _io;

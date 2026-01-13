@@ -50,12 +50,11 @@ void TelnetClientThread::thread_loop()
 			"TelnetClientThread::thread_loop: failed authentication attempt for user {}", username);
 		_clientSocket.close();
 		shutdown(false);
+		return;
 	}
-	else
-	{
-		spdlog::info("TelnetClientThread::thread_loop: {} authenticated", username);
-		WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
-	}
+
+	spdlog::info("TelnetClientThread::thread_loop: {} authenticated", username);
+	WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
 
 	try
 	{

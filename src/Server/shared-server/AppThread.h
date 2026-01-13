@@ -151,20 +151,23 @@ private:
 protected:
 	logger::Logger& _logger;
 
-	int _exitCode        = 0; // EXIT_SUCCESS
-	bool _headless       = true;
+	int _exitCode              = 0; // EXIT_SUCCESS
+	bool _headless             = true;
 
 	/// \brief Indicates if telnet was enabled through config or default constructor override
-	bool _enableTelnet   = false;
+	bool _enableTelnet         = false;
 
 	/// \brief Indicates if --force-telnet was passed as a command line argument. Overrides _enableTelnet
-	bool _forceTelnet    = false;
+	bool _forceTelnet          = false;
+
+	/// \brief Listen address for the Telnet server
+	std::string _telnetAddress = "127.0.0.1";
 
 	/// \brief Listen port for the Telnet server
-	uint16_t _telnetPort = 2323;
+	uint16_t _telnetPort       = 2323;
 
 	/// \brief Application status used for health checks
-	AppStatus _appStatus = AppStatus::INITIALIZING;
+	AppStatus _appStatus       = AppStatus::INITIALIZING;
 
 	static AppThread* s_instance;
 	static bool s_shutdown;

@@ -10,9 +10,9 @@
 
 using namespace std::chrono_literals;
 
-TelnetThread::TelnetThread(
-	const uint16_t port, std::unordered_set<std::string>&& addressWhitelist) :
-	_addressWhitelist(std::move(addressWhitelist)), _port(port)
+TelnetThread::TelnetThread(const std::string& listenAddress, const uint16_t port,
+	std::unordered_set<std::string>&& addressWhitelist) :
+	_listenAddress(listenAddress), _port(port), _addressWhitelist(std::move(addressWhitelist))
 {
 	_workerThreadCount = 1;
 	_workerPool        = std::make_shared<asio::thread_pool>(_workerThreadCount);
@@ -107,8 +107,17 @@ bool TelnetThread::Listen()
 		// Attempt to setup the acceptor.
 		_acceptor = std::make_unique<asio::ip::tcp::acceptor>(_workerPool->get_executor());
 
-		// Setup the endpoint for TCPv4 0.0.0.0:port
-		asio::ip::tcp::endpoint endpoint(asio::ip::tcp::v4(), _port);
+		// Parse the address from a string.
+		asio::ip::address_v4 listenAddress = asio::ip::make_address_v4(_listenAddress, ec);
+		if (ec)
+		{
+			spdlog::error("TelnetThread::Listen: listen address ({}) is invalid: {}",
+				_listenAddress, ec.message());
+			return false;
+		}
+
+		// Setup the endpoint for TCPv4 listenAddress:port.
+		asio::ip::tcp::endpoint endpoint(listenAddress, _port);
 
 		// Attempt to open the socket.
 		_acceptor->open(endpoint.protocol(), ec);
@@ -122,8 +131,8 @@ bool TelnetThread::Listen()
 		_acceptor->bind(endpoint, ec);
 		if (ec)
 		{
-			spdlog::error(
-				"TelnetThread::Listen: bind() failed on 0.0.0.0:{}: {}", _port, ec.message());
+			spdlog::error("TelnetThread::Listen: bind() failed on {}:{}: {}", _listenAddress, _port,
+				ec.message());
 			return false;
 		}
 

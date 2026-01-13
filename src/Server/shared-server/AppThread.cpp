@@ -351,6 +351,7 @@ bool AppThread::StartupImpl(CIni& iniFile)
 
 		// Load Telnet config
 		_enableTelnet         = iniFile.GetBool("TELNET", "ENABLED", _enableTelnet);
+		_telnetAddress        = iniFile.GetString("TELNET", "IP", _telnetAddress);
 		_telnetPort           = iniFile.GetInt("TELNET", "PORT", _telnetPort);
 		std::string whitelist = iniFile.GetString("TELNET", "WHITELIST", "127.0.0.1");
 
@@ -366,9 +367,12 @@ bool AppThread::StartupImpl(CIni& iniFile)
 			while (std::getline(ss, value, ','))
 				addressWhiteList.insert(value);
 
-			_telnetThread = new TelnetThread(_telnetPort, std::move(addressWhiteList));
+			_telnetThread = new TelnetThread(
+				_telnetAddress, _telnetPort, std::move(addressWhiteList));
+
+			spdlog::info("AppThread::StartupImpl: Telnet thread starting on {}:{}", _telnetAddress,
+				_telnetPort);
 			_telnetThread->start();
-			spdlog::info("AppThread::StartupImpl: Telnet thread starting on port {}", _telnetPort);
 		}
 
 		// Load application-specific startup logic
