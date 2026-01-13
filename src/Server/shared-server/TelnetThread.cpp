@@ -5,7 +5,6 @@
 #include <spdlog/spdlog.h>
 
 #include <chrono>
-#include <list>
 #include <ranges>
 
 using namespace std::chrono_literals;
