@@ -16,6 +16,7 @@ namespace ItemManager
 
 ItemManagerApp::ItemManagerApp(ItemManagerLogger& logger) : AppThread(logger)
 {
+	_telnetPort = 2327;
 	_readQueueThread = std::make_unique<ItemManagerReadQueueThread>();
 	_smqOpenThread   = std::make_unique<TimerThread>(
         5s, std::bind(&ItemManagerApp::AttemptOpenSharedMemoryThreadTick, this));
@@ -46,6 +47,7 @@ std::filesystem::path ItemManagerApp::ConfigPath() const
 
 bool ItemManagerApp::OnStart()
 {
+	_appStatus = AppStatus::STARTING;
 	_itemLogger = spdlog::get(std::string(logger::ItemManagerItem));
 	_expLogger  = spdlog::get(std::string(logger::ItemManagerExp));
 
@@ -63,6 +65,7 @@ bool ItemManagerApp::OnStart()
 		OnSharedMemoryOpened();
 	}
 
+	_appStatus = AppStatus::READY;
 	return true;
 }
 

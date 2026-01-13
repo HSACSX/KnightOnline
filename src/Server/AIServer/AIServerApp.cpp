@@ -125,6 +125,7 @@ AIServerApp::~AIServerApp()
 
 bool AIServerApp::OnStart()
 {
+	_appStatus = AppStatus::STARTING;
 	//----------------------------------------------------------------------
 	//	Sets a random number starting point.
 	//----------------------------------------------------------------------
@@ -297,19 +298,20 @@ bool AIServerApp::OnStart()
 	//----------------------------------------------------------------------
 
 	//----------------------------------------------------------------------
-	//	Start NPC THREAD
-	//----------------------------------------------------------------------
-	StartNpcThreads();
-
-	//----------------------------------------------------------------------
 	//	Start Accepting...
 	//----------------------------------------------------------------------
 	if (!ListenByServerZoneType())
 		return false;
 
+	//----------------------------------------------------------------------
+	//	Start NPC THREAD
+	//----------------------------------------------------------------------
+	StartNpcThreads();
+
 	_checkAliveThread->start();
 
 	spdlog::info("AIServerApp::OnStart: AIServer successfully initialized");
+	_appStatus = AppStatus::READY;
 
 	return true;
 }

@@ -19,6 +19,7 @@ namespace VersionManager
 VersionManagerApp::VersionManagerApp(logger::Logger& logger) :
 	AppThread(logger), _socketManager(SOCKET_BUFF_SIZE, SOCKET_BUFF_SIZE)
 {
+	_telnetPort = 2326;
 	db::ConnectionManager::DefaultConnectionTimeout = DB_PROCESS_TIMEOUT;
 	db::ConnectionManager::Create();
 
@@ -58,6 +59,7 @@ VersionManagerApp::~VersionManagerApp()
 
 bool VersionManagerApp::OnStart()
 {
+	_appStatus = AppStatus::STARTING;
 	_socketManager.Init(MAX_USER, 0, 1);
 	_socketManager.AllocateServerSockets<CUser>();
 
@@ -91,6 +93,7 @@ bool VersionManagerApp::OnStart()
 
 	_dbPoolCheckThread->start();
 
+	_appStatus = AppStatus::READY;
 	return true;
 }
 

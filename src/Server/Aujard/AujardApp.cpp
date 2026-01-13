@@ -30,6 +30,8 @@ namespace model                                            = aujard_model;
 AujardApp::AujardApp(logger::Logger& logger) :
 	AppThread(logger), LoggerSendQueue(MAX_SMQ_SEND_QUEUE_RETRY_COUNT)
 {
+	_telnetPort = 2325;
+
 	db::ConnectionManager::DefaultConnectionTimeout = DB_PROCESS_TIMEOUT;
 	db::ConnectionManager::Create();
 
@@ -141,6 +143,7 @@ bool AujardApp::LoadConfig(CIni& iniFile)
 
 bool AujardApp::OnStart()
 {
+	_appStatus = AppStatus::STARTING;
 	if (!_dbAgent.InitDatabase())
 		return false;
 
@@ -161,6 +164,7 @@ bool AujardApp::OnStart()
 		OnSharedMemoryOpened();
 	}
 
+	_appStatus = AppStatus::READY;
 	return true;
 }
 

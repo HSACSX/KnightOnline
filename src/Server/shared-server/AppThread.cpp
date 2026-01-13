@@ -18,14 +18,18 @@
 #include <string>
 #include <vector>
 
+#include "TelnetThread.h"
+
 AppThread* AppThread::s_instance = nullptr;
 bool AppThread::s_shutdown       = false;
 
 AppThread::AppThread(logger::Logger& logger) :
-	_logger(logger), _exitCode(EXIT_SUCCESS), _headless(false)
+	_logger(logger), _exitCode(EXIT_SUCCESS), _headless(false),
+	_enableTelnet(false), _forceTelnet(false), _telnetPort(2323)
 {
 	assert(s_instance == nullptr);
 	s_instance = this;
+	_appStatus = AppStatus::INITIALIZING;
 
 	_iniFile   = new CIni();
 }
@@ -34,6 +38,13 @@ AppThread::~AppThread()
 {
 	delete _iniFile;
 
+	if (_telnetThread != nullptr)
+	{
+		spdlog::debug("AppThread::~AppThread: Shutting down telnet thread.");
+		_telnetThread->shutdown();
+		spdlog::debug("AppThread::~AppThread: Telnet thread shut down.");
+	}
+
 	assert(s_instance != nullptr);
 	s_instance = nullptr;
 }
@@ -41,6 +52,11 @@ AppThread::~AppThread()
 std::filesystem::path AppThread::LogBaseDir() const
 {
 	return std::filesystem::current_path();
+}
+
+void AppThread::before_shutdown()
+{
+	_appStatus = AppStatus::STOPPING;
 }
 
 bool AppThread::parse_commandline(int argc, char* argv[])
@@ -67,6 +83,10 @@ void AppThread::SetupCommandLineArgParser(argparse::ArgumentParser& parser)
 		.help("run in headless mode, without the ftxui terminal UI for input")
 		.flag()
 		.store_into(_headless);
+	parser.add_argument("--force-telnet")
+		.help("force enable telnet command server")
+		.flag()
+		.store_into(_forceTelnet);
 }
 
 bool AppThread::ProcessCommandLineArgs(const argparse::ArgumentParser& /*parser*/)
@@ -334,8 +354,28 @@ bool AppThread::StartupImpl(CIni& iniFile)
 			return false;
 		}
 
+		// Load Telnet config
+		_enableTelnet = iniFile.GetBool("TELNET", "ENABLED", _enableTelnet);
+		_telnetPort = iniFile.GetInt("TELNET", "PORT", _telnetPort);
+		std::string whitelist = iniFile.GetString("TELNET", "WHITELIST", "localhost,127.0.0.1,0.0.0.0");
+
 		// Trigger a save to flush defaults to file.
 		iniFile.Save();
+
+		// Start the Telnet Server, if enabled
+		if (_enableTelnet || _forceTelnet)
+		{
+			std::unordered_set<std::string> clientAcceptList;
+			std::stringstream ss(whitelist);
+			std::string value;
+			while (std::getline(ss, value, ','))
+			{
+				clientAcceptList.insert(value);
+			}
+			_telnetThread = new TelnetThread(_telnetPort, clientAcceptList);
+			_telnetThread->start();
+			spdlog::info("AppThread::StartupImpl: Telnet thread starting on port {}", _telnetPort);
+		}
 
 		// Load application-specific startup logic
 		if (!OnStart())

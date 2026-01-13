@@ -95,6 +95,11 @@ EbenezerApp::EbenezerApp(EbenezerLogger& logger) :
 
 	m_pUdpSocket                                                                  = nullptr;
 
+	// Ebenezer is the only server that had built in command line support, so we'll
+	// default _enableTelnet to on.
+	_enableTelnet = true;
+	_telnetPort = 2324;
+
 	for (int h = 0; h < MAX_BBS_POST; h++)
 	{
 		m_sBuyID[h] = -1;
@@ -232,6 +237,7 @@ EbenezerApp::~EbenezerApp()
 
 bool EbenezerApp::OnStart()
 {
+	_appStatus = AppStatus::STARTING;
 	srand(static_cast<uint32_t>(time(nullptr)));
 
 	// Compress Init
@@ -470,7 +476,7 @@ bool EbenezerApp::OnStart()
 	_readQueueThread->start();
 
 	spdlog::info("EbenezerApp::OnInitDialog: successfully initialized");
-
+	_appStatus = AppStatus::READY;
 	return true;
 }
 
