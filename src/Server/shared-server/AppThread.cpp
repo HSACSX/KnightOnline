@@ -26,7 +26,6 @@ AppThread::AppThread(logger::Logger& logger) : _logger(logger)
 {
 	assert(s_instance == nullptr);
 	s_instance = this;
-	_appStatus = AppStatus::INITIALIZING;
 
 	_iniFile   = new CIni();
 }

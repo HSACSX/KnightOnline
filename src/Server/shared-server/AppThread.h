@@ -145,8 +145,8 @@ private:
 	static void catchInterruptSignals();
 	static void signalHandler(int signalNumber);
 
-	CIni* _iniFile;
-	TelnetThread* _telnetThread;
+	CIni* _iniFile              = nullptr;
+	TelnetThread* _telnetThread = nullptr;
 
 protected:
 	logger::Logger& _logger;
@@ -164,7 +164,7 @@ protected:
 	uint16_t _telnetPort = 2323;
 
 	/// \brief Application status used for health checks
-	AppStatus _appStatus;
+	AppStatus _appStatus = AppStatus::INITIALIZING;
 
 	static AppThread* s_instance;
 	static bool s_shutdown;
