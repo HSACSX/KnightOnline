@@ -149,8 +149,19 @@ std::string TelnetClientThread::ReadLine()
 
 	std::string line;
 	asio::streambuf buffer;
+	std::promise<size_t> promise;
 
-	size_t bytesRead = asio::read_until(_clientSocket, buffer, Delimiter);
+	asio::async_read_until(_clientSocket, buffer, Delimiter,
+		[&](const asio::error_code& ec, std::size_t bytesRead)
+		{
+			if (ec)
+				promise.set_exception(std::make_exception_ptr(asio::system_error(ec)));
+			else
+				promise.set_value(bytesRead);
+		});
+
+	auto future      = promise.get_future();
+	size_t bytesRead = future.get();
 	if (bytesRead == 0)
 		throw std::runtime_error("socket disconnected");
 
