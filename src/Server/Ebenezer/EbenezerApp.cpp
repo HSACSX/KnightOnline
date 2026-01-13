@@ -97,8 +97,8 @@ EbenezerApp::EbenezerApp(EbenezerLogger& logger) :
 
 	// Ebenezer is the only server that had built in command line support, so we'll
 	// default _enableTelnet to on.
-	_enableTelnet = true;
-	_telnetPort = 2324;
+	_enableTelnet                                                                 = true;
+	_telnetPort                                                                   = 2324;
 
 	for (int h = 0; h < MAX_BBS_POST; h++)
 	{
