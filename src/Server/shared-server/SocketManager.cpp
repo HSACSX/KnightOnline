@@ -145,6 +145,7 @@ void SocketManager::StartAccept()
 		// already accepting connections
 		return;
 	}
+
 	AsyncAccept();
 }
 

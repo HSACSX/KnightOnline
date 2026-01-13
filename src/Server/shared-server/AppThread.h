@@ -150,7 +150,8 @@ private:
 
 protected:
 	logger::Logger& _logger;
-	int _exitCode        = EXIT_SUCCESS;
+
+	int _exitCode        = 0; // EXIT_SUCCESS
 	bool _headless       = true;
 
 	/// \brief Indicates if telnet was enabled through config or default constructor override

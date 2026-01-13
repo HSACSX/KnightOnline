@@ -3,15 +3,19 @@
 #include "AppThread.h"
 #include "TelnetThread.h"
 
-#include <spdlog/spdlog.h>
 #include <db-library/Connection.h>
 #include <db-library/Exceptions.h>
 #include <db-library/RecordSetLoader_STLMap.h>
 #include <db-library/utils.h>
-#include <nanodbc/nanodbc.h>
-#include <Full/binder/FullBinder.h>
+#include <db-models/Full/binder/FullBinder.h>
+#include <db-models/Full/model/FullModel.h>
 
-#include "db-models/Full/model/FullModel.h"
+#include <nanodbc/nanodbc.h>
+#include <spdlog/spdlog.h>
+
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 TelnetClientThread::TelnetClientThread(TelnetThread* parent) : _clientSocket(*parent->_workerPool)
 {
@@ -57,34 +61,37 @@ void TelnetClientThread::thread_loop()
 	{
 		while (CanTick())
 		{
-			if (_clientSocket.is_open())
+			if (!_clientSocket.is_open())
 			{
-				std::string input = ReadLine();
-				if (input.empty())
-				{
-					continue;
-				}
+				shutdown(false);
+				continue;
+			}
 
-				if (input == "quit")
-				{
-					_clientSocket.close();
-				}
-				else if (input == "healthcheck")
-				{
-					HealthCheck();
-				}
-				else if (AppThread::instance()->HandleCommand(input))
-				{
-					WriteLine("Input command accepted.");
-				}
-				else
-				{
-					WriteLine("Input command failed.");
-				}
+			std::string input = ReadLine();
+			if (input.empty())
+				continue;
+
+			if (input == "quit")
+			{
+				_clientSocket.close();
+			}
+			else if (input == "healthcheck")
+			{
+				HealthCheck();
 			}
 			else
 			{
-				shutdown(false);
+				AppThread* appThread = AppThread::instance();
+				if (appThread == nullptr)
+				{
+					shutdown(false);
+					continue;
+				}
+
+				if (appThread->HandleCommand(input))
+					WriteLine("Input command accepted.");
+				else
+					WriteLine("Input command failed.");
 			}
 		}
 	}
@@ -101,17 +108,18 @@ void TelnetClientThread::WriteLine(const std::string& line)
 
 std::string TelnetClientThread::ReadLine()
 {
-	constexpr std::chrono::milliseconds timeout(500);
-	constexpr char delimiter = '\n';
+	constexpr auto Timeout   = 500ms;
+	constexpr char Delimiter = '\n';
+
 	std::string line;
 	asio::io_context localContext;
 	asio::streambuf buffer;
-	asio::steady_timer timer(localContext, timeout);
+	asio::steady_timer timer(localContext, Timeout);
 	bool isReading = false;
 	bool isTimeout = false;
 	std::error_code ec;
 
-	asio::async_read_until(_clientSocket, buffer, delimiter,
+	asio::async_read_until(_clientSocket, buffer, Delimiter,
 		[&](const std::error_code& err, std::size_t)
 		{
 			ec        = err;
@@ -133,13 +141,11 @@ std::string TelnetClientThread::ReadLine()
 	if (!isTimeout && !ec)
 	{
 		std::istream is(&buffer);
-		std::getline(is, line, delimiter);
+		std::getline(is, line, Delimiter);
 
-		// strip any tailing \r
+		// strip any trailing \r
 		if (!line.empty() && line.back() == '\r')
-		{
 			line.pop_back();
-		}
 	}
 
 	return line;
@@ -167,18 +173,14 @@ bool TelnetClientThread::Authenticate(const std::string& accountId, const std::s
 		if (!recordSet.next())
 			return false;
 
-		full_model::TbUser user = {};
+		full_model::TbUser user {};
 		recordSet.get_ref(user);
 
 		if (user.Password != password)
-		{
 			return false;
-		}
 
 		if (user.Authority == AUTHORITY_MANAGER)
-		{
 			return true;
-		}
 	}
 	catch (const nanodbc::database_error& dbErr)
 	{
@@ -191,17 +193,27 @@ bool TelnetClientThread::Authenticate(const std::string& accountId, const std::s
 
 void TelnetClientThread::HealthCheck()
 {
-	switch (AppThread::instance()->GetAppStatus())
+	AppThread* appThread = AppThread::instance();
+	if (appThread == nullptr)
+	{
+		WriteLine("status: STOPPED");
+		return;
+	}
+
+	switch (appThread->GetAppStatus())
 	{
 		case AppStatus::INITIALIZING:
 			WriteLine("status: INITIALIZING");
 			break;
+
 		case AppStatus::STARTING:
 			WriteLine("status: STARTING");
 			break;
+
 		case AppStatus::READY:
 			WriteLine("status: READY");
 			break;
+
 		case AppStatus::STOPPING:
 			WriteLine("status: STOPPING");
 			break;

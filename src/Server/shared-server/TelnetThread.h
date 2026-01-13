@@ -3,8 +3,10 @@
 
 #pragma once
 
-#include <unordered_set>
 #include <shared/Thread.h>
+
+#include <asio.hpp>
+#include <unordered_set>
 
 class TelnetClientThread;
 class CIni;
@@ -13,7 +15,7 @@ class TelnetThread : public Thread
 	friend class TelnetClientThread;
 
 public:
-	TelnetThread(uint16_t port, std::unordered_set<std::string> clientAcceptList);
+	TelnetThread(uint16_t port, std::unordered_set<std::string>&& addressWhitelist);
 	~TelnetThread() override;
 
 protected:
@@ -39,10 +41,10 @@ private:
 
 	/// \brief Checks if a client's address is on the accept list
 	/// \return true if the address is on the accept list; false otherwise
-	bool isAcceptAddress(asio::ip::tcp::socket& clientSocket) const;
+	bool IsAddressWhitelisted(asio::ip::tcp::socket& clientSocket) const;
 
-	/// \brief List of addresses to accept client connections from
-	std::unordered_set<std::string> _clientAcceptList;
+	/// \brief List of whitelisted addresses to accept client connections from
+	std::unordered_set<std::string> _addressWhitelist;
 
 	/// \brief The Telnet listen port
 	uint16_t _port;
@@ -60,4 +62,4 @@ private:
 	uint32_t _nextSocketId;
 };
 
-#endif //SERVER_SHAREDSERVER_TELNETTHREAD_H
+#endif // SERVER_SHAREDSERVER_TELNETTHREAD_H

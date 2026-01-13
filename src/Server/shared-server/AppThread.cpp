@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "AppThread.h"
-#include "TelnetThread.h"
 #include "ftxui_sink_mt.h"
+#include "TelnetThread.h"
 #include "utilities.h"
 
 #include <shared/Ini.h>
@@ -362,14 +362,13 @@ bool AppThread::StartupImpl(CIni& iniFile)
 		// Start the Telnet Server, if enabled
 		if (_enableTelnet || _forceTelnet)
 		{
-			std::unordered_set<std::string> clientAcceptList;
+			std::unordered_set<std::string> addressWhiteList;
 			std::stringstream ss(whitelist);
 			std::string value;
 			while (std::getline(ss, value, ','))
-			{
-				clientAcceptList.insert(value);
-			}
-			_telnetThread = new TelnetThread(_telnetPort, clientAcceptList);
+				addressWhiteList.insert(value);
+
+			_telnetThread = new TelnetThread(_telnetPort, std::move(addressWhiteList));
 			_telnetThread->start();
 			spdlog::info("AppThread::StartupImpl: Telnet thread starting on port {}", _telnetPort);
 		}

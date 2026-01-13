@@ -3,8 +3,9 @@
 
 #pragma once
 
-#include <asio/ip/tcp.hpp>
 #include <shared/Thread.h>
+
+#include <asio/ip/tcp.hpp>
 
 class TelnetThread;
 class TelnetClientThread : public Thread
@@ -41,4 +42,4 @@ private:
 	void HealthCheck();
 };
 
-#endif //SERVER_SHAREDSERVER_TELNETCLIENTTHREAD_H
+#endif // SERVER_SHAREDSERVER_TELNETCLIENTTHREAD_H

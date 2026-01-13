@@ -4,11 +4,15 @@
 
 #include <spdlog/spdlog.h>
 
+#include <chrono>
 #include <list>
 #include <ranges>
 
-TelnetThread::TelnetThread(const uint16_t port, std::unordered_set<std::string> clientAcceptList) :
-	_clientAcceptList(std::move(clientAcceptList)), _port(port)
+using namespace std::chrono_literals;
+
+TelnetThread::TelnetThread(
+	const uint16_t port, std::unordered_set<std::string>&& addressWhitelist) :
+	_addressWhitelist(std::move(addressWhitelist)), _port(port)
 {
 	_workerThreadCount = 1;
 	_workerPool        = std::make_shared<asio::thread_pool>(_workerThreadCount);
@@ -40,7 +44,7 @@ void TelnetThread::thread_loop()
 	while (CanTick())
 	{
 		std::unordered_set<uint32_t> eraseKeys;
-		for (auto [key, clientThread] : _telnetThreadMap)
+		for (auto& [key, clientThread] : _telnetThreadMap)
 		{
 			if (clientThread == nullptr)
 			{
@@ -60,11 +64,9 @@ void TelnetThread::thread_loop()
 		}
 
 		for (const uint32_t key : eraseKeys)
-		{
 			_telnetThreadMap.erase(key);
-		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(100ms);
 	}
 }
 
@@ -79,26 +81,25 @@ void TelnetThread::before_shutdown()
 			spdlog::error("TelnetThread::before_shutdown: cancel() failed: {}", ec.message());
 	}
 
-	if (_telnetThreadMap.size() > 0)
+	if (!_telnetThreadMap.empty())
 	{
 		spdlog::info("TelnetThread::before_shutdown: closing {} client connections",
 			_telnetThreadMap.size());
 		_io.stop();
 	}
 
-	for (auto clientSocket : _telnetThreadMap | std::views::values)
+	for (auto& clientSocket : _telnetThreadMap | std::views::values)
 	{
 		if (clientSocket != nullptr)
-		{
 			clientSocket->shutdown();
-		}
 	}
 }
 
 bool TelnetThread::Listen()
 {
-	constexpr int recvBufferSize = 1024;
-	constexpr int sendBufferSize = 1024;
+	constexpr int RecvBufferSize = 1024;
+	constexpr int SendBufferSize = 1024;
+
 	try
 	{
 		asio::error_code ec;
@@ -136,7 +137,7 @@ bool TelnetThread::Listen()
 		}
 
 		// Configure receive buffer size
-		_acceptor->set_option(asio::socket_base::receive_buffer_size(recvBufferSize), ec);
+		_acceptor->set_option(asio::socket_base::receive_buffer_size(RecvBufferSize), ec);
 		if (ec)
 		{
 			spdlog::error(
@@ -145,7 +146,7 @@ bool TelnetThread::Listen()
 		}
 
 		// Configure send buffer size
-		_acceptor->set_option(asio::socket_base::send_buffer_size(sendBufferSize), ec);
+		_acceptor->set_option(asio::socket_base::send_buffer_size(SendBufferSize), ec);
 		if (ec)
 		{
 			spdlog::error(
@@ -187,7 +188,7 @@ void TelnetThread::AsyncAccept()
 				if (!ec)
 				{
 					spdlog::info("TelnetThread::thread_loop(): client connecting");
-					if (!isAcceptAddress(rawSocket))
+					if (!IsAddressWhitelisted(rawSocket))
 					{
 						spdlog::warn(
 							"TelnetThread::thread_loop(): non-local client connection refused");
@@ -195,8 +196,7 @@ void TelnetThread::AsyncAccept()
 						return;
 					}
 
-					std::shared_ptr<TelnetClientThread>
-						clientThread            = std::make_shared<TelnetClientThread>(this);
+					auto clientThread           = std::make_shared<TelnetClientThread>(this);
 					clientThread->_clientSocket = std::move(rawSocket);
 					clientThread->_socketId     = _nextSocketId;
 					_telnetThreadMap.insert(std::make_pair(_nextSocketId, clientThread));
@@ -214,17 +214,14 @@ void TelnetThread::AsyncAccept()
 				AsyncAccept();
 			});
 	}
-	catch (std::exception& e)
+	catch (const std::exception& e)
 	{
 		spdlog::error("TelnetThread::AsyncAccept: {}", e.what());
 	}
 }
 
-bool TelnetThread::isAcceptAddress(asio::ip::tcp::socket& clientSocket) const
+bool TelnetThread::IsAddressWhitelisted(asio::ip::tcp::socket& clientSocket) const
 {
-	if (_clientAcceptList.contains(clientSocket.remote_endpoint().address().to_string()))
-	{
-		return true;
-	}
-	return false;
+	const std::string remoteIp = clientSocket.remote_endpoint().address().to_string();
+	return _addressWhitelist.contains(remoteIp);
 }
