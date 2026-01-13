@@ -26,6 +26,12 @@ protected:
 	/// \brief Socket identifier used in the TelnetThread client map
 	uint32_t _socketId = 0;
 
+	/// \brief Remote IP address of the client.
+	std::string _remoteIp;
+
+	/// \brief Authenticated username of the client.
+	std::string _username;
+
 private:
 	/// \brief Writes a line to the client telnet application
 	void WriteLine(const std::string& line);

@@ -19,6 +19,18 @@ using namespace std::chrono_literals;
 
 TelnetClientThread::TelnetClientThread(TelnetThread* parent) : _clientSocket(*parent->_workerPool)
 {
+	asio::error_code ec;
+
+	asio::ip::tcp::endpoint endpoint = _clientSocket.remote_endpoint(ec);
+	if (ec)
+	{
+		spdlog::warn("TelnetClientThread::TelnetClientThread: failed remote IP lookup. socketId={}",
+			_socketId);
+	}
+	else
+	{
+		_remoteIp = endpoint.address().to_string();
+	}
 }
 
 TelnetClientThread::~TelnetClientThread()
@@ -46,14 +58,18 @@ void TelnetClientThread::thread_loop()
 
 	if (!Authenticate(username, password))
 	{
-		spdlog::warn(
-			"TelnetClientThread::thread_loop: failed authentication attempt for user {}", username);
+		spdlog::warn("TelnetClientThread::thread_loop: failed authentication attempt for user {} "
+					 "[remoteIp={}]",
+			username, _remoteIp);
 		_clientSocket.close();
 		shutdown(false);
 		return;
 	}
 
-	spdlog::info("TelnetClientThread::thread_loop: {} authenticated", username);
+	_username = std::move(username);
+
+	spdlog::info(
+		"TelnetClientThread::thread_loop: {} authenticated [remoteIp={}]", _username, _remoteIp);
 	WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
 
 	try
@@ -62,6 +78,10 @@ void TelnetClientThread::thread_loop()
 		{
 			if (!_clientSocket.is_open())
 			{
+				spdlog::info(
+					"TelnetClientThread::thread_loop: socket longer open [username={} remoteIp={}]",
+					_username, _remoteIp);
+
 				shutdown(false);
 				continue;
 			}
@@ -70,8 +90,15 @@ void TelnetClientThread::thread_loop()
 			if (input.empty())
 				continue;
 
+			spdlog::info("TelnetClientThread::thread_loop: input: {} [username={} remoteIp={}]",
+				input, _username, _remoteIp);
+
 			if (input == "quit")
 			{
+				spdlog::info("TelnetClientThread::thread_loop: socket closed by request "
+							 "[username={} remoteIp={}]",
+					_username, _remoteIp);
+
 				_clientSocket.close();
 			}
 			else if (input == "healthcheck")
@@ -96,7 +123,8 @@ void TelnetClientThread::thread_loop()
 	}
 	catch (const std::exception& e)
 	{
-		spdlog::error("TelnetClientThread::thread_loop: {}", e.what());
+		spdlog::error("TelnetClientThread::thread_loop: {} [username={} remoteIp={}]", e.what(),
+			_username, _remoteIp);
 	}
 }
 
