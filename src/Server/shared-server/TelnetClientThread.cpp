@@ -1,17 +1,14 @@
 ﻿#include "pch.h"
 #include "TelnetClientThread.h"
-
 #include "AppThread.h"
 #include "TelnetThread.h"
-#include "spdlog/spdlog.h"
 
+#include <spdlog/spdlog.h>
 #include <db-library/Connection.h>
 #include <db-library/Exceptions.h>
 #include <db-library/RecordSetLoader_STLMap.h>
 #include <db-library/utils.h>
-
 #include <nanodbc/nanodbc.h>
-
 #include <Full/binder/FullBinder.h>
 
 #include "db-models/Full/model/FullModel.h"

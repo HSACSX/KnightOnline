@@ -125,7 +125,6 @@ AIServerApp::~AIServerApp()
 
 bool AIServerApp::OnStart()
 {
-	_appStatus = AppStatus::STARTING;
 	//----------------------------------------------------------------------
 	//	Sets a random number starting point.
 	//----------------------------------------------------------------------
@@ -311,7 +310,6 @@ bool AIServerApp::OnStart()
 	_checkAliveThread->start();
 
 	spdlog::info("AIServerApp::OnStart: AIServer successfully initialized");
-	_appStatus = AppStatus::READY;
 
 	return true;
 }

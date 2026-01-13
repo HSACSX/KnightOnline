@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "AppThread.h"
+#include "TelnetThread.h"
 #include "ftxui_sink_mt.h"
 #include "utilities.h"
 
@@ -17,8 +18,6 @@
 #include <csignal>
 #include <string>
 #include <vector>
-
-#include "TelnetThread.h"
 
 AppThread* AppThread::s_instance = nullptr;
 bool AppThread::s_shutdown       = false;
@@ -378,11 +377,13 @@ bool AppThread::StartupImpl(CIni& iniFile)
 		}
 
 		// Load application-specific startup logic
+		_appStatus = AppStatus::STARTING;
 		if (!OnStart())
 		{
 			spdlog::error("AppThread::StartupImpl: OnStart() failed.");
 			return false;
 		}
+		_appStatus = AppStatus::READY;
 
 		return true;
 	}

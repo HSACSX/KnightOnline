@@ -1,11 +1,11 @@
 ﻿#include "pch.h"
 #include "TelnetThread.h"
+#include "TelnetClientThread.h"
+
+#include <spdlog/spdlog.h>
 
 #include <list>
 #include <ranges>
-
-#include "TelnetClientThread.h"
-#include "spdlog/spdlog.h"
 
 TelnetThread::TelnetThread(const uint16_t port, std::unordered_set<std::string> clientAcceptList)
 	: _clientAcceptList(std::move(clientAcceptList)), _port(port)
@@ -89,7 +89,6 @@ void TelnetThread::before_shutdown()
 		if (clientSocket != nullptr)
 		{
 			clientSocket->shutdown();
-			clientSocket->join();
 		}
 	}
 

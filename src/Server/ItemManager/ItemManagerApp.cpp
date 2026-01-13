@@ -47,7 +47,6 @@ std::filesystem::path ItemManagerApp::ConfigPath() const
 
 bool ItemManagerApp::OnStart()
 {
-	_appStatus = AppStatus::STARTING;
 	_itemLogger = spdlog::get(std::string(logger::ItemManagerItem));
 	_expLogger  = spdlog::get(std::string(logger::ItemManagerExp));
 
@@ -65,7 +64,6 @@ bool ItemManagerApp::OnStart()
 		OnSharedMemoryOpened();
 	}
 
-	_appStatus = AppStatus::READY;
 	return true;
 }
 

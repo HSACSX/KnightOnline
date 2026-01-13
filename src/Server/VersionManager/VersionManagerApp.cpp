@@ -59,7 +59,6 @@ VersionManagerApp::~VersionManagerApp()
 
 bool VersionManagerApp::OnStart()
 {
-	_appStatus = AppStatus::STARTING;
 	_socketManager.Init(MAX_USER, 0, 1);
 	_socketManager.AllocateServerSockets<CUser>();
 
@@ -93,7 +92,6 @@ bool VersionManagerApp::OnStart()
 
 	_dbPoolCheckThread->start();
 
-	_appStatus = AppStatus::READY;
 	return true;
 }
 

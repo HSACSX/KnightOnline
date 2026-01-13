@@ -143,7 +143,6 @@ bool AujardApp::LoadConfig(CIni& iniFile)
 
 bool AujardApp::OnStart()
 {
-	_appStatus = AppStatus::STARTING;
 	if (!_dbAgent.InitDatabase())
 		return false;
 
@@ -164,7 +163,6 @@ bool AujardApp::OnStart()
 		OnSharedMemoryOpened();
 	}
 
-	_appStatus = AppStatus::READY;
 	return true;
 }
 

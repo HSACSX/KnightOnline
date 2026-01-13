@@ -237,7 +237,6 @@ EbenezerApp::~EbenezerApp()
 
 bool EbenezerApp::OnStart()
 {
-	_appStatus = AppStatus::STARTING;
 	srand(static_cast<uint32_t>(time(nullptr)));
 
 	// Compress Init
@@ -476,7 +475,6 @@ bool EbenezerApp::OnStart()
 	_readQueueThread->start();
 
 	spdlog::info("EbenezerApp::OnInitDialog: successfully initialized");
-	_appStatus = AppStatus::READY;
 	return true;
 }
 
