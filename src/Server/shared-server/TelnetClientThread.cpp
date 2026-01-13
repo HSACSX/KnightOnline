@@ -17,7 +17,8 @@
 
 using namespace std::chrono_literals;
 
-TelnetClientThread::TelnetClientThread(TelnetThread* parent) : _clientSocket(*parent->_workerPool)
+TelnetClientThread::TelnetClientThread(TelnetThread* parent, asio::ip::tcp::socket&& rawSocket,
+	uint32_t socketId) : _clientSocket(std::move(rawSocket)), _socketId(socketId)
 {
 	asio::error_code ec;
 

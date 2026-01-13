@@ -205,11 +205,9 @@ void TelnetThread::AsyncAccept()
 						return;
 					}
 
-					auto clientThread           = std::make_shared<TelnetClientThread>(this);
-					clientThread->_clientSocket = std::move(rawSocket);
-					clientThread->_socketId     = _nextSocketId;
+					auto clientThread = std::make_shared<TelnetClientThread>(
+						this, std::move(rawSocket), _nextSocketId++);
 					_telnetThreadMap.insert(std::make_pair(_nextSocketId, clientThread));
-					_nextSocketId++;
 					clientThread->start();
 				}
 				else

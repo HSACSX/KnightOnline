@@ -13,7 +13,7 @@ class TelnetClientThread : public Thread
 	friend class TelnetThread;
 
 public:
-	TelnetClientThread(TelnetThread* parent);
+	TelnetClientThread(TelnetThread* parent, asio::ip::tcp::socket&& rawSocket, uint32_t socketId);
 	~TelnetClientThread() override;
 
 protected:
