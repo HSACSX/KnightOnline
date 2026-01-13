@@ -352,8 +352,7 @@ bool AppThread::StartupImpl(CIni& iniFile)
 		// Load Telnet config
 		_enableTelnet         = iniFile.GetBool("TELNET", "ENABLED", _enableTelnet);
 		_telnetPort           = iniFile.GetInt("TELNET", "PORT", _telnetPort);
-		std::string whitelist = iniFile.GetString(
-			"TELNET", "WHITELIST", "localhost,127.0.0.1,0.0.0.0");
+		std::string whitelist = iniFile.GetString("TELNET", "WHITELIST", "127.0.0.1");
 
 		// Trigger a save to flush defaults to file.
 		iniFile.Save();
@@ -374,13 +373,14 @@ bool AppThread::StartupImpl(CIni& iniFile)
 
 		// Load application-specific startup logic
 		_appStatus = AppStatus::STARTING;
+
 		if (!OnStart())
 		{
 			spdlog::error("AppThread::StartupImpl: OnStart() failed.");
 			return false;
 		}
-		_appStatus = AppStatus::READY;
 
+		_appStatus = AppStatus::READY;
 		return true;
 	}
 	catch (const std::exception& ex)
