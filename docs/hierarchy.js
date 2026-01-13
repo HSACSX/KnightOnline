@@ -780,6 +780,8 @@ var hierarchy =
         [ "Ebenezer::EbenezerReadQueueThread", "classEbenezer_1_1EbenezerReadQueueThread.html", null ],
         [ "ItemManager::ItemManagerReadQueueThread", "classItemManager_1_1ItemManagerReadQueueThread.html", null ]
       ] ],
+      [ "TelnetClientThread", "classTelnetClientThread.html", null ],
+      [ "TelnetThread", "classTelnetThread.html", null ],
       [ "TimerThread", "classTimerThread.html", null ]
     ] ],
     [ "std::vector", null, [

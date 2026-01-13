@@ -610,6 +610,8 @@ var annotated_dup =
     [ "TcpClientSocket", "classTcpClientSocket.html", null ],
     [ "TcpServerSocket", "classTcpServerSocket.html", null ],
     [ "TcpSocket", "classTcpSocket.html", "classTcpSocket" ],
+    [ "TelnetClientThread", "classTelnetClientThread.html", "classTelnetClientThread" ],
+    [ "TelnetThread", "classTelnetThread.html", "classTelnetThread" ],
     [ "Thread", "classThread.html", null ],
     [ "TimerThread", "classTimerThread.html", null ],
     [ "Vector3Test", "classVector3Test.html", null ],

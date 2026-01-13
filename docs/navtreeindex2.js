@@ -227,6 +227,10 @@ var NAVTREEINDEX2 =
 "TcpServerSocket_8h_source.html":[3,0,0,5,4,24],
 "TcpSocket_8cpp_source.html":[3,0,0,5,4,25],
 "TcpSocket_8h_source.html":[3,0,0,5,4,26],
+"TelnetClientThread_8cpp_source.html":[3,0,0,5,4,27],
+"TelnetClientThread_8h_source.html":[3,0,0,5,4,28],
+"TelnetThread_8cpp_source.html":[3,0,0,5,4,29],
+"TelnetThread_8h_source.html":[3,0,0,5,4,30],
 "TexViewer_8cpp_source.html":[3,0,0,7,8,23],
 "TexViewer_8h_source.html":[3,0,0,7,8,24],
 "Thread_8cpp_source.html":[3,0,0,6,21],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "Tools_2N3FXE_2StdAfx_8cpp_source.html":[3,0,0,7,2,31],
 "Tools_2N3FXE_2StdAfx_8h_source.html":[3,0,0,7,2,32],
 "Tools_2N3FXE_2resource_8h_source.html":[3,0,0,7,2,30],
-"Tools_2N3ME_2MainFrm_8cpp_source.html":[3,0,0,7,3,96],
-"Tools_2N3ME_2MainFrm_8h_source.html":[3,0,0,7,3,97],
-"Tools_2N3ME_2Resource_8h_source.html":[3,0,0,7,3,122],
-"Tools_2N3ME_2StdAfx_8cpp_source.html":[3,0,0,7,3,141],
-"Tools_2N3ME_2StdAfx_8h_source.html":[3,0,0,7,3,142]
+"Tools_2N3ME_2MainFrm_8cpp_source.html":[3,0,0,7,3,96]
 };
