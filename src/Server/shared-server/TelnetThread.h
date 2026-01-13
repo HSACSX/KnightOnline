@@ -15,7 +15,8 @@ class TelnetThread : public Thread
 	friend class TelnetClientThread;
 
 public:
-	TelnetThread(const std::string& listenAddress, uint16_t port, std::unordered_set<std::string>&& addressWhitelist);
+	TelnetThread(const std::string& listenAddress, uint16_t port,
+		std::unordered_set<std::string>&& addressWhitelist);
 	~TelnetThread() override;
 
 protected:
