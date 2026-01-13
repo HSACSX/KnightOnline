@@ -40,40 +40,41 @@ TelnetClientThread::~TelnetClientThread()
 
 void TelnetClientThread::thread_loop()
 {
-	WriteLine("User:");
-	std::string username;
-	do
-	{
-		username = ReadLine();
-	}
-	while (username.empty());
-
-	WriteLine("Password:");
-	std::string password;
-	do
-	{
-		password = ReadLine();
-	}
-	while (password.empty());
-
-	if (!Authenticate(username, password))
-	{
-		spdlog::warn("TelnetClientThread::thread_loop: failed authentication attempt for user {} "
-					 "[remoteIp={}]",
-			username, _remoteIp);
-		_clientSocket.close();
-		shutdown(false);
-		return;
-	}
-
-	_username = std::move(username);
-
-	spdlog::info(
-		"TelnetClientThread::thread_loop: {} authenticated [remoteIp={}]", _username, _remoteIp);
-	WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
-
 	try
 	{
+		WriteLine("User:");
+		std::string username;
+		do
+		{
+			username = ReadLine();
+		}
+		while (username.empty());
+
+		WriteLine("Password:");
+		std::string password;
+		do
+		{
+			password = ReadLine();
+		}
+		while (password.empty());
+
+		if (!Authenticate(username, password))
+		{
+			spdlog::warn(
+				"TelnetClientThread::thread_loop: failed authentication attempt for user {} "
+				"[remoteIp={}]",
+				username, _remoteIp);
+			_clientSocket.close();
+			shutdown(false);
+			return;
+		}
+
+		_username = std::move(username);
+
+		spdlog::info("TelnetClientThread::thread_loop: {} authenticated [remoteIp={}]", _username,
+			_remoteIp);
+		WriteLine("Authenticated.  Accepting commands. \"quit\" to close connection.");
+
 		while (CanTick())
 		{
 			if (!_clientSocket.is_open())
@@ -135,45 +136,21 @@ void TelnetClientThread::WriteLine(const std::string& line)
 
 std::string TelnetClientThread::ReadLine()
 {
-	constexpr auto Timeout   = 500ms;
 	constexpr char Delimiter = '\n';
 
 	std::string line;
-	asio::io_context localContext;
 	asio::streambuf buffer;
-	asio::steady_timer timer(localContext, Timeout);
-	bool isReading = false;
-	bool isTimeout = false;
-	std::error_code ec;
 
-	asio::async_read_until(_clientSocket, buffer, Delimiter,
-		[&](const std::error_code& err, std::size_t)
-		{
-			ec        = err;
-			isReading = true;
-		});
+	size_t bytesRead = asio::read_until(_clientSocket, buffer, Delimiter);
+	if (bytesRead == 0)
+		throw std::runtime_error("socket disconnected");
 
-	timer.async_wait(
-		[&](const std::error_code& err)
-		{
-			if (!err && !isReading)
-			{
-				isTimeout = true;
-				_clientSocket.cancel();
-			}
-		});
+	std::istream is(&buffer);
+	std::getline(is, line, Delimiter);
 
-	localContext.run();
-
-	if (!isTimeout && !ec)
-	{
-		std::istream is(&buffer);
-		std::getline(is, line, Delimiter);
-
-		// strip any trailing \r
-		if (!line.empty() && line.back() == '\r')
-			line.pop_back();
-	}
+	// strip any trailing \r
+	if (!line.empty() && line.back() == '\r')
+		line.pop_back();
 
 	return line;
 }
