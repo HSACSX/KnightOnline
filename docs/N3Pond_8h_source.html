@@ -118,10 +118,10 @@ $(function(){initNavTree('N3Pond_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classCN3Pond.html">   18</a></span><span class="keyword">class </span>CN3Pond : <span class="keyword">public</span> CN3BaseFileAccess</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classCN3Pond.html">   18</a></span><span class="keyword">class </span>CN3Pond : <span class="keyword">public</span> CN3Base</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    CN3Pond();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    CN3Pond() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ~CN3Pond() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
@@ -200,17 +200,17 @@ $(function(){initNavTree('N3Pond_8h_source.html',''); initResizable(true); });
 </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::vector&lt;CPondMesh&gt; m_PondMeshes; <span class="comment">// 연못의 정보</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::vector&lt;CPondMesh&gt; m_PondMeshes  = {}; <span class="comment">//   연못의 정보</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_class" href="classCN3Texture.html">CN3Texture</a>* m_pTexPond[MAX_POND_TEX];</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">float</span> m_fTexIndex;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_class" href="classCN3Texture.html">CN3Texture</a>* m_pTexPond[MAX_POND_TEX] = {};</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">float</span> m_fTexIndex                    = 0.0f;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> m_iMaxVtxNum;  <span class="comment">//   가장 많은 vertices수</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">float</span>* m_pfMaxVtx; <span class="comment">//   물결높이 계산을 위한 임시</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> m_iMaxVtxNum                     = 0;       <span class="comment">//  가장 많은 vertices수</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">float</span>* m_pfMaxVtx                    = <span class="keyword">nullptr</span>; <span class="comment">//  물결높이 계산을 위한 임시</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">bool</span> Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">bool</span> Load(File&amp; file, <span class="keywordtype">int</span> iGtdVersion);</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> Render();</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> Tick();</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
@@ -221,7 +221,6 @@ $(function(){initNavTree('N3Pond_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">// !defined(AFX_N3Pond_H__B9A59A74_B468_4552_8D80_E8AF3FE586E0__INCLUDED_)</span></div>
 <div class="ttc" id="aclassCN3Texture_html"><div class="ttname"><a href="classCN3Texture.html">CN3Texture</a></div><div class="ttdef"><b>Definition</b> <a href="N3Texture_8h_source.html#l00009">N3Texture.h:10</a></div></div>
-<div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="astructCN3Pond_1_1____VertexPond_html"><div class="ttname"><a href="structCN3Pond_1_1____VertexPond.html">CN3Pond::__VertexPond</a></div><div class="ttdef"><b>Definition</b> <a href="#l00024">N3Pond.h:25</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

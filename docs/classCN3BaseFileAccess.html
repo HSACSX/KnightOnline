@@ -114,8 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a78ad5243a34e025407562586b7e013d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda06c2386646345a834e24a5e039c1b" id="r_aeda06c2386646345a834e24a5e039c1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeda06c2386646345a834e24a5e039c1b">LoadFromFile</a> ()</td></tr>
 <tr class="separator:aeda06c2386646345a834e24a5e039c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba174990e8ed98786897e41ab9f96e27" id="r_aba174990e8ed98786897e41ab9f96e27"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba174990e8ed98786897e41ab9f96e27">LoadFromFile</a> (const std::string &amp;szFileName, uint32_t iVer=N3FORMAT_VER_DEFAULT)</td></tr>
-<tr class="separator:aba174990e8ed98786897e41ab9f96e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2cb71bab077157d7cc940a1e817433b" id="r_af2cb71bab077157d7cc940a1e817433b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2cb71bab077157d7cc940a1e817433b">LoadFromFile</a> (const std::string &amp;szFileName)</td></tr>
+<tr class="separator:af2cb71bab077157d7cc940a1e817433b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069546e85e6f16c001fae6b1b1cf48c3" id="r_a069546e85e6f16c001fae6b1b1cf48c3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a069546e85e6f16c001fae6b1b1cf48c3">LoadSupportedVersions</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
+<tr class="separator:a069546e85e6f16c001fae6b1b1cf48c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4381892caec698bc89ec127193a47a49" id="r_a4381892caec698bc89ec127193a47a49"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4381892caec698bc89ec127193a47a49">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
 <tr class="separator:a4381892caec698bc89ec127193a47a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2809507c5e7424ee281b182c2ecc4479" id="r_a2809507c5e7424ee281b182c2ecc4479"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2809507c5e7424ee281b182c2ecc4479">SaveToFile</a> ()</td></tr>
@@ -335,7 +337,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00044">44</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00049">49</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -354,12 +356,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00061">61</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00068">68</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aba174990e8ed98786897e41ab9f96e27" name="aba174990e8ed98786897e41ab9f96e27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba174990e8ed98786897e41ab9f96e27">&#9670;&#160;</a></span>LoadFromFile() <span class="overload">[2/2]</span></h2>
+<a id="af2cb71bab077157d7cc940a1e817433b" name="af2cb71bab077157d7cc940a1e817433b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2cb71bab077157d7cc940a1e817433b">&#9670;&#160;</a></span>LoadFromFile() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -370,12 +372,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool CN3BaseFileAccess::LoadFromFile </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>szFileName</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>szFileName</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>iVer</em></span><span class="paramdefsep"> = </span><span class="paramdefval">N3FORMAT_VER_DEFAULT</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -385,7 +383,34 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00104">104</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00111">111</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a069546e85e6f16c001fae6b1b1cf48c3" name="a069546e85e6f16c001fae6b1b1cf48c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069546e85e6f16c001fae6b1b1cf48c3">&#9670;&#160;</a></span>LoadSupportedVersions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CN3BaseFileAccess::LoadSupportedVersions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00044">44</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +466,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00156">156</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00161">161</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -468,7 +493,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00112">112</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00117">117</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -495,7 +520,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00150">150</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00155">155</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>

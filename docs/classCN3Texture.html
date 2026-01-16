@@ -122,8 +122,8 @@ typedef struct <a class="el" href="structCN3Texture_1_1____DXT__HEADER.html">CN3
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6eedd4435d964b7d65d01b6591b46306" id="r_a6eedd4435d964b7d65d01b6591b46306"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6eedd4435d964b7d65d01b6591b46306">UpdateRenderInfo</a> ()</td></tr>
 <tr class="separator:a6eedd4435d964b7d65d01b6591b46306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5042778456f11305deec4a27b2dcaf6b" id="r_a5042778456f11305deec4a27b2dcaf6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5042778456f11305deec4a27b2dcaf6b">LoadFromFile</a> (const std::string &amp;szFileName, uint32_t iVer=N3FORMAT_VER_DEFAULT) override</td></tr>
-<tr class="separator:a5042778456f11305deec4a27b2dcaf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5455278a5f4c3ed99ea3e78dcdfeb110" id="r_a5455278a5f4c3ed99ea3e78dcdfeb110"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5455278a5f4c3ed99ea3e78dcdfeb110">LoadFromFile</a> (const std::string &amp;szFileName) override</td></tr>
+<tr class="separator:a5455278a5f4c3ed99ea3e78dcdfeb110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae007f48eeb22ae9e44de032654d536a8" id="r_ae007f48eeb22ae9e44de032654d536a8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae007f48eeb22ae9e44de032654d536a8">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
 <tr class="separator:ae007f48eeb22ae9e44de032654d536a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a021764807789b413dca9f253974a5bd2" id="r_a021764807789b413dca9f253974a5bd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a021764807789b413dca9f253974a5bd2">SkipFileHandle</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
@@ -151,6 +151,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a78ad5243a34e025407562586b7e013d6 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess" id="r_aeda06c2386646345a834e24a5e039c1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aeda06c2386646345a834e24a5e039c1b">LoadFromFile</a> ()</td></tr>
 <tr class="separator:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069546e85e6f16c001fae6b1b1cf48c3 inherit pub_methods_classCN3BaseFileAccess" id="r_a069546e85e6f16c001fae6b1b1cf48c3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a069546e85e6f16c001fae6b1b1cf48c3">LoadSupportedVersions</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
+<tr class="separator:a069546e85e6f16c001fae6b1b1cf48c3 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess" id="r_a2809507c5e7424ee281b182c2ecc4479"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a2809507c5e7424ee281b182c2ecc4479">SaveToFile</a> ()</td></tr>
 <tr class="separator:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9babc23b20105997ef0f590b4a2a7d7a inherit pub_methods_classCN3BaseFileAccess" id="r_a9babc23b20105997ef0f590b4a2a7d7a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a9babc23b20105997ef0f590b4a2a7d7a">SaveToFile</a> (const std::string &amp;szFileName)</td></tr>
@@ -412,12 +414,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00269">269</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00267">267</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5042778456f11305deec4a27b2dcaf6b" name="a5042778456f11305deec4a27b2dcaf6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5042778456f11305deec4a27b2dcaf6b">&#9670;&#160;</a></span>LoadFromFile()</h2>
+<a id="a5455278a5f4c3ed99ea3e78dcdfeb110" name="a5455278a5f4c3ed99ea3e78dcdfeb110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5455278a5f4c3ed99ea3e78dcdfeb110">&#9670;&#160;</a></span>LoadFromFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -428,12 +430,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool CN3Texture::LoadFromFile </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>szFileName</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>szFileName</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>iVer</em></span><span class="paramdefsep"> = </span><span class="paramdefval">N3FORMAT_VER_DEFAULT</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -574,7 +572,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00571">571</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00569">569</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -593,7 +591,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00980">980</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Texture_8cpp_source.html#l00978">978</a> of file <a class="el" href="N3Texture_8cpp_source.html">N3Texture.cpp</a>.</p>
 
 </div>
 </div>

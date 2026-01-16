@@ -145,6 +145,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af978c98ba866e4d1e0617e6e2ad2c57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4be3ab4f14cfd49a0b7c4d03b57167db" id="r_a4be3ab4f14cfd49a0b7c4d03b57167db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4be3ab4f14cfd49a0b7c4d03b57167db">Render</a> ()</td></tr>
 <tr class="separator:a4be3ab4f14cfd49a0b7c4d03b57167db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea917318d1b5760e487d167d344fb2a4" id="r_aea917318d1b5760e487d167d344fb2a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea917318d1b5760e487d167d344fb2a4">LoadSupportedVersions</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
+<tr class="separator:aea917318d1b5760e487d167d344fb2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98a0126ca452c2ba147db985a917bd1" id="r_ae98a0126ca452c2ba147db985a917bd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae98a0126ca452c2ba147db985a917bd1">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
 <tr class="separator:ae98a0126ca452c2ba147db985a917bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1372843ea829f58f0d24c4d2468eeb63" id="r_a1372843ea829f58f0d24c4d2468eeb63"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1372843ea829f58f0d24c4d2468eeb63">CheckCollisionCamera</a> (<a class="el" href="struct____Vector3.html">__Vector3</a> &amp;vEye, const <a class="el" href="struct____Vector3.html">__Vector3</a> &amp;vAt, float fNP)</td></tr>
@@ -193,8 +195,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>LoadCollisionData</b>
 <tr class="separator:a78ad5243a34e025407562586b7e013d6 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess" id="r_aeda06c2386646345a834e24a5e039c1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aeda06c2386646345a834e24a5e039c1b">LoadFromFile</a> ()</td></tr>
 <tr class="separator:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess" id="r_aba174990e8ed98786897e41ab9f96e27"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aba174990e8ed98786897e41ab9f96e27">LoadFromFile</a> (const std::string &amp;szFileName, uint32_t iVer=N3FORMAT_VER_DEFAULT)</td></tr>
-<tr class="separator:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess" id="r_af2cb71bab077157d7cc940a1e817433b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#af2cb71bab077157d7cc940a1e817433b">LoadFromFile</a> (const std::string &amp;szFileName)</td></tr>
+<tr class="separator:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess" id="r_a2809507c5e7424ee281b182c2ecc4479"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a2809507c5e7424ee281b182c2ecc4479">SaveToFile</a> ()</td></tr>
 <tr class="separator:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9babc23b20105997ef0f590b4a2a7d7a inherit pub_methods_classCN3BaseFileAccess" id="r_a9babc23b20105997ef0f590b4a2a7d7a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a9babc23b20105997ef0f590b4a2a7d7a">SaveToFile</a> (const std::string &amp;szFileName)</td></tr>
@@ -403,7 +405,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00738">738</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00811">811</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -431,7 +433,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00867">867</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00940">940</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -454,7 +456,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00281">281</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00354">354</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +484,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01229">1229</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01302">1302</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -505,7 +507,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01178">1178</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01251">1251</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -588,7 +590,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00083">83</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00136">136</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -607,7 +609,36 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00174">174</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00239">239</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aea917318d1b5760e487d167d344fb2a4" name="aea917318d1b5760e487d167d344fb2a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea917318d1b5760e487d167d344fb2a4">&#9670;&#160;</a></span>LoadSupportedVersions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CN3ShapeMgr::LoadSupportedVersions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00083">83</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -640,7 +671,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00957">957</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01030">1030</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -668,7 +699,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00990">990</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01063">1063</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -762,7 +793,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00724">724</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00797">797</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -781,7 +812,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00889">889</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00962">962</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -800,7 +831,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01017">1017</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01090">1090</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -831,7 +862,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01030">1030</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01103">1103</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -854,7 +885,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01272">1272</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01345">1345</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -949,7 +980,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01048">1048</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l01121">1121</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>
@@ -968,7 +999,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00673">673</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html#l00746">746</a> of file <a class="el" href="N3Base_2N3ShapeMgr_8cpp_source.html">N3ShapeMgr.cpp</a>.</p>
 
 </div>
 </div>

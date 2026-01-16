@@ -117,7 +117,7 @@ $(function(){initNavTree('N3BaseFileAccess_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">enum</span> e_N3FormatVersion : uint16_t</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    N3FORMAT_VER_UNKN = 0,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    N3FORMAT_VER_1068 = 1068,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    N3FORMAT_VER_1098 = 1098,</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    N3FORMAT_VER_1264 = 1264,</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    N3FORMAT_VER_1298 = 1298,</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
@@ -143,14 +143,14 @@ $(function(){initNavTree('N3BaseFileAccess_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> FileNameSet(<span class="keyword">const</span> std::string&amp; szFileName);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">bool</span> LoadFromFile();                                                      <span class="comment">// 파일에서 읽어오기.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> LoadFromFile(</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">const</span> std::string&amp; szFileName, uint32_t iVer = N3FORMAT_VER_DEFAULT); <span class="comment">// 파일에서 읽어오기.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file);                                            <span class="comment">// 핸들에서 읽어오기..</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">bool</span> LoadFromFile();                                      <span class="comment">// 파일에서 읽어오기.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> LoadFromFile(<span class="keyword">const</span> std::string&amp; szFileName); <span class="comment">// 파일에서 읽어오기.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> LoadSupportedVersions(<a class="code hl_class" href="classFile.html">File</a>&amp; file);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> Load(<a class="code hl_class" href="classFile.html">File</a>&amp; file);                            <span class="comment">// 핸들에서 읽어오기..</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SaveToFile();                              <span class="comment">// 현재 파일 이름대로 저장.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SaveToFile(<span class="keyword">const</span> std::string&amp; szFileName); <span class="comment">// 새이름으로 저장.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> Save(<a class="code hl_class" href="classFile.html">File</a>&amp; file);                          <span class="comment">// 핸들을 통해 저장..</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SaveToFile();                                <span class="comment">// 현재 파일 이름대로 저장.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SaveToFile(<span class="keyword">const</span> std::string&amp; szFileName);   <span class="comment">// 새이름으로 저장.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> Save(<a class="code hl_class" href="classFile.html">File</a>&amp; file);                            <span class="comment">// 핸들을 통해 저장..</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> Release() <span class="keyword">override</span>;</div>

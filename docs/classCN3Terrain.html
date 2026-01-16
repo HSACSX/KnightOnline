@@ -122,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a259cbd8bb2b78026f864a0871b875d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de14d02c07b36072d9cc84bc62bb1b3" id="r_a0de14d02c07b36072d9cc84bc62bb1b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0de14d02c07b36072d9cc84bc62bb1b3">Init</a> ()</td></tr>
 <tr class="separator:a0de14d02c07b36072d9cc84bc62bb1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1c247af0e98e93bef0bd1bba9c9208" id="r_a3c1c247af0e98e93bef0bd1bba9c9208"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c1c247af0e98e93bef0bd1bba9c9208">LoadSupportedVersions</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
+<tr class="separator:a3c1c247af0e98e93bef0bd1bba9c9208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaea5abe211417b7d6929fdf7aa59bbf" id="r_abaea5abe211417b7d6929fdf7aa59bbf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaea5abe211417b7d6929fdf7aa59bbf">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
 <tr class="separator:abaea5abe211417b7d6929fdf7aa59bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae473164a8a6e6556a00369d52a4e9b8a" id="r_ae473164a8a6e6556a00369d52a4e9b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae473164a8a6e6556a00369d52a4e9b8a">Tick</a> ()</td></tr>
@@ -163,8 +165,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a78ad5243a34e025407562586b7e013d6 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess" id="r_aeda06c2386646345a834e24a5e039c1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aeda06c2386646345a834e24a5e039c1b">LoadFromFile</a> ()</td></tr>
 <tr class="separator:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess" id="r_aba174990e8ed98786897e41ab9f96e27"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aba174990e8ed98786897e41ab9f96e27">LoadFromFile</a> (const std::string &amp;szFileName, uint32_t iVer=N3FORMAT_VER_DEFAULT)</td></tr>
-<tr class="separator:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess" id="r_af2cb71bab077157d7cc940a1e817433b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#af2cb71bab077157d7cc940a1e817433b">LoadFromFile</a> (const std::string &amp;szFileName)</td></tr>
+<tr class="separator:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess" id="r_a2809507c5e7424ee281b182c2ecc4479"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a2809507c5e7424ee281b182c2ecc4479">SaveToFile</a> ()</td></tr>
 <tr class="separator:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9babc23b20105997ef0f590b4a2a7d7a inherit pub_methods_classCN3BaseFileAccess" id="r_a9babc23b20105997ef0f590b4a2a7d7a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a9babc23b20105997ef0f590b4a2a7d7a">SaveToFile</a> (const std::string &amp;szFileName)</td></tr>
@@ -428,7 +430,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01050">1050</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01091">1091</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -461,7 +463,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01785">1785</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01826">1826</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -497,7 +499,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00168">168</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00169">169</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
 
 </div>
 </div>
@@ -525,7 +527,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01770">1770</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01811">1811</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -553,7 +555,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01759">1759</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01800">1800</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -580,7 +582,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00711">711</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00752">752</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -607,7 +609,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01123">1123</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01164">1164</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -634,7 +636,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00728">728</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00769">769</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -657,7 +659,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01280">1280</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01321">1321</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -680,7 +682,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01025">1025</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01066">1066</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -730,7 +732,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00482">482</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00512">512</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -758,7 +760,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01363">1363</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01404">1404</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -781,7 +783,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01850">1850</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01891">1891</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -814,7 +816,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01862">1862</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01903">1903</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -883,7 +885,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01439">1439</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01480">1480</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -912,7 +914,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00306">306</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00347">347</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -931,7 +933,36 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01812">1812</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01853">1853</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3c1c247af0e98e93bef0bd1bba9c9208" name="a3c1c247af0e98e93bef0bd1bba9c9208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1c247af0e98e93bef0bd1bba9c9208">&#9670;&#160;</a></span>LoadSupportedVersions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CN3Terrain::LoadSupportedVersions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00306">306</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -958,7 +989,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00494">494</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00524">524</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -985,7 +1016,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01266">1266</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01307">1307</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1040,7 +1071,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01450">1450</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01491">1491</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1099,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01569">1569</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01610">1610</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1201,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01162">1162</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01203">1203</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1206,7 +1237,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00961">961</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01002">1002</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1233,7 +1264,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00600">600</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00641">641</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1260,7 +1291,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00138">138</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00139">139</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
 
 </div>
 </div>
@@ -1287,7 +1318,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00802">802</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00843">843</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1359,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00981">981</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l01022">1022</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1347,7 +1378,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00568">568</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00609">609</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1374,7 +1405,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00436">436</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00466">466</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>
@@ -1401,7 +1432,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00143">143</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8h_source.html#l00144">144</a> of file <a class="el" href="N3Terrain_8h_source.html">N3Terrain.h</a>.</p>
 
 </div>
 </div>
@@ -1447,7 +1478,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00671">671</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3Terrain_8cpp_source.html#l00712">712</a> of file <a class="el" href="N3Terrain_8cpp_source.html">N3Terrain.cpp</a>.</p>
 
 </div>
 </div>

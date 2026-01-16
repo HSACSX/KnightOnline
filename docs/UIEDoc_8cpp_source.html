@@ -103,7 +103,7 @@ $(function(){initNavTree('UIEDoc_8cpp_source.html',''); initResizable(true); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// UIEDoc.cpp : implementation of the CUIEDoc class</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;stdafx.h&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;StdAfx.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;UIE.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;UIEDoc.h&quot;</span></div>
@@ -115,7 +115,7 @@ $(function(){initNavTree('UIEDoc_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;N3Base/N3UIEdit.h&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;N3Base/N3UIProgress.h&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;N3Base/N3UITrackBar.h&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;N3Base/N3UIToolTip.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;N3Base/N3UITooltip.h&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;N3Base/N3UIScrollBar.h&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;N3Base/N3Texture.h&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;N3Base/N3UIArea.h&gt;</span></div>
@@ -144,37 +144,37 @@ $(function(){initNavTree('UIEDoc_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>BEGIN_MESSAGE_MAP(<a class="code hl_class" href="classCUIEDoc.html">CUIEDoc</a>, CDocument)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">//{{AFX_MSG_MAP(CUIEDoc)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>ON_COMMAND(ID_FILE_EXPORT, OnFileExport)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>ON_COMMAND(ID_FILE_IMPORT, OnFileImport)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>ON_COMMAND(ID_FILE_IMPORT_TOOLTIP, OnFileImportTooltip)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>ON_COMMAND(ID_FILE_EXPORT_TOOLTIP, OnFileExportTooltip)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>ON_UPDATE_COMMAND_UI(ID_FILE_EXPORT_TOOLTIP, OnUpdateFileExportTooltip)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>ON_UPDATE_COMMAND_UI(ID_EDIT_DELETE, OnUpdateEditDelete)</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>ON_COMMAND(ID_INSERT_IMAGE, OnInsertImage)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>ON_COMMAND(ID_INSERT_STRING, OnInsertString)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>ON_COMMAND(ID_INSERT_BUTTON, OnInsertButton)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>ON_COMMAND(ID_INSERT_STATIC, OnInsertStatic)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>ON_COMMAND(ID_INSERT_EDIT, OnInsertEdit)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>ON_COMMAND(ID_INSERT_PROGRESS, OnInsertProgress)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>ON_COMMAND(ID_INSERT_TRACKBAR, OnInsertTrackbar)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>ON_COMMAND(ID_INSERT_SCROLLBAR, OnInsertScrollbar)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>ON_COMMAND(ID_INSERT_AREA, OnInsertArea)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>ON_COMMAND(ID_INSERT_ICONSLOT, OnInsertIconslot)</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>ON_COMMAND(ID_INSERT_LIST, OnInsertList)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>ON_COMMAND(ID_EDIT_DUPLICATE, OnEditDuplicate)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>ON_COMMAND(ID_EDIT_DELETE, OnEditDelete)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>ON_COMMAND(ID_EDIT_ZORDER, OnEditZorder)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>ON_COMMAND(ID_EDIT_MAKE_GROUP, OnEditMakeGroup)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>ON_COMMAND(ID_EDIT_PARENT, OnEditParent)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>ON_COMMAND(ID_EDIT_UNPARENT, OnEditUnparent)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>ON_COMMAND(ID_EDIT_MOVE_TO_LOWEST, OnEditMoveToLowest)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>ON_COMMAND(ID_EDIT_MOVE_TO_LOWER, OnEditMoveToLower)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>ON_COMMAND(ID_EDIT_MOVE_TO_UPPER, OnEditMoveToUpper)</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>ON_COMMAND(ID_EDIT_REPLACE_TEX, OnEditReplaceTex)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>ON_COMMAND(ID_INSERT_GROUP, OnInsertGroup)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>ON_COMMAND(ID_BATCH_TOOL_CHANGE_IMAGE_PATH, OnBatchToolChangeImagePath)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>ON_COMMAND(ID_BATCH_TOOL_CHANGE_FONT, OnBatchToolChangeFont)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>ON_COMMAND(ID_BATCH_TOOL_GATHER_IMAGE_FILE_NAME, OnBatchToolGatherImageFileName)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>ON_COMMAND(ID_FILE_EXPORT, &amp;CUIEDoc::OnFileExport)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>ON_COMMAND(ID_FILE_IMPORT, &amp;CUIEDoc::OnFileImport)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>ON_COMMAND(ID_FILE_IMPORT_TOOLTIP, &amp;CUIEDoc::OnFileImportTooltip)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>ON_COMMAND(ID_FILE_EXPORT_TOOLTIP, &amp;CUIEDoc::OnFileExportTooltip)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>ON_UPDATE_COMMAND_UI(ID_FILE_EXPORT_TOOLTIP, &amp;CUIEDoc::OnUpdateFileExportTooltip)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>ON_UPDATE_COMMAND_UI(ID_EDIT_DELETE, &amp;CUIEDoc::OnUpdateEditDelete)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>ON_COMMAND(ID_INSERT_IMAGE, &amp;CUIEDoc::OnInsertImage)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>ON_COMMAND(ID_INSERT_STRING, &amp;CUIEDoc::OnInsertString)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>ON_COMMAND(ID_INSERT_BUTTON, &amp;CUIEDoc::OnInsertButton)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>ON_COMMAND(ID_INSERT_STATIC, &amp;CUIEDoc::OnInsertStatic)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>ON_COMMAND(ID_INSERT_EDIT, &amp;CUIEDoc::OnInsertEdit)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>ON_COMMAND(ID_INSERT_PROGRESS, &amp;CUIEDoc::OnInsertProgress)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>ON_COMMAND(ID_INSERT_TRACKBAR, &amp;CUIEDoc::OnInsertTrackbar)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>ON_COMMAND(ID_INSERT_SCROLLBAR, &amp;CUIEDoc::OnInsertScrollbar)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>ON_COMMAND(ID_INSERT_AREA, &amp;CUIEDoc::OnInsertArea)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>ON_COMMAND(ID_INSERT_ICONSLOT, &amp;CUIEDoc::OnInsertIconslot)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>ON_COMMAND(ID_INSERT_LIST, &amp;CUIEDoc::OnInsertList)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>ON_COMMAND(ID_EDIT_DUPLICATE, &amp;CUIEDoc::OnEditDuplicate)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>ON_COMMAND(ID_EDIT_DELETE, &amp;CUIEDoc::OnEditDelete)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>ON_COMMAND(ID_EDIT_ZORDER, &amp;CUIEDoc::OnEditZorder)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>ON_COMMAND(ID_EDIT_MAKE_GROUP, &amp;CUIEDoc::OnEditMakeGroup)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>ON_COMMAND(ID_EDIT_PARENT, &amp;CUIEDoc::OnEditParent)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>ON_COMMAND(ID_EDIT_UNPARENT, &amp;CUIEDoc::OnEditUnparent)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>ON_COMMAND(ID_EDIT_MOVE_TO_LOWEST, &amp;CUIEDoc::OnEditMoveToLowest)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>ON_COMMAND(ID_EDIT_MOVE_TO_LOWER, &amp;CUIEDoc::OnEditMoveToLower)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>ON_COMMAND(ID_EDIT_MOVE_TO_UPPER, &amp;CUIEDoc::OnEditMoveToUpper)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>ON_COMMAND(ID_EDIT_REPLACE_TEX, &amp;CUIEDoc::OnEditReplaceTex)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>ON_COMMAND(ID_INSERT_GROUP, &amp;CUIEDoc::OnInsertGroup)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>ON_COMMAND(ID_BATCH_TOOL_CHANGE_IMAGE_PATH, &amp;CUIEDoc::OnBatchToolChangeImagePath)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>ON_COMMAND(ID_BATCH_TOOL_CHANGE_FONT, &amp;CUIEDoc::OnBatchToolChangeFont)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>ON_COMMAND(ID_BATCH_TOOL_GATHER_IMAGE_FILE_NAME, &amp;CUIEDoc::OnBatchToolGatherImageFileName)</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">//}}AFX_MSG_MAP</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>END_MESSAGE_MAP()</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
@@ -244,7 +244,7 @@ $(function(){initNavTree('UIEDoc_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// TODO(srmeier): currently the UIE saves as the old format. Would need to update this if I plan to</span></div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="comment">// read and write in the newer formats...</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">return</span> m_RootUI.LoadFromFile(lpszPathName, N3FORMAT_VER_1298);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">return</span> m_RootUI.LoadFromFile(lpszPathName);</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>BOOL CUIEDoc::OnSaveDocument(LPCTSTR lpszPathName)</div>
@@ -1282,15 +1282,15 @@ $(function(){initNavTree('UIEDoc_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>    <span class="keywordflow">if</span> (m_RootUI.ReplaceAllTextures(LPCTSTR(dlg.m_strFind), LPCTSTR(dlg.m_strReplace)))</div>
 <div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>    {</div>
 <div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>        CString strMsg;</div>
-<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>        strMsg.Format(</div>
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>            <span class="stringliteral">&quot;%s 텍스쳐를 %s 텍스쳐로 모두 바꾸었습니다.&quot;</span>, dlg.m_strFind, dlg.m_strReplace);</div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>        strMsg.Format(<span class="stringliteral">&quot;%s 텍스쳐를 %s 텍스쳐로 모두 바꾸었습니다.&quot;</span>, dlg.m_strFind.GetString(),</div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>            dlg.m_strReplace.GetString());</div>
 <div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>        AfxGetMainWnd()-&gt;MessageBox(strMsg);</div>
 <div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>    }</div>
 <div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>    {</div>
 <div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span>        CString strMsg;</div>
-<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>        strMsg.Format(</div>
-<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>            <span class="stringliteral">&quot;%s 텍스쳐를 %s 텍스쳐 바꾸기 실패 하였습니다.&quot;</span>, dlg.m_strFind, dlg.m_strReplace);</div>
+<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>        strMsg.Format(<span class="stringliteral">&quot;%s 텍스쳐를 %s 텍스쳐 바꾸기 실패 하였습니다.&quot;</span>, dlg.m_strFind.GetString(),</div>
+<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>            dlg.m_strReplace.GetString());</div>
 <div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>        AfxGetMainWnd()-&gt;MessageBox(strMsg);</div>
 <div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>    }</div>
 <div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span>}</div>

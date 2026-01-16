@@ -187,6 +187,8 @@ template&lt;typename T&gt; </td></tr>
 <tr class="separator:a15b7fc84f4808f1d50c2a78a1d14c0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a039494fec81ea71122c1b794602d0eb4" id="r_a039494fec81ea71122c1b794602d0eb4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a039494fec81ea71122c1b794602d0eb4">ShowWindow</a> (int iID=-1, <a class="el" href="classCN3UIBase.html">CN3UIBase</a> *pParent=nullptr)</td></tr>
 <tr class="separator:a039494fec81ea71122c1b794602d0eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eaa35a17f993b3bc21905f9f1703b59" id="r_a8eaa35a17f993b3bc21905f9f1703b59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eaa35a17f993b3bc21905f9f1703b59">LoadSupportedVersions</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
+<tr class="separator:a8eaa35a17f993b3bc21905f9f1703b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd227b2fbfa37205fb7aa16253d8a640" id="r_afd227b2fbfa37205fb7aa16253d8a640"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd227b2fbfa37205fb7aa16253d8a640">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file) override</td></tr>
 <tr class="separator:afd227b2fbfa37205fb7aa16253d8a640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af266978aae671bb22624b43aca048e39" id="r_af266978aae671bb22624b43aca048e39"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af266978aae671bb22624b43aca048e39">ReceiveMessage</a> (<a class="el" href="classCN3UIBase.html">CN3UIBase</a> *pSender, uint32_t dwMsg)</td></tr>
@@ -220,8 +222,8 @@ template&lt;typename T&gt; </td></tr>
 <tr class="separator:a78ad5243a34e025407562586b7e013d6 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess" id="r_aeda06c2386646345a834e24a5e039c1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aeda06c2386646345a834e24a5e039c1b">LoadFromFile</a> ()</td></tr>
 <tr class="separator:aeda06c2386646345a834e24a5e039c1b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess" id="r_aba174990e8ed98786897e41ab9f96e27"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#aba174990e8ed98786897e41ab9f96e27">LoadFromFile</a> (const std::string &amp;szFileName, uint32_t iVer=N3FORMAT_VER_DEFAULT)</td></tr>
-<tr class="separator:aba174990e8ed98786897e41ab9f96e27 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess" id="r_af2cb71bab077157d7cc940a1e817433b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#af2cb71bab077157d7cc940a1e817433b">LoadFromFile</a> (const std::string &amp;szFileName)</td></tr>
+<tr class="separator:af2cb71bab077157d7cc940a1e817433b inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess" id="r_a2809507c5e7424ee281b182c2ecc4479"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a2809507c5e7424ee281b182c2ecc4479">SaveToFile</a> ()</td></tr>
 <tr class="separator:a2809507c5e7424ee281b182c2ecc4479 inherit pub_methods_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9babc23b20105997ef0f590b4a2a7d7a inherit pub_methods_classCN3BaseFileAccess" id="r_a9babc23b20105997ef0f590b4a2a7d7a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#a9babc23b20105997ef0f590b4a2a7d7a">SaveToFile</a> (const std::string &amp;szFileName)</td></tr>
@@ -394,7 +396,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00035">35</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00039">39</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +423,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00057">57</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00061">61</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +482,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00225">225</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00228">228</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +509,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00483">483</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00567">567</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -534,7 +536,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00470">470</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00554">554</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -553,7 +555,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00489">489</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00573">573</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -576,7 +578,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00505">505</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00589">589</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -603,7 +605,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00287">287</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00289">289</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
 
 </div>
 </div>
@@ -657,7 +659,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00282">282</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00284">284</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
 
 </div>
 </div>
@@ -811,7 +813,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00140">140</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00143">143</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1002,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00103">103</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00107">107</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1025,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00203">203</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00206">206</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1081,36 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00240">240</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00297">297</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8eaa35a17f993b3bc21905f9f1703b59" name="a8eaa35a17f993b3bc21905f9f1703b59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eaa35a17f993b3bc21905f9f1703b59">&#9670;&#160;</a></span>LoadSupportedVersions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CN3UIBase::LoadSupportedVersions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFile.html">File</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00243">243</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1146,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00400">400</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00484">484</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1146,7 +1177,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00173">173</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00176">176</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1204,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00264">264</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00266">266</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
 
 </div>
 </div>
@@ -1200,7 +1231,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00269">269</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00271">271</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
 
 </div>
 </div>
@@ -1227,7 +1258,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00274">274</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8h_source.html#l00276">276</a> of file <a class="el" href="N3UIBase_8h_source.html">N3UIBase.h</a>.</p>
 
 </div>
 </div>
@@ -1246,7 +1277,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00628">628</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00712">712</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1277,7 +1308,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00218">218</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00221">221</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1337,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00074">74</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00078">78</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1325,7 +1356,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00109">109</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00113">113</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1352,7 +1383,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00379">379</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00463">463</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1425,7 +1456,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00128">128</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00132">132</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1456,7 +1487,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00149">149</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00152">152</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1475,7 +1506,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00157">157</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00160">160</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1560,7 +1591,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00210">210</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00213">213</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1722,7 +1753,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00572">572</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00656">656</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1758,7 +1789,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00610">610</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00694">694</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1789,7 +1820,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00229">229</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00232">232</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -1816,7 +1847,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00370">370</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIBase_8cpp_source.html#l00454">454</a> of file <a class="el" href="N3UIBase_8cpp_source.html">N3UIBase.cpp</a>.</p>
 
 </div>
 </div>

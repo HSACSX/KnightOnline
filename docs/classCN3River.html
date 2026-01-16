@@ -118,7 +118,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a03010037faa684dab0b73a63452b4aa0" id="r_a03010037faa684dab0b73a63452b4aa0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03010037faa684dab0b73a63452b4aa0">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
+<tr class="memitem:a10caff545114541fd15606e863da56ec" id="r_a10caff545114541fd15606e863da56ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10caff545114541fd15606e863da56ec">Release</a> () override</td></tr>
+<tr class="separator:a10caff545114541fd15606e863da56ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03010037faa684dab0b73a63452b4aa0" id="r_a03010037faa684dab0b73a63452b4aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03010037faa684dab0b73a63452b4aa0">Load</a> (<a class="el" href="classFile.html">File</a> &amp;file)</td></tr>
 <tr class="separator:a03010037faa684dab0b73a63452b4aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4879315fc5a4c803985462ab31a4b45" id="r_aa4879315fc5a4c803985462ab31a4b45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4879315fc5a4c803985462ab31a4b45">Render</a> ()</td></tr>
 <tr class="separator:aa4879315fc5a4c803985462ab31a4b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,8 +134,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad475ed4e1c1b9dd9e0f9ad934181a918 inherit pub_methods_classCN3Base" id="r_ad475ed4e1c1b9dd9e0f9ad934181a918"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SaveResrc</b> ()</td></tr>
 <tr class="separator:ad475ed4e1c1b9dd9e0f9ad934181a918 inherit pub_methods_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4510f2a3133b7fd4561bb1a22d59581 inherit pub_methods_classCN3Base" id="r_ae4510f2a3133b7fd4561bb1a22d59581"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#ae4510f2a3133b7fd4561bb1a22d59581">Release</a> ()</td></tr>
-<tr class="separator:ae4510f2a3133b7fd4561bb1a22d59581 inherit pub_methods_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -142,11 +142,11 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aaf737d4f7f61898fd0c19840ccb804dc" id="r_aaf737d4f7f61898fd0c19840ccb804dc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCN3River_1_1__RIVER__INFO.html">_RIVER_INFO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf737d4f7f61898fd0c19840ccb804dc">m_Rivers</a></td></tr>
+<tr class="memitem:aaf737d4f7f61898fd0c19840ccb804dc" id="r_aaf737d4f7f61898fd0c19840ccb804dc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCN3River_1_1__RIVER__INFO.html">_RIVER_INFO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf737d4f7f61898fd0c19840ccb804dc">m_Rivers</a> = {}</td></tr>
 <tr class="separator:aaf737d4f7f61898fd0c19840ccb804dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3faeb03990a808841d9963900f772c1" id="r_af3faeb03990a808841d9963900f772c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3Texture.html">CN3Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3faeb03990a808841d9963900f772c1">m_pTexRiver</a> [MAX_RIVER_TEX]</td></tr>
+<tr class="memitem:af3faeb03990a808841d9963900f772c1" id="r_af3faeb03990a808841d9963900f772c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3Texture.html">CN3Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3faeb03990a808841d9963900f772c1">m_pTexRiver</a> [MAX_RIVER_TEX] = {}</td></tr>
 <tr class="separator:af3faeb03990a808841d9963900f772c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa73fb025792d64b9b3f8cce403322b69" id="r_aa73fb025792d64b9b3f8cce403322b69"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa73fb025792d64b9b3f8cce403322b69">m_fTexIndex</a></td></tr>
+<tr class="memitem:aa73fb025792d64b9b3f8cce403322b69" id="r_aa73fb025792d64b9b3f8cce403322b69"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa73fb025792d64b9b3f8cce403322b69">m_fTexIndex</a> = 0.0f</td></tr>
 <tr class="separator:aa73fb025792d64b9b3f8cce403322b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
 <tr class="memitem:ab86a5ade9bb33feaff70f6b4ad35ac37 inherit pro_attribs_classCN3Base" id="r_ab86a5ade9bb33feaff70f6b4ad35ac37"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#ab86a5ade9bb33feaff70f6b4ad35ac37">m_dwType</a></td></tr>
@@ -219,27 +219,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00015">15</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00016">16</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a54ab32bfc00791979d3654b1295d3230" name="a54ab32bfc00791979d3654b1295d3230"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54ab32bfc00791979d3654b1295d3230">&#9670;&#160;</a></span>CN3River()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CN3River::CN3River </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00012">12</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a1e4cd7707af0f897ab6f7c9f4eb17f3f" name="a1e4cd7707af0f897ab6f7c9f4eb17f3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e4cd7707af0f897ab6f7c9f4eb17f3f">&#9670;&#160;</a></span>~CN3River()</h2>
 
@@ -263,7 +244,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00018">18</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00012">12</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,9 +254,6 @@ Additional Inherited Members</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool CN3River::Load </td>
@@ -284,14 +262,38 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00026">26</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a10caff545114541fd15606e863da56ec" name="a10caff545114541fd15606e863da56ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10caff545114541fd15606e863da56ec">&#9670;&#160;</a></span>Release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CN3River::Release </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00022">22</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+<p>Reimplemented from <a class="el" href="classCN3Base.html">CN3Base</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00018">18</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
 
 </div>
 </div>
@@ -310,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00137">137</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00153">153</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
 
 </div>
 </div>
@@ -329,7 +331,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00219">219</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00235">235</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +358,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00255">255</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8cpp_source.html#l00271">271</a> of file <a class="el" href="N3River_8cpp_source.html">N3River.cpp</a>.</p>
 
 </div>
 </div>
@@ -371,7 +373,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float CN3River::m_fTexIndex</td>
+          <td class="memname">float CN3River::m_fTexIndex = 0.0f</td>
         </tr>
       </table>
   </td>
@@ -395,7 +397,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCN3Texture.html">CN3Texture</a>* CN3River::m_pTexRiver[MAX_RIVER_TEX]</td>
+          <td class="memname"><a class="el" href="classCN3Texture.html">CN3Texture</a>* CN3River::m_pTexRiver[MAX_RIVER_TEX] = {}</td>
         </tr>
       </table>
   </td>
@@ -405,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00081">81</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00082">82</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
 
 </div>
 </div>
@@ -419,7 +421,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structCN3River_1_1__RIVER__INFO.html">_RIVER_INFO</a>&gt; CN3River::m_Rivers</td>
+          <td class="memname">std::vector&lt;<a class="el" href="structCN3River_1_1__RIVER__INFO.html">_RIVER_INFO</a>&gt; CN3River::m_Rivers = {}</td>
         </tr>
       </table>
   </td>
@@ -429,7 +431,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00080">80</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3River_8h_source.html#l00081">81</a> of file <a class="el" href="N3River_8h_source.html">N3River.h</a>.</p>
 
 </div>
 </div>

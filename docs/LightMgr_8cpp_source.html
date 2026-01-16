@@ -264,12 +264,11 @@ $(function(){initNavTree('LightMgr_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    file.<a class="code hl_function" href="classFileReader.html#a6ba6a4018be07b5737fc99c195b03aa6">Read</a>(&amp;cnt, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; cnt; i++)</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    {</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        CN3Light* pLgt             = <span class="keyword">new</span> CN3Light;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        pLgt-&gt;m_iFileFormatVersion = N3FORMAT_VER_DEFAULT;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        pLgt-&gt;Load(file);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        AddLight(pLgt);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        CN3Light* pLgt = <span class="keyword">new</span> CN3Light;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        pLgt-&gt;LoadSupportedVersions(file);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        AddLight(pLgt);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
 <div class="ttc" id="aclassCN3Light_html"><div class="ttname"><a href="classCN3Light.html">CN3Light</a></div><div class="ttdef"><b>Definition</b> <a href="N3Light_8h_source.html#l00012">N3Light.h:13</a></div></div>
 <div class="ttc" id="aclassFileReader_html_a139418fc585051ebc355f2a59d6cbbd2"><div class="ttname"><a href="classFileReader.html#a139418fc585051ebc355f2a59d6cbbd2">FileReader::OpenExisting</a></div><div class="ttdeci">bool OpenExisting(const std::filesystem::path &amp;path) override</div><div class="ttdoc">Opens an existing file for reading.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00013">FileReader.cpp:13</a></div></div>
 <div class="ttc" id="aclassFileReader_html_a6ba6a4018be07b5737fc99c195b03aa6"><div class="ttname"><a href="classFileReader.html#a6ba6a4018be07b5737fc99c195b03aa6">FileReader::Read</a></div><div class="ttdeci">bool Read(void *buffer, size_t bytesToRead, size_t *bytesRead=nullptr) override</div><div class="ttdoc">Reads data from the file from the current offset.</div><div class="ttdef"><b>Definition</b> <a href="FileReader_8cpp_source.html#l00045">FileReader.cpp:45</a></div></div>
