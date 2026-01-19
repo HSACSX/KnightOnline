@@ -299,8 +299,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a5d51d599717a24c2f1b9d0e476f8e0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a715866e36b72015fce4fcdf4d82ba030" id="r_a715866e36b72015fce4fcdf4d82ba030"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a715866e36b72015fce4fcdf4d82ba030">m_iStartLine</a></td></tr>
 <tr class="separator:a715866e36b72015fce4fcdf4d82ba030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69d4b857d3544f7fa2455d54473f835b" id="r_a69d4b857d3544f7fa2455d54473f835b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69d4b857d3544f7fa2455d54473f835b">m_iIdk0</a></td></tr>
-<tr class="separator:a69d4b857d3544f7fa2455d54473f835b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cbb82c612decbc393889b36f44fd0bf" id="r_a9cbb82c612decbc393889b36f44fd0bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cbb82c612decbc393889b36f44fd0bf">m_iLineSpacing</a></td></tr>
+<tr class="separator:a9cbb82c612decbc393889b36f44fd0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classCN3UIBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classCN3UIBase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCN3UIBase.html">CN3UIBase</a></td></tr>
 <tr class="memitem:a967c3e0de80051a4596adfaef1a701cb inherit pro_attribs_classCN3UIBase" id="r_a967c3e0de80051a4596adfaef1a701cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#a967c3e0de80051a4596adfaef1a701cb">m_iChildID</a></td></tr>
 <tr class="separator:a967c3e0de80051a4596adfaef1a701cb inherit pro_attribs_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -434,6 +434,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a81f54e6e9c52166e40ed7fe0fcfd2e4e inherit pro_static_attribs_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefbee186bcdb044145dcceb30a143103 inherit pro_static_attribs_classCN3UIBase" id="r_aefbee186bcdb044145dcceb30a143103"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCN3UIEdit.html">CN3UIEdit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3UIBase.html#aefbee186bcdb044145dcceb30a143103">s_pFocusedEdit</a> = nullptr</td></tr>
 <tr class="separator:aefbee186bcdb044145dcceb30a143103 inherit pro_static_attribs_classCN3UIBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classCN3BaseFileAccess"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classCN3BaseFileAccess')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classCN3BaseFileAccess.html">CN3BaseFileAccess</a></td></tr>
+<tr class="memitem:ad93d8e800aaf97f19b90deb2523d8200 inherit pro_static_attribs_classCN3BaseFileAccess" id="r_ad93d8e800aaf97f19b90deb2523d8200"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3BaseFileAccess.html#ad93d8e800aaf97f19b90deb2523d8200">MAX_SUPPORTED_PATH_LENGTH</a> = 260</td></tr>
+<tr class="separator:ad93d8e800aaf97f19b90deb2523d8200 inherit pro_static_attribs_classCN3BaseFileAccess"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
 <tr class="memitem:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base" id="r_a3cfdabc9c8341c3ebf516b2f908f32a0"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#a3cfdabc9c8341c3ebf516b2f908f32a0">s_szPath</a></td></tr>
 <tr class="separator:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -747,7 +750,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00528">528</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00556">556</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -766,7 +769,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00517">517</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00545">545</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -860,7 +863,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00392">392</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00396">396</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -898,7 +901,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00597">597</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00625">625</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -931,7 +934,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00117">117</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00119">119</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -950,7 +953,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00441">441</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00469">469</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1105,7 +1108,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00104">104</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00106">106</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1124,7 +1127,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00336">336</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00339">339</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1229,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCN3UIBase.html">CN3UIBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00110">110</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00112">112</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1260,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00556">556</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00584">584</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1284,7 +1287,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00127">127</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3UIString_8cpp_source.html#l00130">130</a> of file <a class="el" href="N3UIString_8cpp_source.html">N3UIString.cpp</a>.</p>
 
 </div>
 </div>
@@ -1338,30 +1341,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a69d4b857d3544f7fa2455d54473f835b" name="a69d4b857d3544f7fa2455d54473f835b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69d4b857d3544f7fa2455d54473f835b">&#9670;&#160;</a></span>m_iIdk0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int CN3UIString::m_iIdk0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="N3UIString_8h_source.html#l00031">31</a> of file <a class="el" href="N3UIString_8h_source.html">N3UIString.h</a>.</p>
-
-</div>
-</div>
 <a id="af4543c739d1ec3a26a0dd9372c3999b6" name="af4543c739d1ec3a26a0dd9372c3999b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4543c739d1ec3a26a0dd9372c3999b6">&#9670;&#160;</a></span>m_iLineCount</h2>
 
@@ -1383,6 +1362,30 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="N3UIString_8h_source.html#l00028">28</a> of file <a class="el" href="N3UIString_8h_source.html">N3UIString.h</a>.</p>
+
+</div>
+</div>
+<a id="a9cbb82c612decbc393889b36f44fd0bf" name="a9cbb82c612decbc393889b36f44fd0bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cbb82c612decbc393889b36f44fd0bf">&#9670;&#160;</a></span>m_iLineSpacing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CN3UIString::m_iLineSpacing</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="N3UIString_8h_source.html#l00031">31</a> of file <a class="el" href="N3UIString_8h_source.html">N3UIString.h</a>.</p>
 
 </div>
 </div>

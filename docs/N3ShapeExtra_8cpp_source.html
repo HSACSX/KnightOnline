@@ -205,11 +205,13 @@ $(function(){initNavTree('N3ShapeExtra_8cpp_source.html',''); initResizable(true
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    pRot-&gt;fRadianToReach = fRadianToReach;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    pRot-&gt;fRadianPerSec  = fRadianPerSec;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    pRot-&gt;vAxis          = vAxis;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">if</span> (bImmediately)</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        pRot-&gt;fRadianCur =</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            pRot-&gt;fRadianToReach</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            - 0.01f; <span class="comment">// 이러면 직빵으로 열린다.. 약간 값을 빼주는 이유는 한번은 틱을 돌게 하기 위해서이다.</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">if</span> (bImmediately)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">// 이러면 직빵으로 열린다.. 약간 값을 빼주는 이유는 한번은 틱을 돌게 하기 위해서이다.</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        pRot-&gt;fRadianCur = pRot-&gt;fRadianToReach - 0.01f;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
 <div class="ttc" id="aclassFile_html"><div class="ttname"><a href="classFile.html">File</a></div><div class="ttdoc">Abstract base class representing a generic file interface.</div><div class="ttdef"><b>Definition</b> <a href="File_8h_source.html#l00010">File.h:11</a></div></div>
 <div class="ttc" id="astructCN3ShapeExtra_1_1____Rotation_html"><div class="ttname"><a href="structCN3ShapeExtra_1_1____Rotation.html">CN3ShapeExtra::__Rotation</a></div><div class="ttdef"><b>Definition</b> <a href="N3ShapeExtra_8h_source.html#l00018">N3ShapeExtra.h:19</a></div></div>
 <div class="ttc" id="astruct____Vector3_html"><div class="ttname"><a href="struct____Vector3.html">__Vector3</a></div><div class="ttdef"><b>Definition</b> <a href="Vector3_8h_source.html#l00009">Vector3.h:10</a></div></div>

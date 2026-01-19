@@ -101,6 +101,7 @@ $(function(){initNavTree('classCN3BaseFileAccess.html',''); initResizable(true);
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classCN3BaseFileAccess-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CN3BaseFileAccess Class Reference</div></div>
 </div><!--header-->
@@ -154,6 +155,14 @@ Protected Attributes</h2></td></tr>
 <tr class="inherit_header pro_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
 <tr class="memitem:ab86a5ade9bb33feaff70f6b4ad35ac37 inherit pro_attribs_classCN3Base" id="r_ab86a5ade9bb33feaff70f6b4ad35ac37"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#ab86a5ade9bb33feaff70f6b4ad35ac37">m_dwType</a></td></tr>
 <tr class="separator:ab86a5ade9bb33feaff70f6b4ad35ac37 inherit pro_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:ad93d8e800aaf97f19b90deb2523d8200" id="r_ad93d8e800aaf97f19b90deb2523d8200"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad93d8e800aaf97f19b90deb2523d8200">MAX_SUPPORTED_PATH_LENGTH</a> = 260</td></tr>
+<tr class="separator:ad93d8e800aaf97f19b90deb2523d8200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
+<tr class="memitem:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base" id="r_a3cfdabc9c8341c3ebf516b2f908f32a0"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#a3cfdabc9c8341c3ebf516b2f908f32a0">s_szPath</a></td></tr>
+<tr class="separator:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -213,9 +222,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a8c5fcd49331381b3b1eb3569313859c0 inherit pub_static_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a624c6b095741043a46e7d0d04cc7c525 inherit pub_static_attribs_classCN3Base" id="r_a624c6b095741043a46e7d0d04cc7c525"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCN3Mng.html">CN3Mng</a>&lt; class <a class="el" href="classCN3FXShape.html">CN3FXShape</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#a624c6b095741043a46e7d0d04cc7c525">s_MngFXShape</a></td></tr>
 <tr class="separator:a624c6b095741043a46e7d0d04cc7c525 inherit pub_static_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_static_attribs_classCN3Base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classCN3Base')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classCN3Base.html">CN3Base</a></td></tr>
-<tr class="memitem:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base" id="r_a3cfdabc9c8341c3ebf516b2f908f32a0"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCN3Base.html#a3cfdabc9c8341c3ebf516b2f908f32a0">s_szPath</a></td></tr>
-<tr class="separator:a3cfdabc9c8341c3ebf516b2f908f32a0 inherit pro_static_attribs_classCN3Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -291,7 +297,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00036">36</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00038">38</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
 
 </div>
 </div>
@@ -383,7 +389,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00113">113</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00128">128</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -466,7 +472,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00163">163</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00178">178</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -493,7 +499,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00119">119</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00134">134</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -520,7 +526,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00157">157</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8cpp_source.html#l00172">172</a> of file <a class="el" href="N3BaseFileAccess_8cpp_source.html">N3BaseFileAccess.cpp</a>.</p>
 
 </div>
 </div>
@@ -537,7 +543,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00031">31</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00033">33</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
 
 </div>
 </div>
@@ -553,7 +559,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00032">32</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00034">34</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
 
 </div>
 </div>
@@ -573,6 +579,30 @@ Additional Inherited Members</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="N3BaseFileAccess_8h_source.html#l00030">30</a> of file <a class="el" href="N3BaseFileAccess_8h_source.html">N3BaseFileAccess.h</a>.</p>
+
+</div>
+</div>
+<a id="ad93d8e800aaf97f19b90deb2523d8200" name="ad93d8e800aaf97f19b90deb2523d8200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93d8e800aaf97f19b90deb2523d8200">&#9670;&#160;</a></span>MAX_SUPPORTED_PATH_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CN3BaseFileAccess::MAX_SUPPORTED_PATH_LENGTH = 260</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel protected">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

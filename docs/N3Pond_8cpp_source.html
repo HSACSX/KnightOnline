@@ -155,7 +155,7 @@ $(function(){initNavTree('N3Pond_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (iPondMeshNum &gt; MAX_SUPPORTED_POND_MESH_COUNT)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;invalid pond mesh count&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;CN3Pond: invalid pond mesh count&quot;</span>);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    m_PondMeshes.resize(iPondMeshNum);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
@@ -180,7 +180,7 @@ $(function(){initNavTree('N3Pond_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        file.<a class="code hl_function" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">Read</a>(&amp;iTexNameLength, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">if</span> (iTexNameLength &lt; 0 || iTexNameLength &gt; MAX_SUPPORTED_TEX_NAME_LENGTH)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;invalid pond mesh texture name length&quot;</span>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;CN3Pond: invalid pond mesh texture name length&quot;</span>);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> (iTexNameLength &gt; 0)</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
