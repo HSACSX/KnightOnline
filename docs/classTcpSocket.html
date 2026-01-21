@@ -112,8 +112,6 @@ $(function(){initNavTree('classTcpSocket.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpSocket_1_1QueuedSend.html">QueuedSend</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTcpSocket_1_1test__tag.html">test_tag</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -183,8 +181,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a6a835ccdaaea7b93c01f166965ce168e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d80177a9384771c0e8fdf48f5d8b084" id="r_a1d80177a9384771c0e8fdf48f5d8b084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCCircularBuffer.html">CCircularBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d80177a9384771c0e8fdf48f5d8b084">_recvCircularBuffer</a></td></tr>
 <tr class="separator:a1d80177a9384771c0e8fdf48f5d8b084"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3774aa3b92a0123c093ddbfae42472c" id="r_aa3774aa3b92a0123c093ddbfae42472c"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::unique_ptr&lt; <a class="el" href="structTcpSocket_1_1QueuedSend.html">QueuedSend</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3774aa3b92a0123c093ddbfae42472c">_sendQueue</a></td></tr>
-<tr class="separator:aa3774aa3b92a0123c093ddbfae42472c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb6b60cf1f3907243a9d92fa61dc0748" id="r_abb6b60cf1f3907243a9d92fa61dc0748"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="structCircularBufferSpan.html">CircularBufferSpan</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb6b60cf1f3907243a9d92fa61dc0748">_sendQueue</a></td></tr>
+<tr class="separator:abb6b60cf1f3907243a9d92fa61dc0748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad108770637c3043f42f1cd250fa2f63e" id="r_ad108770637c3043f42f1cd250fa2f63e"><td class="memItemLeft" align="right" valign="top">std::recursive_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad108770637c3043f42f1cd250fa2f63e">_sendMutex</a></td></tr>
 <tr class="separator:ad108770637c3043f42f1cd250fa2f63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22d9cfb42a583a8edbb7007a890723db" id="r_a22d9cfb42a583a8edbb7007a890723db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCCircularBuffer.html">CCircularBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22d9cfb42a583a8edbb7007a890723db">_sendCircularBuffer</a></td></tr>
@@ -693,7 +691,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00135">135</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00120">120</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -789,7 +787,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00132">132</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00117">117</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -813,7 +811,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00131">131</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00116">116</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -861,7 +859,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00128">128</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00113">113</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -885,7 +883,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00129">129</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00114">114</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -909,12 +907,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00126">126</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00111">111</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
-<a id="aa3774aa3b92a0123c093ddbfae42472c" name="aa3774aa3b92a0123c093ddbfae42472c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3774aa3b92a0123c093ddbfae42472c">&#9670;&#160;</a></span>_sendQueue</h2>
+<a id="abb6b60cf1f3907243a9d92fa61dc0748" name="abb6b60cf1f3907243a9d92fa61dc0748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb6b60cf1f3907243a9d92fa61dc0748">&#9670;&#160;</a></span>_sendQueue</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -923,7 +921,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::queue&lt;std::unique_ptr&lt;<a class="el" href="structTcpSocket_1_1QueuedSend.html">QueuedSend</a>&gt; &gt; TcpSocket::_sendQueue</td>
+          <td class="memname">std::queue&lt;<a class="el" href="structCircularBufferSpan.html">CircularBufferSpan</a>&gt; TcpSocket::_sendQueue</td>
         </tr>
       </table>
   </td>
@@ -933,7 +931,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00125">125</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00110">110</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +979,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00136">136</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00121">121</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1003,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00138">138</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00123">123</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1051,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00134">134</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocket_8h_source.html#l00119">119</a> of file <a class="el" href="TcpSocket_8h_source.html">TcpSocket.h</a>.</p>
 
 </div>
 </div>

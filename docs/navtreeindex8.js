@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"struct____LightObj.html":[2,0,43],
 "struct____MapData.html":[2,0,44],
 "struct____Material.html":[2,0,45],
 "struct____Matrix44.html":[2,0,46],

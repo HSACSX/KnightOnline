@@ -720,7 +720,6 @@ var hierarchy =
     [ "ProcType", null, [
       [ "db::StoredProc< ProcType >", "classdb_1_1StoredProc.html", null ]
     ] ],
-    [ "TcpSocket::QueuedSend", "structTcpSocket_1_1QueuedSend.html", null ],
     [ "Resolution", "structResolution.html", null ],
     [ "RIFF_Header", "structRIFF__Header.html", null ],
     [ "RIFF_SubChunk", "structRIFF__SubChunk.html", null ],

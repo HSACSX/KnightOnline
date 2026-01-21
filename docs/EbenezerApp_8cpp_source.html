@@ -143,7 +143,7 @@ $(function(){initNavTree('EbenezerApp_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">bool</span> g_serverdown_flag     = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>EbenezerApp::EbenezerApp(<a class="code hl_class" href="classEbenezer_1_1EbenezerLogger.html">EbenezerLogger</a>&amp; logger) :</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    AppThread(logger), _aiSocketManager(SOCKET_BUFF_SIZE, SOCKET_BUFF_SIZE),</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    AppThread(logger), _aiSocketManager(AI_SOCKET_RECV_BUFF_SIZE, AI_SOCKET_SEND_BUFF_SIZE),</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    m_LoggerSendQueue(MAX_SMQ_SEND_QUEUE_RETRY_COUNT),</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    m_ItemLoggerSendQ(MAX_SMQ_SEND_QUEUE_RETRY_COUNT)</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>

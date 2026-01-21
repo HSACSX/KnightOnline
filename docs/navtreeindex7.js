@@ -192,8 +192,7 @@ var NAVTREEINDEX7 =
 "structSoundSettings.html#a59d749709cc6f01325987af43ecf8b03":[2,0,488,0],
 "structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94":[2,0,488,2],
 "structSoundSettings.html#ae91127cf3edee0ada1f0a6c738c6f9be":[2,0,488,1],
-"structTcpSocket_1_1QueuedSend.html":[2,0,501,0],
-"structTcpSocket_1_1test__tag.html":[2,0,501,1],
+"structTcpSocket_1_1test__tag.html":[2,0,501,0],
 "structVersionManager_1_1__NEWS.html":[2,0,7,0],
 "structVersionManager_1_1__SERVER__INFO.html":[2,0,7,1],
 "structWAVE__Data.html":[2,0,509],
@@ -249,5 +248,6 @@ var NAVTREEINDEX7 =
 "struct____InfoTradeSellBBS.html":[2,0,39],
 "struct____KnightsInfoBase.html":[2,0,40],
 "struct____KnightsInfoExt.html":[2,0,41],
-"struct____KnightsMemberInfo.html":[2,0,42]
+"struct____KnightsMemberInfo.html":[2,0,42],
+"struct____LightObj.html":[2,0,43]
 };

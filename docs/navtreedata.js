@@ -65,7 +65,7 @@ var NAVTREEINDEX =
 "classCN3Chr.html",
 "classCUINationSelectDlg.html",
 "dir_078287587dd713d51538df450bd64b80.html",
-"struct____LightObj.html"
+"struct____MapData.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
