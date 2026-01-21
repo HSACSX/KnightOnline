@@ -554,7 +554,7 @@ $(function(){initNavTree('UdpSocket_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span> </div>
 <div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span><span class="keywordtype">void</span> CUdpSocket::RecvModifyFame(<span class="keywordtype">char</span>* pBuf, uint8_t command)</div>
 <div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>{</div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    CUser* pTUser = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    std::shared_ptr&lt;CUser&gt; pTUser;</div>
 <div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    <span class="keywordtype">int</span> index = 0, sendIndex = 0, knightsindex = 0, idlen = 0;</div>
 <div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    <span class="keywordtype">char</span> sendBuffer[128] {}, userid[MAX_ID_SIZE + 1] {};</div>
 <div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    std::string finalstr;</div>
@@ -677,84 +677,83 @@ $(function(){initNavTree('UdpSocket_8cpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span><span class="keywordtype">void</span> CUdpSocket::RecvDestroyKnights(<span class="keywordtype">char</span>* pBuf)</div>
 <div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>{</div>
 <div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>    CKnights* pKnights = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>    CUser* pTUser      = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>    <span class="keywordtype">int</span> sendIndex = 0, knightsId = 0, index = 0, flag = 0;</div>
-<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>    <span class="keywordtype">char</span> sendBuffer[128] {};</div>
-<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>    std::string finalstr;</div>
-<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span> </div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    knightsId = GetShort(pBuf, index);</div>
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span> </div>
-<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    pKnights  = _main-&gt;m_KnightsMap.GetData(knightsId);</div>
-<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <span class="keywordflow">if</span> (pKnights == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>    {</div>
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        spdlog::error(<span class="stringliteral">&quot;UdpSocket::RecvDestroyKnights: knightsId={} not found&quot;</span>, knightsId);</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    }</div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span> </div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>    flag = pKnights-&gt;m_byFlag;</div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span> </div>
-<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    <span class="comment">// 클랜이나 기사단이 파괴된 메시지를 보내고 유저 데이타를 초기화</span></div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>    <span class="keywordflow">if</span> (flag == CLAN_TYPE)</div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>        finalstr = fmt::format_db_resource(IDS_CLAN_DESTORY, pKnights-&gt;m_strName);</div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (flag == KNIGHTS_TYPE)</div>
-<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>        finalstr = fmt::format_db_resource(IDS_KNIGHTS_DESTROY, pKnights-&gt;m_strName);</div>
-<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span> </div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>    memset(sendBuffer, 0x00, 128);</div>
-<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>    sendIndex = 0;</div>
-<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>    SetByte(sendBuffer, WIZ_CHAT, sendIndex);</div>
-<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>    SetByte(sendBuffer, KNIGHTS_CHAT, sendIndex);</div>
-<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>    SetByte(sendBuffer, 1, sendIndex);</div>
-<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    SetShort(sendBuffer, -1, sendIndex);</div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    SetByte(sendBuffer, 0, sendIndex); <span class="comment">// sender name length</span></div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>    SetString2(sendBuffer, finalstr, sendIndex);</div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>    _main-&gt;Send_KnightsMember(knightsId, sendBuffer, sendIndex);</div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span> </div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>    <span class="keywordtype">int</span> socketCount = _main-&gt;GetUserSocketCount();</div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; socketCount; i++)</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>    {</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>        pTUser = _main-&gt;GetUserPtrUnchecked(i);</div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>        <span class="keywordflow">if</span> (pTUser == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span> </div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>        <span class="keywordflow">if</span> (pTUser-&gt;m_pUserData-&gt;m_bKnights == knightsId)</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>        {</div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>            pTUser-&gt;m_pUserData-&gt;m_bKnights = 0;</div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>            pTUser-&gt;m_pUserData-&gt;m_bFame    = 0;</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span> </div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>            _main-&gt;m_KnightsManager.RemoveKnightsUser(knightsId, pTUser-&gt;m_pUserData-&gt;m_id);</div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span> </div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>            memset(sendBuffer, 0, <span class="keyword">sizeof</span>(sendBuffer));</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>            sendIndex = 0;</div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>            SetByte(sendBuffer, WIZ_KNIGHTS_PROCESS, sendIndex);</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>            SetByte(sendBuffer, KNIGHTS_MODIFY_FAME, sendIndex);</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>            SetByte(sendBuffer, 0x01, sendIndex);</div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>            SetShort(sendBuffer, pTUser-&gt;GetSocketID(), sendIndex);</div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>            SetShort(sendBuffer, pTUser-&gt;m_pUserData-&gt;m_bKnights, sendIndex);</div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>            SetByte(sendBuffer, pTUser-&gt;m_pUserData-&gt;m_bFame, sendIndex);</div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>            _main-&gt;Send_Region(sendBuffer, sendIndex, pTUser-&gt;m_pUserData-&gt;m_bZone,</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>                pTUser-&gt;m_RegionX, pTUser-&gt;m_RegionZ, <span class="keyword">nullptr</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>            <span class="comment">//pTUser-&gt;Send( sendBuffer, sendIndex );</span></div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        }</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>    }</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span> </div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    _main-&gt;m_KnightsMap.DeleteData(knightsId);</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    <span class="comment">//TRACE(_T(&quot;UDP - RecvDestoryKnights - index=%d\n&quot;), knightsindex);</span></div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>}</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span> </div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span><span class="keywordtype">void</span> CUdpSocket::RecvBattleZoneCurrentUsers(<span class="keywordtype">char</span>* pBuf)</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>{</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordtype">int</span> nKarusMan = 0, nElmoradMan = 0, index = 0;</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    nKarusMan              = GetShort(pBuf, index);</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    nElmoradMan            = GetShort(pBuf, index);</div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    _main-&gt;m_sKarusCount   = nKarusMan;</div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    _main-&gt;m_sElmoradCount = nElmoradMan;</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    <span class="comment">//TRACE(_T(&quot;UDP - RecvBattleZoneCurrentUsers - karus=%d, elmorad=%d\n&quot;), nKarusMan, nElmoradMan);</span></div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>}</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span> </div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>} <span class="comment">// namespace Ebenezer</span></div>
-<div class="ttc" id="aclassEbenezer_1_1EbenezerApp_html"><div class="ttname"><a href="classEbenezer_1_1EbenezerApp.html">Ebenezer::EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00066">EbenezerApp.h:67</a></div></div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>    <span class="keywordtype">int</span> sendIndex = 0, knightsId = 0, index = 0, flag = 0;</div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>    <span class="keywordtype">char</span> sendBuffer[128] {};</div>
+<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>    std::string finalstr;</div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span> </div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>    knightsId = GetShort(pBuf, index);</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span> </div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>    pKnights  = _main-&gt;m_KnightsMap.GetData(knightsId);</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    <span class="keywordflow">if</span> (pKnights == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    {</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        spdlog::error(<span class="stringliteral">&quot;UdpSocket::RecvDestroyKnights: knightsId={} not found&quot;</span>, knightsId);</div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    }</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>    flag = pKnights-&gt;m_byFlag;</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span> </div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    <span class="comment">// 클랜이나 기사단이 파괴된 메시지를 보내고 유저 데이타를 초기화</span></div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    <span class="keywordflow">if</span> (flag == CLAN_TYPE)</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>        finalstr = fmt::format_db_resource(IDS_CLAN_DESTORY, pKnights-&gt;m_strName);</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (flag == KNIGHTS_TYPE)</div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>        finalstr = fmt::format_db_resource(IDS_KNIGHTS_DESTROY, pKnights-&gt;m_strName);</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span> </div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>    memset(sendBuffer, 0x00, 128);</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>    sendIndex = 0;</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>    SetByte(sendBuffer, WIZ_CHAT, sendIndex);</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>    SetByte(sendBuffer, KNIGHTS_CHAT, sendIndex);</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>    SetByte(sendBuffer, 1, sendIndex);</div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>    SetShort(sendBuffer, -1, sendIndex);</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    SetByte(sendBuffer, 0, sendIndex); <span class="comment">// sender name length</span></div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    SetString2(sendBuffer, finalstr, sendIndex);</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>    _main-&gt;Send_KnightsMember(knightsId, sendBuffer, sendIndex);</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span> </div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>    <span class="keywordtype">int</span> socketCount = _main-&gt;GetUserSocketCount();</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; socketCount; i++)</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    {</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>        <span class="keyword">auto</span> pTUser = _main-&gt;GetUserPtrUnchecked(i);</div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>        <span class="keywordflow">if</span> (pTUser == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span> </div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>        <span class="keywordflow">if</span> (pTUser-&gt;m_pUserData-&gt;m_bKnights == knightsId)</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>        {</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>            pTUser-&gt;m_pUserData-&gt;m_bKnights = 0;</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>            pTUser-&gt;m_pUserData-&gt;m_bFame    = 0;</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span> </div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>            _main-&gt;m_KnightsManager.RemoveKnightsUser(knightsId, pTUser-&gt;m_pUserData-&gt;m_id);</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span> </div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>            memset(sendBuffer, 0, <span class="keyword">sizeof</span>(sendBuffer));</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>            sendIndex = 0;</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>            SetByte(sendBuffer, WIZ_KNIGHTS_PROCESS, sendIndex);</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>            SetByte(sendBuffer, KNIGHTS_MODIFY_FAME, sendIndex);</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>            SetByte(sendBuffer, 0x01, sendIndex);</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>            SetShort(sendBuffer, pTUser-&gt;GetSocketID(), sendIndex);</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>            SetShort(sendBuffer, pTUser-&gt;m_pUserData-&gt;m_bKnights, sendIndex);</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>            SetByte(sendBuffer, pTUser-&gt;m_pUserData-&gt;m_bFame, sendIndex);</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>            _main-&gt;Send_Region(sendBuffer, sendIndex, pTUser-&gt;m_pUserData-&gt;m_bZone,</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>                pTUser-&gt;m_RegionX, pTUser-&gt;m_RegionZ, <span class="keyword">nullptr</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>            <span class="comment">//pTUser-&gt;Send( sendBuffer, sendIndex );</span></div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>        }</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>    }</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span> </div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>    _main-&gt;m_KnightsMap.DeleteData(knightsId);</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    <span class="comment">//TRACE(_T(&quot;UDP - RecvDestoryKnights - index=%d\n&quot;), knightsindex);</span></div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>}</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span> </div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span><span class="keywordtype">void</span> CUdpSocket::RecvBattleZoneCurrentUsers(<span class="keywordtype">char</span>* pBuf)</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>{</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    <span class="keywordtype">int</span> nKarusMan = 0, nElmoradMan = 0, index = 0;</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span> </div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>    nKarusMan              = GetShort(pBuf, index);</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    nElmoradMan            = GetShort(pBuf, index);</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>    _main-&gt;m_sKarusCount   = nKarusMan;</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    _main-&gt;m_sElmoradCount = nElmoradMan;</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="comment">//TRACE(_T(&quot;UDP - RecvBattleZoneCurrentUsers - karus=%d, elmorad=%d\n&quot;), nKarusMan, nElmoradMan);</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>}</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span> </div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>} <span class="comment">// namespace Ebenezer</span></div>
+<div class="ttc" id="aclassEbenezer_1_1EbenezerApp_html"><div class="ttname"><a href="classEbenezer_1_1EbenezerApp.html">Ebenezer::EbenezerApp</a></div><div class="ttdef"><b>Definition</b> <a href="EbenezerApp_8h_source.html#l00067">EbenezerApp.h:68</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

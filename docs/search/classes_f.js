@@ -9,11 +9,14 @@ var searchData=
   ['tagvispartindex_6',['tagVisPartIndex',['../structtagVisPartIndex.html',1,'']]],
   ['tagvisportalpriority_7',['tagVisPortalPriority',['../structtagVisPortalPriority.html',1,'']]],
   ['tcpclientsocket_8',['TcpClientSocket',['../classTcpClientSocket.html',1,'']]],
-  ['tcpserversocket_9',['TcpServerSocket',['../classTcpServerSocket.html',1,'']]],
-  ['tcpsocket_10',['TcpSocket',['../classTcpSocket.html',1,'']]],
-  ['telnetclientthread_11',['TelnetClientThread',['../classTelnetClientThread.html',1,'']]],
-  ['telnetthread_12',['TelnetThread',['../classTelnetThread.html',1,'']]],
-  ['test_5ftag_13',['test_tag',['../structTcpSocket_1_1test__tag.html',1,'TcpSocket']]],
-  ['thread_14',['Thread',['../classThread.html',1,'']]],
-  ['timerthread_15',['TimerThread',['../classTimerThread.html',1,'']]]
+  ['tcpclientsocketmanager_9',['TcpClientSocketManager',['../classTcpClientSocketManager.html',1,'']]],
+  ['tcpserversocket_10',['TcpServerSocket',['../classTcpServerSocket.html',1,'']]],
+  ['tcpserversocketmanager_11',['TcpServerSocketManager',['../classTcpServerSocketManager.html',1,'']]],
+  ['tcpsocket_12',['TcpSocket',['../classTcpSocket.html',1,'']]],
+  ['tcpsocketmanager_13',['TcpSocketManager',['../classTcpSocketManager.html',1,'']]],
+  ['telnetclientthread_14',['TelnetClientThread',['../classTelnetClientThread.html',1,'']]],
+  ['telnetthread_15',['TelnetThread',['../classTelnetThread.html',1,'']]],
+  ['test_5ftag_16',['test_tag',['../structTcpSocket_1_1test__tag.html',1,'TcpSocket']]],
+  ['thread_17',['Thread',['../classThread.html',1,'']]],
+  ['timerthread_18',['TimerThread',['../classTimerThread.html',1,'']]]
 ];

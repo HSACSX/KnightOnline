@@ -672,6 +672,18 @@ var hierarchy =
     [ "DataPack", "classDataPack.html", null ],
     [ "db::DatasourceConfig", "structdb_1_1DatasourceConfig.html", null ],
     [ "DateTime", "classDateTime.html", null ],
+    [ "std::enable_shared_from_this", null, [
+      [ "TcpSocket", "classTcpSocket.html", [
+        [ "TcpClientSocket", "classTcpClientSocket.html", [
+          [ "Ebenezer::CAISocket", "classEbenezer_1_1CAISocket.html", null ]
+        ] ],
+        [ "TcpServerSocket", "classTcpServerSocket.html", [
+          [ "AIServer::CGameSocket", "classAIServer_1_1CGameSocket.html", null ],
+          [ "Ebenezer::CUser", "classEbenezer_1_1CUser.html", null ],
+          [ "VersionManager::CUser", "classVersionManager_1_1CUser.html", null ]
+        ] ]
+      ] ]
+    ] ],
     [ "recordset_loader::Error", "structrecordset__loader_1_1Error.html", null ],
     [ "Ebenezer::EVENT", "classEbenezer_1_1EVENT.html", null ],
     [ "Ebenezer::EVENT_DATA", "classEbenezer_1_1EVENT__DATA.html", null ],
@@ -721,10 +733,6 @@ var hierarchy =
     ] ],
     [ "SharedMemoryBlock", "classSharedMemoryBlock.html", null ],
     [ "SharedMemoryQueue", "classSharedMemoryQueue.html", null ],
-    [ "SocketManager", "classSocketManager.html", [
-      [ "AIServer::AISocketManager", "classAIServer_1_1AISocketManager.html", null ],
-      [ "Ebenezer::EbenezerSocketManager", "classEbenezer_1_1EbenezerSocketManager.html", null ]
-    ] ],
     [ "SoundSettings", "structSoundSettings.html", null ],
     [ "db::SqlBuilder< ModelType >", "classdb_1_1SqlBuilder.html", null ],
     [ "AIServer::STACK", "classAIServer_1_1STACK.html", null ],
@@ -735,14 +743,11 @@ var hierarchy =
     [ "tagShapePart", "structtagShapePart.html", null ],
     [ "tagVisPartIndex", "structtagVisPartIndex.html", null ],
     [ "tagVisPortalPriority", "structtagVisPortalPriority.html", null ],
-    [ "TcpSocket", "classTcpSocket.html", [
-      [ "TcpClientSocket", "classTcpClientSocket.html", [
-        [ "Ebenezer::CAISocket", "classEbenezer_1_1CAISocket.html", null ]
-      ] ],
-      [ "TcpServerSocket", "classTcpServerSocket.html", [
-        [ "AIServer::CGameSocket", "classAIServer_1_1CGameSocket.html", null ],
-        [ "Ebenezer::CUser", "classEbenezer_1_1CUser.html", null ],
-        [ "VersionManager::CUser", "classVersionManager_1_1CUser.html", null ]
+    [ "TcpSocketManager", "classTcpSocketManager.html", [
+      [ "TcpClientSocketManager", "classTcpClientSocketManager.html", null ],
+      [ "TcpServerSocketManager", "classTcpServerSocketManager.html", [
+        [ "AIServer::AISocketManager", "classAIServer_1_1AISocketManager.html", null ],
+        [ "Ebenezer::EbenezerSocketManager", "classEbenezer_1_1EbenezerSocketManager.html", null ]
       ] ]
     ] ],
     [ "testing::Test", null, [
