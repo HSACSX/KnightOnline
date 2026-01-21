@@ -140,8 +140,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ac1aa56c5b5ac32485fa43a05ca3b4b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6278a59c322808ce74a67c93c1f5b0e" id="r_ad6278a59c322808ce74a67c93c1f5b0e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6278a59c322808ce74a67c93c1f5b0e">AcquireSocket</a> (int &amp;socketId)</td></tr>
 <tr class="separator:ad6278a59c322808ce74a67c93c1f5b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2d786a23cd8e949a194a7502785b7e" id="r_aaf2d786a23cd8e949a194a7502785b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2d786a23cd8e949a194a7502785b7e">ReleaseSocket</a> (std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt; tcpSocket)</td></tr>
-<tr class="separator:aaf2d786a23cd8e949a194a7502785b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23d3d796913d1f1437d8ff2f51ef312" id="r_ac23d3d796913d1f1437d8ff2f51ef312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac23d3d796913d1f1437d8ff2f51ef312">ReleaseSocketImpl</a> (<a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
+<tr class="separator:ac23d3d796913d1f1437d8ff2f51ef312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfc23e77e7e973ca019e7ff619995fec" id="r_abfc23e77e7e973ca019e7ff619995fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfc23e77e7e973ca019e7ff619995fec">OnPostReceive</a> (const asio::error_code &amp;ec, size_t bytesTransferred, <a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
 <tr class="separator:abfc23e77e7e973ca019e7ff619995fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560b44aca221deb07c443038c2ab8904" id="r_a560b44aca221deb07c443038c2ab8904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a560b44aca221deb07c443038c2ab8904">OnPostSend</a> (const asio::error_code &amp;ec, size_t bytesTransferred, <a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
@@ -630,7 +630,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00156">156</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00160">160</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -666,7 +666,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00091">91</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00095">95</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -702,12 +702,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00134">134</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00138">138</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aaf2d786a23cd8e949a194a7502785b7e" name="aaf2d786a23cd8e949a194a7502785b7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf2d786a23cd8e949a194a7502785b7e">&#9670;&#160;</a></span>ReleaseSocket()</h2>
+<a id="ac23d3d796913d1f1437d8ff2f51ef312" name="ac23d3d796913d1f1437d8ff2f51ef312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23d3d796913d1f1437d8ff2f51ef312">&#9670;&#160;</a></span>ReleaseSocketImpl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -716,9 +716,9 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void TcpSocketManager::ReleaseSocket </td>
+          <td class="memname">void TcpSocketManager::ReleaseSocketImpl </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>tcpSocket</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classTcpSocket.html">TcpSocket</a> *</td>          <td class="paramname"><span class="paramname"><em>tcpSocket</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -756,7 +756,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00165">165</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00169">169</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>

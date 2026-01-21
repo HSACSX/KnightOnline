@@ -159,7 +159,7 @@ $(function(){initNavTree('TcpClientSocketManager_8h_source.html',''); initResiza
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    TcpClientSocketManager(<span class="keywordtype">int</span> recvBufferSize, <span class="keywordtype">int</span> sendBufferSize,</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::string_view implName = <span class="stringliteral">&quot;TcpClientSocketManager&quot;</span>);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::shared_ptr&lt;TcpClientSocket&gt; AcquireSocket();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> ReleaseSocket(std::shared_ptr&lt;TcpClientSocket&gt; tcpSocket);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> ReleaseSocket(TcpClientSocket* tcpSocket);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> Shutdown();</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    ~TcpClientSocketManager() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>

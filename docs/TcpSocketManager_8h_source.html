@@ -196,7 +196,7 @@ $(function(){initNavTree('TcpSocketManager_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    std::shared_ptr&lt;TcpSocket&gt; AcquireSocket(<span class="keywordtype">int</span>&amp; socketId);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> ReleaseSocket(std::shared_ptr&lt;TcpSocket&gt; tcpSocket);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> ReleaseSocketImpl(TcpSocket* tcpSocket);</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> OnPostReceive(<span class="keyword">const</span> asio::error_code&amp; ec, <span class="keywordtype">size_t</span> bytesTransferred, TcpSocket* tcpSocket);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> OnPostSend(<span class="keyword">const</span> asio::error_code&amp; ec, <span class="keywordtype">size_t</span> bytesTransferred, TcpSocket* tcpSocket);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> OnPostClose(TcpSocket* tcpSocket);</div>

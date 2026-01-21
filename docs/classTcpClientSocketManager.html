@@ -122,8 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a84099da7a58207670e868dc75b1aed21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c88d737d733bc0e1d44f4ea4aa7c896" id="r_a4c88d737d733bc0e1d44f4ea4aa7c896"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c88d737d733bc0e1d44f4ea4aa7c896">AcquireSocket</a> ()</td></tr>
 <tr class="separator:a4c88d737d733bc0e1d44f4ea4aa7c896"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b39a8532869d10ae9cdfc9cd3ecf5c" id="r_ae2b39a8532869d10ae9cdfc9cd3ecf5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2b39a8532869d10ae9cdfc9cd3ecf5c">ReleaseSocket</a> (std::shared_ptr&lt; <a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> &gt; tcpSocket)</td></tr>
-<tr class="separator:ae2b39a8532869d10ae9cdfc9cd3ecf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35018922aaae4ba52c3f545f77b93380" id="r_a35018922aaae4ba52c3f545f77b93380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35018922aaae4ba52c3f545f77b93380">ReleaseSocket</a> (<a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> *tcpSocket)</td></tr>
+<tr class="separator:a35018922aaae4ba52c3f545f77b93380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4af04f3368940ac66bf2838126a78a28" id="r_a4af04f3368940ac66bf2838126a78a28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af04f3368940ac66bf2838126a78a28">Shutdown</a> ()</td></tr>
 <tr class="separator:a4af04f3368940ac66bf2838126a78a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classTcpSocketManager"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classTcpSocketManager')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTcpSocketManager.html">TcpSocketManager</a></td></tr>
@@ -161,8 +161,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ac1aa56c5b5ac32485fa43a05ca3b4b8b inherit pro_methods_classTcpSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6278a59c322808ce74a67c93c1f5b0e inherit pro_methods_classTcpSocketManager" id="r_ad6278a59c322808ce74a67c93c1f5b0e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTcpSocketManager.html#ad6278a59c322808ce74a67c93c1f5b0e">AcquireSocket</a> (int &amp;socketId)</td></tr>
 <tr class="separator:ad6278a59c322808ce74a67c93c1f5b0e inherit pro_methods_classTcpSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2d786a23cd8e949a194a7502785b7e inherit pro_methods_classTcpSocketManager" id="r_aaf2d786a23cd8e949a194a7502785b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTcpSocketManager.html#aaf2d786a23cd8e949a194a7502785b7e">ReleaseSocket</a> (std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt; tcpSocket)</td></tr>
-<tr class="separator:aaf2d786a23cd8e949a194a7502785b7e inherit pro_methods_classTcpSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23d3d796913d1f1437d8ff2f51ef312 inherit pro_methods_classTcpSocketManager" id="r_ac23d3d796913d1f1437d8ff2f51ef312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTcpSocketManager.html#ac23d3d796913d1f1437d8ff2f51ef312">ReleaseSocketImpl</a> (<a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
+<tr class="separator:ac23d3d796913d1f1437d8ff2f51ef312 inherit pro_methods_classTcpSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfc23e77e7e973ca019e7ff619995fec inherit pro_methods_classTcpSocketManager" id="r_abfc23e77e7e973ca019e7ff619995fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTcpSocketManager.html#abfc23e77e7e973ca019e7ff619995fec">OnPostReceive</a> (const asio::error_code &amp;ec, size_t bytesTransferred, <a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
 <tr class="separator:abfc23e77e7e973ca019e7ff619995fec inherit pro_methods_classTcpSocketManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560b44aca221deb07c443038c2ab8904 inherit pro_methods_classTcpSocketManager" id="r_a560b44aca221deb07c443038c2ab8904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTcpSocketManager.html#a560b44aca221deb07c443038c2ab8904">OnPostSend</a> (const asio::error_code &amp;ec, size_t bytesTransferred, <a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
@@ -447,8 +447,8 @@ template&lt;typename T, typename... Args&gt; </div>
 
 </div>
 </div>
-<a id="ae2b39a8532869d10ae9cdfc9cd3ecf5c" name="ae2b39a8532869d10ae9cdfc9cd3ecf5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2b39a8532869d10ae9cdfc9cd3ecf5c">&#9670;&#160;</a></span>ReleaseSocket()</h2>
+<a id="a35018922aaae4ba52c3f545f77b93380" name="a35018922aaae4ba52c3f545f77b93380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35018922aaae4ba52c3f545f77b93380">&#9670;&#160;</a></span>ReleaseSocket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,7 +456,7 @@ template&lt;typename T, typename... Args&gt; </div>
         <tr>
           <td class="memname">void TcpClientSocketManager::ReleaseSocket </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>tcpSocket</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classTcpClientSocket.html">TcpClientSocket</a> *</td>          <td class="paramname"><span class="paramname"><em>tcpSocket</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
