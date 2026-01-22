@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"classCN3CPlug__Cloak.html":[2,0,250],
+"classCN3Camera.html":[2,0,238],
 "classCN3Chr.html":[2,0,242],
 "classCN3ClientShapeMgr.html":[2,0,243],
 "classCN3Cloak.html":[2,0,244],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "classCUIMessageBoxManager.html":[2,0,414],
 "classCUIMessageWnd.html":[2,0,415],
 "classCUIMessageWnd2.html":[2,0,416],
-"classCUIMsgBoxOkCancel.html":[2,0,417],
-"classCUINPCChangeEvent.html":[2,0,420],
-"classCUINPCEvent.html":[2,0,421]
+"classCUIMsgBoxOkCancel.html":[2,0,417]
 };

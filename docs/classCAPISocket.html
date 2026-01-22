@@ -221,10 +221,14 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a656aac54dd341f543c01de95db79b340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8e5da793ea04808835898ac083ae448" id="r_ad8e5da793ea04808835898ac083ae448"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8e5da793ea04808835898ac083ae448">m_dwPort</a></td></tr>
 <tr class="separator:ad8e5da793ea04808835898ac083ae448"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf081fa300792df6e823a7378d62043e" id="r_aaf081fa300792df6e823a7378d62043e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf081fa300792df6e823a7378d62043e">m_RecvBuf</a> [RECEIVE_BUF_SIZE]</td></tr>
-<tr class="separator:aaf081fa300792df6e823a7378d62043e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2f27cd87a5e8b67657bd53765d7e8f" id="r_aef2f27cd87a5e8b67657bd53765d7e8f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef2f27cd87a5e8b67657bd53765d7e8f">m_SendBuf</a></td></tr>
+<tr class="separator:aef2f27cd87a5e8b67657bd53765d7e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd6ec4c3cd5e61da6e6f546b9b70c81" id="r_a5cd6ec4c3cd5e61da6e6f546b9b70c81"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cd6ec4c3cd5e61da6e6f546b9b70c81">m_RecvBuf</a></td></tr>
+<tr class="separator:a5cd6ec4c3cd5e61da6e6f546b9b70c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86e993d49c8b0bf356f6d80906b0d256" id="r_a86e993d49c8b0bf356f6d80906b0d256"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e993d49c8b0bf356f6d80906b0d256">m_bConnected</a></td></tr>
 <tr class="separator:a86e993d49c8b0bf356f6d80906b0d256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ca088e59d551d549055d76b6d8117f" id="r_ae1ca088e59d551d549055d76b6d8117f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classExpandableCircularBuffer.html">ExpandableCircularBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1ca088e59d551d549055d76b6d8117f">m_CB</a></td></tr>
+<tr class="separator:ae1ca088e59d551d549055d76b6d8117f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -340,7 +344,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00101">101</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00092">92</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -386,7 +390,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00269">269</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00102">102</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -413,7 +417,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00273">273</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00106">106</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -440,7 +444,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00291">291</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00124">124</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -467,7 +471,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00263">263</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00096">96</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +543,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00306">306</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00139">139</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -611,7 +615,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00324">324</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00157">157</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -683,7 +687,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00330">330</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00163">163</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +759,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00312">312</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00145">145</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -827,7 +831,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00336">336</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00169">169</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -899,7 +903,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00318">318</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00151">151</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1152,7 +1156,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00179">179</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00170">170</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1221,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00283">283</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8cpp_source.html#l00272">272</a> of file <a class="el" href="WarFare_2APISocket_8cpp_source.html">APISocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1246,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00243">243</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00076">76</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1258,12 +1262,12 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00258">258</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00091">91</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
 <a id="a692403daaea2007e804748463a9d9023" name="a692403daaea2007e804748463a9d9023"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a692403daaea2007e804748463a9d9023">&#9670;&#160;</a></span>m_CB</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a692403daaea2007e804748463a9d9023">&#9670;&#160;</a></span>m_CB <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1283,6 +1287,30 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="Launcher_2APISocket_8h_source.html#l00052">52</a> of file <a class="el" href="Launcher_2APISocket_8h_source.html">APISocket.h</a>.</p>
+
+</div>
+</div>
+<a id="ae1ca088e59d551d549055d76b6d8117f" name="ae1ca088e59d551d549055d76b6d8117f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ca088e59d551d549055d76b6d8117f">&#9670;&#160;</a></span>m_CB <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classExpandableCircularBuffer.html">ExpandableCircularBuffer</a> CAPISocket::m_CB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00078">78</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1334,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00240">240</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00071">71</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1402,7 +1430,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00256">256</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00089">89</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1430,8 +1458,8 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf081fa300792df6e823a7378d62043e" name="aaf081fa300792df6e823a7378d62043e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf081fa300792df6e823a7378d62043e">&#9670;&#160;</a></span>m_RecvBuf <span class="overload">[2/2]</span></h2>
+<a id="a5cd6ec4c3cd5e61da6e6f546b9b70c81" name="a5cd6ec4c3cd5e61da6e6f546b9b70c81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd6ec4c3cd5e61da6e6f546b9b70c81">&#9670;&#160;</a></span>m_RecvBuf <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1440,7 +1468,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t CAPISocket::m_RecvBuf[RECEIVE_BUF_SIZE]</td>
+          <td class="memname">std::vector&lt;char&gt; CAPISocket::m_RecvBuf</td>
         </tr>
       </table>
   </td>
@@ -1450,7 +1478,31 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00242">242</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00074">74</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+
+</div>
+</div>
+<a id="aef2f27cd87a5e8b67657bd53765d7e8f" name="aef2f27cd87a5e8b67657bd53765d7e8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2f27cd87a5e8b67657bd53765d7e8f">&#9670;&#160;</a></span>m_SendBuf</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;char&gt; CAPISocket::m_SendBuf</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00073">73</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1474,7 +1526,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00239">239</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00070">70</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1498,7 +1550,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00285">285</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00118">118</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1522,7 +1574,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00286">286</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00119">119</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1570,7 +1622,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00288">288</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00121">121</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>
@@ -1618,7 +1670,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00287">287</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WarFare_2APISocket_8h_source.html#l00120">120</a> of file <a class="el" href="WarFare_2APISocket_8h_source.html">APISocket.h</a>.</p>
 
 </div>
 </div>

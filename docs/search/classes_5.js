@@ -7,5 +7,6 @@ var searchData=
   ['error_4',['Error',['../structrecordset__loader_1_1Error.html',1,'recordset_loader']]],
   ['event_5',['EVENT',['../classEbenezer_1_1EVENT.html',1,'Ebenezer']]],
   ['event_5fdata_6',['EVENT_DATA',['../classEbenezer_1_1EVENT__DATA.html',1,'Ebenezer']]],
-  ['exec_7',['EXEC',['../classEbenezer_1_1EXEC.html',1,'Ebenezer']]]
+  ['exec_7',['EXEC',['../classEbenezer_1_1EXEC.html',1,'Ebenezer']]],
+  ['expandablecircularbuffer_8',['ExpandableCircularBuffer',['../classExpandableCircularBuffer.html',1,'']]]
 ];

@@ -195,7 +195,6 @@ var hierarchy =
     [ "CBackgroundUtil", "classCBackgroundUtil.html", null ],
     [ "CBitMapFile", "classCBitMapFile.html", null ],
     [ "CBitset", "classCBitset.html", null ],
-    [ "CCircularBuffer", "classCCircularBuffer.html", null ],
     [ "Aujard::CDBAgent", "classAujard_1_1CDBAgent.html", null ],
     [ "VersionManager::CDBProcess", "classVersionManager_1_1CDBProcess.html", null ],
     [ "CDialog", null, [
@@ -316,6 +315,9 @@ var hierarchy =
     [ "CHotkeyData", "classCHotkeyData.html", null ],
     [ "CIni::ci_less", "structCIni_1_1ci__less.html", null ],
     [ "CIni", "classCIni.html", null ],
+    [ "CircularBuffer", "classCircularBuffer.html", [
+      [ "ExpandableCircularBuffer", "classExpandableCircularBuffer.html", null ]
+    ] ],
     [ "CircularBufferSpan", "structCircularBufferSpan.html", null ],
     [ "CJpegFile", "classCJpegFile.html", [
       [ "CN3JpegFile", "classCN3JpegFile.html", null ]

@@ -9,5 +9,6 @@ var searchData=
   ['event_5fdata_6',['EVENT_DATA',['../classEbenezer_1_1EVENT__DATA.html',1,'Ebenezer']]],
   ['excludecolumns_7',['ExcludeColumns',['../classdb_1_1SqlBuilder.html#a0550d309600adb75591752d09237414c',1,'db::SqlBuilder']]],
   ['exec_8',['EXEC',['../classEbenezer_1_1EXEC.html',1,'Ebenezer']]],
-  ['execute_9',['execute',['../classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b',1,'db::ModelRecordSet']]]
+  ['execute_9',['execute',['../classdb_1_1ModelRecordSet.html#acece6090743f50b6909606a48b77e61b',1,'db::ModelRecordSet']]],
+  ['expandablecircularbuffer_10',['ExpandableCircularBuffer',['../classExpandableCircularBuffer.html',1,'']]]
 ];
