@@ -157,7 +157,7 @@ $(function(){initNavTree('FileWriterSetup__test_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>TEST_F(<a class="code hl_class" href="classFileWriterSetupTest.html">FileWriterSetupTest</a>, OpenExisting_FailsOnMissingFile)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    EXPECT_FALSE(_file.IsOpen());</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    EXPECT_FALSE(_file.OpenExisting(<span class="stringliteral">&quot;MISSING FILE.BIN&quot;</span>));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    ASSERT_FALSE(_file.OpenExisting(<span class="stringliteral">&quot;MISSING FILE.BIN&quot;</span>));</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    EXPECT_FALSE(_file.IsOpen());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
@@ -177,7 +177,7 @@ $(function(){initNavTree('FileWriterSetup__test_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    EXPECT_FALSE(_file.IsOpen());</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    ASSERT_TRUE(_file.OpenExisting(_testFilePath));</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    ASSERT_TRUE(_file.IsOpen());</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    EXPECT_TRUE(_file.IsOpen());</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
 <div class="ttc" id="aclassFileWriterSetupTest_html"><div class="ttname"><a href="classFileWriterSetupTest.html">FileWriterSetupTest</a></div><div class="ttdef"><b>Definition</b> <a href="#l00007">FileWriterSetup_test.cpp:8</a></div></div>
 <div class="ttc" id="aclassFileWriter_html"><div class="ttname"><a href="classFileWriter.html">FileWriter</a></div><div class="ttdoc">FileWriter implements a write-capable file interface.</div><div class="ttdef"><b>Definition</b> <a href="FileWriter_8h_source.html#l00014">FileWriter.h:15</a></div></div>
