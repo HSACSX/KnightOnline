@@ -121,7 +121,7 @@ $(function(){initNavTree('TcpServerSocketManager_8h_source.html',''); initResiza
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordflow">if</span> (_inactiveSocketArray[i] != <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">auto</span> tcpSocket = std::make_unique&lt;T&gt;(std::forward&lt;Args&gt;(args)..., <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">auto</span> tcpSocket = std::make_shared&lt;T&gt;(std::forward&lt;Args&gt;(args)..., <span class="keyword">this</span>);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">if</span> (tcpSocket == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
