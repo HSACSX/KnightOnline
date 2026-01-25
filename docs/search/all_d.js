@@ -19,7 +19,7 @@ var searchData=
   ['made_20written_20by_20you_16',['It must be made / written by you',['../index.html#autotoc_md7',1,'']]],
   ['map_17',['MAP',['../classAIServer_1_1MAP.html',1,'AIServer']]],
   ['mapped_5fregion_5fimpl_18',['mapped_region_impl',['../structmapped__region__impl.html',1,'']]],
-  ['mappedfilehandle_19',['MappedFileHandle',['../classFileReader.html#ae47f3c617ed07468d46d3b97e9ffb02d',1,'FileReader']]],
+  ['mappedfileregion_19',['MappedFileRegion',['../classFileReader.html#add6605aae3b4c33c4272c6bab94b55fe',1,'FileReader']]],
   ['matrix44test_20',['Matrix44Test',['../classMatrix44Test.html',1,'']]],
   ['maxgain_21',['MaxGain',['../structSoundSettings.html#a64187a7870c8bbf30ce6d35fc76b1e94',1,'SoundSettings']]],
   ['memory_22',['Memory',['../classFileReader.html#a19231f5ffb47b68ff1e33d71dcc30edf',1,'FileReader']]],

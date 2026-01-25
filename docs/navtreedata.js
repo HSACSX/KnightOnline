@@ -64,8 +64,8 @@ var NAVTREEINDEX =
 "classAppThread.html#a739db39ea284bce3526859c3d0464bc7",
 "classCN3CPlug__Cloak.html",
 "classCUINPCChangeEvent.html",
-"db-library_2pch_8cpp_source.html",
-"struct____KnightsInfoBase.html"
+"crc32_8cpp_source.html",
+"struct____InfoSelectedIcon.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

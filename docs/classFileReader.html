@@ -112,9 +112,9 @@ $(function(){initNavTree('classFileReader.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae47f3c617ed07468d46d3b97e9ffb02d" id="r_ae47f3c617ed07468d46d3b97e9ffb02d"><td class="memItemLeft" align="right" valign="top">LLFIO_V2_NAMESPACE::mapped_file_handle &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47f3c617ed07468d46d3b97e9ffb02d">MappedFileHandle</a> ()</td></tr>
-<tr class="memdesc:ae47f3c617ed07468d46d3b97e9ffb02d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the underlying mapped file handle. Intended only for testing.  <br /></td></tr>
-<tr class="separator:ae47f3c617ed07468d46d3b97e9ffb02d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6605aae3b4c33c4272c6bab94b55fe" id="r_add6605aae3b4c33c4272c6bab94b55fe"><td class="memItemLeft" align="right" valign="top">boost::interprocess::mapped_region &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add6605aae3b4c33c4272c6bab94b55fe">MappedFileRegion</a> ()</td></tr>
+<tr class="memdesc:add6605aae3b4c33c4272c6bab94b55fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the underlying mapped file region. Intended only for testing.  <br /></td></tr>
+<tr class="separator:add6605aae3b4c33c4272c6bab94b55fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19231f5ffb47b68ff1e33d71dcc30edf" id="r_a19231f5ffb47b68ff1e33d71dcc30edf"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19231f5ffb47b68ff1e33d71dcc30edf">Memory</a> () const</td></tr>
 <tr class="memdesc:a19231f5ffb47b68ff1e33d71dcc30edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the pointer to the mapped memory for the loaded file.  <br /></td></tr>
 <tr class="separator:a19231f5ffb47b68ff1e33d71dcc30edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,9 +161,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a45be27fe1f7975a7f385c11b35b46ee0" id="r_a45be27fe1f7975a7f385c11b35b46ee0"><td class="memItemLeft" align="right" valign="top">LLFIO_V2_NAMESPACE::mapped_file_handle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45be27fe1f7975a7f385c11b35b46ee0">_mappedFileHandle</a></td></tr>
-<tr class="memdesc:a45be27fe1f7975a7f385c11b35b46ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory-mapped file handle for read access.  <br /></td></tr>
-<tr class="separator:a45be27fe1f7975a7f385c11b35b46ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35485730a50223b44034cc4fba41d439" id="r_a35485730a50223b44034cc4fba41d439"><td class="memItemLeft" align="right" valign="top">boost::interprocess::file_mapping&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35485730a50223b44034cc4fba41d439">_mappedFileHandle</a></td></tr>
+<tr class="memdesc:a35485730a50223b44034cc4fba41d439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory-mapped file handle for read access.  <br /></td></tr>
+<tr class="separator:a35485730a50223b44034cc4fba41d439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e238b28c63bfaaa2963ae0948f9e80" id="r_aa0e238b28c63bfaaa2963ae0948f9e80"><td class="memItemLeft" align="right" valign="top">boost::interprocess::mapped_region&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0e238b28c63bfaaa2963ae0948f9e80">_mappedFileRegion</a></td></tr>
+<tr class="memdesc:aa0e238b28c63bfaaa2963ae0948f9e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory-mapped file region for read access.  <br /></td></tr>
+<tr class="separator:aa0e238b28c63bfaaa2963ae0948f9e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbbd2e90d48ed095d820a4df2e5f9f77" id="r_acbbd2e90d48ed095d820a4df2e5f9f77"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbbd2e90d48ed095d820a4df2e5f9f77">_address</a> = nullptr</td></tr>
 <tr class="memdesc:acbbd2e90d48ed095d820a4df2e5f9f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the memory-mapped data.  <br /></td></tr>
 <tr class="separator:acbbd2e90d48ed095d820a4df2e5f9f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,7 +188,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classFileReader.html" title="FileReader implements a read-only file interface.">FileReader</a> implements a read-only file interface. </p>
 <p>Provides memory-mapped reading of a file and tracks the current read offset. Writing operations are not supported. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00014">14</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00015">15</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a615dcb2443cad1f2ca123c7c0c334480" name="a615dcb2443cad1f2ca123c7c0c334480"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a615dcb2443cad1f2ca123c7c0c334480">&#9670;&#160;</a></span>FileReader()</h2>
@@ -233,7 +236,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Destroys the <a class="el" href="classFileReader.html" title="FileReader implements a read-only file interface.">FileReader</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00159">159</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00158">158</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +269,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#aab1a44929c9db7f1d5380f56f669caf5">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00145">145</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00143">143</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -304,7 +307,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a8e232e151a4d1482aab21c8126277af5">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00039">39</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00037">37</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -335,12 +338,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#ac7be67d3745335a0447d4d2a917a7126">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00140">140</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00138">138</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ae47f3c617ed07468d46d3b97e9ffb02d" name="ae47f3c617ed07468d46d3b97e9ffb02d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae47f3c617ed07468d46d3b97e9ffb02d">&#9670;&#160;</a></span>MappedFileHandle()</h2>
+<a id="add6605aae3b4c33c4272c6bab94b55fe" name="add6605aae3b4c33c4272c6bab94b55fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add6605aae3b4c33c4272c6bab94b55fe">&#9670;&#160;</a></span>MappedFileRegion()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,7 +352,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">LLFIO_V2_NAMESPACE::mapped_file_handle &amp; FileReader::MappedFileHandle </td>
+          <td class="memname">boost::interprocess::mapped_region &amp; FileReader::MappedFileRegion </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -362,10 +365,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the underlying mapped file handle. Intended only for testing. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the mapped_file_handle used internally. </dd></dl>
+<p>Gets the underlying mapped file region. Intended only for testing. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the mapped_region used internally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00019">19</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00020">20</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
 
 </div>
 </div>
@@ -395,7 +398,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the pointer to the mapped memory for the loaded file. </p>
 <dl class="section return"><dt>Returns</dt><dd>the pointer to the mapped memory for the loaded file. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00026">26</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00027">27</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
 
 </div>
 </div>
@@ -483,7 +486,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00045">45</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00043">43</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -527,7 +530,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a34b5ff315242f8204cf82de02b4f3d4a">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00096">96</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00094">94</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -576,7 +579,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00089">89</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8cpp_source.html#l00087">87</a> of file <a class="el" href="FileReader_8cpp_source.html">FileReader.cpp</a>.</p>
 
 </div>
 </div>
@@ -603,12 +606,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Pointer to the memory-mapped data. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00079">79</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00085">85</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
 
 </div>
 </div>
-<a id="a45be27fe1f7975a7f385c11b35b46ee0" name="a45be27fe1f7975a7f385c11b35b46ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45be27fe1f7975a7f385c11b35b46ee0">&#9670;&#160;</a></span>_mappedFileHandle</h2>
+<a id="a35485730a50223b44034cc4fba41d439" name="a35485730a50223b44034cc4fba41d439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35485730a50223b44034cc4fba41d439">&#9670;&#160;</a></span>_mappedFileHandle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -617,7 +620,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">LLFIO_V2_NAMESPACE::mapped_file_handle FileReader::_mappedFileHandle</td>
+          <td class="memname">boost::interprocess::file_mapping FileReader::_mappedFileHandle</td>
         </tr>
       </table>
   </td>
@@ -629,7 +632,33 @@ Protected Attributes</h2></td></tr>
 
 <p>Memory-mapped file handle for read access. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00078">78</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00079">79</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
+
+</div>
+</div>
+<a id="aa0e238b28c63bfaaa2963ae0948f9e80" name="aa0e238b28c63bfaaa2963ae0948f9e80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e238b28c63bfaaa2963ae0948f9e80">&#9670;&#160;</a></span>_mappedFileRegion</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::interprocess::mapped_region FileReader::_mappedFileRegion</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Memory-mapped file region for read access. </p>
+
+<p class="definition">Definition at line <a class="el" href="FileReader_8h_source.html#l00082">82</a> of file <a class="el" href="FileReader_8h_source.html">FileReader.h</a>.</p>
 
 </div>
 </div>

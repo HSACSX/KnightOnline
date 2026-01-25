@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"struct____InfoSelectedIcon.html":[2,0,38],
+"struct____InfoTradeSellBBS.html":[2,0,39],
 "struct____KnightsInfoBase.html":[2,0,40],
 "struct____KnightsInfoExt.html":[2,0,41],
 "struct____KnightsMemberInfo.html":[2,0,42],

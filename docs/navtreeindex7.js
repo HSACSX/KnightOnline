@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"crc32_8cpp_source.html":[3,0,0,6,4],
+"crc32_8h_source.html":[3,0,0,6,5],
 "db-library_2pch_8cpp_source.html":[3,0,0,1,9],
 "db-library_2pch_8h_source.html":[3,0,0,1,10],
 "db__resources_8h_source.html":[3,0,0,5,2,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "struct____InfoPartyOrForce.html":[2,0,34],
 "struct____InfoPlayerBase.html":[2,0,35],
 "struct____InfoPlayerMySelf.html":[2,0,36],
-"struct____InfoPlayerOther.html":[2,0,37],
-"struct____InfoSelectedIcon.html":[2,0,38],
-"struct____InfoTradeSellBBS.html":[2,0,39]
+"struct____InfoPlayerOther.html":[2,0,37]
 };

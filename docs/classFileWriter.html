@@ -99,6 +99,7 @@ $(function(){initNavTree('classFileWriter.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classFileWriter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">FileWriter Class Reference</div></div>
@@ -156,11 +157,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a651de32b8cfcbc2ef5f8f9bc1caee47c inherit pub_methods_classFile"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the file is currently open.  <br /></td></tr>
 <tr class="separator:a651de32b8cfcbc2ef5f8f9bc1caee47c inherit pub_methods_classFile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8cff57026c7856f7e4dc3c0c7902a86c" id="r_a8cff57026c7856f7e4dc3c0c7902a86c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cff57026c7856f7e4dc3c0c7902a86c">FlushImpl</a> ()</td></tr>
+<tr class="memdesc:a8cff57026c7856f7e4dc3c0c7902a86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes any buffered writes to disk.  <br /></td></tr>
+<tr class="separator:a8cff57026c7856f7e4dc3c0c7902a86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:af324078e81eca81114ebd6c104ecc43e" id="r_af324078e81eca81114ebd6c104ecc43e"><td class="memItemLeft" align="right" valign="top">LLFIO_V2_NAMESPACE::file_handle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af324078e81eca81114ebd6c104ecc43e">_fileHandle</a></td></tr>
-<tr class="memdesc:af324078e81eca81114ebd6c104ecc43e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFile.html" title="Abstract base class representing a generic file interface.">File</a> handle used for writing.  <br /></td></tr>
-<tr class="separator:af324078e81eca81114ebd6c104ecc43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56682e033b067cbbe99a3fe9f62b3c1f" id="r_a56682e033b067cbbe99a3fe9f62b3c1f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56682e033b067cbbe99a3fe9f62b3c1f">_fileHandle</a> = nullptr</td></tr>
+<tr class="memdesc:a56682e033b067cbbe99a3fe9f62b3c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFile.html" title="Abstract base class representing a generic file interface.">File</a> handle used for writing.  <br /></td></tr>
+<tr class="separator:a56682e033b067cbbe99a3fe9f62b3c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50323c2f1cc3b23c9f0b103a2ba5f161" id="r_a50323c2f1cc3b23c9f0b103a2ba5f161"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50323c2f1cc3b23c9f0b103a2ba5f161">_sizeOnDisk</a> = 0</td></tr>
 <tr class="memdesc:a50323c2f1cc3b23c9f0b103a2ba5f161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current size of the file on disk.  <br /></td></tr>
 <tr class="separator:a50323c2f1cc3b23c9f0b103a2ba5f161"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,7 +189,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classFileWriter.html" title="FileWriter implements a write-capable file interface.">FileWriter</a> implements a write-capable file interface. </p>
 <p>Supports writing to a file, seeking, and flushing data to disk. Reading operations are not supported. Files may be extended by seeking past the current size. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00014">14</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00012">12</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa6b362f5b306dd3409af81a463e97f40" name="aa6b362f5b306dd3409af81a463e97f40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6b362f5b306dd3409af81a463e97f40">&#9670;&#160;</a></span>FileWriter()</h2>
@@ -201,7 +208,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classFileWriter.html" title="FileWriter implements a write-capable file interface.">FileWriter</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00008">8</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00006">6</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +237,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Destroys the <a class="el" href="classFileWriter.html" title="FileWriter implements a write-capable file interface.">FileWriter</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00197">197</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00215">215</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +270,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#aab1a44929c9db7f1d5380f56f669caf5">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00181">181</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00198">198</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +308,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a8e232e151a4d1482aab21c8126277af5">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00046">46</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00050">50</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -333,7 +340,37 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#ac7be67d3745335a0447d4d2a917a7126">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00161">161</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00168">168</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8cff57026c7856f7e4dc3c0c7902a86c" name="a8cff57026c7856f7e4dc3c0c7902a86c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cff57026c7856f7e4dc3c0c7902a86c">&#9670;&#160;</a></span>FlushImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileWriter::FlushImpl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flushes any buffered writes to disk. </p>
+<dl class="section note"><dt>Note</dt><dd>This will expand the on-disk file if the offset moved beyond the previous size. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00173">173</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -372,7 +409,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a11016e6aca368986a418b1b1b5fe42a6">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00012">12</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00010">10</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +458,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a3d5bcd83f8e56ead8b6c19c112a6d07a">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00068">68</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00077">77</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -465,7 +502,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a34b5ff315242f8204cf82de02b4f3d4a">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00115">115</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00120">120</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
@@ -495,7 +532,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the size of the file on disk. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current file size on disk. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00019">19</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00017">17</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
 
 </div>
 </div>
@@ -545,13 +582,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classFile.html#a072f38a4bcdfa02fede967f2c9505780">File</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00074">74</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8cpp_source.html#l00083">83</a> of file <a class="el" href="FileWriter_8cpp_source.html">FileWriter.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af324078e81eca81114ebd6c104ecc43e" name="af324078e81eca81114ebd6c104ecc43e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af324078e81eca81114ebd6c104ecc43e">&#9670;&#160;</a></span>_fileHandle</h2>
+<a id="a56682e033b067cbbe99a3fe9f62b3c1f" name="a56682e033b067cbbe99a3fe9f62b3c1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56682e033b067cbbe99a3fe9f62b3c1f">&#9670;&#160;</a></span>_fileHandle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,7 +597,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">LLFIO_V2_NAMESPACE::file_handle FileWriter::_fileHandle</td>
+          <td class="memname">void* FileWriter::_fileHandle = nullptr</td>
         </tr>
       </table>
   </td>
@@ -572,7 +609,7 @@ Protected Attributes</h2></td></tr>
 
 <p><a class="el" href="classFile.html" title="Abstract base class representing a generic file interface.">File</a> handle used for writing. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00076">76</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00081">81</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +635,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Current size of the file on disk. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00077">77</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FileWriter_8h_source.html#l00084">84</a> of file <a class="el" href="FileWriter_8h_source.html">FileWriter.h</a>.</p>
 
 </div>
 </div>
