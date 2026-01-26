@@ -64,30 +64,14 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1
 
     - uses: lukka/get-cmake@latest
-    
-          
-    - name: Cache CMake dependency source code
-      uses: actions/cache@v4
-      env:
-        cache-name: cache-cmake-dependency-sources
-      with:
-        # CMake cache is at ${{github.workspace}}/build/_deps but we only will cache folders ending in '-src' to cache source code
-        path: ${{github.workspace}}/build/_deps/*-src
-        # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
-        key: ${{ env.cache-name }}-windows-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
-        # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
-        restore-keys: |
-          ${{ env.cache-name }}-windows-
             
     - name: Cache CMake dependency build objects
       uses: actions/cache@v4
       env:
         cache-name: cache-cmake-dependency-builds
       with:
-        # CMake cache is at ${{github.workspace}}/build/_deps but we only care about the folders ending in -build or -subbuild
         path: |
-          ${{github.workspace}}/build/_deps/*-build
-          ${{github.workspace}}/build/_deps/*-subbuild
+          ${{ github.workspace }}/build
         # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
         key: ${{ env.cache-name }}-windows-${{ matrix.BUILD_CONFIGURATION }}-${{ matrix.BUILD_PLATFORM }}-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
         # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
@@ -158,19 +142,6 @@ jobs:
           echo "CC=$CC" >> $GITHUB_ENV
           echo "CXX=$CXX" >> $GITHUB_ENV
           
-      - name: Cache CMake dependency source code
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-cmake-dependency-sources
-        with:
-          # CMake cache is at ${{github.workspace}}/build/_deps but we only will cache folders ending in '-src' to cache source code
-          path: ${{github.workspace}}/build/_deps/*-src
-          # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
-          key: ${{ env.cache-name }}-ubuntu-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
-          # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
-          restore-keys: |
-            ${{ env.cache-name }}-ubuntu-
-            
       - name: Cache CMake dependency build objects
         uses: actions/cache@v4
         env:
@@ -178,8 +149,7 @@ jobs:
         with:
           # CMake cache is at ${{github.workspace}}/build/_deps but we only care about the folders ending in -build or -subbuild
           path: |
-            ${{github.workspace}}/build/_deps/*-build
-            ${{github.workspace}}/build/_deps/*-subbuild
+            ${{ github.workspace }}/build
           # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
           key: ${{ env.cache-name }}-ubuntu-${{ matrix.COMPILER }}-${{ matrix.BUILD_CONFIGURATION }}-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
           # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
@@ -233,19 +203,6 @@ jobs:
           export CC=clang
           export CXX=clang++
           
-      - name: Cache CMake dependency source code
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-cmake-dependency-sources
-        with:
-          # CMake cache is at ${{github.workspace}}/build/_deps but we only will cache folders ending in '-src' to cache source code
-          path: ${{github.workspace}}/build/_deps/*-src
-          # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
-          key: ${{ env.cache-name }}-macosx-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
-          # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
-          restore-keys: |
-            ${{ env.cache-name }}-macosx-
-
       - name: Cache CMake dependency build objects
         uses: actions/cache@v4
         env:
@@ -253,8 +210,7 @@ jobs:
         with:
           # CMake cache is at ${{github.workspace}}/build/_deps but we only care about the folders ending in -build or -subbuild
           path: |
-            ${{github.workspace}}/build/_deps/*-build
-            ${{github.workspace}}/build/_deps/*-subbuild
+            ${{ github.workspace }}/build
           # Cache hash is dependent on CMakeLists files anywhere as these can change what's in the cache, as well as cmake modules files
           key: ${{ env.cache-name }}-macosx-${{ matrix.COMPILER }}-${{ matrix.BUILD_CONFIGURATION }}-${{ hashFiles('CMakeLists.txt', 'cmake/**') }}
           # it's acceptable to reuse caches for different CMakeLists content if exact match is not available
