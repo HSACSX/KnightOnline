@@ -55,11 +55,8 @@ target_link_libraries(db-models PUBLIC nanodbc)
 
 # Expose include path
 target_include_directories(db-models PUBLIC
-  "${db_models_SOURCE_DIR}/../"
-)
-
-target_include_directories(db-models PRIVATE
-  "${db_models_SOURCE_DIR}/"
+  "${db_models_SOURCE_DIR}/../" # for <db-models/*>
+  "${db_models_SOURCE_DIR}/"    # for mostly internal header refs which leak out, e.g. <ModelUtil/ModelUtil.h>
 )
 
 # Setup warning levels
