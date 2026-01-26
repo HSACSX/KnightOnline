@@ -8,7 +8,7 @@ fetchcontent_declare(
   GIT_TAG               "v0.0.2"
   GIT_PROGRESS          ON
   GIT_SHALLOW           ON
-  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/db-models"
+  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/db-models-src"
 
   EXCLUDE_FROM_ALL
 )
