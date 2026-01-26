@@ -58,6 +58,10 @@ target_include_directories(db-models PUBLIC
   "${db_models_SOURCE_DIR}/../"
 )
 
+target_include_directories(db-models PRIVATE
+  "${db_models_SOURCE_DIR}/"
+)
+
 # Setup warning levels
 target_compile_options(db-models PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W3>
