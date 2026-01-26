@@ -8,7 +8,7 @@ fetchcontent_declare(
   GIT_TAG               "v0.0.2"
   GIT_PROGRESS          ON
   GIT_SHALLOW           ON
-  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/db-models-src"
+  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/db-models-src/db-models"
 
   EXCLUDE_FROM_ALL
 )
@@ -55,7 +55,7 @@ target_link_libraries(db-models PUBLIC nanodbc)
 
 # Expose include path
 target_include_directories(db-models PUBLIC
-  "${db_models_SOURCE_DIR}/"
+  "${db_models_SOURCE_DIR}/../"
 )
 
 # Setup warning levels

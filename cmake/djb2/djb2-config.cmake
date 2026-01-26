@@ -9,7 +9,7 @@ fetchcontent_declare(
   GIT_PROGRESS          ON
   GIT_SHALLOW           ON
   SOURCE_SUBDIR         "MISSING_DIRECTORY" # intentionally nonexistent to bypass their CMakeLists.txt
-  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/djb2-src"
+  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/djb2-src/djb2"
 
   EXCLUDE_FROM_ALL
 )

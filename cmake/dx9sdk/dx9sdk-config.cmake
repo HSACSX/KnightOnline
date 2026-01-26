@@ -10,7 +10,7 @@ fetchcontent_declare(
   GIT_TAG               "v9.0-OpenKO"
   GIT_PROGRESS          ON
   GIT_SHALLOW           ON
-  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/dx9sdk-src"
+  SOURCE_DIR            "${FETCHCONTENT_BASE_DIR}/dx9sdk-src/dx9sdk"
 
   EXCLUDE_FROM_ALL
 )
