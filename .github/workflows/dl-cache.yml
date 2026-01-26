@@ -54,8 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
-      CACHE_KEY: cache-cmake-dependency-sources-4fb42059c2eadb3771849df324f034224fc65a5a91215924de69c627a3242455
-      CACHE_VERSION: 45260eba6454e67eec257c20a82ccf969850af30094907f14240e66ad9a530ea
+      CACHE_KEY: cache-cmake-dependency-builds-windows-Release-x64-2eb7d5713a2c8fccd29729c78db86a81dfd1c6acb450268b316e073b5154ef1c
+      CACHE_VERSION: 2d28aa2b1b734eddcbf5a358b4ac7cca84036e58d04b431cd5bbc3db1059b7bc
 
     steps:
       - name: Checkout
