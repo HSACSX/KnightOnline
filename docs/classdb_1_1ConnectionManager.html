@@ -142,6 +142,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2947c214972eda40b682601380ec389f" id="r_a2947c214972eda40b682601380ec389f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2947c214972eda40b682601380ec389f">GetOdbcConnectionString</a> (modelUtil::DbType dbType)</td></tr>
 <tr class="memdesc:a2947c214972eda40b682601380ec389f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current ODBC connection string for a given DbType, or empty string if there is none.  <br /></td></tr>
 <tr class="separator:a2947c214972eda40b682601380ec389f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2051872bdb987ef9baa90c56d06266f3" id="r_a2051872bdb987ef9baa90c56d06266f3"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2051872bdb987ef9baa90c56d06266f3">GetOdbcConnectionString</a> (const <a class="el" href="structdb_1_1DatasourceConfig.html">DatasourceConfig</a> *config)</td></tr>
+<tr class="memdesc:a2051872bdb987ef9baa90c56d06266f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current ODBC connection string for a given config, or empty string if there is none.  <br /></td></tr>
+<tr class="separator:a2051872bdb987ef9baa90c56d06266f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86332add919a889966656a317cb809b0" id="r_a86332add919a889966656a317cb809b0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86332add919a889966656a317cb809b0">ExpireUnusedPoolConnections</a> ()</td></tr>
 <tr class="separator:a86332add919a889966656a317cb809b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -250,7 +253,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00202">202</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00203">203</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +361,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00115">115</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00116">116</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +441,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00133">133</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00134">134</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -492,7 +495,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00074">74</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00075">75</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -519,7 +522,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00152">152</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00153">153</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -577,7 +580,7 @@ Friends</h2></td></tr>
 
 <p>fetch the associated previously stored database config using the code-generated dbType </p>
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00103">103</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00104">104</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -604,12 +607,41 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00064">64</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00067">67</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+
+</div>
+</div>
+<a id="a2051872bdb987ef9baa90c56d06266f3" name="a2051872bdb987ef9baa90c56d06266f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2051872bdb987ef9baa90c56d06266f3">&#9670;&#160;</a></span>GetOdbcConnectionString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string db::ConnectionManager::GetOdbcConnectionString </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structdb_1_1DatasourceConfig.html">DatasourceConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the current ODBC connection string for a given config, or empty string if there is none. </p>
+
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00066">66</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
 <a id="a2947c214972eda40b682601380ec389f" name="a2947c214972eda40b682601380ec389f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2947c214972eda40b682601380ec389f">&#9670;&#160;</a></span>GetOdbcConnectionString()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2947c214972eda40b682601380ec389f">&#9670;&#160;</a></span>GetOdbcConnectionString() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,7 +751,7 @@ Friends</h2></td></tr>
 
 <p>fetch the associated previously stored database config using the code-generated dbType </p>
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00079">79</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8cpp_source.html#l00080">80</a> of file <a class="el" href="ConnectionManager_8cpp_source.html">ConnectionManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -769,7 +801,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00112">112</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00115">115</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -793,7 +825,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00111">111</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00114">114</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -817,7 +849,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00121">121</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00124">124</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -841,7 +873,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00120">120</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00123">123</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -865,7 +897,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00124">124</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00127">127</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -889,7 +921,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00125">125</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00128">128</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
@@ -913,7 +945,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00109">109</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ConnectionManager_8h_source.html#l00112">112</a> of file <a class="el" href="ConnectionManager_8h_source.html">ConnectionManager.h</a>.</p>
 
 </div>
 </div>
