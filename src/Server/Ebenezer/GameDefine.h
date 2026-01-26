@@ -6,7 +6,7 @@
 #include <shared/globals.h>
 #include <shared-server/_USER_DATA.h>
 
-#include <Ebenezer/model/EbenezerModel.h>
+#include <db-models/Ebenezer/model/EbenezerModel.h>
 
 namespace Ebenezer
 {

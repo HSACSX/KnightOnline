@@ -6,7 +6,7 @@
 #include <memory>
 #include "Connection.h"
 
-#include <ModelUtil/ModelUtil.h>
+#include <db-models/ModelUtil/ModelUtil.h>
 
 namespace db
 {

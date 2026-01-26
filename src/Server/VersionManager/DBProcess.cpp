@@ -16,8 +16,8 @@
 #include <nanodbc/nanodbc.h>
 #include <spdlog/spdlog.h>
 
-#include <VersionManager/binder/VersionManagerBinder.h>
-#include <StoredProc/StoredProc.h>
+#include <db-models/VersionManager/binder/VersionManagerBinder.h>
+#include <db-models/StoredProc/StoredProc.h>
 
 namespace VersionManager
 {

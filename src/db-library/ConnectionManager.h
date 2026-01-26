@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <ModelUtil/ModelUtil.h>
+#include <db-models/ModelUtil/ModelUtil.h>
 
 #include <cassert>
 #include <memory>

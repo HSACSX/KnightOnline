@@ -15,8 +15,8 @@
 #include <nanodbc/nanodbc.h>
 #include <spdlog/spdlog.h>
 
-#include <Aujard/binder/AujardBinder.h>
-#include <StoredProc/StoredProc.h>
+#include <db-models/Aujard/binder/AujardBinder.h>
+#include <db-models/StoredProc/StoredProc.h>
 
 #include <string>
 

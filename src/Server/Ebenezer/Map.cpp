@@ -6,7 +6,7 @@
 #include "EbenezerApp.h"
 
 #include <db-library/RecordSetLoader.h>
-#include <Ebenezer/binder/EbenezerBinder.h>
+#include <db-models/Ebenezer/binder/EbenezerBinder.h>
 #include <FileIO/File.h>
 
 #include <cfloat>

@@ -2,8 +2,8 @@
 #include "AujardApp.h"
 #include "AujardReadQueueThread.h"
 
-#include <Aujard/binder/AujardBinder.h>
-#include <Aujard/model/AujardModel.h>
+#include <db-models/Aujard/binder/AujardBinder.h>
+#include <db-models/Aujard/model/AujardModel.h>
 
 #include <db-library/ConnectionManager.h>
 #include <db-library/RecordSetLoader_STLMap.h>

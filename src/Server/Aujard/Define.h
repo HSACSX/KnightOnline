@@ -8,7 +8,7 @@
 #include <shared/globals.h>
 #include <shared-server/_USER_DATA.h>
 
-#include <Aujard/model/AujardModel.h>
+#include <db-models/Aujard/model/AujardModel.h>
 
 #include <string_view>
 

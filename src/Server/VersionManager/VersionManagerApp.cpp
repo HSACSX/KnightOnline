@@ -9,7 +9,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include <VersionManager/binder/VersionManagerBinder.h>
+#include <db-models/VersionManager/binder/VersionManagerBinder.h>
 
 using namespace std::chrono_literals;
 

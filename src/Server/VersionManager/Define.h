@@ -14,7 +14,7 @@
 #include <shared/globals.h>
 #include <shared-server/STLMap.h>
 
-#include <VersionManager/model/VersionManagerModel.h>
+#include <db-models/VersionManager/model/VersionManagerModel.h>
 
 namespace VersionManager
 {

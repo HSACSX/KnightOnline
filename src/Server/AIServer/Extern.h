@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <AIServer/model/AIServerModel.h>
+#include <db-models/AIServer/model/AIServerModel.h>
 
 namespace AIServer
 {

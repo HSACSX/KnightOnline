@@ -23,7 +23,7 @@
 #include <db-library/RecordSetLoader_STLMap.h>
 #include <db-library/RecordSetLoader_Vector.h>
 
-#include <AIServer/binder/AIServerBinder.h>
+#include <db-models/AIServer/binder/AIServerBinder.h>
 
 #include <cmath>
 

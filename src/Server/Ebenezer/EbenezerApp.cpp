@@ -20,7 +20,7 @@
 #include <db-library/RecordSetLoader_STLMap.h>
 #include <db-library/RecordSetLoader_Vector.h>
 
-#include <Ebenezer/binder/EbenezerBinder.h>
+#include <db-models/Ebenezer/binder/EbenezerBinder.h>
 
 #include <fstream>
 
