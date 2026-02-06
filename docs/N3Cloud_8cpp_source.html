@@ -110,7 +110,7 @@ $(function(){initNavTree('N3Cloud_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>CN3Cloud::CN3Cloud()</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_CLOUD; i++)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; NUM_CLOUD; i++)</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        m_pTextures[i] = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    m_Color1.ChangeColor(0xffffffff);</div>
@@ -130,7 +130,7 @@ $(function(){initNavTree('N3Cloud_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>CN3Cloud::~CN3Cloud()</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_CLOUD; ++i)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; NUM_CLOUD; ++i)</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        s_MngTex.Delete(&amp;m_pTextures[i]);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
@@ -138,7 +138,7 @@ $(function(){initNavTree('N3Cloud_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    CN3Base::Release();</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_CLOUD; ++i)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; NUM_CLOUD; ++i)</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        s_MngTex.Delete(&amp;m_pTextures[i]);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        m_szTextures[i].clear();</div>
@@ -351,7 +351,7 @@ $(function(){initNavTree('N3Cloud_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>{</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    Release();</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_CLOUD; i++)</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; NUM_CLOUD; i++)</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        m_szTextures[i] = pszFNs[i];</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="comment">//  3단일때</span></div>

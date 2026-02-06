@@ -1075,149 +1075,146 @@ $(function(){initNavTree('SubProcPerTrade_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
 <div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    <span class="comment">// 아이템 인벤토리 INV 영역에 추가..</span></div>
 <div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>    <span class="comment">// 아이템이 들어갈 수 있는지 확인..</span></div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>    <span class="keywordflow">if</span> (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos] != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    {</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>        <span class="keywordflow">if</span> (iItemID</div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>            != (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;pItemBasic-&gt;dwID / 1000 * 1000)</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>                   + (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;pItemExt-&gt;dwID % 1000))</div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>    spItem                  = m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos];</div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    <span class="keywordflow">if</span> (spItem != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    {</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>        <span class="keyword">const</span> <span class="keywordtype">int</span> iInvItemID = spItem-&gt;GetItemID();</div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>        <span class="keywordflow">if</span> (iItemID != iInvItemID)</div>
 <div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>        {</div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>            <span class="comment">// 기존 아이콘을 클리어..</span></div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>            spItem = m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos];</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>            <span class="comment">// 매니저에서 제거..</span></div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>            m_pUIPerTradeDlg-&gt;RemoveChild(spItem-&gt;pUIIcon);</div>
 <div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span> </div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>            <span class="comment">// 매니저에서 제거..</span></div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>            m_pUIPerTradeDlg-&gt;RemoveChild(spItem-&gt;pUIIcon);</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span> </div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>            <span class="comment">// 리소스 제거..</span></div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>            spItem-&gt;pUIIcon-&gt;Release();</div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>            <span class="keyword">delete</span> spItem-&gt;pUIIcon;</div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>            spItem-&gt;pUIIcon = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>            <span class="keyword">delete</span> spItem;</div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>            spItem                                     = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>            m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos] = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span> </div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>            <span class="comment">// 서버가 준 아이디로 아이콘을 만든다..</span></div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>        }</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>        {</div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>            <span class="keywordflow">switch</span> (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;pItemBasic-&gt;byContable)</div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>            {</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>                <span class="keywordflow">case</span> UIITEM_TYPE_COUNTABLE: <span class="comment">// 화살 같은 종류..</span></div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>                    m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount += iCount;</div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>                    <span class="keywordflow">if</span> (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount &gt; UIITEM_COUNT_MANY)</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>                        m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount = UIITEM_COUNT_MANY;</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span> </div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                <span class="keywordflow">case</span> UIITEM_TYPE_COUNTABLE_SMALL: <span class="comment">// 물약같은 종류..</span></div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                    m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount += iCount;</div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>                    <span class="keywordflow">if</span> (m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount &gt; UIITEM_COUNT_FEW)</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>                        m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos]-&gt;iCount = UIITEM_COUNT_FEW;</div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span> </div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>            }</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>        }</div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>    }</div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span> </div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>    <span class="comment">// 아이템 만들어서 넣기..</span></div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>    __TABLE_ITEM_BASIC* pItem  = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>    __TABLE_ITEM_EXT* pItemExt = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>    pItem                      = s_pTbl_Items_Basic.Find(iItemID / 1000 * 1000); <span class="comment">// 열 데이터 얻기..</span></div>
-<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>    <span class="keywordflow">if</span> (pItem &amp;&amp; pItem-&gt;byExtIndex &gt;= 0 &amp;&amp; pItem-&gt;byExtIndex &lt; MAX_ITEM_EXTENSION)</div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>        pItemExt = CGameBase::s_pTbl_Items_Exts[pItem-&gt;byExtIndex].Find(iItemID % 1000);</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pItem || <span class="keyword">nullptr</span> == pItemExt)</div>
-<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    {</div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>        __ASSERT(0, <span class="stringliteral">&quot;아이템 포인터 테이블에 없음!!&quot;</span>);</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>    }</div>
-<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span> </div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>    std::string szIconFN;</div>
-<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>    e_PartPosition ePart = PART_POS_UNKNOWN;</div>
-<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>    e_PlugPosition ePlug = PLUG_POS_UNKNOWN;</div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    CGameBase::MakeResrcFileNameForUPC(</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>        pItem, pItemExt, <span class="keyword">nullptr</span>, &amp;szIconFN, ePart, ePlug, RACE_UNKNOWN); <span class="comment">// 아이템에 따른 파일 이름을 만들어서</span></div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span> </div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    spItem              = <span class="keyword">new</span> __IconItemSkill;</div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    spItem-&gt;pItemBasic  = pItem;</div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    spItem-&gt;pItemExt    = pItemExt;</div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    spItem-&gt;szIconFN    = szIconFN; <span class="comment">// 아이콘 파일 이름 복사..</span></div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    spItem-&gt;iCount      = iCount;</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    spItem-&gt;iDurability = iDurability;</div>
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span> </div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>    <span class="keywordtype">float</span> fUVAspect     = (float) 45.0f / (<span class="keywordtype">float</span>) 64.0f;</div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>    spItem-&gt;pUIIcon     = <span class="keyword">new</span> CN3UIIcon;</div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    spItem-&gt;pUIIcon-&gt;Init(m_pUIPerTradeDlg);</div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    spItem-&gt;pUIIcon-&gt;SetTex(szIconFN);</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>    spItem-&gt;pUIIcon-&gt;SetUVRect(0, 0, fUVAspect, fUVAspect);</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>    spItem-&gt;pUIIcon-&gt;SetUIType(UI_TYPE_ICON);</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>    spItem-&gt;pUIIcon-&gt;SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);</div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>    spItem-&gt;pUIIcon-&gt;SetVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span> </div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>    CN3UIArea* pArea = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>    pArea            = m_pUIPerTradeDlg-&gt;GetChildAreaByiOrder(UI_AREA_TYPE_PER_TRADE_INV, bItemPos);</div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>    <span class="keywordflow">if</span> (pArea)</div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>    {</div>
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>        spItem-&gt;pUIIcon-&gt;SetRegion(pArea-&gt;GetRegion());</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>        spItem-&gt;pUIIcon-&gt;SetMoveRect(pArea-&gt;GetRegion());</div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>    }</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>            <span class="comment">// 리소스 제거..</span></div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>            spItem-&gt;pUIIcon-&gt;Release();</div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>            <span class="keyword">delete</span> spItem-&gt;pUIIcon;</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>            spItem-&gt;pUIIcon = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>            <span class="keyword">delete</span> spItem;</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>            spItem                                     = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>            m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos] = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span> </div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>            <span class="comment">// 서버가 준 아이디로 아이콘을 만든다..</span></div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>        }</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>        {</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>            <span class="keywordflow">switch</span> (spItem-&gt;pItemBasic-&gt;byContable)</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>            {</div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>                <span class="keywordflow">case</span> UIITEM_TYPE_COUNTABLE: <span class="comment">// 화살 같은 종류..</span></div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>                    spItem-&gt;iCount += iCount;</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>                    <span class="keywordflow">if</span> (spItem-&gt;iCount &gt; UIITEM_COUNT_MANY)</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>                        spItem-&gt;iCount = UIITEM_COUNT_MANY;</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span> </div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>                <span class="keywordflow">case</span> UIITEM_TYPE_COUNTABLE_SMALL: <span class="comment">// 물약같은 종류..</span></div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                    spItem-&gt;iCount += iCount;</div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>                    <span class="keywordflow">if</span> (spItem-&gt;iCount &gt; UIITEM_COUNT_FEW)</div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                        spItem-&gt;iCount = UIITEM_COUNT_FEW;</div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span> </div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>            }</div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>        }</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>    }</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span> </div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>    <span class="comment">// 아이템 만들어서 넣기..</span></div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>    __TABLE_ITEM_BASIC* pItem  = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>    __TABLE_ITEM_EXT* pItemExt = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>    pItem                      = s_pTbl_Items_Basic.Find(iItemID / 1000 * 1000); <span class="comment">// 열 데이터 얻기..</span></div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>    <span class="keywordflow">if</span> (pItem &amp;&amp; pItem-&gt;byExtIndex &gt;= 0 &amp;&amp; pItem-&gt;byExtIndex &lt; MAX_ITEM_EXTENSION)</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>        pItemExt = CGameBase::s_pTbl_Items_Exts[pItem-&gt;byExtIndex].Find(iItemID % 1000);</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == pItem || <span class="keyword">nullptr</span> == pItemExt)</div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>    {</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>        __ASSERT(0, <span class="stringliteral">&quot;아이템 포인터 테이블에 없음!!&quot;</span>);</div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    }</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span> </div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>    std::string szIconFN;</div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>    e_PartPosition ePart = PART_POS_UNKNOWN;</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>    e_PlugPosition ePlug = PLUG_POS_UNKNOWN;</div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>    CGameBase::MakeResrcFileNameForUPC(</div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>        pItem, pItemExt, <span class="keyword">nullptr</span>, &amp;szIconFN, ePart, ePlug, RACE_UNKNOWN); <span class="comment">// 아이템에 따른 파일 이름을 만들어서</span></div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span> </div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    spItem              = <span class="keyword">new</span> __IconItemSkill;</div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>    spItem-&gt;pItemBasic  = pItem;</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    spItem-&gt;pItemExt    = pItemExt;</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    spItem-&gt;szIconFN    = szIconFN; <span class="comment">// 아이콘 파일 이름 복사..</span></div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    spItem-&gt;iCount      = iCount;</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    spItem-&gt;iDurability = iDurability;</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span> </div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    <span class="keywordtype">float</span> fUVAspect     = (float) 45.0f / (<span class="keywordtype">float</span>) 64.0f;</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    spItem-&gt;pUIIcon     = <span class="keyword">new</span> CN3UIIcon;</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>    spItem-&gt;pUIIcon-&gt;Init(m_pUIPerTradeDlg);</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>    spItem-&gt;pUIIcon-&gt;SetTex(szIconFN);</div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>    spItem-&gt;pUIIcon-&gt;SetUVRect(0, 0, fUVAspect, fUVAspect);</div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    spItem-&gt;pUIIcon-&gt;SetUIType(UI_TYPE_ICON);</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    spItem-&gt;pUIIcon-&gt;SetStyle(UISTYLE_ICON_ITEM | UISTYLE_ICON_CERTIFICATION_NEED);</div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>    spItem-&gt;pUIIcon-&gt;SetVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span> </div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>    CN3UIArea* pArea = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>    pArea            = m_pUIPerTradeDlg-&gt;GetChildAreaByiOrder(UI_AREA_TYPE_PER_TRADE_INV, bItemPos);</div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>    <span class="keywordflow">if</span> (pArea)</div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>    {</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>        spItem-&gt;pUIIcon-&gt;SetRegion(pArea-&gt;GetRegion());</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>        spItem-&gt;pUIIcon-&gt;SetMoveRect(pArea-&gt;GetRegion());</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>    }</div>
+<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span> </div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>    <span class="keywordflow">if</span> (spItem-&gt;iDurability == 0)</div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>        spItem-&gt;pUIIcon-&gt;SetStyle(spItem-&gt;pUIIcon-&gt;GetStyle() | UISTYLE_DURABILITY_EXHAUST);</div>
 <div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span> </div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>    <span class="keywordflow">if</span> (spItem-&gt;iDurability == 0)</div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>        spItem-&gt;pUIIcon-&gt;SetStyle(spItem-&gt;pUIIcon-&gt;GetStyle() | UISTYLE_DURABILITY_EXHAUST);</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>    m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos] = spItem;</div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>}</div>
 <div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span> </div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>    m_pUIPerTradeDlg-&gt;m_pPerTradeInv[bItemPos] = spItem;</div>
-<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>}</div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span> </div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeDoneSuccessEnd()</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>{</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>    <span class="comment">// 뒷 마무리..</span></div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    PerTradeCompleteSuccess();</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>    FinalizePerTrade();</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span> </div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUISkillTreeDlg)</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>        CGameProcedure::s_pProcMain-&gt;m_pUISkillTreeDlg-&gt;UpdateDisableCheck();</div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUIHotKeyDlg)</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>        CGameProcedure::s_pProcMain-&gt;m_pUIHotKeyDlg-&gt;UpdateDisableCheck();</div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>}</div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span> </div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeDoneFail()</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>{</div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    <span class="keywordflow">if</span> (s_pOPMgr-&gt;UPCGetByID(m_iOtherID, <span class="keyword">false</span>) != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    {</div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>        std::string szMsg = fmt::format_text_resource(IDS_PER_TRADE_FAIL);</div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffffffff);</div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span> </div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>        szMsg = fmt::format_text_resource(IDS_ITEM_TOOMANY_OR_HEAVY);</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffff3b3b);</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    }</div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span> </div>
-<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    PerTradeCompleteCancel();</div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    FinalizePerTrade();</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>}</div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span> </div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeCancel()</div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>{</div>
-<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>    <span class="comment">// 메시지 박스 텍스트 표시..</span></div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>    CPlayerOther* pUPC = s_pOPMgr-&gt;UPCGetByID(m_iOtherID, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>    <span class="keywordflow">if</span> (pUPC != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>    {</div>
-<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>        std::string szMsg = fmt::format_text_resource(IDS_OTHER_PER_TRADE_CANCEL, pUPC-&gt;IDString());</div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffff3b3b);</div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>    }</div>
-<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span> </div>
-<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>    <span class="comment">// 뒷 마무리..</span></div>
-<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>    PerTradeCompleteCancel();</div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>    FinalizePerTrade();</div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>}</div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span> </div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span><span class="keywordtype">void</span> CSubProcPerTrade::ItemCountOK()</div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>{</div>
-<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span>    m_pUIPerTradeDlg-&gt;ItemCountOK();</div>
-<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>}</div>
-<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span> </div>
-<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span><span class="keywordtype">void</span> CSubProcPerTrade::ItemCountCancel()</div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>{</div>
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>    m_pUIPerTradeDlg-&gt;ItemCountCancel();</div>
-<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>}</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeDoneSuccessEnd()</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>{</div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>    <span class="comment">// 뒷 마무리..</span></div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    PerTradeCompleteSuccess();</div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>    FinalizePerTrade();</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span> </div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUISkillTreeDlg)</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>        CGameProcedure::s_pProcMain-&gt;m_pUISkillTreeDlg-&gt;UpdateDisableCheck();</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    <span class="keywordflow">if</span> (CGameProcedure::s_pProcMain-&gt;m_pUIHotKeyDlg)</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>        CGameProcedure::s_pProcMain-&gt;m_pUIHotKeyDlg-&gt;UpdateDisableCheck();</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>}</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span> </div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeDoneFail()</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>{</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    <span class="keywordflow">if</span> (s_pOPMgr-&gt;UPCGetByID(m_iOtherID, <span class="keyword">false</span>) != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    {</div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>        std::string szMsg = fmt::format_text_resource(IDS_PER_TRADE_FAIL);</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffffffff);</div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span> </div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>        szMsg = fmt::format_text_resource(IDS_ITEM_TOOMANY_OR_HEAVY);</div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffff3b3b);</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    }</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span> </div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>    PerTradeCompleteCancel();</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    FinalizePerTrade();</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>}</div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span> </div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span><span class="keywordtype">void</span> CSubProcPerTrade::ReceiveMsgPerTradeCancel()</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>{</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>    <span class="comment">// 메시지 박스 텍스트 표시..</span></div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>    CPlayerOther* pUPC = s_pOPMgr-&gt;UPCGetByID(m_iOtherID, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>    <span class="keywordflow">if</span> (pUPC != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>    {</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>        std::string szMsg = fmt::format_text_resource(IDS_OTHER_PER_TRADE_CANCEL, pUPC-&gt;IDString());</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>        CGameProcedure::s_pProcMain-&gt;MsgOutput(szMsg, 0xffff3b3b);</div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>    }</div>
+<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span> </div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>    <span class="comment">// 뒷 마무리..</span></div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>    PerTradeCompleteCancel();</div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>    FinalizePerTrade();</div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>}</div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span> </div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span><span class="keywordtype">void</span> CSubProcPerTrade::ItemCountOK()</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>{</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>    m_pUIPerTradeDlg-&gt;ItemCountOK();</div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>}</div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span> </div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span><span class="keywordtype">void</span> CSubProcPerTrade::ItemCountCancel()</div>
+<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>{</div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>    m_pUIPerTradeDlg-&gt;ItemCountCancel();</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>}</div>
 <div class="ttc" id="aclassCUIManager_html"><div class="ttname"><a href="classCUIManager.html">CUIManager</a></div><div class="ttdef"><b>Definition</b> <a href="UIManager_8h_source.html#l00015">UIManager.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

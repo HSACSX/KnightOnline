@@ -114,9 +114,9 @@ $(function(){initNavTree('Matrix44_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct____Matrix44.html">   11</a></span><span class="keyword">struct </span>__Matrix44</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    __Matrix44() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    __Matrix44(<span class="keyword">const</span> <span class="keywordtype">float</span> mtx[4][4]);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    __Matrix44(<span class="keyword">const</span> __Matrix44&amp; mtx);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    __Matrix44()                  = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    __Matrix44(<span class="keyword">const</span> __Matrix44&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    __Matrix44(<span class="keyword">const</span> <span class="keywordtype">float</span> mtx[4][4]);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    __Matrix44(<span class="keyword">const</span> <a class="code hl_struct" href="struct____Quaternion.html">__Quaternion</a>&amp; qt);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    _D3DMATRIX* toD3D()</div>

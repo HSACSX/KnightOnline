@@ -125,12 +125,12 @@ $(function(){initNavTree('N3GERain_8cpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    CN3GlobalEffect::Release();</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> CN3GERain::Tick()</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> CN3GERain::Tick(<span class="keywordtype">float</span> fFrm <span class="comment">/*= -1.0f*/</span>)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span> (!m_bActive || m_iVC &lt;= 0 || m_pVB == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    CN3GlobalEffect::Tick();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    CN3GlobalEffect::Tick(fFrm);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> iCount       = m_iVC / 2;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">int</span> iActiveCount = iCount;</div>

@@ -2514,7 +2514,7 @@ $(function(){initNavTree('UIInventory_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l02412" name="l02412"></a><span class="lineno"> 2412</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_ITEM_INVENTORY; i++)</div>
 <div class="line"><a id="l02413" name="l02413"></a><span class="lineno"> 2413</span>    {</div>
 <div class="line"><a id="l02414" name="l02414"></a><span class="lineno"> 2414</span>        __IconItemSkill* spItem = m_pMyInvWnd[i];</div>
-<div class="line"><a id="l02415" name="l02415"></a><span class="lineno"> 2415</span>        <span class="keywordflow">if</span> (spItem == <span class="keyword">nullptr</span> || spItem-&gt;pItemBasic-&gt;dwID != (iID / 1000 * 1000) || spItem-&gt;pItemExt-&gt;dwID != (iID % 1000))</div>
+<div class="line"><a id="l02415" name="l02415"></a><span class="lineno"> 2415</span>        <span class="keywordflow">if</span> (spItem == <span class="keyword">nullptr</span> || spItem-&gt;GetItemID() != iID)</div>
 <div class="line"><a id="l02416" name="l02416"></a><span class="lineno"> 2416</span>            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l02417" name="l02417"></a><span class="lineno"> 2417</span> </div>
 <div class="line"><a id="l02418" name="l02418"></a><span class="lineno"> 2418</span>        <span class="keywordflow">if</span> (spItem-&gt;pItemBasic-&gt;byClass == ITEM_CLASS_CONSUMABLE)</div>
@@ -2532,8 +2532,8 @@ $(function(){initNavTree('UIInventory_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l02430" name="l02430"></a><span class="lineno"> 2430</span>    <span class="keywordflow">switch</span> (iDistrict)</div>
 <div class="line"><a id="l02431" name="l02431"></a><span class="lineno"> 2431</span>    {</div>
 <div class="line"><a id="l02432" name="l02432"></a><span class="lineno"> 2432</span>        <span class="keywordflow">case</span> 0x00:</div>
-<div class="line"><a id="l02433" name="l02433"></a><span class="lineno"> 2433</span>            <span class="keywordflow">if</span> (m_pMySlot[iIndex]</div>
-<div class="line"><a id="l02434" name="l02434"></a><span class="lineno"> 2434</span>                &amp;&amp; ((m_pMySlot[iIndex]-&gt;pItemBasic-&gt;dwID + m_pMySlot[iIndex]-&gt;pItemExt-&gt;dwID) != iID)) <span class="comment">// 엉뚱한 아이템이 있는경우..</span></div>
+<div class="line"><a id="l02433" name="l02433"></a><span class="lineno"> 2433</span>            <span class="comment">// 엉뚱한 아이템이 있는경우..</span></div>
+<div class="line"><a id="l02434" name="l02434"></a><span class="lineno"> 2434</span>            <span class="keywordflow">if</span> (m_pMySlot[iIndex] != <span class="keyword">nullptr</span> &amp;&amp; m_pMySlot[iIndex]-&gt;GetItemID() != iID)</div>
 <div class="line"><a id="l02435" name="l02435"></a><span class="lineno"> 2435</span>            {</div>
 <div class="line"><a id="l02436" name="l02436"></a><span class="lineno"> 2436</span>                <span class="comment">// 아이템 삭제.. 현재 인벤토리 윈도우만..</span></div>
 <div class="line"><a id="l02437" name="l02437"></a><span class="lineno"> 2437</span>                spItem            = m_pMySlot[iIndex];</div>
@@ -2648,8 +2648,8 @@ $(function(){initNavTree('UIInventory_8cpp_source.html',''); initResizable(true)
 <div class="line"><a id="l02546" name="l02546"></a><span class="lineno"> 2546</span>            <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l02547" name="l02547"></a><span class="lineno"> 2547</span> </div>
 <div class="line"><a id="l02548" name="l02548"></a><span class="lineno"> 2548</span>        <span class="keywordflow">case</span> 0x01:</div>
-<div class="line"><a id="l02549" name="l02549"></a><span class="lineno"> 2549</span>            <span class="keywordflow">if</span> (m_pMyInvWnd[iIndex]</div>
-<div class="line"><a id="l02550" name="l02550"></a><span class="lineno"> 2550</span>                &amp;&amp; ((m_pMyInvWnd[iIndex]-&gt;pItemBasic-&gt;dwID + m_pMyInvWnd[iIndex]-&gt;pItemExt-&gt;dwID) != iID)) <span class="comment">// 엉뚱한 아이템이 있는경우..</span></div>
+<div class="line"><a id="l02549" name="l02549"></a><span class="lineno"> 2549</span>            <span class="comment">// 엉뚱한 아이템이 있는경우..</span></div>
+<div class="line"><a id="l02550" name="l02550"></a><span class="lineno"> 2550</span>            <span class="keywordflow">if</span> (m_pMyInvWnd[iIndex] != <span class="keyword">nullptr</span> &amp;&amp; m_pMyInvWnd[iIndex]-&gt;GetItemID() != iID)</div>
 <div class="line"><a id="l02551" name="l02551"></a><span class="lineno"> 2551</span>            {</div>
 <div class="line"><a id="l02552" name="l02552"></a><span class="lineno"> 2552</span>                <span class="comment">// 아이템 삭제.. 현재 인벤토리 윈도우만..</span></div>
 <div class="line"><a id="l02553" name="l02553"></a><span class="lineno"> 2553</span>                spItem              = m_pMyInvWnd[iIndex];</div>

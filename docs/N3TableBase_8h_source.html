@@ -260,8 +260,8 @@ $(function(){initNavTree('N3TableBase_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            ReadData(file, m_DataTypes[j], <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;Data) + offsets[j]);</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        uint32_t dwKey = *((uint32_t*) (&amp;Data));</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keyword">auto</span> pt        = m_Datas.insert(std::make_pair(dwKey, Data));</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        uint32_t dwKey           = *((uint32_t*) (&amp;Data));</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        [[maybe_unused]] <span class="keyword">auto</span> pt = m_Datas.insert(std::make_pair(dwKey, Data));</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        __ASSERT(pt.second, <span class="stringliteral">&quot;CN3TableBase&lt;Type&gt; : Key 중복 경고.&quot;</span>);</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
