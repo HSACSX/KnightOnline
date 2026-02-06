@@ -56,6 +56,9 @@ var NAVTREEINDEX1 =
 "ItemManager_8cpp_source.html":[3,0,0,5,3,1],
 "ItemRepairMgr_8cpp_source.html":[3,0,0,0,4,39],
 "ItemRepairMgr_8h_source.html":[3,0,0,0,4,40],
+"ItemUpgrade__test_8cpp_source.html":[3,0,1,2,0,1],
+"ItemUpgrade__test__data_8h_source.html":[3,0,1,2,0,0,1],
+"Item__test__data_8h_source.html":[3,0,1,2,0,0,0],
 "JpegFile_8cpp_source.html":[3,0,0,0,0,0],
 "JpegFile_8h_source.html":[3,0,0,0,0,1],
 "JvCryption_8cpp_source.html":[3,0,0,6,14],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "N3Shape_8cpp_source.html":[3,0,0,4,99],
 "N3Shape_8h_source.html":[3,0,0,4,100],
 "N3Skin_8cpp_source.html":[3,0,0,4,105],
-"N3Skin_8h_source.html":[3,0,0,4,106],
-"N3SkyMng_8cpp_source.html":[3,0,0,4,109],
-"N3SkyMng_8h_source.html":[3,0,0,4,110],
-"N3Sky_8cpp_source.html":[3,0,0,4,107]
+"N3Skin_8h_source.html":[3,0,0,4,106]
 };

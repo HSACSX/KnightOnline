@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"classCN3CEDoc.html":[2,0,240],
+"classCN3CEView.html":[2,0,241],
+"classCN3CPart.html":[2,0,247],
+"classCN3CPartSkins.html":[2,0,248],
+"classCN3CPlug.html":[2,0,249],
+"classCN3CPlugBase.html":[2,0,251],
 "classCN3CPlug__Cloak.html":[2,0,250],
 "classCN3Camera.html":[2,0,238],
 "classCN3Chr.html":[2,0,242],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "classCUIKnightsOperation.html":[2,0,408],
 "classCUILevelGuide.html":[2,0,409],
 "classCUILoading.html":[2,0,410],
-"classCUILogIn__1298.html":[2,0,411],
-"classCUIManager.html":[2,0,412],
-"classCUIMessageBox.html":[2,0,413],
-"classCUIMessageBoxManager.html":[2,0,414],
-"classCUIMessageWnd.html":[2,0,415],
-"classCUIMessageWnd2.html":[2,0,416],
-"classCUIMsgBoxOkCancel.html":[2,0,417]
+"classCUILogIn__1298.html":[2,0,411]
 };

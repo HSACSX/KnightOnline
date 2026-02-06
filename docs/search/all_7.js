@@ -13,5 +13,6 @@ var searchData=
   ['getuserptr_10',['GetUserPtr',['../classAujard_1_1AujardApp.html#a6ea0f05418382b3347a9349ffbda070c',1,'Aujard::AujardApp']]],
   ['getvolume_11',['GetVolume',['../classCN3SndObj.html#a3bfdaa16f678d0d94ac79569a9cee7e3',1,'CN3SndObj']]],
   ['goals_12',['Goals',['../index.html#autotoc_md3',1,'']]],
-  ['goals_13',['It must respect our project goals',['../index.html#autotoc_md6',1,'']]]
+  ['goals_13',['It must respect our project goals',['../index.html#autotoc_md6',1,'']]],
+  ['goldchangepacket_14',['GoldChangePacket',['../structGoldChangePacket.html',1,'']]]
 ];

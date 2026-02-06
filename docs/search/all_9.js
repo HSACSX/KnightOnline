@@ -23,6 +23,11 @@ var searchData=
   ['itemmanagerapp_20',['ItemManagerApp',['../classItemManager_1_1ItemManagerApp.html',1,'ItemManager']]],
   ['itemmanagerlogger_21',['ItemManagerLogger',['../classItemManager_1_1ItemManagerLogger.html',1,'ItemManager']]],
   ['itemmanagerreadqueuethread_22',['ItemManagerReadQueueThread',['../classItemManager_1_1ItemManagerReadQueueThread.html',1,'ItemManager']]],
-  ['itemtooltipbuildercontext_23',['ItemTooltipBuilderContext',['../classItemTooltipBuilderContext.html',1,'']]],
-  ['itemtooltiptoolargeexception_24',['ItemTooltipTooLargeException',['../classItemTooltipTooLargeException.html',1,'']]]
+  ['itempospair_23',['ItemPosPair',['../structItemPosPair.html',1,'']]],
+  ['itemtooltipbuildercontext_24',['ItemTooltipBuilderContext',['../classItemTooltipBuilderContext.html',1,'']]],
+  ['itemtooltiptoolargeexception_25',['ItemTooltipTooLargeException',['../classItemTooltipTooLargeException.html',1,'']]],
+  ['itemupgradeprocesserrorresponsepacket_26',['ItemUpgradeProcessErrorResponsePacket',['../structItemUpgradeProcessErrorResponsePacket.html',1,'']]],
+  ['itemupgradeprocesspacket_27',['ItemUpgradeProcessPacket',['../structItemUpgradeProcessPacket.html',1,'']]],
+  ['itemupgradeprocessresponsesuccesspacket_28',['ItemUpgradeProcessResponseSuccessPacket',['../structItemUpgradeProcessResponseSuccessPacket.html',1,'']]],
+  ['itemupgradetest_29',['ItemUpgradeTest',['../classItemUpgradeTest.html',1,'']]]
 ];
