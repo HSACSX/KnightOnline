@@ -138,6 +138,8 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac1aa56c5b5ac32485fa43a05ca3b4b8b" id="r_ac1aa56c5b5ac32485fa43a05ca3b4b8b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1aa56c5b5ac32485fa43a05ca3b4b8b">TcpSocketManager</a> (int recvBufferSize, int sendBufferSize, std::string_view implName)</td></tr>
 <tr class="separator:ac1aa56c5b5ac32485fa43a05ca3b4b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c063efd61f505f4d257595b4716b8b3" id="r_a9c063efd61f505f4d257595b4716b8b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c063efd61f505f4d257595b4716b8b3">InitSockets</a> (int socketCount)</td></tr>
+<tr class="separator:a9c063efd61f505f4d257595b4716b8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6278a59c322808ce74a67c93c1f5b0e" id="r_ad6278a59c322808ce74a67c93c1f5b0e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classTcpSocket.html">TcpSocket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6278a59c322808ce74a67c93c1f5b0e">AcquireSocket</a> (int &amp;socketId)</td></tr>
 <tr class="separator:ad6278a59c322808ce74a67c93c1f5b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac23d3d796913d1f1437d8ff2f51ef312" id="r_ac23d3d796913d1f1437d8ff2f51ef312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac23d3d796913d1f1437d8ff2f51ef312">ReleaseSocketImpl</a> (<a class="el" href="classTcpSocket.html">TcpSocket</a> *tcpSocket)</td></tr>
@@ -283,7 +285,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00054">54</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00060">60</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -576,6 +578,33 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00043">43</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9c063efd61f505f4d257595b4716b8b3" name="a9c063efd61f505f4d257595b4716b8b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c063efd61f505f4d257595b4716b8b3">&#9670;&#160;</a></span>InitSockets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TcpSocketManager::InitSockets </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>socketCount</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00024">24</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
@@ -630,7 +659,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00160">160</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00166">166</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -666,7 +695,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00095">95</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00101">101</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -702,7 +731,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00138">138</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00144">144</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -729,7 +758,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00076">76</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00082">82</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -756,7 +785,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00169">169</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8cpp_source.html#l00175">175</a> of file <a class="el" href="TcpSocketManager_8cpp_source.html">TcpSocketManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -854,7 +883,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00113">113</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00118">118</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -878,7 +907,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00107">107</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00112">112</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -902,7 +931,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00117">117</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00122">122</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -926,7 +955,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00121">121</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00126">126</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -950,7 +979,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00110">110</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00115">115</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -974,7 +1003,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00111">111</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00116">116</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -998,7 +1027,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00124">124</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00129">129</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1051,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00106">106</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00111">111</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1046,7 +1075,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00109">109</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00114">114</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1070,7 +1099,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00120">120</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00125">125</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1123,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00123">123</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00128">128</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1118,7 +1147,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00118">118</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00123">123</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>
@@ -1142,7 +1171,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00115">115</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TcpSocketManager_8h_source.html#l00120">120</a> of file <a class="el" href="TcpSocketManager_8h_source.html">TcpSocketManager.h</a>.</p>
 
 </div>
 </div>

@@ -100,6 +100,7 @@ $(function(){initNavTree('classEbenezer_1_1C3DMap.html',''); initResizable(true)
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classEbenezer_1_1C3DMap-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Ebenezer::C3DMap Class Reference</div></div>
 </div><!--header-->
@@ -125,12 +126,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a832d69302e3f438a8a7a8665a25c49bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a4399615776b0e6c4dca3a77f565534" id="r_a4a4399615776b0e6c4dca3a77f565534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a4399615776b0e6c4dca3a77f565534">RegionNpcRemove</a> (int rx, int rz, int nid)</td></tr>
 <tr class="separator:a4a4399615776b0e6c4dca3a77f565534"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4500bd1b4082b3bae20c31c559b54e6e" id="r_a4500bd1b4082b3bae20c31c559b54e6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4500bd1b4082b3bae20c31c559b54e6e">RegionNpcAdd</a> (int rx, int rz, int nid)</td></tr>
-<tr class="separator:a4500bd1b4082b3bae20c31c559b54e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd905aeb398b2a165d748196f117770" id="r_a7bd905aeb398b2a165d748196f117770"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd905aeb398b2a165d748196f117770">RegionNpcAdd</a> (int rx, int rz, int nid)</td></tr>
+<tr class="separator:a7bd905aeb398b2a165d748196f117770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad522bb5eedd711f76a9a734ef25a3f1e" id="r_ad522bb5eedd711f76a9a734ef25a3f1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad522bb5eedd711f76a9a734ef25a3f1e">RegionUserRemove</a> (int rx, int rz, int uid)</td></tr>
 <tr class="separator:ad522bb5eedd711f76a9a734ef25a3f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b930b21154224b67e7ccbc835b19002" id="r_a5b930b21154224b67e7ccbc835b19002"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b930b21154224b67e7ccbc835b19002">RegionUserAdd</a> (int rx, int rz, int uid)</td></tr>
-<tr class="separator:a5b930b21154224b67e7ccbc835b19002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f2ac767648a8f4e1fcc16b8bbd2308" id="r_a43f2ac767648a8f4e1fcc16b8bbd2308"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43f2ac767648a8f4e1fcc16b8bbd2308">RegionUserAdd</a> (int rx, int rz, int uid)</td></tr>
+<tr class="separator:a43f2ac767648a8f4e1fcc16b8bbd2308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae49aef24ef9b2c50cdd826c227709ce0" id="r_ae49aef24ef9b2c50cdd826c227709ce0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae49aef24ef9b2c50cdd826c227709ce0">RegionItemRemove</a> (int rx, int rz, int bundle_index, int itemid, int count)</td></tr>
 <tr class="separator:ae49aef24ef9b2c50cdd826c227709ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0638288fcf272c4702e2058b57ea2d88" id="r_a0638288fcf272c4702e2058b57ea2d88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0638288fcf272c4702e2058b57ea2d88">RegionItemAdd</a> (int rx, int rz, <a class="el" href="structEbenezer_1_1__ZONE__ITEM.html">_ZONE_ITEM</a> *pItem)</td></tr>
@@ -180,6 +181,23 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6601ce3e443524c48407873034b7c02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a423d6bcfb3e07de53706cad33fd640e5" id="r_a423d6bcfb3e07de53706cad33fd640e5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a423d6bcfb3e07de53706cad33fd640e5">m_wBundle</a> = 1</td></tr>
 <tr class="separator:a423d6bcfb3e07de53706cad33fd640e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:af9198e5775dc4ad9ba2a6c9ccd78c0c0" id="r_af9198e5775dc4ad9ba2a6c9ccd78c0c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSTLMap.html">ObjectEventArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9198e5775dc4ad9ba2a6c9ccd78c0c0">m_ObjectEventArray</a></td></tr>
+<tr class="separator:af9198e5775dc4ad9ba2a6c9ccd78c0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90bfe294efc4d65a687e3456ed073e94" id="r_a90bfe294efc4d65a687e3456ed073e94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSTLMap.html">ObjectRegeneArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90bfe294efc4d65a687e3456ed073e94">m_ObjectRegeneArray</a></td></tr>
+<tr class="separator:a90bfe294efc4d65a687e3456ed073e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52d1b0aa505f8f76037bf88ee2271952" id="r_a52d1b0aa505f8f76037bf88ee2271952"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSTLMap.html">EventArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52d1b0aa505f8f76037bf88ee2271952">m_EventArray</a></td></tr>
+<tr class="separator:a52d1b0aa505f8f76037bf88ee2271952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2ad9a365bafb8672e13afa15b0e5fe" id="r_aab2ad9a365bafb8672e13afa15b0e5fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCN3ShapeMgr.html">CN3ShapeMgr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab2ad9a365bafb8672e13afa15b0e5fe">m_N3ShapeMgr</a></td></tr>
+<tr class="separator:aab2ad9a365bafb8672e13afa15b0e5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be05c7da50ba3fb6e953636b2b14673" id="r_a9be05c7da50ba3fb6e953636b2b14673"><td class="memItemLeft" align="right" valign="top">float **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9be05c7da50ba3fb6e953636b2b14673">m_fHeight</a> = nullptr</td></tr>
+<tr class="separator:a9be05c7da50ba3fb6e953636b2b14673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d4ce9d861e021bab920852ac794066" id="r_ae4d4ce9d861e021bab920852ac794066"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4d4ce9d861e021bab920852ac794066">m_nXRegion</a> = -1</td></tr>
+<tr class="separator:ae4d4ce9d861e021bab920852ac794066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab8525a452d965126a82e8fa540a7a1" id="r_a7ab8525a452d965126a82e8fa540a7a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ab8525a452d965126a82e8fa540a7a1">m_nZRegion</a> = -1</td></tr>
+<tr class="separator:a7ab8525a452d965126a82e8fa540a7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -256,7 +274,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00449">449</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00458">458</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
@@ -415,7 +433,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00548">548</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00557">557</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +452,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00502">502</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00511">511</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
@@ -661,14 +679,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4500bd1b4082b3bae20c31c559b54e6e" name="a4500bd1b4082b3bae20c31c559b54e6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4500bd1b4082b3bae20c31c559b54e6e">&#9670;&#160;</a></span>RegionNpcAdd()</h2>
+<a id="a7bd905aeb398b2a165d748196f117770" name="a7bd905aeb398b2a165d748196f117770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bd905aeb398b2a165d748196f117770">&#9670;&#160;</a></span>RegionNpcAdd()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Ebenezer::C3DMap::RegionNpcAdd </td>
+          <td class="memname">bool Ebenezer::C3DMap::RegionNpcAdd </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rx</em></span>, </td>
         </tr>
@@ -685,7 +703,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00423">423</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00427">427</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
@@ -713,18 +731,18 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00438">438</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00447">447</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5b930b21154224b67e7ccbc835b19002" name="a5b930b21154224b67e7ccbc835b19002"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b930b21154224b67e7ccbc835b19002">&#9670;&#160;</a></span>RegionUserAdd()</h2>
+<a id="a43f2ac767648a8f4e1fcc16b8bbd2308" name="a43f2ac767648a8f4e1fcc16b8bbd2308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f2ac767648a8f4e1fcc16b8bbd2308">&#9670;&#160;</a></span>RegionUserAdd()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Ebenezer::C3DMap::RegionUserAdd </td>
+          <td class="memname">bool Ebenezer::C3DMap::RegionUserAdd </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rx</em></span>, </td>
         </tr>
@@ -769,7 +787,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00408">408</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8cpp_source.html#l00412">412</a> of file <a class="el" href="Ebenezer_2Map_8cpp_source.html">Map.cpp</a>.</p>
 
 </div>
 </div>
@@ -787,6 +805,54 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00091">91</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
+<a id="a52d1b0aa505f8f76037bf88ee2271952" name="a52d1b0aa505f8f76037bf88ee2271952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52d1b0aa505f8f76037bf88ee2271952">&#9670;&#160;</a></span>m_EventArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCSTLMap.html">EventArray</a> Ebenezer::C3DMap::m_EventArray</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00030">30</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
+<a id="a9be05c7da50ba3fb6e953636b2b14673" name="a9be05c7da50ba3fb6e953636b2b14673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9be05c7da50ba3fb6e953636b2b14673">&#9670;&#160;</a></span>m_fHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float** Ebenezer::C3DMap::m_fHeight = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00033">33</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
 
 </div>
 </div>
@@ -854,6 +920,30 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aab2ad9a365bafb8672e13afa15b0e5fe" name="aab2ad9a365bafb8672e13afa15b0e5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2ad9a365bafb8672e13afa15b0e5fe">&#9670;&#160;</a></span>m_N3ShapeMgr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCN3ShapeMgr.html">CN3ShapeMgr</a> Ebenezer::C3DMap::m_N3ShapeMgr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00031">31</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
 <a id="abee5229d3292d71bf8321ad698447cf0" name="abee5229d3292d71bf8321ad698447cf0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abee5229d3292d71bf8321ad698447cf0">&#9670;&#160;</a></span>m_nMapSize</h2>
 
@@ -886,6 +976,30 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae4d4ce9d861e021bab920852ac794066" name="ae4d4ce9d861e021bab920852ac794066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d4ce9d861e021bab920852ac794066">&#9670;&#160;</a></span>m_nXRegion</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Ebenezer::C3DMap::m_nXRegion = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00035">35</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
 <a id="a2949dca2155f8c0ec4a25d344fea20e3" name="a2949dca2155f8c0ec4a25d344fea20e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2949dca2155f8c0ec4a25d344fea20e3">&#9670;&#160;</a></span>m_nZoneNumber</h2>
 
@@ -899,6 +1013,78 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00085">85</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
+<a id="a7ab8525a452d965126a82e8fa540a7a1" name="a7ab8525a452d965126a82e8fa540a7a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab8525a452d965126a82e8fa540a7a1">&#9670;&#160;</a></span>m_nZRegion</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Ebenezer::C3DMap::m_nZRegion = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00036">36</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
+<a id="af9198e5775dc4ad9ba2a6c9ccd78c0c0" name="af9198e5775dc4ad9ba2a6c9ccd78c0c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9198e5775dc4ad9ba2a6c9ccd78c0c0">&#9670;&#160;</a></span>m_ObjectEventArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCSTLMap.html">ObjectEventArray</a> Ebenezer::C3DMap::m_ObjectEventArray</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00027">27</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
+
+</div>
+</div>
+<a id="a90bfe294efc4d65a687e3456ed073e94" name="a90bfe294efc4d65a687e3456ed073e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90bfe294efc4d65a687e3456ed073e94">&#9670;&#160;</a></span>m_ObjectRegeneArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCSTLMap.html">ObjectRegeneArray</a> Ebenezer::C3DMap::m_ObjectRegeneArray</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Ebenezer_2Map_8h_source.html#l00028">28</a> of file <a class="el" href="Ebenezer_2Map_8h_source.html">Map.h</a>.</p>
 
 </div>
 </div>
