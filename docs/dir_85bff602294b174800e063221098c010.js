@@ -137,6 +137,8 @@ var dir_85bff602294b174800e063221098c010 =
     [ "UIInn.h", "UIInn_8h_source.html", null ],
     [ "UIInventory.cpp", "UIInventory_8cpp_source.html", null ],
     [ "UIInventory.h", "UIInventory_8h_source.html", null ],
+    [ "UIItemUpgrade.cpp", "UIItemUpgrade_8cpp_source.html", null ],
+    [ "UIItemUpgrade.h", "UIItemUpgrade_8h_source.html", null ],
     [ "UIKnightsOperation.cpp", "UIKnightsOperation_8cpp_source.html", null ],
     [ "UIKnightsOperation.h", "UIKnightsOperation_8h_source.html", null ],
     [ "UILevelGuide.cpp", "UILevelGuide_8cpp_source.html", null ],

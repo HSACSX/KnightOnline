@@ -492,6 +492,7 @@ var hierarchy =
           [ "CUIHelp", "classCUIHelp.html", null ],
           [ "CUIImageTooltipDlg", "classCUIImageTooltipDlg.html", null ],
           [ "CUIInn", "classCUIInn.html", null ],
+          [ "CUIItemUpgrade", "classCUIItemUpgrade.html", null ],
           [ "CUIKnights", "classCUIKnights.html", null ],
           [ "CUIKnightsOperation", "classCUIKnightsOperation.html", null ],
           [ "CUILevelGuide", "classCUILevelGuide.html", null ],

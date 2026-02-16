@@ -512,6 +512,7 @@ var annotated_dup =
     [ "CUIImageTooltipDlg", "classCUIImageTooltipDlg.html", null ],
     [ "CUIInn", "classCUIInn.html", null ],
     [ "CUIInventory", "classCUIInventory.html", null ],
+    [ "CUIItemUpgrade", "classCUIItemUpgrade.html", null ],
     [ "CUIKnights", "classCUIKnights.html", null ],
     [ "CUIKnightsOperation", "classCUIKnightsOperation.html", null ],
     [ "CUILevelGuide", "classCUILevelGuide.html", null ],

@@ -61,11 +61,11 @@ var NAVTREEINDEX =
 "FileReader__test_8cpp_source.html",
 "N3SkyMng_8cpp_source.html",
 "ToolDlg_8cpp_source.html",
-"classAppThread.html#a40045e068e7f9ad26293e83c55865974",
-"classCN3CEDoc.html",
-"classCUIManager.html",
-"classdb_1_1SqlBuilder.html#ab8a4c8f6be647d7a254699b6501aeb31",
-"struct____DTexInfo.html"
+"classAppThread.html#a2fdc6a486c4e1302ba030db0e20ec517",
+"classCN3BaseFileAccess.html",
+"classCUILevelGuide.html",
+"classdb_1_1SqlBuilder.html#a75cbd74a9fdf94acab473d3ad17a0f71",
+"struct____ColorValue.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

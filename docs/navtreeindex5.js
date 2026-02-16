@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"classCN3BaseFileAccess.html":[2,0,237],
+"classCN3CEApp.html":[2,0,239],
 "classCN3CEDoc.html":[2,0,240],
 "classCN3CEView.html":[2,0,241],
 "classCN3CPart.html":[2,0,247],
@@ -245,9 +247,7 @@ var NAVTREEINDEX5 =
 "classCUIImageTooltipDlg.html":[2,0,404],
 "classCUIInn.html":[2,0,405],
 "classCUIInventory.html":[2,0,406],
-"classCUIKnights.html":[2,0,407],
-"classCUIKnightsOperation.html":[2,0,408],
-"classCUILevelGuide.html":[2,0,409],
-"classCUILoading.html":[2,0,410],
-"classCUILogIn__1298.html":[2,0,411]
+"classCUIItemUpgrade.html":[2,0,407],
+"classCUIKnights.html":[2,0,408],
+"classCUIKnightsOperation.html":[2,0,409]
 };

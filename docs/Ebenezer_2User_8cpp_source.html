@@ -12873,14 +12873,14 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l12767" name="l12767"></a><span class="lineno">12767</span>    uint8_t originPos    = -1;</div>
 <div class="line"><a id="l12768" name="l12768"></a><span class="lineno">12768</span>    <span class="keywordtype">bool</span> upgradeSuccess  = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l12769" name="l12769"></a><span class="lineno">12769</span> </div>
-<div class="line"><a id="l12770" name="l12770"></a><span class="lineno">12770</span>    uint8_t reqItemPos[9] {};</div>
-<div class="line"><a id="l12771" name="l12771"></a><span class="lineno">12771</span>    int32_t reqItemId[9] {};</div>
+<div class="line"><a id="l12770" name="l12770"></a><span class="lineno">12770</span>    uint8_t reqItemPos[ANVIL_REQ_MAX] {};</div>
+<div class="line"><a id="l12771" name="l12771"></a><span class="lineno">12771</span>    int32_t reqItemId[ANVIL_REQ_MAX] {};</div>
 <div class="line"><a id="l12772" name="l12772"></a><span class="lineno">12772</span> </div>
 <div class="line"><a id="l12773" name="l12773"></a><span class="lineno">12773</span>    npcId        = GetShort(pBuf, index);</div>
 <div class="line"><a id="l12774" name="l12774"></a><span class="lineno">12774</span>    originItemId = GetDWORD(pBuf, index);</div>
 <div class="line"><a id="l12775" name="l12775"></a><span class="lineno">12775</span>    originPos    = GetByte(pBuf, index);</div>
 <div class="line"><a id="l12776" name="l12776"></a><span class="lineno">12776</span> </div>
-<div class="line"><a id="l12777" name="l12777"></a><span class="lineno">12777</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++)</div>
+<div class="line"><a id="l12777" name="l12777"></a><span class="lineno">12777</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ANVIL_REQ_MAX; i++)</div>
 <div class="line"><a id="l12778" name="l12778"></a><span class="lineno">12778</span>    {</div>
 <div class="line"><a id="l12779" name="l12779"></a><span class="lineno">12779</span>        reqItemId[i]  = GetDWORD(pBuf, index);</div>
 <div class="line"><a id="l12780" name="l12780"></a><span class="lineno">12780</span>        reqItemPos[i] = GetByte(pBuf, index);</div>
@@ -12889,7 +12889,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l12783" name="l12783"></a><span class="lineno">12783</span>    <span class="comment">// Cannot upgrade while in the middle of trading.</span></div>
 <div class="line"><a id="l12784" name="l12784"></a><span class="lineno">12784</span>    <span class="keywordflow">if</span> (m_sExchangeUser != -1)</div>
 <div class="line"><a id="l12785" name="l12785"></a><span class="lineno">12785</span>    {</div>
-<div class="line"><a id="l12786" name="l12786"></a><span class="lineno">12786</span>        SendItemUpgradeFailed(ITEM_UPGRADE_ERROR_TRADING);</div>
+<div class="line"><a id="l12786" name="l12786"></a><span class="lineno">12786</span>        SendItemUpgradeFailed(ITEM_UPGRADE_RESULT_TRADING);</div>
 <div class="line"><a id="l12787" name="l12787"></a><span class="lineno">12787</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l12788" name="l12788"></a><span class="lineno">12788</span>    }</div>
 <div class="line"><a id="l12789" name="l12789"></a><span class="lineno">12789</span> </div>
@@ -12945,7 +12945,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l12839" name="l12839"></a><span class="lineno">12839</span>    std::unordered_set&lt;uint8_t&gt; usedItemPositions;</div>
 <div class="line"><a id="l12840" name="l12840"></a><span class="lineno">12840</span>    usedItemPositions.insert(originPos);</div>
 <div class="line"><a id="l12841" name="l12841"></a><span class="lineno">12841</span> </div>
-<div class="line"><a id="l12842" name="l12842"></a><span class="lineno">12842</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ANVIL_MAX; i++)</div>
+<div class="line"><a id="l12842" name="l12842"></a><span class="lineno">12842</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ANVIL_REQ_MAX; i++)</div>
 <div class="line"><a id="l12843" name="l12843"></a><span class="lineno">12843</span>    {</div>
 <div class="line"><a id="l12844" name="l12844"></a><span class="lineno">12844</span>        <span class="comment">// This implies the slot is unused, so we should ignore it.</span></div>
 <div class="line"><a id="l12845" name="l12845"></a><span class="lineno">12845</span>        <span class="keywordflow">if</span> (reqItemPos[i] == 255)</div>
@@ -13029,7 +13029,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l12923" name="l12923"></a><span class="lineno">12923</span>    <span class="comment">// supports rental items.</span></div>
 <div class="line"><a id="l12924" name="l12924"></a><span class="lineno">12924</span>    <span class="keywordflow">if</span> (originItem.byFlag != ITEM_FLAG_NONE)</div>
 <div class="line"><a id="l12925" name="l12925"></a><span class="lineno">12925</span>    {</div>
-<div class="line"><a id="l12926" name="l12926"></a><span class="lineno">12926</span>        SendItemUpgradeFailed(ITEM_UPGRADE_ERROR_ITEM_RENTED);</div>
+<div class="line"><a id="l12926" name="l12926"></a><span class="lineno">12926</span>        SendItemUpgradeFailed(ITEM_UPGRADE_RESULT_ITEM_RENTED);</div>
 <div class="line"><a id="l12927" name="l12927"></a><span class="lineno">12927</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l12928" name="l12928"></a><span class="lineno">12928</span>    }</div>
 <div class="line"><a id="l12929" name="l12929"></a><span class="lineno">12929</span> </div>
@@ -13138,12 +13138,12 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l13032" name="l13032"></a><span class="lineno">13032</span>        <span class="keywordflow">if</span> ((itemUpgradeElementClass == 1 || itemUpgradeElementClass == 2)</div>
 <div class="line"><a id="l13033" name="l13033"></a><span class="lineno">13033</span>            &amp;&amp; itemClass != itemUpgradeElementClass)</div>
 <div class="line"><a id="l13034" name="l13034"></a><span class="lineno">13034</span>        {</div>
-<div class="line"><a id="l13035" name="l13035"></a><span class="lineno">13035</span>            SendItemUpgradeFailed(ITEM_UPGRADE_ERROR_NO_MATCH);</div>
+<div class="line"><a id="l13035" name="l13035"></a><span class="lineno">13035</span>            SendItemUpgradeFailed(ITEM_UPGRADE_RESULT_NO_MATCH);</div>
 <div class="line"><a id="l13036" name="l13036"></a><span class="lineno">13036</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l13037" name="l13037"></a><span class="lineno">13037</span>        }</div>
 <div class="line"><a id="l13038" name="l13038"></a><span class="lineno">13038</span> </div>
 <div class="line"><a id="l13039" name="l13039"></a><span class="lineno">13039</span>        <span class="keywordtype">bool</span> matchedRequiredItems = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l13040" name="l13040"></a><span class="lineno">13040</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 8; j++)</div>
+<div class="line"><a id="l13040" name="l13040"></a><span class="lineno">13040</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; ANVIL_REQ_MAX - 1; j++)</div>
 <div class="line"><a id="l13041" name="l13041"></a><span class="lineno">13041</span>        {</div>
 <div class="line"><a id="l13042" name="l13042"></a><span class="lineno">13042</span>            <span class="keywordflow">if</span> (itemUpgradeModel-&gt;RequiredItem[j] == 0)</div>
 <div class="line"><a id="l13043" name="l13043"></a><span class="lineno">13043</span>                <span class="keywordflow">break</span>;</div>
@@ -13161,7 +13161,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l13055" name="l13055"></a><span class="lineno">13055</span> </div>
 <div class="line"><a id="l13056" name="l13056"></a><span class="lineno">13056</span>        <span class="keywordflow">if</span> (itemUpgradeModel-&gt;RequiredCoins &gt; m_pUserData-&gt;m_iGold)</div>
 <div class="line"><a id="l13057" name="l13057"></a><span class="lineno">13057</span>        {</div>
-<div class="line"><a id="l13058" name="l13058"></a><span class="lineno">13058</span>            SendItemUpgradeFailed(ITEM_UPGRADE_ERROR_NEED_COINS);</div>
+<div class="line"><a id="l13058" name="l13058"></a><span class="lineno">13058</span>            SendItemUpgradeFailed(ITEM_UPGRADE_RESULT_NEED_COINS);</div>
 <div class="line"><a id="l13059" name="l13059"></a><span class="lineno">13059</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l13060" name="l13060"></a><span class="lineno">13060</span>        }</div>
 <div class="line"><a id="l13061" name="l13061"></a><span class="lineno">13061</span> </div>
@@ -13171,7 +13171,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l13065" name="l13065"></a><span class="lineno">13065</span> </div>
 <div class="line"><a id="l13066" name="l13066"></a><span class="lineno">13066</span>    <span class="keywordflow">if</span> (matchedItemUpgradeModel == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l13067" name="l13067"></a><span class="lineno">13067</span>    {</div>
-<div class="line"><a id="l13068" name="l13068"></a><span class="lineno">13068</span>        SendItemUpgradeFailed(ITEM_UPGRADE_ERROR_NO_MATCH);</div>
+<div class="line"><a id="l13068" name="l13068"></a><span class="lineno">13068</span>        SendItemUpgradeFailed(ITEM_UPGRADE_RESULT_NO_MATCH);</div>
 <div class="line"><a id="l13069" name="l13069"></a><span class="lineno">13069</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l13070" name="l13070"></a><span class="lineno">13070</span>    }</div>
 <div class="line"><a id="l13071" name="l13071"></a><span class="lineno">13071</span> </div>
@@ -13220,7 +13220,7 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l13114" name="l13114"></a><span class="lineno">13114</span>        originItem.sTimeRemaining = 0;</div>
 <div class="line"><a id="l13115" name="l13115"></a><span class="lineno">13115</span>    }</div>
 <div class="line"><a id="l13116" name="l13116"></a><span class="lineno">13116</span> </div>
-<div class="line"><a id="l13117" name="l13117"></a><span class="lineno">13117</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++)</div>
+<div class="line"><a id="l13117" name="l13117"></a><span class="lineno">13117</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ANVIL_REQ_MAX; i++)</div>
 <div class="line"><a id="l13118" name="l13118"></a><span class="lineno">13118</span>    {</div>
 <div class="line"><a id="l13119" name="l13119"></a><span class="lineno">13119</span>        <span class="keywordflow">if</span> (reqItemPos[i] &gt;= HAVE_MAX)</div>
 <div class="line"><a id="l13120" name="l13120"></a><span class="lineno">13120</span>            <span class="keywordflow">continue</span>;</div>
@@ -13250,18 +13250,18 @@ $(function(){initNavTree('Ebenezer_2User_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l13144" name="l13144"></a><span class="lineno">13144</span> </div>
 <div class="line"><a id="l13145" name="l13145"></a><span class="lineno">13145</span>    <span class="keywordflow">if</span> (upgradeSuccess)</div>
 <div class="line"><a id="l13146" name="l13146"></a><span class="lineno">13146</span>    {</div>
-<div class="line"><a id="l13147" name="l13147"></a><span class="lineno">13147</span>        SetByte(sendBuffer, ITEM_UPGRADE_ERROR_SUCCEEDED, sendIndex);</div>
+<div class="line"><a id="l13147" name="l13147"></a><span class="lineno">13147</span>        SetByte(sendBuffer, ITEM_UPGRADE_RESULT_SUCCEEDED, sendIndex);</div>
 <div class="line"><a id="l13148" name="l13148"></a><span class="lineno">13148</span>        SetDWORD(sendBuffer, newItemId, sendIndex);</div>
 <div class="line"><a id="l13149" name="l13149"></a><span class="lineno">13149</span>    }</div>
 <div class="line"><a id="l13150" name="l13150"></a><span class="lineno">13150</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l13151" name="l13151"></a><span class="lineno">13151</span>    {</div>
-<div class="line"><a id="l13152" name="l13152"></a><span class="lineno">13152</span>        SetByte(sendBuffer, ITEM_UPGRADE_ERROR_FAILED, sendIndex);</div>
+<div class="line"><a id="l13152" name="l13152"></a><span class="lineno">13152</span>        SetByte(sendBuffer, ITEM_UPGRADE_RESULT_FAILED, sendIndex);</div>
 <div class="line"><a id="l13153" name="l13153"></a><span class="lineno">13153</span>        SetDWORD(sendBuffer, originItemId, sendIndex);</div>
 <div class="line"><a id="l13154" name="l13154"></a><span class="lineno">13154</span>    }</div>
 <div class="line"><a id="l13155" name="l13155"></a><span class="lineno">13155</span> </div>
 <div class="line"><a id="l13156" name="l13156"></a><span class="lineno">13156</span>    SetByte(sendBuffer, originPos, sendIndex);</div>
 <div class="line"><a id="l13157" name="l13157"></a><span class="lineno">13157</span> </div>
-<div class="line"><a id="l13158" name="l13158"></a><span class="lineno">13158</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++)</div>
+<div class="line"><a id="l13158" name="l13158"></a><span class="lineno">13158</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ANVIL_REQ_MAX; i++)</div>
 <div class="line"><a id="l13159" name="l13159"></a><span class="lineno">13159</span>    {</div>
 <div class="line"><a id="l13160" name="l13160"></a><span class="lineno">13160</span>        SetDWORD(sendBuffer, reqItemId[i], sendIndex);</div>
 <div class="line"><a id="l13161" name="l13161"></a><span class="lineno">13161</span>        SetByte(sendBuffer, reqItemPos[i], sendIndex);</div>
