@@ -16,6 +16,7 @@
 #include <shared-server/TcpServerSocket.h>
 
 #include <list>
+#include <span>
 
 namespace Ebenezer
 {
