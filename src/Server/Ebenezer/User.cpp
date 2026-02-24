@@ -12121,18 +12121,19 @@ bool CUser::CheckExistItem(int itemId, int16_t count) const
 bool CUser::CheckExistItemAnd(int id1, int16_t count1, int id2, int16_t count2, int id3,
 	int16_t count3, int id4, int16_t count4, int id5, int16_t count5) const
 {
-	const int16_t counts[5] {count1, count2, count3, count4, count5};
-	const int itemIds[5] {id1, id2, id3, id4, id5};
+	const int16_t counts[5] { count1, count2, count3, count4, count5 };
+	const int itemIds[5] { id1, id2, id3, id4, id5 };
 
 	return CheckExistItemAnd(itemIds, counts);
 }
 
-bool CUser::CheckExistItemAnd(const std::span<const int> itemIds, const std::span<const int16_t> counts) const
+bool CUser::CheckExistItemAnd(
+	const std::span<const int> itemIds, const std::span<const int16_t> counts) const
 {
 	if (itemIds.size() != counts.size())
 	{
-		spdlog::error("User::CheckExistItemAnd: Mismatched itemId({})/count({}) array sizes", itemIds.size(),
-			counts.size());
+		spdlog::error("User::CheckExistItemAnd: Mismatched itemId({})/count({}) array sizes",
+			itemIds.size(), counts.size());
 		return false;
 	}
 
@@ -12204,12 +12205,13 @@ bool CUser::RobItem(int itemId, int16_t count)
 	Send(sendBuffer, sendIndex);
 	return true;
 }
-bool CUser::CheckAndRobItems(const std::span<const int> itemIds, const std::span<const int16_t> counts, const int gold)
+bool CUser::CheckAndRobItems(
+	const std::span<const int> itemIds, const std::span<const int16_t> counts, const int gold)
 {
 	if (itemIds.size() != counts.size())
 	{
-		spdlog::error("User::CheckAndRobItems: Mismatched itemId({})/count({}) array sizes", itemIds.size(),
-			counts.size());
+		spdlog::error("User::CheckAndRobItems: Mismatched itemId({})/count({}) array sizes",
+			itemIds.size(), counts.size());
 		return false;
 	}
 
