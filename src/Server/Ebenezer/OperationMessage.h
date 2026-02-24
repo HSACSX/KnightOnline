@@ -97,6 +97,10 @@ protected:
 	void ChallengeStop();
 	void Permanent();
 	void OffPermanent();
+#ifdef _DEBUG
+	// unoffical commands for debug builds/purposes only
+	void GiveItem();
+#endif
 
 	bool ParseCommand(const std::string_view command, size_t& key);
 

@@ -12091,17 +12091,17 @@ bool CUser::CheckWeight(int itemid, int16_t count) const
 	return false;
 }
 
-bool CUser::CheckExistItem(int itemid, int16_t count) const
+bool CUser::CheckExistItem(int itemId, int16_t count) const
 {
 	// This checks if such an item exists.
-	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemid);
+	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemId);
 	if (pTable == nullptr)
 		return false;
 
 	// Check every slot in this case.....
 	for (int i = 0; i < SLOT_MAX + HAVE_MAX; i++)
 	{
-		if (m_pUserData->m_sItemArray[i].nNum != itemid)
+		if (m_pUserData->m_sItemArray[i].nNum != itemId)
 			continue;
 
 		// Non-countable item. Automatically return true
@@ -12118,20 +12118,51 @@ bool CUser::CheckExistItem(int itemid, int16_t count) const
 	return false;
 }
 
-bool CUser::RobItem(int itemid, int16_t count)
+bool CUser::CheckExistItemAnd(int id1, int16_t count1, int id2, int16_t count2, int id3,
+	int16_t count3, int id4, int16_t count4, int id5, int16_t count5) const
+{
+	const int16_t counts[5] {count1, count2, count3, count4, count5};
+	const int itemIds[5] {id1, id2, id3, id4, id5};
+
+	return CheckExistItemAnd(itemIds, counts);
+}
+
+bool CUser::CheckExistItemAnd(const std::span<const int> itemIds, const std::span<const int16_t> counts) const
+{
+	if (itemIds.size() != counts.size())
+	{
+		spdlog::error("User::CheckExistItemAnd: Mismatched itemId({})/count({}) array sizes", itemIds.size(),
+			counts.size());
+		return false;
+	}
+
+	for (size_t i = 0; i < itemIds.size(); i++)
+	{
+		if (itemIds[i] != -1 && !CheckExistItem(itemIds[i], counts[i]))
+		{
+			spdlog::debug(
+				"User::CheckExistItemAnd: User missing items [charId={} itemId={} count={}]",
+				m_pUserData->m_id, itemIds[i], counts[i]);
+			return false;
+		}
+	}
+	return true;
+}
+
+bool CUser::RobItem(int itemId, int16_t count)
 {
 	int sendIndex = 0;
 	char sendBuffer[256] {};
 
 	// This checks if such an item exists.
-	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemid);
+	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemId);
 	if (pTable == nullptr)
 		return false;
 
 	int i = SLOT_MAX;
 	for (; i < SLOT_MAX + HAVE_MAX; i++)
 	{
-		if (m_pUserData->m_sItemArray[i].nNum != itemid)
+		if (m_pUserData->m_sItemArray[i].nNum != itemId)
 			continue;
 
 		// Remove item from inventory (Non-countable items)
@@ -12168,9 +12199,56 @@ bool CUser::RobItem(int itemid, int16_t count)
 	SetShort(sendBuffer, 1, sendIndex);      // The number of for-loops
 	SetByte(sendBuffer, 1, sendIndex);
 	SetByte(sendBuffer, i - SLOT_MAX, sendIndex);
-	SetDWORD(sendBuffer, itemid, sendIndex); // The ID of item.
+	SetDWORD(sendBuffer, itemId, sendIndex); // The ID of item.
 	SetDWORD(sendBuffer, m_pUserData->m_sItemArray[i].sCount, sendIndex);
 	Send(sendBuffer, sendIndex);
+	return true;
+}
+bool CUser::CheckAndRobItems(const std::span<const int> itemIds, const std::span<const int16_t> counts, const int gold)
+{
+	if (itemIds.size() != counts.size())
+	{
+		spdlog::error("User::CheckAndRobItems: Mismatched itemId({})/count({}) array sizes", itemIds.size(),
+			counts.size());
+		return false;
+	}
+
+	// Check that all items are available before attempting to take anything
+	if (!CheckExistItemAnd(itemIds, counts))
+	{
+		return false;
+	}
+
+	// check and take gold next
+	if (gold > 0 && !GoldLose(gold))
+	{
+		spdlog::debug(
+			"User::CheckAndRobItems: User lacks gold [charId={} goldExpected={} goldActual={}]",
+			m_pUserData->m_id, gold, m_pUserData->m_iGold);
+		return false;
+	}
+
+	// last, rob the items.  outside of a concurrency issue, this shouldn't fail
+	for (size_t i = 0; i < itemIds.size(); i++)
+	{
+		if (itemIds[i] != -1 && counts[i] > 0 && !RobItem(itemIds[i], counts[i]))
+		{
+			// TODO: This is not official behavior but rolling back stolen resources
+			// on failure seems like a good idea.
+
+			// failed to rob an item
+			// refund gold
+			if (gold > 0)
+			{
+				GoldGain(gold);
+			}
+
+			// should rewind the array here and refund items, or work on a
+			// discardable copy and only replace on success.
+
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -13804,13 +13882,10 @@ void CUser::PromoteUser()
 	{
 		case CLASS_EL_BLADE:
 		case CLASS_KA_BERSERKER:
-			if (!CheckExistItem(ITEM_LOBO_PENDANT, 1) || !CheckExistItem(ITEM_LUPUS_PENDANT, 1)
-				|| !CheckExistItem(ITEM_LYCAON_PENDANT, 1)
-				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
-				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_LOBO_PENDANT, 1)
-				|| !RobItem(ITEM_LUPUS_PENDANT, 1) || !RobItem(ITEM_LYCAON_PENDANT, 1)
-				|| !RobItem(ITEM_CRUDE_SAPPHIRE, 10) || !RobItem(ITEM_CRYSTAL, 10)
-				|| !RobItem(ITEM_OPAL, 10))
+			static constexpr int WARRIOR_ITEM_IDS[6] = { ITEM_LOBO_PENDANT, ITEM_LUPUS_PENDANT,
+				ITEM_LYCAON_PENDANT, ITEM_CRUDE_SAPPHIRE, ITEM_CRYSTAL, ITEM_OPAL };
+			static constexpr int16_t WARRIOR_ITEM_COUNTS[6] = { 1, 1, 1, 10, 10, 10 };
+			if (!CheckAndRobItems(WARRIOR_ITEM_IDS, WARRIOR_ITEM_COUNTS))
 			{
 				// Send failure message - missing items
 				SendSay(-1, -1, 6007);
@@ -13827,14 +13902,11 @@ void CUser::PromoteUser()
 			break;
 		case CLASS_KA_HUNTER:
 		case CLASS_EL_RANGER:
-			if (!CheckExistItem(ITEM_TAIL_OF_SHAULA, 1) || !CheckExistItem(ITEM_TAIL_OF_LESATH, 1)
-				|| !CheckExistItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
-				|| !CheckExistItem(ITEM_FANG_OF_BAKIRRA, 1)
-				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
-				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_TAIL_OF_SHAULA, 1)
-				|| !RobItem(ITEM_TAIL_OF_LESATH, 1) || !RobItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
-				|| !RobItem(ITEM_FANG_OF_BAKIRRA, 1) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
-				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			static constexpr int ROGUE_ITEM_IDS[7] = { ITEM_TAIL_OF_SHAULA, ITEM_TAIL_OF_LESATH,
+				ITEM_BLOOD_OF_GLYPTODONT, ITEM_FANG_OF_BAKIRRA, ITEM_CRUDE_SAPPHIRE, ITEM_CRYSTAL,
+				ITEM_OPAL };
+			static constexpr int16_t ROGUE_ITEM_COUNTS[7] = { 1, 1, 10, 1, 10, 10, 10 };
+			if (!CheckAndRobItems(ROGUE_ITEM_IDS, ROGUE_ITEM_COUNTS))
 			{
 				// Send failure message
 				SendSay(-1, -1, 7007);
@@ -13852,16 +13924,11 @@ void CUser::PromoteUser()
 
 		case CLASS_KA_SORCERER:
 		case CLASS_EL_MAGE:
-			if (!CheckExistItem(ITEM_KEKURI_RING, 1) || !CheckExistItem(ITEM_GAVOLT_WING, 50)
-				|| !CheckExistItem(ITEM_ZOMBIE_EYE, 50) || !CheckExistItem(ITEM_CURSED_BONE, 1)
-				|| !CheckExistItem(ITEM_FEATHER_OF_HARPY_QUEEN, 1)
-				|| !CheckExistItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
-				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
-				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_KEKURI_RING, 1)
-				|| !RobItem(ITEM_GAVOLT_WING, 50) || !RobItem(ITEM_ZOMBIE_EYE, 50)
-				|| !RobItem(ITEM_CURSED_BONE, 1) || !RobItem(ITEM_FEATHER_OF_HARPY_QUEEN, 1)
-				|| !RobItem(ITEM_BLOOD_OF_GLYPTODONT, 10) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
-				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			static constexpr int MAGE_ITEM_IDS[9]        = { ITEM_KEKURI_RING, ITEM_GAVOLT_WING,
+					   ITEM_ZOMBIE_EYE, ITEM_CURSED_BONE, ITEM_FEATHER_OF_HARPY_QUEEN,
+					   ITEM_BLOOD_OF_GLYPTODONT, ITEM_CRUDE_SAPPHIRE, ITEM_CRYSTAL, ITEM_OPAL };
+			static constexpr int16_t MAGE_ITEM_COUNTS[9] = { 1, 50, 50, 1, 1, 10, 10, 10, 10 };
+			if (!CheckAndRobItems(MAGE_ITEM_IDS, MAGE_ITEM_COUNTS))
 			{
 				// Send failure message
 				SendSay(-1, -1, 8007);
@@ -13878,11 +13945,10 @@ void CUser::PromoteUser()
 
 		case CLASS_KA_SHAMAN:
 		case CLASS_EL_CLERIC:
-			if (!CheckExistItem(ITEM_HOLY_WATER_OF_TEMPLE, 1)
-				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
-				|| !CheckExistItem(ITEM_OPAL, 10) || !GoldLose(QUEST_GOLD_PRIEST_MASTER)
-				|| !RobItem(ITEM_HOLY_WATER_OF_TEMPLE, 1) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
-				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			static constexpr int PRIEST_ITEM_IDS[4]        = { ITEM_HOLY_WATER_OF_TEMPLE,
+					   ITEM_CRUDE_SAPPHIRE, ITEM_CRYSTAL, ITEM_OPAL };
+			static constexpr int16_t PRIEST_ITEM_COUNTS[4] = { 1, 10, 10, 10 };
+			if (!CheckAndRobItems(PRIEST_ITEM_IDS, PRIEST_ITEM_COUNTS, QUEST_GOLD_PRIEST_MASTER))
 			{
 				// Send failure message
 				SendSay(-1, -1, 9007);

@@ -283,8 +283,30 @@ public:
 	void RecvSelectMsg(char* pBuf);
 	void ResetSelectMsg();
 	bool GiveItem(int itemid, int16_t count);
-	bool RobItem(int itemid, int16_t count);
-	bool CheckExistItem(int itemid, int16_t count) const;
+
+	/// \brief Attempts to count number of itemId from the user
+	/// \return true when all items were successfully taken, false otherwise
+	bool RobItem(int itemId, int16_t count);
+
+	/// \brief Attempts to remove all the items from the user in the input array
+	/// \return true when all items were successfully taken, false otherwise
+	bool CheckAndRobItems(
+		std::span<const int> itemIds, std::span<const int16_t> counts, int gold = 0);
+
+	/// \brief Checks to see if a user has count number of itemIds
+	/// \return true when the user has count number of itemIds, false otherwise
+	bool CheckExistItem(int itemId, int16_t count) const;
+
+	/// \brief Checks to see if a user has up to 5 sets of items
+	/// \return true when the user has all the items, false otherwise
+	bool CheckExistItemAnd(int id1, int16_t count1, int id2, int16_t count2, int id3 = -1,
+		int16_t count3 = -1, int id4 = -1, int16_t count4 = -1, int id5 = -1,
+		int16_t count5 = -1) const;
+
+	/// \brief Checks to see if a user has all the items in the input array
+	/// \return true when the user has all the items, false otherwise
+	bool CheckExistItemAnd(std::span<const int> itemIds, std::span<const int16_t> counts) const;
+
 	bool CheckWeight(int itemid, int16_t count) const;
 	bool CheckSkillPoint(uint8_t skillnum, uint8_t min, uint8_t max) const;
 	bool CheckSkillTotal(uint8_t min, uint8_t max) const;
