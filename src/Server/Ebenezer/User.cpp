@@ -13738,7 +13738,7 @@ void CUser::PromoteUserNovice()
 	// decompiled signature differs
 	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
 
-	sendBuffer[128] = {};
+	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex       = 0;
 	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
 	SetShort(sendBuffer, newClass, sendIndex);
@@ -13746,7 +13746,7 @@ void CUser::PromoteUserNovice()
 	ClassChange(sendBuffer);
 
 	// Refresh Knights list
-	sendBuffer[128] = {};
+	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex       = 0;
 	SetShort(sendBuffer, 0, sendIndex);
 	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
@@ -13892,7 +13892,8 @@ void CUser::PromoteUser()
 	// decompiled signature differs
 	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
 
-	sendBuffer[128] = {};
+
+	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex       = 0;
 	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
 	SetShort(sendBuffer, newClass, sendIndex);
@@ -13900,7 +13901,7 @@ void CUser::PromoteUser()
 	ClassChange(sendBuffer);
 
 	// Refresh Knights list
-	sendBuffer[128] = {};
+	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex       = 0;
 	SetShort(sendBuffer, 0, sendIndex);
 	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
