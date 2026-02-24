@@ -468,7 +468,8 @@ public:
 	void PromoteUser();
 
 	/// \brief Updates an event/quest status
-	void SaveEvent(e_QuestId questId, e_QuestState questState);
+	/// \returns true if quest event was successfully saved, false otherwise
+	bool SaveEvent(e_QuestId questId, e_QuestState questState);
 };
 
 } // namespace Ebenezer

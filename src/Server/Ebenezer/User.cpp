@@ -13878,7 +13878,9 @@ void CUser::PromoteUser()
 	if (!CheckPromotionEligible())
 		return;
 
-	uint8_t newClass = static_cast<uint8_t>(m_pUserData->m_sClass + 1);
+	uint8_t newClass       = static_cast<uint8_t>(m_pUserData->m_sClass + 1);
+	int16_t successMessage = -1;
+	e_QuestId masterQuest  = QUEST_MIN_ID;
 
 	switch (m_pUserData->m_sClass)
 	{
@@ -13894,14 +13896,10 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(newClass))
-			{
-				// Send success message
-				SendSay(-1, -1, 6005);
-				SaveEvent(e_QuestId::QUEST_MASTER_WARRIOR, QUEST_STATE_COMPLETE);
-			}
-
+			successMessage = 6005;
+			masterQuest    = QUEST_MASTER_WARRIOR;
 			break;
+
 		case CLASS_KA_HUNTER:
 		case CLASS_EL_RANGER:
 			static constexpr int ROGUE_ITEM_IDS[7] = { ITEM_TAIL_OF_SHAULA, ITEM_TAIL_OF_LESATH,
@@ -13915,13 +13913,8 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(newClass))
-			{
-				// Send success message
-				SendSay(-1, -1, 7005);
-				SaveEvent(e_QuestId::QUEST_MASTER_ROGUE, QUEST_STATE_COMPLETE);
-			}
-
+			successMessage = 7005;
+			masterQuest    = QUEST_MASTER_ROGUE;
 			break;
 
 		case CLASS_KA_SORCERER:
@@ -13937,12 +13930,8 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(newClass))
-			{
-				// Send success message
-				SendSay(-1, -1, 8005);
-				SaveEvent(e_QuestId::QUEST_MASTER_MAGE, QUEST_STATE_COMPLETE);
-			}
+			successMessage = 8005;
+			masterQuest    = QUEST_MASTER_MAGE;
 			break;
 
 		case CLASS_KA_SHAMAN:
@@ -13957,12 +13946,8 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(newClass))
-			{
-				// Send success message
-				SendSay(-1, -1, 9005);
-				SaveEvent(e_QuestId::QUEST_MASTER_PRIEST, QUEST_STATE_COMPLETE);
-			}
+			successMessage = 9005;
+			masterQuest    = QUEST_MASTER_PRIEST;
 			break;
 
 		case CLASS_KA_GUARDIAN:
@@ -13990,6 +13975,17 @@ void CUser::PromoteUser()
 			return;
 	}
 
+	if (!CheckClass(newClass))
+	{
+		// Send success message
+		SendSay(-1, -1, successMessage);
+		if (!SaveEvent(masterQuest, QUEST_STATE_COMPLETE))
+		{
+			spdlog::debug("User::PromoteUser: Failed to save quest [charId={} questId={}]",
+				m_pUserData->m_id, static_cast<int16_t>(masterQuest));
+		}
+	}
+
 	char sendBuffer[128] {};
 	int sendIndex = 0;
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
@@ -14011,33 +14007,69 @@ void CUser::PromoteUser()
 	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
 }
 
-void CUser::SaveEvent(e_QuestId questId, e_QuestState questState)
+bool CUser::SaveEvent(e_QuestId questId, e_QuestState questState)
 {
 	int questIndex = 0;
 	int maxQuests  = sizeof(m_pUserData->m_quests) / sizeof(_USER_QUEST);
 
 	// invalid questId
-	if (questId <= e_QuestId::QUEST_MIN_ID || questId > e_QuestId::QUEST_MAX_ID)
+	if (questId <= QUEST_MIN_ID || questId > QUEST_MAX_ID)
 	{
-		return;
+		spdlog::debug("User::SaveEvent: Tried to save invalid quest [charId={} questId={}].",
+			m_pUserData->m_id, static_cast<int16_t>(questId));
+		return false;
 	}
 
+	int openSlot    = -1;
+	bool isNewQuest = true;
 	for (_USER_QUEST& quest : m_pUserData->m_quests)
 	{
 		if (quest.sQuestID == questId)
 		{
-			quest.byQuestState = questState;
-			return;
-		}
-		if (quest.sQuestID <= e_QuestId::QUEST_MIN_ID || quest.sQuestID > e_QuestId::QUEST_MAX_ID)
+			// quest found, stop loop
+			isNewQuest = false;
 			break;
-		if (++questIndex >= maxQuests)
-			return;
+		}
+
+		// mark an open slot in case we need to write a new record
+		if ((quest.sQuestID <= QUEST_MIN_ID || quest.sQuestID > QUEST_MAX_ID) && openSlot == -1)
+		{
+			openSlot = questIndex;
+		}
+
+		// walked off the end of the list without finding an open slot or
+		// the requested quest
+		if (++questIndex >= maxQuests && openSlot == -1)
+		{
+			spdlog::debug("User::SaveEvent: Quest log full, couldn't save [charId={} questId={}].",
+				m_pUserData->m_id, static_cast<int16_t>(questId));
+			return false;
+		}
 	}
+
+	// if we walked off the end of the list but earmarked an open slot, use it
+	if (questIndex >= maxQuests && openSlot != -1)
+	{
+		questIndex = openSlot;
+	}
+
+	// sanity check bounds
+	if (questIndex < 0 || questIndex > maxQuests)
+	{
+		spdlog::debug(
+			"User::SaveEvent: questIndex out of bounds [charId={} questIndex={} questId={}].",
+			m_pUserData->m_id, questIndex, static_cast<int16_t>(questId));
+		return false;
+	}
+
 	m_pUserData->m_quests[questIndex].sQuestID     = questId;
 	m_pUserData->m_quests[questIndex].byQuestState = questState;
-	++m_pUserData->m_sQuestCount;
-	if (questId >= e_QuestId::QUEST_WARRIOR_70_QUEST && questId <= e_QuestId::QUEST_PRIEST_70_QUEST)
+	if (isNewQuest)
+	{
+		++m_pUserData->m_sQuestCount;
+	}
+
+	if (questId >= QUEST_WARRIOR_70_QUEST && questId <= QUEST_PRIEST_70_QUEST)
 	{
 		char sendBuff[256] {};
 		int sendIndex = 0;
@@ -14047,6 +14079,8 @@ void CUser::SaveEvent(e_QuestId questId, e_QuestState questState)
 		SetByte(sendBuff, 1, sendIndex);
 		Send(sendBuff, sendIndex);
 	}
+
+	return true;
 }
 
 } // namespace Ebenezer

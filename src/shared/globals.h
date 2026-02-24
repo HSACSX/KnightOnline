@@ -357,7 +357,7 @@ enum e_ObjectType : int8_t
 	OBJECT_TYPE_UNKNOWN        = -1
 };
 
-enum class e_QuestId : int16_t
+enum e_QuestId : int16_t
 {
 	QUEST_MIN_ID                         = 0,
 	QUEST_MASTER_WARRIOR                 = 1,
