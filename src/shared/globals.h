@@ -410,8 +410,7 @@ enum e_QuestState : uint8_t
 {
 	QUEST_STATE_NOT_STARTED = 0,
 	QUEST_STATE_IN_PROGRESS = 1,
-	QUEST_STATE_COMPLETE    = 2,
-	QUEST_STATE_INVALID     = 3
+	QUEST_STATE_COMPLETE    = 2
 };
 
 enum e_QuestItem : int
