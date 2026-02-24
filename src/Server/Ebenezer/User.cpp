@@ -7121,42 +7121,82 @@ void CUser::ClassChange(char* pBuf)
 	switch (m_pUserData->m_sClass)
 	{
 		case KARUWARRRIOR:
-			if (classcode == BERSERKER || classcode == GUARDIAN)
+			if (classcode == BERSERKER)
+				bSuccess = true;
+			break;
+
+		case BERSERKER:
+			if (classcode == GUARDIAN)
 				bSuccess = true;
 			break;
 
 		case KARUROGUE:
-			if (classcode == HUNTER || classcode == PENETRATOR)
+			if (classcode == HUNTER)
+				bSuccess = true;
+			break;
+
+		case HUNTER:
+			if (classcode == PENETRATOR)
 				bSuccess = true;
 			break;
 
 		case KARUWIZARD:
-			if (classcode == SORCERER || classcode == NECROMANCER)
+			if (classcode == SORCERER)
+				bSuccess = true;
+			break;
+
+		case SORCERER:
+			if (classcode == NECROMANCER)
 				bSuccess = true;
 			break;
 
 		case KARUPRIEST:
-			if (classcode == SHAMAN || classcode == DARKPRIEST)
+			if (classcode == SHAMAN)
+				bSuccess = true;
+			break;
+
+		case SHAMAN:
+			if (classcode == DARKPRIEST)
 				bSuccess = true;
 			break;
 
 		case ELMORWARRRIOR:
-			if (classcode == BLADE || classcode == PROTECTOR)
+			if (classcode == BLADE)
+				bSuccess = true;
+			break;
+
+		case BLADE:
+			if (classcode == PROTECTOR)
 				bSuccess = true;
 			break;
 
 		case ELMOROGUE:
-			if (classcode == RANGER || classcode == ASSASSIN)
+			if (classcode == RANGER)
+				bSuccess = true;
+			break;
+
+		case RANGER:
+			if (classcode == ASSASSIN)
 				bSuccess = true;
 			break;
 
 		case ELMOWIZARD:
-			if (classcode == MAGE || classcode == ENCHANTER)
+			if (classcode == MAGE)
+				bSuccess = true;
+			break;
+
+		case MAGE:
+			if (classcode == ENCHANTER)
 				bSuccess = true;
 			break;
 
 		case ELMOPRIEST:
-			if (classcode == CLERIC || classcode == DRUID)
+			if (classcode == CLERIC)
+				bSuccess = true;
+			break;
+
+		case CLERIC:
+			if (classcode == DRUID)
 				bSuccess = true;
 			break;
 
@@ -13702,7 +13742,7 @@ float CUser::GetDistanceSquared2D(float targetX, float targetZ) const
 
 void CUser::PromoteUserNovice()
 {
-	int16_t newClass = m_pUserData->m_sClass;
+	uint8_t newClass = static_cast<uint8_t>(m_pUserData->m_sClass);
 	switch (m_pUserData->m_sClass)
 	{
 		case KARUWARRRIOR:
@@ -13728,8 +13768,8 @@ void CUser::PromoteUserNovice()
 			return;
 	}
 
-	char sendBuffer[128] = {};
-	int sendIndex        = 0;
+	char sendBuffer[128] {};
+	int sendIndex = 0;
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
 	SetByte(sendBuffer, NOVICE_CLASS_CHANGE_REQ, sendIndex);
 	SetShort(sendBuffer, newClass, sendIndex);
@@ -13741,8 +13781,7 @@ void CUser::PromoteUserNovice()
 	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex = 0;
 	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
-	SetShort(sendBuffer, newClass, sendIndex);
-	SetShort(sendBuffer, _socketId, sendIndex);
+	SetByte(sendBuffer, newClass, sendIndex);
 	ClassChange(sendBuffer);
 
 	// Refresh Knights list
@@ -13758,7 +13797,7 @@ void CUser::PromoteUser()
 	if (!CheckPromotionEligible())
 		return;
 
-	int16_t newClass = m_pUserData->m_sClass + 1;
+	uint8_t newClass = static_cast<uint8_t>(m_pUserData->m_sClass + 1);
 
 	switch (m_pUserData->m_sClass)
 	{
@@ -13777,7 +13816,7 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(m_pUserData->m_sClass + 1))
+			if (!CheckClass(newClass))
 			{
 				// Send success message
 				SendSay(-1, -1, 6005);
@@ -13801,7 +13840,7 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(m_pUserData->m_sClass + 1))
+			if (!CheckClass(newClass))
 			{
 				// Send success message
 				SendSay(-1, -1, 7005);
@@ -13828,7 +13867,7 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(m_pUserData->m_sClass + 1))
+			if (!CheckClass(newClass))
 			{
 				// Send success message
 				SendSay(-1, -1, 8005);
@@ -13849,7 +13888,7 @@ void CUser::PromoteUser()
 				return;
 			}
 
-			if (!CheckClass(m_pUserData->m_sClass + 1))
+			if (!CheckClass(newClass))
 			{
 				// Send success message
 				SendSay(-1, -1, 9005);
@@ -13882,8 +13921,8 @@ void CUser::PromoteUser()
 			return;
 	}
 
-	char sendBuffer[128] = {};
-	int sendIndex        = 0;
+	char sendBuffer[128] {};
+	int sendIndex = 0;
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
 	SetByte(sendBuffer, NOVICE_CLASS_CHANGE_REQ, sendIndex);
 	SetShort(sendBuffer, newClass, sendIndex);
@@ -13895,8 +13934,7 @@ void CUser::PromoteUser()
 	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex = 0;
 	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
-	SetShort(sendBuffer, newClass, sendIndex);
-	SetShort(sendBuffer, _socketId, sendIndex);
+	SetByte(sendBuffer, newClass, sendIndex);
 	ClassChange(sendBuffer);
 
 	// Refresh Knights list
@@ -13933,8 +13971,8 @@ void CUser::SaveEvent(int16_t questId, int questState)
 	++m_pUserData->m_sQuestCount;
 	if (questId >= 51 && questId <= 54)
 	{
-		char sendBuff[256] = {};
-		int sendIndex      = 0;
+		char sendBuff[256] {};
+		int sendIndex = 0;
 		SetByte(sendBuff, WIZ_QUEST, sendIndex);
 		SetByte(sendBuff, QUEST_UPDATE, sendIndex);
 		SetShort(sendBuff, questId, sendIndex);
