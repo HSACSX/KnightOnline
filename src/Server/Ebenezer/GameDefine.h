@@ -20,7 +20,7 @@ inline constexpr int BERSERKER     = 105; // 버서커
 inline constexpr int GUARDIAN      = 106; // 가디언
 inline constexpr int HUNTER        = 107; // 헌터
 inline constexpr int PENETRATOR    = 108; // 페너트레이터
-inline constexpr int SORSERER      = 109; // 소서러
+inline constexpr int SORCERER      = 109; // 소서러
 inline constexpr int NECROMANCER   = 110; // 네크로맨서
 inline constexpr int SHAMAN        = 111; // 샤만
 inline constexpr int DARKPRIEST    = 112; // 다크프리스트
@@ -125,14 +125,30 @@ enum e_ClanType : uint8_t
 };
 ////////////////////////////////////////////////////////////
 
-inline constexpr int MAX_CLAN         = 36;
-inline constexpr int MAX_KNIGHTS_BANK = 200;
+inline constexpr int MAX_CLAN                    = 36;
+inline constexpr int MAX_KNIGHTS_BANK            = 200;
 
 // 돈 아이템 번호...
-inline constexpr int ITEM_GOLD        = 900000000;
+inline constexpr int ITEM_GOLD                   = 900000000;
+inline constexpr int ITEM_KEKURI_RING            = 330310014;
+inline constexpr int ITEM_BLOOD_OF_GLYPTODONT    = 379014000;
+inline constexpr int ITEM_FANG_OF_BAKIRRA        = 379042000;
+inline constexpr int ITEM_TAIL_OF_SHAULA         = 379040000;
+inline constexpr int ITEM_TAIL_OF_LESATH         = 379041000;
+inline constexpr int ITEM_GAVOLT_WING            = 379043000;
+inline constexpr int ITEM_ZOMBIE_EYE             = 379044000;
+inline constexpr int ITEM_CURSED_BONE            = 379045000;
+inline constexpr int ITEM_FEATHER_OF_HARPY_QUEEN = 379046000;
+inline constexpr int ITEM_HOLY_WATER_OF_TEMPLE   = 379047000;
+inline constexpr int ITEM_LOBO_PENDANT           = 320410011;
+inline constexpr int ITEM_LUPUS_PENDANT          = 320410012;
+inline constexpr int ITEM_LYCAON_PENDANT         = 320410013;
+inline constexpr int ITEM_CRUDE_SAPPHIRE         = 389074000;
+inline constexpr int ITEM_CRYSTAL                = 389075000;
+inline constexpr int ITEM_OPAL                   = 389076000;
 
 // 거래 불가 아이템들.... 비러머글 크리스마스 이밴트 >.<
-inline constexpr int ITEM_NO_TRADE    = 900000001;
+inline constexpr int ITEM_NO_TRADE               = 900000001;
 
 ////////////////////////////////////////////////////////////
 // EVENT TYPE DEFINE

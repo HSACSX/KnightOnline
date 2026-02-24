@@ -7020,35 +7020,35 @@ void CUser::UpdateGameWeather(char* pBuf, uint8_t type)
 
 void CUser::ClassChange(char* pBuf)
 {
-	int index = 0, classcode = 0, sendIndex = 0, type = 0, sub_type = 0, money = 0;
+	int index = 0, classcode = 0, sendIndex = 0, classChangeOpCode = 0, sub_type = 0, money = 0;
 	char sendBuffer[128] {};
-	bool bSuccess = false;
+	bool bSuccess     = false;
 
-	type          = GetByte(pBuf, index);
+	classChangeOpCode = GetByte(pBuf, index);
 
 	// 전직요청
-	if (type == CLASS_CHANGE_REQ)
+	if (classChangeOpCode == CLASS_CHANGE_REQ)
 	{
 		ClassChangeReq();
 		return;
 	}
 
 	// 포인트 초기화
-	if (type == ALL_POINT_CHANGE)
+	if (classChangeOpCode == ALL_POINT_CHANGE)
 	{
 		AllPointChange();
 		return;
 	}
 
 	// 스킬 초기화
-	if (type == ALL_SKILLPT_CHANGE)
+	if (classChangeOpCode == ALL_SKILLPT_CHANGE)
 	{
 		AllSkillPointChange();
 		return;
 	}
 
 	// 포인트 & 스킬 초기화에 돈이 얼마인지를 묻는 서브 패킷
-	if (type == CHANGE_MONEY_REQ)
+	if (classChangeOpCode == CHANGE_MONEY_REQ)
 	{
 		sub_type = GetByte(pBuf, index);
 
@@ -7131,7 +7131,7 @@ void CUser::ClassChange(char* pBuf)
 			break;
 
 		case KARUWIZARD:
-			if (classcode == SORSERER || classcode == NECROMANCER)
+			if (classcode == SORCERER || classcode == NECROMANCER)
 				bSuccess = true;
 			break;
 
@@ -11867,6 +11867,14 @@ bool CUser::RunEvent(const EVENT_DATA* pEventData)
 			case EXEC_RETURN:
 				return false;
 
+			case EXEC_PROMOTE_USER_NOVICE:
+				PromoteUserNovice();
+				break;
+
+			case EXEC_PROMOTE_USER:
+				PromoteUser();
+				break;
+
 			default:
 				spdlog::warn("User::RunEvent: unhandled opcode. opcode={:02X} zoneId={}",
 					pExec->m_Exec, m_pUserData->m_bZone);
@@ -13690,6 +13698,249 @@ float CUser::GetDistanceSquared2D(float targetX, float targetZ) const
 	const float dx = m_pUserData->m_curx - targetX;
 	const float dz = m_pUserData->m_curz - targetZ;
 	return (dx * dx) + (dz * dz);
+}
+
+void CUser::PromoteUserNovice()
+{
+	int16_t newClass = m_pUserData->m_sClass;
+	switch (m_pUserData->m_sClass)
+	{
+		case KARUWARRRIOR:
+		case ELMORWARRRIOR:
+			newClass += 4; // X01 -> X05
+			break;
+		case KARUROGUE:
+		case ELMOROGUE:
+			newClass += 5; // X02 -> X07
+			break;
+		case KARUWIZARD:
+		case ELMOWIZARD:
+			newClass += 6; // X03 -> X09
+			break;
+
+		case KARUPRIEST:
+		case ELMOPRIEST:
+			newClass += 7; // X04 -> X11
+			break;
+
+		default:
+			// invalid current class
+			return;
+	}
+
+	char sendBuffer[128] = {};
+	int sendIndex        = 0;
+	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+	SetByte(sendBuffer, NOVICE_CLASS_CHANGE_REQ, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
+	// decompiled signature differs
+	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
+
+	sendBuffer[128] = {};
+	sendIndex       = 0;
+	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	ClassChange(sendBuffer);
+
+	// Refresh Knights list
+	sendBuffer[128] = {};
+	sendIndex       = 0;
+	SetShort(sendBuffer, 0, sendIndex);
+	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
+}
+
+void CUser::PromoteUser()
+{
+	// Make sure user level is appropriate for current promotion
+	if (!CheckPromotionEligible())
+		return;
+
+	int16_t newClass = m_pUserData->m_sClass + 1;
+
+	switch (m_pUserData->m_sClass)
+	{
+		case BLADE:
+		case BERSERKER:
+			if (!CheckExistItem(ITEM_LOBO_PENDANT, 1) || !CheckExistItem(ITEM_LUPUS_PENDANT, 1)
+				|| !CheckExistItem(ITEM_LYCAON_PENDANT, 1)
+				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
+				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_LOBO_PENDANT, 1)
+				|| !RobItem(ITEM_LUPUS_PENDANT, 1) || !RobItem(ITEM_LYCAON_PENDANT, 1)
+				|| !RobItem(ITEM_CRUDE_SAPPHIRE, 10) || !RobItem(ITEM_CRYSTAL, 10)
+				|| !RobItem(ITEM_OPAL, 10))
+			{
+				// Send failure message - missing items
+				SendSay(-1, -1, 6007);
+				return;
+			}
+
+			if (!CheckClass(m_pUserData->m_sClass + 1))
+			{
+				// Send success message
+				SendSay(-1, -1, 6005);
+				SaveEvent(1, 2);
+			}
+
+			break;
+		case HUNTER:
+		case RANGER:
+			if (!CheckExistItem(ITEM_TAIL_OF_SHAULA, 1) || !CheckExistItem(ITEM_TAIL_OF_LESATH, 1)
+				|| !CheckExistItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
+				|| !CheckExistItem(ITEM_FANG_OF_BAKIRRA, 1)
+				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
+				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_TAIL_OF_SHAULA, 1)
+				|| !RobItem(ITEM_TAIL_OF_LESATH, 1) || !RobItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
+				|| !RobItem(ITEM_FANG_OF_BAKIRRA, 1) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
+				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			{
+				// Send failure message
+				SendSay(-1, -1, 7007);
+				return;
+			}
+
+			if (!CheckClass(m_pUserData->m_sClass + 1))
+			{
+				// Send success message
+				SendSay(-1, -1, 7005);
+				SaveEvent(2, 2);
+			}
+
+			break;
+
+		case SORCERER:
+		case MAGE:
+			if (!CheckExistItem(ITEM_KEKURI_RING, 1) || !CheckExistItem(ITEM_GAVOLT_WING, 50)
+				|| !CheckExistItem(ITEM_ZOMBIE_EYE, 50) || !CheckExistItem(ITEM_CURSED_BONE, 1)
+				|| !CheckExistItem(ITEM_FEATHER_OF_HARPY_QUEEN, 1)
+				|| !CheckExistItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
+				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
+				|| !CheckExistItem(ITEM_OPAL, 10) || !RobItem(ITEM_KEKURI_RING, 1)
+				|| !RobItem(ITEM_GAVOLT_WING, 50) || !RobItem(ITEM_ZOMBIE_EYE, 50)
+				|| !RobItem(ITEM_CURSED_BONE, 1) || !RobItem(ITEM_FEATHER_OF_HARPY_QUEEN, 1)
+				|| !RobItem(ITEM_BLOOD_OF_GLYPTODONT, 10) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
+				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			{
+				// Send failure message
+				SendSay(-1, -1, 8007);
+				return;
+			}
+
+			if (!CheckClass(m_pUserData->m_sClass + 1))
+			{
+				// Send success message
+				SendSay(-1, -1, 8005);
+				SaveEvent(3, 2);
+			}
+			break;
+
+		case SHAMAN:
+		case CLERIC:
+			if (!CheckExistItem(ITEM_HOLY_WATER_OF_TEMPLE, 1)
+				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
+				|| !CheckExistItem(ITEM_OPAL, 10) || !GoldLose(10000000)
+				|| !RobItem(ITEM_HOLY_WATER_OF_TEMPLE, 1) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
+				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
+			{
+				// Send failure message
+				SendSay(-1, -1, 9007);
+				return;
+			}
+
+			if (!CheckClass(m_pUserData->m_sClass + 1))
+			{
+				// Send success message
+				SendSay(-1, -1, 9005);
+				SaveEvent(4, 2);
+			}
+			break;
+
+		case GUARDIAN:
+		case PROTECTOR:
+			SendSay(-1, -1, 6006);
+			return;
+
+		case PENETRATOR:
+		case ASSASSIN:
+			SendSay(-1, -1, 7006);
+			return;
+
+		case NECROMANCER:
+		case ENCHANTER:
+			SendSay(-1, -1, 8006);
+			return;
+
+		case DARKPRIEST:
+		case DRUID:
+			SendSay(-1, -1, 9006);
+			return;
+
+		default:
+			// invalid input
+			return;
+	}
+
+	char sendBuffer[128] = {};
+	int sendIndex        = 0;
+	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+	SetByte(sendBuffer, NOVICE_CLASS_CHANGE_REQ, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
+	// decompiled signature differs
+	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
+
+	sendBuffer[128] = {};
+	sendIndex       = 0;
+	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	ClassChange(sendBuffer);
+
+	// Refresh Knights list
+	sendBuffer[128] = {};
+	sendIndex       = 0;
+	SetShort(sendBuffer, 0, sendIndex);
+	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
+}
+
+void CUser::SaveEvent(int16_t questId, int questState)
+{
+	int questIndex = 0;
+
+	// invalid questId
+	if (questId <= 0 || questId > 100)
+	{
+		return;
+	}
+
+	for (auto& quest : m_pUserData->m_quests)
+	{
+		if (quest.sQuestID == questId)
+		{
+			m_pUserData->m_quests[questIndex].byQuestState = questState;
+			return;
+		}
+		if (quest.sQuestID <= 0 || quest.sQuestID > 100)
+			break;
+		if (++questIndex >= 100)
+			return;
+	}
+	m_pUserData->m_quests[questIndex].sQuestID     = questId;
+	m_pUserData->m_quests[questIndex].byQuestState = questState;
+	++m_pUserData->m_sQuestCount;
+	if (questId >= 51 && questId <= 54)
+	{
+		char sendBuff[256] = {};
+		int sendIndex      = 0;
+		SetByte(sendBuff, WIZ_QUEST, sendIndex);
+		SetByte(sendBuff, QUEST_UPDATE, sendIndex);
+		SetShort(sendBuff, questId, sendIndex);
+		SetByte(sendBuff, 1, sendIndex);
+		Send(sendBuff, sendIndex);
+	}
 }
 
 } // namespace Ebenezer

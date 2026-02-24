@@ -437,6 +437,15 @@ public:
 	void MoveProcess(char* pBuf);
 	void Rotate(char* pBuf);
 	void LoginProcess(char* pBuf);
+
+	/// \brief Attempts to perform a character's first job change
+	void PromoteUserNovice();
+
+	/// \brief Attempts to perform a character's second job change
+	void PromoteUser();
+
+	/// \brief Updates an event/quest status
+	void SaveEvent(int16_t questId, int questState);
 };
 
 } // namespace Ebenezer
