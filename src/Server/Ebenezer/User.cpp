@@ -3238,7 +3238,8 @@ void CUser::SetSlotItemValue()
 
 		if (i == LEFTHAND)
 		{
-			if ((m_pUserData->m_sClass == BERSERKER || m_pUserData->m_sClass == BLADE))
+			if ((m_pUserData->m_sClass == CLASS_KA_BERSERKER
+					|| m_pUserData->m_sClass == CLASS_EL_BLADE))
 				//			m_sItemHit += item_hit * (double) (m_pUserData->m_bstrSkill[PRO_SKILL1] / 60.0);    // 성래씨 요청 ^^;
 				m_sItemHit += static_cast<int16_t>(item_hit * 0.5f);
 		}
@@ -7120,83 +7121,83 @@ void CUser::ClassChange(char* pBuf)
 
 	switch (m_pUserData->m_sClass)
 	{
-		case KARUWARRRIOR:
-			if (classcode == BERSERKER)
+		case CLASS_KA_WARRIOR:
+			if (classcode == CLASS_KA_BERSERKER)
 				bSuccess = true;
 			break;
 
-		case BERSERKER:
-			if (classcode == GUARDIAN)
+		case CLASS_KA_BERSERKER:
+			if (classcode == CLASS_KA_GUARDIAN)
 				bSuccess = true;
 			break;
 
-		case KARUROGUE:
-			if (classcode == HUNTER)
+		case CLASS_KA_ROGUE:
+			if (classcode == CLASS_KA_HUNTER)
 				bSuccess = true;
 			break;
 
-		case HUNTER:
-			if (classcode == PENETRATOR)
+		case CLASS_KA_HUNTER:
+			if (classcode == CLASS_KA_PENETRATOR)
 				bSuccess = true;
 			break;
 
-		case KARUWIZARD:
-			if (classcode == SORCERER)
+		case CLASS_KA_WIZARD:
+			if (classcode == CLASS_KA_SORCERER)
 				bSuccess = true;
 			break;
 
-		case SORCERER:
-			if (classcode == NECROMANCER)
+		case CLASS_KA_SORCERER:
+			if (classcode == CLASS_KA_NECROMANCER)
 				bSuccess = true;
 			break;
 
-		case KARUPRIEST:
-			if (classcode == SHAMAN)
+		case CLASS_KA_PRIEST:
+			if (classcode == CLASS_KA_SHAMAN)
 				bSuccess = true;
 			break;
 
-		case SHAMAN:
-			if (classcode == DARKPRIEST)
+		case CLASS_KA_SHAMAN:
+			if (classcode == CLASS_KA_DARKPRIEST)
 				bSuccess = true;
 			break;
 
-		case ELMORWARRRIOR:
-			if (classcode == BLADE)
+		case CLASS_EL_WARRIOR:
+			if (classcode == CLASS_EL_BLADE)
 				bSuccess = true;
 			break;
 
-		case BLADE:
-			if (classcode == PROTECTOR)
+		case CLASS_EL_BLADE:
+			if (classcode == CLASS_EL_PROTECTOR)
 				bSuccess = true;
 			break;
 
-		case ELMOROGUE:
-			if (classcode == RANGER)
+		case CLASS_EL_ROGUE:
+			if (classcode == CLASS_EL_RANGER)
 				bSuccess = true;
 			break;
 
-		case RANGER:
-			if (classcode == ASSASSIN)
+		case CLASS_EL_RANGER:
+			if (classcode == CLASS_EL_ASSASSIN)
 				bSuccess = true;
 			break;
 
-		case ELMOWIZARD:
-			if (classcode == MAGE)
+		case CLASS_EL_WIZARD:
+			if (classcode == CLASS_EL_MAGE)
 				bSuccess = true;
 			break;
 
-		case MAGE:
-			if (classcode == ENCHANTER)
+		case CLASS_EL_MAGE:
+			if (classcode == CLASS_EL_ENCHANTER)
 				bSuccess = true;
 			break;
 
-		case ELMOPRIEST:
-			if (classcode == CLERIC)
+		case CLASS_EL_PRIEST:
+			if (classcode == CLASS_EL_CLERIC)
 				bSuccess = true;
 			break;
 
-		case CLERIC:
-			if (classcode == DRUID)
+		case CLASS_EL_CLERIC:
+			if (classcode == CLASS_EL_DRUID)
 				bSuccess = true;
 			break;
 
@@ -12278,7 +12279,7 @@ bool CUser::CheckPromotionEligible()
 
 	if (CheckClass(
 			CLASS_KA_GUARDIAN, CLASS_KA_PENETRATOR, CLASS_KA_NECROMANCER, CLASS_KA_DARKPRIEST)
-		|| CheckClass(CLASS_EL_PROTECTOR, CLASS_EL_ASSASIN, CLASS_EL_ENCHANTER, CLASS_EL_DRUID))
+		|| CheckClass(CLASS_EL_PROTECTOR, CLASS_EL_ASSASSIN, CLASS_EL_ENCHANTER, CLASS_EL_DRUID))
 	{
 		// Here we return that the user is already mastered
 		switch (m_pUserData->m_sClass)
@@ -12288,7 +12289,7 @@ bool CUser::CheckPromotionEligible()
 				SendSay(-1, -1, 6006);
 				break;
 
-			case CLASS_EL_ASSASIN:
+			case CLASS_EL_ASSASSIN:
 			case CLASS_KA_PENETRATOR:
 				SendSay(-1, -1, 7006);
 				break;
@@ -12508,7 +12509,7 @@ bool CUser::JobGroupCheck(int16_t jobgroupid) const
 					|| m_pUserData->m_sClass == CLASS_KA_PENETRATOR
 					|| m_pUserData->m_sClass == CLASS_EL_ROGUE
 					|| m_pUserData->m_sClass == CLASS_EL_RANGER
-					|| m_pUserData->m_sClass == CLASS_EL_ASSASIN)
+					|| m_pUserData->m_sClass == CLASS_EL_ASSASSIN)
 					return true;
 				break;
 
@@ -12552,7 +12553,7 @@ bool CUser::JobGroupCheck(int16_t jobgroupid) const
 
 			case JOB_GROUP_ASSASSIN:
 				if (m_pUserData->m_sClass == CLASS_KA_PENETRATOR
-					|| m_pUserData->m_sClass == CLASS_EL_ASSASIN)
+					|| m_pUserData->m_sClass == CLASS_EL_ASSASSIN)
 					return true;
 				break;
 
@@ -13747,21 +13748,21 @@ void CUser::PromoteUserNovice()
 	uint8_t newClass = static_cast<uint8_t>(m_pUserData->m_sClass);
 	switch (m_pUserData->m_sClass)
 	{
-		case KARUWARRRIOR:
-		case ELMORWARRRIOR:
+		case CLASS_KA_WARRIOR:
+		case CLASS_EL_WARRIOR:
 			newClass += 4; // X01 -> X05
 			break;
-		case KARUROGUE:
-		case ELMOROGUE:
+		case CLASS_KA_ROGUE:
+		case CLASS_EL_ROGUE:
 			newClass += 5; // X02 -> X07
 			break;
-		case KARUWIZARD:
-		case ELMOWIZARD:
+		case CLASS_KA_WIZARD:
+		case CLASS_EL_WIZARD:
 			newClass += 6; // X03 -> X09
 			break;
 
-		case KARUPRIEST:
-		case ELMOPRIEST:
+		case CLASS_KA_PRIEST:
+		case CLASS_EL_PRIEST:
 			newClass += 7; // X04 -> X11
 			break;
 
@@ -13801,8 +13802,8 @@ void CUser::PromoteUser()
 
 	switch (m_pUserData->m_sClass)
 	{
-		case BLADE:
-		case BERSERKER:
+		case CLASS_EL_BLADE:
+		case CLASS_KA_BERSERKER:
 			if (!CheckExistItem(ITEM_LOBO_PENDANT, 1) || !CheckExistItem(ITEM_LUPUS_PENDANT, 1)
 				|| !CheckExistItem(ITEM_LYCAON_PENDANT, 1)
 				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
@@ -13824,8 +13825,8 @@ void CUser::PromoteUser()
 			}
 
 			break;
-		case HUNTER:
-		case RANGER:
+		case CLASS_KA_HUNTER:
+		case CLASS_EL_RANGER:
 			if (!CheckExistItem(ITEM_TAIL_OF_SHAULA, 1) || !CheckExistItem(ITEM_TAIL_OF_LESATH, 1)
 				|| !CheckExistItem(ITEM_BLOOD_OF_GLYPTODONT, 10)
 				|| !CheckExistItem(ITEM_FANG_OF_BAKIRRA, 1)
@@ -13849,8 +13850,8 @@ void CUser::PromoteUser()
 
 			break;
 
-		case SORCERER:
-		case MAGE:
+		case CLASS_KA_SORCERER:
+		case CLASS_EL_MAGE:
 			if (!CheckExistItem(ITEM_KEKURI_RING, 1) || !CheckExistItem(ITEM_GAVOLT_WING, 50)
 				|| !CheckExistItem(ITEM_ZOMBIE_EYE, 50) || !CheckExistItem(ITEM_CURSED_BONE, 1)
 				|| !CheckExistItem(ITEM_FEATHER_OF_HARPY_QUEEN, 1)
@@ -13875,8 +13876,8 @@ void CUser::PromoteUser()
 			}
 			break;
 
-		case SHAMAN:
-		case CLERIC:
+		case CLASS_KA_SHAMAN:
+		case CLASS_EL_CLERIC:
 			if (!CheckExistItem(ITEM_HOLY_WATER_OF_TEMPLE, 1)
 				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
 				|| !CheckExistItem(ITEM_OPAL, 10) || !GoldLose(QUEST_GOLD_PRIEST_MASTER)
@@ -13896,23 +13897,23 @@ void CUser::PromoteUser()
 			}
 			break;
 
-		case GUARDIAN:
-		case PROTECTOR:
+		case CLASS_KA_GUARDIAN:
+		case CLASS_EL_PROTECTOR:
 			SendSay(-1, -1, 6006);
 			return;
 
-		case PENETRATOR:
-		case ASSASSIN:
+		case CLASS_KA_PENETRATOR:
+		case CLASS_EL_ASSASSIN:
 			SendSay(-1, -1, 7006);
 			return;
 
-		case NECROMANCER:
-		case ENCHANTER:
+		case CLASS_KA_NECROMANCER:
+		case CLASS_EL_ENCHANTER:
 			SendSay(-1, -1, 8006);
 			return;
 
-		case DARKPRIEST:
-		case DRUID:
+		case CLASS_KA_DARKPRIEST:
+		case CLASS_EL_DRUID:
 			SendSay(-1, -1, 9006);
 			return;
 
