@@ -289,7 +289,7 @@ public:
 	bool CheckSkillPoint(uint8_t skillnum, uint8_t min, uint8_t max) const;
 	bool CheckSkillTotal(uint8_t min, uint8_t max) const;
 	bool CheckStatTotal(uint8_t min, uint8_t max) const;
-	bool CheckExistEvent(int16_t questId, uint8_t questState) const;
+	bool CheckExistEvent(e_QuestId questId, e_QuestState questState) const;
 	bool GoldLose(int gold);
 	void GoldGain(int gold);
 	void SendItemWeight();
@@ -445,7 +445,7 @@ public:
 	void PromoteUser();
 
 	/// \brief Updates an event/quest status
-	void SaveEvent(int16_t questId, int questState);
+	void SaveEvent(e_QuestId questId, e_QuestState questState);
 };
 
 } // namespace Ebenezer

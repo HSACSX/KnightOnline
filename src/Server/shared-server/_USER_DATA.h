@@ -25,8 +25,8 @@ struct _WAREHOUSE_ITEM_DATA
 
 struct _USER_QUEST
 {
-	int16_t sQuestID;
-	uint8_t byQuestState;
+	e_QuestId sQuestID;
+	e_QuestState byQuestState;
 };
 
 struct _USER_DATA

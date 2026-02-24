@@ -8913,7 +8913,7 @@ int CUser::GetNumberOfEmptySlots() const
 	return emptySlotCount;
 }
 
-bool CUser::CheckExistEvent(int16_t questId, uint8_t questState) const
+bool CUser::CheckExistEvent(e_QuestId questId, e_QuestState questState) const
 {
 	for (const _USER_QUEST& quest : m_pUserData->m_quests)
 	{
@@ -11743,12 +11743,14 @@ bool CUser::CheckEventLogic(const EVENT_DATA* pEventData)
 				break;
 
 			case LOGIC_CHECK_EXIST_EVENT:
-				if (CheckExistEvent(pLE->m_LogicElseInt[0], pLE->m_LogicElseInt[1]))
+				if (CheckExistEvent(static_cast<e_QuestId>(pLE->m_LogicElseInt[0]),
+						static_cast<e_QuestState>(pLE->m_LogicElseInt[1])))
 					bExact = true;
 				break;
 
 			case LOGIC_CHECK_NOEXIST_EVENT:
-				if (!CheckExistEvent(pLE->m_LogicElseInt[0], pLE->m_LogicElseInt[1]))
+				if (!CheckExistEvent(static_cast<e_QuestId>(pLE->m_LogicElseInt[0]),
+						static_cast<e_QuestState>(pLE->m_LogicElseInt[1])))
 					bExact = true;
 				break;
 
@@ -13775,8 +13777,6 @@ void CUser::PromoteUserNovice()
 	SetShort(sendBuffer, newClass, sendIndex);
 	SetShort(sendBuffer, _socketId, sendIndex);
 	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
-	// decompiled signature differs
-	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
 
 	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex = 0;
@@ -13820,7 +13820,7 @@ void CUser::PromoteUser()
 			{
 				// Send success message
 				SendSay(-1, -1, 6005);
-				SaveEvent(1, 2);
+				SaveEvent(e_QuestId::QUEST_MASTER_WARRIOR, QUEST_STATE_COMPLETE);
 			}
 
 			break;
@@ -13844,7 +13844,7 @@ void CUser::PromoteUser()
 			{
 				// Send success message
 				SendSay(-1, -1, 7005);
-				SaveEvent(2, 2);
+				SaveEvent(e_QuestId::QUEST_MASTER_ROGUE, QUEST_STATE_COMPLETE);
 			}
 
 			break;
@@ -13871,7 +13871,7 @@ void CUser::PromoteUser()
 			{
 				// Send success message
 				SendSay(-1, -1, 8005);
-				SaveEvent(3, 2);
+				SaveEvent(e_QuestId::QUEST_MASTER_MAGE, QUEST_STATE_COMPLETE);
 			}
 			break;
 
@@ -13879,7 +13879,7 @@ void CUser::PromoteUser()
 		case CLERIC:
 			if (!CheckExistItem(ITEM_HOLY_WATER_OF_TEMPLE, 1)
 				|| !CheckExistItem(ITEM_CRUDE_SAPPHIRE, 10) || !CheckExistItem(ITEM_CRYSTAL, 10)
-				|| !CheckExistItem(ITEM_OPAL, 10) || !GoldLose(10000000)
+				|| !CheckExistItem(ITEM_OPAL, 10) || !GoldLose(QUEST_GOLD_PRIEST_MASTER)
 				|| !RobItem(ITEM_HOLY_WATER_OF_TEMPLE, 1) || !RobItem(ITEM_CRUDE_SAPPHIRE, 10)
 				|| !RobItem(ITEM_CRYSTAL, 10) || !RobItem(ITEM_OPAL, 10))
 			{
@@ -13892,7 +13892,7 @@ void CUser::PromoteUser()
 			{
 				// Send success message
 				SendSay(-1, -1, 9005);
-				SaveEvent(4, 2);
+				SaveEvent(e_QuestId::QUEST_MASTER_PRIEST, QUEST_STATE_COMPLETE);
 			}
 			break;
 
@@ -13928,8 +13928,6 @@ void CUser::PromoteUser()
 	SetShort(sendBuffer, newClass, sendIndex);
 	SetShort(sendBuffer, _socketId, sendIndex);
 	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
-	// decompiled signature differs
-	// m_pMain->Send_Region(sendBuffer, 6, m_pUserData->m_bZone, m_RegionX, m_RegionZ, 0, 0, 0);
 
 	memset(sendBuffer, 0, sizeof(sendBuffer));
 	sendIndex = 0;
@@ -13944,38 +13942,39 @@ void CUser::PromoteUser()
 	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
 }
 
-void CUser::SaveEvent(int16_t questId, int questState)
+void CUser::SaveEvent(e_QuestId questId, e_QuestState questState)
 {
 	int questIndex = 0;
+	int maxQuests  = sizeof(m_pUserData->m_quests) / sizeof(_USER_QUEST);
 
 	// invalid questId
-	if (questId <= 0 || questId > 100)
+	if (questId <= e_QuestId::QUEST_MIN_ID || questId > e_QuestId::QUEST_MAX_ID)
 	{
 		return;
 	}
 
-	for (auto& quest : m_pUserData->m_quests)
+	for (_USER_QUEST& quest : m_pUserData->m_quests)
 	{
 		if (quest.sQuestID == questId)
 		{
-			m_pUserData->m_quests[questIndex].byQuestState = questState;
+			quest.byQuestState = questState;
 			return;
 		}
-		if (quest.sQuestID <= 0 || quest.sQuestID > 100)
+		if (quest.sQuestID <= e_QuestId::QUEST_MIN_ID || quest.sQuestID > e_QuestId::QUEST_MAX_ID)
 			break;
-		if (++questIndex >= 100)
+		if (++questIndex >= maxQuests)
 			return;
 	}
 	m_pUserData->m_quests[questIndex].sQuestID     = questId;
 	m_pUserData->m_quests[questIndex].byQuestState = questState;
 	++m_pUserData->m_sQuestCount;
-	if (questId >= 51 && questId <= 54)
+	if (questId >= e_QuestId::QUEST_WARRIOR_70_QUEST && questId <= e_QuestId::QUEST_PRIEST_70_QUEST)
 	{
 		char sendBuff[256] {};
 		int sendIndex = 0;
 		SetByte(sendBuff, WIZ_QUEST, sendIndex);
 		SetByte(sendBuff, QUEST_UPDATE, sendIndex);
-		SetShort(sendBuff, questId, sendIndex);
+		SetShort(sendBuff, static_cast<int16_t>(questId), sendIndex);
 		SetByte(sendBuff, 1, sendIndex);
 		Send(sendBuff, sendIndex);
 	}
