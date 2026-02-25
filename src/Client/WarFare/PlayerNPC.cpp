@@ -42,10 +42,14 @@ void CPlayerNPC::Tick()
 
 		__Matrix44 mtxrot;
 		mtxrot.Identity();
-		mtxrot.RotationY(90);
+
+		constexpr float kDegrees = 90.0f;
+		mtxrot.RotationY(kDegrees);
+
 		dir *= mtxrot;
 
-		pos  = pos - dir * 1.2f * Radius();
+		const float offsetDistance  = 1.2f * Radius();
+		pos -= (dir * offsetDistance);
 
 		pItemBox->PosSet(pos);
 		pItemBox->Tick();

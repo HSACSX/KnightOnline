@@ -16,8 +16,8 @@ class CPlayerNPC : public CPlayerBase
 	CN3Shape* pItemBox;
 public:
 	void MoveTo(float fPosX, float fPosY, float fPosZ, float fMoveSpeed, int iMoveMode); // 이 위치로 이동..
-	virtual void Tick() override;
-	virtual void Render(float fSunAngle) override;
+	void Tick() override;
+	void Render(float fSunAngle) override;
 	void SetSoundAndInitFont(uint32_t dwFontFlag = 0U) override;
 
 	CPlayerNPC();

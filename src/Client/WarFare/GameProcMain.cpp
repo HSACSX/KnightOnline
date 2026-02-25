@@ -5176,7 +5176,7 @@ void CGameProcMain::MsgRecv_PartyOrForce(Packet& pkt)
 
 			if (iIDorErrorCode >= 0)
 			{
-				int iPartyPosition = pkt.read<uint8_t>(); // order of user in the party
+				/*int iPartyPosition = */pkt.read<uint8_t>(); // order of user in the party
 				int iIDLength = pkt.read<int16_t>();
 				std::string szID;
 				pkt.readString(szID, iIDLength);
@@ -5186,7 +5186,7 @@ void CGameProcMain::MsgRecv_PartyOrForce(Packet& pkt)
 				e_Class eClass = (e_Class) pkt.read<int16_t>();
 				int iMPMax     = pkt.read<int16_t>();
 				int iMP        = pkt.read<int16_t>();
-				e_Nation eNation = (e_Nation) pkt.read<uint8_t>();
+				/*e_Nation eNation = (e_Nation)*/ pkt.read<uint8_t>();
 
 				m_pUIPartyOrForce->MemberAdd(iIDorErrorCode, szID, iLevel, eClass, iHP, iHPMax, iMP, iMPMax); // 다른넘 파티에추가..
 				if (iIDorErrorCode != s_pPlayer->IDNumber()) // 자기 자신이 아닌 경우 메시지 출력.
