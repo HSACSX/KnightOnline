@@ -16,10 +16,15 @@ CPlayerNPC::CPlayerNPC()
 {
 	m_ePlayerType    = PLAYER_NPC;  // Player Type ... Base, NPC, OTher, MySelf
 	m_vPosFromServer = m_Chr.Pos(); // 서버에게 받은 위치.
+	pItemBox         = new CN3Shape();
+	pItemBox->LoadFromFile("Misc\\itembox.n3shape"); // Warn: Read filename from file ?
+	pItemBox->ScaleSet(1.5, 1.5, 1.5);
 }
 
 CPlayerNPC::~CPlayerNPC()
 {
+	if (pItemBox)
+		delete pItemBox;
 }
 
 void CPlayerNPC::Tick()
@@ -32,6 +37,19 @@ void CPlayerNPC::Tick()
 
 	if (m_fTimeAfterDeath > 0)              // 죽어야하거나 죽은 넘이면...
 	{
+		auto dir = Direction();
+		auto pos = Position();
+
+		__Matrix44 mtxrot;
+		mtxrot.Identity();
+		mtxrot.RotationY(90);
+		dir *= mtxrot;
+
+		pos  = pos - dir * 1.2f * Radius();
+
+		pItemBox->PosSet(pos);
+		pItemBox->Tick();
+
 		if (m_fTimeAfterDeath > 3.0f)
 			this->Action(PSA_DYING, false); // 5 초가 지나야 죽는다.
 		CPlayerBase::Tick();                // 회전, 지정된 에니메이션 Tick 및 색깔 지정 처리.. 등등..
@@ -98,6 +116,14 @@ void CPlayerNPC::Tick()
 	}
 
 	CPlayerBase::Tick();                     // 회전. 이동, 에니메이션 틱.. 상태 바뀜 등을 처리한다.
+}
+
+void CPlayerNPC::Render(float fSunAngle)
+{
+	if (State() == PSA_DEATH)
+		pItemBox->Render();
+
+	CPlayerBase::Render(fSunAngle);
 }
 
 void CPlayerNPC::MoveTo(float fPosX, float fPosY, float fPosZ, float fSpeed, int iMoveMode)

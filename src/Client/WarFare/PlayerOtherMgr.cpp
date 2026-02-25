@@ -400,6 +400,19 @@ CPlayerNPC* CPlayerOtherMgr::PickCorpse(int ixScreen, int iyScreen, int& iIDResu
 			iIDResult = pCorpse->IDNumber();
 			return pCorpse;
 		}
+
+		// Also allow picking the dropped item box shape rendered for the corpse
+		// so that clicking the box opens the drop menu.
+		// Use precise collision test on the shape with screen coordinates.
+		if (pCorpse->pItemBox)
+		{
+			// CheckCollisionPrecisely returns 0 on collision, -1 otherwise.
+			if (0 == pCorpse->pItemBox->CheckCollisionPrecisely(false, ixScreen, iyScreen, nullptr, nullptr))
+			{
+				iIDResult = pCorpse->IDNumber();
+				return pCorpse;
+			}
+		}
 	}
 
 	return nullptr;

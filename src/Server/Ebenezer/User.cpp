@@ -6169,6 +6169,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 		SetByte(sendBuffer, WIZ_PARTY, sendIndex);
 		SetByte(sendBuffer, PARTY_INSERT, sendIndex);
 		SetShort(sendBuffer, pParty->uid[i], sendIndex);
+		SetByte(sendBuffer, i, sendIndex);
 		SetString2(sendBuffer, pUser->m_pUserData->m_id, sendIndex);
 		SetShort(sendBuffer, pParty->sMaxHp[i], sendIndex);
 		SetShort(sendBuffer, pParty->sHp[i], sendIndex);
@@ -6176,6 +6177,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 		SetShort(sendBuffer, pParty->sClass[i], sendIndex);
 		SetShort(sendBuffer, pUser->m_iMaxMp, sendIndex);
 		SetShort(sendBuffer, pUser->m_pUserData->m_sMp, sendIndex);
+		SetByte(sendBuffer, pUser->m_pUserData->m_bNation, sendIndex);
 		Send(sendBuffer, sendIndex); // 추가된 사람에게 기존 인원 다 받게함..
 	}
 
@@ -6233,6 +6235,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 	SetByte(sendBuffer, WIZ_PARTY, sendIndex);
 	SetByte(sendBuffer, PARTY_INSERT, sendIndex);
 	SetShort(sendBuffer, _socketId, sendIndex);
+	SetByte(sendBuffer, i, sendIndex);
 	SetString2(sendBuffer, m_pUserData->m_id, sendIndex);
 	SetShort(sendBuffer, m_iMaxHp, sendIndex);
 	SetShort(sendBuffer, m_pUserData->m_sHp, sendIndex);
@@ -6240,6 +6243,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 	SetShort(sendBuffer, m_pUserData->m_sClass, sendIndex);
 	SetShort(sendBuffer, m_iMaxMp, sendIndex);
 	SetShort(sendBuffer, m_pUserData->m_sMp, sendIndex);
+	SetByte(sendBuffer, m_pUserData->m_bNation, sendIndex);
 	m_pMain->Send_PartyMember(m_sPartyIndex, sendBuffer, sendIndex); // 추가된 인원을 브로드캐스팅..
 
 	// AI Server

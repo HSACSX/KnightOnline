@@ -9,14 +9,15 @@
 
 #include "PlayerBase.h"
 #include "GameBase.h"
-
+#include <N3Base/N3Shape.h>
 class CPlayerNPC : public CPlayerBase
 {
 	friend class CPlayerOtherMgr;
-
+	CN3Shape* pItemBox;
 public:
 	void MoveTo(float fPosX, float fPosY, float fPosZ, float fMoveSpeed, int iMoveMode); // 이 위치로 이동..
-	void Tick() override;
+	virtual void Tick() override;
+	virtual void Render(float fSunAngle) override;
 	void SetSoundAndInitFont(uint32_t dwFontFlag = 0U) override;
 
 	CPlayerNPC();
