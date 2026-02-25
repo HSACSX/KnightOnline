@@ -3240,7 +3240,8 @@ void CUser::SetSlotItemValue()
 
 		if (i == LEFTHAND)
 		{
-			if ((m_pUserData->m_sClass == BERSERKER || m_pUserData->m_sClass == BLADE))
+			if ((m_pUserData->m_sClass == CLASS_KA_BERSERKER
+					|| m_pUserData->m_sClass == CLASS_EL_BLADE))
 				//			m_sItemHit += item_hit * (double) (m_pUserData->m_bstrSkill[PRO_SKILL1] / 60.0);    // 성래씨 요청 ^^;
 				m_sItemHit += static_cast<int16_t>(item_hit * 0.5f);
 		}
@@ -7022,171 +7023,205 @@ void CUser::UpdateGameWeather(char* pBuf, uint8_t type)
 
 void CUser::ClassChange(char* pBuf)
 {
-	int index = 0, classcode = 0, sendIndex = 0, type = 0, sub_type = 0, money = 0;
-	char sendBuffer[128] {};
-	bool bSuccess = false;
-
-	type          = GetByte(pBuf, index);
-
-	// 전직요청
-	if (type == CLASS_CHANGE_REQ)
+	int index   = 0;
+	auto opcode = static_cast<e_ClassChangeOpcode>(GetByte(pBuf, index));
+	switch (opcode)
 	{
-		ClassChangeReq();
-		return;
-	}
+		// 전직요청
+		case CLASS_CHANGE_STATUS_REQ:
+			ClassChangeReq();
+			break;
 
-	// 포인트 초기화
-	if (type == ALL_POINT_CHANGE)
-	{
-		AllPointChange();
-		return;
-	}
+		// 포인트 초기화
+		case CLASS_RESET_STAT_REQ:
+			AllPointChange();
+			break;
 
-	// 스킬 초기화
-	if (type == ALL_SKILLPT_CHANGE)
-	{
-		AllSkillPointChange();
-		return;
-	}
+		// 스킬 초기화
+		case CLASS_RESET_SKILL_REQ:
+			AllSkillPointChange();
+			break;
 
-	// 포인트 & 스킬 초기화에 돈이 얼마인지를 묻는 서브 패킷
-	if (type == CHANGE_MONEY_REQ)
-	{
-		sub_type = GetByte(pBuf, index);
+		// 포인트 & 스킬 초기화에 돈이 얼마인지를 묻는 서브 패킷
+		case CLASS_RESET_COST_REQ:
+		{
+			int sendIndex = 0, sub_type = 0, money = 0;
+			char sendBuffer[128] {};
 
-		money    = static_cast<int>(pow((m_pUserData->m_bLevel * 2), 3.4));
-		money    = (money / 100) * 100;
+			sub_type = GetByte(pBuf, index);
 
-		if (m_pUserData->m_bLevel < 30)
-			money = static_cast<int>(money * 0.4);
+			money    = static_cast<int>(pow((m_pUserData->m_bLevel * 2), 3.4));
+			money    = (money / 100) * 100;
+
+			if (m_pUserData->m_bLevel < 30)
+				money = static_cast<int>(money * 0.4);
 #if 0
-		else if (m_pUserData->m_bLevel >= 30
-			&& m_pUserData->m_bLevel < 60)
-			money = static_cast<int>(money * 1);
+			else if (m_pUserData->m_bLevel >= 30
+				&& m_pUserData->m_bLevel < 60)
+				money = static_cast<int>(money * 1);
 #endif
-		else if (m_pUserData->m_bLevel >= 60 && m_pUserData->m_bLevel <= 90)
-			money = static_cast<int>(money * 1.5);
+			else if (m_pUserData->m_bLevel >= 60 && m_pUserData->m_bLevel <= 90)
+				money = static_cast<int>(money * 1.5);
 
-		// 능력치 포인트
-		if (sub_type == 1)
-		{
-			// 할인시점이고 승리국이라면
-			if (m_pMain->m_sDiscount == 1 && m_pMain->m_byOldVictory == m_pUserData->m_bNation)
+			// 능력치 포인트
+			if (sub_type == 1)
 			{
-				// old_money = money;
-				money = static_cast<int>(money * 0.5);
-				//TRACE(_T("^^ ClassChange -  point Discount ,, money=%d->%d\n"), old_money, money);
-			}
+				// 할인시점이고 승리국이라면
+				if (m_pMain->m_sDiscount == 1 && m_pMain->m_byOldVictory == m_pUserData->m_bNation)
+				{
+					// old_money = money;
+					money = static_cast<int>(money * 0.5);
+					//TRACE(_T("^^ ClassChange -  point Discount ,, money=%d->%d\n"), old_money, money);
+				}
 
-			if (m_pMain->m_sDiscount == 2)
+				if (m_pMain->m_sDiscount == 2)
+				{
+					// old_money = money;
+					money = static_cast<int>(money * 0.5);
+				}
+
+				SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+				SetByte(sendBuffer, CLASS_RESET_COST_REQ, sendIndex);
+				SetDWORD(sendBuffer, money, sendIndex);
+				Send(sendBuffer, sendIndex);
+			}
+			// skill 포인트
+			else if (sub_type == 2)
 			{
-				// old_money = money;
-				money = static_cast<int>(money * 0.5);
-			}
+				// 스킬은 한번 더
+				money = static_cast<int>(money * 1.5);
 
-			SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-			SetByte(sendBuffer, CHANGE_MONEY_REQ, sendIndex);
-			SetDWORD(sendBuffer, money, sendIndex);
-			Send(sendBuffer, sendIndex);
+				// 할인시점이고 승리국이라면
+				if (m_pMain->m_sDiscount == 1 && m_pMain->m_byOldVictory == m_pUserData->m_bNation)
+				{
+					// old_money = money;
+					money = static_cast<int>(money * 0.5);
+					//TRACE(_T("^^ ClassChange -  skillpoint Discount ,, money=%d->%d\n"), old_money, money);
+				}
+
+				if (m_pMain->m_sDiscount == 2)
+				{
+					// old_money = money;
+					money = static_cast<int>(money * 0.5);
+				}
+
+				SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+				SetByte(sendBuffer, CLASS_RESET_COST_REQ, sendIndex);
+				SetDWORD(sendBuffer, money, sendIndex);
+				Send(sendBuffer, sendIndex);
+			}
 		}
-		// skill 포인트
-		else if (sub_type == 2)
-		{
-			// 스킬은 한번 더
-			money = static_cast<int>(money * 1.5);
+		break;
 
-			// 할인시점이고 승리국이라면
-			if (m_pMain->m_sDiscount == 1 && m_pMain->m_byOldVictory == m_pUserData->m_bNation)
-			{
-				// old_money = money;
-				money = static_cast<int>(money * 0.5);
-				//TRACE(_T("^^ ClassChange -  skillpoint Discount ,, money=%d->%d\n"), old_money, money);
-			}
-
-			if (m_pMain->m_sDiscount == 2)
-			{
-				// old_money = money;
-				money = static_cast<int>(money * 0.5);
-			}
-
-			SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-			SetByte(sendBuffer, CHANGE_MONEY_REQ, sendIndex);
-			SetDWORD(sendBuffer, money, sendIndex);
-			Send(sendBuffer, sendIndex);
-		}
-
-		return;
+		default:
+			break;
 	}
+}
 
-	classcode = GetByte(pBuf, index);
-
+bool CUser::ValidatePromotion(e_Class newClassId) const
+{
 	switch (m_pUserData->m_sClass)
 	{
-		case KARUWARRRIOR:
-			if (classcode == BERSERKER || classcode == GUARDIAN)
-				bSuccess = true;
+		case CLASS_KA_WARRIOR:
+			if (newClassId == CLASS_KA_BERSERKER)
+				return true;
 			break;
 
-		case KARUROGUE:
-			if (classcode == HUNTER || classcode == PENETRATOR)
-				bSuccess = true;
+		case CLASS_KA_BERSERKER:
+			if (newClassId == CLASS_KA_GUARDIAN)
+				return true;
 			break;
 
-		case KARUWIZARD:
-			if (classcode == SORSERER || classcode == NECROMANCER)
-				bSuccess = true;
+		case CLASS_KA_ROGUE:
+			if (newClassId == CLASS_KA_HUNTER)
+				return true;
 			break;
 
-		case KARUPRIEST:
-			if (classcode == SHAMAN || classcode == DARKPRIEST)
-				bSuccess = true;
+		case CLASS_KA_HUNTER:
+			if (newClassId == CLASS_KA_PENETRATOR)
+				return true;
 			break;
 
-		case ELMORWARRRIOR:
-			if (classcode == BLADE || classcode == PROTECTOR)
-				bSuccess = true;
+		case CLASS_KA_WIZARD:
+			if (newClassId == CLASS_KA_SORCERER)
+				return true;
 			break;
 
-		case ELMOROGUE:
-			if (classcode == RANGER || classcode == ASSASSIN)
-				bSuccess = true;
+		case CLASS_KA_SORCERER:
+			if (newClassId == CLASS_KA_NECROMANCER)
+				return true;
 			break;
 
-		case ELMOWIZARD:
-			if (classcode == MAGE || classcode == ENCHANTER)
-				bSuccess = true;
+		case CLASS_KA_PRIEST:
+			if (newClassId == CLASS_KA_SHAMAN)
+				return true;
 			break;
 
-		case ELMOPRIEST:
-			if (classcode == CLERIC || classcode == DRUID)
-				bSuccess = true;
+		case CLASS_KA_SHAMAN:
+			if (newClassId == CLASS_KA_DARKPRIEST)
+				return true;
+			break;
+
+		case CLASS_EL_WARRIOR:
+			if (newClassId == CLASS_EL_BLADE)
+				return true;
+			break;
+
+		case CLASS_EL_BLADE:
+			if (newClassId == CLASS_EL_PROTECTOR)
+				return true;
+			break;
+
+		case CLASS_EL_ROGUE:
+			if (newClassId == CLASS_EL_RANGER)
+				return true;
+			break;
+
+		case CLASS_EL_RANGER:
+			if (newClassId == CLASS_EL_ASSASSIN)
+				return true;
+			break;
+
+		case CLASS_EL_WIZARD:
+			if (newClassId == CLASS_EL_MAGE)
+				return true;
+			break;
+
+		case CLASS_EL_MAGE:
+			if (newClassId == CLASS_EL_ENCHANTER)
+				return true;
+			break;
+
+		case CLASS_EL_PRIEST:
+			if (newClassId == CLASS_EL_CLERIC)
+				return true;
+			break;
+
+		case CLASS_EL_CLERIC:
+			if (newClassId == CLASS_EL_DRUID)
+				return true;
 			break;
 
 		default:
 			break;
 	}
 
-	memset(sendBuffer, 0, sizeof(sendBuffer));
-	sendIndex = 0;
-	if (!bSuccess)
-	{
-		SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-		SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
-		SetByte(sendBuffer, 0, sendIndex);
-		Send(sendBuffer, sendIndex);
-	}
-	else
-	{
-		m_pUserData->m_sClass = classcode;
+	return false;
+}
 
-		if (m_sPartyIndex != -1)
-		{
-			SetByte(sendBuffer, WIZ_PARTY, sendIndex);
-			SetByte(sendBuffer, PARTY_CLASSCHANGE, sendIndex);
-			SetShort(sendBuffer, _socketId, sendIndex);
-			SetShort(sendBuffer, m_pUserData->m_sClass, sendIndex);
-			m_pMain->Send_PartyMember(m_sPartyIndex, sendBuffer, sendIndex);
-		}
+void CUser::HandlePromotion(e_Class newClassId)
+{
+	m_pUserData->m_sClass = newClassId;
+
+	if (m_sPartyIndex != -1)
+	{
+		char sendBuffer[128] {};
+		int sendIndex = 0;
+		SetByte(sendBuffer, WIZ_PARTY, sendIndex);
+		SetByte(sendBuffer, PARTY_CLASSCHANGE, sendIndex);
+		SetShort(sendBuffer, _socketId, sendIndex);
+		SetShort(sendBuffer, m_pUserData->m_sClass, sendIndex);
+		m_pMain->Send_PartyMember(m_sPartyIndex, sendBuffer, sendIndex);
 	}
 }
 
@@ -8875,7 +8910,7 @@ int CUser::GetNumberOfEmptySlots() const
 	return emptySlotCount;
 }
 
-bool CUser::CheckExistEvent(int16_t questId, uint8_t questState) const
+bool CUser::CheckExistEvent(e_QuestId questId, e_QuestState questState) const
 {
 	for (const _USER_QUEST& quest : m_pUserData->m_quests)
 	{
@@ -9119,11 +9154,11 @@ void CUser::ClassChangeReq()
 	SetByte(sendBuffer, CLASS_CHANGE_RESULT, sendIndex);
 
 	if (m_pUserData->m_bLevel < 10)
-		SetByte(sendBuffer, 2, sendIndex);
+		SetByte(sendBuffer, CLASS_CHANGE_NOT_YET, sendIndex);
 	else if ((m_pUserData->m_sClass % 100) > 4)
-		SetByte(sendBuffer, 3, sendIndex);
+		SetByte(sendBuffer, CLASS_CHANGE_ALREADY, sendIndex);
 	else
-		SetByte(sendBuffer, 1, sendIndex);
+		SetByte(sendBuffer, CLASS_CHANGE_SUCCESS, sendIndex);
 	Send(sendBuffer, sendIndex);
 }
 
@@ -9131,7 +9166,6 @@ void CUser::AllSkillPointChange()
 {
 	// 돈을 먼저 깍고.. 만약,, 돈이 부족하면.. 에러...
 	int sendIndex = 0, skill_point = 0, money = 0, i = 0, j = 0, temp_value = 0;
-	uint8_t type = 0; // 0:돈이 부족, 1:성공, 2:초기화할 스킬이 없을때..
 	char sendBuffer[128] {};
 
 	temp_value = static_cast<int>(pow((m_pUserData->m_bLevel * 2), 3.4));
@@ -9168,19 +9202,19 @@ void CUser::AllSkillPointChange()
 	money = m_pUserData->m_iGold - temp_value;
 	//money = m_pUserData->m_iGold - 100;
 
-	if (money < 0)
-		goto fail_return;
-
-	if (m_pUserData->m_bLevel < 10)
-		goto fail_return;
+	if (money < 0 || m_pUserData->m_bLevel < 10)
+	{
+		SendResetSkillError(CLASS_CHANGE_FAILURE, money);
+		return;
+	}
 
 	for (i = 1; i < 9; i++)
 		skill_point += m_pUserData->m_bstrSkill[i];
 
 	if (skill_point <= 0)
 	{
-		type = 2;
-		goto fail_return;
+		SendResetSkillError(CLASS_CHANGE_NOT_YET, money);
+		return;
 	}
 
 	// 문제될 소지가 많음 : 가용스킬이 255을 넘는 상황이 발생할 확율이 높음..
@@ -9189,21 +9223,23 @@ void CUser::AllSkillPointChange()
 	for (j = 1; j < 9; j++)
 		m_pUserData->m_bstrSkill[j] = 0;
 	m_pUserData->m_iGold = money;
-	type                 = 1;
 
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-	SetByte(sendBuffer, ALL_SKILLPT_CHANGE, sendIndex);
-	SetByte(sendBuffer, type, sendIndex);
+	SetByte(sendBuffer, CLASS_RESET_SKILL_REQ, sendIndex);
+	SetByte(sendBuffer, CLASS_CHANGE_SUCCESS, sendIndex);
 	SetDWORD(sendBuffer, m_pUserData->m_iGold, sendIndex);
 	SetByte(sendBuffer, m_pUserData->m_bstrSkill[0], sendIndex);
 	Send(sendBuffer, sendIndex);
-	return;
+}
 
-fail_return:
+void CUser::SendResetSkillError(e_ClassChangeResult errorCode, int cost)
+{
+	int sendIndex = 0;
+	char sendBuffer[32] {};
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-	SetByte(sendBuffer, ALL_SKILLPT_CHANGE, sendIndex);
-	SetByte(sendBuffer, type, sendIndex);
-	SetDWORD(sendBuffer, temp_value, sendIndex);
+	SetByte(sendBuffer, CLASS_RESET_SKILL_REQ, sendIndex);
+	SetByte(sendBuffer, errorCode, sendIndex);
+	SetDWORD(sendBuffer, cost, sendIndex);
 	Send(sendBuffer, sendIndex);
 }
 
@@ -9211,12 +9247,13 @@ void CUser::AllPointChange()
 {
 	// 돈을 먼저 깍고.. 만약,, 돈이 부족하면.. 에러...
 	int sendIndex = 0, money = 0, temp_money = 0;
-	uint8_t type = 0;
 	char sendBuffer[128] {};
-	int i = 0;
 
 	if (m_pUserData->m_bLevel > 80)
-		goto fail_return;
+	{
+		SendResetStatError(CLASS_CHANGE_FAILURE, temp_money);
+		return;
+	}
 
 	temp_money = static_cast<int>(pow((m_pUserData->m_bLevel * 2), 3.4));
 	temp_money = (temp_money / 100) * 100;
@@ -9242,15 +9279,18 @@ void CUser::AllPointChange()
 
 	money = m_pUserData->m_iGold - temp_money;
 	if (money < 0)
-		goto fail_return;
+	{
+		SendResetStatError(CLASS_CHANGE_FAILURE, temp_money);
+		return;
+	}
 
 	// 장착아이템이 하나라도 있으면 에러처리
-	for (i = 0; i < SLOT_MAX; i++)
+	for (int i = 0; i < SLOT_MAX; i++)
 	{
 		if (m_pUserData->m_sItemArray[i].nNum != 0)
 		{
-			type = 0x04;
-			goto fail_return;
+			SendResetStatError(CLASS_CHANGE_ITEM_IN_SLOT, temp_money);
+			return;
 		}
 	}
 
@@ -9261,8 +9301,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 65 && m_pUserData->m_bSta == 65 && m_pUserData->m_bDex == 60
 				&& m_pUserData->m_bIntel == 50 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 65;
@@ -9276,8 +9316,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 50 && m_pUserData->m_bSta == 50 && m_pUserData->m_bDex == 70
 				&& m_pUserData->m_bIntel == 70 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 50;
@@ -9291,8 +9331,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 50 && m_pUserData->m_bSta == 60 && m_pUserData->m_bDex == 60
 				&& m_pUserData->m_bIntel == 70 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 50;
@@ -9306,8 +9346,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 65 && m_pUserData->m_bSta == 65 && m_pUserData->m_bDex == 60
 				&& m_pUserData->m_bIntel == 50 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 65;
@@ -9321,8 +9361,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 60 && m_pUserData->m_bSta == 60 && m_pUserData->m_bDex == 70
 				&& m_pUserData->m_bIntel == 50 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 60;
@@ -9336,8 +9376,8 @@ void CUser::AllPointChange()
 			if (m_pUserData->m_bStr == 50 && m_pUserData->m_bSta == 50 && m_pUserData->m_bDex == 70
 				&& m_pUserData->m_bIntel == 70 && m_pUserData->m_bCha == 50)
 			{
-				type = 2;
-				goto fail_return;
+				SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+				return;
 			}
 
 			m_pUserData->m_bStr   = 50;
@@ -9351,8 +9391,8 @@ void CUser::AllPointChange()
 			spdlog::error(
 				"User::AllPointChange: Unhandled race {} [accountName={} characterName={}]",
 				m_pUserData->m_bRace, m_strAccountID, m_pUserData->m_id);
-			type = 2;
-			goto fail_return;
+			SendResetStatError(CLASS_CHANGE_NOT_YET, temp_money);
+			return;
 	}
 
 	m_pUserData->m_bPoints = (m_pUserData->m_bLevel - 1) * 3 + 10;
@@ -9361,10 +9401,9 @@ void CUser::AllPointChange()
 	SetUserAbility();
 	Send2AI_UserUpdateInfo();
 
-	type = 1;
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-	SetByte(sendBuffer, ALL_POINT_CHANGE, sendIndex);
-	SetByte(sendBuffer, type, sendIndex);
+	SetByte(sendBuffer, CLASS_RESET_STAT_REQ, sendIndex);
+	SetByte(sendBuffer, CLASS_CHANGE_SUCCESS, sendIndex);
 	SetDWORD(sendBuffer, m_pUserData->m_iGold, sendIndex);
 	SetShort(sendBuffer, m_pUserData->m_bStr, sendIndex);
 	SetShort(sendBuffer, m_pUserData->m_bSta, sendIndex);
@@ -9377,12 +9416,16 @@ void CUser::AllPointChange()
 	SetShort(sendBuffer, GetMaxWeightForClient(), sendIndex);
 	SetShort(sendBuffer, m_pUserData->m_bPoints, sendIndex);
 	Send(sendBuffer, sendIndex);
+}
 
-fail_return:
+void CUser::SendResetStatError(e_ClassChangeResult errorCode, int cost)
+{
+	int sendIndex = 0;
+	char sendBuffer[32] {};
 	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
-	SetByte(sendBuffer, ALL_POINT_CHANGE, sendIndex);
-	SetByte(sendBuffer, type, sendIndex);
-	SetDWORD(sendBuffer, temp_money, sendIndex);
+	SetByte(sendBuffer, CLASS_RESET_STAT_REQ, sendIndex);
+	SetByte(sendBuffer, errorCode, sendIndex);
+	SetDWORD(sendBuffer, cost, sendIndex);
 	Send(sendBuffer, sendIndex);
 }
 
@@ -11713,12 +11756,14 @@ bool CUser::CheckEventLogic(const EVENT_DATA* pEventData)
 				break;
 
 			case LOGIC_CHECK_EXIST_EVENT:
-				if (CheckExistEvent(pLE->m_LogicElseInt[0], pLE->m_LogicElseInt[1]))
+				if (CheckExistEvent(static_cast<e_QuestId>(pLE->m_LogicElseInt[0]),
+						static_cast<e_QuestState>(pLE->m_LogicElseInt[1])))
 					bExact = true;
 				break;
 
 			case LOGIC_CHECK_NOEXIST_EVENT:
-				if (!CheckExistEvent(pLE->m_LogicElseInt[0], pLE->m_LogicElseInt[1]))
+				if (!CheckExistEvent(static_cast<e_QuestId>(pLE->m_LogicElseInt[0]),
+						static_cast<e_QuestState>(pLE->m_LogicElseInt[1])))
 					bExact = true;
 				break;
 
@@ -11884,6 +11929,14 @@ bool CUser::RunEvent(const EVENT_DATA* pEventData)
 
 			case EXEC_RETURN:
 				return false;
+
+			case EXEC_PROMOTE_USER_NOVICE:
+				PromoteUserNovice();
+				break;
+
+			case EXEC_PROMOTE_USER:
+				PromoteUser();
+				break;
 
 			default:
 				spdlog::warn("User::RunEvent: unhandled opcode. opcode={:02X} zoneId={}",
@@ -12058,17 +12111,17 @@ bool CUser::CheckWeight(int itemid, int16_t count) const
 	return false;
 }
 
-bool CUser::CheckExistItem(int itemid, int16_t count) const
+bool CUser::CheckExistItem(int itemId, int16_t count) const
 {
 	// This checks if such an item exists.
-	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemid);
+	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemId);
 	if (pTable == nullptr)
 		return false;
 
 	// Check every slot in this case.....
 	for (int i = 0; i < SLOT_MAX + HAVE_MAX; i++)
 	{
-		if (m_pUserData->m_sItemArray[i].nNum != itemid)
+		if (m_pUserData->m_sItemArray[i].nNum != itemId)
 			continue;
 
 		// Non-countable item. Automatically return true
@@ -12085,20 +12138,44 @@ bool CUser::CheckExistItem(int itemid, int16_t count) const
 	return false;
 }
 
-bool CUser::RobItem(int itemid, int16_t count)
+bool CUser::CheckExistItemAnd(int id1, int16_t count1, int id2, int16_t count2, int id3,
+	int16_t count3, int id4, int16_t count4, int id5, int16_t count5) const
+{
+	const ItemPair items[5] { { id1, count1 }, { id2, count2 }, { id3, count3 }, { id4, count4 },
+		{ id5, count5 } };
+	return CheckExistItemAnd(items);
+}
+
+bool CUser::CheckExistItemAnd(const std::span<const ItemPair> items) const
+{
+	for (const ItemPair& item : items)
+	{
+		if (item.ItemId != -1 && !CheckExistItem(item.ItemId, item.Count))
+		{
+			spdlog::debug(
+				"User::CheckExistItemAnd: User missing items [charId={} itemId={} count={}]",
+				m_pUserData->m_id, item.ItemId, item.Count);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool CUser::RobItem(int itemId, int16_t count)
 {
 	int sendIndex = 0;
 	char sendBuffer[256] {};
 
 	// This checks if such an item exists.
-	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemid);
+	model::Item* pTable = m_pMain->m_ItemTableMap.GetData(itemId);
 	if (pTable == nullptr)
 		return false;
 
 	int i = SLOT_MAX;
 	for (; i < SLOT_MAX + HAVE_MAX; i++)
 	{
-		if (m_pUserData->m_sItemArray[i].nNum != itemid)
+		if (m_pUserData->m_sItemArray[i].nNum != itemId)
 			continue;
 
 		// Remove item from inventory (Non-countable items)
@@ -12135,9 +12212,58 @@ bool CUser::RobItem(int itemid, int16_t count)
 	SetShort(sendBuffer, 1, sendIndex);      // The number of for-loops
 	SetByte(sendBuffer, 1, sendIndex);
 	SetByte(sendBuffer, i - SLOT_MAX, sendIndex);
-	SetDWORD(sendBuffer, itemid, sendIndex); // The ID of item.
+	SetDWORD(sendBuffer, itemId, sendIndex); // The ID of item.
 	SetDWORD(sendBuffer, m_pUserData->m_sItemArray[i].sCount, sendIndex);
 	Send(sendBuffer, sendIndex);
+	return true;
+}
+
+bool CUser::CheckAndRobItems(const std::span<const ItemPair> items, const int gold)
+{
+	// Check that all items are available before attempting to take anything
+	if (!CheckExistItemAnd(items))
+		return false;
+
+	// check and take gold next
+	if (gold > 0 && !GoldLose(gold))
+	{
+		spdlog::debug(
+			"User::CheckAndRobItems: User lacks gold [charId={} goldExpected={} goldActual={}]",
+			m_pUserData->m_id, gold, m_pUserData->m_iGold);
+		return false;
+	}
+
+	// last, rob the items.  outside of a concurrency issue, this shouldn't fail
+	for (auto itr = items.begin(); itr != items.end(); ++itr)
+	{
+		const ItemPair& item = *itr;
+		if (item.ItemId == -1 || item.Count <= 0)
+			continue;
+
+		if (!RobItem(item.ItemId, item.Count))
+		{
+			// This is not official behavior but rolling back stolen resources
+			// on failure seems like a good idea.
+
+			// failed to rob an item
+			// refund gold
+			if (gold > 0)
+				GoldGain(gold);
+
+			// refund previously removed items
+			for (auto restoreItr = items.begin(); restoreItr != itr; ++restoreItr)
+			{
+				const ItemPair& itemToRestore = *restoreItr;
+				if (itemToRestore.ItemId == -1 || itemToRestore.Count <= 0)
+					continue;
+
+				GiveItem(itemToRestore.ItemId, itemToRestore.Count);
+			}
+
+			return false;
+		}
+	}
+
 	return true;
 }
 
@@ -12244,38 +12370,31 @@ bool CUser::CheckPromotionEligible()
 	if (npc == nullptr)
 		return false;
 
-	if (CheckClass(
-			CLASS_KA_GUARDIAN, CLASS_KA_PENETRATOR, CLASS_KA_NECROMANCER, CLASS_KA_DARKPRIEST)
-		|| CheckClass(CLASS_EL_PROTECTOR, CLASS_EL_ASSASIN, CLASS_EL_ENCHANTER, CLASS_EL_DRUID))
+	// Here we return that the user is already mastered
+	switch (m_pUserData->m_sClass)
 	{
-		// Here we return that the user is already mastered
-		switch (m_pUserData->m_sClass)
-		{
-			case CLASS_EL_PROTECTOR:
-			case CLASS_KA_GUARDIAN:
-				SendSay(-1, -1, 6006);
-				break;
+		case CLASS_EL_PROTECTOR:
+		case CLASS_KA_GUARDIAN:
+			SendSay(-1, -1, 6006);
+			return false;
 
-			case CLASS_EL_ASSASIN:
-			case CLASS_KA_PENETRATOR:
-				SendSay(-1, -1, 7006);
-				break;
+		case CLASS_EL_ASSASSIN:
+		case CLASS_KA_PENETRATOR:
+			SendSay(-1, -1, 7006);
+			return false;
 
-			case CLASS_EL_ENCHANTER:
-			case CLASS_KA_NECROMANCER:
-				SendSay(-1, -1, 8006);
-				break;
+		case CLASS_EL_ENCHANTER:
+		case CLASS_KA_NECROMANCER:
+			SendSay(-1, -1, 8006);
+			return false;
 
-			case CLASS_EL_DRUID:
-			case CLASS_KA_DARKPRIEST:
-				SendSay(-1, -1, 9006);
-				break;
+		case CLASS_EL_DRUID:
+		case CLASS_KA_DARKPRIEST:
+			SendSay(-1, -1, 9006);
+			return false;
 
-			default:
-				break;
-		}
-
-		return false;
+		default:
+			break;
 	}
 
 	constexpr int MASTER_LVL = 60;
@@ -12476,7 +12595,7 @@ bool CUser::JobGroupCheck(int16_t jobgroupid) const
 					|| m_pUserData->m_sClass == CLASS_KA_PENETRATOR
 					|| m_pUserData->m_sClass == CLASS_EL_ROGUE
 					|| m_pUserData->m_sClass == CLASS_EL_RANGER
-					|| m_pUserData->m_sClass == CLASS_EL_ASSASIN)
+					|| m_pUserData->m_sClass == CLASS_EL_ASSASSIN)
 					return true;
 				break;
 
@@ -12520,7 +12639,7 @@ bool CUser::JobGroupCheck(int16_t jobgroupid) const
 
 			case JOB_GROUP_ASSASSIN:
 				if (m_pUserData->m_sClass == CLASS_KA_PENETRATOR
-					|| m_pUserData->m_sClass == CLASS_EL_ASSASIN)
+					|| m_pUserData->m_sClass == CLASS_EL_ASSASSIN)
 					return true;
 				break;
 
@@ -13717,6 +13836,251 @@ float CUser::GetDistanceSquared2D(float targetX, float targetZ) const
 	const float dx = m_pUserData->m_curx - targetX;
 	const float dz = m_pUserData->m_curz - targetZ;
 	return (dx * dx) + (dz * dz);
+}
+
+void CUser::PromoteUserNovice()
+{
+	uint8_t newClass = static_cast<uint8_t>(m_pUserData->m_sClass);
+	switch (m_pUserData->m_sClass)
+	{
+		case CLASS_KA_WARRIOR:
+		case CLASS_EL_WARRIOR:
+			newClass += 4; // X01 -> X05
+			break;
+
+		case CLASS_KA_ROGUE:
+		case CLASS_EL_ROGUE:
+			newClass += 5; // X02 -> X07
+			break;
+
+		case CLASS_KA_WIZARD:
+		case CLASS_EL_WIZARD:
+			newClass += 6; // X03 -> X09
+			break;
+
+		case CLASS_KA_PRIEST:
+		case CLASS_EL_PRIEST:
+			newClass += 7; // X04 -> X11
+			break;
+
+		default:
+			// invalid current class
+			return;
+	}
+
+	if (!ValidatePromotion(static_cast<e_Class>(newClass)))
+		return;
+
+	char sendBuffer[128] {};
+	int sendIndex = 0;
+	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+	SetByte(sendBuffer, CLASS_PROMOTION_REQ, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
+
+	HandlePromotion(static_cast<e_Class>(newClass));
+
+	// Refresh Knights list
+	memset(sendBuffer, 0, sizeof(sendBuffer));
+	sendIndex = 0;
+	SetShort(sendBuffer, 0, sendIndex);
+	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
+}
+
+void CUser::PromoteUser()
+{
+	// item requirement lists
+	static constexpr ItemPair WARRIOR_ITEMS[] = { //
+		{ ITEM_LOBO_PENDANT, 1 }, { ITEM_LUPUS_PENDANT, 1 }, { ITEM_LYCAON_PENDANT, 1 },
+		{ ITEM_CRUDE_SAPPHIRE, 10 }, { ITEM_CRYSTAL, 10 }, { ITEM_OPAL, 10 }
+	};
+
+	static constexpr ItemPair ROGUE_ITEMS[] = { //
+		{ ITEM_TAIL_OF_SHAULA, 1 }, { ITEM_TAIL_OF_LESATH, 1 }, { ITEM_BLOOD_OF_GLYPTODONT, 10 },
+		{ ITEM_FANG_OF_BAKIRRA, 1 }, { ITEM_CRUDE_SAPPHIRE, 10 }, { ITEM_CRYSTAL, 10 },
+		{ ITEM_OPAL, 10 }
+	};
+
+	static constexpr ItemPair MAGE_ITEMS[] = { //
+		{ ITEM_KEKURI_RING, 1 }, { ITEM_GAVOLT_WING, 50 }, { ITEM_ZOMBIE_EYE, 50 },
+		{ ITEM_CURSED_BONE, 1 }, { ITEM_FEATHER_OF_HARPY_QUEEN, 1 },
+		{ ITEM_BLOOD_OF_GLYPTODONT, 10 }, { ITEM_CRUDE_SAPPHIRE, 10 }, { ITEM_CRYSTAL, 10 },
+		{ ITEM_OPAL, 10 }
+	};
+
+	static constexpr ItemPair PRIEST_ITEMS[] = { //
+		{ ITEM_HOLY_WATER_OF_TEMPLE, 1 }, { ITEM_CRUDE_SAPPHIRE, 10 }, { ITEM_CRYSTAL, 10 },
+		{ ITEM_OPAL, 10 }
+	};
+	static constexpr int PRIEST_GOLD_REQ = 10'000'000;
+
+	e_Class newClass                     = static_cast<e_Class>(m_pUserData->m_sClass + 1);
+
+	// Make sure user level is appropriate for current promotion and that
+	// the new class is a valid promotion path
+	if (!CheckPromotionEligible() || !ValidatePromotion(newClass))
+		return;
+
+	int16_t successMessage = -1;
+	e_QuestId masterQuest  = QUEST_INVALID;
+
+	switch (m_pUserData->m_sClass)
+	{
+		case CLASS_EL_BLADE:
+		case CLASS_KA_BERSERKER:
+			if (!CheckAndRobItems(WARRIOR_ITEMS))
+			{
+				// Send failure message - missing items
+				SendSay(-1, -1, 6007);
+				return;
+			}
+
+			successMessage = 6005;
+			masterQuest    = QUEST_MASTER_WARRIOR;
+			break;
+
+		case CLASS_KA_HUNTER:
+		case CLASS_EL_RANGER:
+			if (!CheckAndRobItems(ROGUE_ITEMS))
+			{
+				// Send failure message
+				SendSay(-1, -1, 7007);
+				return;
+			}
+
+			successMessage = 7005;
+			masterQuest    = QUEST_MASTER_ROGUE;
+			break;
+
+		case CLASS_KA_SORCERER:
+		case CLASS_EL_MAGE:
+			if (!CheckAndRobItems(MAGE_ITEMS))
+			{
+				// Send failure message
+				SendSay(-1, -1, 8007);
+				return;
+			}
+
+			successMessage = 8005;
+			masterQuest    = QUEST_MASTER_MAGE;
+			break;
+
+		case CLASS_KA_SHAMAN:
+		case CLASS_EL_CLERIC:
+			if (!CheckAndRobItems(PRIEST_ITEMS, PRIEST_GOLD_REQ))
+			{
+				// Send failure message
+				SendSay(-1, -1, 9007);
+				return;
+			}
+
+			successMessage = 9005;
+			masterQuest    = QUEST_MASTER_PRIEST;
+			break;
+
+		default:
+			// invalid input
+			return;
+	}
+
+	// Send success message
+	SendSay(-1, -1, successMessage);
+
+	if (!SaveEvent(masterQuest, QUEST_STATE_COMPLETE))
+	{
+		spdlog::debug("User::PromoteUser: Failed to save quest [charId={} questId={}]",
+			m_pUserData->m_id, static_cast<int16_t>(masterQuest));
+	}
+
+	char sendBuffer[128] {};
+	int sendIndex = 0;
+	SetByte(sendBuffer, WIZ_CLASS_CHANGE, sendIndex);
+	SetByte(sendBuffer, CLASS_PROMOTION_REQ, sendIndex);
+	SetShort(sendBuffer, newClass, sendIndex);
+	SetShort(sendBuffer, _socketId, sendIndex);
+	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
+
+	HandlePromotion(newClass);
+
+	// Refresh Knights list
+	memset(sendBuffer, 0, sizeof(sendBuffer));
+	sendIndex = 0;
+	SetShort(sendBuffer, 0, sendIndex);
+	m_pMain->m_KnightsManager.CurrentKnightsMember(this, sendBuffer);
+}
+
+bool CUser::SaveEvent(e_QuestId questId, e_QuestState questState)
+{
+	// invalid questId
+	if (questId < QUEST_MIN_ID || questId > QUEST_MAX_ID)
+	{
+		spdlog::debug("User::SaveEvent: Tried to save invalid quest [charId={} questId={}].",
+			m_pUserData->m_id, static_cast<int16_t>(questId));
+		return false;
+	}
+
+	int questIndex = -1, openSlotIndex = -1;
+	bool questExists = false;
+	for (int currentQuestIndex = 0; currentQuestIndex < MAX_QUEST; currentQuestIndex++)
+	{
+		_USER_QUEST& quest = m_pUserData->m_quests[currentQuestIndex];
+		if (quest.sQuestID == questId)
+		{
+			// quest found, stop loop
+			questExists = true;
+			questIndex  = currentQuestIndex;
+			break;
+		}
+
+		// mark an open slot in case we need to write a new record
+		if (openSlotIndex == -1 && (quest.sQuestID < QUEST_MIN_ID || quest.sQuestID > QUEST_MAX_ID))
+			openSlotIndex = currentQuestIndex;
+	}
+
+	if (!questExists)
+	{
+		// walked off the end of the list without finding an open slot or
+		// the requested quest
+		if (openSlotIndex == -1)
+		{
+			spdlog::debug("User::SaveEvent: Quest log full, couldn't save [charId={} questId={}].",
+				m_pUserData->m_id, static_cast<int16_t>(questId));
+			return false;
+		}
+
+		// if we walked off the end of the list but earmarked an open slot, use it
+		if (openSlotIndex != -1)
+			questIndex = openSlotIndex;
+	}
+
+	// sanity check bounds
+	if (questIndex < 0 || questIndex > MAX_QUEST)
+	{
+		spdlog::debug(
+			"User::SaveEvent: questIndex out of bounds [charId={} questIndex={} questId={}].",
+			m_pUserData->m_id, questIndex, static_cast<int16_t>(questId));
+		return false;
+	}
+
+	m_pUserData->m_quests[questIndex].sQuestID     = questId;
+	m_pUserData->m_quests[questIndex].byQuestState = questState;
+
+	if (!questExists)
+		++m_pUserData->m_sQuestCount;
+
+	if (questId >= QUEST_WARRIOR_70_QUEST && questId <= QUEST_PRIEST_70_QUEST)
+	{
+		int sendIndex = 0;
+		char sendBuff[32] {};
+		SetByte(sendBuff, WIZ_QUEST, sendIndex);
+		SetByte(sendBuff, QUEST_UPDATE, sendIndex);
+		SetShort(sendBuff, static_cast<int16_t>(questId), sendIndex);
+		SetByte(sendBuff, 1, sendIndex);
+		Send(sendBuff, sendIndex);
+	}
+
+	return true;
 }
 
 } // namespace Ebenezer

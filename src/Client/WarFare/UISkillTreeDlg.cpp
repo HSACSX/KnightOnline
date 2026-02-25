@@ -857,7 +857,7 @@ void CUISkillTreeDlg::ButtonTooltipRender(int iIndex)
 					break;
 
 				case CLASS_EL_RANGER:
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 				case CLASS_KA_HUNTER:
 				case CLASS_KA_PENETRATOR:
 					szStr = fmt::format_text_resource(IDS_SKILL_INFO_RANGER0);
@@ -894,7 +894,7 @@ void CUISkillTreeDlg::ButtonTooltipRender(int iIndex)
 					break;
 
 				case CLASS_EL_RANGER:
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 				case CLASS_KA_HUNTER:
 				case CLASS_KA_PENETRATOR:
 					szStr = fmt::format_text_resource(IDS_SKILL_INFO_RANGER1);
@@ -931,7 +931,7 @@ void CUISkillTreeDlg::ButtonTooltipRender(int iIndex)
 					break;
 
 				case CLASS_EL_RANGER:
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 				case CLASS_KA_HUNTER:
 				case CLASS_KA_PENETRATOR:
 					szStr = fmt::format_text_resource(IDS_SKILL_INFO_RANGER2);
@@ -965,7 +965,7 @@ void CUISkillTreeDlg::ButtonTooltipRender(int iIndex)
 					szStr = fmt::format_text_resource(IDS_SKILL_INFO_BLADE3);
 					break;
 
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 				case CLASS_KA_PENETRATOR:
 					szStr = fmt::format_text_resource(IDS_SKILL_INFO_RANGER3);
 					break;
@@ -1592,7 +1592,7 @@ void CUISkillTreeDlg::ButtonVisibleStateSet()
 			ASSET_3;
 			break;
 
-		case CLASS_EL_ASSASIN:
+		case CLASS_EL_ASSASSIN:
 			N3_VERIFY_UI_COMPONENT(pButton, GetChildByID<CN3UIButton>("btn_ranger0"));
 			ASSET_1;
 			N3_VERIFY_UI_COMPONENT(pButton, GetChildByID<CN3UIButton>("btn_ranger1"));
@@ -2025,7 +2025,7 @@ void CUISkillTreeDlg::SetPageInCharRegion()
 					AllClearImageByName("Blade Master", true, "blade");
 					break;
 
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 					AllClearImageByName("Kasar Hood", true, "ranger");
 					break;
 
@@ -2054,7 +2054,7 @@ void CUISkillTreeDlg::SetPageInCharRegion()
 		case CLASS_KA_NECROMANCER:
 		case CLASS_KA_DARKPRIEST:
 		case CLASS_EL_PROTECTOR:
-		case CLASS_EL_ASSASIN:
+		case CLASS_EL_ASSASSIN:
 		case CLASS_EL_ENCHANTER:
 		case CLASS_EL_DRUID:
 			if (pImgMaster != nullptr)

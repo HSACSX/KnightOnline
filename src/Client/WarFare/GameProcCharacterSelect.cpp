@@ -412,7 +412,7 @@ void CGameProcCharacterSelect::AddChr(e_ChrPos eCP, __CharacterSelectInfo* pInfo
 					break;
 				case CLASS_EL_ROGUE:
 				case CLASS_EL_RANGER:
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 					szJointFN = "ChrSelect\\upc_el_rf_rog.n3joint"; // 관절 세팅..
 					szAniFN   = "ChrSelect\\upc_el_rf_wa.n3anim";   // 에니메이션 파일 이름.. :-D;
 					szPlug0FN = "ChrSelect\\wea_el_rf_rog_bow.n3cplug";
@@ -451,7 +451,7 @@ void CGameProcCharacterSelect::AddChr(e_ChrPos eCP, __CharacterSelectInfo* pInfo
 					break;
 				case CLASS_EL_ROGUE:
 				case CLASS_EL_RANGER:
-				case CLASS_EL_ASSASIN:
+				case CLASS_EL_ASSASSIN:
 					szJointFN = "ChrSelect\\upc_el_rm_rog.n3joint";
 					szAniFN   = "ChrSelect\\upc_el_rm_rog.n3anim";
 					szPlug0FN = "ChrSelect\\upc_el_rm_rog_bow.n3cplug";

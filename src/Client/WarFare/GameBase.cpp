@@ -190,7 +190,7 @@ bool CGameBase::GetTextByClass(e_Class eClass, std::string& szText)
 		case CLASS_EL_RANGER:
 			szText = fmt::format_text_resource(IDS_CLASS_EL_RANGER);
 			break;
-		case CLASS_EL_ASSASIN:
+		case CLASS_EL_ASSASSIN:
 			szText = fmt::format_text_resource(IDS_CLASS_EL_ASSASIN);
 			break;
 		case CLASS_EL_MAGE:
@@ -400,7 +400,7 @@ e_Class_Represent CGameBase::GetRepresentClass(e_Class eClass)
 		case CLASS_KA_PENETRATOR:
 		case CLASS_EL_ROGUE:
 		case CLASS_EL_RANGER:
-		case CLASS_EL_ASSASIN:
+		case CLASS_EL_ASSASSIN:
 			return CLASS_REPRESENT_ROGUE;
 
 		case CLASS_KA_WIZARD:

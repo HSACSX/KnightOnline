@@ -382,7 +382,7 @@ void CUIImageTooltipDlg::CalcTooltipStringNumAndWriteImpl(__IconItemSkill* spIte
 					case CLASS_KA_PENETRATOR:
 					case CLASS_EL_ROGUE:
 					case CLASS_EL_RANGER:
-					case CLASS_EL_ASSASIN:
+					case CLASS_EL_ASSASSIN:
 						m_pStr[iIndex]->SetColor(m_CWhite);
 						break;
 					default:
@@ -468,7 +468,7 @@ void CUIImageTooltipDlg::CalcTooltipStringNumAndWriteImpl(__IconItemSkill* spIte
 				switch (CGameBase::s_pPlayer->m_InfoBase.eClass)
 				{
 					case CLASS_KA_PENETRATOR:
-					case CLASS_EL_ASSASIN:
+					case CLASS_EL_ASSASSIN:
 						m_pStr[iIndex]->SetColor(m_CWhite);
 						break;
 					default:

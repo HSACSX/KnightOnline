@@ -296,7 +296,7 @@ bool CMagicSkillMng::HasRequiredExhaustItem(const __TABLE_UPC_SKILL* pSkill, boo
 						case CLASS_KA_PENETRATOR:
 						case CLASS_EL_ROGUE:
 						case CLASS_EL_RANGER:
-						case CLASS_EL_ASSASIN:
+						case CLASS_EL_ASSASSIN:
 							break;
 						default:
 							return false;
@@ -370,7 +370,7 @@ bool CMagicSkillMng::HasRequiredExhaustItem(const __TABLE_UPC_SKILL* pSkill, boo
 					switch (s_pPlayer->m_InfoBase.eClass)
 					{
 						case CLASS_KA_PENETRATOR:
-						case CLASS_EL_ASSASIN:
+						case CLASS_EL_ASSASSIN:
 							break;
 						default:
 							return false;
@@ -509,7 +509,7 @@ bool CMagicSkillMng::CheckValidCondition(int iTargetID, const __TABLE_UPC_SKILL*
 		{
 			int NeedSkill = pSkill->iNeedSkill / 10;
 			if (NeedSkill != CLASS_KA_ROGUE && NeedSkill != CLASS_KA_HUNTER && NeedSkill != CLASS_KA_PENETRATOR
-				&& NeedSkill != CLASS_EL_ROGUE && NeedSkill != CLASS_EL_RANGER && NeedSkill != CLASS_EL_ASSASIN)
+				&& NeedSkill != CLASS_EL_ROGUE && NeedSkill != CLASS_EL_RANGER && NeedSkill != CLASS_EL_ASSASSIN)
 			{
 				std::string buff = fmt::format_text_resource(IDS_SKILL_FAIL_DIFFURENTCLASS);
 				m_pGameProcMain->MsgOutput(buff, 0xffffff00);
