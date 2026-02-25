@@ -305,16 +305,16 @@ bool CDBAgent::LoadUserData(const char* accountId, const char* charId, int userI
 	for (int i = 0; i < MAX_QUEST; i++)
 	{
 		_USER_QUEST& quest = user->m_quests[i];
-		quest.sQuestID     = quests.read<int16_t>();
-		quest.byQuestState = quests.read<uint8_t>();
+		quest.sQuestID     = static_cast<e_QuestId>(quests.read<int16_t>());
+		quest.byQuestState = static_cast<e_QuestState>(quests.read<uint8_t>());
 
-		if (quest.sQuestID > 100 || quest.byQuestState > 3)
+		if (quest.sQuestID > QUEST_MAX_ID || quest.byQuestState > QUEST_STATE_COMPLETE)
 		{
 			memset(&quest, 0, sizeof(_USER_QUEST));
 			continue;
 		}
 
-		if (quest.sQuestID > 0)
+		if (quest.sQuestID >= QUEST_MIN_ID)
 			++sQuestTotal;
 	}
 
@@ -409,13 +409,13 @@ bool CDBAgent::UpdateUser(const char* charId, int userId, int updateType)
 	{
 		_USER_QUEST& quest = user->m_quests[i];
 
-		if (quest.sQuestID > 100 || quest.byQuestState > 3)
+		if (quest.sQuestID > QUEST_MAX_ID || quest.byQuestState > QUEST_STATE_COMPLETE)
 		{
 			memset(&quest, 0, sizeof(_USER_QUEST));
 		}
 		else
 		{
-			if (quest.sQuestID > 0)
+			if (quest.sQuestID >= QUEST_MIN_ID)
 				++questTotal;
 		}
 

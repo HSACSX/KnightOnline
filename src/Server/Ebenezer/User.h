@@ -16,6 +16,7 @@
 #include <shared-server/TcpServerSocket.h>
 
 #include <list>
+#include <span>
 
 namespace Ebenezer
 {
@@ -283,13 +284,34 @@ public:
 	void RecvSelectMsg(char* pBuf);
 	void ResetSelectMsg();
 	bool GiveItem(int itemid, int16_t count);
-	bool RobItem(int itemid, int16_t count);
-	bool CheckExistItem(int itemid, int16_t count) const;
+
+	/// \brief Attempts to count number of itemId from the user
+	/// \return true when all items were successfully taken, false otherwise
+	bool RobItem(int itemId, int16_t count);
+
+	/// \brief Attempts to remove all the items from the user in the input array
+	/// \return true when all items were successfully taken, false otherwise
+	bool CheckAndRobItems(std::span<const ItemPair> items, int gold = 0);
+
+	/// \brief Checks to see if a user has count number of itemIds
+	/// \return true when the user has count number of itemIds, false otherwise
+	bool CheckExistItem(int itemId, int16_t count) const;
+
+	/// \brief Checks to see if a user has up to 5 sets of items
+	/// \return true when the user has all the items, false otherwise
+	bool CheckExistItemAnd(int id1, int16_t count1, int id2, int16_t count2, int id3 = -1,
+		int16_t count3 = -1, int id4 = -1, int16_t count4 = -1, int id5 = -1,
+		int16_t count5 = -1) const;
+
+	/// \brief Checks to see if a user has all the items in the input array
+	/// \return true when the user has all the items, false otherwise
+	bool CheckExistItemAnd(std::span<const ItemPair> items) const;
+
 	bool CheckWeight(int itemid, int16_t count) const;
 	bool CheckSkillPoint(uint8_t skillnum, uint8_t min, uint8_t max) const;
 	bool CheckSkillTotal(uint8_t min, uint8_t max) const;
 	bool CheckStatTotal(uint8_t min, uint8_t max) const;
-	bool CheckExistEvent(int16_t questId, uint8_t questState) const;
+	bool CheckExistEvent(e_QuestId questId, e_QuestState questState) const;
 	bool GoldLose(int gold);
 	void GoldGain(int gold);
 	void SendItemWeight();
@@ -333,7 +355,9 @@ public:
 	void SelectWarpList(char* pBuf);
 	void GoldChange(int tid, int gold);
 	void AllSkillPointChange();
+	void SendResetSkillError(e_ClassChangeResult errorCode, int cost);
 	void AllPointChange();
+	void SendResetStatError(e_ClassChangeResult errorCode, int cost);
 	void ClassChangeReq();
 	void FriendReport(char* pBuf);
 	std::shared_ptr<CUser> GetItemRoutingUser(int itemid, int16_t itemcount);
@@ -368,6 +392,14 @@ public:
 	void ChatTargetSelect(char* pBuf);
 	bool ItemEquipAvailable(const model::Item* pTable) const;
 	void ClassChange(char* pBuf);
+
+	/// \brief Validates that the newClassId is valid promotion path from the current classId
+	/// \return true when the user's newClassId is a valid promotion path, false otherwise
+	bool ValidatePromotion(e_Class newClassId) const;
+
+	/// \brief Updates the user's class and broadcasts any required messages
+	void HandlePromotion(e_Class newClassId);
+
 	void MSpChange(int amount);
 	void UpdateGameWeather(char* pBuf, uint8_t type);
 	void ObjectEvent(char* pBuf);
@@ -437,6 +469,16 @@ public:
 	void MoveProcess(char* pBuf);
 	void Rotate(char* pBuf);
 	void LoginProcess(char* pBuf);
+
+	/// \brief Attempts to perform a character's first job change
+	void PromoteUserNovice();
+
+	/// \brief Attempts to perform a character's second job change
+	void PromoteUser();
+
+	/// \brief Updates an event/quest status
+	/// \returns true if quest event was successfully saved, false otherwise
+	bool SaveEvent(e_QuestId questId, e_QuestState questState);
 };
 
 } // namespace Ebenezer

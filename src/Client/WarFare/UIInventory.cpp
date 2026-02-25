@@ -1739,7 +1739,7 @@ bool CUIInventory::IsValidRaceAndClass(__TABLE_ITEM_BASIC* pItem, __TABLE_ITEM_E
 						case CLASS_KA_PENETRATOR:
 						case CLASS_EL_ROGUE:
 						case CLASS_EL_RANGER:
-						case CLASS_EL_ASSASIN:
+						case CLASS_EL_ASSASSIN:
 							break;
 						default:
 							szMsg = fmt::format_text_resource(IDS_MSG_VALID_CLASSNRACE_INVALID_CLASS);
@@ -1825,7 +1825,7 @@ bool CUIInventory::IsValidRaceAndClass(__TABLE_ITEM_BASIC* pItem, __TABLE_ITEM_E
 					switch (CGameBase::s_pPlayer->m_InfoBase.eClass)
 					{
 						case CLASS_KA_PENETRATOR:
-						case CLASS_EL_ASSASIN:
+						case CLASS_EL_ASSASSIN:
 							break;
 						default:
 							szMsg = fmt::format_text_resource(IDS_MSG_VALID_CLASSNRACE_INVALID_CLASS);

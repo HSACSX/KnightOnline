@@ -86,7 +86,7 @@ enum e_Class : uint8_t
 	CLASS_EL_BLADE = 205,
 	CLASS_EL_PROTECTOR,
 	CLASS_EL_RANGER = 207,
-	CLASS_EL_ASSASIN,
+	CLASS_EL_ASSASSIN,
 	CLASS_EL_MAGE = 209,
 	CLASS_EL_ENCHANTER,
 	CLASS_EL_CLERIC = 211,
@@ -357,11 +357,81 @@ enum e_ObjectType : int8_t
 	OBJECT_TYPE_UNKNOWN        = -1
 };
 
+enum e_QuestId : int16_t
+{
+	QUEST_INVALID                        = -1,
+	QUEST_MIN_ID                         = 1,
+	QUEST_MASTER_WARRIOR                 = 1,
+	QUEST_MASTER_ROGUE                   = 2,
+	QUEST_MASTER_MAGE                    = 3,
+	QUEST_MASTER_PRIEST                  = 4,
+	QUEST_PROCONSULS_REQUEST             = 5,
+	QUEST_ISSAC_RECOMMENDATION           = 6,
+	QUEST_GEM_OF_BRAVERY                 = 7,
+	QUEST_RECONNAISSANCE_REPORT          = 8,
+	QUEST_GUARDIANS_OF_THE_7_KEYS        = 9,
+	QUEST_A_DUEL_WITH_THE_ORK            = 11,
+	QUEST_FANG_OF_WOLF_MAN               = 12,
+	QUEST_RELIC_SEARCHER                 = 13,
+	QUEST_GUARD_TRAINEE                  = 14,
+	QUEST_THREE_SACRIFICIAL_OFFERINGS    = 15,
+	QUEST_ZIGNONS_WILL                   = 16,
+	QUEST_WORM_EXTERMINATION             = 30,
+	QUEST_GAVOLT_EXTERMINATION           = 31,
+	QUEST_COLLECTING_SILAN_BONES         = 32,
+	QUEST_COLLECTING_BULTURE_HORNS       = 33,
+	QUEST_WOLF_MAN_EXTERMINATION         = 34,
+	QUEST_THANKSGIVING_EVENT             = 44,
+	QUEST_CHRISTMAS_CROSS                = 45,
+	QUEST_BEGINNER_QUEST                 = 50,
+	QUEST_WARRIOR_70_QUEST               = 51,
+	QUEST_ROGUE_70_QUEST                 = 52,
+	QUEST_MAGICIAN_70_QUEST              = 53,
+	QUEST_PRIEST_70_QUEST                = 54,
+	QUEST_LOVE_AGENT                     = 56,
+	QUEST_TELEGRAM_FROM_THE_ROYAL_GUARD  = 57,
+	QUEST_WARRIOR_PRIEST_GUARDIAN_OBJECT = 58,
+	QUEST_ROGUE_GUARDIAN_OBJECT          = 59,
+	QUEST_MAGICIAN_GUARDIAN_OBJECT       = 60,
+	QUEST_ASGA_FRUIT                     = 61,
+	QUEST_BELL_OF_BELUA                  = 62,
+	QUEST_DARK_LUNAR_SPY                 = 63,
+	QUEST_LUNAR_SPY                      = 64,
+	QUEST_TYON_MEAT                      = 65,
+	QUEST_BBQ_DISH                       = 66,
+	QUEST_ESLANT_WOMAN                   = 67,
+	QUEST_MUSIC_OF_UNNAMED_WARRIOR       = 68,
+	QUEST_INVASION                       = 69,
+	QUEST_FALLEN_ANGEL                   = 70,
+	QUEST_XMAS_CANDY_CANES               = 89,
+	QUEST_MAX_ID                         = 100
+};
+
 enum e_QuestState : uint8_t
 {
 	QUEST_STATE_NOT_STARTED = 0,
 	QUEST_STATE_IN_PROGRESS = 1,
 	QUEST_STATE_COMPLETE    = 2
+};
+
+enum e_QuestItem : int
+{
+	ITEM_KEKURI_RING            = 330310014,
+	ITEM_BLOOD_OF_GLYPTODONT    = 379014000,
+	ITEM_FANG_OF_BAKIRRA        = 379042000,
+	ITEM_TAIL_OF_SHAULA         = 379040000,
+	ITEM_TAIL_OF_LESATH         = 379041000,
+	ITEM_GAVOLT_WING            = 379043000,
+	ITEM_ZOMBIE_EYE             = 379044000,
+	ITEM_CURSED_BONE            = 379045000,
+	ITEM_FEATHER_OF_HARPY_QUEEN = 379046000,
+	ITEM_HOLY_WATER_OF_TEMPLE   = 379047000,
+	ITEM_LOBO_PENDANT           = 320410011,
+	ITEM_LUPUS_PENDANT          = 320410012,
+	ITEM_LYCAON_PENDANT         = 320410013,
+	ITEM_CRUDE_SAPPHIRE         = 389074000,
+	ITEM_CRYSTAL                = 389075000,
+	ITEM_OPAL                   = 389076000
 };
 
 // These control neutrality-related settings client-side,
