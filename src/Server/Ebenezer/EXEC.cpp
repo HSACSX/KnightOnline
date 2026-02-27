@@ -23,8 +23,12 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 	char temp[1024] {};
 
 	ParseSpace(temp, line, index);
+	std::string_view tempView(temp);
+	size_t commentPosition = tempView.find(';');
+	if (commentPosition != std::string::npos)
+		tempView = tempView.substr(0, commentPosition);
 
-	size_t opcode = hashing::djb2::hash(std::string_view(temp));
+	size_t opcode = hashing::djb2::hash(tempView);
 	switch (opcode)
 	{
 		// E SAY {'up' event ID} {'ok' event ID} {talk ID 1} {talk ID 2} {talk ID 3} {talk ID 4} {talk ID 5} {talk ID 6} {talk ID 7} {talk ID 8}
@@ -81,10 +85,16 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 			argsToParse = 2;
 			break;
 
-		// E ZONE_CHANGE {zone ID} {x} {z}
-		case "ZONE_CHANGE"_djb2:
-			m_Exec      = EXEC_ZONE_CHANGE;
-			argsToParse = 3;
+		// E SAVE_COM_EVENT {event ID}
+		case "SAVE_COM_EVENT"_djb2:
+			m_Exec      = EXEC_SAVE_COM_EVENT;
+			argsToParse = 1;
+			break;
+
+		// E ROB_NOAH {amount}
+		case "ROB_NOAH"_djb2:
+			m_Exec      = EXEC_ROB_NOAH;
+			argsToParse = 1;
 			break;
 
 		// E RETURN
@@ -92,14 +102,31 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 			m_Exec = EXEC_RETURN;
 			break;
 
-		// E PROMOTE_USER_NOVICE
-		case "PROMOTE_USER_NOVICE"_djb2:
-			m_Exec = EXEC_PROMOTE_USER_NOVICE;
+		// E SAVE_EVENT {quest ID} {quest state}
+		case "SAVE_EVENT"_djb2:
+			m_Exec      = EXEC_SAVE_EVENT;
+			argsToParse = 2;
 			break;
 
 		// E PROMOTE_USER
 		case "PROMOTE_USER"_djb2:
 			m_Exec = EXEC_PROMOTE_USER;
+			break;
+
+		// E GIVE_PROMOTION_QUEST
+		case "GIVE_PROMOTION_QUEST"_djb2:
+			m_Exec = EXEC_GIVE_PROMOTION_QUEST;
+			break;
+
+		// E ZONE_CHANGE {zone ID} {x} {z}
+		case "ZONE_CHANGE"_djb2:
+			m_Exec      = EXEC_ZONE_CHANGE;
+			argsToParse = 3;
+			break;
+
+		// E PROMOTE_USER_NOVICE
+		case "PROMOTE_USER_NOVICE"_djb2:
+			m_Exec = EXEC_PROMOTE_USER_NOVICE;
 			break;
 
 		// E SKILL_POINT_DISTRIBUTE
@@ -112,6 +139,29 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 			m_Exec = EXEC_STAT_POINT_DISTRIBUTE;
 			break;
 
+		// E LEVEL_UP
+		case "LEVEL_UP"_djb2:
+			m_Exec = EXEC_LEVEL_UP;
+			break;
+
+		// E EXP_CHANGE {exp amount}
+		case "EXP_CHANGE"_djb2:
+			m_Exec      = EXEC_EXP_CHANGE;
+			argsToParse = 1;
+			break;
+
+		// E ROLL_DICE {sides}
+		case "ROLL_DICE"_djb2:
+			m_Exec      = EXEC_ROLL_DICE;
+			argsToParse = 1;
+			break;
+
+		// E CHANGE_LOYALTY {delta}
+		case "CHANGE_LOYALTY"_djb2:
+			m_Exec      = EXEC_CHANGE_LOYALTY;
+			argsToParse = 1;
+			break;
+
 		// E SKILL_POINT_FREE
 		case "SKILL_POINT_FREE"_djb2:
 			m_Exec = EXEC_SKILL_POINT_FREE;
@@ -120,6 +170,12 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 		// E STAT_POINT_FREE
 		case "STAT_POINT_FREE"_djb2:
 			m_Exec = EXEC_STAT_POINT_FREE;
+			break;
+
+		// E CHANGE_MANNER {delta}
+		case "CHANGE_MANNER"_djb2:
+			m_Exec      = EXEC_CHANGE_MANNER;
+			argsToParse = 1;
 			break;
 
 		default:
