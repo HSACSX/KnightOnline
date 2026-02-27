@@ -35,8 +35,12 @@ bool LOGIC_ELSE::Parse_and(const char* line, const std::string& filename, int li
 	char temp[1024] {};
 
 	ParseSpace(temp, line, index);
+	std::string_view tempView(temp);
+	size_t commentPosition = tempView.find(';');
+	if (commentPosition != std::string::npos)
+		tempView = tempView.substr(0, commentPosition);
 
-	size_t opcode = hashing::djb2::hash(std::string_view(temp));
+	size_t opcode = hashing::djb2::hash(tempView);
 	switch (opcode)
 	{
 		// A CHECK_UNDER_WEIGHT
@@ -169,6 +173,12 @@ bool LOGIC_ELSE::Parse_and(const char* line, const std::string& filename, int li
 		case "CHECK_NOCLASS"_djb2:
 			m_LogicElse = LOGIC_CHECK_NOCLASS;
 			argsToParse = 6;
+			break;
+
+		// A CHECK_DICE {sides}
+		case "CHECK_DICE"_djb2:
+			m_LogicElse = LOGIC_CHECK_DICE;
+			argsToParse = 1;
 			break;
 
 		// A CHECK_LOYALTY {minimum} {maximum}

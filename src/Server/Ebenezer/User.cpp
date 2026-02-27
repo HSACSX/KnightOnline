@@ -5207,7 +5207,7 @@ void CUser::ItemTrade(char* pBuf)
 		}
 
 		int64_t buyPrice = static_cast<int64_t>(pTable->BuyPrice) * count;
-		if (buyPrice < 0 || buyPrice > MAX_GOLD)
+		if (buyPrice < MIN_CURRENCY || buyPrice > MAX_CURRENCY)
 		{
 			result = 3;
 			goto fail_return;
@@ -5238,10 +5238,10 @@ void CUser::ItemTrade(char* pBuf)
 			}
 		}
 
-		m_pUserData->m_sItemArray[SLOT_MAX + pos].nNum       = itemid;
-		m_pUserData->m_sItemArray[SLOT_MAX + pos].sDuration  = pTable->Durability;
+		m_pUserData->m_sItemArray[SLOT_MAX + pos].nNum      = itemid;
+		m_pUserData->m_sItemArray[SLOT_MAX + pos].sDuration = pTable->Durability;
 
-		m_pUserData->m_iGold                                -= static_cast<int>(buyPrice);
+		CurrencyChange(m_pUserData->m_iGold, -static_cast<int>(buyPrice));
 
 		// count 개념이 있는 아이템
 		if (pTable->Countable && count > 0)
@@ -5287,13 +5287,13 @@ void CUser::ItemTrade(char* pBuf)
 					salePrice /= 4;
 			}
 
-			if (salePrice < 0 || salePrice > MAX_GOLD)
+			if (salePrice < MIN_CURRENCY || salePrice > MAX_CURRENCY)
 			{
 				result = 3;
 				goto fail_return;
 			}
 
-			m_pUserData->m_iGold                             += static_cast<int>(salePrice);
+			CurrencyChange(m_pUserData->m_iGold, static_cast<int>(salePrice));
 
 			m_pUserData->m_sItemArray[SLOT_MAX + pos].sCount -= count;
 
@@ -5315,17 +5315,17 @@ void CUser::ItemTrade(char* pBuf)
 					salePrice /= 4;
 			}
 
-			if (salePrice < 0 || salePrice > MAX_GOLD)
+			if (salePrice < MIN_CURRENCY || salePrice > MAX_CURRENCY)
 			{
 				result = 3;
 				goto fail_return;
 			}
 
-			m_pUserData->m_iGold                                += static_cast<int>(salePrice);
+			CurrencyChange(m_pUserData->m_iGold, static_cast<int>(salePrice));
 
-			m_pUserData->m_sItemArray[SLOT_MAX + pos].nNum       = 0;
-			m_pUserData->m_sItemArray[SLOT_MAX + pos].sDuration  = 0;
-			m_pUserData->m_sItemArray[SLOT_MAX + pos].sCount     = 0;
+			m_pUserData->m_sItemArray[SLOT_MAX + pos].nNum      = 0;
+			m_pUserData->m_sItemArray[SLOT_MAX + pos].sDuration = 0;
+			m_pUserData->m_sItemArray[SLOT_MAX + pos].sCount    = 0;
 		}
 
 		SendItemWeight();
@@ -5596,7 +5596,7 @@ void CUser::ItemGet(char* pBuf)
 		{
 			if (m_sPartyIndex == -1)
 			{
-				m_pUserData->m_iGold += count;
+				CurrencyChange(m_pUserData->m_iGold, count);
 
 				SetByte(sendBuffer, WIZ_ITEM_GET, sendIndex);
 				SetByte(sendBuffer, 0x01, sendIndex);
@@ -5613,12 +5613,12 @@ void CUser::ItemGet(char* pBuf)
 					goto fail_return;
 
 				int usercount = 0, money = 0, levelsum = 0;
-				for (int i = 0; i < 8; i++)
+				for (int j = 0; j < MAX_PARTY_SIZE; j++)
 				{
-					if (pParty->uid[i] != -1)
+					if (pParty->userSocketIds[j] != -1)
 					{
 						usercount++;
-						levelsum += pParty->bLevel[i];
+						levelsum += pParty->bLevel[j];
 					}
 				}
 
@@ -5627,15 +5627,15 @@ void CUser::ItemGet(char* pBuf)
 
 				for (i = 0; i < 8; i++)
 				{
-					pUser = m_pMain->GetUserPtr(pParty->uid[i]);
+					pUser = m_pMain->GetUserPtr(pParty->userSocketIds[i]);
 					if (pUser == nullptr)
 						continue;
 
 					money = static_cast<int>(
 						count * (float) (pUser->m_pUserData->m_bLevel / (float) levelsum));
-					pUser->m_pUserData->m_iGold += money;
+					CurrencyChange(pUser->m_pUserData->m_iGold, money);
 
-					sendIndex                    = 0;
+					sendIndex = 0;
 					memset(sendBuffer, 0, sizeof(sendBuffer));
 					SetByte(sendBuffer, WIZ_ITEM_GET, sendIndex);
 					SetByte(sendBuffer, 0x02, sendIndex);
@@ -5733,13 +5733,13 @@ void CUser::StateChange(char* pBuf)
 	m_pMain->Send_Region(sendBuffer, sendIndex, m_pUserData->m_bZone, m_RegionX, m_RegionZ);
 }
 
-void CUser::LoyaltyChange(int tid)
+void CUser::LoyaltyChange(int targetId)
 {
 	int16_t level_difference = 0, loyalty_source = 0, loyalty_target = 0;
 	int sendIndex = 0;
 	char sendBuffer[256] {};
 
-	auto pTUser = m_pMain->GetUserPtr(tid);
+	auto pTUser = m_pMain->GetUserPtr(targetId);
 
 	// Check if target exists.
 	if (pTUser == nullptr)
@@ -5796,15 +5796,8 @@ void CUser::LoyaltyChange(int tid)
 
 	//TRACE(_T("LoyaltyChange 222 - user1=%hs, %d,, user2=%hs, %d\n"), m_pUserData->m_id,  m_pUserData->m_iLoyalty, pTUser->m_pUserData->m_id, pTUser->m_pUserData->m_iLoyalty);
 
-	m_pUserData->m_iLoyalty         += loyalty_source; // Recalculations of Loyalty...
-	pTUser->m_pUserData->m_iLoyalty += loyalty_target;
-
-	// Cannot be less than zero.
-	if (m_pUserData->m_iLoyalty < 0)
-		m_pUserData->m_iLoyalty = 0;
-
-	if (pTUser->m_pUserData->m_iLoyalty < 0)
-		pTUser->m_pUserData->m_iLoyalty = 0;
+	CurrencyChange(m_pUserData->m_iLoyalty, loyalty_source);
+	CurrencyChange(pTUser->m_pUserData->m_iLoyalty, loyalty_target);
 
 	//TRACE(_T("LoyaltyChange 222 - user1=%hs, %d,, user2=%hs, %d\n"), m_pUserData->m_id,  m_pUserData->m_iLoyalty, pTUser->m_pUserData->m_id, pTUser->m_pUserData->m_iLoyalty);
 
@@ -5839,6 +5832,87 @@ void CUser::LoyaltyChange(int tid)
 		}
 	}
 	//
+}
+
+void CUser::ChangeLoyalty(const int loyaltyChange, const bool isExcludeMonthly)
+{
+	if (m_pUserData->m_bZone == ZONE_ARENA)
+	{
+		return;
+	}
+
+	CurrencyChange(m_pUserData->m_iLoyalty, loyaltyChange);
+	if (!isExcludeMonthly)
+		CurrencyChange(m_pUserData->m_iLoyaltyMonthly, loyaltyChange);
+
+	char sendBuff[256] {};
+	int sendIndex = 0;
+	SetByte(sendBuff, WIZ_LOYALTY_CHANGE, sendIndex);
+	SetByte(sendBuff, LOYALTY_CHANGE_NATIONAL, sendIndex);
+	SetInt(sendBuff, m_pUserData->m_iLoyalty, sendIndex);
+	SetInt(sendBuff, m_pUserData->m_iLoyaltyMonthly, sendIndex);
+	Send(sendBuff, sendIndex);
+}
+
+void CUser::ChangeMannerPoint(const int loyaltyAmount)
+{
+	static constexpr uint8_t MANNER_LEVEL_BAND_1    = 20;
+	static constexpr uint8_t MANNER_LEVEL_BAND_2    = 30;
+	static constexpr uint8_t MANNER_LEVEL_BAND_3    = 40;
+	static constexpr uint8_t MIN_MANNER_POINT_LEVEL = 35;
+	static constexpr float MANNER_POINT_RANGE       = 50;
+
+	if (loyaltyAmount > 0)
+	{
+		CurrencyChange(m_pUserData->m_iMannerPoint, loyaltyAmount);
+
+		char sendBuff[128] {};
+		int sendIndex = 0;
+		SetByte(sendBuff, WIZ_LOYALTY_CHANGE, sendIndex);
+		SetByte(sendBuff, LOYALTY_CHANGE_MANNER, sendIndex);
+		SetInt(sendBuff, m_pUserData->m_iMannerPoint, sendIndex);
+		Send(sendBuff, sendIndex);
+	}
+	else if (m_bIsChicken && m_sPartyIndex != -1)
+	{
+		_PARTY_GROUP* userParty = m_pMain->m_PartyMap.GetData(m_sPartyIndex);
+		if (userParty == nullptr)
+			return;
+
+		uint8_t partyPointChange = 0;
+		if (m_pUserData->m_bLevel <= MANNER_LEVEL_BAND_1)
+			partyPointChange = 1;
+		else if (m_pUserData->m_bLevel <= MANNER_LEVEL_BAND_2)
+			partyPointChange = 2;
+		else if (m_pUserData->m_bLevel <= MANNER_LEVEL_BAND_3)
+			partyPointChange = 3;
+
+		for (int i = 0; i < MAX_PARTY_SIZE; i++)
+		{
+			if (userParty->userSocketIds[i] < 0)
+				continue;
+
+			std::shared_ptr<CUser> partyMember = m_pMain->GetUserPtr(userParty->userSocketIds[i]);
+			if (partyMember == nullptr || partyMember->m_bResHpType == USER_DEAD
+				|| partyMember->m_bIsChicken
+				|| partyMember->m_pUserData->m_bLevel < MIN_MANNER_POINT_LEVEL)
+				continue;
+
+			float distance = GetDistance2D(
+				partyMember->m_pUserData->m_curx, partyMember->m_pUserData->m_curz);
+			if (distance > MANNER_POINT_RANGE)
+				continue;
+
+			CurrencyChange(partyMember->m_pUserData->m_iMannerPoint, partyPointChange);
+
+			char sendBuff[128] {};
+			int sendIndex = 0;
+			SetByte(sendBuff, WIZ_LOYALTY_CHANGE, sendIndex);
+			SetByte(sendBuff, LOYALTY_CHANGE_MANNER, sendIndex);
+			SetInt(sendBuff, m_pUserData->m_iMannerPoint, sendIndex);
+			Send(sendBuff, sendIndex);
+		}
+	}
 }
 
 void CUser::SpeedHackUser()
@@ -5985,7 +6059,7 @@ void CUser::PartyCancel()
 
 	m_sPartyIndex = -1;
 
-	leader_id     = pParty->uid[0];
+	leader_id     = pParty->userSocketIds[0];
 
 	auto pUser    = m_pMain->GetUserPtr(leader_id);
 	if (pUser == nullptr)
@@ -5994,7 +6068,7 @@ void CUser::PartyCancel()
 	// 파티 생성시 취소한거면..파티를 뽀개야쥐...
 	for (int i = 0; i < 8; i++)
 	{
-		if (pParty->uid[i] >= 0)
+		if (pParty->userSocketIds[i] >= 0)
 			count++;
 	}
 
@@ -6046,9 +6120,9 @@ void CUser::PartyRequest(int memberid, bool bCreate)
 		if (pParty == nullptr)
 			goto fail_return;
 
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < MAX_PARTY_SIZE; i++)
 		{
-			if (pParty->uid[i] < 0)
+			if (pParty->userSocketIds[i] < 0)
 				break;
 		}
 
@@ -6063,12 +6137,12 @@ void CUser::PartyRequest(int memberid, bool bCreate)
 		if (m_sPartyIndex != -1)
 			goto fail_return;
 
-		pParty            = new _PARTY_GROUP;
-		pParty->uid[0]    = _socketId;
-		pParty->sMaxHp[0] = m_iMaxHp;
-		pParty->sHp[0]    = m_pUserData->m_sHp;
-		pParty->bLevel[0] = m_pUserData->m_bLevel;
-		pParty->sClass[0] = m_pUserData->m_sClass;
+		pParty                   = new _PARTY_GROUP;
+		pParty->userSocketIds[0] = _socketId;
+		pParty->sMaxHp[0]        = m_iMaxHp;
+		pParty->sHp[0]           = m_pUserData->m_sHp;
+		pParty->bLevel[0]        = m_pUserData->m_bLevel;
+		pParty->sClass[0]        = m_pUserData->m_sClass;
 
 		{
 			std::lock_guard<std::recursive_mutex> lock(g_region_mutex);
@@ -6094,7 +6168,7 @@ void CUser::PartyRequest(int memberid, bool bCreate)
 		SetByte(sendBuffer, AG_USER_PARTY, sendIndex);
 		SetByte(sendBuffer, PARTY_CREATE, sendIndex);
 		SetShort(sendBuffer, pParty->wIndex, sendIndex);
-		SetShort(sendBuffer, pParty->uid[0], sendIndex);
+		SetShort(sendBuffer, pParty->userSocketIds[0], sendIndex);
 		//SetShort( sendBuffer, pParty->sHp[0], sendIndex );
 		//SetByte( sendBuffer, pParty->bLevel[0], sendIndex );
 		//SetShort( sendBuffer, pParty->sClass[0], sendIndex );
@@ -6156,12 +6230,12 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 	}
 
 	// Send your info to the rest of the party members.
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_PARTY_SIZE; i++)
 	{
-		if (pParty->uid[i] == _socketId)
+		if (pParty->userSocketIds[i] == _socketId)
 			continue;
 
-		auto pUser = m_pMain->GetUserPtr(pParty->uid[i]);
+		auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[i]);
 		if (pUser == nullptr)
 			continue;
 
@@ -6169,7 +6243,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 		sendIndex = 0;
 		SetByte(sendBuffer, WIZ_PARTY, sendIndex);
 		SetByte(sendBuffer, PARTY_INSERT, sendIndex);
-		SetShort(sendBuffer, pParty->uid[i], sendIndex);
+		SetShort(sendBuffer, pParty->userSocketIds[i], sendIndex);
 		SetString2(sendBuffer, pUser->m_pUserData->m_id, sendIndex);
 		SetShort(sendBuffer, pParty->sMaxHp[i], sendIndex);
 		SetShort(sendBuffer, pParty->sHp[i], sendIndex);
@@ -6184,19 +6258,19 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 	for (; i < 8; i++)
 	{
 		// Party Structure 에 추가
-		if (pParty->uid[i] != -1)
+		if (pParty->userSocketIds[i] != -1)
 			continue;
 
-		pParty->uid[i]    = _socketId;
-		pParty->sMaxHp[i] = m_iMaxHp;
-		pParty->sHp[i]    = m_pUserData->m_sHp;
-		pParty->bLevel[i] = m_pUserData->m_bLevel;
-		pParty->sClass[i] = m_pUserData->m_sClass;
+		pParty->userSocketIds[i] = _socketId;
+		pParty->sMaxHp[i]        = m_iMaxHp;
+		pParty->sHp[i]           = m_pUserData->m_sHp;
+		pParty->bLevel[i]        = m_pUserData->m_bLevel;
+		pParty->sClass[i]        = m_pUserData->m_sClass;
 		break;
 	}
 
 	// 파티 BBS를 위해 추가...	대장판!!!
-	auto pUser = m_pMain->GetUserPtr(pParty->uid[0]);
+	auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[0]);
 	if (pUser == nullptr)
 		return;
 
@@ -6251,7 +6325,7 @@ void CUser::PartyInsert() // 본인이 추가 된다.  리더에게 패킷이 �
 	SetByte(sendBuffer, PARTY_INSERT, sendIndex);
 	SetShort(sendBuffer, pParty->wIndex, sendIndex);
 	SetByte(sendBuffer, byIndex, sendIndex);
-	SetShort(sendBuffer, pParty->uid[byIndex], sendIndex);
+	SetShort(sendBuffer, pParty->userSocketIds[byIndex], sendIndex);
 	//SetShort( sendBuffer, pParty->sHp[byIndex], sendIndex );
 	//SetByte( sendBuffer, pParty->bLevel[byIndex], sendIndex );
 	//SetShort( sendBuffer, pParty->sClass[byIndex], sendIndex );
@@ -6281,13 +6355,13 @@ void CUser::PartyRemove(int memberid)
 	if (memberid != _socketId)
 	{
 		// 리더만 멤버 삭제 할수 있음..
-		if (pParty->uid[0] != _socketId)
+		if (pParty->userSocketIds[0] != _socketId)
 			return;
 	}
 	else
 	{
 		// 리더가 탈퇴하면 파티 깨짐
-		if (pParty->uid[0] == memberid)
+		if (pParty->userSocketIds[0] == memberid)
 		{
 			PartyDelete();
 			return;
@@ -6295,9 +6369,9 @@ void CUser::PartyRemove(int memberid)
 	}
 
 	int count = 0;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_PARTY_SIZE; i++)
 	{
-		if (pParty->uid[i] != -1 && pParty->uid[i] != memberid)
+		if (pParty->userSocketIds[i] != -1 && pParty->userSocketIds[i] != memberid)
 			++count;
 	}
 
@@ -6317,15 +6391,15 @@ void CUser::PartyRemove(int memberid)
 	m_pMain->Send_PartyMember(m_sPartyIndex, sendBuffer, sendIndex);
 
 	// 파티가 유효한 경우 에는 파티 리스트에서 뺀다.
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_PARTY_SIZE; i++)
 	{
-		if (pParty->uid[i] != -1 && pParty->uid[i] == memberid)
+		if (pParty->userSocketIds[i] != -1 && pParty->userSocketIds[i] == memberid)
 		{
-			pParty->uid[i]       = -1;
-			pParty->sHp[i]       = 0;
-			pParty->bLevel[i]    = 0;
-			pParty->sClass[i]    = 0;
-			pUser->m_sPartyIndex = -1;
+			pParty->userSocketIds[i] = -1;
+			pParty->sHp[i]           = 0;
+			pParty->bLevel[i]        = 0;
+			pParty->sClass[i]        = 0;
+			pUser->m_sPartyIndex     = -1;
 		}
 	}
 
@@ -6351,9 +6425,9 @@ void CUser::PartyDelete()
 		return;
 	}
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_PARTY_SIZE; i++)
 	{
-		auto pUser = m_pMain->GetUserPtr(pParty->uid[i]);
+		auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[i]);
 		if (pUser != nullptr)
 			pUser->m_sPartyIndex = -1;
 	}
@@ -6536,14 +6610,14 @@ void CUser::ExchangeAdd(char* pBuf)
 			if (pExchangeItem->itemid == ITEM_GOLD)
 			{
 				pExchangeItem->count += count;
-				m_pUserData->m_iGold -= count;
-				bAdd                  = false;
+				CurrencyChange(m_pUserData->m_iGold, -count);
+				bAdd = false;
 				break;
 			}
 		}
 
 		if (bAdd)
-			m_pUserData->m_iGold -= count;
+			CurrencyChange(m_pUserData->m_iGold, -count);
 	}
 	else if (m_MirrorItem[pos].nNum == itemid)
 	{
@@ -6659,7 +6733,7 @@ void CUser::ExchangeDecide()
 				if (pExchangeItem->itemid == ITEM_GOLD)
 				{
 					// 돈만 백업
-					m_pUserData->m_iGold += pExchangeItem->count;
+					CurrencyChange(m_pUserData->m_iGold, pExchangeItem->count);
 					break;
 				}
 			}
@@ -6669,7 +6743,7 @@ void CUser::ExchangeDecide()
 				if (pExchangeItem->itemid == ITEM_GOLD)
 				{
 					// 돈만 백업
-					pUser->m_pUserData->m_iGold += pExchangeItem->count;
+					CurrencyChange(pUser->m_pUserData->m_iGold, pExchangeItem->count);
 					break;
 				}
 			}
@@ -6770,7 +6844,7 @@ void CUser::ExchangeCancel()
 		if (pExchangeItem->itemid == ITEM_GOLD)
 		{
 			// 돈만 백업
-			m_pUserData->m_iGold += pExchangeItem->count;
+			CurrencyChange(m_pUserData->m_iGold, pExchangeItem->count);
 			break;
 		}
 	}
@@ -6935,7 +7009,7 @@ int CUser::ExchangeDone()
 
 	// 상대방이 준 돈.
 	if (money > 0)
-		m_pUserData->m_iGold += money;
+		CurrencyChange(m_pUserData->m_iGold, money);
 
 	// 성공시 리스토어..
 	for (int i = 0; i < HAVE_MAX; i++)
@@ -7352,9 +7426,9 @@ void CUser::LoyaltyDivide(int tid)
 		return;
 
 	// Get total level and number of members in party.
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_PARTY_SIZE; i++)
 	{
-		if (pParty->uid[i] != -1)
+		if (pParty->userSocketIds[i] != -1)
 		{
 			levelsum += pParty->bLevel[i];
 			++total_member;
@@ -7426,19 +7500,15 @@ void CUser::LoyaltyDivide(int tid)
 		individualvalue = -1000;
 
 		// Distribute loyalty amongst party members.
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < MAX_PARTY_SIZE; j++)
 		{
-			auto pUser = m_pMain->GetUserPtr(pParty->uid[j]);
+			auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[j]);
 			if (pUser == nullptr)
 				continue;
 
 			//TRACE(_T("LoyaltyDivide 111 - user1=%hs, %d\n"), pUser->m_pUserData->m_id, pUser->m_pUserData->m_iLoyalty);
 
-			pUser->m_pUserData->m_iLoyalty += individualvalue;
-
-			// Cannot be less than zero.
-			if (pUser->m_pUserData->m_iLoyalty < 0)
-				pUser->m_pUserData->m_iLoyalty = 0;
+			CurrencyChange(pUser->m_pUserData->m_iLoyalty, individualvalue);
 
 			//TRACE(_T("LoyaltyDivide 222 - user1=%hs, %d\n"), pUser->m_pUserData->m_id, pUser->m_pUserData->m_iLoyalty);
 
@@ -7456,18 +7526,15 @@ void CUser::LoyaltyDivide(int tid)
 		loyalty_source = 2 * loyalty_source;
 
 	// Distribute loyalty amongst party members.
-	for (int j = 0; j < 8; j++)
+	for (int j = 0; j < MAX_PARTY_SIZE; j++)
 	{
-		auto pUser = m_pMain->GetUserPtr(pParty->uid[j]);
+		auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[j]);
 		if (pUser == nullptr)
 			continue;
 
 		//TRACE(_T("LoyaltyDivide 333 - user1=%hs, %d\n"), pUser->m_pUserData->m_id, pUser->m_pUserData->m_iLoyalty);
-		individualvalue                 = pUser->m_pUserData->m_bLevel * loyalty_source / levelsum;
-		pUser->m_pUserData->m_iLoyalty += individualvalue;
-
-		if (pUser->m_pUserData->m_iLoyalty < 0)
-			pUser->m_pUserData->m_iLoyalty = 0;
+		individualvalue = pUser->m_pUserData->m_bLevel * loyalty_source / levelsum;
+		CurrencyChange(pUser->m_pUserData->m_iLoyalty, individualvalue);
 
 		//TRACE(_T("LoyaltyDivide 444 - user1=%hs, %d\n"), pUser->m_pUserData->m_id, pUser->m_pUserData->m_iLoyalty);
 
@@ -7478,10 +7545,7 @@ void CUser::LoyaltyDivide(int tid)
 		pUser->Send(sendBuffer, sendIndex);
 	}
 
-	pTUser->m_pUserData->m_iLoyalty += loyalty_target; // Recalculate target loyalty.
-
-	if (pTUser->m_pUserData->m_iLoyalty < 0)
-		pTUser->m_pUserData->m_iLoyalty = 0;
+	CurrencyChange(pTUser->m_pUserData->m_iLoyalty, loyalty_target); // Recalculate target loyalty.
 
 	//TRACE(_T("LoyaltyDivide 555 - user1=%hs, %d\n"), pTUser->m_pUserData->m_id, pTUser->m_pUserData->m_iLoyalty);
 
@@ -8017,7 +8081,7 @@ void CUser::ItemRepair(char* pBuf)
 	if (money > m_pUserData->m_iGold)
 		goto fail_return;
 
-	m_pUserData->m_iGold -= money;
+	CurrencyChange(m_pUserData->m_iGold, -money);
 	if (pos == 1)
 		m_pUserData->m_sItemArray[slot].sDuration = durability;
 	else if (pos == 2)
@@ -8626,8 +8690,8 @@ void CUser::WarehouseProcess(char* pBuf)
 				if ((m_pUserData->m_iGold - count) < 0)
 					goto fail_return;
 
-				m_pUserData->m_iBank += count;
-				m_pUserData->m_iGold -= count;
+				CurrencyChange(m_pUserData->m_iBank, count);
+				CurrencyChange(m_pUserData->m_iGold, -count);
 				break;
 			}
 
@@ -8697,8 +8761,8 @@ void CUser::WarehouseProcess(char* pBuf)
 				if ((m_pUserData->m_iBank - count) < 0)
 					goto fail_return;
 
-				m_pUserData->m_iGold += count;
-				m_pUserData->m_iBank -= count;
+				CurrencyChange(m_pUserData->m_iGold, count);
+				CurrencyChange(m_pUserData->m_iBank, -count);
 				break;
 			}
 
@@ -9038,9 +9102,9 @@ std::shared_ptr<CUser> CUser::GetItemRoutingUser(int itemid, int16_t /*itemcount
 	if (pTable == nullptr)
 		return nullptr;
 
-	while (count < 8)
+	while (count < MAX_PARTY_SIZE)
 	{
-		int select_user = pParty->uid[pParty->bItemRouting];
+		int select_user = pParty->userSocketIds[pParty->bItemRouting];
 		auto pUser      = m_pMain->GetUserPtr(select_user);
 		if (pUser != nullptr)
 		{
@@ -9174,6 +9238,43 @@ void CUser::ClassChangeRespecReq()
 	SetByte(sendBuff, WIZ_CLASS_CHANGE, sendIndex);
 	SetByte(sendBuff, CLASS_CHANGE_STATUS_REQ, sendIndex);
 	Send(sendBuff, sendIndex);
+}
+
+void CUser::GivePromotionQuest()
+{
+	switch (m_pUserData->m_sClass)
+	{
+		case CLASS_EL_BLADE:
+		case CLASS_KA_BERSERKER:
+			SendSay(6020, 6020, 6002, 6011);
+			if (CheckExistEvent(QUEST_MASTER_WARRIOR, QUEST_STATE_NOT_STARTED))
+				SaveEvent(QUEST_MASTER_WARRIOR, QUEST_STATE_IN_PROGRESS);
+			break;
+
+		case CLASS_KA_HUNTER:
+		case CLASS_EL_RANGER:
+			SendSay(6012, 6012, 7002, 7011);
+			if (CheckExistEvent(QUEST_MASTER_ROGUE, QUEST_STATE_NOT_STARTED))
+				SaveEvent(QUEST_MASTER_ROGUE, QUEST_STATE_IN_PROGRESS);
+			break;
+
+		case CLASS_KA_SORCERER:
+		case CLASS_EL_MAGE:
+			SendSay(6014, 6014, 8002, 8011);
+			if (CheckExistEvent(QUEST_MASTER_MAGE, QUEST_STATE_NOT_STARTED))
+				SaveEvent(QUEST_MASTER_MAGE, QUEST_STATE_IN_PROGRESS);
+			break;
+
+		case CLASS_KA_SHAMAN:
+		case CLASS_EL_CLERIC:
+			SendSay(6020, 6020, 9002, 9011);
+			if (CheckExistEvent(QUEST_MASTER_PRIEST, QUEST_STATE_NOT_STARTED))
+				SaveEvent(QUEST_MASTER_PRIEST, QUEST_STATE_IN_PROGRESS);
+			break;
+
+		default:
+			break;
+	}
 }
 
 void CUser::SkillPointResetRequest(bool isFree)
@@ -9516,14 +9617,14 @@ void CUser::GoldChange(int tid, int gold)
 		// Source is NOT in a party.
 		if (m_sPartyIndex == -1)
 		{
-			s_type                        = GOLD_CHANGE_GAIN;
-			t_type                        = GOLD_CHANGE_LOSE;
+			s_type      = GOLD_CHANGE_GAIN;
+			t_type      = GOLD_CHANGE_LOSE;
 
-			s_temp_gold                   = (pTUser->m_pUserData->m_iGold * 4) / 10;
-			t_temp_gold                   = pTUser->m_pUserData->m_iGold / 2;
+			s_temp_gold = (pTUser->m_pUserData->m_iGold * 4) / 10;
+			t_temp_gold = pTUser->m_pUserData->m_iGold / 2;
 
-			m_pUserData->m_iGold         += s_temp_gold;
-			pTUser->m_pUserData->m_iGold -= t_temp_gold;
+			CurrencyChange(m_pUserData->m_iGold, s_temp_gold);
+			CurrencyChange(pTUser->m_pUserData->m_iGold, -t_temp_gold);
 		}
 		// When the source is in a party.
 		else
@@ -9533,12 +9634,12 @@ void CUser::GoldChange(int tid, int gold)
 				return;
 
 			// s_type                     = GOLD_CHANGE_GAIN;
-			t_type                        = GOLD_CHANGE_LOSE;
+			t_type      = GOLD_CHANGE_LOSE;
 
-			s_temp_gold                   = (pTUser->m_pUserData->m_iGold * 4) / 10;
-			t_temp_gold                   = pTUser->m_pUserData->m_iGold / 2;
+			s_temp_gold = (pTUser->m_pUserData->m_iGold * 4) / 10;
+			t_temp_gold = pTUser->m_pUserData->m_iGold / 2;
 
-			pTUser->m_pUserData->m_iGold -= t_temp_gold;
+			CurrencyChange(pTUser->m_pUserData->m_iGold, -t_temp_gold);
 
 			SetByte(sendBuffer, WIZ_GOLD_CHANGE, sendIndex); // First the victim...
 			SetByte(sendBuffer, t_type, sendIndex);
@@ -9550,9 +9651,9 @@ void CUser::GoldChange(int tid, int gold)
 			int usercount = 0, money = 0, levelsum = 0, count = 0;
 			count = s_temp_gold;
 
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < MAX_PARTY_SIZE; i++)
 			{
-				if (pParty->uid[i] != -1)
+				if (pParty->userSocketIds[i] != -1)
 				{
 					usercount++;
 					levelsum += pParty->bLevel[i];
@@ -9562,18 +9663,18 @@ void CUser::GoldChange(int tid, int gold)
 			if (usercount == 0)
 				return;
 
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < MAX_PARTY_SIZE; i++)
 			{
-				auto pUser = m_pMain->GetUserPtr(pParty->uid[i]);
+				auto pUser = m_pMain->GetUserPtr(pParty->userSocketIds[i]);
 				if (pUser == nullptr)
 					continue;
 
 				money = static_cast<int>(
 					count * (float) (pUser->m_pUserData->m_bLevel / (float) levelsum));
-				pUser->m_pUserData->m_iGold += money;
+				CurrencyChange(pUser->m_pUserData->m_iGold, money);
 
 				// Now the party members...
-				sendIndex                    = 0;
+				sendIndex = 0;
 				memset(sendBuffer, 0, sizeof(sendBuffer));
 				SetByte(sendBuffer, WIZ_GOLD_CHANGE, sendIndex);
 				SetByte(sendBuffer, GOLD_CHANGE_GAIN, sendIndex);
@@ -9591,26 +9692,26 @@ void CUser::GoldChange(int tid, int gold)
 		// Source gains money.
 		if (gold > 0)
 		{
-			s_type                        = GOLD_CHANGE_GAIN;
-			t_type                        = GOLD_CHANGE_LOSE;
+			s_type      = GOLD_CHANGE_GAIN;
+			t_type      = GOLD_CHANGE_LOSE;
 
-			s_temp_gold                   = gold;
-			t_temp_gold                   = gold;
+			s_temp_gold = gold;
+			t_temp_gold = gold;
 
-			m_pUserData->m_iGold         += s_temp_gold;
-			pTUser->m_pUserData->m_iGold -= t_temp_gold;
+			CurrencyChange(m_pUserData->m_iGold, s_temp_gold);
+			CurrencyChange(pTUser->m_pUserData->m_iGold, -t_temp_gold);
 		}
 		// Source loses money.
 		else
 		{
-			s_type                        = GOLD_CHANGE_LOSE;
-			t_type                        = GOLD_CHANGE_GAIN;
+			s_type      = GOLD_CHANGE_LOSE;
+			t_type      = GOLD_CHANGE_GAIN;
 
-			s_temp_gold                   = gold;
-			t_temp_gold                   = gold;
+			s_temp_gold = gold;
+			t_temp_gold = gold;
 
-			m_pUserData->m_iGold         -= s_temp_gold;
-			pTUser->m_pUserData->m_iGold += t_temp_gold;
+			CurrencyChange(m_pUserData->m_iGold, -s_temp_gold);
+			CurrencyChange(pTUser->m_pUserData->m_iGold, t_temp_gold);
 		}
 	}
 
@@ -10668,12 +10769,12 @@ void CUser::MarketBBSRegister(char* pBuf)
 
 	if (buysell_index == MARKET_BBS_BUY)
 	{
-		m_pUserData->m_iGold -= BUY_POST_PRICE;
+		CurrencyChange(m_pUserData->m_iGold, -BUY_POST_PRICE);
 		SetDWORD(sendBuffer, BUY_POST_PRICE, sendIndex);
 	}
 	else if (buysell_index == MARKET_BBS_SELL)
 	{
-		m_pUserData->m_iGold -= SELL_POST_PRICE;
+		CurrencyChange(m_pUserData->m_iGold, -SELL_POST_PRICE);
 		SetDWORD(sendBuffer, SELL_POST_PRICE, sendIndex);
 	}
 
@@ -10967,7 +11068,7 @@ void CUser::MarketBBSRemotePurchase(char* pBuf)
 	// Check if user has gold.
 	if (m_pUserData->m_iGold >= REMOTE_PURCHASE_PRICE)
 	{
-		m_pUserData->m_iGold -= REMOTE_PURCHASE_PRICE;
+		CurrencyChange(m_pUserData->m_iGold, -REMOTE_PURCHASE_PRICE);
 
 		SetByte(sendBuffer, WIZ_GOLD_CHANGE, sendIndex);
 		SetByte(sendBuffer, GOLD_CHANGE_LOSE, sendIndex);
@@ -11020,8 +11121,8 @@ void CUser::MarketBBSTimeCheck()
 			{
 				if (pUser->m_pUserData->m_iGold >= BUY_POST_PRICE)
 				{
-					pUser->m_pUserData->m_iGold -= BUY_POST_PRICE;
-					m_pMain->m_fBuyStartTime[i]  = TimeGet();
+					CurrencyChange(pUser->m_pUserData->m_iGold, -BUY_POST_PRICE);
+					m_pMain->m_fBuyStartTime[i] = TimeGet();
 
 					// Now the target
 					memset(sendBuffer, 0, sizeof(sendBuffer));
@@ -11053,8 +11154,8 @@ void CUser::MarketBBSTimeCheck()
 			{
 				if (pUser->m_pUserData->m_iGold >= SELL_POST_PRICE)
 				{
-					pUser->m_pUserData->m_iGold  -= SELL_POST_PRICE;
-					m_pMain->m_fSellStartTime[i]  = TimeGet();
+					CurrencyChange(pUser->m_pUserData->m_iGold, -SELL_POST_PRICE);
+					m_pMain->m_fSellStartTime[i] = TimeGet();
 
 					// Now the target
 					memset(sendBuffer, 0, sizeof(sendBuffer));
@@ -11711,6 +11812,10 @@ bool CUser::CheckEventLogic(const EVENT_DATA* pEventData)
 					bExact = true;
 				break;
 
+			case LOGIC_CHECK_DICE:
+				bExact = pLE->m_LogicElseInt[0] == m_sEventDiceRoll;
+				break;
+
 			case LOGIC_CHECK_WEIGHT:
 				if (!CheckWeight(pLE->m_LogicElseInt[0], pLE->m_LogicElseInt[1]))
 					bExact = true;
@@ -11981,20 +12086,50 @@ bool CUser::RunEvent(const EVENT_DATA* pEventData)
 				GoldLose(pExec->m_ExecInt[0]);
 				break;
 
+			case EXEC_RETURN:
+				return false;
+
+			case EXEC_SAVE_EVENT:
+				SaveEvent(static_cast<e_QuestId>(pExec->m_ExecInt[0]),
+					static_cast<e_QuestState>(pExec->m_ExecInt[1]));
+				break;
+
+			case EXEC_PROMOTE_USER:
+				PromoteUser();
+				break;
+
+			case EXEC_GIVE_PROMOTION_QUEST:
+				GivePromotionQuest();
+				break;
+
 			case EXEC_ZONE_CHANGE:
 				ZoneChange(pExec->m_ExecInt[0], static_cast<float>(pExec->m_ExecInt[1]),
 					static_cast<float>(pExec->m_ExecInt[2]));
 				break;
 
-			case EXEC_RETURN:
-				return false;
-
 			case EXEC_PROMOTE_USER_NOVICE:
 				PromoteUserNovice();
 				break;
 
-			case EXEC_PROMOTE_USER:
-				PromoteUser();
+			case EXEC_SKILL_POINT_DISTRIBUTE:
+			case EXEC_STAT_POINT_DISTRIBUTE:
+				ClassChangeRespecReq();
+				break;
+
+			case EXEC_LEVEL_UP:
+				ExpChange(m_iMaxExp);
+				break;
+
+			case EXEC_EXP_CHANGE:
+				ExpChange(pExec->m_ExecInt[0]);
+				break;
+
+			case EXEC_ROLL_DICE:
+				m_sEventDiceRoll = myrand(1, pExec->m_ExecInt[0]);
+				break;
+
+			case EXEC_CHANGE_LOYALTY:
+				ChangeLoyalty(pExec->m_ExecInt[0], true);
 				break;
 
 			case EXEC_SKILL_POINT_FREE:
@@ -12005,9 +12140,8 @@ bool CUser::RunEvent(const EVENT_DATA* pEventData)
 				StatPointResetRequest(true);
 				break;
 
-			case EXEC_SKILL_POINT_DISTRIBUTE:
-			case EXEC_STAT_POINT_DISTRIBUTE:
-				ClassChangeRespecReq();
+			case EXEC_CHANGE_MANNER:
+				ChangeMannerPoint(pExec->m_ExecInt[0]);
 				break;
 
 			default:
@@ -12056,10 +12190,9 @@ void CUser::SendItemWeight()
 	Send(sendBuffer, sendIndex);
 }
 
-void CUser::GoldGain(int gold)
+void CUser::GoldGain(int amount)
 {
-	int sendIndex      = 0;
-	int64_t iTotalGold = 0;
+	int sendIndex = 0;
 	char sendBuffer[256] {};
 
 	if (m_pUserData->m_iGold < 0)
@@ -12069,25 +12202,19 @@ void CUser::GoldGain(int gold)
 		return;
 	}
 
-	if (gold < 0)
-		gold = 0;
+	if (amount < MIN_CURRENCY)
+		amount = MIN_CURRENCY;
 
-	iTotalGold = static_cast<int64_t>(m_pUserData->m_iGold) + static_cast<int64_t>(gold);
-
-	if (iTotalGold > MAX_GOLD)
-		iTotalGold = MAX_GOLD;
-
-	// set user gold as iTotalGold
-	m_pUserData->m_iGold = static_cast<int>(iTotalGold);
+	CurrencyChange(m_pUserData->m_iGold, amount);
 
 	SetByte(sendBuffer, WIZ_GOLD_CHANGE, sendIndex);
 	SetByte(sendBuffer, GOLD_CHANGE_GAIN, sendIndex);
-	SetDWORD(sendBuffer, gold, sendIndex);
+	SetDWORD(sendBuffer, amount, sendIndex);
 	SetDWORD(sendBuffer, m_pUserData->m_iGold, sendIndex);
 	Send(sendBuffer, sendIndex);
 }
 
-bool CUser::GoldLose(int gold)
+bool CUser::GoldLose(int amount)
 {
 	int sendIndex = 0;
 	char sendBuffer[256] {};
@@ -12099,18 +12226,18 @@ bool CUser::GoldLose(int gold)
 		return false;
 	}
 
-	if (gold < 0)
-		gold = 0;
+	if (amount < MIN_CURRENCY)
+		amount = MIN_CURRENCY;
 
 	// Insufficient gold!
-	if (m_pUserData->m_iGold < gold)
+	if (m_pUserData->m_iGold < amount)
 		return false;
 
-	m_pUserData->m_iGold -= gold; // Subtract gold.
+	CurrencyChange(m_pUserData->m_iGold, -amount);
 
 	SetByte(sendBuffer, WIZ_GOLD_CHANGE, sendIndex);
 	SetByte(sendBuffer, GOLD_CHANGE_LOSE, sendIndex);
-	SetDWORD(sendBuffer, gold, sendIndex);
+	SetDWORD(sendBuffer, amount, sendIndex);
 	SetDWORD(sendBuffer, m_pUserData->m_iGold, sendIndex);
 	Send(sendBuffer, sendIndex);
 

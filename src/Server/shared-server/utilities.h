@@ -29,6 +29,10 @@ void SetString2(char* tBuf, const std::string_view str, int& index);
 void SetString2(char* tBuf, const char* str, int length, int& index);
 bool ParseSpace(char* tBuf, const char* sBuf, int& bufferIndex);
 
+/// \brief Calculates the value of a currency change (gold, NP, Manner) by upcasting the delta
+/// to prevent overflows, then applying a clamp between 0 and 2.1B
+void CurrencyChange(int32_t& refAmount, int32_t delta);
+
 extern std::function<int(int min, int max)> myrand;
 
 #endif // SERVER_SHAREDSERVER_UTILITIES_H

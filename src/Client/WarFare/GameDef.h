@@ -571,8 +571,6 @@ struct __InfoPlayerMySelf : public __InfoPlayerOther
 	}
 };
 
-inline constexpr int MAX_PARTY_OR_FORCE = 8;
-
 struct __InfoPartyOrForce
 {
 	int iID;              // Player's ID
@@ -1414,7 +1412,6 @@ inline constexpr uint32_t ITEM_ID_STONE_OF_PRIEST       = 379062000;
 
 // clan related definitions
 inline constexpr int CLAN_LEVEL_LIMIT                   = 20;
-inline constexpr int CLAN_COST                          = 500000;
 inline constexpr uint32_t KNIGHTS_FONT_COLOR            = 0xffff0000; // Clan name font color
 
 enum e_Cursor : int8_t
