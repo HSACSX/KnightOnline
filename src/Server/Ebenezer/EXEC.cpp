@@ -118,6 +118,12 @@ bool EXEC::Parse(const char* line, const std::string& filename, int lineNumber)
 			m_Exec = EXEC_GIVE_PROMOTION_QUEST;
 			break;
 
+		// E RUN_EXCHANGE {exchangeId}
+		case "RUN_EXCHANGE"_djb2:
+			m_Exec      = EXEC_RUN_EXCHANGE;
+			argsToParse = 1;
+			break;
+
 		// E ZONE_CHANGE {zone ID} {x} {z}
 		case "ZONE_CHANGE"_djb2:
 			m_Exec      = EXEC_ZONE_CHANGE;

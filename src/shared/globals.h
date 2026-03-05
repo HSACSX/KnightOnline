@@ -29,11 +29,12 @@ inline constexpr int VIEW_DISTANCE                   = 48;
 
 inline constexpr int MAX_PARTY_SIZE                  = 8;
 
-static constexpr int32_t CLAN_COST                   = 500'000;
+inline constexpr int32_t CLAN_COST                   = 500'000;
 
 inline constexpr float MAX_INTERACTION_RANGE         = 11;
 inline constexpr float MAX_INTERACTION_RANGE_SQUARED = (MAX_INTERACTION_RANGE
 														* MAX_INTERACTION_RANGE);
+inline constexpr uint8_t MAX_EXCHANGE_ITEMS          = 5;
 
 enum e_AttackResult : uint8_t
 {
@@ -98,6 +99,18 @@ enum e_Class : uint8_t
 	CLASS_EL_DRUID,
 
 	CLASS_UNKNOWN = 0xff
+};
+
+/// \enum e_ExchangeType
+/// \brief Exchange function type dictated by ITEM_EXCHANGE.bRandomFlag
+/// \see CUser::RunExchange for implementation
+enum e_ExchangeType : uint8_t
+{
+	EXCHANGE_TYPE_ALL_ITEMS = 0, ///< All items in the exchange array are granted
+	EXCHANGE_TYPE_ONE_OF_EQUAL =
+		5,  ///< Grants one of the exchange items, each with an equal chance to be selected
+	EXCHANGE_TYPE_ONE_OF_WEIGHTED =
+		101 ///< Grants one of the exchange items using a weighted roll table
 };
 
 enum e_ItemFlag : uint8_t
